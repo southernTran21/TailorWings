@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import './SideBar.css'
 import classNames from 'classnames';
 import { Link } from 'react-router-dom'
-import './SlideBar.scss'
+import './SideBar.scss'
 import { getWithCondition } from '../../services/Fundamental';
 import auth from '../../app/auth';
 import LoginForm from './LoginModal'
+
+import {Icon} from 'antd'
 
 export default class SideBar extends Component {
     constructor(props) {
@@ -62,73 +64,21 @@ export default class SideBar extends Component {
         }
         return (
             <nav className={drawerClasses}>
-                <div id="sidebar">
-                    <ul className="list-unstyled components">
-                        <li className=" nav-item active">
-                            <a id={0} href="#homeSubmenu" data-toggle="collapse" onClick={this._dropHandler} className="dropdown-toggle nav-link active">Danh mục</a>
-                            <ul className={classNames('collapse list-unstyled', { show: dropFlags[0] })} id="homeSubmenu">
-                                {categories.map((category, index) => {
-                                    if (category != null) {
-                                        return (
-                                            <li key={index} className="nav-item">
-                                                <Link
-                                                    className="nav-link text-capitalize"
-                                                    to={{
-                                                        pathname: "/shopping-store",
-                                                        search: `?cat=${category.id}`
-                                                    }}
-                                                    onClick={this.props.changeSideBarState}
-                                                >
-                                                    <i className="fas fa-chevron-right"></i>
-                                                    {category.name}
-                                                </Link>
-                                            </li >
-                                        )
-                                    }
-                                })}
-                            </ul>
-                        </li>
-                        <li className=" nav-item active" >
-                            <a id={1} href="#about" data-toggle="collapse" onClick={this._dropHandler} className="dropdown-toggle nav-link active">Về Tailor Wings</a>
-                            <ul className={classNames('collapse list-unstyled', { show: dropFlags[1] })} id="about">
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Câu chuyện Tailor Wings</a></li >
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Cộng đồng nhà thiết kế và thợ may</a></li >
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Liên Hệ</a></li >
-                            </ul>
-                        </li>
-
-                        <li className=" nav-item active" >
-                            <a id={2} href="#help" data-toggle="collapse" onClick={this._dropHandler} className="dropdown-toggle nav-link active">Trợ Giúp</a>
-                            <ul className={classNames('collapse list-unstyled', { show: dropFlags[2] })} id="help">
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right" />Cách chọn size</a></li >
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Cách đặt may</a></li >
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Hỗ trợ chỉnh sửa</a></li >
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Hỗ trợ đổi trả</a></li >
-                            </ul>
-                        </li>
-
-                        <li className=" nav-item active" >
-                            <a id={3} href="#user" data-toggle="collapse" onClick={this._dropHandler} className="dropdown-toggle nav-link active">Tài khoản</a>
-                            <ul className={classNames('collapse list-unstyled', { show: dropFlags[3] })} id="user">
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right" />Yêu thích</a></li >
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Lịch sử đơn hàng</a></li >
-                                <li className="nav-item"><a className="nav-link text-capitalize" ><i className="fas fa-chevron-right"></i>Thông tin tài khoản</a></li >
-                            </ul>
-                        </li>
-
-                        <li className=" nav-item active" >
-                            <a id={4} href="#question" data-toggle="collapse" onClick={this._dropHandler} className="dropdown-toggle nav-link active">Bạn là thợ may ?</a>
-                            <ul className={classNames('collapse list-unstyled', { show: dropFlags[4] })} id="question">
-                                <li className="nav-item"><a className="nav-link text-capitalize"><i className="fas fa-chevron-right" />Trở thành đối tác</a></li >
-                            </ul>
-                        </li>
-
-                        <li className=" nav-item active" >
-                            <LoginForm onClickHandling={this.onClickHandling} history={this.props.history} />
-                        </li>
-
-                    </ul>
-
+                <div className='sidebar-wraper'>
+                    <div className='selectionCategory d-flex flex-column'>
+                        <Link><span>Hàng mới</span></Link>
+                        <Link><span>Đầm Ôm</span></Link>
+                        <Link><span>Đầm Suông</span></Link>
+                        <Link><span>Đầm Xòe</span></Link>
+                        <Link><span>Bộ Sưu Tập</span></Link>
+                    </div>
+                    <hr/>
+                    <div className='selectionEndSidebar d-flex flex-column'>
+                        <Link><span>Về Tailor Wings</span></Link>
+                        <Link><span>Trợ Giúp</span></Link>
+                        <Link><span>Tài Khoan</span></Link>
+                        <Link><span style={{textDecoration:'underline'}}>Bạn Là Thợ May</span></Link>
+                    </div>
                 </div>
             </nav>
         )

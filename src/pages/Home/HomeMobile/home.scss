@@ -1,10 +1,16 @@
 .pageHomeMobile {
     font-family: 'Be Vietnam', sans-serif;
+    .menuFix{
+        position: fixed;
+    }
     .navbarHeader {
         height: 65px !important;
         padding: 0 25px;
-        color: #2699fb;
-        .titleHeader {
+        color: #FF6D3B;
+        width: 100vw;
+        z-index: 6;
+        background-color: white;
+        .titleHeader{
             font-size: 26px;
         }
         i {
@@ -22,6 +28,7 @@
                 width: 100px;
             }
         }
+        
     }
     .bodyPage {
         .header__bodyPage {

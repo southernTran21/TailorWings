@@ -1,37 +1,43 @@
 .side-drawer {
-  background-color: white !important;
-  color: black;
-  
-}
-#sidebar {
-  .nav-item {
     background-color: white !important;
     color: black;
-  }
-  ul {
-    padding: 0 !important;
-    margin: 10px 20px !important;
-    li {
-      a {
-        background-color: white !important;
-        color: black !important;
-        padding: 10px 10px !important;
-      }
-      ul {
-          margin: 0 10px !important;
-        a {
-          background-color: white !important;
-          color: black !important;
-          padding-left: 20px !important;
-          i {
-            display: none;
-          }
-        }
-        a:hover{
-            background: rgb(255, 164, 27) !important;
-            border-radius: 7px;
-        }
-      }
+}
+.side-drawer {
+    font-family: 'Be Vietnam', sans-serif !important;
+    background: white;
+    color: black;
+}
+#sidebar {
+    .nav-item {
+        background-color: transparent !important;
+        color: black;
     }
-  }
+    .dropdown-toggle::after {
+        display: none;
+    }
+}
+.sidebar-wraper{
+    padding: 0 25px;
+    border-top: 3px solid #FF6D3B;
+    span{
+        color: #FF6D3B !important;
+    }
+    .selectionCategory{
+        margin-top: 11px;
+        span{
+            font-size: 30px;
+            line-height: 44px;
+        }
+    }
+    hr{
+        background-color: #FFA45C;
+        margin-top: 19px;
+        margin-bottom: 27px;
+    }
+    .selectionEndSidebar{
+        span{
+            font-size: 20px;
+            line-height: 40px;
+        }
+    }
 }
