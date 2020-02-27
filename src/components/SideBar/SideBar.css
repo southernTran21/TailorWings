@@ -1,0 +1,104 @@
+
+
+.side-drawer {
+    height: 100%;
+    background: #0f2944;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 400px;
+    transition: all 0.5s ease-in-out;
+    transform: translateX(-100%);
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    z-index: 7;
+}
+
+.side-drawer.open {
+    transform: translateX(0);
+    z-index: 10 !important;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+#sidebar {
+    color: #fff;
+    transition: all 0.3s;
+    transform: translateY(80px) 
+
+}
+#sidebar.active{
+	margin-left: -250px;
+}
+
+#sidebar .sidebar-header{
+	padding: 20px;
+	background: #0f2944;
+}
+#sidebar ul.components{
+	padding: 20px 0px;
+}
+
+#sidebar ul p{
+	padding: 10px;
+	font-size: 1.1em;
+	display: block; 
+}
+
+#sidebar ul li a{
+	padding: 20px 10px;
+	font-size: 1.1em;
+	display: block;
+}
+
+#sidebar ul li a i {
+	padding: 10px;
+
+}
+#sidebar ul li a:hover {
+    color: #0f2944;
+    background: #fff;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #0f2944;
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+#sidebar ul ul a {
+    font-size: 0.9em !important;
+    padding: 5px 0  !important;
+    background: #273c75;
+    color: #fff;
+}   
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+
+@media(maz-width:768px){
+	#sidebar{margin-left: -250px;}
+	#sidebar.active{
+		margin-left: 0px;
+	}
+	#sidebarCollapse span{
+		display: none;
+	}
+}
+
+

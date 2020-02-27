@@ -1,0 +1,14 @@
+.ant-modal-close:focus, .ant-modal-close-x:focus {
+  outline: none;
+  border: none !important ;
+  box-shadow: none;
+}
+.ant-modal-body {
+  display: flex;
+  justify-content: center;
+}
+.ant-message-custom-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

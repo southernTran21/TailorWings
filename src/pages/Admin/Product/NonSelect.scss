@@ -1,0 +1,28 @@
+.headerShowProduct {
+    .ant-cascader-picker-label{
+        font-weight: bold;
+    }
+  .inputSearch {
+    float: left;
+    border: 1px solid #fd7e14;
+    padding: 0px 10px;
+    border-radius: 17px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 18px;
+    input {
+      width: 200px;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      padding: 0;
+      font-size: 14px;
+      height: 32px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.close {
+  display: none;
+}

@@ -1,0 +1,101 @@
+// Styling for the masthead
+section.masthead {
+  text-align: center;
+  color: white;
+  background-image: url('../img/header-bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  .intro-text {
+    padding-top: 220px;
+    // padding-bottom: 100px;
+    .intro-lead-in {
+      font-size: 22px;
+      font-style: italic;
+      line-height: 22px;
+      margin-bottom: 25px;
+      @include serif-font;
+    }
+    .intro-heading {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 50px;
+      margin-bottom: 25px;
+      @include heading-font;
+    }
+    .fa-shopping-cart{
+      display: none;
+    }
+    .position-fixed {
+      background-color: $primary;
+      position: fixed;
+      transform: translate(150px, 150px);
+      // transition: all 0.5s ease-in-out;
+      padding: 5px;
+      opacity: 1;
+      width: 50px;
+      height: 50px;
+      font-size: 12px;
+      text-align: center;
+      z-index: 3;
+      p{
+        display: none;
+      }
+      .fa-shopping-cart{
+        padding: 6.5px 0;
+        display: block;
+        color: white;
+      }
+      
+    }
+  }
+}
+
+//Man Hinh PC
+section.masthead {
+@media(min-width:768px) { 
+    .intro-text {
+      padding-top: 200px;
+      padding-bottom: 200px;
+      .intro-lead-in {
+        font-size: 20px;
+        font-style: italic;
+        line-height: 40px;
+        margin-bottom: 25px;
+        @include serif-font;
+      }
+      .intro-heading {
+        font-size: 75px;
+        font-weight: 700;
+        line-height: 75px;
+        //margin-bottom: 50px;
+        @include heading-font;
+      }
+      .fa-shopping-cart{
+        display: none;
+      }
+      .position-fixed {
+        background-color: $primary;
+        position: fixed;
+        transform: translate(575px, 150px);
+        opacity: 1;
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+        text-align: center;
+        z-index: 3;
+        p{
+          display: none;
+        }
+        .fa-shopping-cart{
+          padding: 6.5px 0;
+          display: block;
+          color: white;
+        }
+      }
+    }
+    
+  }
+}

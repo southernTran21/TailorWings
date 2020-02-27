@@ -1,0 +1,65 @@
+form {
+  .ant-form-item-label {
+    width: 20% !important;
+    height: fit-content !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding: 0px !important;
+    label {
+      margin: 0px !important;
+      width: 100%;
+    }
+  }
+  .ant-form-item-control-wrapper {
+    width: 75%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: start !important;
+    .ant-form-item-control {
+      width: 100% !important;
+    }
+  }
+  .checkOutButton {
+    .ant-form-item-control-wrapper {
+      .ant-form-item-control {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  form {
+    .ant-form-item-label {
+      width: 25% !important;
+      height: 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      padding: 0px !important;
+      label {
+        margin: 0px !important;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    .ant-form-item-control-wrapper {
+      width: 70%;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: start !important;
+      .ant-form-item-control {
+        width: 100% !important;
+      }
+    }
+  }
+}

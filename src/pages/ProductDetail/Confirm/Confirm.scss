@@ -1,0 +1,115 @@
+.pageConfirm {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+    .anticon {
+        vertical-align: 0;
+    }
+    .navbarHeader {
+        background-color: rgba(241, 249, 255, 1);
+        height: 55px;
+        color: rgba(38, 153, 251, 1);
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0 5%;
+        .iconShoppingCart {
+            font-size: 23px;
+        }
+        .ant-badge-count {
+            min-height: 10px;
+            min-width: 14px;
+            height: 15px;
+            padding: 0 6px;
+            font-size: 8px;
+            top: -13px;
+        }
+    }
+    .bodyPage {
+        padding: 0 5%;
+        .infProduct {
+            margin-top: 15px;
+            .title__infProduct {
+                color: rgba(38, 153, 251, 1);
+                width: 100%;
+                .nameProduct {
+                    width: 100%;
+                    font-size: 18px;
+                    :nth-child(1) {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .imgProduct {
+            width: 100%;
+            margin-top: 15px;
+            .col-6 {
+                padding: 5px !important;
+            }
+            .image {
+                background-color:#fc9d4e;
+                width: 100%;
+                height: 150px;
+                border-radius: 5px;
+                object-fit: contain;
+            }
+        }
+        .changeSize {
+            border: 1px solid rgba(188, 224, 253, 1);
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            span {
+                color: rgba(127, 196, 253, 1);
+                font-size: 14px;
+            }
+            a {
+                span {
+                    font-weight: bold;
+                    color: rgba(38, 153, 251, 1);
+                }
+                i {
+                    vertical-align: 0;
+                    color: rgba(127, 196, 253, 1);
+                    font-size: 13px;
+                    line-height: 0;
+                    margin-left: 3px;
+                }
+            }
+        }
+    }
+    .endPage {
+        padding: 0 5%;
+        margin-top: 15px;
+        .quantity {
+            background: rgba(241, 249, 255, 1);
+            color: rgba(127, 196, 253, 1);
+            padding: 7px 10px;
+            span {
+                font-size: 13px;
+                margin-right: 10px;
+            }
+            .ant-input {
+                border: none;
+                color: rgba(38, 153, 251, 1);
+                font-weight: bold;
+                font-size: 16px;
+                width: 30px;
+                text-align: center;
+                margin: 0 5px;
+                background-color: transparent;
+                padding: 0px !important;
+            }
+        }
+        .buttonApcept {
+            padding: 7px 25px;
+            background: rgba(38, 153, 251, 1);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 7px;
+            i {
+                margin-left: 3px;
+            }
+        }
+    }
+}

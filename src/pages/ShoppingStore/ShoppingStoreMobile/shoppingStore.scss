@@ -1,0 +1,107 @@
+.pageShoppingStore {
+    font-family: 'Be Vietnam', sans-serif;
+    .anticon {
+        vertical-align: 0 !important;
+    }
+    .navbarHeader {
+        padding: 0 25px;
+        height: 65px !important;
+        color: #2699fb;
+        .titleHeader {
+            font-size: 26px;
+        }
+        i {
+            font-size: 25px;
+        }
+    }
+    .filter {
+        padding: 0 25px;
+        margin-top: 10px;
+        .collectionFilter {
+            border: 1px solid #2699fb;
+            padding: 7px 10px;
+            width: 254px;
+            border-radius: 5px;
+            .iconFilter {
+                img {
+                    filter: invert(47%) sepia(60%) saturate(1703%)
+                        hue-rotate(186deg) brightness(96%) contrast(104%);
+                }
+            }
+            .titleFilter {
+                color: #2699fb;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                width: 208px;
+            }
+        }
+        .selectionFilter {
+            width: 71px;
+            img {
+                filter: invert(47%) sepia(60%) saturate(1703%)
+                    hue-rotate(186deg) brightness(96%) contrast(104%);
+            }
+            .iconBorder {
+                margin-left: 15px;
+                i {
+                    font-size: 20px;
+                    color: #2699fb;
+                }
+            }
+        }
+    }
+    .carousel-wraper {
+        padding: 0 25px;
+        margin-top: 20px;
+        .contentSelection {
+            background: white;
+            border: 1px solid #2699fb;
+            color: #2699fb;
+            font-size: 16px;
+            padding: 6px 0;
+            width: 110px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .active {
+            background-color: #2699fb !important;
+            color: white !important;
+        }
+    }
+    .productList-wraper {
+        padding: 5px 23.5px;
+        margin-top: 10px;
+        .col-6 {
+            padding: 7px 2.5px;
+            float: left;
+            height: auto;
+        }
+        .imageProduct {
+            // background-color: #7fc4fd;
+            height: auto;
+            border-radius: 10px;
+            img {
+                width: 100%;
+            }
+        }
+        .titleProduct {
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            color: #2699fb;
+        }
+        .button {
+            margin-top: 7px;
+            span {
+                border: 1px solid #2699fb;
+                width: 91px;
+                padding: 3px 0px;
+                font-size: 13px;
+                color: #2699fb;
+                text-align: center;
+                border-radius: 5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+.bodyScale{
+    margin-bottom: 15px;
+    font-size: 16px !important;
+    font-weight: 400;
+    color: #212529 !important;
+    .ant-collapse{
+        font-size: 16px !important;
+        color: #212529 !important;
+        .ant-collapse-item{
+            padding-bottom: 10px;
+            border: none;
+            .ant-collapse-header{
+                padding-left: 20px;
+                i{
+                    left: 0px !important;
+                }
+                
+            }
+            .ant-collapse-content-box{
+                padding: 0 5px !important;
+                color: #212529 !important;
+                .row {
+                    flex-wrap: nowrap !important;
+                }
+            }
+        }
+    }
+    a{
+        padding-right: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        .ant-input{
+            width: 100%;
+            margin: 5px 0px;
+            padding: 4px 5px;
+            margin-right: 10px;
+        }
+    }
+}

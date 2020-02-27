@@ -1,0 +1,109 @@
+.pageDesignAdjustment {
+  padding: 1% 2%;
+  background-color: #fdecdc;
+  height: 90vh;
+  .buttonAddDesign {
+    // padding: 10px 27px;
+    border: none;
+    background-color: #fc9d4e;
+    color: white;
+    border-radius: 30px;
+    margin-right: 1.5%;
+    font-weight: bold;
+  }
+  .designAdjustment {
+    .ant-upload-picture-card-wrapper {
+      width: 35vw !important;
+    }
+    .ant-upload-select-picture-card i {
+      font-size: 32px;
+      color: #999;
+    }
+
+    .ant-upload-select-picture-card .ant-upload-text {
+      color: #666;
+    }
+    .ant-upload-list-picture-card-container {
+      margin: 0;
+      margin-right: 10px;
+    }
+    .ant-upload.ant-upload-select-picture-card {
+      margin: 0;
+    }
+    .inputContentHeader {
+      padding: 5px !important;
+      background-color: white;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+    .inputNameDesign {
+      margin-right: 3.5%;
+      p.d-flex.flex-row.align-items-center {
+        margin: 0;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+      .inputName {
+        input {
+          font-size: 12px;
+          width: 25vw;
+          border-radius: 7px;
+          border-color: #fc9d4e;
+        }
+      }
+    }
+    .inputContentBody {
+      margin-top: 20px;
+      .col-7 {
+        padding: 0;
+      }
+      .inputComplexity, .inputLengthFabric, .inputDescription{
+        margin-top: 20px;
+      }
+      p.d-flex.flex-row.align-items-center {
+        margin: 0;
+        font-weight: bold;
+        width: 115px;
+      }
+      input {
+        font-size: 12px;
+        width: 20vw;
+        border-radius: 7px;
+        border-color: #fc9d4e;
+      }
+      .checkboxFabric {
+        font-weight: bold;
+        margin-top: 20px;
+        p {
+          margin-bottom: 0px;
+        }
+        .checkbox {
+          align-items: flex-start;
+          float: right;
+          width: 68%;
+          label {
+            padding: 5px 0;
+          }
+          .ant-checkbox-wrapper {
+            margin: 0;
+            .ant-checkbox {
+              margin-right: 6px;
+            }
+          }
+        }
+      }
+      .inputDescription {
+        textarea.ant-input {
+          border-color: #fc9d4e;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
+
+.ant-message-custom-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

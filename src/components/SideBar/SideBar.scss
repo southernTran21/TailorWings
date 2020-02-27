@@ -1,0 +1,37 @@
+.side-drawer {
+  background-color: white !important;
+  color: black;
+  
+}
+#sidebar {
+  .nav-item {
+    background-color: white !important;
+    color: black;
+  }
+  ul {
+    padding: 0 !important;
+    margin: 10px 20px !important;
+    li {
+      a {
+        background-color: white !important;
+        color: black !important;
+        padding: 10px 10px !important;
+      }
+      ul {
+          margin: 0 10px !important;
+        a {
+          background-color: white !important;
+          color: black !important;
+          padding-left: 20px !important;
+          i {
+            display: none;
+          }
+        }
+        a:hover{
+            background: rgb(255, 164, 27) !important;
+            border-radius: 7px;
+        }
+      }
+    }
+  }
+}

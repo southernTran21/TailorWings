@@ -1,0 +1,20 @@
+// Styling for the services section
+#services{
+  color: $primary;
+  .service-item{
+    max-width: 20%;
+    max-height: 20%;
+  }
+}
+
+@media(max-width:768px) {
+  #services{    
+    color: $primary;
+    padding: 50px 0;
+    .service-item{
+      h4{
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

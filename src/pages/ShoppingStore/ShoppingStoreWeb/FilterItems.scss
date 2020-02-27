@@ -1,0 +1,22 @@
+#link:hover {
+  text-decoration: none !important;
+}
+
+#filter-items-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  ul {
+    font-size: 11px !important;
+  }
+  .ant-menu-inline {
+    border: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #filter-items-container {
+    display: flex;
+    flex-direction: row;
+  }
+}

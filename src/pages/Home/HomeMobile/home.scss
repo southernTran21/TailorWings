@@ -1,0 +1,464 @@
+.pageHomeMobile {
+    font-family: 'Be Vietnam', sans-serif;
+    .navbarHeader {
+        height: 65px !important;
+        padding: 0 25px;
+        color: #2699fb;
+        .titleHeader {
+            font-size: 26px;
+        }
+        i {
+            font-size: 25px;
+        }
+        .anticon {
+            vertical-align: 0;
+        }
+        .search-wraper {
+            input[type='text'] {
+                width: 0px;
+                border: none;
+            }
+            .iconSearch:focus ~ input {
+                width: 100px;
+            }
+        }
+    }
+    .bodyPage {
+        .header__bodyPage {
+            height: 601px;
+            background-color: #7fc4fd;
+        }
+        .content__bodyPage {
+            padding: 0 25px;
+            height: 265px;
+            .title {
+                text-align: center;
+                span {
+                    color: #2699fb;
+                }
+                :nth-child(1) {
+                    font-weight: bold;
+                    font-size: 24px;
+                }
+                :nth-child(2) {
+                    font-size: 13px;
+                    margin-top: 5px;
+                }
+            }
+            .fourStep-wraper {
+                .fourStep-content {
+                    width: 71px;
+                    height: 95px;
+                    .image {
+                        width: 71px;
+                        height: 71px;
+                        background-color: #7fc4fd;
+                    }
+                    .title {
+                        span {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+            hr {
+                border-top: 1px solid #7fc4fd;
+                width: 100%;
+                margin: 0;
+            }
+        }
+        .strikingDesign-wraper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 610px;
+            .title {
+                text-align: center;
+                padding: 0 25px;
+                span {
+                    color: #2699fb;
+                }
+                :nth-child(1) {
+                    font-weight: bold;
+                    font-size: 24px;
+                }
+                :nth-child(2) {
+                    font-size: 13px;
+                    margin-top: 5px;
+                }
+            }
+            .carousel-wraper {
+                .swiper-slide {
+                    width: fit-content !important;
+                }
+                .content-carousel {
+                    margin: 0 7px;
+                    .image {
+                        width: 280px;
+                        height: 435px;
+                        background: #7fc4fd;
+                        border-radius: 7px;
+                    }
+                    .end-carousel {
+                        .title {
+                            font-size: 20px;
+                            color: #2699fb;
+                            margin-bottom: 7px;
+                        }
+                        .button {
+                            border: 1px solid #2699fb;
+                            margin: 0 42px;
+                            border-radius: 7px;
+                            .titleButton {
+                                padding: 8px 0;
+                                margin-left: 12px;
+                                margin-right: 10px;
+                                font-size: 14px;
+                                color: #2699fb;
+                            }
+                            .putButton {
+                                padding: 8px 14.3px;
+                                background-color: #2699fb;
+                                color: white;
+                                font-size: 14px;
+                                border-radius: 7px;
+                                .anticon {
+                                    vertical-align: 0;
+                                    font-size: 12px;
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .listProduct {
+            height: 260px;
+            margin: 0;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            .title__listProduct {
+                font-size: 24px;
+                font-weight: bold;
+                color: #2699fb;
+            }
+            .categoryProduct {
+                .contentProduct {
+                    width: 124px;
+                    height: 184px;
+                    background-color: #7fc4fd;
+                    span {
+                        color: white;
+                    }
+                    :nth-child(1) {
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                    :nth-child(2) {
+                        font-size: 12px;
+                    }
+                }
+            }
+            hr {
+                border-top: 1px solid #7fc4fd;
+                margin: 0 25px;
+                margin-top: 20px;
+            }
+        }
+        .collection-wraper {
+            padding: 0 25px;
+            height: 575px;
+            hr {
+                border-top: 1px solid #7fc4fd;
+                margin: 0;
+                margin-top: 20px;
+            }
+            .title__collection {
+                color: #2699fb;
+                :nth-child(1) {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+                :nth-child(2) {
+                    font-size: 13px;
+                }
+            }
+            .carousel-wraper {
+                .swiper-slide {
+                    width: fit-content !important;
+                }
+                .content-carousel {
+                    .title {
+                        font-size: 20px;
+                        color: #2699fb;
+                        margin-bottom: 7px;
+                    }
+                    .image {
+                        width: 250px;
+                        height: 360px;
+                        background: #7fc4fd;
+                        border-radius: 7px;
+                        .popupImage {
+                            position: absolute;
+                            background: white;
+                            color: #2699fb;
+                            font-size: 12px;
+                            padding: 3px 10px;
+                            border-radius: 7px;
+                            margin-left: 14px;
+                            margin-top: 16px;
+                        }
+                    }
+                    .end-carousel {
+                        margin-top: 10px;
+                        .button {
+                            border: 1px solid #2699fb;
+                            margin: 0 20.5px;
+                            border-radius: 7px;
+                            .titleButton {
+                                padding: 8px 0;
+                                margin-left: 12px;
+                                margin-right: 10px;
+                                font-size: 14px;
+                                color: #2699fb;
+                            }
+                            .putButton {
+                                padding: 8px 20.3px;
+                                background-color: #2699fb;
+                                color: white;
+                                font-size: 14px;
+                                border-radius: 7px;
+                                .anticon {
+                                    vertical-align: 0;
+                                    font-size: 12px;
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .weYour-wraper {
+            height: 335px;
+            .title__weyour {
+                color: #2699fb;
+                .title1 {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+                .title2 {
+                    margin: 0 83px;
+                    font-size: 12px;
+                    margin-top: 5px;
+                }
+            }
+            .image-wraper {
+                height: 220px;
+                background-color: #7fc4fd;
+                .title {
+                    position: absolute;
+                    color: #2699fb;
+                    background-color: #f1f9ff;
+                    right: 21px;
+                    padding: 10px 15px;
+                    margin-top: 157px;
+                    border-radius: 10px;
+                    font-weight: bold;
+                    font-size: 12px;
+                    .anticon {
+                        vertical-align: 0;
+                    }
+                    i {
+                        margin-left: 3px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .weGive-wraper {
+            margin-top: 20px;
+            .title {
+                color: #2699fb;
+                margin: 0 28px;
+                :nth-child(1) {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+                :nth-child(2) {
+                    font-size: 13px;
+                    margin-top: 5px;
+                }
+            }
+            .fourBenefit-wraper {
+                margin: 0 7vw;
+                margin-top: 10px;
+                .twoBenefit {
+                    margin: 10px 0;
+                    .col-6 {
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .image {
+                        background-color: #7fc4fd;
+                        width: 90px;
+                        height: 90px;
+                        border-radius: 50%;
+                    }
+                    .titleBenefit {
+                        color: #2699fb;
+                        :nth-child(1) {
+                            font-weight: bold;
+                            font-size: 16px;
+                        }
+                        :nth-child(2) {
+                            font-size: 12px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            .buttonConect {
+                height: 40px;
+                background-color: #2699fb;
+                color: white;
+                margin: 0 115px;
+                font-size: 16px;
+                border-radius: 10px;
+                font-weight: bold;
+                margin-top: 7px;
+                i {
+                    margin-left: 3px;
+                    font-size: 13px;
+                }
+                .anticon {
+                    vertical-align: 0;
+                }
+            }
+        }
+        .passion {
+            .titleHeader {
+                color: #2699fb;
+                :nth-child(1) {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-top: 30px;
+                }
+                :nth-child(2) {
+                    margin: 0 28px;
+                    text-align: center;
+                    font-size: 12px;
+                    margin-top: 9px;
+                }
+            }
+            .video {
+                height: 180px;
+                background-color: #7fc4fd;
+                margin: 0 27.5px;
+                border-radius: 10px;
+                margin-top: 12.5px;
+            }
+            hr {
+                border-top: 1px solid #7fc4fd;
+                margin: 40px 27.5px;
+            }
+        }
+    }
+    .footerPage {
+        padding: 10px 25px;
+        margin-bottom: 60px;
+        background-color: #ff6d3b;
+        color: white;
+        .titleFooter {
+            font-size: 22px;
+            font-weight: bold;
+            :nth-child(2) {
+                margin-top: 5px;
+            }
+        }
+        .inputEmail {
+            .ant-input {
+                background-color: transparent;
+                border: none;
+                box-shadow: none;
+                color: white;
+                padding-left: 3px;
+                font-size: 14px;
+            }
+            ::placeholder {
+                color: white;
+                font-size: 14px;
+            }
+            border-bottom: 1px solid white;
+            width: 262px;
+            margin-top: 26px;
+        }
+        .infomation {
+            font-size: 14px;
+            width: 325px;
+            margin-top: 56px;
+            span {
+                border-bottom: 1px solid white;
+            }
+        }
+        .iconSocialNetwork {
+            width: 200px;
+            margin-top: 51px;
+            img {
+                width: 40px;
+                height: 40px;
+                filter: invert(100%) sepia(71%) saturate(0%) hue-rotate(36deg)
+                    brightness(111%) contrast(101%);
+            }
+        }
+        .hotline {
+            font-size: 16px;
+            margin-top: 49px;
+        }
+        .iconLogoTailorWings {
+            margin-top: 40px;
+            img {
+                width: 110px;
+                height: 65.75px;
+            }
+        }
+        .titleEndFooter {
+            margin-top: 19.3px;
+            :nth-child(1) {
+                font-size: 16px;
+            }
+            :nth-child(2) {
+                font-size: 10px;
+            }
+            span {
+                color: #fff4e3 !important;
+            }
+        }
+    }
+    .fit-menu-wraper {
+        height: 60px;
+        background-color: #f1f9ff;
+        padding: 0 68px;
+        position: fixed;
+        bottom: 0;
+        z-index: 1;
+        width: 100vw;
+        .icon {
+            img {
+                width: 27.77px;
+                height: 23.08px;
+                filter: invert(47%) sepia(60%) saturate(1703%)
+                    hue-rotate(186deg) brightness(96%) contrast(104%);
+            }
+            span {
+                color: #2699fb;
+                font-size: 12px;
+            }
+            i {
+                font-size: 22px;
+                color: #2699fb;
+            }
+        }
+    }
+}

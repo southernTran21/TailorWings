@@ -1,0 +1,25 @@
+.col-2, .col-10{
+    padding: 0 !important;
+}
+.sideBar{
+    padding-top: 10px !important;
+    background-color: #E4DEDE;
+    height: 90vh;
+    font-weight: bold;
+    font-size: 120%;
+    ul{
+        list-style: none;
+        text-align: center;
+        padding: 0;
+        
+        li{
+            padding: 8% 0;
+        }
+        a{
+            text-decoration: none;
+            color: black !important;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    }
+}

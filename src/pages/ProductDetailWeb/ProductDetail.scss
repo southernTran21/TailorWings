@@ -1,0 +1,122 @@
+.ant-message {
+    top: 10vh !important;
+}
+#detail {
+    .container-fluid {
+        padding-left: 10vw !important;
+        padding-right: 10vw !important;
+    }
+    .to-cart-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+    .carousel-control-next, .carousel-control-prev {
+        width: 5% !important;
+        // color: #4d4b4b !important;
+    }
+    // .carousel-control-next:hover, .carousel-control-prev:hover {
+    //     color: #1b0101;
+    // }
+}
+@media screen and (max-width: 574px){
+    #detail {
+        .container-fluid {
+            padding-left: 0vw !important;
+            padding-right: 0vw !important;
+        }
+    }
+    #imgProductSlick{
+        padding: 0;
+    }
+    #product{
+        padding: 15px 6.5vw !important;
+    }
+    .relatedCarousel{
+        padding: 0 2.5vw;
+    }
+    .product-img{
+        .alice-carousel{
+            width: 94% !important;
+            margin-left: 2.5%;
+            .alice-carousel__stage-item{
+                margin-right: .5px !important;
+            }
+            .img-vai{
+                margin: 5px !important;
+                width: 95px !important;
+                height: 70px !important;
+            }
+        }
+        
+    }
+    .detail-size{
+        padding: 0 !important;
+        margin-bottom: 10px;
+    }
+    .btnRight {
+        display: none;
+    }
+    .btnLeft {
+        display: none;
+    }
+    .relatedProduct{
+        padding: 0 !important;
+        .alice-carousel{
+            .imgRelatedProduct{
+                height: 175px !important;
+            }
+            .card-footer{
+                font-size: 15px;
+                padding: 5px 0px;
+            }
+        }
+        .sectionTitle{
+            padding-top: 40px !important;
+            padding-bottom: 20px !important;
+        }
+    }
+    
+}
+@media screen and (min-width:575px){
+    .product-img{
+        .alice-carousel{
+            width: 100% !important;
+            .alice-carousel__stage-item{
+                width: 61.3219px !important;
+            }
+            .img-vai{
+                margin: 5px !important;
+            }
+        }
+        .btnRight {
+            display: none;
+        }
+        .btnLeft {
+            display: none;
+        }
+    }
+    .infor-table{
+        font-size: 15px !important;
+    }
+    .relatedProduct{
+        .btnLeft{
+            margin: 0 !important;
+            
+        }
+        .btnRight{
+            margin-left: 0px !important;
+        }
+        .alice-carousel{
+            width: 80% !important;
+        }
+    }
+}
+@media screen and (min-width:991px){
+    .img-vai {
+        width: 140px;
+        height: 110px;
+    }
+}

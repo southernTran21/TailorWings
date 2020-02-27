@@ -1,0 +1,102 @@
+.pageCustomer {
+    padding: 2%;
+    background-color: #fdecdc;
+    height: 90vh;
+a {
+    text-decoration: none !important;
+}
+p {
+    text-decoration: none !important;
+    margin: 0 !important;
+}
+.showCustomer {
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 8px;
+    height: 75vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    .inputSearch {
+        float: left;
+        border: 1px solid #fd7e14;
+        padding: 0px 10px;
+        border-radius: 17px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-bottom: 18px;
+        input {
+        width: 200px;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        font-size: 14px;
+        height: 32px;
+        margin-left: 10px;
+        }
+    }
+}
+.tableProduct {
+    width: 100%;
+    float: left;
+    .column1{
+        margin-left: 15px !important;
+        width: 7%;
+    }
+    .column2{
+        width: 14%;
+    }
+    .column3{
+        width: 14%;
+    }
+    .column4{
+        width: 8%;
+    }
+    .column5{
+        width: 13%;
+    }
+    .column6{
+        width: 10%;
+    }
+    .column7{
+        width: 8%;
+    }
+    .column8{
+        width: 10%;
+    }
+    .column1, .column2, .column3, .column4, .column5, .column6, .column7, .column8{
+        margin: 0 10px;
+    }
+    .headerTable {
+        font-weight: bold;
+        font-size: 18px;
+        background-color: #fc9d4e;
+        padding: 10px 0;
+    }
+    .contentTable {
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px 0;
+        border-bottom: 1px solid #d2d2d2;
+        a{
+            color: black;
+        }
+        a:hover{
+            color: #FD7E14;
+        }
+        p:hover{
+            color: #FD7E14;
+        }
+        .buttonUpdate {
+            border: 1px solid #fc9d4e;
+            color: black;
+            font-weight: bold;
+            border-radius: 17px;
+        }
+        .buttonUpdate:hover {
+            background-color: #fc9d4e;
+            color: black;
+        }
+    }
+    }
+}

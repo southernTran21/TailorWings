@@ -1,0 +1,64 @@
+.disable {
+  display: none;
+}
+
+.scroll {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .list{
+    display: none;
+  }
+} 
+
+.list {
+  
+  height: 250px;
+  width: 300px;
+  position: absolute;
+  transition: 0.3s all;
+  transform: scale(0) ;
+  transform-origin: 100% 0%;
+}
+
+.small-cart:hover > .list {
+  transform: scale(1);
+}
+
+.small-cart.open > .list {
+  transform: scale(1) !important;
+}
+
+.badge-contain{
+  position: relative;
+
+}
+.badge{
+  position: absolute;
+  top: -6px;
+  right: -12px;
+}
+.badge-pill{
+  border-radius: 20rem !important; 
+  /* padding-left: 0 !important;
+  padding-right:  0  !important; */
+}
+img{
+  border-radius: 5px;
+
+}
+.image-contain{
+
+  max-width:30%;
+  box-sizing: border-box;
+  
+}
+
+.navbar .navbar-expand-lg .navbar-dark{
+  z-index: 1 !important;
+}
+#mainNav.navbar-shrink{
+  z-index: 4 !important;
+}
