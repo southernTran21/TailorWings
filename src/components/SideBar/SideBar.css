@@ -1,12 +1,11 @@
 
-
 .side-drawer {
     height: 100%;
     background: #0f2944;
     position: fixed;
-    top: 0;
+    top: 65px;
     left: 0;
-    width: 70%;
+    width: 100%;
     max-width: 400px;
     transition: all 0.5s ease-in-out;
     transform: translateX(-100%);
@@ -17,7 +16,8 @@
 .side-drawer.open {
     transform: translateX(0);
     z-index: 10 !important;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #sidebar {
@@ -89,16 +89,4 @@ a[data-toggle="collapse"] {
     min-height: 100vh;
     transition: all 0.3s;
 }
-
-
-@media(maz-width:768px){
-	#sidebar{margin-left: -250px;}
-	#sidebar.active{
-		margin-left: 0px;
-	}
-	#sidebarCollapse span{
-		display: none;
-	}
-}
-
 

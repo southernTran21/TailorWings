@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Icon } from 'antd';
 import SideBar from '../../../../components/SideBar/SideBar'
 import Backdrop from '../../../../components/SideBar/Backdrop'
+import classNames from 'classnames';
 
 class NavbarHeader extends Component {
     constructor(props) {
@@ -13,26 +14,51 @@ class NavbarHeader extends Component {
     
 
     sideBarOpen = () => {
-        const { isSideBarOpen } = this.props;
+        let { isSideBarOpen } = this.state;
+        isSideBarOpen = !isSideBarOpen;
+        this.props.sideBarChange(isSideBarOpen);
 		this.setState({
-            isSideBarOpen: !isSideBarOpen
+            isSideBarOpen
         })
 	}
 
 	backdropClickHandler = () => {
 		this.setState({ isSideBarOpen: false })
     }
+
+    sideBarIconChange = () => {
+        const { isSideBarOpen } = this.state;
+        if ( isSideBarOpen ) {
+            return (
+                <Icon type="close" onClick={this.sideBarOpen} />
+            )
+        } else {
+            return (
+                <Icon type='menu' onClick={this.sideBarOpen} />
+            )
+        }
+    }
+    
     
     render() {
         const {isSideBarOpen} = this.state;
         let backdrop;
 		if (this.state.isSideBarOpen) {
 			backdrop = <Backdrop click={this.backdropClickHandler} />
-		}
+        }
+        const changeClassname = classNames(
+            ' navbarHeader d-flex flex-row align-items-center justify-content-between',
+            // navbarHeader: true,
+            // 'd-flex': true,
+            // 'flex-row': true,
+            // 'align-items-center': true,
+            // 'justify-content-between': true,
+            // {menuFix: this.state.isSideBarOpen}
+        )
         return (
-            <div className='navbarHeader d-flex flex-row align-items-center justify-content-between'>
-                <div className='hamburgerMenu' onClick={this.sideBarOpen}>
-                    <Icon type='menu' />
+            <div className={changeClassname}>
+                <div className='iconMenu' >
+                    { this.sideBarIconChange() }
                 </div>
                 <div className='titleHeader'>TAILOR WINGS</div>
                 <div className='iconSearch'>
