@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
+import classNames from 'classnames';
+
+// import component
 import SideBar from '../../../../components/SideBar/SideBar'
 import Backdrop from '../../../../components/SideBar/Backdrop'
-import classNames from 'classnames';
+import Search from './Search';
+
 
 class NavbarHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSideBarOpen: false
+            isSideBarOpen: false,
+            isSearchOpen:false
         }
     }
     
@@ -38,22 +43,37 @@ class NavbarHeader extends Component {
             )
         }
     }
+
+    searchChangeIcon= () => {
+        const { isSearchOpen } = this.state;
+        if(isSearchOpen){
+            return(
+                <Icon type='close' onClick={this.searchOpen} style={{fontSize:'18px'}}/>
+            )
+        }else{
+            return(
+                <Icon type='search' onClick={this.searchOpen} />
+            )
+        }
+    }
     
+
+    searchOpen = () => {
+        let {isSearchOpen} = this.state;
+        isSearchOpen = !isSearchOpen;
+        this.setState({
+            isSearchOpen
+        })
+    }
     
     render() {
-        const {isSideBarOpen} = this.state;
+        const {isSideBarOpen, isSearchOpen} = this.state;
         let backdrop;
 		if (this.state.isSideBarOpen) {
 			backdrop = <Backdrop click={this.backdropClickHandler} />
         }
         const changeClassname = classNames(
-            ' navbarHeader d-flex flex-row align-items-center justify-content-between',
-            // navbarHeader: true,
-            // 'd-flex': true,
-            // 'flex-row': true,
-            // 'align-items-center': true,
-            // 'justify-content-between': true,
-            // {menuFix: this.state.isSideBarOpen}
+            ' navbarHeader d-flex flex-row align-items-center justify-content-between'
         )
         return (
             <div className={changeClassname}>
@@ -61,10 +81,13 @@ class NavbarHeader extends Component {
                     { this.sideBarIconChange() }
                 </div>
                 <div className='titleHeader'>TAILOR WINGS</div>
-                <div className='iconSearch'>
-                    <Icon type='search' />
+                <div className='iconSearch d-flex flex-row justify-content-center align-content-center'>
+                    
+                    {this.searchChangeIcon()}
+                    
                 </div>
                 <SideBar show={isSideBarOpen} changeSideBarState={this.sideBarOpen} history={this.props.history} />
+                <Search isSearchOpen={isSearchOpen} />
                 {backdrop}
             </div>
         );
