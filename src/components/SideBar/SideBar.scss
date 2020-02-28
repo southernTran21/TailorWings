@@ -4,8 +4,9 @@
 }
 .side-drawer {
     font-family: 'Be Vietnam', sans-serif !important;
-    background: white;
+    background: #FFF4E3;
     color: black;
+    opacity: 0.85;
 }
 #sidebar {
     .nav-item {
@@ -23,7 +24,7 @@
         color: #FF6D3B !important;
     }
     .selectionCategory{
-        margin-top: 11px;
+        margin-top: 34px;
         span{
             font-size: 30px;
             line-height: 44px;
