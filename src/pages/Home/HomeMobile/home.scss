@@ -1,4 +1,4 @@
-.pageFix{
+.pageFix {
     position: fixed;
 }
 .pageHomeMobile {
@@ -9,11 +9,11 @@
     .navbarHeader {
         height: 65px !important;
         padding: 0 25px;
-        color: #FF6D3B;
+        color: #ff6d3b;
         width: 100vw;
         z-index: 6;
         background-color: white;
-        .titleHeader{
+        .titleHeader {
             font-size: 26px;
         }
         i {
@@ -23,40 +23,40 @@
             width: 0;
             z-index: -1;
             position: absolute;
-            
-            .borderSearch{
+
+            .borderSearch {
                 width: 0;
                 transition: width 500ms ease-in-out;
-                input{
+                input {
                     width: 0;
                 }
             }
         }
-        .searchOpen{
+        .searchOpen {
             position: absolute;
             left: 0;
             background-color: white;
             height: 65px;
             width: 80vw;
             padding-left: 86.5vw;
-            .borderSearch{
+            .borderSearch {
                 position: absolute;
                 width: 80vw;
                 height: 65px;
                 transition: width 500ms ease-in-out;
                 transform: translateX(-100%);
-                input{
+                input {
                     width: 85%;
                     border: none;
                     box-shadow: none;
                     font-size: 18px;
                     padding-left: 9px;
                 }
-                i{
+                i {
                     font-size: 18px;
-                    color: #FF6D3B;
+                    color: #ff6d3b;
                 }
-                .buttonSearch{
+                .buttonSearch {
                     border: none;
                     box-shadow: none;
                     outline: none;
@@ -67,24 +67,24 @@
             //     float: right;
             //     transition: width 500ms;
             //     position: relative;
-            //     
+            //
             // }
         }
-        
     }
     .bodyPage {
+        color: #111e6c !important;
         .header__bodyPage {
-            height: 601px;
-            background-color: #7fc4fd;
+            img {
+                width: 100vw;
+                border-radius: 0;
+                height: 100vh;
+            }
         }
         .content__bodyPage {
             padding: 0 25px;
             height: 265px;
             .title {
                 text-align: center;
-                span {
-                    color: #2699fb;
-                }
                 :nth-child(1) {
                     font-weight: bold;
                     font-size: 24px;
@@ -111,7 +111,7 @@
                 }
             }
             hr {
-                border-top: 1px solid #7fc4fd;
+                border-top: 1px solid #ff6d3b;
                 width: 100%;
                 margin: 0;
             }
@@ -124,9 +124,6 @@
             .title {
                 text-align: center;
                 padding: 0 25px;
-                span {
-                    color: #2699fb;
-                }
                 :nth-child(1) {
                     font-weight: bold;
                     font-size: 24px;
@@ -145,36 +142,40 @@
                     .image {
                         width: 280px;
                         height: 435px;
-                        background: #7fc4fd;
                         border-radius: 7px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
                     }
                     .end-carousel {
                         .title {
                             font-size: 20px;
-                            color: #2699fb;
                             margin-bottom: 7px;
                         }
                         .button {
-                            border: 1px solid #2699fb;
+                            border: 1px solid #ff6d3b;
                             margin: 0 42px;
                             border-radius: 7px;
                             .titleButton {
-                                padding: 8px 0;
-                                margin-left: 12px;
-                                margin-right: 10px;
                                 font-size: 14px;
-                                color: #2699fb;
+                                color: #ff6d3b;
+                            }
+                            .col-6 {
+                                padding: 0;
                             }
                             .putButton {
-                                padding: 8px 14.3px;
-                                background-color: #2699fb;
+                                background-color: #ff6d3b;
                                 color: white;
                                 font-size: 14px;
                                 border-radius: 7px;
+                                width: 100%;
+                                padding: 5px 0;
                                 .anticon {
                                     vertical-align: 0;
                                     font-size: 12px;
                                     margin-left: 5px;
+                                    margin-top: 2px;
                                 }
                             }
                         }
@@ -190,13 +191,22 @@
             .title__listProduct {
                 font-size: 24px;
                 font-weight: bold;
-                color: #2699fb;
             }
             .categoryProduct {
+                .image {
+                    width: 124px;
+                    height: 184px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
                 .contentProduct {
                     width: 124px;
                     height: 184px;
-                    background-color: #7fc4fd;
+                    background-color: rgba(0, 0, 0, 0.65);
+                    position: relative;
+                    top: -184px;
                     span {
                         color: white;
                     }
@@ -219,12 +229,11 @@
             padding: 0 25px;
             height: 575px;
             hr {
-                border-top: 1px solid #7fc4fd;
+                border-top: 1px solid #ff6d3b;
                 margin: 0;
                 margin-top: 20px;
             }
             .title__collection {
-                color: #2699fb;
                 :nth-child(1) {
                     font-size: 24px;
                     font-weight: bold;
@@ -240,18 +249,21 @@
                 .content-carousel {
                     .title {
                         font-size: 20px;
-                        color: #2699fb;
                         margin-bottom: 7px;
+                        font-weight: 500;
                     }
                     .image {
                         width: 250px;
                         height: 360px;
-                        background: #7fc4fd;
                         border-radius: 7px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
                         .popupImage {
                             position: absolute;
-                            background: white;
-                            color: #2699fb;
+                            background: #fff4e3;
+                            color: #ff6d3b;
                             font-size: 12px;
                             padding: 3px 10px;
                             border-radius: 7px;
@@ -262,27 +274,12 @@
                     .end-carousel {
                         margin-top: 10px;
                         .button {
-                            border: 1px solid #2699fb;
-                            margin: 0 20.5px;
+                            background-color: #ff6d3b;
                             border-radius: 7px;
+                            height: 40px;
                             .titleButton {
-                                padding: 8px 0;
-                                margin-left: 12px;
-                                margin-right: 10px;
                                 font-size: 14px;
-                                color: #2699fb;
-                            }
-                            .putButton {
-                                padding: 8px 20.3px;
-                                background-color: #2699fb;
                                 color: white;
-                                font-size: 14px;
-                                border-radius: 7px;
-                                .anticon {
-                                    vertical-align: 0;
-                                    font-size: 12px;
-                                    margin-left: 5px;
-                                }
                             }
                         }
                     }
@@ -292,7 +289,6 @@
         .weYour-wraper {
             height: 335px;
             .title__weyour {
-                color: #2699fb;
                 .title1 {
                     font-size: 24px;
                     font-weight: bold;
@@ -306,30 +302,16 @@
             .image-wraper {
                 height: 220px;
                 background-color: #7fc4fd;
-                .title {
-                    position: absolute;
-                    color: #2699fb;
-                    background-color: #f1f9ff;
-                    right: 21px;
-                    padding: 10px 15px;
-                    margin-top: 157px;
-                    border-radius: 10px;
-                    font-weight: bold;
-                    font-size: 12px;
-                    .anticon {
-                        vertical-align: 0;
-                    }
-                    i {
-                        margin-left: 3px;
-                        font-weight: bold;
-                    }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0;
                 }
             }
         }
         .weGive-wraper {
             margin-top: 20px;
             .title {
-                color: #2699fb;
                 margin: 0 28px;
                 :nth-child(1) {
                     font-size: 24px;
@@ -349,14 +331,7 @@
                         margin: 0;
                         padding: 0;
                     }
-                    .image {
-                        background-color: #7fc4fd;
-                        width: 90px;
-                        height: 90px;
-                        border-radius: 50%;
-                    }
                     .titleBenefit {
-                        color: #2699fb;
                         :nth-child(1) {
                             font-weight: bold;
                             font-size: 16px;
@@ -370,7 +345,7 @@
             }
             .buttonConect {
                 height: 40px;
-                background-color: #2699fb;
+                background-color: #ff6d3b;
                 color: white;
                 margin: 0 115px;
                 font-size: 16px;
@@ -388,7 +363,6 @@
         }
         .passion {
             .titleHeader {
-                color: #2699fb;
                 :nth-child(1) {
                     font-size: 24px;
                     font-weight: bold;
@@ -403,13 +377,12 @@
             }
             .video {
                 height: 180px;
-                background-color: #7fc4fd;
                 margin: 0 27.5px;
                 border-radius: 10px;
                 margin-top: 12.5px;
             }
             hr {
-                border-top: 1px solid #7fc4fd;
+                border-top: 1px solid #ff6d3b;
                 margin: 40px 27.5px;
             }
         }
