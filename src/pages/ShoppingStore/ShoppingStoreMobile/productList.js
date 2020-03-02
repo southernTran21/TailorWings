@@ -8,6 +8,7 @@ export default class ProductList extends Component {
         this.state = {
             fetchedProducts: [],
             hasMore: true,
+            loaderContent: <h4>Loading...</h4>
         }
     }
 
@@ -15,10 +16,20 @@ export default class ProductList extends Component {
         if (nextProps.isFirstLoaded === false) {
             nextProps.firstLoadedConfirm();
             let fetchedProducts = nextProps.renderProducts.slice(0, 9);
+            let loaderContent = prevState.loaderContent;
+            if (fetchedProducts.length === 0) {
+                loaderContent = <div>
+                    <h4>{`Không tìm thấy sản phẩm!`}</h4>
+                    <Link to={{ pathname: '/shopping-store', search: '?cat=all&search=' }} >
+                        xem tất cả sản phẩm
+                    </Link>
+                </div>
+            }
             return {
                 renderProducts: nextProps.renderProducts,
                 fetchedProducts,
-                hasMore: true
+                hasMore: true,
+                loaderContent
             }
         } else {
             return null
@@ -28,23 +39,34 @@ export default class ProductList extends Component {
     _fetchMoreData = () => {
         const { renderProducts } = this.props;
         const { fetchedProducts } = this.state;
-        if (fetchedProducts.length >= renderProducts.length) {
+        if (renderProducts.length > 0) {
+            if (fetchedProducts.length >= renderProducts.length) {
+                this.setState({
+                    hasMore: false,
+                });
+                return;
+            }
+            setTimeout(() => {
+                let addedProduct = renderProducts.slice(fetchedProducts.length, fetchedProducts.length + 9);
+                addedProduct = fetchedProducts.concat(addedProduct)
+                this.setState({
+                    fetchedProducts: addedProduct,
+                });
+            }, 200);
+        } else {
             this.setState({
-                hasMore: false,
-            });
-            return;
+                loaderContent: <div>
+                    <h4>{`Không tìm thấy sản phẩm!`}</h4>
+                    <Link to={{ pathname: '/shopping-store', search: '?cat=all&search=' }} >
+                        xem tất cả sản phẩm
+                </Link>
+                </div>
+            })
         }
-        setTimeout(() => {
-            let addedProduct = renderProducts.slice(fetchedProducts.length, fetchedProducts.length + 9);
-            addedProduct = fetchedProducts.concat(addedProduct)
-            this.setState({
-                fetchedProducts: addedProduct,
-            });
-        }, 200);
     };
 
     render() {
-        const { fetchedProducts } = this.state;
+        const { fetchedProducts, loaderContent } = this.state;
         return (
             <div className='productList-wraper d-flex flex-wrap'>
                 <InfiniteScroll
@@ -53,7 +75,7 @@ export default class ProductList extends Component {
                     dataLength={fetchedProducts.length - 7}
                     next={this._fetchMoreData}
                     hasMore={this.state.hasMore}
-                    loader={<h4>Loading...</h4>}
+                    loader={loaderContent}
                 // endMessage={
                 //     <button
                 //         // onClick={() => this.props.scrollToTop()}

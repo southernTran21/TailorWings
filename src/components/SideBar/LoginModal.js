@@ -34,15 +34,7 @@ class LoginModal extends Component {
         });
     };
 
-    // handleOk = e => {
-    //     console.log(e);
-    //     this.setState({
-    //         visible: false,
-    //     });
-    // };
-
     handleCancel = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
@@ -60,7 +52,7 @@ class LoginModal extends Component {
                 this.props.history.push('/');
             })
             message.success('Đăng xuất thành công');
-            this.setState({ loginStatus: 'Đăng nhập' })
+            this.setState({ loginStatus: 'Đăng Nhập' })
         } else {
             this.showModal();
         }
@@ -80,7 +72,7 @@ class LoginModal extends Component {
                 <a id={5} data-toggle="collapse" onClick={this.onClickHandling} className="dropdown-toggle nav-link active">{loginStatus}</a>
                 <Modal
                     style={{ padding: "0px" }}
-                    title="ĐĂNG NHẬP"
+                    title= "ĐĂNG NHẬP"
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
                     centered

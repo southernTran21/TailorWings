@@ -60,7 +60,7 @@ class ProductList extends Component {
         return (
             <div className="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div className="title">
-                    <Link to='/shopping-store?cat=all' className="backToStore"><i class="fas fa-arrow-circle-left"></i></Link>
+                    <Link to={{ pathname: '/shopping-store', search: '?cat=all&search='}} className="backToStore"><i class="fas fa-arrow-circle-left"></i></Link>
                     <a className="titleBag">Giỏ hàng của bạn <a>{["(", totalProductsOnCart, ")"].join('')}</a></a>
                 </div>
                 {productsOnCart.map((product, index) => {

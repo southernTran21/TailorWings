@@ -1,107 +1,174 @@
+.pageFix {
+  position: fixed;
+}
 .pageShoppingStore {
-    font-family: 'Be Vietnam', sans-serif;
-    .anticon {
-        vertical-align: 0 !important;
+  font-family: "Be Vietnam", sans-serif;
+  width: 100vw;
+  .anticon {
+    vertical-align: 0 !important;
+  }
+  .navbarHeader {
+    height: 65px !important;
+    padding: 0 25px;
+    color: #ff6d3b;
+    width: 100vw;
+    z-index: 6;
+    background-color: white;
+    .titleHeader {
+      font-size: 26px;
     }
-    .navbarHeader {
-        padding: 0 25px;
-        height: 65px !important;
-        color: #2699fb;
-        .titleHeader {
-            font-size: 26px;
+    i {
+      font-size: 25px;
+    }
+    .search-wraper {
+      width: 0;
+      z-index: -1;
+      position: absolute;
+
+      .borderSearch {
+        width: 0;
+        transition: width 500ms ease-in-out;
+        input {
+          width: 0;
+        }
+      }
+    }
+    .searchOpen {
+      position: absolute;
+      left: 0;
+      background-color: white;
+      height: 65px;
+      width: 80vw;
+      padding-left: 86.5vw;
+      .borderSearch {
+        position: absolute;
+        width: 80vw;
+        height: 65px;
+        transition: width 500ms ease-in-out;
+        transform: translateX(-100%);
+        input {
+          width: 100%;
+          border: none;
+          box-shadow: none;
+          font-size: 18px;
+          padding-left: 9px;
         }
         i {
-            font-size: 25px;
+          font-size: 18px;
+          color: #ff6d3b;
         }
+        .buttonSearch {
+          border: none;
+          box-shadow: none;
+          outline: none;
+        }
+      }
+      // input{
+      //     width: 200px;
+      //     float: right;
+      //     transition: width 500ms;
+      //     position: relative;
+      //
+      // }
     }
-    .filter {
-        padding: 0 25px;
-        margin-top: 10px;
-        .collectionFilter {
-            border: 1px solid #2699fb;
-            padding: 7px 10px;
-            width: 254px;
-            border-radius: 5px;
-            .iconFilter {
-                img {
-                    filter: invert(47%) sepia(60%) saturate(1703%)
-                        hue-rotate(186deg) brightness(96%) contrast(104%);
-                }
-            }
-            .titleFilter {
-                color: #2699fb;
-                font-size: 16px;
-                font-weight: bold;
-                text-align: center;
-                width: 208px;
-            }
+  }
+  // .navbarHeader {
+  //     padding: 0 25px;
+  //     height: 65px !important;
+  //     color: #2699fb;
+  //     .titleHeader {
+  //         font-size: 26px;
+  //     }
+  //     i {
+  //         font-size: 25px;
+  //     }
+  // }
+  .filter {
+    padding: 0 25px;
+    margin-top: 10px;
+    .collectionFilter {
+      border: 1px solid #2699fb;
+      padding: 7px 10px;
+      width: 254px;
+      border-radius: 5px;
+      .iconFilter {
+        img {
+          filter: invert(47%) sepia(60%) saturate(1703%) hue-rotate(186deg) brightness(96%) contrast(104%);
         }
-        .selectionFilter {
-            width: 71px;
-            img {
-                filter: invert(47%) sepia(60%) saturate(1703%)
-                    hue-rotate(186deg) brightness(96%) contrast(104%);
-            }
-            .iconBorder {
-                margin-left: 15px;
-                i {
-                    font-size: 20px;
-                    color: #2699fb;
-                }
-            }
-        }
+      }
+      .titleFilter {
+        color: #2699fb;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        width: 208px;
+      }
     }
-    .carousel-wraper {
-        padding: 0 25px;
-        margin-top: 20px;
-        .contentSelection {
-            background: white;
-            border: 1px solid #2699fb;
-            color: #2699fb;
-            font-size: 16px;
-            padding: 6px 0;
-            width: 110px;
-            text-align: center;
-            border-radius: 10px;
+    .selectionFilter {
+      width: 71px;
+      img {
+        filter: invert(47%) sepia(60%) saturate(1703%) hue-rotate(186deg) brightness(96%) contrast(104%);
+      }
+      .iconBorder {
+        margin-left: 15px;
+        i {
+          font-size: 20px;
+          color: #2699fb;
         }
-        .active {
-            background-color: #2699fb !important;
-            color: white !important;
-        }
+      }
     }
-    .productList-wraper {
-        padding: 5px 23.5px;
-        margin-top: 10px;
-        .col-6 {
-            padding: 7px 2.5px;
-            float: left;
-            height: auto;
-        }
-        .imageProduct {
-            // background-color: #7fc4fd;
-            height: auto;
-            border-radius: 10px;
-            img {
-                width: 100%;
-            }
-        }
-        .titleProduct {
-            font-size: 14px;
-            text-align: center;
-            font-weight: bold;
-            color: #2699fb;
-        }
-        .button {
-            margin-top: 7px;
-            span {
-                border: 1px solid #2699fb;
-                width: 91px;
-                padding: 3px 0px;
-                font-size: 13px;
-                color: #2699fb;
-                text-align: center;
-                border-radius: 5px;
-            }
-        }
+  }
+  .carousel-wraper {
+    padding: 0 25px;
+    margin-top: 20px;
+    .contentSelection {
+      background: white;
+      border: 1px solid #2699fb;
+      color: #2699fb;
+      font-size: 16px;
+      padding: 6px 0;
+      width: 110px;
+      text-align: center;
+      border-radius: 10px;
     }
+    .active {
+      background-color: #2699fb !important;
+      color: white !important;
+    }
+  }
+  .productList-wraper {
+    padding: 5px 23.5px;
+    margin-top: 10px;
+    .col-6 {
+      padding: 7px 2.5px;
+      float: left;
+      height: auto;
+    }
+    .imageProduct {
+      // background-color: #7fc4fd;
+      height: auto;
+      border-radius: 10px;
+      img {
+        width: 100%;
+      }
+    }
+    .titleProduct {
+      font-size: 14px;
+      text-align: center;
+      font-weight: bold;
+      color: #2699fb;
+    }
+    .button {
+      margin-top: 7px;
+      span {
+        border: 1px solid #2699fb;
+        width: 91px;
+        padding: 3px 0px;
+        font-size: 13px;
+        color: #2699fb;
+        text-align: center;
+        border-radius: 5px;
+      }
+    }
+  }
 }

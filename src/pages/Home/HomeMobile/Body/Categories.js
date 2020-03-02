@@ -28,7 +28,7 @@ class Categories extends Component {
                         style={{ height: 'fit-content', width: 'fit-content' }}
                         to={{
                             pathname: "/shopping-store",
-                            search: `?cat=damsuong`
+                            search: `?cat=damsuong&search=`
                         }}
                     >
                         <div className='contentProduct d-flex flex-column justify-content-center align-items-center'>
@@ -41,7 +41,7 @@ class Categories extends Component {
                         style={{ height: 'fit-content', width: 'fit-content' }}
                         to={{
                             pathname: "/shopping-store",
-                            search: `?cat=damom`
+                            search: `?cat=damom&search=`
                         }}
                     >
                         <div className='contentProduct d-flex flex-column justify-content-center align-items-center'>
@@ -53,7 +53,7 @@ class Categories extends Component {
                         style={{ height: 'fit-content', width: 'fit-content' }}
                         to={{
                             pathname: "/shopping-store",
-                            search: `?cat=damxoe`
+                            search: `?cat=damxoe&search=`
                         }}
                     >
                         <div className='contentProduct d-flex flex-column justify-content-center align-items-center'>

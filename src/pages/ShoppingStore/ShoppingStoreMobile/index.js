@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './shoppingStore.scss';
+import classNames from 'classnames';
 //import component
-import Navbar from './navbarPage';
+import NavbarHeader from './NavbarHeader';
 import SelectionCategory from './selectionCategory';
 import ProductList from './productList';
 import Filter from './Filter';
 import { BackTop } from 'antd';
+import { removePunctuation } from '../../../services/CommonFunction'
 
 class ShoppingStoreMobile extends Component {
     constructor(props) {
@@ -13,7 +15,8 @@ class ShoppingStoreMobile extends Component {
         this.state = {
             renderProducts: [],
             isFirstLoaded: false,
-            currentActiveCategory: 'all'
+            currentActiveCategory: 'all',
+            isSideBarOpen: false
         }
     }
 
@@ -40,9 +43,12 @@ class ShoppingStoreMobile extends Component {
         visibilityProducts = visibilityProducts.concat(visibilityProducts);
         visibilityProducts = visibilityProducts.concat(visibilityProducts);
         if (location.pathname === '/shopping-store' && location.search !== '') {
-            let categoryID = location.search.match(/cat=(.*)\b/)[1] || 'all';
+            let categoryID = location.search.match(/cat=(.*)\b&/)[1] || 'all';
             if (categoryID === 'all') {
                 renderProducts = visibilityProducts.filter(product => product.default === true) || [];
+                if ( location.search.match(/search=(.*)\b/) != null ) {
+                    renderProducts = this.searchFilter(location.search.match(/search=(.*)\b/)[1], renderProducts);
+                }
             } else {
                 renderProducts = visibilityProducts.filter(product => (product.default === true) && (product.catID === categoryID)) || [];
             }
@@ -62,24 +68,48 @@ class ShoppingStoreMobile extends Component {
 
     categoryActiveHandling = (activeID) => {
         const { currentActiveCategory } = this.state;
-        if ( currentActiveCategory === activeID ) {
+        if (currentActiveCategory === activeID) {
             this.setState({
                 currentActiveCategory: activeID
             })
         }
     }
 
+    sideBarChange = (isOpen) => {
+        if (isOpen != null) {
+            this.setState({
+                isSideBarOpen: isOpen
+            })
+        }
+    }
+
+    searchFilter = (searchInput, renderProducts) => {
+        renderProducts = renderProducts.filter((product) => {
+            let name = product.name.toLowerCase();
+            name = removePunctuation(name);
+            name = name.replace(/ /g, '-');
+            searchInput = searchInput.toLowerCase();
+            return name.search(searchInput) !== -1;
+        });
+        return renderProducts;
+    }
+
     render() {
         const { renderProducts, isFirstLoaded, currentActiveCategory } = this.state;
         return (
-            <div className='pageShoppingStore'>
-                <Navbar history={this.props.history} />
+            <div className={classNames('pageShoppingStore', { pageFix: this.state.isSideBarOpen })}>
+                {/* <Navbar history={this.props.history} /> */}
+                <NavbarHeader
+                    history={this.props.history}
+                    sideBarChange={this.sideBarChange}
+                />
                 <Filter />
                 <SelectionCategory
                     history={this.props.history}
                     categoriesInfo={this.props.categoriesInfo}
                     currentActiveCategory={currentActiveCategory}
                     categoryActiveHandling={this.categoryActiveHandling}
+                    renderProducts={renderProducts}
                 />
                 <ProductList
                     renderProducts={renderProducts}

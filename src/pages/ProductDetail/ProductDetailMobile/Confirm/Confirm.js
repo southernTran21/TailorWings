@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Confirm.scss';
 import { connect } from 'react-redux';
-import * as actions from '../../../actions/index';
+import * as actions from '../../../../actions/index';
 import { Link } from 'react-router-dom'
 // import conponent
 import Navbar from './navbarPage';

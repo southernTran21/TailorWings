@@ -5,7 +5,6 @@ import ShoppingStoreWeb from './ShoppingStoreWeb/ShoppingStore';
 import ReactGA from 'react-ga'
 
 const initGA = () => {
-    console.log('initGA');
     ReactGA.initialize('UA-159143322-1')
 }
 

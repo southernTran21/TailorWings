@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { getRelatedProducts } from '../../services/ProductDetail'
-import { getWithCondition } from '../../services/Fundamental';
+import { getRelatedProducts } from '../../../services/ProductDetail'
+import { getWithCondition } from '../../../services/Fundamental';
 import { Link } from 'react-router-dom'
 import './ProductDetail.css'
 import './ProductDetail.scss'
 import Quantity from './Quantity';
 import { connect } from 'react-redux';
-import * as actions from './../../actions/index';
+import * as actions from '../../../actions/index';
 import CarouselImgProduct from './CarouselImgProduct'
 import BodyScale from './BodyScale'
 import MultiCarousel from './MultiCarousel'

@@ -2,22 +2,10 @@ import React, { Component } from 'react';
 import FabricSelection from './FabricSelection/FabricSelection';
 import SizeSelection from './SizeSelection/SizeSelection';
 import Confirm from './Confirm/Confirm';
-import Media from 'react-media';
-import ProductDetailWeb from '../ProductDetailWeb/ProductDetail'
 import { connect } from 'react-redux';
-import ReactGA from 'react-ga'
 
-const initGA = () => {
-    console.log('initGA');
-    ReactGA.initialize('UA-159143322-1')
-}
 
-const logPageView = () => {
-    ReactGA.set({ page: window.location.pathname });
-    ReactGA.pageview(window.location.pathname + window.location.search)
-}
-
-class ProductDetail extends Component {
+class ProductDetailMobile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,8 +18,6 @@ class ProductDetail extends Component {
     }
 
     componentDidMount() {
-        initGA()
-        logPageView()
         let { totalProductsOnCart } = this.state;
         let productsOnCart = JSON.parse(sessionStorage.getItem('productsOnCart')) || [];
         totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
@@ -93,6 +79,8 @@ class ProductDetail extends Component {
                     currentSelectedProduct={currentSelectedProduct}
                     onContentChange={(step) => this.onContentChange(step)}
                     onSelectedProductUpdating={(currentSelectedProduct) => this.onSelectedProductUpdating(currentSelectedProduct)}
+                    onSizeUpdated={(size) => this.onSizeUpdated(size)}
+                    onBodyMetricUpdated={(bodyMetric) => this.onBodyMetricUpdated(bodyMetric)}
                 />
                 break;
             case 'confirm':
@@ -129,30 +117,27 @@ class ProductDetail extends Component {
         })
     }
 
+    onSizeUpdated = (size) => {
+        let { currentSelectedProduct } = this.state;
+        currentSelectedProduct.size = size;
+        this.setState({
+            currentSelectedProduct
+        })
+    }
+
+    onBodyMetricUpdated = (bodyMetric) => {
+        let { currentSelectedProduct } = this.state;
+        currentSelectedProduct.bodyMetric = bodyMetric;
+        this.setState({
+            currentSelectedProduct
+        })
+    }
 
     render() {
         return (
-            <Media queries={{ small: { maxWidth: 1024 } }}>
-                {matches =>
-                    matches.small ?
-                        (
-                            <div style={{ height: '100vh', width: '100vw' }}>
-                                {this.contentHandling()}
-                            </div>
-                        ) :
-                        (
-                            <ProductDetailWeb
-                                history={this.props.history}
-                                visibilityProducts={this.props.visibilityProducts}
-                                designsInfo={this.props.designsInfo}
-                                fabricsInfo={this.props.fabricsInfo}
-                                // scrollToTop={this._scrollToTop}
-                                localStorageUpdatedHandling={this.props.localStorageUpdatedHandling}
-                            />
-                        )
-                }
-            </Media>
-
+            <div style={{ height: '100vh', width: '100vw' }}>
+                {this.contentHandling()}
+            </div>
         );
     }
 }
@@ -164,4 +149,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(ProductDetail);
+export default connect(mapStateToProps, null)(ProductDetailMobile);

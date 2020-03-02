@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getSupportedFabrics } from '../../services/ProductDetail';
+import { getSupportedFabrics } from '../../../services/ProductDetail';
 import './MultiCarousel.scss';
 import Slider from "react-slick";
 import classNames from 'classnames';
