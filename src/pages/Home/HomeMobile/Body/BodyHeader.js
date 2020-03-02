@@ -13,7 +13,10 @@ class BodyHeader extends Component {
         return (
             <div className='header__bodyPage'>
                 <Link
-                    to="/shopping-store?cat=all"
+                    to={{
+                        pathname: '/shopping-store',
+                        search: '?cat=all&search='
+                    }}
                     onClick={this.updatePixel}
                 >
                     <button

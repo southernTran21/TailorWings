@@ -41,4 +41,14 @@
             line-height: 40px;
         }
     }
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    .nav-link {
+        padding: 0px !important;
+        font-size: 20px;
+        color: #FF6D3B !important;
+        line-height: 44px !important;
+    }
 }

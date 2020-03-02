@@ -25,13 +25,16 @@ export default class Selection extends Component {
         }
     }
     onSizeSelected = (e) => {
-        let { activeStatus } = this.state;
-        activeStatus.fill(false);
-        activeStatus[e.target.id] = true;
-        this.props.onSizeUpdated(e.target.name);
-        this.setState({
-            activeStatus
-        })
+        console.log('e.target.name', e.target.name)
+        if (e.target.name != null) {
+            let { activeStatus } = this.state;
+            activeStatus.fill(false);
+            activeStatus[e.target.id] = true;
+            this.props.onSizeUpdated(e.target.name);
+            this.setState({
+                activeStatus
+            })
+        }
     }
     render() {
         const { activeStatus } = this.state;
@@ -39,9 +42,9 @@ export default class Selection extends Component {
             <div className='sizeSelection d-flex'>
                 {SIZE.map((size, index) => {
                     return (
-                        <div key={index} className='col-2 text-center' id={index} name={size} onClick={(e) => this.onSizeSelected(e)}>
-                            <div id={index} name={size} className={classNames('tilteSize', { actived: activeStatus[index] })}>
-                                <a id={index} name={size} >{size}</a>
+                        <div key={index} className='col-2 text-center'>
+                            <div className={classNames('tilteSize', { actived: activeStatus[index] })}>
+                                <a id={index} name={size} onClick={(e) => this.onSizeSelected(e)} >{size}</a>
                             </div>
                         </div>
                     )

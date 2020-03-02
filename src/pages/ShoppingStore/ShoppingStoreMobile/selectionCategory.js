@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 export default class SelectionCategory extends Component {
     AutoSlidesPerView = () => {
-        const { categoriesInfo, currentActiveCategory } = this.props;
+        const { categoriesInfo, currentActiveCategory, renderProducts } = this.props;
         const params = {
             slidesPerView: 'auto',
             spaceBetween: 10,
@@ -14,6 +14,9 @@ export default class SelectionCategory extends Component {
             centeredSlidesBounds: true
         };
         let isAllActive = currentActiveCategory === 'all';
+        if ( renderProducts.length === 0 ) {
+            isAllActive = false;
+        }
         return (
             <Swiper {...params}>
                 <Link
@@ -25,7 +28,7 @@ export default class SelectionCategory extends Component {
                     }}
                     to={{
                         pathname: '/shopping-store',
-                        search: '?cat=all'
+                        search: '?cat=all&search='
                     }}
                     onClick={() => this.props.categoryActiveHandling('all')}
                 >
@@ -35,7 +38,10 @@ export default class SelectionCategory extends Component {
                 </Link>
 
                 {categoriesInfo.map((category, index) => {
-                    let isActive = currentActiveCategory === category.id; 
+                    let isActive = currentActiveCategory === category.id;
+                    if ( renderProducts.length === 0 ) {
+                        isActive = false;
+                    }
                     return (
                         <Link
                             key={index}
@@ -47,7 +53,7 @@ export default class SelectionCategory extends Component {
                             }}
                             to={{
                                 pathname: '/shopping-store',
-                                search: `?cat=${category.id}`
+                                search: `?cat=${category.id}&search=`
                             }}
                             onClick={() => this.props.categoryActiveHandling(category.id)}
                         >

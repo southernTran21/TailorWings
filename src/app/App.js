@@ -7,7 +7,7 @@ import NavBar from '../components/NavBar/NavBar';
 import Footer from '../components/Footer/Footer';
 import MediaButton from '../components/MediaButton/MediaButton';
 import ShoppingStore from '../pages/ShoppingStore/index';
-import ProductDetail from '../pages/ProductDetail/ProductDetail';
+import ProductDetail from '../pages/ProductDetail/index';
 import ShoppingCart from '../pages/ShoppingCart/ShoppingCart';
 import Home from '../pages/Home/Index';
 import 'antd/dist/antd.css';

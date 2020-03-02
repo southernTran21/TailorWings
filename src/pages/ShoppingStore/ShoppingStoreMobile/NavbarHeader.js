@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Icon } from 'antd';
 import classNames from 'classnames';
 // import component
-import SideBar from '../../../../components/SideBar/SideBar'
-import Backdrop from '../../../../components/SideBar/Backdrop'
+import SideBar from '../../../components/SideBar/SideBar'
+import Backdrop from '../../../components/SideBar/Backdrop'
 import Search from './Search';
 
 
@@ -79,11 +79,9 @@ class NavbarHeader extends Component {
                 <div className='iconMenu' >
                     {this.sideBarIconChange()}
                 </div>
-                <div className='titleHeader'>TAILOR WINGS</div>
+                <div className='titleHeader' onClick={() => this.props.history.push('/')}>TAILOR WINGS</div>
                 <div className='iconSearch d-flex flex-row justify-content-center align-content-center'>
-
                     {this.searchChangeIcon()}
-
                 </div>
                 <SideBar show={isSideBarOpen} changeSideBarState={this.sideBarOpen} history={this.props.history} />
                 <Search isSearchOpen={isSearchOpen} history={this.props.history} />

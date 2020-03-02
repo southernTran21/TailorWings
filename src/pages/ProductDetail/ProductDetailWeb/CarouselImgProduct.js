@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getDocument } from '../../services/Fundamental'
+import { getDocument } from '../../../services/Fundamental'
 import './CarouselImgProduct.scss'
 import Slider from "react-slick";
 import './ProductDetail.css'

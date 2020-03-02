@@ -9,30 +9,17 @@ import Selection from './Selection';
 import BodyScale from './BodyScale';
 
 export default class SizeSelection extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentSelectedProduct: { ...this.props.currentSelectedProduct },
-        }
-    }
     onSizeUpdated = (size) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.size = size;
-        this.setState({
-            currentSelectedProduct
-        })
+        this.props.onSizeUpdated(size);
     }
 
     onBodyMetricUpdated = (bodyMetric) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        this.setState({
-            currentSelectedProduct
-        })
+        this.props.onBodyMetricUpdated(bodyMetric);
     }
 
     onConfirmButtonClicked = () => {
-        const { currentSelectedProduct } = this.state;
+        const { currentSelectedProduct } = this.props;
+        console.log('currentSelectedProduct', currentSelectedProduct)
         let isSizeSelected = currentSelectedProduct.size != null;
         let isAllMetricFill = !currentSelectedProduct.bodyMetric.includes('')
         let isAllMetricEmpty = currentSelectedProduct.bodyMetric.every(metric => metric === '');
@@ -65,7 +52,7 @@ export default class SizeSelection extends Component {
 
 
     render() {
-        const { currentSelectedProduct } = this.state;
+        const { currentSelectedProduct } = this.props;
         return (
             <div className='pageSizeSelection'>
                 <NavBar
