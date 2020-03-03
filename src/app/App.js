@@ -8,7 +8,7 @@ import Footer from '../components/Footer/Footer';
 import MediaButton from '../components/MediaButton/MediaButton';
 import ShoppingStore from '../pages/ShoppingStore/index';
 import ProductDetail from '../pages/ProductDetail/index';
-import ShoppingCart from '../pages/ShoppingCart/ShoppingCart';
+import ShoppingCart from '../pages/ShoppingCart/index';
 import Home from '../pages/Home/Index';
 import 'antd/dist/antd.css';
 import "slick-carousel/slick/slick.css";
@@ -52,9 +52,8 @@ export default class App extends Component {
       categoriesInfo: [],
       designsInfo: [],
       fabricsInfo: [],
-      topIntervalId: 0,
-      scrollStepInPx: 50,
-      delayInMs: 10,
+      collectionsInfo: [],
+      topListInfo: [],
       localStorageUpdated: false
     };
     // this._scrollToTop = this._scrollToTop.bind(this);
@@ -70,6 +69,8 @@ export default class App extends Component {
     this.getVisibilityProducts();
     this.getDesigns();
     this.getFabrics();
+    this.getCollection();
+    this.getTopList();
   }
 
   getCategories = () => {
@@ -85,9 +86,8 @@ export default class App extends Component {
 
   getVisibilityProducts = () => {
     getWithCondition("products", "visibility", true)
-      .then((products) => {
-        if (products != null) {
-          let visibilityProducts = products.filter(product => product.visibility === true);
+      .then((visibilityProducts) => {
+        if (visibilityProducts != null) {
           this.setState({
             visibilityProducts
           })
@@ -116,27 +116,40 @@ export default class App extends Component {
         }
       })
   }
+  
+  getCollection = () => {
+    getWithCondition("collections", "visibility", true)
+      .then((collectionsInfo) => {
+        if (collectionsInfo != null) {
+          this.setState({
+            collectionsInfo
+          })
+        }
+      })
+  }
 
-
-  // _scrollToTop = () => {
-  //   let topIntervalId = setInterval(this._scrollStep, this.state.delayInMs);
-  //   this.setState({ topIntervalId });
-  // }
-
-  // _scrollStep = () => {
-  //   if (window.pageYOffset === 0) {
-  //     clearInterval(this.state.topIntervalId);
-  //   }
-  //   window.scroll(0, window.pageYOffset - this.state.scrollStepInPx)
-  // }
+  getTopList = () => {
+    getWithCondition("topList", "visibility", true)
+      .then((topListInfo) => {
+        if (topListInfo != null) {
+          this.setState({
+            topListInfo
+          })
+        }
+      })
+  }
 
   render() {
     const {
       visibilityProducts,
       designsInfo,
       categoriesInfo,
-      fabricsInfo
+      fabricsInfo,
+      collectionsInfo,
+      topListInfo
     } = this.state;
+    console.log('collectionsInfo', collectionsInfo);
+    console.log('topListInfo', topListInfo)
     return (
       <React.Fragment>
         <Router history={history}>

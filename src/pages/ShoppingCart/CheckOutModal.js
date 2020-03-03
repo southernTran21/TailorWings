@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Modal, Button, notification } from 'antd';
+import { Modal, Icon, notification } from 'antd';
 import { CheckOutForm } from './CheckOutForm';
 import { connect } from 'react-redux';
 import './CheckOutModal.scss';
 import { addDocument } from './../../services/Fundamental';
 import * as actions from '../../actions/index';
+import uniqid from 'uniqid';
 
-export const BILL_FORM = {
+const PRODUCT_DETAIL_FORM = {
+    discount: 0,
+    price: 0,
+    productID: '',
     name: '',
-    phone: '',
-    address: '',
-    email: '',
-    status: 'NEW',
-    orderedProducts: [],
-    totalProductsOnCart: 0,
-    subtotalPrice: 0
+    bodyMetric: [],
+    size: '',
+    quantity: 0
 }
 
 class CheckOutModal extends Component {
@@ -23,43 +23,12 @@ class CheckOutModal extends Component {
         this.state = {
             loading: false,
             visible: false,
-            order: BILL_FORM,
-            isCartUpdated: false,
-            loading: false
         }
     }
-
-    componentDidMount() {
-        const { subtotalPrice, totalProductsOnCart } = this.props;
-        let productsOnCart = JSON.parse(sessionStorage.getItem('productsOnCart')) || [];
-        let order = this.state.order;
-        order.orderedProducts = productsOnCart;
-        order.subtotalPrice = subtotalPrice;
-        order.totalProductsOnCart = totalProductsOnCart;
-        this.setState({
-            order
-        })
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.isCartUpdated !== prevState.isCartUpdated) {
-            let productsOnCart = JSON.parse(sessionStorage.getItem('productsOnCart')) || [];
-            let order = prevState.order;
-            order.orderedProducts = productsOnCart;
-            order.subtotalPrice = nextProps.subtotalPrice;
-            order.totalProductsOnCart = nextProps.totalProductsOnCart;
-            return {
-                order,
-                isCartUpdated: nextProps.isCartUpdated
-            }
-        }
-        return null
-    }
-
 
     showModal = () => {
-        let { order } = this.state;
-        if (order.orderedProducts.length > 0) {
+        let productsOnCart = JSON.parse(sessionStorage.getItem('productsOnCart')) || [];
+        if (productsOnCart.length > 0) {
             this.setState({
                 visible: true,
             });
@@ -76,28 +45,62 @@ class CheckOutModal extends Component {
     };
 
     uploadNewOrder = (customerInfo) => {
-        let updatedOrder = this.state.order;
-        Object.keys(customerInfo).forEach((key) => {
-            updatedOrder[key] = customerInfo[key] || "";
+        let productsOnCart = JSON.parse(sessionStorage.getItem('productsOnCart')) || [];
+        let { name, phone, address, email } = customerInfo;
+        let totalPrice = productsOnCart.reduce((accumulator, current) => {
+            return accumulator + (current.price * current.quantity)
+        }, 0);
+        console.log('productsOnCart', productsOnCart)
+        let orderDetail = {
+            orderID: uniqid.process(),
+            orderItems: []
+        }
+        productsOnCart.forEach((product) => {
+            let productDetail = PRODUCT_DETAIL_FORM;
+            Object.keys(productDetail).forEach((key) => {
+                productDetail[key] = product[key] || "";
+            })
+            orderDetail.orderItems.push(productDetail);
         })
-        let isSuccess = addDocument('orders', updatedOrder);
-        setTimeout(() => {
-            if (isSuccess) {
-                this.closeModal();
-                notification.success({
-                    message: 'Giao dịch thành công!',
-                    placement: 'bottomRight'
-                });
-                this.props.onUpdateCart([]);
-                this.setState({ order: BILL_FORM })
-            }else {
-                notification.error({
-                    message: 'Giao dịch thất bại. Vui lòng kiểm tra đường truyền!',
-                    placement: 'bottomRight'
-                });
-            }
-            this.setState({ loading: false })
-        }, 2000);
+
+        let customer = {
+            adddress: address || '',
+            cusName: name || '',
+            customerID: uniqid.time() || '',
+            email: email || '',
+            id: '',
+            lock: false,
+            note: '',
+            phone: phone || '',
+            promo: 0,
+            rate: '',
+            wishList: []
+        }
+        let order = {
+            customerID: customer.customerID,
+            doneDate: '',
+            id: '',
+            notes: '',
+            orderDate: '',
+            orderID: orderDetail.orderID,
+            status: 'new',
+            total: totalPrice
+        }
+        Promise.all([
+            addDocument('customers', customer),
+            addDocument('orders', order),
+            addDocument('orderDetail', orderDetail),
+        ]).then(() => {
+            this.closeModal();
+            notification.success({
+                message: 'Giao dịch thành công!',
+                placement: 'bottomRight'
+            });
+            this.props.onUpdateCart([]);
+            this.setState({
+                loading: false
+            })
+        });
     }
 
 
@@ -105,9 +108,9 @@ class CheckOutModal extends Component {
         const { visible, order, loading } = this.state;
         return (
             <div>
-                <Button type="primary" onClick={this.showModal}>
-                    Thanh Toán
-                </Button>
+                <span onClick={this.showModal}> Thanh toán
+                    <Icon type='right' />
+                </span>
                 <Modal
                     style={{ padding: "0px" }}
                     visible={visible}
@@ -118,7 +121,7 @@ class CheckOutModal extends Component {
                     footer={[
                     ]}
                 >
-                    <CheckOutForm order={order} uploadNewOrder={this.uploadNewOrder} loading={loading}/>
+                    <CheckOutForm order={order} uploadNewOrder={this.uploadNewOrder} loading={loading} />
                 </Modal>
             </div>
         );

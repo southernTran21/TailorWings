@@ -33,17 +33,18 @@ export default class FormInput extends React.Component {
     };
 
     render() {
-        const { getFieldDecorator } = this.props.form;  
+        const { getFieldDecorator } = this.props.form;
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Form.Item label="Tên" className="d-flex justify-content-between" style={{ width: "100%" }}>
                     {getFieldDecorator('name', {
                         rules: [
                             {
+
                             },
                             {
                                 required: true,
-                                message: 'Vui lòng nhập tên người nhận',
+                                message: 'Vui lòng nhập tên',
                             },
                         ],
                     })(<Input placeholder="Tên người nhận" />)}
@@ -64,6 +65,7 @@ export default class FormInput extends React.Component {
                     {getFieldDecorator('address', {
                         rules: [
                             {
+
                             },
                             {
                                 required: true,

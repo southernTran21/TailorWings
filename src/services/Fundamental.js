@@ -88,14 +88,20 @@ export const getImageURL = (imgPath) => {
 }
 
 export const addDocument = (collection, newItem) => {
+    console.log('collection', collection)
     database
         .collection(collection)
-        .add({ ...newItem, timestamp: firebase.firestore.FieldValue.serverTimestamp() })
+        .add({ ...newItem, orderDate: firebase.firestore.FieldValue.serverTimestamp() })
         .then(function () {
             console.log('Document successfully added!');
+            console.log('collection', collection)
+            let success = true;
+            return success;
         })
         .catch(function (error) {
             console.error("Error adding document: ", error);
+            let success = false;
+            return success;
         })
 }
 
@@ -114,7 +120,7 @@ export const setDocument = (collection, newItem, docName) => {
         .catch(function (error) {
             console.error("Error adding document: ", error);
             message.error('Lỗi: xin vui lòng thử lại!');
-            let success = true;
+            let success = false;
             return success;
         })
 }

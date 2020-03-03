@@ -1,0 +1,255 @@
+.pageMyCart {
+    margin-top: 70px !important;
+    margin-bottom: 20px;
+    font-family: "Josefin Sans", sans-serif !important;
+    font-size: 14px;
+    font-weight: 400;
+    .mainPage {
+      padding: 0 3%;
+      .selectedProductList {
+        min-height: 800px;
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2) !important;
+        margin-top: 0.5rem;
+        padding: 10px 20px;
+        .title {
+          border-bottom: 1px solid #b1b1b1;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding-bottom: 7px;
+          .backToStore {
+            font-size: 26px;
+            margin-right: 7px;
+            margin-left: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          .titleBag {
+            padding-top: 8px;
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+        .listProductSelected {
+          display: flex;
+          flex-direction: row;
+          border-bottom: 1px solid #b1b1b1;
+          padding: 10px 0;
+          .imgProductSelected {
+            width: 105px;
+            height: 140px;
+            img {
+              background: blue;
+              width: 100%;
+              height: 100%;
+              border-radius: 5px;
+            }
+          }
+          .infoProductSelected {
+            margin-left: 20px;
+            padding-top: 10px;
+            width: 70%;
+            margin-right: 20px;
+            .itemName {
+              font-size: 16px;
+              font-weight: bold;
+            }
+            .itemInfo {
+              font-size: 12px;
+              .itemSize {
+                a {
+                  padding-top: 2px;
+                }
+                .selectSize {
+                  .ant-select-selection {
+                    border: none;
+                    font-size: 12px;
+                    height: 20px;
+                    margin-bottom: 5px;
+                    outline: none !important;
+                    i {
+                      color: black;
+                      font-weight: bold;
+                    }
+                    .ant-select-selection__rendered {
+                      line-height: 25px;
+                    }
+                  }
+                  .ant-select-selection:focus {
+                    border: none;
+                    box-shadow: none;
+                  }
+                }
+              }
+              .itemQuantity {
+                @extend .itemSize;
+              }
+            }
+            .itemButton {
+              height: 100%;
+              align-items: end;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+            }
+          }
+          .buttonHeart {
+            font-weight: bold;
+            float: left !important;
+          }
+          .buttonHeart:hover {
+            color: #ff1b67 !important;
+            text-decoration: underline #ff1b67 !important;
+          }
+        }
+        .itemRight {
+          width: 10%;
+          .buttonEventRemove {
+            padding-top: 10px;
+            font-weight: bold;
+            margin-left: 20px;
+            font-size: 16px;
+            text-align: end;
+            a:hover {
+              color: #ff0000 !important;
+            }
+          }
+          .itemTotal {
+            font-weight: bold;
+            font-size: 16px;
+            flex-direction: column;
+            height: 100%;
+            text-align: end;
+            justify-content: flex-end;
+            display: flex;
+          }
+        }
+        .Summary {
+          .titleSummary {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 5px;
+          }
+          .infoSummary {
+            border: 1px solid #949494;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-top: 5px;
+            display: grid;
+            // font-weight: bold;
+            // font-size: 20px;
+            .d-flex {
+              margin-top: 7px;
+            }
+            .Total {
+              border-top: 1px solid;
+              padding-top: 10px;
+              margin-top: 15px;
+              margin-bottom: 7px;
+              font-weight: bold;
+            }
+            .buttonCheckOut {
+              button {
+                width: 100%;
+                height: 100%;
+                border: 1px solid;
+                background: #f47a29;
+                color: white;
+                border-radius: 5px;
+                text-align: center;
+                padding: 5px 0;
+              }
+              button:hover {
+                background: #eb650c;
+              }
+            }
+          }
+        }
+      }
+    }
+    .infoTotal {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .pageMyCart {
+      .selectedProductList {
+        .listProductSelected {
+          .imgProductSelected {
+            width: 65px !important ;
+            height: 85px !important;
+            margin-top: 10px;
+          }
+          .infoProductSelected {
+            width: 56% !important;
+            margin: 0 10px !important;
+            .itemName {
+              font-size: 14px !important;
+            }
+            .itemUnitPrice {
+              display: none;
+            }
+          }
+          .itemRight {
+            width: 15% !important;
+            margin-right: 10px !important;
+          }
+          .buttonHeart {
+            font-size: 12px !important;
+          }
+        }
+        .Summary {
+          margin-top: 30px !important;
+          .buttonCheckOut {
+            display: none;
+          }
+        }
+      }
+      .infoTotal {
+        width: 100%;
+        height: 70px;
+        position: fixed;
+        background: #ffffff;
+        bottom: 0;
+        box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.212);
+        align-items: center;
+        padding: 0 15px;
+        display: flex !important;
+        // display: initial;
+        .btnCheckOut {
+          border: 1px solid;
+          padding: 10px 10px;
+          border-radius: 13px;
+          background: #f47a29;
+          color: white;
+          z-index: 1;
+          div {
+            width: 100%;
+            height: 100%;
+          }
+          button {
+            width: 100%;
+            height: 100%;
+            font-size: 17px;
+            border: none;
+            background: none;
+            box-shadow: none;
+          }
+          .button:hover {
+            background: #eb650c;
+          }
+        }
+        .btnCheckOut:hover {
+          background: #eb650c;
+        }
+        .titleTotal {
+          font-size: 20px;
+          font-weight: bold;
+          height: 30px;
+          line-height: 40px;
+        }
+      }
+    }
+  }
+  

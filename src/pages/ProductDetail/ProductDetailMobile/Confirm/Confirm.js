@@ -14,8 +14,9 @@ import { Icon } from 'antd';
 
 class Confirm extends Component {
     addToCart = () => {
-        const { currentSelectedProduct } = this.props;
+        const { currentSelectedProduct, currentDesignInfo } = this.props;
         let addedProduct = { ...currentSelectedProduct };
+        addedProduct.name = currentDesignInfo.name;
         delete addedProduct["default"];
         delete addedProduct["timestamp"];
         delete addedProduct["visibility"];
