@@ -8,10 +8,9 @@ class StrikingDesigns extends Component {
                 <div className='title d-flex flex-column'>
                     <span>Thiết Kế Nổi Bật</span>
                     <span>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Aenean in nisl in ex varius
-                        luctus.
-                            </span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenean in nisl in ex varius luctus.
+                    </span>
                 </div>
                 <CarouselStrikingDesign />
             </div>
