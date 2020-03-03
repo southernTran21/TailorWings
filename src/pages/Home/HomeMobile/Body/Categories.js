@@ -29,10 +29,15 @@ class Categories extends Component {
                 </div>
                 <div className='categoryProduct d-flex flex-row justify-content-between'>
                     <Link
-                        style={{ height: 'fit-content', width: 'fit-content' }}
+                        style={{
+                            height: 'fit-content',
+                            width: 'fit-content',
+                            border: 'none',
+                            textDecoration: 'none'
+                        }}
                         to={{
                             pathname: '/shopping-store',
-                            search: `?cat=damsuong`
+                            search: `?cat=damsuong&search=`
                         }}
                     >
                         <div className='image'>
@@ -44,10 +49,15 @@ class Categories extends Component {
                         </div>
                     </Link>
                     <Link
-                        style={{ height: 'fit-content', width: 'fit-content' }}
+                        style={{
+                            height: 'fit-content',
+                            width: 'fit-content',
+                            border: 'none',
+                            textDecoration: 'none'
+                        }}
                         to={{
                             pathname: '/shopping-store',
-                            search: `?cat=damom`
+                            search: `?cat=damom&search=`
                         }}
                     >
                         <div className='image'>
@@ -59,10 +69,15 @@ class Categories extends Component {
                         </div>
                     </Link>
                     <Link
-                        style={{ height: 'fit-content', width: 'fit-content' }}
+                        style={{
+                            height: 'fit-content',
+                            width: 'fit-content',
+                            border: 'none',
+                            textDecoration: 'none'
+                        }}
                         to={{
                             pathname: '/shopping-store',
-                            search: `?cat=damxoe`
+                            search: `?cat=damxoe&search=`
                         }}
                     >
                         <div className='image'>
