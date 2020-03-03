@@ -5,14 +5,11 @@ class FourSteps extends Component {
         return (
             <div className='content__bodyPage d-flex flex-column justify-content-around'>
                 <div className='title d-flex flex-column'>
+                    <span>Đặt may giao tận nhà chỉ với 4 bước đơn giản</span>
                     <span>
-                        Đặt may giao tận nhà chỉ với 4 bước đơn giản
-                            </span>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Aenean in nisl in ex varius
-                        luctus.
-                            </span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenean in nisl in ex varius luctus.
+                    </span>
                 </div>
                 <div className='fourStep-wraper d-flex flex-row justify-content-between'>
                     <div className='fourStep-content'>
