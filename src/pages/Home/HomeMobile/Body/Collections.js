@@ -8,10 +8,9 @@ class Collections extends Component {
                 <div className='title__collection d-flex flex-column'>
                     <span>Bộ Sưu Tập</span>
                     <span>
-                        Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Aenean in nisl in ex varius
-                        luctus.
-                            </span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Aenean in nisl in ex varius luctus.
+                    </span>
                 </div>
                 <CarouselCollection />
                 <hr />

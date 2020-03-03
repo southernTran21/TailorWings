@@ -2,26 +2,23 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPixel from 'react-facebook-pixel';
 
+// import image Home Page
+import Image1 from '../../../../assets/imageHomePage/hero img.jpg';
+
 class BodyHeader extends Component {
-    
     updatePixel = () => {
-        ReactPixel.trackCustom("ShoppingStoreAccessWay", "BuyNow");
-        console.log("updated to Pixel")
-    }
+        ReactPixel.trackCustom('ShoppingStoreAccessWay', 'BuyNow');
+        console.log('updated to Pixel');
+    };
 
     render() {
         return (
             <div className='header__bodyPage'>
-                <Link
-                    to={{
-                        pathname: '/shopping-store',
-                        search: '?cat=all&search='
-                    }}
-                    onClick={this.updatePixel}
-                >
+                <img src={Image1} />
+                <Link to='/shopping-store?cat=all' onClick={this.updatePixel}>
                     <button
-                        type="button"
-                        className="btn btn-warning"
+                        type='button'
+                        className='btn btn-warning'
                         style={{
                             position: 'absolute',
                             bottom: '100px',
@@ -30,7 +27,7 @@ class BodyHeader extends Component {
                         }}
                     >
                         Mua ngay
-                </button>
+                    </button>
                 </Link>
             </div>
         );
