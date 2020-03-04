@@ -7,6 +7,8 @@ import { removePunctuation } from "../../../services/CommonFunction";
 
 let deleteLoading = false;
 
+// added
+
 export class Design extends Component {
     constructor(props) {
         super(props);
