@@ -7,7 +7,7 @@ import { removePunctuation } from "../../../services/CommonFunction";
 
 let deleteLoading = false;
 
-// added
+// Admin page modified
 
 export class Design extends Component {
     constructor(props) {
