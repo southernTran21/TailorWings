@@ -60,6 +60,7 @@ class NavbarHeader extends Component {
     searchOpen = () => {
         let { isSearchOpen } = this.state;
         isSearchOpen = !isSearchOpen;
+        this.props.sideBarChange(isSearchOpen);
         this.setState({
             isSearchOpen
         })

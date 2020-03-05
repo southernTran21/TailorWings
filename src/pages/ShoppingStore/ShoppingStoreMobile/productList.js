@@ -67,6 +67,7 @@ export default class ProductList extends Component {
 
     render() {
         const { fetchedProducts, loaderContent } = this.state;
+        console.log('fetchedProducts :', fetchedProducts);
         return (
             <div className='productList-wraper d-flex flex-wrap'>
                 <InfiniteScroll

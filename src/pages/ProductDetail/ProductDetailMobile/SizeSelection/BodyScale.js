@@ -22,7 +22,7 @@ export default class BodyScale extends Component {
     render() {
         const { bodyMetric } = this.state;
         return (
-            <div className='scaleBody'>
+            <div className='scaleBody d-flex flex-column justify-content-between'>
                 <div className='title__scaleBody'>
                     <span>
                         *Với mong muốn mang lại một sản phầm vừa vặn nhất, bạn

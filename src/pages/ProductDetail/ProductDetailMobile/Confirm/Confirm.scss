@@ -1,17 +1,20 @@
 .pageConfirm {
-    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    color: #111e6c !important;
     .anticon {
         vertical-align: 0;
     }
     .navbarHeader {
-        background-color: rgba(241, 249, 255, 1);
+        background-color: #fff4e3;
         height: 55px;
-        color: rgba(38, 153, 251, 1);
         font-size: 18px;
         font-weight: bold;
         padding: 0 5%;
         .iconShoppingCart {
             font-size: 23px;
+        }
+        i {
+            color: #ff6d3b !important;
         }
         .ant-badge-count {
             min-height: 10px;
@@ -27,7 +30,6 @@
         .infProduct {
             margin-top: 15px;
             .title__infProduct {
-                color: rgba(38, 153, 251, 1);
                 width: 100%;
                 .nameProduct {
                     width: 100%;
@@ -45,7 +47,7 @@
                 padding: 5px !important;
             }
             .image {
-                background-color:#fc9d4e;
+                background-color: #fc9d4e;
                 width: 100%;
                 height: 150px;
                 border-radius: 5px;
