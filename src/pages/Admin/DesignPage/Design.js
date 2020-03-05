@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import "./Design.scss";
 import { Icon, Popconfirm, message } from "antd";
 import { Link } from "react-router-dom";
-import { deleteDocument, deleteImage } from "../../../services/Fundamental";
+import { deleteDocument, deleteImage, setDocument } from "../../../services/Fundamental";
 import { removePunctuation } from "../../../services/CommonFunction";
+import classNames from 'classnames'
 
 let deleteLoading = false;
 
@@ -11,14 +12,26 @@ export class Design extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            renderDesigns: []
+            renderDesigns: [],
+            bestSeller: [],
+            bestSellerStatus: []
         };
     }
 
     componentDidMount() {
-        const { designs } = this.props;
+        const { designs, topList } = this.props;
+        let { bestSellerStatus } = this.state;
+        let bestSeller = topList[0] || { designs: [] };
+        bestSellerStatus = new Array(designs.length).fill(false);
+        designs.forEach((design, index) => {
+            let currentDesignID = design.id;
+            let isBestSellerContain = bestSeller.designs.includes(currentDesignID);
+            bestSellerStatus[index] = isBestSellerContain;
+        })
         this.setState({
-            renderDesigns: designs
+            renderDesigns: designs,
+            bestSeller,
+            bestSellerStatus
         });
     }
 
@@ -85,8 +98,33 @@ export class Design extends Component {
         return decodeURIComponent(s);
     };
 
+    onBestSellerClick = (index) => {
+        let { designs, topList } = this.props;
+        let { bestSellerStatus, bestSeller } = this.state;
+        if (!bestSellerStatus[index]) {
+            bestSeller.designs.push(designs[index].id);
+            bestSellerStatus[index] = true;
+        } else {
+            let indexOfRemovedDesign = bestSeller.designs.indexOf(designs[index].id)
+            bestSeller.designs.splice(indexOfRemovedDesign, 1);
+            bestSellerStatus[index] = false;
+        }
+        // topList.forEach((element) => {
+        //     if (element.id === 'bestseller') {
+        //         element.designs = [...bestSeller.designs]
+        //     }
+        // })
+        setDocument('topList', bestSeller, 'bestseller')
+            .then(() => {
+                this.setState({
+                    bestSellerStatus
+                })
+            })
+    }
+
     render() {
-        const { renderDesigns } = this.state;
+        const { renderDesigns, bestSellerStatus } = this.state;
+        // console.log('bestSellerStatus', bestSellerStatus)
         return (
             <div className="pageDesign">
                 <div className="headerPageDesign d-flex flex-row justify-content-between align-items-center">
@@ -176,7 +214,10 @@ export class Design extends Component {
                                             </Link>
                                         </div>
                                         <div className="column8">
-                                            <i className="fas fa-award"></i>
+                                            <i
+                                                className={classNames("fas fa-award", { active: bestSellerStatus[index] })}
+                                                onClick={() => this.onBestSellerClick(index)}
+                                            />
                                         </div>
                                         <div id="design-id" className="column3">
                                             <Link

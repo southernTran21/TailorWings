@@ -21,7 +21,12 @@
     width: 3%;
     i{
       font-size: 20px;
+      color: gray ;
     }
+    .active {
+      color: #fd7e14 !important;
+    }
+
   }
   .column1,.column2,.column3,.column4,.column5,.column6,.column7, .column8{
     padding: 0 5px;
