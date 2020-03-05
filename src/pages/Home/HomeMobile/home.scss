@@ -99,7 +99,7 @@
             .fourStep-wraper {
                 .fourStep-content {
                     width: 20vw;
-                    height: 22vw;
+                    height: 22vw;   
                     .image {
                         width: 20vw;
                         height: 20vw;
@@ -382,10 +382,12 @@
                 }
             }
             .video {
-                height: 180px;
                 margin: 0 27.5px;
                 border-radius: 10px;
                 margin-top: 12.5px;
+                img{
+                    width: 100%;
+                }
             }
             hr {
                 border-top: 1px solid #ff6d3b;
