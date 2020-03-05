@@ -7,7 +7,7 @@ class Footer extends Component {
         return (
             <React.Fragment>
                 <FooterPage />
-                <FitMenu />
+                {/* <FitMenu /> */}
             </React.Fragment>
         );
     }

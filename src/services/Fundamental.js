@@ -88,13 +88,11 @@ export const getImageURL = (imgPath) => {
 }
 
 export const addDocument = (collection, newItem) => {
-    console.log('collection', collection)
     database
         .collection(collection)
         .add({ ...newItem, orderDate: firebase.firestore.FieldValue.serverTimestamp() })
         .then(function () {
             console.log('Document successfully added!');
-            console.log('collection', collection)
             let success = true;
             return success;
         })

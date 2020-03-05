@@ -51,7 +51,9 @@ export class Sidebar extends Component {
             categories: [],
             orders: [],
             customers: [],
-            listDesignImage: []
+            listDesignImage: [],
+            collections: [],
+            topList: []
         }
     }
 
@@ -87,6 +89,16 @@ export class Sidebar extends Component {
                 case 'customers':
                     this.setState({
                         customers: action.data
+                    })
+                    break;
+                // case 'collections':
+                //     this.setState({
+                //         collections: action.data
+                //     })
+                //     break;
+                case 'topList':
+                    this.setState({
+                        topList: action.data
                     })
                     break;
                 default:
@@ -166,14 +178,46 @@ export class Sidebar extends Component {
             })
         });
 
-        Promise.all([promiseDesign, promiseFabric, promiseProduct, promiseCategory, promiseOrder, promiseCustomer]).then(dataList => {
+        // var promiseCollection = new Promise((_resolve, _reject) => {
+        //     getAllDataTest('collections', (collectionData) => {
+        //         if (collectionData != null && this._isMounted === true) {
+        //             _resolve(collectionData);
+        //         } else {
+        //             _reject('collections');
+        //         }
+        //     })
+        // });
+
+        var promiseTopList = new Promise((_resolve, _reject) => {
+            getAllDataTest('topList', (collectionData) => {
+                if (collectionData != null && this._isMounted === true) {
+                    _resolve(collectionData);
+                } else {
+                    _reject('topList');
+                }
+            })
+        });
+
+        Promise.all([
+            promiseDesign, 
+            promiseFabric, 
+            promiseProduct, 
+            promiseCategory, 
+            promiseOrder, 
+            promiseCustomer,
+            // promiseCollection,
+            getAllData('collections'),
+            promiseTopList
+        ]).then(dataList => {
             this.setState({
                 designs: dataList[0],
                 fabrics: dataList[1],
                 products: dataList[2],
                 categories: dataList[3],
                 orders: dataList[4],
-                customers: dataList[5]
+                customers: dataList[5],
+                collections: dataList[6],
+                topList: dataList[7]
             });
         }).catch(ex => {
             // console.log(ex);
@@ -189,7 +233,7 @@ export class Sidebar extends Component {
 
 
     render() {
-        const { designs, fabrics, products, categories, orders, customers } = this.state;
+        const { designs, fabrics, products, categories, orders, customers, collections, topList } = this.state;
         return (
             <Router>
                 <div className="row" style={{ margin: 0 }}>
@@ -216,6 +260,7 @@ export class Sidebar extends Component {
                                     <Design
                                         designs={designs}
                                         products={products}
+                                        topList={topList}
                                     />
                                 }
                             />
@@ -288,6 +333,7 @@ export class Sidebar extends Component {
                                         designs={designs}
                                         fabrics={fabrics}
                                         categories={categories}
+                                        collections={collections}
                                     />
                                 }
                             />

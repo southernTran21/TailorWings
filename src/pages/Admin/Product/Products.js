@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import './Products.scss'
-import { Icon, Checkbox, Cascader, Spin, message } from 'antd';
+import { Switch, Checkbox, Cascader, Spin, message } from 'antd';
 import { Link } from 'react-router-dom'
 import NonSelect from './NonSelect';
 import Selected from './Selected';
@@ -21,7 +21,10 @@ export class Products extends Component {
             initialProducts: [],
             checkedList: null,
             checkedAll: false,
-            plainOptions: []
+            plainOptions: [],
+            isCheckBoxVisible: true,
+            currentCollectionStatus: [],
+            currentCollectionFilterIndex: ''
         }
     }
 
@@ -44,7 +47,8 @@ export class Products extends Component {
                 this.setState({
                     initialProducts: renderProducts,
                     renderProducts,
-                    checkedList
+                    checkedList,
+                    currentCollectionStatus: new Array(renderProducts.length).fill(false)
                 })
             }
         }
@@ -152,6 +156,36 @@ export class Products extends Component {
             }
         }
     }
+
+    onCollectionFilter = (collectionID) => {
+        const { collections } = this.props;
+        let { currentCollectionStatus, renderProducts } = this.state;
+        let currentCollection = collections.filter((collection) => {
+            return collection.id === collectionID;
+        })
+        if (collectionID !== 'allProducts') {
+            if (currentCollection != null) {
+                currentCollectionStatus.fill(false);
+                currentCollection[0].products.forEach((productID) => {
+                    let index = renderProducts.findIndex(product => product.productID === productID);
+                    if ( index > -1 ) {
+                        currentCollectionStatus[index] = true;
+                    }
+                })
+                this.setState({
+                    currentCollectionStatus,
+                    isCheckBoxVisible: false,
+                    currentCollectionFilterIndex: collections.findIndex(collection => collection.id === collectionID)
+                })
+            }
+        } else {
+            this.setState({
+                isCheckBoxVisible: true,
+                currentCollectionFilterIndex: ''
+            })
+        }
+    }
+
 
     deleteHanding = () => {
         this._isMounted = true;
@@ -274,8 +308,55 @@ export class Products extends Component {
         })
     }
 
+    onCollectionStatusChange = (index, currentStatus, productID) => {
+        let { collections } = this.props;
+        let { currentCollectionStatus } = this.state;
+        let collectionIndex = this.state.currentCollectionFilterIndex;
+        if (currentStatus) {
+            let removedProductIndex = collections[collectionIndex].products.indexOf(productID);
+            if (removedProductIndex > -1) {
+                collections[collectionIndex].products.splice(removedProductIndex, 1);
+                setDocument('collections', collections[collectionIndex], collections[collectionIndex].id)
+                    .then(() => {
+                        currentCollectionStatus[index] = false;
+                        this.setState({
+                            currentCollectionStatus
+                        })
+                    })
+            }
+        } else {
+            // if (productID != null && !collections[collectionIndex].products.includes(productID)) {
+                collections[collectionIndex].products.push(productID);
+                setDocument('collections', collections[collectionIndex], collections[collectionIndex].id)
+                    .then(() => {
+                        currentCollectionStatus[index] = true;
+                        this.setState({
+                            currentCollectionStatus
+                        })
+                    })
+            // }
+        }
+    }
+
+    onCheckBoxVisibile = (index, productID, checkedStatus) => {
+        const { isCheckBoxVisible, checkedAll, currentCollectionStatus } = this.state;
+        if (isCheckBoxVisible) {
+            let checkBox = productID === 'tableHeader' ?
+                <Checkbox onChange={this.onSelectAll} checked={checkedAll} /> :
+                <Checkbox name={productID} onChange={(e) => this.onSelectOne(e)} checked={checkedStatus} />
+            return checkBox;
+        } else {
+            let collectionSwitch = productID !== 'tableHeader' ?
+                <Switch
+                    checked={currentCollectionStatus[index]}
+                    onChange={() => this.onCollectionStatusChange(index, currentCollectionStatus[index], productID)
+                    } /> : '';
+            return collectionSwitch;
+        }
+    }
+
     render() {
-        const { products, designs, fabrics, categories } = this.props;
+        const { products, designs, fabrics, categories, collections } = this.props;
         const { isAnySelected, selectedProducts, checkedList, checkedAll, renderProducts, initialProducts } = this.state;
         return (
             <div className="pageProduct">
@@ -291,8 +372,10 @@ export class Products extends Component {
                     <div className="showProduct ">
                         <NonSelect
                             isOpen={!isAnySelected}
-                            categories={this.props.categories}
+                            collections={collections}
+                            categories={categories}
                             onCategoryFilter={this.onCategoryFilter}
+                            onCollectionFilter={this.onCollectionFilter}
                             renderProducts={initialProducts}
                             onSearching={this.onSearching}
                         />
@@ -312,7 +395,8 @@ export class Products extends Component {
                                 <div className="column5 text-center">Price</div>
                                 <div className="column6 text-center">Visibility</div>
                                 <div className="column7 d-flex justify-content-center" style={{ height: '100%' }}>
-                                    <Checkbox onChange={this.onSelectAll} checked={checkedAll} />
+                                    {/* <Checkbox onChange={this.onSelectAll} checked={checkedAll} /> */}
+                                    {this.onCheckBoxVisibile('', 'tableHeader', '')}
                                 </div>
                             </div>
                             {renderProducts.map((product, index) => {
@@ -373,7 +457,8 @@ export class Products extends Component {
                                                 />
                                             </div>
                                             <div className="column7 d-flex justify-content-center" style={{ height: '100%' }}>
-                                                <Checkbox name={product.id} onChange={(e) => this.onSelectOne(e)} checked={checkedStatus} />
+                                                {this.onCheckBoxVisibile(index, product.id, checkedStatus)}
+                                                {/* <Checkbox name={product.id} onChange={(e) => this.onSelectOne(e)} checked={checkedStatus} /> */}
                                             </div>
                                         </div>
                                     )

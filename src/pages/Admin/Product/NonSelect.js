@@ -6,41 +6,63 @@ import { removePunctuation } from '../../../services/CommonFunction';
 
 export class NonSelect extends Component {
     state = {
-        optionsCollection: [
+        optionsCategories: [
             {
                 value: 'allProducts',
                 label: 'All Products',
             },
         ],
-        optionsFilter: [
+        optionsCollections: [
             {
-                value: 'all',
-                label: 'All',
+                value: 'allProducts',
+                label: 'All Products',
             },
         ]
     }
 
     componentDidMount() {
-        const { categories } = this.props;
-        let { optionsCollection } = this.state;
+        const { categories, collections } = this.props;
+        let { optionsCategories, optionsCollections } = this.state;
         categories.forEach((category) => {
             if (category != null) {
-                let option = {
-                    value: category.id,
-                    label: category.name
+                if (category.visibility === true) {
+                    let option = {
+                        value: category.id,
+                        label: category.name
+                    }
+                    optionsCategories.push(option);
                 }
-                optionsCollection.push(option);
             }
         })
-
+        collections.forEach((collection) => {
+            if (collection != null) {
+                if (collection.visibility === true) {
+                    let option = {
+                        value: collection.id,
+                        label: collection.name
+                    }
+                    optionsCollections.push(option);
+                }
+            }
+        })
+        this.setState({
+            optionsCategories,
+            optionsCollections
+        })
     }
 
     onCategoryChange = (e) => {
-        if ( e.length > 0 ) {
+        if (e.length > 0) {
             this.props.onCategoryFilter(e[0]);
         }
     }
-    
+
+    onCollectionChange = (e) => {
+        if (e.length > 0) {
+            this.props.onCollectionFilter(e[0]);
+        }
+    }
+
     searchFilter = (e) => {
         const { renderProducts } = this.props;
         let searchInput = removePunctuation(e.target.value.toLowerCase()) || "";
@@ -48,19 +70,19 @@ export class NonSelect extends Component {
         filteredProducts = renderProducts.filter((product) => {
             let name = product.name.toLowerCase();
             name = removePunctuation(name);
-            return name.search( searchInput ) !== -1;
+            return name.search(searchInput) !== -1;
         })
-        if ( filteredProducts.length === 0 ) {
+        if (filteredProducts.length === 0) {
             filteredProducts = renderProducts.filter((product) => {
                 let id = product.productID.toLowerCase();
-                return id.search( searchInput ) !== -1;
+                return id.search(searchInput) !== -1;
             })
         }
-        this.props.onSearching( filteredProducts );
+        this.props.onSearching(filteredProducts);
     }
 
     render() {
-        // const optionsCollection = [
+        // const optionsCategories = [
         //     {
         //         value: 'allProducts',
         //         label: 'All Products',
@@ -73,7 +95,7 @@ export class NonSelect extends Component {
         //     },
         // ];
         const { isOpen } = this.props;
-        const { optionsCollection, optionsFilter } = this.state;
+        const { optionsCategories, optionsCollections } = this.state;
         return (
             <div className={classNames({ "headerShowProduct d-flex flex-row justify-content-between align-items-center": isOpen, close: !isOpen })}>
                 <div className="inputSearch d-flex flex-row align-items-center">
@@ -83,7 +105,7 @@ export class NonSelect extends Component {
                 <div className="inputCollection d-flex flex-row align-items-center">
                     <p className="d-flex flex-row align-items-center">Category</p>
                     <Cascader
-                        options={optionsCollection}
+                        options={optionsCategories}
                         placeholder=""
                         defaultValue={['allProducts']}
                         onChange={this.onCategoryChange}
@@ -91,7 +113,12 @@ export class NonSelect extends Component {
                 </div>
                 <div className="inputFilter d-flex flex-row align-items-center">
                     <p className="d-flex flex-row align-items-center">Filter</p>
-                    <Cascader options={optionsFilter} placeholder="" defaultValue={['all']} />
+                    <Cascader
+                        options={optionsCollections}
+                        placeholder=""
+                        defaultValue={['allProducts']}
+                        onChange={this.onCollectionChange}
+                    />
                 </div>
             </div>
         );

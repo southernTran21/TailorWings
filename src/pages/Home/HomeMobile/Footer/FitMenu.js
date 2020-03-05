@@ -4,7 +4,7 @@ import tailor from '../../../../assets/iconImage/tailorwings.svg';
 class FitMenu extends Component {
     render() {
         return (
-            <div className='fit-menu-wraper d-flex flex-row justify-content-between align-items-center'>
+            <div style={{ display: 'none' }} className='fit-menu-wraper d-flex flex-row justify-content-between align-items-center'>
                 <div className='icon d-flex flex-column justify-content-center align-items-center'>
                     <img src={tailor} alt='' />
                     <span>Trang chủ</span>
