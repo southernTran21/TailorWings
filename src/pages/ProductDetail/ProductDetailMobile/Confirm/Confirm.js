@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import './Confirm.scss';
-import { connect } from 'react-redux';
-import * as actions from '../../../../actions/index';
-import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import "./Confirm.scss";
+import { connect } from "react-redux";
+import * as actions from "../../../../actions/index";
+import { Link } from "react-router-dom";
 // import conponent
-import Navbar from './navbarPage';
-import ShowImage from './ShowImage';
-import ChangeSize from './ChangeSize';
-import Quantity from './Quantity';
+import Navbar from "./navbarPage";
+import ShowImage from "./ShowImage";
+import ChangeSize from "./ChangeSize";
+import Quantity from "./Quantity";
 
 // import libs ant design
-import { Icon } from 'antd';
+import { Icon } from "antd";
 
 class Confirm extends Component {
     addToCart = () => {
@@ -22,22 +22,34 @@ class Confirm extends Component {
         delete addedProduct["visibility"];
         delete addedProduct["id"];
         if (addedProduct) {
-            this.props.onAddProductToCart(addedProduct, currentSelectedProduct.quantity);
+            this.props.onAddProductToCart(
+                addedProduct,
+                currentSelectedProduct.quantity
+            );
         }
-    }
+    };
     render() {
-        const { currentDesignInfo, currentFabricInfo, currentSelectedProduct } = this.props;
-        let priceModified = currentSelectedProduct.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + " " + "VNĐ";
+        const {
+            currentDesignInfo,
+            currentFabricInfo,
+            currentSelectedProduct
+        } = this.props;
+        let priceModified =
+            currentSelectedProduct.price
+                .toString()
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
+            " " +
+            "VNĐ";
         return (
-            <div className='pageConfirm'>
+            <div className="pageConfirm">
                 <Navbar
-                    onContentChange={(step) => this.props.onContentChange(step)}
+                    onContentChange={step => this.props.onContentChange(step)}
                     totalProductsOnCart={this.props.totalProductsOnCart}
                 />
-                <div className='bodyPage'>
-                    <div className='infProduct d-flex flex-column align-items-center justify-content-center'>
-                        <div className='title__infProduct'>
-                            <div className='nameProduct d-flex flex-column align-items-center justify-content-center'>
+                <div className="bodyPage">
+                    <div className="infProduct d-flex flex-column align-items-center justify-content-center">
+                        <div className="title__infProduct">
+                            <div className="nameProduct d-flex flex-column align-items-center justify-content-center">
                                 <span>{currentDesignInfo.name}</span>
                                 <span>{priceModified}</span>
                             </div>
@@ -47,29 +59,42 @@ class Confirm extends Component {
                             currentSelectedProduct={currentSelectedProduct}
                         />
                     </div>
-                    <ChangeSize
-                        onContentChange={(step) => this.props.onContentChange(step)}
-                        currentSelectedProduct={currentSelectedProduct}
-                    />
                 </div>
-                <div className='endPage d-flex justify-content-between'>
-                    <Quantity
-                        currentSelectedProduct={this.props.currentSelectedProduct}
-                        onSelectedProductUpdating={(currentSelectedProduct) => this.props.onSelectedProductUpdating(currentSelectedProduct)}
-                    />
+                <div className="change_wraper d-flex flex-row">
+                    <div className="col-6">
+                        <ChangeSize
+                            onContentChange={step =>
+                                this.props.onContentChange(step)
+                            }
+                            currentSelectedProduct={currentSelectedProduct}
+                        />
+                    </div>
+                    <div className="col-6">
+                        <Quantity
+                            currentSelectedProduct={
+                                this.props.currentSelectedProduct
+                            }
+                            onSelectedProductUpdating={currentSelectedProduct =>
+                                this.props.onSelectedProductUpdating(
+                                    currentSelectedProduct
+                                )
+                            }
+                        />
+                    </div>
+                </div>
+                <div className="endPage">
                     <Link
-                        to={'/shopping-cart'}
+                        to={"/shopping-cart"}
                         onClick={() => {
                             this.addToCart();
                         }}
+                        className="buttonApcept d-flex flex-row align-items-center justify-content-center"
                     >
-                        <div className='buttonApcept d-flex flex-row align-items-center justify-content-center'>
-                            <a>Mua Hàng</a>
-                            <Icon type='arrow-right' />
-                        </div>
+                        <a>Mua Hàng</a>
+                        <Icon type="right" />
                     </Link>
                 </div>
-            </div >
+            </div>
         );
     }
 }
@@ -77,8 +102,8 @@ class Confirm extends Component {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         onAddProductToCart: (product, quantity) => {
-            dispatch(actions.addProductToCart(product, quantity))
+            dispatch(actions.addProductToCart(product, quantity));
         }
-    }
-}
+    };
+};
 export default connect(null, mapDispatchToProps)(Confirm);
