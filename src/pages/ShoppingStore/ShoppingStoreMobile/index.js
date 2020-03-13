@@ -17,7 +17,9 @@ class ShoppingStoreMobile extends Component {
             renderProducts: [],
             isFirstLoaded: false,
             currentActiveCategory: "all",
-            isSideBarOpen: false
+            isSideBarOpen: false,
+            isSearchOpen: false,
+            suggestedSearch: []
         };
     }
 
@@ -98,6 +100,15 @@ class ShoppingStoreMobile extends Component {
         }
     };
 
+    searchOpen = () => {
+        let { isSearchOpen } = this.state;
+        isSearchOpen = !isSearchOpen;
+        this.sideBarChange(isSearchOpen);
+        this.setState({
+            isSearchOpen
+        })
+    }
+
     searchFilter = (searchInput, renderProducts) => {
         renderProducts = renderProducts.filter(product => {
             let name = product.name.toLowerCase();
@@ -109,18 +120,47 @@ class ShoppingStoreMobile extends Component {
         return renderProducts;
     };
 
+    onSearchSuggestionUpdate = (searchInput) => {
+        let { visibilityProducts } = this.props;
+        let { suggestedSearch } = this.state;
+        visibilityProducts = visibilityProducts.concat(visibilityProducts);
+        visibilityProducts = visibilityProducts.concat(visibilityProducts);
+        visibilityProducts = visibilityProducts.concat(visibilityProducts);
+        visibilityProducts = visibilityProducts.filter(product => {
+            let name = product.name.toLowerCase();
+            name = removePunctuation(name);
+            searchInput = searchInput.toLowerCase();
+            searchInput = removePunctuation(searchInput);
+            return name.search(searchInput) !== -1;
+        });
+        if (searchInput !== '') {
+            suggestedSearch = visibilityProducts.map((product) => {
+                return product.name;
+            })
+        } else {
+            suggestedSearch = []
+        }
+        this.setState({
+            suggestedSearch
+        })
+    }
+
+
     onBodyContentChange = () => {
         const {
             isSideBarOpen,
             renderProducts,
             isFirstLoaded,
-            currentActiveCategory
+            currentActiveCategory,
+            suggestedSearch
         } = this.state;
-        console.log('isSideBarOpen :', isSideBarOpen);
         if (isSideBarOpen) {
             return (
                 <div>
-                    <SearchSuggest/>
+                    <SearchSuggest
+                        suggestedSearch={suggestedSearch}
+                        searchOpen={this.searchOpen}
+                    />
                 </div>
             );
         } else {
@@ -149,7 +189,8 @@ class ShoppingStoreMobile extends Component {
         const {
             renderProducts,
             isFirstLoaded,
-            currentActiveCategory
+            currentActiveCategory,
+            isSearchOpen
         } = this.state;
         return (
             <div
@@ -161,9 +202,12 @@ class ShoppingStoreMobile extends Component {
                 <NavbarHeader
                     history={this.props.history}
                     sideBarChange={this.sideBarChange}
+                    onSearchSuggestionUpdate={this.onSearchSuggestionUpdate}
+                    isSearchOpen={isSearchOpen}
+                    searchOpen={this.searchOpen}
                 />
-                { this.onBodyContentChange() }
-                
+                {this.onBodyContentChange()}
+
             </div>
         );
     }

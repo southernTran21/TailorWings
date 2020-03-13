@@ -47,27 +47,28 @@ class NavbarHeader extends Component {
         const { isSearchOpen } = this.state;
         if (isSearchOpen) {
             return (
-                <Icon type='close' onClick={this.searchOpen} style={{ fontSize: '18px' }} />
+                <Icon type='close' onClick={this.props.searchOpen} style={{ fontSize: '18px' }} />
             )
         } else {
             return (
-                <Icon type='search' onClick={this.searchOpen} />
+                <Icon type='search' onClick={this.props.searchOpen} />
             )
         }
     }
 
 
-    searchOpen = () => {
-        let { isSearchOpen } = this.state;
-        isSearchOpen = !isSearchOpen;
-        this.props.sideBarChange(isSearchOpen);
-        this.setState({
-            isSearchOpen
-        })
-    }
+    // searchOpen = () => {
+    //     let { isSearchOpen } = this.state;
+    //     isSearchOpen = !isSearchOpen;
+    //     this.props.sideBarChange(isSearchOpen);
+    //     this.setState({
+    //         isSearchOpen
+    //     })
+    // }
 
     render() {
-        const { isSideBarOpen, isSearchOpen } = this.state;
+        const { isSideBarOpen } = this.state;
+        const { isSearchOpen } = this.props;
         let backdrop;
         if (this.state.isSideBarOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler} />
@@ -84,8 +85,16 @@ class NavbarHeader extends Component {
                 <div className='iconSearch d-flex flex-row justify-content-center align-content-center'>
                     {this.searchChangeIcon()}
                 </div>
-                <SideBar show={isSideBarOpen} changeSideBarState={this.sideBarOpen} history={this.props.history} />
-                <Search isSearchOpen={isSearchOpen} history={this.props.history} />
+                <SideBar
+                    show={isSideBarOpen}
+                    changeSideBarState={this.sideBarOpen}
+                    history={this.props.history}
+                />
+                <Search
+                    isSearchOpen={isSearchOpen}
+                    history={this.props.history}
+                    onSearchSuggestionUpdate={this.props.onSearchSuggestionUpdate}
+                />
                 {backdrop}
             </div>
         );

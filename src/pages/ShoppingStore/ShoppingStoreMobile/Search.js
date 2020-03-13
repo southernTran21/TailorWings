@@ -15,6 +15,7 @@ export default class Search extends Component {
         let { searchValue } = this.state;
         let value = e.target.value;
         searchValue = value;
+        this.props.onSearchSuggestionUpdate(searchValue);
         this.setState({
             searchValue
         })
@@ -45,7 +46,7 @@ export default class Search extends Component {
                         onChange={e => this.onSearchInputChange(e)}
                         onPressEnter={() => this.props.history.push(`/shopping-store?cat=all&search=${modifiedSearchValue}`)}
                     />
-                    <Link
+                    {/* <Link
                         style={{
                             border: 'none',
                             textDecoration: 'none',
@@ -60,7 +61,7 @@ export default class Search extends Component {
                         <Button className='buttonSearch'>
                             <Icon type="check" />
                         </Button>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         );
