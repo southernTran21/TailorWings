@@ -67,8 +67,7 @@ export default class Quantity extends Component {
     render() {
         const { quantity } = this.state;
         return (
-            <div className='quantity d-flex justify-content-center align-items-center'>
-                <span>SỐ LƯỢNG</span>
+            <div className='quantity d-flex flex-row justify-content-center align-items-center'>
                 <div className='changeQuantity d-flex justify-content-center align-items-center'>
                     <Icon id='minus' onClick={this.onQuantityMinus} type='minus' />
                     <NumberFormat
