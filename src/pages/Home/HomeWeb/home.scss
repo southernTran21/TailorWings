@@ -1,0 +1,61 @@
+.homePage_wrapper{
+    width: 100vw;
+    height: auto;
+    padding: 0 5.6%;
+
+    // font defination
+    .fontBeVN{
+        font-family: "Be Vietnam", sans-serif;
+    }
+    .fontMontserrat{
+        font-family: "Montserrat", sans-serif;
+    }
+    //end
+
+    .homeNavbar_wrapper{
+        .col-2, .col-10{
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .navbar{
+            .personalInfo_wrapper{
+                font-size: 13px;
+                color: #ff6d3b;
+                font-weight: bold;
+                width: 16vw;
+                .account {
+                    cursor: pointer;
+                    img{
+                        height: 28px;
+                    }
+                }
+                .shoppingBadge{
+                    cursor: pointer;
+                    img{
+                        height: 22px;
+                        margin: 7px;
+                    }
+                }
+            }
+            .search_wrapper{
+                .ant-input{
+                    border: none;
+                    background-color: #fff4e3;
+                    border-radius: 20px;
+                }
+                .ant-input:focus{
+                    box-shadow: 0 0 0 2px #ffa45c;
+                }
+                ::placeholder{
+                    color: #ffa45c;
+                }
+                .ant-input-suffix{
+                    i{
+                        color: #ffa45c;
+                    }
+                }
+            }
+        }
+    }
+
+}

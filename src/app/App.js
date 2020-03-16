@@ -153,7 +153,7 @@ export default class App extends Component {
     return (
       <React.Fragment>
         <Router history={history}>
-          <Media queries={{ small: { maxWidth: 1024 } }}>
+          {/* <Media queries={{ small: { maxWidth: 1024 } }}>
             {matches =>
               matches.small ?
                 (
@@ -171,7 +171,7 @@ export default class App extends Component {
                   </React.Fragment>
                 )
             }
-          </Media>
+          </Media> */}
           <Switch>
             <Route path="/" exact component={() =>
               <Home
@@ -204,7 +204,7 @@ export default class App extends Component {
             {/* <ProtectedRoute exact path="/admin" render={(props) => <Admin {...props} />} /> */}
             <Route path="*" component={() => "404 NOT FOUND"} />
           </Switch>
-          <Media queries={{ small: { maxWidth: 1024 } }}>
+          {/* <Media queries={{ small: { maxWidth: 1024 } }}>
             {matches =>
               matches.small ?
                 (
@@ -216,7 +216,7 @@ export default class App extends Component {
                   </React.Fragment>
                 )
             }
-          </Media>
+          </Media> */}
         </Router>
       </React.Fragment>
     )
