@@ -8,7 +8,7 @@ import ProductList from "./productList";
 import Filter from "./Filter";
 import { BackTop } from "antd";
 import { removePunctuation } from "../../../services/CommonFunction";
-import SearchSuggest from './SearchSuggest';
+import SearchSuggest from "./SearchSuggest";
 
 class ShoppingStoreMobile extends Component {
     constructor(props) {
@@ -44,7 +44,10 @@ class ShoppingStoreMobile extends Component {
                 visibleProduct => visibleProduct.designID === product.designID
             ).length;
             product.totalSupportedFabric = totalSupportedFabric;
-            if (bestSellerList.includes(product.designID) && product.default === true) {
+            if (
+                bestSellerList.includes(product.designID) &&
+                product.default === true
+            ) {
                 bestSellerInfo.push(product);
             }
         });
@@ -108,11 +111,11 @@ class ShoppingStoreMobile extends Component {
     searchOpen = () => {
         let { isSearchOpen } = this.state;
         isSearchOpen = !isSearchOpen;
-        this.sideBarChange(isSearchOpen);
+        // this.sideBarChange(isSearchOpen);
         this.setState({
             isSearchOpen
-        })
-    }
+        });
+    };
 
     searchFilter = (searchInput, renderProducts) => {
         renderProducts = renderProducts.filter(product => {
@@ -125,7 +128,7 @@ class ShoppingStoreMobile extends Component {
         return renderProducts;
     };
 
-    onSearchSuggestionUpdate = (searchInput) => {
+    onSearchSuggestionUpdate = searchInput => {
         let { visibilityProducts } = this.props;
         let { suggestedSearch } = this.state;
         visibilityProducts = visibilityProducts.concat(visibilityProducts);
@@ -138,18 +141,17 @@ class ShoppingStoreMobile extends Component {
             searchInput = removePunctuation(searchInput);
             return name.search(searchInput) !== -1;
         });
-        if (searchInput !== '') {
-            suggestedSearch = visibilityProducts.map((product) => {
+        if (searchInput !== "") {
+            suggestedSearch = visibilityProducts.map(product => {
                 return product.name;
-            })
+            });
         } else {
-            suggestedSearch = []
+            suggestedSearch = [];
         }
         this.setState({
             suggestedSearch
-        })
-    }
-
+        });
+    };
 
     onBodyContentChange = () => {
         const {
@@ -194,18 +196,15 @@ class ShoppingStoreMobile extends Component {
 
     render() {
         const {
-            renderProducts,
-            isFirstLoaded,
-            currentActiveCategory,
             isSearchOpen
         } = this.state;
+        console.log('this.state.isSideBarOpen', this.state.isSideBarOpen)
         return (
             <div
                 className={classNames("pageShoppingStore", {
                     pageFix: this.state.isSideBarOpen
                 })}
             >
-                {/* <Navbar history={this.props.history} /> */}
                 <NavbarHeader
                     history={this.props.history}
                     sideBarChange={this.sideBarChange}
@@ -214,7 +213,6 @@ class ShoppingStoreMobile extends Component {
                     searchOpen={this.searchOpen}
                 />
                 {this.onBodyContentChange()}
-
             </div>
         );
     }

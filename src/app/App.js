@@ -9,7 +9,7 @@ import MediaButton from '../components/MediaButton/MediaButton';
 import ShoppingStore from '../pages/ShoppingStore/index';
 import ProductDetail from '../pages/ProductDetail/index';
 import ShoppingCart from '../pages/ShoppingCart/index';
-import Home from '../pages/Home/Index';
+import Home from '../pages/Home';
 import 'antd/dist/antd.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

@@ -9,6 +9,8 @@
         vertical-align: 0 !important;
     }
     .navbarHeader {
+        // position: fixed;
+        // top: 0;
         height: 65px !important;
         padding: 0 25px;
         color: #ff6d3b;
@@ -25,7 +27,7 @@
             width: 0;
             z-index: -1;
             position: absolute;
-
+            right: -100px;
             .borderSearch {
                 width: 0;
                 transition: width 500ms ease-in-out;
@@ -48,7 +50,7 @@
                 transition: width 500ms ease-in-out;
                 transform: translateX(-100%);
                 input {
-                    width: 100%;
+                    width: 85%;
                     border: none;
                     box-shadow: none;
                     font-size: 18px;
@@ -64,6 +66,90 @@
                     outline: none;
                 }
             }
+            // input{
+            //     width: 200px;
+            //     float: right;
+            //     transition: width 500ms;
+            //     position: relative;
+            //
+            // }
+        }
+    }
+    .navbarHeaderFixed {
+        position: fixed;
+        top: 0;
+    }
+    .seachSuggest-wraper {
+        padding: 0 25px;
+        border-top: 1.5px solid #ff6d3b;
+        .contentHeader {
+            height: 33vh;
+            margin-top: 10px;
+            :nth-child(1) {
+                font-size: 20px;
+                color: #111e6c;
+                font-weight: 500;
+                img {
+                    margin-right: 3.5%;
+                }
+            }
+            .suggestionContent {
+                padding-top: 30px;
+                width: 100%;
+                height: 100%;
+                overflow: scroll !important;
+                .suggestion {
+                    color: #111e6c;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+            }
+        }
+        .topListProduct {
+            margin-top: 2.5%;
+            .title {
+                font-size: 26px;
+                color: #111e6c;
+                font-weight: bold;
+            }
+            .bestSellerInfo-wrapper {
+                width: 100%;
+                height: auto;
+                padding: 5px 0px;
+                margin-top: 10px;
+                .col-6 {
+                    padding: 7px 2.5px;
+                    float: left;
+                    height: auto;
+                }
+                .imageProduct {
+                    // background-color: #7fc4fd;
+                    height: auto;
+                    border-radius: 10px;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .titleProduct {
+                    font-size: 14px;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-top: 4px;
+                    color: #111e6c;
+                }
+                .button {
+                    margin-top: 3px;
+                    span {
+                        border: 1px solid #ff6d3b;
+                        width: 91px;
+                        padding: 3px 0px;
+                        font-size: 13px;
+                        text-align: center;
+                        border-radius: 5px;
+                        color: #ff6d3b;
+                    }
+                }
+            }
         }
     }
     .filter {
@@ -76,7 +162,8 @@
             border-radius: 5px;
             .iconFilter {
                 img {
-                    filter: invert(48%) sepia(72%) saturate(1366%) hue-rotate(335deg) brightness(105%) contrast(106%);
+                    filter: invert(48%) sepia(72%) saturate(1366%)
+                        hue-rotate(335deg) brightness(105%) contrast(106%);
                 }
             }
             .titleFilter {
@@ -135,40 +222,6 @@
                 font-size: 13px;
                 text-align: center;
                 border-radius: 5px;
-            }
-        }
-    }
-    .seachSuggest-wraper{
-        padding: 0 25px;
-        border-top: 1.5px solid #ff6d3b;
-        .contentHeader{
-            height: 33vh;
-            margin-top: 10px;
-            :nth-child(1){
-                font-size: 20px;
-                color: #111e6c;
-                font-weight: 500;
-                img{
-                    margin-right: 3.5%;
-                }
-            }
-            .suggestionContent {
-                width: 100%;
-                height: 100%;
-                overflow: scroll !important;
-                .suggestion{
-                    color: #111e6c;
-                    font-size: 16px;
-                    font-weight: 500;
-                }
-            }
-        }
-        .topListProduct{
-            margin-top: 2.5%;
-            .title{
-                font-size: 26px;
-                color: #111e6c;
-                font-weight: bold;
             }
         }
     }
