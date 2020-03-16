@@ -177,6 +177,8 @@ export default class App extends Component {
               <Home
                 history={history}
                 visibilityProducts={visibilityProducts}
+                designsInfo={designsInfo}
+                topListInfo={topListInfo}
               />
             } />
             <Route path="/shopping-store" exact component={() =>

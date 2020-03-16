@@ -11,8 +11,7 @@ class NavbarHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSideBarOpen: false,
-            isSearchOpen: false
+            isSideBarOpen: false
         }
     }
 
@@ -44,38 +43,27 @@ class NavbarHeader extends Component {
     }
 
     searchChangeIcon = () => {
-        const { isSearchOpen } = this.state;
+        const { isSearchOpen } = this.props;
         if (isSearchOpen) {
             return (
-                <Icon type='close' onClick={this.searchOpen} style={{ fontSize: '18px' }} />
+                <Icon type='close' onClick={this.props.searchOpen} style={{ fontSize: '18px' }} />
             )
         } else {
             return (
-                <Icon type='search' onClick={this.searchOpen} />
+                <Icon type='search' onClick={this.props.searchOpen} />
             )
         }
     }
 
-
-    searchOpen = () => {
-        let { isSearchOpen } = this.state;
-        isSearchOpen = !isSearchOpen;
-        this.setState({
-            isSearchOpen
-        })
-    }
-
     render() {
-        const { isSideBarOpen, isSearchOpen } = this.state;
+        const { isSideBarOpen } = this.state;
+        const { isSearchOpen } = this.props;
         let backdrop;
         if (this.state.isSideBarOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler} />
         }
-        const changeClassname = classNames(
-            ' navbarHeader d-flex flex-row align-items-center justify-content-between'
-        )
         return (
-            <div className={changeClassname}>
+            <div className={classNames('navbarHeader d-flex flex-row align-items-center justify-content-between', { navbarHeaderFixed: !isSearchOpen })}>
                 <div className='iconMenu' >
                     {this.sideBarIconChange()}
                 </div>
@@ -86,7 +74,11 @@ class NavbarHeader extends Component {
 
                 </div>
                 <SideBar show={isSideBarOpen} changeSideBarState={this.sideBarOpen} history={this.props.history} />
-                <Search isSearchOpen={isSearchOpen} history={this.props.history} />
+                <Search
+                    isSearchOpen={isSearchOpen}
+                    history={this.props.history}
+                    onSearchSuggestionUpdate={this.props.onSearchSuggestionUpdate}
+                />
                 {backdrop}
             </div>
         );

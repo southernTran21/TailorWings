@@ -44,7 +44,7 @@ class NavbarHeader extends Component {
     }
 
     searchChangeIcon = () => {
-        const { isSearchOpen } = this.state;
+        const { isSearchOpen } = this.props;
         if (isSearchOpen) {
             return (
                 <Icon type='close' onClick={this.props.searchOpen} style={{ fontSize: '18px' }} />

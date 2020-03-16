@@ -152,9 +152,10 @@ class ShoppingStoreMobile extends Component {
             renderProducts,
             isFirstLoaded,
             currentActiveCategory,
-            suggestedSearch
+            suggestedSearch,
+            isSearchOpen
         } = this.state;
-        if (isSideBarOpen) {
+        if (isSearchOpen) {
             return (
                 <div>
                     <SearchSuggest

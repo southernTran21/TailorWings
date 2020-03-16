@@ -22,6 +22,20 @@ export default class Home extends Component {
     }
 
     render() {
+        let { visibilityProducts, designsInfo, topListInfo } = this.props;
+        let bestSellerList = [];
+        topListInfo.forEach((list) => {
+            if ( list.id === 'bestseller' ) {
+                console.log('list.designs', list.designs)
+                bestSellerList = list.designs;
+            }
+        })
+        if (visibilityProducts && designsInfo) {
+            visibilityProducts.forEach((product) => {
+                let relatedDesignInfo = designsInfo.find(design => design.id === product.designID) || { name: '' };
+                product.name = relatedDesignInfo.name;
+            })
+        }
         return (
             <Media queries={{ small: { maxWidth: 1024 } }}>
                 {matches =>
@@ -30,6 +44,7 @@ export default class Home extends Component {
                             <HomeMobile
                                 history={this.props.history}
                                 visibilityProducts={this.props.visibilityProducts}
+                                bestSellerList={bestSellerList}
                             />
                         ) :
                         (

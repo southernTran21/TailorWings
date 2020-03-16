@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import IconLineChart from "../../../assets/iconImage/line-chart.svg";
 import { removePunctuation } from "../../../services/CommonFunction";
 import { Link } from 'react-router-dom'
+import './home.scss'
 
 const defaultSuggestion = [
     'Đầm suông Lucasta',
@@ -70,6 +71,7 @@ export default class SearchSuggest extends Component {
     }
 
     render() {
+        console.log('this.props.bestSellerInfo', this.props.bestSellerInfo)
         return (
             <div className="seachSuggest-wraper">
                 <div className="contentHeader d-flex flex-column">
@@ -84,6 +86,38 @@ export default class SearchSuggest extends Component {
                 <div className="topListProduct">
                     <div className="title">
                         <span>Sản Phẩm Ưa Chuộng</span>
+                    </div>
+                    <div className='bestSellerInfo-wrapper'>
+                    {
+                        this.props.bestSellerInfo.map((product, index) => {
+                            return (
+                                <div key={index} className='col-6'>
+                                    <Link
+                                        style={{
+                                            height: 'fit-content',
+                                            width: 'fit-content',
+                                            border: 'none',
+                                            textDecoration: 'none',
+                                        }}
+                                        to={{
+                                            pathname: '/product-detail',
+                                            search: `?id=${product.designID}&pattern=${product.fabricID}`
+                                        }}
+                                    >
+                                        <div className='imageProduct'>
+                                            <img src={product.image[0]} alt={product.productID} ></img>
+                                        </div>
+                                    </Link>
+                                    <div className='titleProduct'>
+                                        <span>{product.name}</span>
+                                    </div>
+                                    <div className='button d-flex flex-row justify-content-center'>
+                                        <span>{`${product.totalSupportedFabric} mẫu vải`}</span>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                     </div>
                 </div>
             </div>
