@@ -19,7 +19,14 @@ class ShoppingStore extends Component {
         logPageView()
     }
     render() {
-        let { history, designsInfo, visibilityProducts, categoriesInfo, localStorageUpdatedHandling } = this.props;
+        let { history, designsInfo, visibilityProducts, categoriesInfo, topListInfo, localStorageUpdatedHandling } = this.props;
+        let bestSellerList = [];
+        topListInfo.forEach((list) => {
+            if ( list.id === 'bestseller' ) {
+                console.log('list.designs', list.designs)
+                bestSellerList = list.designs;
+            }
+        })
         if (visibilityProducts && designsInfo) {
             visibilityProducts.forEach((product) => {
                 let relatedDesignInfo = designsInfo.find(design => design.id === product.designID) || { name: '' };
@@ -35,6 +42,7 @@ class ShoppingStore extends Component {
                                 history={history}
                                 visibilityProducts={visibilityProducts}
                                 categoriesInfo={categoriesInfo}
+                                bestSellerList={bestSellerList}
                                 localStorageUpdatedHandling={localStorageUpdatedHandling}
                             />
                         ) :

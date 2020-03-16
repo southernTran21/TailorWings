@@ -187,6 +187,7 @@ export default class App extends Component {
                 visibilityProducts={visibilityProducts}
                 designsInfo={designsInfo}
                 categoriesInfo={categoriesInfo}
+                topListInfo={topListInfo}
                 localStorageUpdatedHandling={this._localStorageUpdatedHandling}
               />
             } />

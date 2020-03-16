@@ -19,7 +19,8 @@ class ShoppingStoreMobile extends Component {
             currentActiveCategory: "all",
             isSideBarOpen: false,
             isSearchOpen: false,
-            suggestedSearch: []
+            suggestedSearch: [],
+            bestSellerInfo: []
         };
     }
 
@@ -36,13 +37,16 @@ class ShoppingStoreMobile extends Component {
     }
 
     initialDataUpdateHandling = location => {
-        let { visibilityProducts } = this.props;
-        let { renderProducts } = this.state;
+        let { visibilityProducts, bestSellerList } = this.props;
+        let { renderProducts, bestSellerInfo } = this.state;
         visibilityProducts.forEach(product => {
             let totalSupportedFabric = visibilityProducts.filter(
                 visibleProduct => visibleProduct.designID === product.designID
             ).length;
             product.totalSupportedFabric = totalSupportedFabric;
+            if (bestSellerList.includes(product.designID) && product.default === true) {
+                bestSellerInfo.push(product);
+            }
         });
         visibilityProducts = visibilityProducts.concat(visibilityProducts);
         visibilityProducts = visibilityProducts.concat(visibilityProducts);
@@ -71,7 +75,8 @@ class ShoppingStoreMobile extends Component {
             this.setState({
                 renderProducts,
                 isFirstLoaded: false,
-                currentActiveCategory: categoryID
+                currentActiveCategory: categoryID,
+                bestSellerInfo
             });
         }
     };
@@ -148,12 +153,12 @@ class ShoppingStoreMobile extends Component {
 
     onBodyContentChange = () => {
         const {
-            isSideBarOpen,
             renderProducts,
             isFirstLoaded,
             currentActiveCategory,
             suggestedSearch,
-            isSearchOpen
+            isSearchOpen,
+            bestSellerInfo
         } = this.state;
         if (isSearchOpen) {
             return (
@@ -161,6 +166,7 @@ class ShoppingStoreMobile extends Component {
                     <SearchSuggest
                         suggestedSearch={suggestedSearch}
                         searchOpen={this.searchOpen}
+                        bestSellerInfo={bestSellerInfo}
                     />
                 </div>
             );
