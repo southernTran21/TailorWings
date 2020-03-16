@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Media from 'react-media';
-import HomeWeb from './HomeWeb/Index';
+import HomeWeb from './HomeWeb/index';
 import HomeMobile from './HomeMobile/Index';
 import ReactGA from 'react-ga'
 
