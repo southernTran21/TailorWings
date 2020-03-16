@@ -39,6 +39,7 @@ class ShoppingStoreMobile extends Component {
     initialDataUpdateHandling = location => {
         let { visibilityProducts, bestSellerList } = this.props;
         let { renderProducts, bestSellerInfo } = this.state;
+        bestSellerInfo = [];
         visibilityProducts.forEach(product => {
             let totalSupportedFabric = visibilityProducts.filter(
                 visibleProduct => visibleProduct.designID === product.designID
@@ -75,6 +76,7 @@ class ShoppingStoreMobile extends Component {
                             product.catID === categoryID
                     ) || [];
             }
+            console.log('bestSellerInfo', bestSellerInfo)
             this.setState({
                 renderProducts,
                 isFirstLoaded: false,
@@ -195,10 +197,8 @@ class ShoppingStoreMobile extends Component {
     };
 
     render() {
-        const {
-            isSearchOpen
-        } = this.state;
-        console.log('this.state.isSideBarOpen', this.state.isSideBarOpen)
+        const { isSearchOpen } = this.state;
+        console.log("this.state.isSideBarOpen", this.state.isSideBarOpen);
         return (
             <div
                 className={classNames("pageShoppingStore", {
