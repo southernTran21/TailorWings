@@ -39,6 +39,18 @@ export default class CarouselCollection extends Component {
                         </div>
                     </div>
                 </div>
+                <div className='content-carousel'>
+                    <div className='title'>Đầm Dạo Phố</div>
+                    <div className='image'>
+                        <div className='popupImage'>27 thiết kế</div>
+                        <img src={BST2} />
+                    </div>
+                    <div className='end-carousel'>
+                        <div className='button d-flex align-items-center justify-content-center'>
+                            <span className='titleButton'>Chọn mẫu</span>
+                        </div>
+                    </div>
+                </div>
             </Swiper>
         );
     };

@@ -24,7 +24,7 @@ class FabricSwiper extends Component {
                     {
                         fabricList.map((fabric, index) => {
                             return (
-                                <div className='' key={index}>
+                                <div key={index}>
                                     <img className='image' src={fabric.image[0]} />
                                 </div>
                             )

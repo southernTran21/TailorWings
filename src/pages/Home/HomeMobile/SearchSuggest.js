@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import IconLineChart from "../../../assets/iconImage/line-chart.svg";
 import { removePunctuation } from "../../../services/CommonFunction";
-import { Link } from 'react-router-dom'
-import './home.scss'
+import { Link } from "react-router-dom";
+import "./home.scss";
+import classNames from "classnames";
 
 const defaultSuggestion = [
-    'Đầm suông Lucasta',
-    'Đầm xòe Kelsey',
-    'X005',
-    'Đầm xòe Dilys',
-    'Đầm ôm Donna'
-]
+    "Đầm suông Lucasta",
+    "Đầm xòe Kelsey",
+    "X005",
+    "Đầm xòe Dilys",
+    "Đầm ôm Donna"
+];
 
 export default class SearchSuggest extends Component {
     suggestionContent = () => {
         const { suggestedSearch } = this.props;
-        let content = '';
+        let content = "";
         if (suggestedSearch.length > 0) {
             content = suggestedSearch.map((suggestion, index) => {
                 let name = suggestion;
@@ -26,21 +27,21 @@ export default class SearchSuggest extends Component {
                     <Link
                         key={index}
                         style={{
-                            border: 'none',
-                            textDecoration: 'none',
-                            width: 'fit-content',
-                            height: 'fit-content'
+                            border: "none",
+                            textDecoration: "none",
+                            width: "fit-content",
+                            height: "fit-content"
                         }}
                         to={{
-                            pathname: '/shopping-store',
+                            pathname: "/shopping-store",
                             search: `?cat=all&search=${url}`
                         }}
                         onClick={() => this.props.searchOpen()}
                     >
-                        <span className='suggestion'>{name}</span>
+                        <span className="suggestion">{name}</span>
                     </Link>
-                )
-            })
+                );
+            });
         } else {
             content = defaultSuggestion.map((suggestion, index) => {
                 let name = suggestion;
@@ -51,27 +52,27 @@ export default class SearchSuggest extends Component {
                     <Link
                         key={index}
                         style={{
-                            border: 'none',
-                            textDecoration: 'none',
-                            width: 'fit-content',
-                            height: 'fit-content'
+                            border: "none",
+                            textDecoration: "none",
+                            width: "fit-content",
+                            height: "fit-content"
                         }}
                         to={{
-                            pathname: '/shopping-store',
+                            pathname: "/shopping-store",
                             search: `?cat=all&search=${url}`
                         }}
                         onClick={() => this.props.searchOpen()}
                     >
-                        <span className='suggestion'>{name}</span>
+                        <span className="suggestion">{name}</span>
                     </Link>
-                )
-            })
+                );
+            });
         }
         return content;
-    }
+    };
 
     render() {
-        console.log('this.props.bestSellerInfo', this.props.bestSellerInfo)
+        const { suggestedSearch } = this.props;
         return (
             <div className="seachSuggest-wraper">
                 <div className="contentHeader d-flex flex-column">
@@ -79,7 +80,15 @@ export default class SearchSuggest extends Component {
                         <img src={IconLineChart} />
                         Đặt may nhiều
                     </span>
-                    <div className='suggestionContent d-flex flex-column justify-content-around'>
+                    <div
+                        className={classNames(
+                            "suggestionContent d-flex flex-column justify-content-around",
+                            {
+                                suggestionContentPaddingTop:
+                                    suggestedSearch.length > 0
+                            }
+                        )}
+                    >
                         {this.suggestionContent()}
                     </div>
                 </div>
@@ -87,37 +96,38 @@ export default class SearchSuggest extends Component {
                     <div className="title">
                         <span>Sản Phẩm Ưa Chuộng</span>
                     </div>
-                    <div className='bestSellerInfo-wrapper'>
-                    {
-                        this.props.bestSellerInfo.map((product, index) => {
+                    <div className="bestSellerInfo-wrapper">
+                        {this.props.bestSellerInfo.map((product, index) => {
                             return (
-                                <div key={index} className='col-6'>
+                                <div key={index} className="col-6">
                                     <Link
                                         style={{
-                                            height: 'fit-content',
-                                            width: 'fit-content',
-                                            border: 'none',
-                                            textDecoration: 'none',
+                                            height: "fit-content",
+                                            width: "fit-content",
+                                            border: "none",
+                                            textDecoration: "none"
                                         }}
                                         to={{
-                                            pathname: '/product-detail',
+                                            pathname: "/product-detail",
                                             search: `?id=${product.designID}&pattern=${product.fabricID}`
                                         }}
                                     >
-                                        <div className='imageProduct'>
-                                            <img src={product.image[0]} alt={product.productID} ></img>
+                                        <div className="imageProduct">
+                                            <img
+                                                src={product.image[0]}
+                                                alt={product.productID}
+                                            ></img>
                                         </div>
                                     </Link>
-                                    <div className='titleProduct'>
+                                    <div className="titleProduct">
                                         <span>{product.name}</span>
                                     </div>
-                                    <div className='button d-flex flex-row justify-content-center'>
+                                    <div className="button d-flex flex-row justify-content-center">
                                         <span>{`${product.totalSupportedFabric} mẫu vải`}</span>
                                     </div>
                                 </div>
-                            )
-                        })
-                    }
+                            );
+                        })}
                     </div>
                 </div>
             </div>

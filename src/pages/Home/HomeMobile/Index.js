@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import './home.scss';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import "./home.scss";
+import classNames from "classnames";
 import { removePunctuation } from "../../../services/CommonFunction";
 // import component
-import NavbarHeader from './Header/NavbarHeader';
-import Body from './Body';
-import Footer from './Footer';
-import SearchSuggest from './SearchSuggest';
+import NavbarHeader from "./Header/NavbarHeader";
+import Body from "./Body";
+import Footer from "./Footer";
+import SearchSuggest from "./SearchSuggest";
 
 export default class HomeMobile extends Component {
     constructor(props) {
@@ -16,44 +16,48 @@ export default class HomeMobile extends Component {
             isSearchOpen: false,
             suggestedSearch: [],
             bestSellerInfo: []
-        }
+        };
     }
 
     componentDidMount() {
         const { bestSellerList, visibilityProducts } = this.props;
         let { bestSellerInfo } = this.state;
-        visibilityProducts.forEach((product) => {
-            if ( bestSellerList.includes(product.designID) && product.default === true ) {
+        visibilityProducts.forEach(product => {
+            if (
+                bestSellerList.includes(product.designID) &&
+                product.default === true
+            ) {
                 bestSellerInfo.push(product);
             }
-        })
-        bestSellerInfo.forEach((info) => {
-            let totalSupportedFabric = visibilityProducts.filter((product) => product.designID === info.designID).length;
+        });
+        bestSellerInfo.forEach(info => {
+            let totalSupportedFabric = visibilityProducts.filter(
+                product => product.designID === info.designID
+            ).length;
             info.totalSupportedFabric = totalSupportedFabric;
-        })
+        });
         this.setState({
             bestSellerInfo
-        })
+        });
     }
-    
 
     searchOpen = () => {
         let { isSearchOpen } = this.state;
         isSearchOpen = !isSearchOpen;
         this.setState({
             isSearchOpen
-        })
-    }
+        });
+    };
 
-    sideBarChange = (isOpen) => {
+    sideBarChange = isOpen => {
         if (isOpen != null) {
             this.setState({
                 isSideBarOpen: isOpen
-            })
+            });
         }
-    }
+    };
 
-    onSearchSuggestionUpdate = (searchInput) => {
+    onSearchSuggestionUpdate = searchInput => {
         let { visibilityProducts } = this.props;
         let { suggestedSearch } = this.state;
         visibilityProducts = visibilityProducts.concat(visibilityProducts);
@@ -66,17 +70,17 @@ export default class HomeMobile extends Component {
             searchInput = removePunctuation(searchInput);
             return name.search(searchInput) !== -1;
         });
-        if (searchInput !== '') {
-            suggestedSearch = visibilityProducts.map((product) => {
+        if (searchInput !== "") {
+            suggestedSearch = visibilityProducts.map(product => {
                 return product.name;
-            })
+            });
         } else {
-            suggestedSearch = []
+            suggestedSearch = [];
         }
         this.setState({
             suggestedSearch
-        })
-    }
+        });
+    };
 
     onBodyContentChange = () => {
         const { isSearchOpen, suggestedSearch, bestSellerInfo } = this.state;
@@ -89,23 +93,28 @@ export default class HomeMobile extends Component {
                         bestSellerInfo={bestSellerInfo}
                     />
                 </div>
-            )
+            );
         } else {
             return (
                 <React.Fragment>
                     <Body
                         visibilityProducts={this.props.visibilityProducts}
+                        bestSellerInfo={bestSellerInfo}
                     />
                     <Footer />
                 </React.Fragment>
-            )
+            );
         }
-    }
+    };
 
     render() {
         const { isSearchOpen } = this.state;
         return (
-            <div className={classNames('pageHomeMobile', { pageFix: this.state.isSideBarOpen })}>
+            <div
+                className={classNames("pageHomeMobile", {
+                    pageFix: this.state.isSideBarOpen
+                })}
+            >
                 <NavbarHeader
                     history={this.props.history}
                     isSearchOpen={isSearchOpen}
@@ -113,7 +122,7 @@ export default class HomeMobile extends Component {
                     searchOpen={this.searchOpen}
                     onSearchSuggestionUpdate={this.onSearchSuggestionUpdate}
                 />
-                { this.onBodyContentChange() }
+                {this.onBodyContentChange()}
             </div>
         );
     }

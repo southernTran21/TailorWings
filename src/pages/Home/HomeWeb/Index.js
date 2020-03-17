@@ -175,7 +175,7 @@ export default class HomeWeb extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="numberStep d-flex flex-lg-row justify-content-center align-items-center">
+                    <div className="numberStep d-flex justify-content-between align-items-center">
                         <div className="number">1</div>
                         <hr />
                         <div className="number">2</div>
