@@ -69,20 +69,89 @@ class ShoppingStoreMobile extends Component {
                     );
                 }
             } else {
-                renderProducts =
-                    visibilityProducts.filter(
-                        product =>
-                            product.default === true &&
-                            product.catID === categoryID
-                    ) || [];
+                renderProducts = this.filterRenderProducts(
+                    visibilityProducts,
+                    categoryID
+                );
             }
-            console.log('bestSellerInfo', bestSellerInfo)
             this.setState({
                 renderProducts,
                 isFirstLoaded: false,
                 currentActiveCategory: categoryID,
                 bestSellerInfo
             });
+        }
+    };
+
+    filterRenderProducts = (visibilityProducts, categoryID) => {
+        let renderProducts = [];
+        if (visibilityProducts.length > 0) {
+            switch (categoryID) {
+                case "damom":
+                    renderProducts =
+                        visibilityProducts.filter(
+                            product =>
+                                product.catID === categoryID &&
+                                product.default === true
+                        ) || [];
+                    break;
+                case "damxoe":
+                    renderProducts =
+                        visibilityProducts.filter(
+                            product =>
+                                product.catID === categoryID &&
+                                product.default === true
+                        ) || [];
+                    break;
+                case "damsuong":
+                    renderProducts =
+                        visibilityProducts.filter(
+                            product =>
+                                product.catID === categoryID &&
+                                product.default === true
+                        ) || [];
+                    break;
+                case "damdutiec":
+                    renderProducts = this.filterProductsInCollection(
+                        visibilityProducts,
+                        categoryID
+                    );
+                    break;
+                case "damcongso":
+                    renderProducts = this.filterProductsInCollection(
+                        visibilityProducts,
+                        categoryID
+                    );
+                    break;
+                case "damdaopho":
+                    renderProducts = this.filterProductsInCollection(
+                        visibilityProducts,
+                        categoryID
+                    );
+                    console.log("renderProducts", renderProducts);
+                    break;
+                default:
+                    break;
+            }
+        }
+        return renderProducts;
+    };
+
+    filterProductsInCollection = (visibilityProducts, collectionID) => {
+        const { collectionsInfo } = this.props;
+        if (collectionsInfo.length > 0) {
+            let currentCollection = collectionsInfo.filter(
+                collection => collection.id === collectionID
+            )[0];
+            let productsInCollection = [];
+            visibilityProducts.forEach(product => {
+                if (currentCollection.products.includes(product.productID)) {
+                    productsInCollection.push(product);
+                }
+            });
+            return productsInCollection;
+        } else {
+            return [];
         }
     };
 
@@ -113,8 +182,8 @@ class ShoppingStoreMobile extends Component {
     searchOpen = () => {
         let { isSearchOpen } = this.state;
         isSearchOpen = !isSearchOpen;
-        // this.sideBarChange(isSearchOpen);
         this.setState({
+            isFirstLoaded: false,
             isSearchOpen
         });
     };
@@ -198,7 +267,6 @@ class ShoppingStoreMobile extends Component {
 
     render() {
         const { isSearchOpen } = this.state;
-        console.log("this.state.isSideBarOpen", this.state.isSideBarOpen);
         return (
             <div
                 className={classNames("pageShoppingStore", {

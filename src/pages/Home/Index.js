@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Media from 'react-media';
-import HomeWeb from './HomeWeb';
+import HomeWeb from './HomeWeb/Index';
 import HomeMobile from './HomeMobile';
 import ReactGA from 'react-ga'
 
@@ -22,7 +22,8 @@ export default class Home extends Component {
     }
 
     render() {
-        let { visibilityProducts, designsInfo, topListInfo } = this.props;
+        let { visibilityProducts, designsInfo, topListInfo, collectionsInfo } = this.props;
+        console.log('collectionsInfo', collectionsInfo)
         let bestSellerList = [];
         topListInfo.forEach((list) => {
             if ( list.id === 'bestseller' ) {
@@ -45,6 +46,7 @@ export default class Home extends Component {
                                 history={this.props.history}
                                 visibilityProducts={this.props.visibilityProducts}
                                 bestSellerList={bestSellerList}
+                                collectionsInfo={collectionsInfo}
                             />
                         ) :
                         (

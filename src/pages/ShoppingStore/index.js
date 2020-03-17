@@ -19,11 +19,10 @@ class ShoppingStore extends Component {
         logPageView()
     }
     render() {
-        let { history, designsInfo, visibilityProducts, categoriesInfo, topListInfo, localStorageUpdatedHandling } = this.props;
+        let { history, designsInfo, visibilityProducts, categoriesInfo, topListInfo, collectionsInfo, localStorageUpdatedHandling } = this.props;
         let bestSellerList = [];
         topListInfo.forEach((list) => {
             if ( list.id === 'bestseller' ) {
-                console.log('list.designs', list.designs)
                 bestSellerList = list.designs;
             }
         })
@@ -43,6 +42,7 @@ class ShoppingStore extends Component {
                                 visibilityProducts={visibilityProducts}
                                 categoriesInfo={categoriesInfo}
                                 bestSellerList={bestSellerList}
+                                collectionsInfo={collectionsInfo}
                                 localStorageUpdatedHandling={localStorageUpdatedHandling}
                             />
                         ) :

@@ -254,19 +254,15 @@ class FabricSelection extends Component {
             }
             productSelectedState[0] = true;
             swiper.slideTo(swiper.activeIndex);
+            console.log('swiper.activeIndex', swiper.activeIndex)
             this.setState({
+                currentProductIndex: swiper.activeIndex,
                 productSelectedState,
                 renderProducts,
                 productSliderIndex: 0,
                 price: renderProducts[0].price
             })
         }
-    }
-
-    onSwiperClicked = () => {
-        this.setState({
-            currentProductIndex: this.state.swiper.clickedIndex
-        })
     }
 
     onFinishButtonClicked = () => {

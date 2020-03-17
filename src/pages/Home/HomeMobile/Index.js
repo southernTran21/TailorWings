@@ -100,6 +100,7 @@ export default class HomeMobile extends Component {
                     <Body
                         visibilityProducts={this.props.visibilityProducts}
                         bestSellerInfo={bestSellerInfo}
+                        collectionsInfo={this.props.collectionsInfo}
                     />
                     <Footer />
                 </React.Fragment>

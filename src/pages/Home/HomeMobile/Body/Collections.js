@@ -12,7 +12,7 @@ class Collections extends Component {
                         Aenean in nisl in ex varius luctus.
                     </span>
                 </div>
-                <CarouselCollection />
+                <CarouselCollection collectionsInfo={this.props.collectionsInfo} />
                 <hr />
             </div>
         );

@@ -1,62 +1,61 @@
-import React, { Component } from 'react';
-import Swiper from 'react-id-swiper';
+import React, { Component } from "react";
+import Swiper from "react-id-swiper";
+import { Link } from "react-router-dom";
+import { Icon } from "antd";
 
-import { Icon } from 'antd';
-
-import BST1 from '../../../../assets/imageHomePage/imageBST.jpg';
-import BST2 from '../../../../assets/imageHomePage/Prairie Pijama.jpg';
+import BST1 from "../../../../assets/imageHomePage/imageBST.jpg";
+import BST2 from "../../../../assets/imageHomePage/Prairie Pijama.jpg";
 
 export default class CarouselCollection extends Component {
     AutoSlidesPerView = () => {
+        let { collectionsInfo } = this.props;
         const params = {
-            slidesPerView: 'auto',
+            slidesPerView: "auto",
             spaceBetween: 20,
             loop: true
         };
-        return (
+        if (collectionsInfo == null) {
+            collectionsInfo = [];
+        }
+        return collectionsInfo.length > 0 ? (
             <Swiper {...params}>
-                <div className='content-carousel'>
-                    <div className='title'>Đầm Dạo Phố</div>
-                    <div className='image'>
-                        <div className='popupImage'>27 thiết kế</div>
-                        <img src={BST1} />
-                    </div>
-                    <div className='end-carousel'>
-                        <div className='button d-flex align-items-center justify-content-center'>
-                            <span className='titleButton'>Chọn mẫu</span>
+                {collectionsInfo.map((collection, index) => {
+                    return (
+                        <div key={index} className="content-carousel">
+                            <div className="title">{collection.name}</div>
+                            <div className="image">
+                                <div className="popupImage">{`${collection.products.length} thiết kế`}</div>
+                                <img src={BST1} />
+                            </div>
+                            <div className="end-carousel">
+                                <Link
+                                    style={{
+                                        width: "100%",
+                                        height: "100%"
+                                    }}
+                                    to={{
+                                        pathname: "/shopping-store",
+                                        search: `?cat=${collection.id}&search=`
+                                    }}
+                                >
+                                    <div className="button d-flex align-items-center justify-content-center">
+                                        <span className="titleButton">
+                                            Chọn mẫu
+                                        </span>
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className='content-carousel'>
-                    <div className='title'>Đầm Dạo Phố</div>
-                    <div className='image'>
-                        <div className='popupImage'>27 thiết kế</div>
-                        <img src={BST2} />
-                    </div>
-                    <div className='end-carousel'>
-                        <div className='button d-flex align-items-center justify-content-center'>
-                            <span className='titleButton'>Chọn mẫu</span>
-                        </div>
-                    </div>
-                </div>
-                <div className='content-carousel'>
-                    <div className='title'>Đầm Dạo Phố</div>
-                    <div className='image'>
-                        <div className='popupImage'>27 thiết kế</div>
-                        <img src={BST2} />
-                    </div>
-                    <div className='end-carousel'>
-                        <div className='button d-flex align-items-center justify-content-center'>
-                            <span className='titleButton'>Chọn mẫu</span>
-                        </div>
-                    </div>
-                </div>
+                    );
+                })}
             </Swiper>
+        ) : (
+            ""
         );
     };
     render() {
         return (
-            <div className='carousel-wraper'>{this.AutoSlidesPerView()}</div>
+            <div className="carousel-wraper">{this.AutoSlidesPerView()}</div>
         );
     }
 }

@@ -18,7 +18,7 @@ class Body extends Component {
                 <Categories
                     visibilityProducts={this.props.visibilityProducts}
                 />
-                <Collections />
+                <Collections collectionsInfo={this.props.collectionsInfo} />
                 <AboutTailorWings />
                 <Counterpart />
                 <Passion />

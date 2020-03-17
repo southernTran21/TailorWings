@@ -22,7 +22,6 @@ import ReactPixel from 'react-facebook-pixel';
 export const history = createBrowserHistory();
 
 const initGA = () => {
-  console.log('initGA');
   ReactGA.initialize('UA-159143322-1')
 }
 
@@ -148,8 +147,6 @@ export default class App extends Component {
       collectionsInfo,
       topListInfo
     } = this.state;
-    console.log('collectionsInfo', collectionsInfo);
-    console.log('topListInfo', topListInfo)
     return (
       <React.Fragment>
         <Router history={history}>
@@ -179,6 +176,7 @@ export default class App extends Component {
                 visibilityProducts={visibilityProducts}
                 designsInfo={designsInfo}
                 topListInfo={topListInfo}
+                collectionsInfo={collectionsInfo}
               />
             } />
             <Route path="/shopping-store" exact component={() =>
@@ -188,6 +186,7 @@ export default class App extends Component {
                 designsInfo={designsInfo}
                 categoriesInfo={categoriesInfo}
                 topListInfo={topListInfo}
+                collectionsInfo={collectionsInfo}
                 localStorageUpdatedHandling={this._localStorageUpdatedHandling}
               />
             } />

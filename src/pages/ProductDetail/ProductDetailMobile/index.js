@@ -38,6 +38,8 @@ class ProductDetailMobile extends Component {
                 totalProductsOnCart,
                 isNewProductAdded: nextProps.isNewProductAdded
             }
+        } else {
+            return null
         }
     }
 
@@ -46,12 +48,14 @@ class ProductDetailMobile extends Component {
         const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
         const { selectionStep, currentSelectedProduct, currentFabricInfo, totalProductsOnCart } = this.state;
         let designID = window.location.search.match(/id=(.*)&\b/)[1];
+        let fabricID = window.location.search.match(/pattern=(.*)\b/)[1];
         let currentDesignInfo = designsInfo.find((design) => {
             return design.id === designID;
         }) || { description: 'none' }
         let productList = visibilityProducts.filter((product) => {
             return product.designID === designID;
         })
+        productList = this.swapProductPosition( productList, fabricID );
         let fabricList = [];
         productList.forEach((product) => {
             let fabric = fabricsInfo.find((fabric) => {
@@ -98,6 +102,16 @@ class ProductDetailMobile extends Component {
                 break;
         }
         return renderComponents;
+    }
+
+    swapProductPosition = ( productList, fabricID) => {
+        let currentSelectedProductIndex = productList.findIndex(product => product.fabricID === fabricID);
+        if ( currentSelectedProductIndex > 0 ) {
+            let temp = {...productList[0]};
+            productList[0] = productList[currentSelectedProductIndex];
+            productList[currentSelectedProductIndex] = temp;
+        }
+        return productList;
     }
 
     onContentChange = (selectionStep) => {
