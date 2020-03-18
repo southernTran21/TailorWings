@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Icon, notification } from 'antd';
-import { CheckOutForm } from './CheckOutForm';
+import CheckOutForm from './CheckOutForm';
 import { connect } from 'react-redux';
 import './CheckOutModal.scss';
 import { addDocument } from './../../../services/Fundamental';

@@ -1,65 +1,35 @@
-form {
-  .ant-form-item-label {
-    width: 20% !important;
-    height: fit-content !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    padding: 0px !important;
-    label {
-      margin: 0px !important;
-      width: 100%;
+.checkOutForm {
+    font-family: 'Be Vietnam', sans-serif;
+    width: 100%;
+    padding: 0 5%;
+    .title{
+        font-weight: bold;
+        padding: 1vh 0;
     }
-  }
-  .ant-form-item-control-wrapper {
-    width: 75%;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: start !important;
-    .ant-form-item-control {
-      width: 100% !important;
+    .ant-input:focus{
+        border-color: #ff6d3b;
+        box-shadow: 0 0 0 2px #ff6d3b40;
+        background-color: white;
     }
-  }
-  .checkOutButton {
-    .ant-form-item-control-wrapper {
-      .ant-form-item-control {
-        width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
-      width: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
+    .ant-input:hover{
+        border-color: #ff6d3b;
     }
-  }
-}
-
-@media (max-width: 575px) {
-  form {
-    .ant-form-item-label {
-      width: 25% !important;
-      height: 40px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: flex-end !important;
-      padding: 0px !important;
-      label {
-        margin: 0px !important;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-      }
+    .ant-input{
+        background-color: rgba(231, 231, 231, 0.692);
+        border: none;
     }
-    .ant-form-item-control-wrapper {
-      width: 70%;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: start !important;
-      .ant-form-item-control {
-        width: 100% !important;
-      }
+    :nth-child(1),:nth-child(2),:nth-child(3),:nth-child(4){
+        ::placeholder{
+            color: rgb(167, 167, 167);
+        }
     }
-  }
+    .button{
+        background-color: #ff6d3b;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        padding: 8px;
+        border-radius: 10px;
+        margin-top: 5vw;
+    }
 }

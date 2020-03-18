@@ -8,6 +8,8 @@ import NavBar from "./navbarPage";
 import Selection from "./Selection";
 import BodyScale from "./BodyScale";
 
+import imageSizeSelection from "../../../../assets/imageSizeSelection/size S.svg";
+
 export default class SizeSelection extends Component {
     onSizeUpdated = size => {
         this.props.onSizeUpdated(size);
@@ -78,7 +80,8 @@ export default class SizeSelection extends Component {
                             </div>
                         </div>
                         <div className="imgProduct">
-                            <span
+                            <img src={imageSizeSelection} alt=""/>
+                            {/* <span
                                 style={{
                                     height: "100%",
                                     width: "100%",
@@ -87,7 +90,7 @@ export default class SizeSelection extends Component {
                                 }}
                             >
                                 {currentSelectedProduct.size}
-                            </span>
+                            </span> */}
                         </div>
                         <Selection
                             currentSelectedProduct={currentSelectedProduct}

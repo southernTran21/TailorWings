@@ -47,9 +47,12 @@
                 }
             }
             .imgProduct {
-                width: 50vw;
-                height: 69vw;
-                background: rgba(127, 196, 253, 1);
+                width: 70vw;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                }
             }
             .sizeSelection {
                 width: 100%;
