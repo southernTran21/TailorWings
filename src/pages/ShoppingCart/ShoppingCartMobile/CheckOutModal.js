@@ -3,8 +3,8 @@ import { Modal, Icon, notification } from 'antd';
 import { CheckOutForm } from './CheckOutForm';
 import { connect } from 'react-redux';
 import './CheckOutModal.scss';
-import { addDocument } from './../../services/Fundamental';
-import * as actions from '../../actions/index';
+import { addDocument } from './../../../services/Fundamental';
+import * as actions from '../../../actions/index';
 import uniqid from 'uniqid';
 
 const PRODUCT_DETAIL_FORM = {

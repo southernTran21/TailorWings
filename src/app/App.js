@@ -55,8 +55,6 @@ export default class App extends Component {
       topListInfo: [],
       localStorageUpdated: false
     };
-    // this._scrollToTop = this._scrollToTop.bind(this);
-    // this._scrollStep = this._scrollStep.bind(this);
   }
 
   componentDidMount() {
