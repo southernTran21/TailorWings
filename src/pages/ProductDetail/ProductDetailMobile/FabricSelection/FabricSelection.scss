@@ -4,14 +4,18 @@
     vertical-align: 0;
   }
   .navbarHeader {
-    background-color: rgb(244, 122, 33);
+    background-color: #fff4e3;
     height: 51px;
-    color: white;
+    color: #111e6c;
     padding: 0 5%;
     font-size: 18px;
     font-weight: bold;
+    .iconBack{
+      color: rgb(244, 122, 33);
+    }
     .iconShoppingCart {
       font-size: 23px;
+      color:  rgb(244, 122, 33);
     }
     .ant-badge-count {
       min-height: 10px;
@@ -32,7 +36,7 @@
       padding-top: 12px;
       .title {
         font-size: 12px;
-        color: blue;
+        color: #111e6c;
         line-height: 30px;
         white-space: nowrap;
       }
@@ -184,7 +188,7 @@
     margin-top: 1vh;
     .title {
       font-size: 20px;
-      color: blue;
+      color: #111e6c;
       line-height: 30px;
       white-space: nowrap;
       text-transform: uppercase;
@@ -194,11 +198,15 @@
     }
     .button {
       padding: 10px 0;
-      background-color: rgb(244, 122, 33);
+      background-color: #ff6d3b;
       color: white;
       border-radius: 5px;
       font-size: 18px;
       margin-top: 2vh;
+      i{
+        vertical-align: 0;
+        margin-left: 23px;
+      }
     }
   }
 }
