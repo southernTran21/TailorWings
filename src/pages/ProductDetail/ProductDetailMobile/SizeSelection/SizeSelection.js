@@ -8,11 +8,58 @@ import NavBar from "./navbarPage";
 import Selection from "./Selection";
 import BodyScale from "./BodyScale";
 
-import imageSizeSelection from "../../../../assets/imageSizeSelection/size S.svg";
+import XS from "../../../../assets/imageSizeSelection/size XS.svg";
+import S from "../../../../assets/imageSizeSelection/size S.svg";
+import M from "../../../../assets/imageSizeSelection/size M.svg";
+import L from "../../../../assets/imageSizeSelection/size L.svg";
+import XL from "../../../../assets/imageSizeSelection/size XL.svg";
+import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
+
+const sizeImages = [
+    {
+        id: "XS",
+        image: XS
+    },
+    {
+        id: "S",
+        image: S
+    },
+    {
+        id: "M",
+        image: M
+    },
+    {
+        id: "L",
+        image: L
+    },
+    {
+        id: "XL",
+        image: XL
+    },
+    {
+        id: "XXL",
+        image: XXL
+    }
+];
 
 export default class SizeSelection extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            sizeImage: {
+                id: "XS",
+                image: XS
+            }
+        };
+    }
+
     onSizeUpdated = size => {
+        let { sizeImage } = this.state;
+        sizeImage = sizeImages.filter(image => image.id === size)[0];
         this.props.onSizeUpdated(size);
+        this.setState({
+            sizeImage
+        })
     };
 
     onBodyMetricUpdated = bodyMetric => {
@@ -21,7 +68,6 @@ export default class SizeSelection extends Component {
 
     onConfirmButtonClicked = () => {
         const { currentSelectedProduct } = this.props;
-        console.log("currentSelectedProduct", currentSelectedProduct);
         let isSizeSelected = currentSelectedProduct.size != null;
         let isAllMetricFill = !currentSelectedProduct.bodyMetric.includes("");
         let isAllMetricEmpty = currentSelectedProduct.bodyMetric.every(
@@ -60,6 +106,7 @@ export default class SizeSelection extends Component {
 
     render() {
         const { currentSelectedProduct } = this.props;
+        const { sizeImage } = this.state;
         return (
             <div className="pageSizeSelection">
                 <NavBar
@@ -80,17 +127,7 @@ export default class SizeSelection extends Component {
                             </div>
                         </div>
                         <div className="imgProduct">
-                            <img src={imageSizeSelection} alt=""/>
-                            {/* <span
-                                style={{
-                                    height: "100%",
-                                    width: "100%",
-                                    textAlign: "center",
-                                    fontSize: "60"
-                                }}
-                            >
-                                {currentSelectedProduct.size}
-                            </span> */}
+                            <img src={sizeImage.image} alt={sizeImage.id} />
                         </div>
                         <Selection
                             currentSelectedProduct={currentSelectedProduct}
