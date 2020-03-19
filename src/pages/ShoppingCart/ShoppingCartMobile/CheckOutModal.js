@@ -105,7 +105,7 @@ class CheckOutModal extends Component {
 
 
     render() {
-        const { visible, order, loading } = this.state;
+        const { visible, loading } = this.state;
         return (
             <div>
                 <span onClick={this.showModal}> Thanh toán
@@ -121,7 +121,7 @@ class CheckOutModal extends Component {
                     footer={[
                     ]}
                 >
-                    <CheckOutForm order={order} uploadNewOrder={this.uploadNewOrder} loading={loading} />
+                    <CheckOutForm uploadNewOrder={this.uploadNewOrder} loading={loading} />
                 </Modal>
             </div>
         );

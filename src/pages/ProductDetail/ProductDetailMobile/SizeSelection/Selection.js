@@ -25,7 +25,6 @@ export default class Selection extends Component {
         }
     }
     onSizeSelected = (e) => {
-        console.log('e.target.name', e.target.name)
         if (e.target.name != null) {
             let { activeStatus } = this.state;
             activeStatus.fill(false);
