@@ -43,19 +43,18 @@
             .showImgSlide {
                 .swiper-slide-active {
                     .image {
-                        background-color: #ff6d3b;
-                        width: 70px;
-                        height: 70px;
-                        margin-right: 14px;
+                        width: 18.66vw !important;
+                        height: 18.66vw !important;
                         border: #ff6d3b;
                         border-style: solid;
                     }
                 }
+                .swiper-slide{
+                    margin-right: 1.06vw !important;
+                }
                 .image {
-                    background-color: #ff6d3b;
-                    width: 70px;
-                    height: 70px;
-                    margin-right: 14px;
+                    width: 18.66vw !important;
+                    height: 18.66vw !important;
                 }
             }
         }

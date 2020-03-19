@@ -47,11 +47,16 @@
                 padding: 5px !important;
             }
             .image {
-                background-color: #fc9d4e;
-                width: 100%;
-                height: 150px;
+                width: 40vw;
+                height: 40vw;
                 border-radius: 5px;
                 object-fit: cover;
+                padding: 0.37vh 0.66vw;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                }
             }
         }
     }
@@ -91,6 +96,7 @@
             background: #fff4e3;
             color: #ff6d3b;
             padding: 7px 10px;
+            border-radius: 12px;
             span {
                 font-size: 13px;
                 margin-right: 10px;

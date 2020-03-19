@@ -11,7 +11,7 @@ class FabricSwiper extends Component {
                 : 5;
         const params = {
             slidesPerView: renderedSlideNumber,
-            spaceBetween: 20,
+            spaceBetween: 0,
             loop: false,
             slideToClickedSlide: true,
             on: {
