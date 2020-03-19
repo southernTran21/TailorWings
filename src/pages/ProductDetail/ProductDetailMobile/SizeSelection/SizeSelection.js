@@ -67,7 +67,7 @@ export default class SizeSelection extends Component {
                     totalProductsOnCart={this.props.totalProductsOnCart}
                 />
                 <div className="bodyPage d-flex flex-column justify-content-between">
-                    <div className="infProduct d-flex flex-column align-items-center justify-content-around">
+                    <div className="infProduct d-flex flex-column align-items-center">
                         <div className="title__infProduct">
                             <div className="nameProduct">
                                 <span>ĐẦM CÔNG CHÚA</span>

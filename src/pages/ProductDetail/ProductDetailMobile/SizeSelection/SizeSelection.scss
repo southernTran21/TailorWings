@@ -6,7 +6,7 @@
     }
     .navbarHeader {
         background-color: #fff4e3;
-        height: 55px;
+        height: 7.49vh;
         font-size: 18px;
         font-weight: bold;
         padding: 0 5%;
@@ -27,10 +27,9 @@
     }
     .bodyPage {
         padding: 0 5%;
-        height: 88vh;
         .infProduct {
-            height: 75vh;
             .title__infProduct {
+                margin-top: 1.64vh;
                 .nameProduct {
                     font-weight: bold;
                     font-size: 18px;
@@ -48,6 +47,7 @@
             }
             .imgProduct {
                 width: 70vw;
+                margin-top: 2.84vh;
                 img{
                     width: 100%;
                     height: 100%;
@@ -56,12 +56,11 @@
             }
             .sizeSelection {
                 width: 100%;
+                margin-top: 3.74vh;
                 .col-2 {
                     padding: 0 6px !important;
                 }
                 .tilteSize {
-                    // width: 100%;
-                    // height: 100%;
                     color: #ff6d3b;
                     font-size: 14px;
                     background: #fff4e3;
@@ -80,14 +79,15 @@
                 }
             }
             .scaleBody {
-                height: 14vw;
                 .title__scaleBody {
                     font-size: 14px;
                     text-align: center;
                     font-weight: 500;
                     line-height: 1.4;
+                    margin-top: 2.69vh;
                 }
                 .inputScale {
+                    margin-top: 1.34vh;
                     .col-4 {
                         padding: 0 7.5px;
                     }
@@ -117,6 +117,8 @@
             background: #ff6d3b;
             color: white;
             font-weight: bold;
+            margin-top: 3.64vh;
+            margin-bottom: 1vh;
             cursor: pointer;
             font-size: 16px;
             border-radius: 7px;
