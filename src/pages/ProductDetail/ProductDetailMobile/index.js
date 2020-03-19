@@ -74,6 +74,7 @@ class ProductDetailMobile extends Component {
                     currentSelectedProduct={currentSelectedProduct}
                     onContentChange={(step) => this.onContentChange(step)}
                     onSelectedProductUpdating={(currentSelectedProduct) => this.onSelectedProductUpdating(currentSelectedProduct)}
+                    history={this.props.history}
                 />
                 break;
             case 'size':
