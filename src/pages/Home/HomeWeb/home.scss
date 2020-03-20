@@ -272,7 +272,7 @@
             border-radius: 20px;
         }
     }
-    .striking_wrapper {
+    .categories_wrapper {
         margin-top: 3.61vh;
         padding: 0 5.41vw;
         .col-5,
@@ -289,7 +289,7 @@
         .col-7 {
             padding-right: 0.41vw;
         }
-        .strikingfirst {
+        .categoriesfirst {
             height: 64.81vh;
             background-color: #fff4e3;
             border-radius: 25px;
@@ -325,7 +325,7 @@
                 }
             }
         }
-        .strikingSecond {
+        .categoriesSecond {
             height: 31.66vh;
             background-color: #fff4e3;
             border-radius: 25px;
@@ -379,7 +379,7 @@
             }
         }
     }
-    .weYour {
+    .introduction {
         padding: 12.31vh;
         span {
             color: #ff6d3b;
@@ -460,7 +460,7 @@
             }
         }
     }
-    .topList{
+    .strikingProducts{
         height: 101.85vh;
         background-color: #fff4e3;
         margin-top: 9.44vh;
@@ -470,6 +470,47 @@
             color: #111e6c;
             font-weight: bold;
             font-size: 32px;    
+        }
+        .carousel-wraper {
+            margin-top: 4.72vh;
+            .swiper-slide {
+                width: fit-content !important;
+            }
+            .content-carousel {
+                margin: 0 7px;
+                .image {
+                    width: 21.66vw;
+                    height: 55.55vh;
+                    border-radius: 7px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .end-carousel {
+                    .title {
+                        font-size: 20px;
+                        margin-bottom: 7px;
+                        margin-top: 1.85vh;
+                    }
+                    .button {
+                        border: 1px solid #ff6d3b;
+                        margin: 0 42px;
+                        border-radius: 7px;
+                        .titleButton {
+                            font-size: 14px;
+                            color: #ff6d3b;
+                        }
+                        .col-6 {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .button{
+            margin-top: 7.59vh;
         }
     }
     .weGive{

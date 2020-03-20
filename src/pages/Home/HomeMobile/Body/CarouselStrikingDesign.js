@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Swiper from "react-id-swiper";
 import { Icon } from "antd";
 
+updated
 export default class CarouselStrikingDesign extends Component {
     bestSellerContent = () => {
         const { bestSellerInfo } = this.props;
