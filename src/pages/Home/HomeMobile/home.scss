@@ -425,10 +425,16 @@
                 :nth-child(1) {
                     font-size: 24px;
                     font-weight: bold;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
                 }
                 :nth-child(2) {
                     font-size: 13px;
                     margin-top: 5px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
                 }
             }
             .fourBenefit-wraper {

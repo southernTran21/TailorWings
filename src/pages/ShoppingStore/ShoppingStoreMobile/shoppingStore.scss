@@ -23,11 +23,11 @@
         i {
             font-size: 25px;
         }
-        .search-wraper {
+        .search-wrapper {
             width: 0;
             z-index: -1;
             position: absolute;
-            right: -100px;
+            right: 50;
             .borderSearch {
                 width: 0;
                 transition: width 500ms ease-in-out;

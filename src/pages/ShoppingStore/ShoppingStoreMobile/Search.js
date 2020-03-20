@@ -27,7 +27,7 @@ export default class Search extends Component {
         const changeClassNames = classNames(
             "d-flex flex-row align-content-center",
             {
-                "search-wraper": !isSearchOpen,
+                "search-wrapper": !isSearchOpen,
                 searchOpen: isSearchOpen
             }
         );

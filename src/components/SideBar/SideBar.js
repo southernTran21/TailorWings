@@ -31,7 +31,7 @@ export default class SideBar extends Component {
                                 search: "?cat=all&search="
                             }}
                         >
-                            <span>Hàng mới</span>
+                            <span>Hàng Mới</span>
                         </Link>
                         <Link
                             to={{
