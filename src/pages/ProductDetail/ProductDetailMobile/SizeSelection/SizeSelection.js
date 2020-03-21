@@ -8,6 +8,7 @@ import NavBar from "./navbarPage";
 import Selection from "./Selection";
 import BodyScale from "./BodyScale";
 
+import empty from "../../../../assets/imageSizeSelection/Asset 9.svg";
 import XS from "../../../../assets/imageSizeSelection/size XS.svg";
 import S from "../../../../assets/imageSizeSelection/size S.svg";
 import M from "../../../../assets/imageSizeSelection/size M.svg";
@@ -47,8 +48,8 @@ export default class SizeSelection extends Component {
         super(props);
         this.state = {
             sizeImage: {
-                id: "XS",
-                image: XS
+                id: "empty",
+                image: empty
             }
         };
     }

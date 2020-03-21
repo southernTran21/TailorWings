@@ -3,7 +3,6 @@ import IconLineChart from "../../../assets/iconImage/line-chart.svg";
 import { removePunctuation } from "../../../services/CommonFunction";
 import { Link } from "react-router-dom";
 import "./shoppingStore.scss";
-import classNames from "classnames";
 
 const defaultSuggestion = [
     "Đầm suông Lucasta",
@@ -80,15 +79,7 @@ export default class SearchSuggest extends Component {
                         <img src={IconLineChart} />
                         Đặt may nhiều
                     </span>
-                    <div
-                        className={classNames(
-                            "suggestionContent d-flex flex-column justify-content-around",
-                            {
-                                suggestionContentPaddingTop:
-                                    suggestedSearch.length > 0
-                            }
-                        )}
-                    >
+                    <div className={"suggestionContent d-flex flex-column"}>
                         {this.suggestionContent()}
                     </div>
                 </div>
