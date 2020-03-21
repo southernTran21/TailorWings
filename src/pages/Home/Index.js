@@ -43,6 +43,7 @@ export default class Home extends Component {
                 product.name = relatedDesignInfo.name;
             });
         }
+        console.log('visibilityProducts', visibilityProducts)
         return (
             <Media queries={{ small: { maxWidth: 1024 } }}>
                 {matches =>

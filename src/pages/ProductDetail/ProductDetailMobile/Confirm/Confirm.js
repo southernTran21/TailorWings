@@ -10,7 +10,7 @@ import ChangeSize from "./ChangeSize";
 import Quantity from "./Quantity";
 
 // import libs ant design
-import { Icon } from "antd";
+import { Icon, Modal } from "antd";
 
 class Confirm extends Component {
     addToCart = () => {
@@ -28,6 +28,19 @@ class Confirm extends Component {
             );
         }
     };
+
+    onDescriptionClicked = () => {
+        Modal.info({
+            title: "Mô tả thiết kế & vải",
+            content: (
+                <div>
+                    <p>{this.props.currentDesignInfo.description}</p>
+                </div>
+            )
+            // onOk() { },
+        });
+    };
+
     render() {
         const {
             currentDesignInfo,
@@ -52,6 +65,12 @@ class Confirm extends Component {
                             <div className="nameProduct d-flex flex-column align-items-center justify-content-center">
                                 <span>{currentDesignInfo.name}</span>
                                 <span>{priceModified}</span>
+                                <div className="info d-flex flex-row align-items-center justify-content-center">
+                                    <span onClick={this.onDescriptionClicked}>
+                                        Mô tả thiết kế & vải
+                                    </span>
+                                    <Icon type="info-circle" />
+                                </div>
                             </div>
                         </div>
                         <ShowImage

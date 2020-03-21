@@ -21,13 +21,13 @@ export default class ShowImage extends Component {
                 <div className="row2">
                     <div className="image">
                         <img
-                            src={currentSelectedProduct.image[1]}
+                            src={currentSelectedProduct.image[2]}
                         />
                     </div>
                     <div className='image'>
                         <img
                             style={{ objectFit: "cover" }}
-                            src={currentFabricInfo.image[0]}
+                            src={currentFabricInfo.image[1]}
                         />
                     </div>
                 </div>

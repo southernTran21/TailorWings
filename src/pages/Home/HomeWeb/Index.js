@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import "./home.scss";
-
-import { Input, Menu, Icon, Result } from "antd";
-
 // import component
-import Header from "../HomeWeb/Header/index";
+import Header from "./Header/index";
 import Welcome from "./Body/Welcome";
 import FourSteps from "./Body/FourSteps";
 import Categories from "./Body/Categories";
@@ -33,9 +30,9 @@ export default class HomeWeb extends Component {
             visibleProductsList
         } = this.state;
         const { visibilityProducts, bestSellerList } = this.props;
-        let productsOnCart =
-            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-            totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
+        console.log('visibilityProducts', visibilityProducts)
+        let productsOnCart = JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
             return accumulator + Number(current.quantity);
         }, 0);
         visibilityProducts.forEach(product => {
