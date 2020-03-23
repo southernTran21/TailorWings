@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import "./ShoppingCart.scss";
-import "./Body/body.scss";
-import "./Footer/footer.scss";
 import ReactGA from "react-ga";
 import { notification } from "antd";
 import { connect } from "react-redux";
 import * as actions from "./../../../actions/index";
 //
-import ProductList from "./Body/SelectedProductList";
+import ProductList from "./ProductList";
 import PageHeader from "./PageHeader/PageHeader";
-import CheckOut from "./Footer/CheckOut";
+import CheckOut from "./CheckOut";
 import CustomerInfo from "./Body/CustomerInfo";
 import PaymentConfirm from "./Body/PaymentConfirm";
 import ConfirmInfo from "./Footer/ConfirmInfo";
 import ConfirmPayment from "./Footer/ConfirmPayment";
 
 const initGA = () => {
+    console.log("initGA");
     ReactGA.initialize("UA-159143322-1");
 };
 
@@ -36,26 +35,16 @@ class ShoppingCartMobile extends Component {
             totalProductsOnCart: 0,
             subtotalPrice: 0,
             isCartUpdated: false,
-            paymentStep: "shoppingCart",
-            customerInfo: {
-                name: "",
-                phone: "",
-                address: ""
-            },
-            errorValidate: new Array(3).fill(false),
-            rememberChecked: false
+            paymentStep: "shoppingCart"
         };
     }
 
     componentDidMount() {
         initGA();
         logPageView();
-        let { rememberChecked } = this.state;
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-        let customerInfo =
-            JSON.parse(localStorage.getItem("customerInfo")) ||
-            this.state.customerInfo;
+        console.log("productsOnCart", productsOnCart);
         let totalProductsOnCart = productsOnCart.reduce(
             (accumulator, current) => {
                 return accumulator + current.quantity;
@@ -65,15 +54,10 @@ class ShoppingCartMobile extends Component {
         let subtotalPrice = productsOnCart.reduce((accumulator, current) => {
             return accumulator + current.price * current.quantity;
         }, 0);
-        if (customerInfo.name !== "") {
-            rememberChecked = true;
-        }
         this.setState({
             productsOnCart,
             totalProductsOnCart,
-            subtotalPrice,
-            customerInfo,
-            rememberChecked
+            subtotalPrice
         });
     }
 
@@ -103,7 +87,6 @@ class ShoppingCartMobile extends Component {
         return null;
     }
 
-    // API FOR SHOPPPING CART RENDER
     onQuantityChange = (quantityChanged, index) => {
         let { productsOnCart, subtotalPrice } = this.state;
         productsOnCart[index].quantity = Number(quantityChanged);
@@ -138,62 +121,6 @@ class ShoppingCartMobile extends Component {
             subtotalPrice
         });
     };
-
-    // END API FOR SHOPPPING CART RENDER
-
-    //API FOR CUSTOMER INFO PAGE
-
-    onCustomerInfoUpdate = customerInfo => {
-        if (customerInfo != null) {
-            this.setState({
-                customerInfo
-            });
-        }
-    };
-
-    onCustomerInfoValidate = () => {
-        const { name, phone, address } = this.state.customerInfo;
-        const { rememberChecked, customerInfo } = this.state;
-        let errorValidate = [];
-        let phoneModified = phone.replace(/ /gi, "");
-        errorValidate[0] = name === "" ? true : false;
-        errorValidate[1] =
-            isNaN(phoneModified) ||
-            phone === "" ||
-            phoneModified.split("")[0] != 0
-                ? true
-                : false;
-        errorValidate[2] = address === "" ? true : false;
-        if (!errorValidate.includes(true)) {
-            this.onStepChange("paymentConfirm");
-            if (rememberChecked) {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify(customerInfo)
-                );
-            } else {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify({
-                        name: "",
-                        phone: "",
-                        address: ""
-                    })
-                );
-            }
-        }
-        this.setState({
-            errorValidate
-        });
-    };
-
-    onRememberInfo = e => {
-        this.setState({
-            rememberChecked: e.target.checked
-        });
-    };
-
-    // END API FOR CUSTOMER INFO PAGE
 
     onStepChange = step => {
         this.setState({
@@ -231,42 +158,20 @@ class ShoppingCartMobile extends Component {
             <CheckOut
                 subtotalPrice={subtotalPrice}
                 onStepChange={this.onStepChange}
-                productsOnCart={this.state.productsOnCart}
             />
         );
     };
 
     customerInfoBodyRender = () => {
-        return (
-            <CustomerInfo
-                onStepChange={this.onStepChange}
-                onCustomerInfoUpdate={this.onCustomerInfoUpdate}
-                errorValidate={this.state.errorValidate}
-                customerInfo={this.state.customerInfo}
-                onRememberInfo={this.onRememberInfo}
-                rememberChecked={this.state.rememberChecked}
-            />
-        );
+        return <CustomerInfo onStepChange={this.onStepChange} />;
     };
 
     customerInfoFooterRender = () => {
-        return (
-            <ConfirmInfo
-                onStepChange={this.onStepChange}
-                onCustomerInfoValidate={this.onCustomerInfoValidate}
-            />
-        );
+        return <ConfirmInfo onStepChange={this.onStepChange} />;
     };
 
     paymentConfirmBodyRender = () => {
-        return (
-            <PaymentConfirm
-                onStepChange={this.onStepChange}
-                customerInfo={this.state.customerInfo}
-                productsOnCart={this.state.productsOnCart}
-                subtotalPrice={this.state.subtotalPrice}
-            />
-        );
+        return <PaymentConfirm onStepChange={this.onStepChange} />;
     };
 
     paymentConfirmFooterRender = () => {
@@ -284,7 +189,7 @@ class ShoppingCartMobile extends Component {
                 currentTitle = "Địa chỉ nhận hàng";
                 break;
             case "paymentConfirm":
-                currentTitle = "Xác nhận đơn hàng";
+                currentTitle = "Xác nhận thông tin";
                 break;
             default:
                 break;

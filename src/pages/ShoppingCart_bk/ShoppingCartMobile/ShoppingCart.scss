@@ -1,5 +1,6 @@
 .pageMyCart-wraper {
     font-family: 'Be Vietnam', sans-serif;
+    margin-bottom: 110px;
     height: 100%;
     .anticon {
         vertical-align: 0 !important;
@@ -7,10 +8,9 @@
     .navbarHeader {
         padding: 0 32px;
         width: 100vw;
-        height: 11.24vh;
+        height: 50px;
         background-color: #fff4e3;
         color: #ff6d3b;
-        font-family: "Montserrat", sans-serif;
         // top: 0;
         // position: fixed;
         // z-index: 1;
@@ -22,7 +22,7 @@
         }
         .titleHeader {
             color: #111e6c;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
         }
     }

@@ -1,0 +1,44 @@
+.ant-btn:hover, .ant-btn:focus {
+    color: white !important;
+    background: #ff6d3b !important;
+}
+
+.footerPageConfirmInfo {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5.39vh;
+    font-family: "Montserrat", sans-serif;
+    button {
+        padding: 10px 32px;
+        height: 45px;
+        background: #ff6d3b;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+    }
+}
+.footerPageConfirmPayment{
+    margin-top: 10px;
+    margin-bottom: 46px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 8.8vw;
+    button {
+        padding: 10px 32px;
+        width: 100%;
+        height: 45px;
+        background: #ff6d3b;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+    }
+}

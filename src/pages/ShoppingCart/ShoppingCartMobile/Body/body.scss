@@ -1,0 +1,183 @@
+.bodyPageCustomerInfo {
+    font-family: "Montserrat", sans-serif;
+    .inputInfo {
+        padding: 0 8.8vw;
+        padding-top: 4.49vh;
+        .input {
+            margin-bottom: 25px;
+            span {
+                font-size: 14px;
+                font-weight: 600;
+                color: #111e6c;
+            }
+            input {
+                font-size: 12px;
+                background: #fff4e3;
+                border-radius: 10px;
+                border: none;
+                box-shadow: none;
+                color: #111e6c;
+                margin-top: 10px;
+                height: 40px;
+                padding-left: 19px;
+            }
+            ::placeholder {
+                font-size: 12px;
+                color: rgba(4, 21, 121, 0.6);
+            }
+            .error {
+                color: red;
+                font-family: "Be Vietnam", sans-serif;
+            }
+            .errorUnvisible {
+                display: none;
+            }
+        }
+    }
+    .checkBox {
+        padding: 0 8.8vw;
+        .content {
+            font-weight: bold;
+            font-size: 15px;
+            color: #111e6c;
+        }
+    }
+}
+.bodyPagePaymentConfirm {
+    font-family: "Montserrat", sans-serif;
+    padding: 0 8.8vw;
+    padding-top: 4.49vh;
+    .address {
+        .titleHead {
+            :nth-child(1) {
+                font-weight: bold;
+                font-size: 14px;
+                color: #111e6c;
+            }
+            :nth-child(2) {
+                font-weight: bold;
+                font-size: 10px;
+                color: #ff6d3b;
+            }
+        }
+        .content {
+            background: #fff4e3;
+            color: #111e6c;
+            padding: 18px;
+            border-radius: 5px;
+            margin-top: 8px;
+            :nth-child(1) {
+                font-weight: 600;
+                font-size: 12px;
+            }
+            :nth-child(2) {
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+    }
+    .selectPayment {
+        margin-top: 30px;
+        .titleHead {
+            font-weight: bold;
+            font-size: 14px;
+            color: #111e6c;
+            margin-bottom: 8px;
+        }
+        .content {
+            .selection {
+                background: #fff4e3;
+                border-radius: 5px;
+                height: 44px;
+                padding: 0 19px;
+                font-weight: 600;
+                font-size: 14px;
+                margin-bottom: 5px;
+                span {
+                    color: #111e6c;
+                }
+            }
+        }
+    }
+    .info {
+        margin-top: 25px;
+        .titleHead {
+            :nth-child(1) {
+                font-weight: bold;
+                font-size: 14px;
+                color: #111e6c;
+            }
+            :nth-child(2) {
+                font-weight: bold;
+                font-size: 10px;
+                color: #ff6d3b;
+            }
+        }
+        .content {
+            background: #fff4e3;
+            color: #111e6c;
+            padding: 13px 18px;
+            border-radius: 5px;
+            margin-top: 8px;
+            .infoProduct {
+                padding: 15px 0;
+                .image {
+                    width: 59px;
+                    height: 59px;
+                    background: #ffa45c;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .titleInfoProduct {
+                    margin-left: 13px;
+                    div {
+                        :nth-child(1) {
+                            font-size: 12px;
+                            font-weight: 600;
+                        }
+                        :nth-child(2) {
+                            font-size: 10px;
+                            font-weight: 600;
+                        }
+                    }
+                    :nth-child(2) {
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
+                .quantity {
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .cost {
+        color: #111e6c;
+        margin-top: 21px;
+        :nth-child(1) {
+            font-weight: bold;
+            font-size: 12px;
+        }
+        :nth-child(2) {
+            font-weight: 500;
+            font-size: 14px;
+        }
+    }
+    .total {
+        color: #111e6c;
+        margin-top: 31px;
+        :nth-child(1) {
+            font-weight: bold;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        :nth-child(2) {
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+}

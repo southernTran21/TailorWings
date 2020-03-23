@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import ProductItem from './ProductItem';
 import { notification } from "antd";
 import { connect } from "react-redux";
-import * as actions from "./../../../../actions/index";
+import * as actions from "./../../../actions/index";
 import { Icon, Select } from "antd";
 
 const { Option } = Select;
