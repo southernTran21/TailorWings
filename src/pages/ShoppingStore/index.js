@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Media from 'react-media';
 import ShoppingStoreMobile from './ShoppingStoreMobile';
-import ShoppingStoreWeb from './ShoppingStoreWeb/ShoppingStore';
+import ShoppingStoreWeb from './ShoppingStoreWeb/index';
 import ReactGA from 'react-ga'
 
 const initGA = () => {

@@ -1,0 +1,30 @@
+.filter_wrapper {
+    margin-top: 11.66vh;
+    width: 210px;
+    .collection, .viewPriority {
+        span {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .subTitle {
+            margin-top: 17px;
+            .ant-checkbox-wrapper {
+                margin: 0;
+            }
+            .ant-checkbox + span{
+                padding-left: 13px;
+            }
+            span{
+                font-size: 14px;
+                color: #111E6C;
+                font-weight: 600;
+            }
+            label{
+                margin-bottom: 2vh !important;
+            }
+        }
+    }
+    .viewPriority{
+        margin-top: 4.66vh;
+    }
+}

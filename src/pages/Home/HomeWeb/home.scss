@@ -404,11 +404,11 @@
             span {
                 color: #111e6c;
             }
-            :nth-child(1){
+            :nth-child(1) {
                 font-size: 28px;
                 font-weight: bold;
             }
-            :nth-child(2){
+            :nth-child(2) {
                 padding: 2.77vh 0;
             }
             :nth-child(3) {
@@ -417,29 +417,29 @@
                 font-weight: 600;
             }
         }
-        .selectionCollection{
+        .selectionCollection {
             margin-left: 6.25vw;
-            .selection{
-                .image{
+            .selection {
+                .image {
                     width: 21.66vw;
                     height: 64.81vh;
-                    img{
+                    img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                     }
                 }
-                .title{
+                .title {
                     background-color: white;
                     position: absolute;
                     margin-top: 49.53vh;
                     margin-left: 1.4vw;
                     width: 18.85vw;
                     height: 16.75vh;
-                    span{
+                    span {
                         color: #111e6c;
                     }
-                    :nth-child(1){
+                    :nth-child(1) {
                         width: 7.35vw;
                         height: 7.12vh;
                         font-size: 19px;
@@ -447,11 +447,11 @@
                         font-weight: bold;
                         margin-top: 2.31vh;
                     }
-                    :nth-child(2){
+                    :nth-child(2) {
                         font-size: 12px;
                         font-weight: bold;
                         color: #ff6d3b;
-                        img{
+                        img {
                             width: 1.35vw;
                             margin-top: 0;
                         }
@@ -460,21 +460,38 @@
             }
         }
     }
-    .strikingProducts{
+    .strikingProducts {
         height: 101.85vh;
         background-color: #fff4e3;
         margin-top: 9.44vh;
         border-radius: 25px;
-        .title{
+        .title {
             margin-top: 6.57vh;
             color: #111e6c;
             font-weight: bold;
-            font-size: 32px;    
+            font-size: 32px;
         }
         .carousel-wraper {
             margin-top: 4.72vh;
             .swiper-slide {
                 width: fit-content !important;
+            }
+            .carouselStriking {
+                width: 75vw;
+            }
+            .anticon {
+                vertical-align: 0;
+            }
+            .iconLeft,
+            .iconRight {
+                font-size: 35px;
+                color: #ff6d3b;
+            }
+            .iconLeft {
+                margin-right: 79px;
+            }
+            .iconRight {
+                margin-left: 79px;
             }
             .content-carousel {
                 margin: 0 7px;
@@ -495,56 +512,56 @@
                         margin-top: 1.85vh;
                     }
                     .button {
-                        border: 1px solid #ff6d3b;
-                        margin: 0 42px;
-                        border-radius: 7px;
+                        margin: 0;
                         .titleButton {
                             font-size: 14px;
                             color: #ff6d3b;
-                        }
-                        .col-6 {
-                            padding: 0;
+                            border: 1px solid #ff6d3b;
+                            border-radius: 7px;
+                            width: 129px;
+                            padding: 5px 0;
+                            text-align: center;
                         }
                     }
                 }
             }
         }
-        .button{
+        .button {
             margin-top: 7.59vh;
         }
     }
-    .weGive{
+    .weGive {
         margin: 0 5.41vw;
         margin-top: 4.62vh;
         border-radius: 25px;
         background-color: #ff6d3b;
-        .title{
+        .title {
             color: white;
             margin-top: 7.22vh;
-            :nth-child(1){
+            :nth-child(1) {
                 font-weight: bold;
                 font-size: 32px;
             }
-            :nth-child(2){
+            :nth-child(2) {
                 font-size: 14px;
                 width: 28.5vw;
                 text-align: center;
                 font-weight: bold;
             }
         }
-        .image{
+        .image {
             width: 64.89vw;
             margin-top: 4.62vh;
-            img{
+            img {
                 width: 21.09vw;
                 height: 24.62vh;
                 background-color: #fff4e3;
             }
         }
-        .button{
+        .button {
             margin: 7.22vh 0;
             cursor: pointer;
-            span{
+            span {
                 font-weight: bold;
                 background-color: white;
                 color: #ff6d3b;
@@ -553,29 +570,29 @@
             }
         }
     }
-    .passion{
+    .passion {
         background-color: #fff4e3;
         height: 70.37vh;
         border-radius: 25px;
         margin-top: 5.55vh;
-        .title{
+        .title {
             padding-left: 12.91vw;
             margin-top: 9.72vh;
-            span{
+            span {
                 color: #111e6c;
             }
-            :nth-child(1){
+            :nth-child(1) {
                 font-size: 32px;
                 font-weight: bold;
             }
-            :nth-child(2){
+            :nth-child(2) {
                 font-weight: 14;
                 font-weight: bold;
                 width: 11vw;
                 margin-top: 4.62vh;
             }
         }
-        .image{
+        .image {
             width: 51.66vw;
             height: 60.64vh;
             background-color: #ffa45c;
@@ -584,89 +601,90 @@
             margin-left: 15.83vw;
         }
     }
-    .instagram{
+    .instagram {
         padding: 0 5.2vw;
         margin-top: 6.48vh;
-        .title{
-            img{
+        .title {
+            img {
                 width: 2.18vw;
                 height: 3.88vh;
             }
-            span{
+            span {
                 font-weight: bold;
                 font-size: 32px;
                 color: #111e6c;
             }
         }
-        .crouselImage{
+        .crouselImage {
             margin-top: 2.5vh;
-            .image{
+            .image {
                 width: 21.66vw;
                 height: 49.62vh;
                 background-color: #ffa45c;
             }
         }
     }
-    .footer_wrapper{
+    .footer_wrapper {
         padding: 0 5.2vw;
         height: 53.05vh;
         background-color: #ff6d3b;
         margin-top: 4.16vh;
-        .info{
+        .info {
             padding-top: 12.26vh;
             color: white;
             font-size: 16px;
             font-weight: bold;
-            :nth-child(2){
+            :nth-child(2) {
                 margin: 3.24vh 0;
             }
         }
-        .contact{
+        .contact {
             color: white;
             padding-top: 11.85vh;
             text-align: center;
             font-weight: bold;
             font-size: 16px;
-            .icon{
+            .icon {
                 margin-top: 4.62vh;
-                img{
+                img {
                     height: 5.55vh;
                     width: 3.12vw;
                 }
-                :nth-child(2){
+                :nth-child(2) {
                     margin: 0 2.6vw;
                 }
             }
         }
-        .logo{
+        .logo {
             margin-top: 8.42vh;
-            img{
+            img {
                 width: 6.64vw;
                 height: 23.28vh;
-                filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(309deg) brightness(104%) contrast(101%);
+                filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(309deg)
+                    brightness(104%) contrast(101%);
             }
         }
-        .email{
+        .email {
             color: white;
             margin-top: 11.18vh;
-            .title{
+            .title {
                 font-size: 22px;
                 font-weight: bold;
             }
-            .input{
+            .input {
                 align-items: baseline;
                 margin-top: 4.16vh;
-                .ant-input{
+                .ant-input {
                     background-color: transparent;
                     border: none;
                     border-bottom: 1px solid white;
                     border-radius: 0;
                     box-shadow: none;
                 }
-                ::placeholder{
+                ::placeholder {
                     color: white;
                 }
-                .button{
+                .button {
                     font-size: 8px;
                     font-weight: bold;
                     background-color: white;
@@ -674,11 +692,10 @@
                     width: 6.51vw;
                     height: 3.7vh;
                     border-radius: 40px;
-                    
                 }
             }
         }
-        .endFooter{
+        .endFooter {
             margin-top: 13.47vh;
             color: white;
             opacity: 0.8;

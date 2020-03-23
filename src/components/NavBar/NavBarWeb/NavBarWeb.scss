@@ -1,0 +1,35 @@
+.navbarWeb{
+    height: 14vh;
+    .logoTailorWings{
+        width: 13.68vw;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+    }
+    .Tools{
+        .search, .shoppingCart{
+            :nth-child(2){
+                font-size: 14px;
+                color: #FF6D3B;
+                font-weight: bold;
+            }
+        }
+        .search{
+            margin-right: 2.08vw;
+            :nth-child(1){
+                width: 1.94vw;
+                height: 3.11vh;
+                margin-right: 0.48vw;
+            }
+        }
+        .shoppingCart{
+            :nth-child(1){
+                width: 2.22vw;
+                height: 3.55vh;
+                margin-right: 0.48vw;
+            }
+        }
+    }
+}
