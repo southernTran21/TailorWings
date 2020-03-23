@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Media from 'react-media';
 import ReactGA from 'react-ga';
 import ProductDetailMobile from './ProductDetailMobile';
-import ProductDetailWeb from './ProductDetailWeb/ProductDetail'
+import ProductDetailWeb from './ProductDetailWeb/index'
 
 const initGA = () => {
     console.log('initGA');

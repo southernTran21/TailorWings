@@ -32,7 +32,7 @@
         .left {
             .image {
                 width: 32vw;
-                height: 25.48vh;
+                height: auto;
                 img {
                     width: 100%;
                     height: 100%;
@@ -224,5 +224,22 @@
                 box-shadow: none;
             }
         }
+        .ant-btn:focus {
+            background: #ff6d3b !important;
+            border: none !important;
+            box-shadow: none;
+        }
+    }
+    .ant-btn:focus {
+        background: #fff4e3 !important;
+        border: none !important;
+    }
+
+    .error {
+        color: red;
+        font-family: "Be Vietnam", sans-serif;
+    }
+    .errorUnvisible {
+        display: none;
     }
 }

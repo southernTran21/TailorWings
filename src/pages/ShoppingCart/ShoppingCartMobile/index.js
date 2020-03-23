@@ -217,6 +217,7 @@ class ShoppingCartMobile extends Component {
                     onQuantityChange={this.onQuantityChange}
                     onStepChange={this.onStepChange}
                     index={index}
+                    productsOnCart={productsOnCart}
                 />
             );
         });
