@@ -29,7 +29,7 @@ class ProductList extends Component {
         const { modalVisible } = this.state;
         return (
             <div className="product d-flex flex-row">
-                <div className="col-5">
+                <div className="left">
                     <div className="image">
                         <img src={product.image[0]} alt={product.name} />
                     </div>
@@ -37,30 +37,32 @@ class ProductList extends Component {
                         <Icon type="heart" />
                     </div>
                 </div>
-                <div className="col-7 d-flex flex-column justify-content-between">
-                    <div className="content-wraper">
-                        <div className="iconDelete d-flex flex-row justify-content-end  ">
-                            <Icon
-                                onClick={() =>
-                                    this.props.onProductRemove(index)
-                                }
-                                type="close"
-                            />
-                        </div>
-                        <div className="contentHead d-flex flex-column">
-                            <span>{product.name}</span>
-                            <span>{price}</span>
+                <div className="right d-flex flex-column justify-content-between">
+                    <div className="content-wraper d-flex flex-column justify-content-between">
+                        <div className="d-flex flex-row justify-content-between">
+                            <div className="contentHead d-flex flex-column">
+                                <span>{product.name}</span>
+                                <span>{price}</span>
+                            </div>
+                            <div className="iconDelete">
+                                <Icon
+                                    onClick={() =>
+                                        this.props.onProductRemove(index)
+                                    }
+                                    type="close"
+                                />
+                            </div>
                         </div>
                         <div className="bodyMetric d-flex flex-column">
-                            <span>{`Eo ${product.bodyMetric[0]}`}</span>
-                            <div className="d-flex flex-row justify-content-between">
-                                <span>{`Ngực ${product.bodyMetric[1]}`}</span>
+                            <div className="d-flex flex-row justify-content-between align-items-center">
+                                <span>{`Eo ${product.bodyMetric[0]}`}</span>
                                 <Button
                                     onClick={() => this.onModalVisible(true)}
                                 >
                                     THAY ĐỔI
                                 </Button>
                             </div>
+                            <span>{`Ngực ${product.bodyMetric[1]}`}</span>
                             <div className="d-flex flex-row justify-content-between">
                                 <span>{`Mông ${product.bodyMetric[2]}`}</span>
                                 <span>{`Size ${product.size}`}</span>

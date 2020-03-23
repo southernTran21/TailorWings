@@ -1,5 +1,5 @@
 .pageMyCart-wraper {
-    font-family: 'Be Vietnam', sans-serif;
+    font-family: "Be Vietnam", sans-serif;
     height: 100%;
     .anticon {
         vertical-align: 0 !important;
@@ -29,48 +29,62 @@
     .product {
         margin-top: 25px;
         padding: 0 32px;
-        .col-5,
-        .col-7 {
-            padding: 0;
-        }
-        .col-7 {
-            padding-left: 19px;
-        }
-        .buttonWishList {
-            background-color: #fff4e3;
-            color: #ff6d3b;
-            height: 36px;
-            margin-top: 9px;
-        }
-        .image {
-            width: 100%;
-            height: auto;
-            img {
-                width: 100%;
+        .left {
+            .image {
+                width: 32vw;
+                height: 25.48vh;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                }
             }
-        }
-
-        .content-wraper {
-            color: #111e6c;
-            .iconDelete {
+            .buttonWishList {
+                background-color: #fff4e3;
                 color: #ff6d3b;
+                height: 36px;
+                margin-top: 9px;
             }
-            .contentHead {
-                :nth-child(1) {
-                    font-size: 16px;
-                    font-weight: bold;
+        }
+        .right {
+            width: 100%;
+            padding-left: 4vw;
+            .content-wraper {
+                color: #111e6c;
+                height: 100%;
+                padding-bottom: 1vh;
+                .iconDelete {
+                    color: #ff6d3b;
                 }
-                :nth-child(2) {
-                    font-size: 14px;
-                }
-            }
-            .bodyMetric {
-                font-size: 12px;
-                margin-top: 20px;
-                line-height: 25px;
-                :nth-child(3) {
-                    :nth-child(2) {
+                .contentHead {
+                    :nth-child(1) {
+                        font-size: 12px;
                         font-weight: bold;
+                    }
+                    :nth-child(2) {
+                        font-size: 12px;
+                    }
+                }
+                .bodyMetric {
+                    font-size: 12px;
+                    line-height: 20px;
+                    :nth-child(1) {
+                        button {
+                            color: #ff6d3b;
+                            font-size: 8px;
+                            font-weight: bold;
+                            background: #fff4e3;
+                            height: 18px;
+                            width: 71px;
+                            border: none;
+                            border-radius: 0;
+                        }
+                    }
+
+                    :nth-child(3) {
+                        :nth-child(2) {
+                            font-weight: bold;
+                        }
                     }
                 }
             }
@@ -116,6 +130,98 @@
             border-radius: 8px;
             i {
                 margin-left: 25px;
+            }
+        }
+    }
+}
+.ant-modal-content {
+    font-family: "Montserrat", sans-serif;
+    .ant-modal-header {
+        height: 56px;
+        background-color: #fff4e3;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .ant-modal-title {
+            color: #111e6c;
+            font-weight: bold;
+        }
+    }
+    .ant-modal-close-x{
+        color: #ff6d3b;
+        .anticon{
+            vertical-align: .0;
+        }
+    }
+    .ant-modal-body {
+        .changeSelection_wrapper {
+            width: 100%;
+            color: #111e6c !important;
+            .sizeSelection {
+                width: 100%;
+                .col-2 {
+                    padding: 0 6px !important;
+                }
+                .tilteSize {
+                    color: #ff6d3b;
+                    font-size: 14px;
+                    background: #fff4e3;
+                    padding: 6px 0;
+                    border-radius: 5px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    a {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .actived {
+                    background: #ff6d3b !important;
+                    color: white !important;
+                }
+            }
+            .scaleBody {
+                .title__scaleBody {
+                    font-size: 14px;
+                    text-align: center;
+                    font-weight: 500;
+                    line-height: 1.4;
+                    margin-top: 2.69vh;
+                }
+                .inputScale {
+                    margin-top: 1.34vh;
+                    .col-4 {
+                        padding: 0 7.5px;
+                    }
+                    span {
+                        font-size: 12px;
+                        font-weight: bold;
+                    }
+                    .ant-input {
+                        border: none;
+                        color: #ffa45c !important;
+                        border-radius: 0;
+                        border-left: 1.2px solid #ffa45c;
+                        padding: 2px 11px !important;
+                    }
+                    ::placeholder {
+                        color: #ffa45c !important;
+                    }
+                    .inputBodyScale {
+                        padding-bottom: 3px;
+                        border-bottom: 0.1px solid #ff6d3b;
+                    }
+                }
+            }
+        }
+    }
+    .ant-modal-footer{
+        :nth-child(1){
+            :nth-child(2){
+                background-color: #ff6d3b;
+                border: none;
+                box-shadow: none;
             }
         }
     }
