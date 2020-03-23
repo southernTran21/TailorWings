@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 // import ProductItem from './ProductItem';
-import { notification } from "antd";
+import { notification, Button } from "antd";
 import { connect } from "react-redux";
 import * as actions from "./../../../../actions/index";
 import { Icon, Select } from "antd";
+import UpdateMetricModal from "./UpdateMetricModal";
 
 const { Option } = Select;
 
@@ -12,54 +13,20 @@ class ProductList extends Component {
         super(props);
         this.state = {
             productsOnCart: this.props.productsOnCart || [],
-            totalProductsOnCart: this.props.totalProductsOnCart
+            totalProductsOnCart: this.props.totalProductsOnCart,
+            modalVisible: false
         };
     }
 
-    // static getDerivedStateFromProps(nextProps, prevState) {
-    //     const { productsOnCart, totalProductsOnCart } = nextProps;
-    //     if (Array.isArray(productsOnCart) && totalProductsOnCart > -1) {
-    //         return {
-    //             productsOnCart,
-    //             totalProductsOnCart
-    //         }
-    //     }
-    // }
-
-    // onSizeChange = (sizeChanged, index) => {
-    //     let updatedCart = [...this.state.productsOnCart];
-    //     updatedCart[index].size = sizeChanged;
-    //     this.props.onUpdateCart(updatedCart);
-    //     notification.success({
-    //         message: 'Thay đổi thành công',
-    //         placement: 'bottomRight'
-    //     });
-    // }
-
-    // onQuantityChange = (quantityChanged, index) => {
-    // let updatedCart = [...this.state.productsOnCart];
-    // updatedCart[index].quantity = quantityChanged;
-    // this.props.onUpdateCart(updatedCart);
-    // notification.success({
-    //     message: 'Thay đổi thành công',
-    //     placement: 'bottomRight'
-    // });
-    // this.props.onQuantityChange()
-    // }
-
-    // onProductRemove = (index) => {
-    // let updatedCart = [...this.state.productsOnCart];
-    // let removedItem = updatedCart.splice(index, 1);
-    // this.props.onUpdateCart(updatedCart);
-    // notification.success({
-    //     message: 'Thay đổi thành công',
-    //     placement: 'bottomRight',
-    //     description: `${removedItem[0].name} đã được xóa khỏi giỏ hàng của bạn`
-    // });
-    // }
+    onModalVisible = state => {
+        this.setState({
+            modalVisible: state
+        });
+    };
 
     render() {
         const { product, price, index } = this.props;
+        const { modalVisible } = this.state;
         return (
             <div className="product d-flex flex-row">
                 <div className="col-5">
@@ -86,7 +53,14 @@ class ProductList extends Component {
                         </div>
                         <div className="bodyMetric d-flex flex-column">
                             <span>{`Eo ${product.bodyMetric[0]}`}</span>
-                            <span>{`Ngực ${product.bodyMetric[1]}`}</span>
+                            <div className="d-flex flex-row justify-content-between">
+                                <span>{`Ngực ${product.bodyMetric[1]}`}</span>
+                                <Button
+                                    onClick={() => this.onModalVisible(true)}
+                                >
+                                    THAY ĐỔI
+                                </Button>
+                            </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <span>{`Mông ${product.bodyMetric[2]}`}</span>
                                 <span>{`Size ${product.size}`}</span>
@@ -114,6 +88,10 @@ class ProductList extends Component {
                         </Select>
                     </div>
                 </div>
+                <UpdateMetricModal
+                    modalVisible={modalVisible}
+                    onModalVisible={this.onModalVisible}
+                />
             </div>
         );
     }
