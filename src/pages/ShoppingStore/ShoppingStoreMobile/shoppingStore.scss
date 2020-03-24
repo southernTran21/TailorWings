@@ -174,6 +174,22 @@
                 text-align: center;
             }
         }
+        .iconShoppingCart {
+            font-size: 23px;
+            color: #ff6d3b;
+        }
+        .ant-badge-count {
+            min-height: 10px;
+            min-width: 14px;
+            height: 15px;
+            font-size: 8px;
+            top: -15px;
+        }
+        .ant-badge {
+            p {
+                line-height: 2;
+            }
+        }
     }
     .carousel-wraper {
         padding: 0 25px;

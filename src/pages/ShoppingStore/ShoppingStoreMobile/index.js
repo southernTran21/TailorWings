@@ -246,7 +246,7 @@ class ShoppingStoreMobile extends Component {
         } else {
             return (
                 <React.Fragment>
-                    <Filter />
+                    <Filter totalProductsOnCart={this.props.totalProductsOnCart}/>
                     <SelectionCategory
                         history={this.props.history}
                         categoriesInfo={this.props.categoriesInfo}

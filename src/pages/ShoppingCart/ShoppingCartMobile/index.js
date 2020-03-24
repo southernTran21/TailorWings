@@ -3,9 +3,11 @@ import "./ShoppingCart.scss";
 import "./Body/body.scss";
 import "./Footer/footer.scss";
 import ReactGA from "react-ga";
-import { notification } from "antd";
+import { notification, message } from "antd";
 import { connect } from "react-redux";
 import * as actions from "./../../../actions/index";
+import { addDocument, setDocument } from "./../../../services/Fundamental";
+import uniqid from "uniqid";
 //
 import ProductList from "./Body/SelectedProductList";
 import PageHeader from "./PageHeader/PageHeader";
@@ -24,6 +26,16 @@ const logPageView = () => {
     ReactGA.pageview(window.location.pathname + window.location.search);
 };
 
+const PRODUCT_DETAIL_FORM = {
+    discount: 0,
+    price: 0,
+    productID: "",
+    name: "",
+    bodyMetric: [],
+    size: "",
+    quantity: 0
+};
+
 class ShoppingCartMobile extends Component {
     constructor(props) {
         super(props);
@@ -32,6 +44,7 @@ class ShoppingCartMobile extends Component {
             behavior: "smooth"
         });
         this.state = {
+            // common state
             productsOnCart: [],
             totalProductsOnCart: 0,
             subtotalPrice: 0,
@@ -42,8 +55,12 @@ class ShoppingCartMobile extends Component {
                 phone: "",
                 address: ""
             },
+            // state for customerInfo
             errorValidate: new Array(3).fill(false),
-            rememberChecked: false
+            rememberChecked: false,
+            // state for paymentInfo
+            paymentMethod: "COD",
+            paymentLoading: false
         };
     }
 
@@ -195,6 +212,74 @@ class ShoppingCartMobile extends Component {
 
     // END API FOR CUSTOMER INFO PAGE
 
+    //API FOR PAYMENT INFO PAGE
+
+    onPaymentMethodChange = method => {
+        this.setState({
+            paymentMethod: method
+        });
+    };
+
+    uploadNewOrder = () => {
+        this.setState({
+            paymentLoading: true
+        });
+        const { subtotalPrice, paymentMethod } = this.state;
+        let { name, phone, address } = this.state.customerInfo;
+        let phoneModified = phone.replace(/ /gi, "");
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        let totalPrice = subtotalPrice;
+        let orderDetail = {
+            orderID: uniqid.process(),
+            orderItems: []
+        };
+        productsOnCart.forEach(product => {
+            let productDetail = PRODUCT_DETAIL_FORM;
+            Object.keys(productDetail).forEach(key => {
+                productDetail[key] = product[key] || "";
+            });
+            orderDetail.orderItems.push(productDetail);
+        });
+        let customer = {
+            adddress: address || "",
+            cusName: name || "",
+            customerID: uniqid.time() || "",
+            id: "",
+            lock: false,
+            note: "",
+            phone: phoneModified || "",
+            promo: 0,
+            rate: "",
+            wishList: []
+        };
+        let order = {
+            customerID: customer.customerID,
+            doneDate: "",
+            id: "",
+            notes: "",
+            orderDate: "",
+            orderID: orderDetail.orderID,
+            status: "new",
+            total: totalPrice,
+            paymentMethod: paymentMethod
+        };
+        Promise.all([
+            setDocument("customers", customer, customer.phone),
+            addDocument("orders", order),
+            addDocument("orderDetail", orderDetail)
+        ]).then(() => {
+            message.success('Giao dịch thành công!')
+            this.props.onUpdateCart([]);
+            this.onStepChange("shoppingCart");
+            this.setState({
+                paymentLoading: false
+            })
+        });
+    };
+
+    // END API FOR CUSTOMER INFO PAGE
+
     onStepChange = step => {
         this.setState({
             paymentStep: step
@@ -266,12 +351,20 @@ class ShoppingCartMobile extends Component {
                 customerInfo={this.state.customerInfo}
                 productsOnCart={this.state.productsOnCart}
                 subtotalPrice={this.state.subtotalPrice}
+                paymentMethod={this.state.paymentMethod}
+                onPaymentMethodChange={this.onPaymentMethodChange}
             />
         );
     };
 
     paymentConfirmFooterRender = () => {
-        return <ConfirmPayment onStepChange={this.onStepChange} />;
+        return (
+            <ConfirmPayment
+                onStepChange={this.onStepChange}
+                paymentLoading={this.state.paymentLoading}
+                uploadNewOrder={this.uploadNewOrder}
+            />
+        );
     };
 
     onHeaderRenderChange = () => {
