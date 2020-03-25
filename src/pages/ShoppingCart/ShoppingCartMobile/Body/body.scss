@@ -6,7 +6,7 @@
         .input {
             margin-bottom: 25px;
             span {
-                font-size: 14px;
+                font-size: 3.73vw;
                 font-weight: 600;
                 color: #111e6c;
             }
@@ -38,7 +38,7 @@
         padding: 0 8.8vw;
         .content {
             font-weight: bold;
-            font-size: 15px;
+            font-size: 3.73vw;
             color: #111e6c;
         }
     }
@@ -51,12 +51,12 @@
         .titleHead {
             :nth-child(1) {
                 font-weight: bold;
-                font-size: 14px;
+                font-size: 3.73vw;
                 color: #111e6c;
             }
             :nth-child(2) {
                 font-weight: bold;
-                font-size: 10px;
+                font-size: 2.66vw;
                 color: #ff6d3b;
             }
         }
@@ -68,19 +68,19 @@
             margin-top: 8px;
             :nth-child(1) {
                 font-weight: 600;
-                font-size: 12px;
+                font-size: 3.2vw;
             }
             :nth-child(2) {
-                font-size: 12px;
+                font-size: 3.2vw;
                 margin-top: 5px;
             }
         }
     }
     .selectPayment {
-        margin-top: 30px;
+        margin-top: 4.49vw;
         .titleHead {
             font-weight: bold;
-            font-size: 14px;
+            font-size: 3.73vw;
             color: #111e6c;
             margin-bottom: 8px;
         }
@@ -91,25 +91,25 @@
                 height: 44px;
                 padding: 0 19px;
                 font-weight: 600;
-                font-size: 14px;
                 margin-bottom: 5px;
                 span {
                     color: #111e6c;
+                    font-size: 3.74vw;
                 }
             }
         }
     }
     .info {
-        margin-top: 25px;
+        margin-top: 3.74vh;
         .titleHead {
             :nth-child(1) {
                 font-weight: bold;
-                font-size: 14px;
+                font-size: 3.73vw;
                 color: #111e6c;
             }
             :nth-child(2) {
                 font-weight: bold;
-                font-size: 10px;
+                font-size: 2.66vw;
                 color: #ff6d3b;
             }
         }
@@ -135,7 +135,7 @@
                     margin-left: 13px;
                     div {
                         :nth-child(1) {
-                            font-size: 12px;
+                            font-size: 3.2vw;
                             font-weight: 600;
                         }
                         :nth-child(2) {
@@ -144,12 +144,12 @@
                         }
                     }
                     :nth-child(2) {
-                        font-size: 12px;
+                        font-size: 3.2vw;
                         font-weight: 500;
                     }
                 }
                 .quantity {
-                    font-size: 12px;
+                    font-size: 3.2vw;
                     font-weight: 600;
                 }
             }
@@ -160,24 +160,24 @@
         margin-top: 21px;
         :nth-child(1) {
             font-weight: bold;
-            font-size: 12px;
+            font-size: 3.2vw;
         }
         :nth-child(2) {
             font-weight: 500;
-            font-size: 14px;
+            font-size: 3.73vw;
         }
     }
     .total {
         color: #111e6c;
-        margin-top: 31px;
+        margin-top: 1.64vh;
         :nth-child(1) {
             font-weight: bold;
             font-weight: 500;
-            font-size: 18px;
+            font-size: 4.8vw;
         }
         :nth-child(2) {
             font-weight: 600;
-            font-size: 18px;
+            font-size: 4.8vw;
         }
     }
 }

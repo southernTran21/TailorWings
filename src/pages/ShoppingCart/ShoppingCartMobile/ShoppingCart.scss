@@ -1,5 +1,5 @@
 .pageMyCart-wraper {
-    font-family: "Be Vietnam", sans-serif;
+    font-family: "Montserrat", sans-serif;
     height: 100%;
     .anticon {
         vertical-align: 0 !important;
@@ -22,7 +22,7 @@
         }
         .titleHeader {
             color: #111e6c;
-            font-size: 22px;
+            font-size: 5.86vw;
             font-weight: bold;
         }
     }
@@ -58,15 +58,15 @@
                 }
                 .contentHead {
                     :nth-child(1) {
-                        font-size: 12px;
+                        font-size: 3.2vw;
                         font-weight: bold;
                     }
                     :nth-child(2) {
-                        font-size: 12px;
+                        font-size: 3.2vw;
                     }
                 }
                 .bodyMetric {
-                    font-size: 12px;
+                    font-size: 3.2vw;
                     line-height: 20px;
                     :nth-child(1) {
                         button {
@@ -117,7 +117,7 @@
         padding: 0 32px;
         .title {
             color: #111e6c;
-            font-size: 20px;
+            font-size: 5.3vw;
             font-weight: 600;
             margin-top: 10px;
         }
@@ -125,7 +125,7 @@
             height: 45px;
             background-color: #ff6d3b;
             color: white;
-            font-size: 18px;
+            font-size: 4.8vw;
             margin-top: 10px;
             border-radius: 8px;
             i {

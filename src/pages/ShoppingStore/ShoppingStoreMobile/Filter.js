@@ -10,7 +10,6 @@ class Filter extends Component {
                 <div className="collectionFilter d-flex flex-row justify-content-between align-items-center">
                     {/* <div className="divClone"></div> */}
                     <div
-                        style={{ width: "50%" }}
                         className="d-flex flex-row justify-content-start align-items-center"
                     >
                         <div className="titleFilter">Bộ lọc & sắp xếp</div>

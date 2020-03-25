@@ -61,7 +61,6 @@ class Counterpart extends Component {
                 </div>
                 <div className='buttonConect d-flex flex-row justify-content-center align-items-center'>
                     <span>Kết nối ngay</span>
-                    <Icon type='arrow-right' />
                 </div>
             </div>
         );
