@@ -1,0 +1,85 @@
+.pageProductDetailWeb {
+    .pageFabricSelection {
+        margin-top: 30px;
+        .iconBack {
+            margin-right: 24px;
+            color: #ff6d3b;
+            font-weight: bold;
+            i {
+                font-size: 20px;
+            }
+            span {
+                font-size: 14px;
+                margin-top: 3px;
+            }
+        }
+        .productImage {
+            .left {
+                .top {
+                    margin-bottom: 10px;
+                    .image {
+                        width: 28.61vw;
+                        height: 21.77vh;
+                        background-color: #ffa45c;
+                        border-radius: 10px;
+                    }
+                }
+                .bottom {
+                    .image {
+                        width: 28.61vw;
+                        height: 47.11vh;
+                        background-color: #ffa45c;
+                        border-radius: 10px;
+                    }
+                }
+            }
+            .right {
+                margin-left: 20px;
+                .image {
+                    width: 28.8vw;
+                    height: 70vh;
+                    background-color: #ffa45c;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+    .fabricList {
+        width: 22vw;
+        max-height: 51.88vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin-left: 0.83vw;
+        .col-4 {
+            padding: 0 5.5px;
+            float: left;
+            padding-bottom: 11px;
+        }
+        .image {
+            width: 6.52vw;
+            height: 6.52vw;
+            background-color: #ffa45c;
+            border-radius: 10px;
+            margin: 0;
+        }
+    }
+    .price {
+        height: 18.12vh;
+        margin-left: 1.25vw;
+        :nth-child(1) {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        :nth-child(2) {
+            font-size: 22px;
+        }
+        :nth-child(3) {
+            background: #ff6d3b;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            padding: 10px 0;
+            margin-top: 1.66vh;
+        }
+    }
+}
