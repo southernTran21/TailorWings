@@ -18,13 +18,18 @@ class ProductDetailMobile extends Component {
     }
 
     componentDidMount() {
-        let { totalProductsOnCart } = this.state;
+        let { totalProductsOnCart, currentSelectedProduct } = this.state;
         let productsOnCart = JSON.parse(sessionStorage.getItem('productsOnCart')) || [];
+        let size = JSON.parse(localStorage.getItem('size')) || null;
+        let bodyMetric = JSON.parse(localStorage.getItem('bodyMetric')) || new Array(3).fill("");
+        currentSelectedProduct.size = size;
+        currentSelectedProduct.bodyMetric = bodyMetric;
         totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
             return accumulator + Number(current.quantity)
         }, 0);
         this.setState({
-            totalProductsOnCart
+            totalProductsOnCart,
+            currentSelectedProduct
         })
     }
 
@@ -86,6 +91,7 @@ class ProductDetailMobile extends Component {
                     onSelectedProductUpdating={(currentSelectedProduct) => this.onSelectedProductUpdating(currentSelectedProduct)}
                     onSizeUpdated={(size) => this.onSizeUpdated(size)}
                     onBodyMetricUpdated={(bodyMetric) => this.onBodyMetricUpdated(bodyMetric)}
+                    sizeImages={this.props.sizeImages}
                 />
                 break;
             case 'confirm':
@@ -150,7 +156,7 @@ class ProductDetailMobile extends Component {
 
     render() {
         return (
-            <div style={{ height: '100vh', width: '100vw' }}>
+            <div style={{ height: '100vh', width: '100vw', overflow: 'hidden' }}>
                 {this.contentHandling()}
             </div>
         );

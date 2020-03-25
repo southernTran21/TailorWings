@@ -1,11 +1,15 @@
 .pageFabricSelection {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     .anticon {
         vertical-align: 0;
     }
     .navbarHeader {
         background-color: #fff4e3;
         height: 7.49vh;
+        width: 100%;
         color: #111e6c;
         padding: 0 5%;
         font-size: 18px;
@@ -31,6 +35,9 @@
         }
     }
     .contentBody {
+        // test
+        width: 100%;
+        height: 92.51vh;
         padding: 0 5%;
         .header__contentBody {
             padding-top: 12px;

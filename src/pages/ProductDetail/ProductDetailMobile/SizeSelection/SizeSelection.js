@@ -8,63 +8,43 @@ import NavBar from "./navbarPage";
 import Selection from "./Selection";
 import BodyScale from "./BodyScale";
 
-import empty from "../../../../assets/imageSizeSelection/Asset 9.svg";
-import XS from "../../../../assets/imageSizeSelection/size XS.svg";
-import S from "../../../../assets/imageSizeSelection/size S.svg";
-import M from "../../../../assets/imageSizeSelection/size M.svg";
-import L from "../../../../assets/imageSizeSelection/size L.svg";
-import XL from "../../../../assets/imageSizeSelection/size XL.svg";
-import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
-
-const sizeImages = [
-    {
-        id: "XS",
-        image: XS
-    },
-    {
-        id: "S",
-        image: S
-    },
-    {
-        id: "M",
-        image: M
-    },
-    {
-        id: "L",
-        image: L
-    },
-    {
-        id: "XL",
-        image: XL
-    },
-    {
-        id: "XXL",
-        image: XXL
-    }
-];
-
 export default class SizeSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sizeImage: {
-                id: "empty",
-                image: empty
-            }
+            sizeImages: this.props.sizeImages[6],
+            isUpdate: false
         };
     }
 
+    componentDidMount() {
+        const { currentSelectedProduct } = this.props;
+        let { sizeImages } = this.state;
+        console.log('this.props.sizeImages', this.props.sizeImages)
+        sizeImages = this.props.sizeImages.filter(size => currentSelectedProduct.size === size.id)[0];
+        if ( sizeImages != null ) {
+            this.setState({
+                sizeImages
+            })
+        }
+    }
+
     onSizeUpdated = size => {
-        let { sizeImage } = this.state;
-        sizeImage = sizeImages.filter(image => image.id === size)[0];
+        let { sizeImages } = this.props;
+        console.log("sizeImages", sizeImages);
+        sizeImages = sizeImages.filter(image => image.id === size)[0];
         this.props.onSizeUpdated(size);
         this.setState({
-            sizeImage
-        })
+            sizeImages,
+            isUpdate: true
+        });
     };
 
     onBodyMetricUpdated = bodyMetric => {
         this.props.onBodyMetricUpdated(bodyMetric);
+        this.setState({
+            isUpdate: true
+        })
     };
 
     onConfirmButtonClicked = () => {
@@ -81,6 +61,9 @@ export default class SizeSelection extends Component {
         ) {
             this.props.onSelectedProductUpdating(currentSelectedProduct);
             this.props.onContentChange("confirm");
+            if ( this.state.isUpdate ) {
+                this.updateSizeMetricToStorage(currentSelectedProduct);
+            }
             if (isSizeSelected) {
                 ReactGA.event({
                     category: "SizeSelection",
@@ -92,6 +75,12 @@ export default class SizeSelection extends Component {
             message.error("Vui lòng chọn size hoặc cung cấp 3 số đo cơ thể!");
         }
     };
+
+    updateSizeMetricToStorage = (selectedProduct) => {
+        localStorage.setItem('size', JSON.stringify(selectedProduct.size));
+        localStorage.setItem('bodyMetric', JSON.stringify(selectedProduct.bodyMetric));
+    }
+    
 
     onDescriptionClicked = () => {
         Modal.info({
@@ -107,14 +96,14 @@ export default class SizeSelection extends Component {
 
     render() {
         const { currentSelectedProduct } = this.props;
-        const { sizeImage } = this.state;
+        const { sizeImages } = this.state;
         return (
             <div className="pageSizeSelection">
                 <NavBar
                     onContentChange={step => this.props.onContentChange(step)}
                     totalProductsOnCart={this.props.totalProductsOnCart}
                 />
-                <div className="bodyPage d-flex flex-column justify-content-between">
+                <div className="bodyPage d-flex flex-column justify-content-start">
                     <div className="infProduct d-flex flex-column align-items-center">
                         <div className="title__infProduct">
                             <div className="nameProduct">
@@ -128,7 +117,7 @@ export default class SizeSelection extends Component {
                             </div>
                         </div>
                         <div className="imgProduct">
-                            <img src={sizeImage.image} alt={sizeImage.id} />
+                            <img src={sizeImages.image} alt={sizeImages.id} />
                         </div>
                         <Selection
                             currentSelectedProduct={currentSelectedProduct}

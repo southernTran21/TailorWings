@@ -50,7 +50,7 @@ export default class UpdateMetricModal extends Component {
         } else {
             this.setState({
                 errorValidate: true
-            })
+            });
         }
     };
 
@@ -58,14 +58,23 @@ export default class UpdateMetricModal extends Component {
         this.props.onModalVisible(false);
     };
 
-    onSizeSelected = e => {
-        if (e.target.name != null) {
-            this.props.onModalUpdate("size", e.target.name);
+    onSizeSelected = (index, size) => {
+        if (index != null && index > -1) {
+            this.props.onModalUpdate("size", size);
             this.setState({
-                currentSize: e.target.name
+                currentSize: size
             });
         }
     };
+
+    // onSizeSelected = e => {
+    //     if (e.target.name != null) {
+    //         this.props.onModalUpdate("size", e.target.name);
+    //         this.setState({
+    //             currentSize: e.target.name
+    //         });
+    //     }
+    // };
 
     onBodyScaleChange = e => {
         let { currentMetric } = this.state;
@@ -123,17 +132,15 @@ export default class UpdateMetricModal extends Component {
                                         className="col-2 text-center"
                                     >
                                         <div
-                                            className={classNames("tilteSize", {
+                                            id={index}
+                                            onClick={() =>
+                                                this.onSizeSelected(index, size)
+                                            }
+                                            className={classNames("titleSize", {
                                                 actived: activeStatus[index]
                                             })}
                                         >
-                                            <a
-                                                id={index}
-                                                name={size}
-                                                onClick={e =>
-                                                    this.onSizeSelected(e)
-                                                }
-                                            >
+                                            <a id={index} name={size}>
                                                 {size}
                                             </a>
                                         </div>

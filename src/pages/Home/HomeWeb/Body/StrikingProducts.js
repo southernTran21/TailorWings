@@ -6,32 +6,26 @@ import { Icon } from "antd";
 export default class StrikingProducts extends Component {
     bestSellerContent = () => {
         let { bestSellerInfo } = this.props;
-        if (bestSellerInfo.length > 0) {
-            bestSellerInfo = bestSellerInfo.concat(bestSellerInfo);
-            console.log("bestSellerInfo :", bestSellerInfo);
-            return bestSellerInfo.map((product, index) => {
-                return (
-                    <div key={index} className="content-carousel">
-                        <div className="image">
-                            <img src={product.image} atl={product.name} />
+        return bestSellerInfo.map((product, index) => {
+            return (
+                <div key={index} className="content-carousel">
+                    <div className="image">
+                        <img src={product.image} atl={product.name} />
+                    </div>
+                    <div className="end-carousel">
+                        <div className="title d-flex flex-row justify-content-center align-items-center">
+                            {product.name}
                         </div>
-                        <div className="end-carousel">
-                            <div className="title d-flex flex-row justify-content-center align-items-center">
-                                {product.name}
-                            </div>
-                            <div className="button d-flex justify-content-center align-items-center">
-                                <span className="titleButton">
-                                    {/* {product.totalSupportedFabric + " mẫu vãi"} */}
-                                    24 mau vai
-                                </span>
-                            </div>
+                        <div className="button d-flex justify-content-center align-items-center">
+                            <span className="titleButton">
+                                {/* {product.totalSupportedFabric + " mẫu vãi"} */}
+                                24 mau vai
+                            </span>
                         </div>
                     </div>
-                );
-            });
-        } else {
-            return "";
-        }
+                </div>
+            );
+        });
     };
     render() {
         const params = {
@@ -40,6 +34,7 @@ export default class StrikingProducts extends Component {
             centeredSlides: true,
             loop: true
         };
+        const { bestSellerInfo } = this.props;
         return (
             <div className="strikingProducts d-flex flex-column align-items-center fontMontserrat">
                 <div className="title">
@@ -50,7 +45,16 @@ export default class StrikingProducts extends Component {
                         <Icon type="left" />
                     </div>
                     <div className="carouselStriking">
-                        <Swiper {...params} className='d-flex flex-column align-items-center'>{this.bestSellerContent()}</Swiper>
+                        {bestSellerInfo.length > 0 ? (
+                            <Swiper
+                                {...params}
+                                className="d-flex flex-column align-items-center"
+                            >
+                                {this.bestSellerContent()}
+                            </Swiper>
+                        ) : (
+                            ""
+                        )}
                     </div>
                     <div className="iconRight">
                         <Icon type="right" />
