@@ -450,12 +450,14 @@
                         margin-top: 2.31vh;
                     }
                     :nth-child(2) {
-                        font-size: 12px;
-                        font-weight: bold;
-                        color: #ff6d3b;
-                        img {
-                            width: 1.35vw;
-                            margin-top: 0;
+                        a {
+                            font-size: 12px;
+                            font-weight: bold;
+                            color: #ff6d3b;
+                            img {
+                                width: 1.35vw;
+                                margin-top: 0;
+                            }
                         }
                     }
                 }

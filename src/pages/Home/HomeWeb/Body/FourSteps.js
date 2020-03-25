@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from 'react-router-dom'
 import stepOne from "../../.../../../../assets/imageHomePage/step 1.svg";
 import stepTwo from "../../.../../../../assets/imageHomePage/step 2.svg";
 import stepThree from "../../.../../../../assets/imageHomePage/step 3.svg";
@@ -55,9 +55,22 @@ export default class FourSteps extends Component {
                     <hr />
                     <div className="number">4</div>
                 </div>
-                <div className="button d-flex flex-row justify-content-center align-items-center">
-                    <span>ĐẶT MAY NGAY</span>
-                </div>
+                <Link
+                    to={{
+                        pathname: "/shopping-store",
+                        search: "?cat=all&search"
+                    }}
+                    style={{
+                        width: "fit-content",
+                        height: "fit-content",
+                        textDecoration: "none",
+                        border: "none"
+                    }}
+                >
+                    <div className="button d-flex flex-row justify-content-center align-items-center">
+                        <span>ĐẶT MAY NGAY</span>
+                    </div>
+                </Link>
             </div>
         );
     }
