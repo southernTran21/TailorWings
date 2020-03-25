@@ -83,20 +83,6 @@ export default class PersonalInfo extends Component {
                 >
                     <img src={iconAccount} alt="TailorWings-Account" />
                     <span className="fontMontserrat">TÀI KHOẢN</span>
-                    <Modal
-                        style={{ padding: "0px" }}
-                        title="ĐĂNG NHẬP"
-                        visible={this.state.visible}
-                        onCancel={this.handleCancel}
-                        centered
-                        footer={[]}
-                    >
-                        <WrappedLoginForm
-                            history={this.props.history}
-                            closeModal={this.closeModal}
-                            onLoginStatusChanged={this.onLoginStatusChanged}
-                        />
-                    </Modal>
                 </div>
                 <div className="shoppingBadge d-flex justify-content-center align-items-center">
                     <Link
@@ -115,6 +101,20 @@ export default class PersonalInfo extends Component {
                         <span className="fontMontserrat">{`GIỎ HÀNG (${totalProductsOnCart})`}</span>
                     </Link>
                 </div>
+                <Modal
+                    style={{ padding: "0px" }}
+                    title="ĐĂNG NHẬP"
+                    visible={this.state.visible}
+                    onCancel={this.handleCancel}
+                    centered
+                    footer={[]}
+                >
+                    <WrappedLoginForm
+                        history={this.props.history}
+                        closeModal={this.closeModal}
+                        onLoginStatusChanged={this.onLoginStatusChanged}
+                    />
+                </Modal>
             </div>
         );
     }
