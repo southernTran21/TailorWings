@@ -64,7 +64,6 @@ class ShoppingStore extends Component {
             categoriesInfo,
             topListInfo,
             collectionsInfo,
-            localStorageUpdatedHandling
         } = this.props;
         let bestSellerList = [];
         topListInfo.forEach(list => {
@@ -90,20 +89,15 @@ class ShoppingStore extends Component {
                             categoriesInfo={categoriesInfo}
                             bestSellerList={bestSellerList}
                             collectionsInfo={collectionsInfo}
-                            localStorageUpdatedHandling={
-                                localStorageUpdatedHandling
-                            }
                             totalProductsOnCart={this.state.totalProductsOnCart}
                         />
                     ) : (
                         <ShoppingStoreWeb
                             history={history}
                             visibilityProducts={visibilityProducts}
-                            designsInfo={designsInfo}
                             categoriesInfo={categoriesInfo}
-                            localStorageUpdatedHandling={
-                                localStorageUpdatedHandling
-                            }
+                            bestSellerList={bestSellerList}
+                            collectionsInfo={collectionsInfo}
                         />
                     )
                 }

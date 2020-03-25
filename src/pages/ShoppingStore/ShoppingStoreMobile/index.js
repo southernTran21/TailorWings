@@ -52,9 +52,9 @@ class ShoppingStoreMobile extends Component {
                 bestSellerInfo.push(product);
             }
         });
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
+        // visibilityProducts = visibilityProducts.concat(visibilityProducts);
+        // visibilityProducts = visibilityProducts.concat(visibilityProducts);
+        // visibilityProducts = visibilityProducts.concat(visibilityProducts);
         if (location.pathname === "/shopping-store" && location.search !== "") {
             let categoryID = location.search.match(/cat=(.*)\b&/)[1] || "all";
             if (categoryID === "all") {
