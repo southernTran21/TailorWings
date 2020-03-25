@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import "./ProductDetailWeb.scss";
+import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
+import FabricSelectionWeb from "./FabricSelection";
+import Steps from "./Steps";
 
-class ProductDetailWeb extends Component {
+export default class index extends Component {
     render() {
         return (
-            <div>
-                
+            <div className="pageProductDetailWeb">
+                <NavBarWeb />
+                <Steps/>
+                <FabricSelectionWeb/>
             </div>
         );
     }
 }
-
-export default ProductDetailWeb;
