@@ -27,9 +27,12 @@ export default class ProductList extends Component {
                     </div>
                 </div>
                 <div className="productList_wrapper">
-                    {tmp.map(index => {
-                        return(
-                            <div className="contentProduct col-4 d-flex flex-column align-items-center" key={index}>
+                    {tmp.map((element, index) => {
+                        return (
+                            <div
+                                className="contentProduct col-4 d-flex flex-column align-items-center"
+                                key={index}
+                            >
                                 <div className="image"></div>
                                 <span>Đầm Suông Lucasta</span>
                                 <div className="button">32 MẪU VẢI</div>

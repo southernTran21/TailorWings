@@ -170,10 +170,15 @@ export default class ShoppingStoreWeb extends Component {
     };
 
     render() {
+        const { renderProducts, currentActiveCategory } = this.state;
         return (
             <div className="shoppingStore_wrapper">
                 <NavBarWeb />
-                <Categories categoryActiveHandling={this.categoryActiveHandling} />
+                <Categories
+                    isRenderProductsEmpty={renderProducts.length === 0}
+                    currentActiveCategory={currentActiveCategory}
+                    categoryActiveHandling={this.categoryActiveHandling}
+                />
                 <div className="filterContent d-flex justify-content-between">
                     <Filter />
                     <ProductList firstLoadedConfirm={this.firstLoadedConfirm} />
