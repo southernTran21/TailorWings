@@ -185,7 +185,6 @@ export default class App extends Component {
                 categoriesInfo={categoriesInfo}
                 topListInfo={topListInfo}
                 collectionsInfo={collectionsInfo}
-                localStorageUpdatedHandling={this._localStorageUpdatedHandling}
               />
             } />
             <Route path="/product-detail" exact component={() =>
@@ -194,7 +193,6 @@ export default class App extends Component {
                 visibilityProducts={visibilityProducts}
                 designsInfo={designsInfo}
                 fabricsInfo={fabricsInfo}
-                localStorageUpdatedHandling={this._localStorageUpdatedHandling}
               />
             } />
             <Route path="/shopping-cart" exact component={() => <ShoppingCart />} />
