@@ -12,7 +12,8 @@ export default class ShoppingStoreWeb extends Component {
             renderProducts: [],
             bestSellerInfo: [],
             isFirstLoaded: false,
-            currentActiveCategory: "all"
+            currentActiveCategory: "all",
+            isEmptyFilter: true
         };
     }
 
@@ -74,7 +75,8 @@ export default class ShoppingStoreWeb extends Component {
                 //this one is set 'true' in other component for checking first loading of Infinity Scroll
                 isFirstLoaded: false,
                 currentActiveCategory: currentCategory,
-                bestSellerInfo
+                bestSellerInfo,
+                isEmptyFilter: true
             });
         }
     };
@@ -169,19 +171,52 @@ export default class ShoppingStoreWeb extends Component {
         }
     };
 
+    onCollectionFiltering = filterList => {
+        let { visibilityProducts } = this.props;
+        filterList.forEach(collectionID => {
+            visibilityProducts = this.filterProductsInCollection(
+                visibilityProducts,
+                collectionID
+            );
+        });
+        this.setState({
+            renderProducts: visibilityProducts,
+            isEmptyFilter: false,
+            isFirstLoaded: false
+        });
+    };
+
     render() {
-        const { renderProducts, currentActiveCategory } = this.state;
+        const { collectionsInfo } = this.props;
+        const {
+            renderProducts,
+            currentActiveCategory,
+            isEmptyFilter,
+            isFirstLoaded
+        } = this.state;
         return (
             <div className="shoppingStore_wrapper">
-                <NavBarWeb />
+                <NavBarWeb
+                    history={this.props.history}
+                    totalProductsOnCart={this.props.totalProductsOnCart}
+                />
                 <Categories
                     isRenderProductsEmpty={renderProducts.length === 0}
                     currentActiveCategory={currentActiveCategory}
                     categoryActiveHandling={this.categoryActiveHandling}
                 />
                 <div className="filterContent d-flex justify-content-between">
-                    <Filter />
-                    <ProductList firstLoadedConfirm={this.firstLoadedConfirm} />
+                    <Filter
+                        categoryActiveHandling={this.categoryActiveHandling}
+                        onCollectionFiltering={this.onCollectionFiltering}
+                        collectionsInfo={collectionsInfo}
+                        isEmptyFilter={isEmptyFilter}
+                    />
+                    <ProductList
+                        renderProducts={renderProducts}
+                        isFirstLoaded={isFirstLoaded}
+                        firstLoadedConfirm={this.firstLoadedConfirm}
+                    />
                 </div>
             </div>
         );

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./Categories.scss";
 import { Link } from "react-router-dom";
+// Import image
+import tatca from '../../../../assets/imageShoppingStore/tat ca.svg'
+import damom from '../../../../assets/imageShoppingStore/dam om.svg'
+import damsuong from '../../../../assets/imageShoppingStore/dam suong.svg'
+import damxoe from '../../../../assets/imageShoppingStore/dam xoe.svg'
 
 const CAT_ID = ["all", "damom", "damxoe", "damsuong"];
 
@@ -31,7 +36,7 @@ export default class Categories extends Component {
                     onClick={() => this.props.categoryActiveHandling("all")}
                 >
                     <div name="all" className="image">
-                        <img src="" alt="all" />
+                        <img src={tatca} alt="all" />
                     </div>
                 </Link>
                 <Link
@@ -48,7 +53,7 @@ export default class Categories extends Component {
                     onClick={() => this.props.categoryActiveHandling("damom")}
                 >
                     <div name="damom" className="image">
-                        <img src="" alt="damom" />
+                        <img src={damom} alt="damom" />
                     </div>
                 </Link>
                 <Link
@@ -65,7 +70,7 @@ export default class Categories extends Component {
                     onClick={() => this.props.categoryActiveHandling("damxoe")}
                 >
                     <div name="damxoe" className="image">
-                        <img src="" alt="damxoe" />
+                        <img src={damxoe} alt="damxoe" />
                     </div>
                 </Link>
                 <Link
@@ -82,7 +87,7 @@ export default class Categories extends Component {
                     onClick={() => this.props.categoryActiveHandling("damsuong")}
                 >
                     <div name="damsuong" className="image">
-                        <img src="" alt="damsuong" />
+                        <img src={damsuong} alt="damsuong" />
                     </div>
                 </Link>
             </div>

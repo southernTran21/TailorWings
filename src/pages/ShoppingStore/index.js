@@ -98,6 +98,7 @@ class ShoppingStore extends Component {
                             categoriesInfo={categoriesInfo}
                             bestSellerList={bestSellerList}
                             collectionsInfo={collectionsInfo}
+                            totalProductsOnCart={this.state.totalProductsOnCart}
                         />
                     )
                 }
