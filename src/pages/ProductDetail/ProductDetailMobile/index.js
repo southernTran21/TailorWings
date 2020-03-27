@@ -132,6 +132,7 @@ class ProductDetailMobile extends Component {
         let currentFabricInfo = fabricsInfo.find((fabric) => {
             return fabric.id === currentSelectedProduct.fabricID
         }) || { image: ['', ''], price: 0 }
+        console.log('currentSelectedProduct', currentSelectedProduct)
         this.setState({
             currentFabricInfo,
             currentSelectedProduct

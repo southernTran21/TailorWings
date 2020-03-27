@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from 'react';
-import { Checkbox, message, Cascader, Upload, Icon, Modal, Button } from 'antd';
-import './ProductAdjustment.scss';
-import { uploadImage, setDocument } from '../../../services/Fundamental'
+import React, { Component } from "react";
+import { Checkbox, message, Cascader, Upload, Icon, Modal, Button } from "antd";
+import "./ProductAdjustment.scss";
+import { uploadImage, setDocument } from "../../../services/Fundamental";
 
 const categoryIDMapping = {
-    B: 'damom',
-    S: 'damsuong',
-    X: 'damxoe'
-}
+    B: "damom",
+    S: "damsuong",
+    X: "damxoe"
+};
 let isLoading = false;
 
 function getBase64(file) {
@@ -24,27 +24,27 @@ export class ProductAdjustment extends Component {
     state = {
         isEditPage: false,
         previewVisible: false,
-        previewImage: '',
-        productID: '',
+        previewImage: "",
+        productID: "",
         fileList: [],
         inputDisble: false,
         isImageChanged: false,
         isUpdate: false,
         currentProduct: {
-            catID: '',
+            catID: "",
             default: false,
-            designID: '',
+            designID: "",
             discount: 0,
-            fabricID: '',
+            fabricID: "",
             image: [],
             price: 0,
-            productID: '',
+            productID: "",
             visibility: false
         },
         designList: [],
         fabricList: [],
         currentDesignImage: {
-            image: ''
+            image: ""
         },
         currentFabricImage: {
             image: []
@@ -55,50 +55,63 @@ export class ProductAdjustment extends Component {
         this._isMounted = true;
         const { products, designs, fabrics, categories } = this.props;
         let { productID } = this.state;
-        if (window.location.pathname === '/admin/product-edit' && products.length > 0) {
-            let currentProductID = window.location.hasOwnProperty('search') ? window.location.search.match(/id=(.*)\b/)[1] : productID;
-            let currentProduct = {...products.find((product) => {
-                return product.productID === currentProductID;
-            })}
+        if (
+            window.location.pathname === "/admin/product-edit" &&
+            products.length > 0
+        ) {
+            let currentProductID = window.location.hasOwnProperty("search")
+                ? window.location.search.match(/id=(.*)\b/)[1]
+                : productID;
+            let currentProduct = {
+                ...products.find(product => {
+                    return product.productID === currentProductID;
+                })
+            };
             if (currentProduct != null) {
                 let fileList = currentProduct.image.map((url, index) => {
-                    if (url != null && url !== '') {
+                    if (url != null && url !== "") {
                         let imageName = url.match(/\o\/(.*)\?\b/)[1];
                         imageName = this.decode_utf8(imageName);
-                        imageName = imageName.split('/')[2];
+                        imageName = imageName.split("/")[2];
                         return {
                             uid: index,
                             name: imageName,
-                            status: 'done',
+                            status: "done",
                             url: url,
                             old: true
-                        }
+                        };
                     } else {
                         return {};
                     }
-                })
-                let designList = designs.map((design) => {
+                });
+                let designList = designs.map(design => {
                     if (design != null) {
                         return {
                             value: design.id,
                             label: design.id
-                        }
+                        };
                     } else {
                         return {};
                     }
-                })
-                let fabricList = fabrics.map((fabric) => {
+                });
+                let fabricList = fabrics.map(fabric => {
                     if (fabric != null) {
                         return {
                             value: fabric.id,
                             label: fabric.id
-                        }
+                        };
                     } else {
                         return {};
                     }
-                })
-                let currentDesignImage = designs.find(design => design.id === currentProduct.designID) || this.state.currentDesignImage;
-                let currentFabricImage = fabrics.find(fabric => fabric.id === currentProduct.fabricID) || this.state.currentFabricImage;
+                });
+                let currentDesignImage =
+                    designs.find(
+                        design => design.id === currentProduct.designID
+                    ) || this.state.currentDesignImage;
+                let currentFabricImage =
+                    fabrics.find(
+                        fabric => fabric.id === currentProduct.fabricID
+                    ) || this.state.currentFabricImage;
                 if (this._isMounted) {
                     this.setState({
                         isEditPage: true,
@@ -109,36 +122,36 @@ export class ProductAdjustment extends Component {
                         currentDesignImage,
                         currentFabricImage,
                         productID: currentProductID,
-                        previewImage: currentProduct.image,
-                    })
+                        previewImage: currentProduct.image
+                    });
                 }
             }
         } else if (products != null) {
-            let designList = designs.map((design) => {
+            let designList = designs.map(design => {
                 if (design != null) {
                     return {
                         value: design.id,
                         label: design.id
-                    }
+                    };
                 } else {
                     return {};
                 }
-            })
-            let fabricList = fabrics.map((fabric) => {
+            });
+            let fabricList = fabrics.map(fabric => {
                 if (fabric != null) {
                     return {
                         value: fabric.id,
                         label: fabric.id
-                    }
+                    };
                 } else {
                     return {};
                 }
-            })
+            });
             if (this._isMounted) {
                 this.setState({
                     designList,
                     fabricList
-                })
+                });
             }
         }
     }
@@ -147,9 +160,9 @@ export class ProductAdjustment extends Component {
         this._isMounted = false;
     }
 
-    decode_utf8 = (s) => {
+    decode_utf8 = s => {
         return decodeURIComponent(s);
-    }
+    };
 
     handleCancel = () => this.setState({ previewVisible: false });
 
@@ -160,147 +173,218 @@ export class ProductAdjustment extends Component {
 
         this.setState({
             previewImage: file.url || file.preview,
-            previewVisible: true,
+            previewVisible: true
         });
     };
 
     handleImageChange = ({ fileList }) => {
-        fileList.forEach((file) => {
-            if (!file.hasOwnProperty('old')) {
+        fileList.forEach(file => {
+            if (!file.hasOwnProperty("old")) {
                 file.old = false;
             }
-        })
+        });
         this.setState({
             fileList,
             isImageChanged: true,
             isUpdate: true
-        })
+        });
     };
 
-    onDiscountChange = (e) => {
+    onDiscountChange = e => {
         let { currentProduct } = this.state;
         currentProduct.discount = e.target.value;
         this.setState({
             currentProduct,
             isUpdate: true
-        })
-    }
+        });
+    };
 
-    onVisibilityChange = (e) => {
+    onVisibilityChange = e => {
         let { currentProduct } = this.state;
         currentProduct.visibility = e.target.checked ? true : false;
         this.setState({
             currentProduct,
             isUpdate: true
-        })
-    }
+        });
+    };
 
-    onDefaultChange = (e) => {
+    onDefaultChange = e => {
         let { currentProduct } = this.state;
         currentProduct.default = e.target.checked ? true : false;
         this.setState({
             currentProduct,
             isUpdate: true
-        })
-    }
+        });
+    };
 
-    onDesignChange = (value) => {
+    onDesignChange = value => {
         const { designs, categories } = this.props;
         let { currentProduct, currentDesignImage } = this.state;
-        let firstCharacter = value[0].split('')[0];
+        let firstCharacter = value[0].split("")[0];
         let relatedCategoryID = categoryIDMapping[firstCharacter];
         currentProduct.catID = relatedCategoryID;
-        currentProduct.designID = value != null ? value[0] : currentProduct.designID;
-        currentProduct.productID = currentProduct.designID.concat(currentProduct.fabricID);
-        currentDesignImage = designs.find(design => design.id === currentProduct.designID) || this.state.currentDesignImage;
+        currentProduct.designID =
+            value != null ? value[0] : currentProduct.designID;
+        currentProduct.productID = currentProduct.designID.concat(
+            currentProduct.fabricID
+        );
+        currentDesignImage =
+            designs.find(design => design.id === currentProduct.designID) ||
+            this.state.currentDesignImage;
         this.setState({
             currentProduct,
             currentDesignImage,
             isUpdate: true
-        })
-    }
+        });
+    };
 
-    onFabricChange = (value) => {
+    onFabricChange = value => {
         const { fabrics } = this.props;
         let { currentProduct, currentFabricImage } = this.state;
-        currentProduct.fabricID = value != null ? value[0] : currentProduct.fabricID;
-        currentProduct.productID = currentProduct.designID.concat(currentProduct.fabricID);
-        currentFabricImage = fabrics.find(fabric => fabric.id === currentProduct.fabricID) || this.state.currentFabricImage;
+        currentProduct.fabricID =
+            value != null ? value[0] : currentProduct.fabricID;
+        currentProduct.productID = currentProduct.designID.concat(
+            currentProduct.fabricID
+        );
+        currentFabricImage =
+            fabrics.find(fabric => fabric.id === currentProduct.fabricID) ||
+            this.state.currentFabricImage;
         this.setState({
             currentProduct,
             currentFabricImage,
             isUpdate: true
-        })
-    }
+        });
+    };
 
     onSaveHandling = () => {
         isLoading = true;
         this.setState({
             isLoading: true
-        })
+        });
         let { isUpdate } = this.state;
         if (isUpdate) {
             switch (window.location.pathname) {
-                case '/admin/product-add':
+                case "/admin/product-add":
                     this.addHandling();
                     break;
-                case '/admin/product-edit':
+                case "/admin/product-edit":
                     this.updateHandling();
                     break;
                 default:
                     break;
             }
         } else {
-            message.warning('Vui lòng thay đổi nội dung!');
+            message.warning("Vui lòng thay đổi nội dung!");
             isLoading = false;
         }
-    }
+    };
+
+    priceCalculationHandling = (
+        purePrice,
+        productDiscount,
+        categoryDiscount
+    ) => {
+        let discountPrice = purePrice;
+        if (productDiscount > 0) {
+            discountPrice = purePrice - productDiscount * 1000;
+        } else if (categoryDiscount > 0) {
+            discountPrice = purePrice - categoryDiscount * 1000;
+        } else {
+            // do nothing
+        }
+        discountPrice = discountPrice / 1000;
+        discountPrice = Math.ceil(discountPrice) * 1000;
+        return discountPrice;
+    };
 
     addHandling = () => {
         isLoading = true;
         let { currentProduct, fileList, isImageChanged } = this.state;
-        const { products } = this.props;
-        if (currentProduct.designID !== '' && currentProduct.fabricID !== '' && products.find((product) => product.productID === currentProduct.productID) == null) {
+        const { products, fabrics, designs } = this.props;
+        let relatedDesign = designs.find(
+            design => design.id === currentProduct.designID
+        );
+        let relatedFabric = fabrics.find(
+            fabric => fabric.id === currentProduct.fabricID
+        );
+        let purePrice =
+            relatedDesign.price +
+            (relatedFabric.price * relatedDesign.length) / 100 +
+            400000;
+        currentProduct.price = this.priceCalculationHandling(
+            purePrice,
+            currentProduct.discount,
+            relatedFabric.discount
+        );
+        if (
+            currentProduct.designID !== "" &&
+            currentProduct.fabricID !== "" &&
+            products.find(
+                product => product.productID === currentProduct.productID
+            ) == null
+        ) {
             if (fileList.length === 3) {
                 if (isImageChanged) {
                     Promise.all([
-                        uploadImage('image/products/', fileList[0].originFileObj),
-                        uploadImage('image/products/', fileList[1].originFileObj),
-                        uploadImage('image/products/', fileList[2].originFileObj)
+                        uploadImage(
+                            "image/products/",
+                            fileList[0].originFileObj
+                        ),
+                        uploadImage(
+                            "image/products/",
+                            fileList[1].originFileObj
+                        ),
+                        uploadImage(
+                            "image/products/",
+                            fileList[2].originFileObj
+                        )
                     ])
-                        .then((downloadURLList) => {
+                        .then(downloadURLList => {
                             currentProduct.image = downloadURLList;
-                            setDocument("products", currentProduct, currentProduct.productID)
-                                .then(() => {
-                                    isLoading = false;
-                                    window.history.back();
-                                })
+                            setDocument(
+                                "products",
+                                currentProduct,
+                                currentProduct.productID
+                            ).then(() => {
+                                isLoading = false;
+                                window.history.back();
+                            });
                         })
-                        .catch(() => isLoading = false)
+                        .catch(() => (isLoading = false));
                 } else {
-                    setDocument("products", currentProduct, currentProduct.productID)
+                    setDocument(
+                        "products",
+                        currentProduct,
+                        currentProduct.productID
+                    )
                         .then(() => {
                             isLoading = false;
                             window.history.back();
                         })
-                        .catch(() => isLoading = false)
+                        .catch(() => (isLoading = false));
                 }
             } else if (fileList.length === 0) {
-                setDocument("products", currentProduct, currentProduct.productID)
+                setDocument(
+                    "products",
+                    currentProduct,
+                    currentProduct.productID
+                )
                     .then(() => {
                         isLoading = false;
                         window.history.back();
                     })
-                    .catch(() => isLoading = false)
+                    .catch(() => (isLoading = false));
             } else {
-                message.error('Vui lòng chọn 3 hình ảnh!');
+                message.error("Vui lòng chọn 3 hình ảnh!");
                 isLoading = false;
             }
         } else {
-            message.error('ProductID không được trống hoặc trùng với các mẫu hiện tại!');
+            message.error(
+                "ProductID không được trống hoặc trùng với các mẫu hiện tại!"
+            );
             isLoading = false;
         }
-    }
+    };
 
     updateHandling = () => {
         isLoading = true;
@@ -308,26 +392,33 @@ export class ProductAdjustment extends Component {
         if (fileList.length === 3) {
             if (isImageChanged) {
                 Promise.all([
-                    uploadImage('image/products/', fileList[0].originFileObj),
-                    uploadImage('image/products/', fileList[1].originFileObj),
-                    uploadImage('image/products/', fileList[2].originFileObj)
+                    uploadImage("image/products/", fileList[0].originFileObj),
+                    uploadImage("image/products/", fileList[1].originFileObj),
+                    uploadImage("image/products/", fileList[2].originFileObj)
                 ])
-                    .then((downloadURLList) => {
+                    .then(downloadURLList => {
                         currentProduct.image = downloadURLList;
-                        setDocument("products", currentProduct, currentProduct.productID)
-                            .then(() => {
-                                isLoading = false;
-                                window.history.back();
-                            })
+                        setDocument(
+                            "products",
+                            currentProduct,
+                            currentProduct.productID
+                        ).then(() => {
+                            isLoading = false;
+                            window.history.back();
+                        });
                     })
-                    .catch(() => isLoading = false)
+                    .catch(() => (isLoading = false));
             } else {
-                setDocument("products", currentProduct, currentProduct.productID)
+                setDocument(
+                    "products",
+                    currentProduct,
+                    currentProduct.productID
+                )
                     .then(() => {
                         isLoading = false;
                         window.history.back();
                     })
-                    .catch(() => isLoading = false)
+                    .catch(() => (isLoading = false));
             }
         } else if (fileList.length === 0) {
             setDocument("products", currentProduct, currentProduct.productID)
@@ -335,12 +426,12 @@ export class ProductAdjustment extends Component {
                     isLoading = false;
                     window.history.back();
                 })
-                .catch(() => isLoading = false)
+                .catch(() => (isLoading = false));
         } else {
-            message.error('Vui lòng chọn 3 hình ảnh!');
+            message.error("Vui lòng chọn 3 hình ảnh!");
             isLoading = false;
         }
-    }
+    };
 
     render() {
         const { title } = this.props;
@@ -361,12 +452,19 @@ export class ProductAdjustment extends Component {
                 <div className="ant-upload-text">Upload</div>
             </div>
         );
-        let currentDesignID = currentProduct.designID !== '' ? [currentProduct.designID] : [];
-        let currentFabricID = currentProduct.fabricID !== '' ? [currentProduct.fabricID] : [];
+        let currentDesignID =
+            currentProduct.designID !== "" ? [currentProduct.designID] : [];
+        let currentFabricID =
+            currentProduct.fabricID !== "" ? [currentProduct.fabricID] : [];
         return (
             <div className="pageProductAdjustment">
                 <div className="headerPageProduct d-flex flex-row justify-content-between align-items-center">
-                    <h2 className="d-flex justify-content-start" style={{ margin: 0 }}>{title}</h2>
+                    <h2
+                        className="d-flex justify-content-start"
+                        style={{ margin: 0 }}
+                    >
+                        {title}
+                    </h2>
                     <Button
                         className="buttonAddProduct d-flex align-items-center"
                         loading={isLoading}
@@ -386,33 +484,67 @@ export class ProductAdjustment extends Component {
                             >
                                 {fileList.length >= 3 ? null : uploadButton}
                             </Upload>
-                            <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-                                <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                            <Modal
+                                visible={previewVisible}
+                                footer={null}
+                                onCancel={this.handleCancel}
+                            >
+                                <img
+                                    alt="example"
+                                    style={{ width: "100%" }}
+                                    src={previewImage}
+                                />
                             </Modal>
                         </div>
                     </div>
                     <div className="inputContentBody d-flex">
                         <div className="col-6">
                             <div className="inputDesignID d-flex flex-row align-items-center">
-                                <p className="d-flex flex-row align-items-center">Design ID</p>
-                                <Cascader disabled={isEditPage} onChange={this.onDesignChange} value={currentDesignID} options={designList} placeholder="Mã Thiết Kế" />
+                                <p className="d-flex flex-row align-items-center">
+                                    Design ID
+                                </p>
+                                <Cascader
+                                    disabled={isEditPage}
+                                    onChange={this.onDesignChange}
+                                    value={currentDesignID}
+                                    options={designList}
+                                    placeholder="Mã Thiết Kế"
+                                />
                             </div>
                             <div className="imgProduct">
-                                <img src={currentDesignImage.image} alt={currentProduct.designID} style={{ width: "100%", height: "auto" }} />
+                                <img
+                                    src={currentDesignImage.image}
+                                    alt={currentProduct.designID}
+                                    style={{ width: "100%", height: "auto" }}
+                                />
                             </div>
                             <div className="inputFabricsID d-flex flex-row align-items-center">
-                                <p className="d-flex flex-row align-items-center">Fabrics ID</p>
-                                <Cascader disabled={isEditPage} onChange={this.onFabricChange} value={currentFabricID} options={fabricList} placeholder="Mã Vãi" />
+                                <p className="d-flex flex-row align-items-center">
+                                    Fabrics ID
+                                </p>
+                                <Cascader
+                                    disabled={isEditPage}
+                                    onChange={this.onFabricChange}
+                                    value={currentFabricID}
+                                    options={fabricList}
+                                    placeholder="Mã Vãi"
+                                />
                             </div>
                             <div className="imgProduct">
-                                <img src={currentFabricImage.image[0]} alt={currentProduct.fabricID} style={{ width: "100%", height: "auto" }} />
+                                <img
+                                    src={currentFabricImage.image[0]}
+                                    alt={currentProduct.fabricID}
+                                    style={{ width: "100%", height: "auto" }}
+                                />
                             </div>
                         </div>
                         <div className="col-6">
                             <div className="inputCategoryID d-flex flex-row align-items-center">
-                                <p className="d-flex flex-row align-items-center">Category</p>
+                                <p className="d-flex flex-row align-items-center">
+                                    Category
+                                </p>
                                 <input
-                                    id='category'
+                                    id="category"
                                     disabled={true}
                                     className="form-control"
                                     type="text"
@@ -421,9 +553,11 @@ export class ProductAdjustment extends Component {
                                 />
                             </div>
                             <div className="inputDiscount d-flex flex-row align-items-center">
-                                <p className="d-flex flex-row align-items-center">Discount</p>
+                                <p className="d-flex flex-row align-items-center">
+                                    Discount
+                                </p>
                                 <input
-                                    id='discount'
+                                    id="discount"
                                     className="form-control"
                                     type="text"
                                     placeholder="Số tiền giảm"
@@ -432,12 +566,22 @@ export class ProductAdjustment extends Component {
                                 />
                             </div>
                             <div className="checkVisibility d-flex flex-row align-items-center">
-                                <p className="d-flex flex-row align-items-center">Set Visibility</p>
-                                <Checkbox onChange={this.onVisibilityChange} checked={currentProduct.visibility} />
+                                <p className="d-flex flex-row align-items-center">
+                                    Set Visibility
+                                </p>
+                                <Checkbox
+                                    onChange={this.onVisibilityChange}
+                                    checked={currentProduct.visibility}
+                                />
                             </div>
                             <div className="checkDefault d-flex flex-row align-items-center">
-                                <p className="d-flex flex-row align-items-center">Set Default</p>
-                                <Checkbox onChange={this.onDefaultChange} checked={currentProduct.default} />
+                                <p className="d-flex flex-row align-items-center">
+                                    Set Default
+                                </p>
+                                <Checkbox
+                                    onChange={this.onDefaultChange}
+                                    checked={currentProduct.default}
+                                />
                             </div>
                         </div>
                     </div>
