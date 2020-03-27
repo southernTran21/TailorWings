@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Categories.scss";
 import { Link } from "react-router-dom";
+import classNames from 'classnames'
 // Import image
 import tatca from '../../../../assets/imageShoppingStore/tat ca.svg'
 import damom from '../../../../assets/imageShoppingStore/dam om.svg'
@@ -21,7 +22,7 @@ export default class Categories extends Component {
             activeCategory[activeIndex] = true;
         }
         return (
-            <div className="categories_wrapper d-flex justify-content-center align-items-center">
+            <div className="categories_wrapper d-flex justify-content-between align-items-center">
                 <Link
                     style={{
                         height: "fit-content",
@@ -35,8 +36,9 @@ export default class Categories extends Component {
                     }}
                     onClick={() => this.props.categoryActiveHandling("all")}
                 >
-                    <div name="all" className="image">
+                    <div name="all" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[0] })}>
                         <img src={tatca} alt="all" />
+                        <span>TẤT CẢ</span>
                     </div>
                 </Link>
                 <Link
@@ -52,8 +54,9 @@ export default class Categories extends Component {
                     }}
                     onClick={() => this.props.categoryActiveHandling("damom")}
                 >
-                    <div name="damom" className="image">
+                    <div name="damom" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[1] })}>
                         <img src={damom} alt="damom" />
+                        <span>ĐẦM ÔM</span>
                     </div>
                 </Link>
                 <Link
@@ -69,8 +72,9 @@ export default class Categories extends Component {
                     }}
                     onClick={() => this.props.categoryActiveHandling("damxoe")}
                 >
-                    <div name="damxoe" className="image">
+                    <div name="damxoe" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[2] })}>
                         <img src={damxoe} alt="damxoe" />
+                        <span>ĐẦM XÒE</span>
                     </div>
                 </Link>
                 <Link
@@ -86,8 +90,9 @@ export default class Categories extends Component {
                     }}
                     onClick={() => this.props.categoryActiveHandling("damsuong")}
                 >
-                    <div name="damsuong" className="image">
+                    <div name="damsuong" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[3] })}>
                         <img src={damsuong} alt="damsuong" />
+                        <span>ĐẦM SUÔNG</span>
                     </div>
                 </Link>
             </div>

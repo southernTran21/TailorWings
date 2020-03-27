@@ -14,21 +14,21 @@ class ProductDetailWeb extends Component {
             currentSelectedProduct: {
                 size: null,
                 quantity: 1,
-                bodyMetric: new Array(3).fill(''),
-                image: new Array(3).fill('')
+                bodyMetric: new Array(3).fill(""),
+                image: new Array(3).fill("")
             },
             isNewProductAdded: false,
             totalProductsOnCart: 0,
             fabricList: [],
             productList: [],
-            size: '',
+            size: "",
             bodyMetric: []
         };
     }
 
     componentDidMount() {
         const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
-        console.log('visibilityProducts', visibilityProducts)
+        console.log("visibilityProducts", visibilityProducts);
         let { totalProductsOnCart, currentSelectedProduct } = this.state;
         let designID = window.location.search.match(/id=(.*)&\b/)[1];
         let fabricID = window.location.search.match(/pattern=(.*)\b/)[1];
@@ -43,14 +43,16 @@ class ProductDetailWeb extends Component {
             return product.designID === designID;
         });
         productList = this.swapProductPosition(productList, fabricID);
-        productList.forEach((product) => {
-            let currentDesign = designsInfo.find(design => design.id === product.designID) || {name: ''};
+        productList.forEach(product => {
+            let currentDesign = designsInfo.find(
+                design => design.id === product.designID
+            ) || { name: "" };
             product.name = currentDesign.name;
-        })
+        });
         // ------------ //
         if (productList.length > 0) {
-            console.log('productList', productList)
-            currentSelectedProduct = {...productList[0]};
+            console.log("productList", productList);
+            currentSelectedProduct = { ...productList[0] };
         }
         currentSelectedProduct.size = size;
         currentSelectedProduct.bodyMetric = bodyMetric;
@@ -153,11 +155,16 @@ class ProductDetailWeb extends Component {
     };
 
     onSelectedFabricUpdating = selectedFabric => {
-        let { productList, currentSelectedProduct, size, bodyMetric } = this.state;
+        let {
+            productList,
+            currentSelectedProduct,
+            size,
+            bodyMetric
+        } = this.state;
         let info = productList.find(
             product => product.fabricID === selectedFabric
         );
-        currentSelectedProduct = {...info};
+        currentSelectedProduct = { ...info };
         currentSelectedProduct.size = size;
         currentSelectedProduct.bodyMetric = bodyMetric;
         currentSelectedProduct.quantity = 1;
@@ -185,13 +192,15 @@ class ProductDetailWeb extends Component {
     render() {
         const { selectionStep, totalProductsOnCart } = this.state;
         return (
-            <div className="pageProductDetailWeb">
+            <div>
                 <NavBarWeb
                     history={this.props.history}
                     totalProductsOnCart={totalProductsOnCart}
                 />
-                <Steps selectionStep={selectionStep} />
-                {this.selectionStepHandling()}
+                <div className="pageProductDetailWeb">
+                    <Steps selectionStep={selectionStep} />
+                    {this.selectionStepHandling()}
+                </div>
             </div>
         );
     }
