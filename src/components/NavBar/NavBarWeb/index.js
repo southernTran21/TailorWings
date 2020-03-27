@@ -16,7 +16,7 @@ class NavBarWeb extends Component {
         return (
             <div className="navbarWeb d-flex align-items-center">
                 <div className="hamburgerMenu">
-                    <img src={iconMenu} alt=""/>
+                    <img src={iconMenu} alt="" />
                 </div>
                 <div
                     className="logoTailorWings"

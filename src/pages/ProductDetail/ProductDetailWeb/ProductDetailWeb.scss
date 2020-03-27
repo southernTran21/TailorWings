@@ -1,5 +1,17 @@
-.pageProductDetailWeb{
+.pageProductDetailWeb {
     padding: 0 5.69vw;
     font-family: "Montserrat", sans-serif;
-    color: #111E6C;
+    color: #111e6c;
+    .steps {
+        color: #ff6d3b;
+        font-size: 1.25vw;
+        span{
+            margin: 0 5px;
+        }
+        .highlight {
+            font-weight: bold;
+            font-size: 1.527vw;
+        }
+    }
+    
 }
