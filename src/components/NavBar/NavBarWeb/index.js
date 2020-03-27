@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Icon } from "antd";
+import { Link } from "react-router-dom";
 import "./NavBarWeb.scss";
+import iconMenu from "../../../assets/productDetailWeb/menu-2.svg";
 import iconSearch from "../../../assets/productDetailWeb/search.svg";
 import iconCart from "../../../assets/productDetailWeb/cart.svg";
 import iconLogoTailorWings from "../../../assets/imageHomePage/Logo Header.svg";
-import { Link } from "react-router-dom";
 
 class NavBarWeb extends Component {
     render() {
@@ -15,7 +15,7 @@ class NavBarWeb extends Component {
         return (
             <div className="navbarWeb d-flex align-items-center">
                 <div className="hamburgerMenu">
-                    <Icon type="menu" />
+                    <img src={iconMenu} alt="" />
                 </div>
                 <div
                     className="logoTailorWings"

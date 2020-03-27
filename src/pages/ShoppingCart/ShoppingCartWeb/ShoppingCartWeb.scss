@@ -1,0 +1,140 @@
+.pageShoppingCartWeb {
+    font-family: "Montserrat", sans-serif;
+    color: #111e6c;
+    .navbarWeb {
+        background: #fff4e3;
+        padding: 0 5.69vw;
+        height: 15vh;
+        margin-bottom: 3.77vh;
+    }
+    .titleHeader_ShoppingCart {
+        font-size: 2.5vw;
+        font-weight: bold;
+    }
+    .body_ShoppingCart {
+        padding: 0 5.69vw;
+        margin-top: 3.88vh;
+        .left {
+            .productList {
+                .column1 {
+                    width: 12.5vw;
+                }
+                .column2 {
+                    width: 15vw;
+                }
+                .column3 {
+                    width: 15vw;
+                }
+                .column4 {
+                    width: 14vw;
+                }
+                .column5 {
+                    width: 2vw;
+                }
+                .titleTable {
+                    padding-bottom: 1.66vh;
+                    border-bottom: 1px solid #111e6c;
+                    span {
+                        font-size: 1.25vw;
+                    }
+                }
+                .contentTable {
+                    padding: 3vh 0;
+                    border-bottom: 1px solid #111e6c;
+                    .imageProduct {
+                        width: 11.61vw;
+                        height: 11.61vw;
+                        background: #ffa45c;
+                    }
+                    .column2 {
+                        .top {
+                            :nth-child(1) {
+                                font-size: 1.25vw;
+                                font-weight: bold;
+                            }
+                            :nth-child(2) {
+                                font-size: 1.11vw;
+                            }
+                        }
+                        .bottom {
+                            :nth-child(1) {
+                                font-size: 0.97vw;
+                            }
+                            :nth-child(2) {
+                                font-size: 0.97vw;
+                            }
+                            :nth-child(3) {
+                                :nth-child(2) {
+                                    font-size: 0.694vw;
+                                    color: #ff6d3b;
+                                    font-weight: bold;
+                                    background: #fff4e3;
+                                    padding: 0.2vw 0.5vw;
+                                    cursor: pointer;
+                                    margin-left: 1vw;
+                                }
+                            }
+                        }
+                    }
+                    .column3 {
+                        .quantity {
+                            .anticon {
+                                vertical-align: 0;
+                            }
+                            i {
+                                background-color: #ff6d3b;
+                                cursor: pointer;
+                                padding: 0.2vw;
+                                font-size: 0.97vw;
+                                color: white;
+                                border-radius: 2px;
+                            }
+                            input {
+                                width: 3.47vw;
+                                text-align: center;
+                                border: none;
+                                color: #ff6d3b;
+                                font-weight: bold;
+                                font-size: 1.52vw;
+                            }
+                        }
+                    }
+                    .column4 {
+                        font-weight: bold;
+                        font-size: 1.11vw;
+                    }
+                    .column5 {
+                        i {
+                            cursor: pointer;
+                            font-size: 1.25vw;
+                            color: #ff6d3b;
+                        }
+                    }
+                }
+            }
+        }
+        .right {
+            background: #fff4e3;
+            border-radius: 15px;
+            height: 39.22vh;
+            padding: 5.55vh 4.72vw 0 2.77vw;
+            :nth-child(1){
+                font-size: 1.66vw;
+                font-weight: 600;
+            }
+            :nth-child(2){
+                font-size: 1.66vw;
+                font-weight: 700;
+            }
+            :nth-child(3){
+                background-color: #ff6d3b;
+                color: white;
+                border-radius: 20px;
+                text-align: center;
+                padding: 1vh 0;
+                cursor: pointer;
+                margin-top: 4.55vh;
+            }
+        }
+    }
+}
