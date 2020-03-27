@@ -14,9 +14,40 @@ class ProductList extends Component {
         this.state = {
             productsOnCart: this.props.productsOnCart || [],
             totalProductsOnCart: this.props.totalProductsOnCart,
-            modalVisible: false
+            modalVisible: false,
+            isModalUpdate: false,
+            product: this.props.productsOnCart[this.props.index] || { size: '', bodyMetric: ['','',''] }
         };
     }
+
+    onUpdateToStorage = () => {
+        const { productsOnCart, isModalUpdate } = this.state;
+        if (isModalUpdate) {
+            this.props.onUpdateCart(productsOnCart);
+            this.setState({
+                isModalUpdate: false,
+                modalVisible: false
+            })
+        }else {
+            this.setState({
+                modalVisible: false
+            })
+        }
+    };
+
+    onModalUpdate = (type, value) => {
+        const { index } = this.props;
+        let { productsOnCart } = this.state;
+        if (type === "size") {
+            productsOnCart[index].size = value;
+        } else {
+            productsOnCart[index].bodyMetric = value;
+        }
+        this.setState({
+            productsOnCart,
+            isModalUpdate: true
+        });
+    };
 
     onModalVisible = state => {
         this.setState({
@@ -25,8 +56,8 @@ class ProductList extends Component {
     };
 
     render() {
-        const { product, price, index } = this.props;
-        const { modalVisible } = this.state;
+        const { price, index } = this.props;
+        const { modalVisible, product } = this.state;
         return (
             <div className="product d-flex flex-row">
                 <div className="left">
@@ -93,6 +124,9 @@ class ProductList extends Component {
                 <UpdateMetricModal
                     modalVisible={modalVisible}
                     onModalVisible={this.onModalVisible}
+                    product={product}
+                    onModalUpdate={this.onModalUpdate}
+                    onUpdateToStorage={this.onUpdateToStorage}
                 />
             </div>
         );

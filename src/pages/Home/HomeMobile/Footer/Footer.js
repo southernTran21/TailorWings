@@ -13,8 +13,8 @@ export default class FooterPage extends Component {
         return (
             <div className='footerPage d-flex flex-column align-items-center'>
                 <div className='titleFooter d-flex flex-column align-items-center'>
-                    <span>Đăng ký để</span>
-                    <span>nhận ưu đãi mới nhất</span>
+                    <span>Đăng ký</span>
+                    <span>để nhận ưu đãi mới nhất</span>
                 </div>
                 <div className='inputEmail d-flex flex-row align-items-center'>
                     <Input placeholder='Email của bạn' />
@@ -46,8 +46,7 @@ export default class FooterPage extends Component {
                 <div className='titleEndFooter  d-flex flex-column align-items-center'>
                     <span>© 2020 Tailor Wings</span>
                     <span>
-                        Công ty TNHH Tailor Wings với số đăng ký kinh doanh:
-                        0105777650
+                        Công ty TNHH Tailor Wings với số đăng ký kinh doanh: 0105777650
                     </span>
                 </div>
             </div>

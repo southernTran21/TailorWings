@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Modal, Button } from "antd";
 import classNames from "classnames";
-import NumberFormat from 'react-number-format';
+import NumberFormat from "react-number-format";
 
 const SIZE = ["XS", "S", "M", "L", "XL", "XXL"];
 
@@ -9,45 +9,116 @@ export default class UpdateMetricModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ModalText: "Content of the modal",
-            confirmLoading: false
+            confirmLoading: false,
+            activeStatus: new Array(SIZE.length).fill(false),
+            currentMetric: ["", "", ""],
+            currentSize: "",
+            isUpdate: false,
+            errorValidate: false
         };
     }
 
-    handleOk = () => {
-        this.setState({
-            confirmLoading: true
-        });
-        setTimeout(() => {
-            this.props.onModalVisible(false);
+    componentDidMount() {
+        const { product } = this.props;
+        let { currentMetric, currentSize, activeStatus } = this.state;
+        if (product != null) {
+            let currentSizeIndex = SIZE.indexOf(product.size);
+            activeStatus[currentSizeIndex] = true;
+            currentMetric = product.bodyMetric;
+            currentSize = product.size;
             this.setState({
-                confirmLoading: false
+                activeStatus,
+                currentMetric,
+                currentSize
             });
-        }, 2000);
+        }
+    }
+
+    handleOk = () => {
+        let isDataValidated = this.onDataValidate();
+        if (isDataValidated) {
+            this.setState({
+                confirmLoading: true
+            });
+            setTimeout(() => {
+                this.props.onUpdateToStorage();
+                this.setState({
+                    confirmLoading: false,
+                    errorValidate: false
+                });
+            }, 2000);
+        } else {
+            this.setState({
+                errorValidate: true
+            });
+        }
     };
 
     handleCancel = () => {
         this.props.onModalVisible(false);
     };
 
-    onBodyScaleChange = (e) => {
-        let { bodyMetric } = this.state;
-        bodyMetric[Number(e.target.id)] = e.target.value !== '' ? Number(e.target.value) : '' ;
-        this.props.onBodyMetricUpdated(bodyMetric);
+    onSizeSelected = (index, size) => {
+        if (index != null && index > -1) {
+            this.props.onModalUpdate("size", size);
+            this.setState({
+                currentSize: size
+            });
+        }
+    };
+
+    // onSizeSelected = e => {
+    //     if (e.target.name != null) {
+    //         this.props.onModalUpdate("size", e.target.name);
+    //         this.setState({
+    //             currentSize: e.target.name
+    //         });
+    //     }
+    // };
+
+    onBodyScaleChange = e => {
+        let { currentMetric } = this.state;
+        currentMetric[Number(e.target.id)] =
+            e.target.value !== "" ? Number(e.target.value) : "";
+        this.props.onModalUpdate("metric", currentMetric);
         this.setState({
-            bodyMetric,
-        })
-    }
+            currentMetric
+        });
+    };
+
+    onDataValidate = () => {
+        const { currentMetric, currentSize } = this.state;
+        let isSizeSelected = currentSize != null || currentSize != "";
+        let isAllMetricFill = !currentMetric.includes("");
+        let isAllMetricEmpty = currentMetric.every(metric => metric === "");
+        if (
+            (isSizeSelected && isAllMetricFill) ||
+            (isSizeSelected && isAllMetricEmpty) ||
+            (!isSizeSelected && isAllMetricFill)
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
     render() {
-        const { modalVisible } = this.props;
+        const { product, modalVisible } = this.props;
+        let { currentMetric, activeStatus, errorValidate } = this.state;
+        if (product != null) {
+            let currentSizeIndex = SIZE.indexOf(product.size);
+            activeStatus.fill(false);
+            activeStatus[currentSizeIndex] = true;
+            currentMetric = product.bodyMetric;
+        }
         return (
             <div>
                 <Modal
                     title="THAY ĐỔI SỐ ĐO"
                     visible={modalVisible}
-                    onOk={this.handleOk}
+                    centered={true}
                     confirmLoading={this.state.confirmLoading}
+                    onOk={this.handleOk}
                     onCancel={this.handleCancel}
                     cancelText="HỦY"
                     okText="XÁC NHẬN"
@@ -61,17 +132,15 @@ export default class UpdateMetricModal extends Component {
                                         className="col-2 text-center"
                                     >
                                         <div
-                                            className={classNames("tilteSize", {
-                                                // actived: activeStatus[index]
+                                            id={index}
+                                            onClick={() =>
+                                                this.onSizeSelected(index, size)
+                                            }
+                                            className={classNames("titleSize", {
+                                                actived: activeStatus[index]
                                             })}
                                         >
-                                            <a
-                                                id={index}
-                                                name={size}
-                                                onClick={e =>
-                                                    this.onSizeSelected(e)
-                                                }
-                                            >
+                                            <a id={index} name={size}>
                                                 {size}
                                             </a>
                                         </div>
@@ -93,7 +162,7 @@ export default class UpdateMetricModal extends Component {
                                         <NumberFormat
                                             id="0"
                                             placeholder="(Ngực) cm"
-                                            // value={bodyMetric[0]}
+                                            value={currentMetric[0]}
                                             className="ant-input"
                                             format="###"
                                             onChange={this.onBodyScaleChange}
@@ -106,7 +175,7 @@ export default class UpdateMetricModal extends Component {
                                         <NumberFormat
                                             id="1"
                                             placeholder="(Eo) cm"
-                                            // value={bodyMetric[1]}
+                                            value={currentMetric[1]}
                                             className="ant-input"
                                             format="###"
                                             onChange={this.onBodyScaleChange}
@@ -119,7 +188,7 @@ export default class UpdateMetricModal extends Component {
                                         <NumberFormat
                                             id="2"
                                             placeholder="(Mông) cm"
-                                            // value={bodyMetric[2]}
+                                            value={currentMetric[2]}
                                             className="ant-input"
                                             format="###"
                                             onChange={this.onBodyScaleChange}
@@ -127,6 +196,15 @@ export default class UpdateMetricModal extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <small
+                                className={classNames({
+                                    error: errorValidate,
+                                    errorUnvisible: !errorValidate
+                                })}
+                            >
+                                *Vui lòng cung cấp dủ số đo 3 vòng hoặc bỏ trống
+                                và chọn size phù hợp.
+                            </small>
                         </div>
                     </div>
                 </Modal>

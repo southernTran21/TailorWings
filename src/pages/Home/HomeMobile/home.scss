@@ -2,7 +2,7 @@
     position: fixed;
 }
 .pageHomeMobile {
-    font-family: "Be Vietnam", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
     width: 100vw !important;
     .anticon {
         vertical-align: 0 !important;
@@ -169,9 +169,10 @@
             margin-top: 28px;
             .title {
                 text-align: center;
+                padding: 0 8vw;
                 :nth-child(1) {
                     font-weight: bold;
-                    font-size: 24px;
+                    font-size: 5.33vw;
                 }
                 :nth-child(2) {
                     font-size: 13px;
@@ -183,16 +184,19 @@
                     width: 20vw;
                     height: 22vw;
                     .image {
-                        height: 77px;
+                        height: 11.54vh;
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
                         img {
-                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: fill;
                         }
                     }
                     .title {
+                        padding: 0;
                         span {
                             font-size: 12px;
                         }
@@ -201,7 +205,6 @@
             }
             .numberStep {
                 padding: 0 26px;
-                margin-top: 10px;
                 .number {
                     color: #ff6d3b;
                     border-radius: 50%;
@@ -229,10 +232,10 @@
                 padding: 0 25px;
                 :nth-child(1) {
                     font-weight: bold;
-                    font-size: 24px;
+                    font-size: 6.4vw;
                 }
                 :nth-child(2) {
-                    font-size: 14px;
+                    font-size: 3.73vw;
                     margin-top: 5px;
                     padding: 0 13px;
                     text-align: center;
@@ -256,15 +259,17 @@
                     }
                     .end-carousel {
                         .title {
-                            font-size: 20px;
-                            margin-bottom: 7px;
+                            font-size: 4.8vw;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                            margin-top: 10px;
                         }
                         .button {
                             border: 1px solid #ff6d3b;
                             margin: 0 42px;
                             border-radius: 7px;
                             .titleButton {
-                                font-size: 14px;
+                                font-size: 3.73vw;
                                 color: #ff6d3b;
                             }
                             .col-6 {
@@ -273,10 +278,10 @@
                             .putButton {
                                 background-color: #ff6d3b;
                                 color: white;
-                                font-size: 14px;
+                                font-size: 3.73vw;
                                 border-radius: 7px;
                                 width: 100%;
-                                padding: 6px 0;
+                                padding: 1.04vh 0;
                                 .anticon {
                                     vertical-align: 0;
                                     font-size: 12px;
@@ -290,12 +295,11 @@
             }
         }
         .listProduct {
-            height: 260px;
             margin: 0;
-            margin-top: 25px;
+            margin-top: 10.49vh;
             margin-bottom: 10px;
             .title__listProduct {
-                font-size: 24px;
+                font-size: 6.4vw;
                 font-weight: bold;
             }
             .categoryProduct {
@@ -318,11 +322,11 @@
                         color: white;
                     }
                     :nth-child(1) {
-                        font-size: 14px;
+                        font-size: 3.73vw;
                         font-weight: bold;
                     }
                     :nth-child(2) {
-                        font-size: 12px;
+                        font-size: 3.2vw;
                     }
                 }
             }
@@ -334,28 +338,29 @@
         }
         .collection-wraper {
             padding: 0 25px;
-            height: 575px;
             hr {
                 border-top: 1px solid #ff6d3b;
                 margin: 0;
-                margin-top: 20px;
+                margin-top: 6.74vh;
+                margin-bottom: 6.74vh;
             }
             .title__collection {
                 :nth-child(1) {
-                    font-size: 24px;
+                    font-size: 6.4vw;
                     font-weight: bold;
                 }
                 :nth-child(2) {
-                    font-size: 13px;
+                    font-size: 3.73vw;
                 }
             }
             .carousel-wraper {
+                margin-top: 10px;
                 .swiper-slide {
                     width: fit-content !important;
                 }
                 .content-carousel {
                     .title {
-                        font-size: 20px;
+                        font-size: 5.86vw;
                         margin-bottom: 7px;
                         font-weight: 500;
                     }
@@ -386,8 +391,9 @@
                             border-radius: 7px;
                             height: 40px;
                             .titleButton {
-                                font-size: 14px;
+                                font-size: 3.73vw;
                                 color: white;
+                                font-weight: bold;
                             }
                         }
                     }
@@ -398,12 +404,12 @@
             height: 335px;
             .title__weyour {
                 .title1 {
-                    font-size: 24px;
+                    font-size: 6.4vw;
                     font-weight: bold;
                 }
                 .title2 {
                     margin: 0 83px;
-                    font-size: 12px;
+                    font-size: 3.2vw;
                     margin-top: 5px;
                 }
             }
@@ -423,14 +429,14 @@
             .title {
                 margin: 0 28px;
                 :nth-child(1) {
-                    font-size: 24px;
+                    font-size: 6.4vw;
                     font-weight: bold;
                     width: 100%;
                     display: flex;
                     justify-content: center;
                 }
                 :nth-child(2) {
-                    font-size: 13px;
+                    font-size: 3.73vw;
                     margin-top: 5px;
                     width: 100%;
                     display: flex;
@@ -442,6 +448,15 @@
                 margin-top: 10px;
                 .twoBenefit {
                     margin: 10px 0;
+                    .image {
+                        width: 29.86vw;
+                        height: 16.79vh;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: fill;
+                        }
+                    }
                     .col-6 {
                         margin: 0;
                         padding: 0;
@@ -449,45 +464,44 @@
                     .titleBenefit {
                         :nth-child(1) {
                             font-weight: bold;
-                            font-size: 16px;
+                            font-size: 4.8vw;
                         }
                         :nth-child(2) {
-                            font-size: 12px;
+                            font-size: 3.2vw;
                             text-align: center;
                         }
                     }
                 }
             }
             .buttonConect {
-                height: 40px;
-                background-color: #ff6d3b;
-                color: white;
-                margin: 0 115px;
-                font-size: 16px;
-                border-radius: 10px;
-                font-weight: bold;
                 margin-top: 7px;
-                i {
-                    margin-left: 3px;
-                    font-size: 13px;
-                }
-                .anticon {
-                    vertical-align: 0;
+                span {
+                    height: 5.99vh;
+                    width: 43.73vw;
+                    background-color: #ff6d3b;
+                    color: white;
+                    font-size: 3.73vw;
+                    border-radius: 30px;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
         }
         .passion {
             .titleHeader {
                 :nth-child(1) {
-                    font-size: 24px;
+                    font-size: 6.4vw;
                     font-weight: bold;
                     margin-top: 30px;
                 }
                 :nth-child(2) {
                     margin: 0 28px;
                     text-align: center;
-                    font-size: 12px;
+                    font-size: 3.73vw;
                     margin-top: 9px;
+                    padding: 0 7vw;
                 }
             }
             .video {
@@ -510,7 +524,7 @@
         background-color: #ff6d3b;
         color: white;
         .titleFooter {
-            font-size: 22px;
+            font-size: 4.8vw;
             font-weight: bold;
             :nth-child(2) {
                 margin-top: 5px;
@@ -534,7 +548,8 @@
             margin-top: 26px;
         }
         .infomation {
-            font-size: 14px;
+            font-size: 3.2vw;
+            font-weight: bold;
             width: 325px;
             margin-top: 56px;
             span {
@@ -552,7 +567,7 @@
             }
         }
         .hotline {
-            font-size: 16px;
+            font-size: 4.26vw;
             margin-top: 49px;
         }
         .iconLogoTailorWings {
@@ -565,10 +580,10 @@
         .titleEndFooter {
             margin-top: 19.3px;
             :nth-child(1) {
-                font-size: 16px;
+                font-size: 3.73vw;
             }
             :nth-child(2) {
-                font-size: 10px;
+                font-size: 2.4vw;
             }
             span {
                 color: #fff4e3 !important;

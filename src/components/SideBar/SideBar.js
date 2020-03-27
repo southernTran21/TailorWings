@@ -30,6 +30,7 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=all&search="
                             }}
+                            onClick={this.onClickHandling}
                         >
                             <span>Hàng Mới</span>
                         </Link>
@@ -38,6 +39,7 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=damom&search="
                             }}
+                            onClick={this.onClickHandling}
                         >
                             <span>Đầm Ôm</span>
                         </Link>
@@ -46,6 +48,7 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=damsuong&search="
                             }}
+                            onClick={this.onClickHandling}
                         >
                             <span>Đầm Suông</span>
                         </Link>
@@ -54,6 +57,7 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=damxoe&search="
                             }}
+                            onClick={this.onClickHandling}
                         >
                             <span>Đầm Xòe</span>
                         </Link>
@@ -62,16 +66,17 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=all&search="
                             }}
+                            onClick={this.onClickHandling}
                         >
                             <span>Bộ Sưu Tập</span>
                         </Link>
                     </div>
                     <hr />
                     <div className='selectionEndSidebar d-flex flex-column'>
-                        <Link to="/"><span>Về Tailor Wings</span></Link>
-                        <Link to="/"><span>Trợ Giúp</span></Link>
-                        <Link to="/"><span>Tài Khoản</span></Link>
-                        <Link to="/"><span style={{ textDecoration: 'underline' }}>Bạn Là Thợ May</span></Link>
+                        <Link to="/" onClick={this.onClickHandling}><span>Về Tailor Wings</span></Link>
+                        <Link to="/" onClick={this.onClickHandling}><span>Trợ Giúp</span></Link>
+                        <Link to="/" onClick={this.onClickHandling}><span>Tài Khoản</span></Link>
+                        <Link to="/" onClick={this.onClickHandling}><span style={{ textDecoration: 'underline' }}>Bạn Là Thợ May</span></Link>
                         <LoginForm onClickHandling={this.onClickHandling} history={this.props.history} />
                     </div>
                 </div>

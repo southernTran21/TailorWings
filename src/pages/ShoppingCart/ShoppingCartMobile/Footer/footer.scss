@@ -1,8 +1,3 @@
-.ant-btn:hover, .ant-btn:focus {
-    color: white !important;
-    background: #ff6d3b !important;
-}
-
 .footerPageConfirmInfo {
     position: absolute;
     bottom: 0;
@@ -19,8 +14,12 @@
         border-radius: 5px;
         border: none;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 5.33vw;
         color: white;
+    }
+    .ant-btn:hover, .ant-btn:focus {
+        color: white !important;
+        background: #ff6d3b !important;
     }
 }
 .footerPageConfirmPayment{
@@ -38,7 +37,11 @@
         border-radius: 5px;
         border: none;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 5.33vw;
         color: white;
+    }
+    .ant-btn:hover, .ant-btn:focus {
+        color: white !important;
+        background: #ff6d3b !important;
     }
 }

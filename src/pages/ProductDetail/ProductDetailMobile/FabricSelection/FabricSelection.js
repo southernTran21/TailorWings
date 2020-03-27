@@ -348,7 +348,7 @@ class FabricSelection extends Component {
             " " +
             "VNĐ";
         return (
-            <div className="pageFabricSelection">
+            <div className="pageFabricSelection d-flex flex-column align-items-center justify-content-start">
                 <div className="navbarHeader d-flex flex-row align-items-center justify-content-between">
                     <div className="iconBack" onClick={() => window.history.back()}>
                         <Icon type="left" />

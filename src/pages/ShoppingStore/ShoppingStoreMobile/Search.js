@@ -11,6 +11,12 @@ export default class Search extends Component {
         }
     }
 
+    onPressEnter = (modifiedSearchValue) => {
+        this.props.history.push(`/shopping-store?cat=all&search=${modifiedSearchValue}`)
+        this.props.searchOpen();
+    }
+    
+
     onSearchInputChange = (e) => {
         let { searchValue } = this.state;
         let value = e.target.value;
@@ -44,24 +50,8 @@ export default class Search extends Component {
                         placeholder="Tìm kiếm"
                         value={this.state.searchValue}
                         onChange={e => this.onSearchInputChange(e)}
-                        onPressEnter={() => this.props.history.push(`/shopping-store?cat=all&search=${modifiedSearchValue}`)}
+                        onPressEnter={() => this.onPressEnter(modifiedSearchValue)}
                     />
-                    {/* <Link
-                        style={{
-                            border: 'none',
-                            textDecoration: 'none',
-                            width: 'fit-content',
-                            height: 'fit-content'
-                        }}
-                        to={{
-                            pathname: '/shopping-store',
-                            search: `?cat=all&search=${modifiedSearchValue}`
-                        }}
-                    >
-                        <Button className='buttonSearch'>
-                            <Icon type="check" />
-                        </Button>
-                    </Link> */}
                 </div>
             </div>
         );

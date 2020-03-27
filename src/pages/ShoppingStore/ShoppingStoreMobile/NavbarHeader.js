@@ -94,6 +94,7 @@ class NavbarHeader extends Component {
                     isSearchOpen={isSearchOpen}
                     history={this.props.history}
                     onSearchSuggestionUpdate={this.props.onSearchSuggestionUpdate}
+                    searchOpen={this.props.searchOpen}
                 />
                 {backdrop}
             </div>

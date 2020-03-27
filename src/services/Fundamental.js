@@ -111,13 +111,13 @@ export const setDocument = (collection, newItem, docName) => {
         .set(newItem)
         .then(function () {
             console.log('Document successfully added!');
-            message.success('Hoàn thành!');
+            // message.success('Hoàn thành!');
             let success = true;
             return success;
         })
         .catch(function (error) {
             console.error("Error adding document: ", error);
-            message.error('Lỗi: xin vui lòng thử lại!');
+            // message.error('Lỗi: xin vui lòng thử lại!');
             let success = false;
             return success;
         })
@@ -151,11 +151,11 @@ export const deleteDocument = (collection, doc) => {
         .delete()
         .then(function () {
             console.log("Document successfully deleted!");
-            message.success(`${doc} được xóa thành công!`);
+            // message.success(`${doc} được xóa thành công!`);
             return true;
         }).catch(function (error) {
             console.error("Error removing document: ", error);
-            message.error(`Lỗi: ${doc} xóa thất bại!`);
+            // message.error(`Lỗi: ${doc} xóa thất bại!`);
             return false;
         });
 }
@@ -194,16 +194,16 @@ export const uploadImage = (ref, file) => {
                     if (downloadURL) {
                         _resolve(downloadURL);
                     } else {
-                        message.error('Lỗi: upload hình ảnh thất bại!');
+                        // message.error('Lỗi: upload hình ảnh thất bại!');
                         _reject();
                     }
                 }).catch(() => {
-                    message.error('Lỗi: upload hình ảnh thất bại!');
+                    // message.error('Lỗi: upload hình ảnh thất bại!');
                     _reject();
                 })
             });
         } else {
-            message.error('Lỗi: upload hình ảnh thất bại!');
+            // message.error('Lỗi: upload hình ảnh thất bại!');
             _reject('File already existed');
         }
 
@@ -228,11 +228,11 @@ export const deleteImage = (ref) => {
     return desertRef.delete()
         .then(function () {
             // File deleted successfully
-            message.success(`Hình ảnh ${name} được xóa thành công!`);
+            // message.success(`Hình ảnh ${name} được xóa thành công!`);
             return true;
         }).catch(function (error) {
             // Uh-oh, an error occurred!
-            message.error(`Lỗi: xóa hình ảnh ${name} thất bại!`);
+            // message.error(`Lỗi: xóa hình ảnh ${name} thất bại!`);
             return false;
         });
 }

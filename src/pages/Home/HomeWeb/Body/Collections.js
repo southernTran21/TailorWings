@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import iconVectorRight from "../../.../../../../assets/imageHomePage/vectorRight.svg";
 import imageCollection from "../../.../../../../assets/imageHomePage/imageBST.jpg";
 
@@ -35,7 +35,21 @@ export default class Collections extends Component {
                                 Đầm<br></br> Dạo Phố
                             </span>
                             <span>
-                                XEM NGAY <img src={iconVectorRight} alt="" />
+                                <Link
+                                    to={{
+                                        pathname: "/shopping-store",
+                                        search: "?cat=damdaopho&search"
+                                    }}
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        textDecoration: "none",
+                                        border: "none"
+                                    }}
+                                >
+                                    XEM NGAY{" "}
+                                    <img src={iconVectorRight} alt="" />
+                                </Link>
                             </span>
                         </div>
                     </div>
@@ -54,7 +68,21 @@ export default class Collections extends Component {
                                 Đầm <br></br> Công Sở
                             </span>
                             <span>
-                                XEM NGAY <img src={iconVectorRight} alt="" />
+                                <Link
+                                    to={{
+                                        pathname: "/shopping-store",
+                                        search: "?cat=damcongso&search"
+                                    }}
+                                    style={{
+                                        width: "fit-content",
+                                        height: "fit-content",
+                                        textDecoration: "none",
+                                        border: "none"
+                                    }}
+                                >
+                                    XEM NGAY{" "}
+                                    <img src={iconVectorRight} alt="" />
+                                </Link>
                             </span>
                         </div>
                     </div>
@@ -67,7 +95,21 @@ export default class Collections extends Component {
                                 Đầm <br></br> Dự Tiệc
                             </span>
                             <span>
-                                XEM NGAY <img src={iconVectorRight} alt="" />
+                                <Link
+                                    to={{
+                                        pathname: "/shopping-store",
+                                        search: "?cat=damdutiec&search"
+                                    }}
+                                    style={{
+                                        width: "fit-content",
+                                        height: "fit-content",
+                                        textDecoration: "none",
+                                        border: "none"
+                                    }}
+                                >
+                                    XEM NGAY{" "}
+                                    <img src={iconVectorRight} alt="" />
+                                </Link>
                             </span>
                         </div>
                     </div>

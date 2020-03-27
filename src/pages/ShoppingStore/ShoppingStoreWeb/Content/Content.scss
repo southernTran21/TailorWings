@@ -47,16 +47,21 @@
             margin-bottom: 7.77vh;
             .image {
                 width: 21.11vw;
-                height: 50vh;
+                height: auto;
                 background: #ffa45c;
                 border-radius: 10px;
+                img {
+                    width: 100%;
+                }
             }
             span{
+                width: fit-content;
                 font-size: 18px;
                 font-weight: bold;
                 margin-top: 10px;
             }
             .button{
+                width: fit-content;
                 border-radius: 10px;
                 border: 1px solid #FF6D3B;
                 font-size: 14px;
@@ -64,6 +69,7 @@
                 font-weight: bold;
                 padding: 3px 15px;
                 margin-top: 8px;
+                cursor: pointer;
             }
         }
     }

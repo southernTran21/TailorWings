@@ -4,14 +4,51 @@ import Swiper from "react-id-swiper";
 import { Icon } from "antd";
 
 export default class StrikingProducts extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            swiper: null
+        };
+    }
+
+    getSwiper = swiper => {
+        this.setState({
+            swiper
+        });
+    };
+
+    onSlide = type => {
+        const { swiper } = this.state;
+        switch (type) {
+            case "prev":
+                swiper.slidePrev();
+                break;
+            case "next":
+                swiper.slideNext();
+                break;
+
+            default:
+                break;
+        }
+    };
+
     bestSellerContent = () => {
         let { bestSellerInfo } = this.props;
-        if (bestSellerInfo.length > 0) {
-            bestSellerInfo = bestSellerInfo.concat(bestSellerInfo);
-            console.log("bestSellerInfo :", bestSellerInfo);
-            return bestSellerInfo.map((product, index) => {
-                return (
-                    <div key={index} className="content-carousel">
+        return bestSellerInfo.map((product, index) => {
+            return (
+                <div key={index} className="content-carousel">
+                    <Link
+                        to={{
+                            pathname: "/product-detail",
+                            search: `?id=${product.designID}&pattern=${product.fabricID}`
+                        }}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            textDecoration: "none",
+                            border: "none"
+                        }}
+                    >
                         <div className="image">
                             <img src={product.image} atl={product.name} />
                         </div>
@@ -26,12 +63,10 @@ export default class StrikingProducts extends Component {
                                 </span>
                             </div>
                         </div>
-                    </div>
-                );
-            });
-        } else {
-            return "";
-        }
+                    </Link>
+                </div>
+            );
+        });
     };
     render() {
         const params = {
@@ -40,19 +75,36 @@ export default class StrikingProducts extends Component {
             centeredSlides: true,
             loop: true
         };
+        const { bestSellerInfo } = this.props;
         return (
             <div className="strikingProducts d-flex flex-column align-items-center fontMontserrat">
                 <div className="title">
                     <span>Nổi bật trong tuần</span>
                 </div>
                 <div className="carousel-wraper d-flex align-items-center">
-                    <div className="iconLeft">
+                    <div
+                        className="iconLeft"
+                        onClick={() => this.onSlide("prev")}
+                    >
                         <Icon type="left" />
                     </div>
                     <div className="carouselStriking">
-                        <Swiper {...params} className='d-flex flex-column align-items-center'>{this.bestSellerContent()}</Swiper>
+                        {bestSellerInfo.length > 0 ? (
+                            <Swiper
+                                {...params}
+                                className="d-flex flex-column align-items-center"
+                                getSwiper={this.getSwiper.bind(this)}
+                            >
+                                {this.bestSellerContent()}
+                            </Swiper>
+                        ) : (
+                            ""
+                        )}
                     </div>
-                    <div className="iconRight">
+                    <div
+                        className="iconRight"
+                        onClick={() => this.onSlide("next")}
+                    >
                         <Icon type="right" />
                     </div>
                 </div>

@@ -30,8 +30,9 @@ export default class HomeWeb extends Component {
             visibleProductsList
         } = this.state;
         const { visibilityProducts, bestSellerList } = this.props;
-        console.log('visibilityProducts', visibilityProducts)
-        let productsOnCart = JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        console.log("visibilityProducts", visibilityProducts);
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
             return accumulator + Number(current.quantity);
         }, 0);
@@ -68,6 +69,7 @@ export default class HomeWeb extends Component {
         return (
             <div className="homePage_wrapper">
                 <Header
+                    history={this.props.history}
                     bestSellerInfo={bestSellerInfo}
                     totalProductsOnCart={totalProductsOnCart}
                     visibleProductsList={visibleProductsList}
