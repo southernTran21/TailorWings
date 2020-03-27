@@ -5,7 +5,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
 const { Option } = Select;
-const tmp = new Array(20).fill("1");
 
 export default class ProductList extends Component {
     constructor(props) {

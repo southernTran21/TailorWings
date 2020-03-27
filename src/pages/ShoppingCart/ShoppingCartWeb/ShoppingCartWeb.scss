@@ -89,7 +89,15 @@
                                 color: white;
                                 border-radius: 2px;
                             }
-                            input {
+                            // input {
+                            //     width: 3.47vw;
+                            //     text-align: center;
+                            //     border: none;
+                            //     color: #ff6d3b;
+                            //     font-weight: bold;
+                            //     font-size: 1.52vw;
+                            // }
+                            span {
                                 width: 3.47vw;
                                 text-align: center;
                                 border: none;
@@ -118,15 +126,15 @@
             border-radius: 15px;
             height: 39.22vh;
             padding: 5.55vh 4.72vw 0 2.77vw;
-            :nth-child(1){
+            :nth-child(1) {
                 font-size: 1.66vw;
                 font-weight: 600;
             }
-            :nth-child(2){
+            :nth-child(2) {
                 font-size: 1.66vw;
                 font-weight: 700;
             }
-            :nth-child(3){
+            :nth-child(3) {
                 background-color: #ff6d3b;
                 color: white;
                 border-radius: 20px;

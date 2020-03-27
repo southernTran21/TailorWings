@@ -1,84 +1,382 @@
 import React, { Component } from "react";
+import ReactGA from "react-ga";
 import "./ShoppingCartWeb.scss";
-import { Icon, Input } from "antd";
-
+import { notification, message } from "antd";
+import { connect } from "react-redux";
+import * as actions from "./../../../actions/index";
+import { addDocument, setDocument } from "./../../../services/Fundamental";
+import uniqid from "uniqid";
+//
 import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
+import ProductList from "./ProductList";
+import Summary from "./Summary";
 
-const tmp = new Array(2).fill("1");
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-1");
+};
 
-export default class ShoppingCartWeb extends Component {
+const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
+
+const PRODUCT_DETAIL_FORM = {
+    discount: 0,
+    price: 0,
+    productID: "",
+    name: "",
+    bodyMetric: [],
+    size: "",
+    quantity: 0
+};
+
+class ShoppingCartWeb extends Component {
+    constructor(props) {
+        super(props);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        this.state = {
+            // common state
+            productsOnCart: [],
+            totalProductsOnCart: 0,
+            subtotalPrice: 0,
+            isCartUpdated: false,
+            paymentStep: "shoppingCart",
+            customerInfo: {
+                name: "",
+                phone: "",
+                address: ""
+            },
+            // state for customerInfo
+            errorValidate: new Array(3).fill(false),
+            rememberChecked: false,
+            // state for paymentInfo
+            paymentMethod: "COD",
+            paymentLoading: false
+        };
+    }
+
+    componentDidMount() {
+        initGA();
+        logPageView();
+        let { rememberChecked } = this.state;
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        let customerInfo =
+            JSON.parse(localStorage.getItem("customerInfo")) ||
+            this.state.customerInfo;
+        let totalProductsOnCart = productsOnCart.reduce(
+            (accumulator, current) => {
+                return accumulator + current.quantity;
+            },
+            0
+        );
+        let subtotalPrice = productsOnCart.reduce((accumulator, current) => {
+            return accumulator + current.price * current.quantity;
+        }, 0);
+        if (customerInfo.name !== "") {
+            rememberChecked = true;
+        }
+        this.setState({
+            productsOnCart,
+            totalProductsOnCart,
+            subtotalPrice,
+            customerInfo,
+            rememberChecked
+        });
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.isCartUpdated !== prevState.isCartUpdated) {
+            let productsOnCart =
+                JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+            let totalProductsOnCart = productsOnCart.reduce(
+                (accumulator, current) => {
+                    return accumulator + current.quantity;
+                },
+                0
+            );
+            let subtotalPrice = productsOnCart.reduce(
+                (accumulator, current) => {
+                    return accumulator + current.price * current.quantity;
+                },
+                0
+            );
+            return {
+                productsOnCart,
+                totalProductsOnCart,
+                subtotalPrice,
+                isCartUpdated: nextProps.isCartUpdated
+            };
+        }
+        return null;
+    }
+
+    // API FOR SHOPPPING CART RENDER
+    onQuantityChange = (quantityChanged, index) => {
+        console.log('quantityChanged', quantityChanged)
+        let { subtotalPrice, productsOnCart } = this.state;
+        productsOnCart[index].quantity = Number(quantityChanged);
+        subtotalPrice = productsOnCart.reduce((accumulator, current) => {
+            return accumulator + current.price * current.quantity;
+        }, 0);
+        this.props.onUpdateCart(productsOnCart);
+        notification.success({
+            message: "Thay đổi thành công",
+            placement: "bottomRight"
+        });
+        this.setState({
+            productsOnCart,
+            subtotalPrice
+        });
+    };
+
+    onProductRemove = index => {
+        let { productsOnCart, subtotalPrice } = this.state;
+        let deletedProduct = productsOnCart.splice(Number(index), 1);
+        subtotalPrice = productsOnCart.reduce((accumulator, current) => {
+            return accumulator + current.price * current.quantity;
+        }, 0);
+        this.props.onUpdateCart(productsOnCart);
+        notification.success({
+            message: "Thay đổi thành công",
+            placement: "bottomRight",
+            description: `${deletedProduct[0].name} đã được xóa khỏi giỏ hàng của bạn`
+        });
+        this.setState({
+            productsOnCart,
+            subtotalPrice
+        });
+    };
+
+    // END API FOR SHOPPPING CART RENDER
+
+    //API FOR CUSTOMER INFO PAGE
+
+    onCustomerInfoUpdate = customerInfo => {
+        if (customerInfo != null) {
+            this.setState({
+                customerInfo
+            });
+        }
+    };
+
+    onCustomerInfoValidate = () => {
+        const { name, phone, address } = this.state.customerInfo;
+        const { rememberChecked, customerInfo } = this.state;
+        let errorValidate = [];
+        let phoneModified = phone.replace(/ /gi, "");
+        errorValidate[0] = name === "" ? true : false;
+        errorValidate[1] =
+            isNaN(phoneModified) ||
+            phone === "" ||
+            phoneModified.split("")[0] != 0
+                ? true
+                : false;
+        errorValidate[2] = address === "" ? true : false;
+        if (!errorValidate.includes(true)) {
+            this.onStepChange("paymentConfirm");
+            if (rememberChecked) {
+                localStorage.setItem(
+                    "customerInfo",
+                    JSON.stringify(customerInfo)
+                );
+            } else {
+                localStorage.setItem(
+                    "customerInfo",
+                    JSON.stringify({
+                        name: "",
+                        phone: "",
+                        address: ""
+                    })
+                );
+            }
+        }
+        this.setState({
+            errorValidate
+        });
+    };
+
+    onRememberInfo = e => {
+        this.setState({
+            rememberChecked: e.target.checked
+        });
+    };
+
+    // END API FOR CUSTOMER INFO PAGE
+
+    //API FOR PAYMENT INFO PAGE
+
+    onPaymentMethodChange = method => {
+        this.setState({
+            paymentMethod: method
+        });
+    };
+
+    uploadNewOrder = () => {
+        this.setState({
+            paymentLoading: true
+        });
+        const { subtotalPrice, paymentMethod } = this.state;
+        let { name, phone, address } = this.state.customerInfo;
+        let phoneModified = phone.replace(/ /gi, "");
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        let totalPrice = subtotalPrice;
+        let orderDetail = {
+            orderID: uniqid.process(),
+            orderItems: []
+        };
+        productsOnCart.forEach(product => {
+            let productDetail = PRODUCT_DETAIL_FORM;
+            Object.keys(productDetail).forEach(key => {
+                productDetail[key] = product[key] || "";
+            });
+            orderDetail.orderItems.push(productDetail);
+        });
+        let customer = {
+            adddress: address || "",
+            cusName: name || "",
+            customerID: uniqid.time() || "",
+            id: "",
+            lock: false,
+            note: "",
+            phone: phoneModified || "",
+            promo: 0,
+            rate: "",
+            wishList: []
+        };
+        let order = {
+            customerID: customer.customerID,
+            doneDate: "",
+            id: "",
+            notes: "",
+            orderDate: "",
+            orderID: orderDetail.orderID,
+            status: "new",
+            total: totalPrice,
+            paymentMethod: paymentMethod
+        };
+        Promise.all([
+            setDocument("customers", customer, customer.phone),
+            addDocument("orders", order),
+            addDocument("orderDetail", orderDetail)
+        ]).then(() => {
+            message.success("Giao dịch thành công!");
+            this.props.onUpdateCart([]);
+            this.onStepChange("shoppingCart");
+            this.setState({
+                paymentLoading: false
+            });
+        });
+    };
+
+    // END API FOR CUSTOMER INFO PAGE
+
+    onStepChange = step => {
+        this.setState({
+            paymentStep: step
+        });
+    };
+
+    shoppingCartBodyRender = () => {
+        const { productsOnCart, subtotalPrice } = this.state;
+        return (
+            <React.Fragment>
+                <ProductList
+                    onProductRemove={this.onProductRemove}
+                    onQuantityChange={this.onQuantityChange}
+                    onStepChange={this.onStepChange}
+                    productsOnCart={productsOnCart}
+                />
+                <Summary subtotalPrice={subtotalPrice}/>
+            </React.Fragment>
+        );
+    };
+
+    shoppingCartFooterRender = () => {
+        let { subtotalPrice } = this.state;
+        subtotalPrice =
+            subtotalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
+                " VNĐ" || "0 VNĐ";
+        return null;
+        // <CheckOut
+        //     subtotalPrice={subtotalPrice}
+        //     onStepChange={this.onStepChange}
+        //     productsOnCart={this.state.productsOnCart}
+        // />
+    };
+
+    customerInfoBodyRender = () => {
+        return null;
+        // <CustomerInfo
+        //     onStepChange={this.onStepChange}
+        //     onCustomerInfoUpdate={this.onCustomerInfoUpdate}
+        //     errorValidate={this.state.errorValidate}
+        //     customerInfo={this.state.customerInfo}
+        //     onRememberInfo={this.onRememberInfo}
+        //     rememberChecked={this.state.rememberChecked}
+        // />
+    };
+
+    customerInfoFooterRender = () => {
+        return null;
+        // <ConfirmInfo
+        //     onStepChange={this.onStepChange}
+        //     onCustomerInfoValidate={this.onCustomerInfoValidate}
+        // />
+    };
+
+    paymentConfirmBodyRender = () => {
+        return null;
+        // <PaymentConfirm
+        //     onStepChange={this.onStepChange}
+        //     customerInfo={this.state.customerInfo}
+        //     productsOnCart={this.state.productsOnCart}
+        //     subtotalPrice={this.state.subtotalPrice}
+        //     paymentMethod={this.state.paymentMethod}
+        //     onPaymentMethodChange={this.onPaymentMethodChange}
+        // />
+    };
+
+    paymentConfirmFooterRender = () => {
+        return null;
+        // <ConfirmPayment
+        //     onStepChange={this.onStepChange}
+        //     paymentLoading={this.state.paymentLoading}
+        //     uploadNewOrder={this.uploadNewOrder}
+        // />
+    };
+
     render() {
         return (
             <div className="pageShoppingCartWeb">
-                <NavBarWeb />
+                <NavBarWeb from='shopping-cart' />
                 <div className="titleHeader_ShoppingCart d-flex justify-content-center">
                     <span>Giỏ hàng</span>
                 </div>
                 <div className="body_ShoppingCart d-flex justify-content-between">
-                    <div className="left">
-                        <div className="productList">
-                            <div className="titleTable d-flex">
-                                <div className="column1"></div>
-                                <div className="column2">
-                                    <span>Sản phẩm</span>
-                                </div>
-                                <div className="column3">
-                                    <span>Số lượng</span>
-                                </div>
-                                <div className="column4">
-                                    <span>Tạm tính</span>
-                                </div>
-                                <div className="column5"></div>
-                            </div>
-                            {tmp.map(index => {
-                                return (
-                                    <div className="contentTable d-flex">
-                                        <div className="column1">
-                                            <div className="imageProduct"></div>
-                                        </div>
-                                        <div className="column2 d-flex flex-column justify-content-between">
-                                            <div className="top d-flex flex-column">
-                                                <span>
-                                                    Đầm<br></br>Công Chúa - S
-                                                </span>
-                                                <span>B001C032</span>
-                                            </div>
-                                            <div className="bottom d-flex flex-column">
-                                                <span>Eo: 47</span>
-                                                <span>Ngực: 95</span>
-                                                <div className="d-flex">
-                                                    <span>Mông: 13</span>
-                                                    <div className="buttonChange">
-                                                        THAY ĐỔI
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="column3">
-                                            <div className="quantity d-flex align-items-center">
-                                                <Icon type="minus" />
-                                                <Input value="1" />
-                                                <Icon type="plus" />
-                                            </div>
-                                        </div>
-                                        <div className="column4">
-                                            <span>920, 000 VNĐ</span>
-                                        </div>
-                                        <div className="column5">
-                                            <Icon type="delete" />
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                    <div className="right d-flex flex-column">
-                        <span>Tạm Tính</span>
-                        <span>4,480,000 VNĐ</span>
-                        <span>THANH TOÁN</span>
-                    </div>
+                    {this.shoppingCartBodyRender()}
                 </div>
             </div>
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        isCartUpdated: state.updateProductOnCart
+    };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        onUpdateCart: updatedList => {
+            dispatch(actions.updateCart(updatedList));
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartWeb);
