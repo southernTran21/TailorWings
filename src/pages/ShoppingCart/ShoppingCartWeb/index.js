@@ -118,7 +118,7 @@ class ShoppingCartWeb extends Component {
 
     // API FOR SHOPPPING CART RENDER
     onQuantityChange = (quantityChanged, index) => {
-        console.log('quantityChanged', quantityChanged)
+        console.log("quantityChanged", quantityChanged);
         let { subtotalPrice, productsOnCart } = this.state;
         productsOnCart[index].quantity = Number(quantityChanged);
         subtotalPrice = productsOnCart.reduce((accumulator, current) => {
@@ -284,53 +284,74 @@ class ShoppingCartWeb extends Component {
     };
 
     shoppingCartBodyRender = () => {
-        const { productsOnCart, subtotalPrice } = this.state;
-        return (
-            // <React.Fragment>
-            //     <ProductList
-            //         onProductRemove={this.onProductRemove}
-            //         onQuantityChange={this.onQuantityChange}
-            //         onStepChange={this.onStepChange}
-            //         productsOnCart={productsOnCart}
-            //     />
-            //     <Summary subtotalPrice={subtotalPrice}/>
-            // </React.Fragment>
-            <CustomerInfo/>
-        );
+        const { productsOnCart, subtotalPrice, paymentStep } = this.state;
+        let content = "";
+        switch (paymentStep) {
+            case "shoppingCart":
+                content = (
+                    <React.Fragment>
+                        <div className="titleHeader_ShoppingCart d-flex justify-content-center">
+                            <span>Giỏ hàng</span>
+                        </div>
+                        <div className="body_ShoppingCart d-flex justify-content-between">
+                            <ProductList
+                                onProductRemove={this.onProductRemove}
+                                onQuantityChange={this.onQuantityChange}
+                                onStepChange={this.onStepChange}
+                                productsOnCart={productsOnCart}
+                            />
+                            <Summary
+                                subtotalPrice={subtotalPrice}
+                                onStepChange={this.onStepChange}
+                            />
+                        </div>
+                    </React.Fragment>
+                );
+                break;
+            case "customerInfo":
+                content = <CustomerInfo onStepChange={this.onStepChange}/>;
+                break;
+            case "paymentConfirm":
+                content = <PaymentConfirm />;
+                break;
+
+            default:
+                break;
+        }
+        return content;
     };
 
-    customerInfoBodyRender = () => {
-        return <CustomerInfo
-            onStepChange={this.onStepChange}
-            onCustomerInfoUpdate={this.onCustomerInfoUpdate}
-            errorValidate={this.state.errorValidate}
-            customerInfo={this.state.customerInfo}
-            onRememberInfo={this.onRememberInfo}
-            rememberChecked={this.state.rememberChecked}
-        />
-    };
+    // customerInfoBodyRender = () => {
+    //     return (
+    //         <CustomerInfo
+    //             onStepChange={this.onStepChange}
+    //             onCustomerInfoUpdate={this.onCustomerInfoUpdate}
+    //             errorValidate={this.state.errorValidate}
+    //             customerInfo={this.state.customerInfo}
+    //             onRememberInfo={this.onRememberInfo}
+    //             rememberChecked={this.state.rememberChecked}
+    //         />
+    //     );
+    // };
 
-    paymentConfirmBodyRender = () => {
-        return <PaymentConfirm
-            onStepChange={this.onStepChange}
-            customerInfo={this.state.customerInfo}
-            productsOnCart={this.state.productsOnCart}
-            subtotalPrice={this.state.subtotalPrice}
-            paymentMethod={this.state.paymentMethod}
-            onPaymentMethodChange={this.onPaymentMethodChange}
-        />
-    };
+    // paymentConfirmBodyRender = () => {
+    //     return (
+    //         <PaymentConfirm
+    //             onStepChange={this.onStepChange}
+    //             customerInfo={this.state.customerInfo}
+    //             productsOnCart={this.state.productsOnCart}
+    //             subtotalPrice={this.state.subtotalPrice}
+    //             paymentMethod={this.state.paymentMethod}
+    //             onPaymentMethodChange={this.onPaymentMethodChange}
+    //         />
+    //     );
+    // };
 
     render() {
         return (
             <div className="pageShoppingCartWeb">
-                <NavBarWeb from='shopping-cart' history={this.props.history} />
-                {/* <div className="titleHeader_ShoppingCart d-flex justify-content-center">
-                    <span>Giỏ hàng</span>
-                </div> */}
-                <div className="body_ShoppingCart d-flex justify-content-between">
-                    {this.shoppingCartBodyRender()}
-                </div>
+                <NavBarWeb from="shopping-cart" history={this.props.history} />
+                {this.shoppingCartBodyRender()}
             </div>
         );
     }

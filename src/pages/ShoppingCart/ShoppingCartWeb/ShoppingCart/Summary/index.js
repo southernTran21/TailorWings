@@ -10,7 +10,7 @@ class Summary extends Component {
             <div className="right d-flex flex-column">
                 <span>Tạm Tính</span>
                 <span>{subtotalPrice}</span>
-                <span>THANH TOÁN</span>
+                <span onClick={() => this.props.onStepChange('customerInfo')}>THANH TOÁN</span>
             </div>
         );
     }

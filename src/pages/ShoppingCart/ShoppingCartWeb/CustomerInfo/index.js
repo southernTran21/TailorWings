@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import './CustomerInfo.scss';
-import {Input, Checkbox} from 'antd'
+import "./CustomerInfo.scss";
+import { Input, Checkbox } from "antd";
 import NumberFormat from "react-number-format";
 import classNames from "classnames";
 
@@ -19,7 +19,7 @@ export default class CustomerInfo extends Component {
         // const { name, address, phone } = this.props.customerInfo;
         return (
             <div className="pageCustomerInfo">
-                <div className='titleHeaderPage d-flex justify-content-center'>
+                <div className="titleHeaderPage d-flex justify-content-center">
                     <span>Địa chỉ nhận hàng</span>
                 </div>
                 <div className="inputInfo">
@@ -90,7 +90,10 @@ export default class CustomerInfo extends Component {
                         </span>
                     </Checkbox>
                 </div>
-                <div className='buttonApcept d-flex justify-content-center align-items-center'>
+                <div
+                    className="buttonApcept d-flex justify-content-center align-items-center"
+                    onClick={() => this.props.onStepChange("paymentConfirm")}
+                >
                     <span>GIAO ĐẾN ĐỊA CHỈ NÀY</span>
                 </div>
             </div>

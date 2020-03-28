@@ -2,12 +2,20 @@
     width: 100%;
     height: 100%;
     padding: 0 33vw;
-    .image-wraper {
+    .swiper {
         width: 100%;
         height: fit-content;
-        img {
+        padding: 1vh;
+        .swiper-slide {
+            width: fit-content !important;
+        }
+        .image-wraper {
             width: 100%;
             height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }

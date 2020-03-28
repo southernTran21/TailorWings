@@ -19,14 +19,14 @@ export default class ImageView extends Component {
 
     onSlide = type => {
         const { swiper } = this.state;
-        console.log('type', type)
+        console.log("type", type);
         switch (type) {
             case "prev":
-                console.log('prev')
+                console.log("prev");
                 swiper.slidePrev();
                 break;
             case "next":
-                console.log('next')
+                console.log("next");
                 swiper.slideNext();
                 break;
 
@@ -42,10 +42,14 @@ export default class ImageView extends Component {
             console.log("productImages", productImages);
             const params = {
                 slidesPerView: 1,
-                loop: true,
+                loop: true
             };
             return (
-                <Swiper {...params} getSwiper={this.getSwiper.bind(this)}>
+                <Swiper
+                    className="d-flex flex-column align-items-center"
+                    {...params}
+                    getSwiper={this.getSwiper.bind(this)}
+                >
                     {productImages.map((image, index) => {
                         return (
                             <div key={index} className="image-wraper">
@@ -61,7 +65,7 @@ export default class ImageView extends Component {
     };
 
     render() {
-        console.log('this.state.swiper', this.state.swiper)
+        console.log("this.state.swiper", this.state.swiper);
         return (
             <div className="imageView-wrapper">
                 <div className="d-flex justify-content-between">
@@ -71,7 +75,7 @@ export default class ImageView extends Component {
                     <Button onClick={() => this.onSlide("next")}>next</Button>
                     <Button onClick={() => this.onSlide("prev")}>prev</Button>
                 </div>
-                {this.renderContentHandling()}
+                <div className="swiper">{this.renderContentHandling()}</div>
             </div>
         );
     }
