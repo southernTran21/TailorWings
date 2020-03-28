@@ -50,7 +50,7 @@
         .selectionSize {
             width: 100%;
             margin-top: 2.22vh;
-            .selecttion {
+            .selection {
                 // background-color: #ff6d3b;
                 background: #fff4e3;
                 color: #ff6d3b;
@@ -60,6 +60,10 @@
                 height: 5.05vh;
                 border-radius: 15px;
                 cursor: pointer;
+            }
+            .actived {
+                background: #ff6d3b !important;
+                color: white !important;
             }
         }
     }
@@ -114,7 +118,7 @@
                     color: white;
                     border-radius: 2px;
                 }
-                input {
+                span {
                     width: 4vw;
                     text-align: center;
                     border: none;

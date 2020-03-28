@@ -8,8 +8,10 @@ import { addDocument, setDocument } from "./../../../services/Fundamental";
 import uniqid from "uniqid";
 //
 import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
-import ProductList from "./ProductList";
-import Summary from "./Summary";
+import ProductList from "./ShoppingCart/ProductList";
+import Summary from "./ShoppingCart/Summary";
+import CustomerInfo from "./CustomerInfo";
+import PaymentConfirm from "./PaymentConfirm";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -296,64 +298,32 @@ class ShoppingCartWeb extends Component {
         );
     };
 
-    shoppingCartFooterRender = () => {
-        let { subtotalPrice } = this.state;
-        subtotalPrice =
-            subtotalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
-                " VNĐ" || "0 VNĐ";
-        return null;
-        // <CheckOut
-        //     subtotalPrice={subtotalPrice}
-        //     onStepChange={this.onStepChange}
-        //     productsOnCart={this.state.productsOnCart}
-        // />
-    };
-
     customerInfoBodyRender = () => {
-        return null;
-        // <CustomerInfo
-        //     onStepChange={this.onStepChange}
-        //     onCustomerInfoUpdate={this.onCustomerInfoUpdate}
-        //     errorValidate={this.state.errorValidate}
-        //     customerInfo={this.state.customerInfo}
-        //     onRememberInfo={this.onRememberInfo}
-        //     rememberChecked={this.state.rememberChecked}
-        // />
-    };
-
-    customerInfoFooterRender = () => {
-        return null;
-        // <ConfirmInfo
-        //     onStepChange={this.onStepChange}
-        //     onCustomerInfoValidate={this.onCustomerInfoValidate}
-        // />
+        return <CustomerInfo
+            onStepChange={this.onStepChange}
+            onCustomerInfoUpdate={this.onCustomerInfoUpdate}
+            errorValidate={this.state.errorValidate}
+            customerInfo={this.state.customerInfo}
+            onRememberInfo={this.onRememberInfo}
+            rememberChecked={this.state.rememberChecked}
+        />
     };
 
     paymentConfirmBodyRender = () => {
-        return null;
-        // <PaymentConfirm
-        //     onStepChange={this.onStepChange}
-        //     customerInfo={this.state.customerInfo}
-        //     productsOnCart={this.state.productsOnCart}
-        //     subtotalPrice={this.state.subtotalPrice}
-        //     paymentMethod={this.state.paymentMethod}
-        //     onPaymentMethodChange={this.onPaymentMethodChange}
-        // />
-    };
-
-    paymentConfirmFooterRender = () => {
-        return null;
-        // <ConfirmPayment
-        //     onStepChange={this.onStepChange}
-        //     paymentLoading={this.state.paymentLoading}
-        //     uploadNewOrder={this.uploadNewOrder}
-        // />
+        return <PaymentConfirm
+            onStepChange={this.onStepChange}
+            customerInfo={this.state.customerInfo}
+            productsOnCart={this.state.productsOnCart}
+            subtotalPrice={this.state.subtotalPrice}
+            paymentMethod={this.state.paymentMethod}
+            onPaymentMethodChange={this.onPaymentMethodChange}
+        />
     };
 
     render() {
         return (
             <div className="pageShoppingCartWeb">
-                <NavBarWeb from='shopping-cart' />
+                <NavBarWeb from='shopping-cart' history={this.props.history} />
                 <div className="titleHeader_ShoppingCart d-flex justify-content-center">
                     <span>Giỏ hàng</span>
                 </div>

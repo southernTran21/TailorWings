@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Icon, Input } from "antd";
 import { connect } from "react-redux";
-import * as actions from "./../../../../actions/index";
+import * as actions from "./../../../../../actions/index";
 import UpdateMetricModal from "./UpdateMetricModal";
 
 class ProductList extends Component {

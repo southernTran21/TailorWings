@@ -22,7 +22,7 @@ export default class ShoppingCart extends Component {
         return (
             <Media queries={{ small: { maxWidth: 1024 } }}>
                 {matches =>
-                    matches.small ? <ShoppingCartMobile /> : <ShoppingCartWeb />
+                    matches.small ? <ShoppingCartMobile /> : <ShoppingCartWeb history={this.props.history}/>
                 }
             </Media>
         );

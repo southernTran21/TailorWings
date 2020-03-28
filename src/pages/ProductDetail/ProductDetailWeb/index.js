@@ -22,13 +22,13 @@ class ProductDetailWeb extends Component {
             fabricList: [],
             productList: [],
             size: "",
-            bodyMetric: []
+            bodyMetric: [],
+            isSizeMetricUpdate: false
         };
     }
 
     componentDidMount() {
         const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
-        console.log("visibilityProducts", visibilityProducts);
         let { totalProductsOnCart, currentSelectedProduct } = this.state;
         let designID = window.location.search.match(/id=(.*)&\b/)[1];
         let fabricID = window.location.search.match(/pattern=(.*)\b/)[1];
@@ -48,10 +48,10 @@ class ProductDetailWeb extends Component {
                 design => design.id === product.designID
             ) || { name: "" };
             product.name = currentDesign.name;
+            product.designDescription = currentDesign.description;
         });
         // ------------ //
         if (productList.length > 0) {
-            console.log("productList", productList);
             currentSelectedProduct = { ...productList[0] };
         }
         currentSelectedProduct.size = size;
@@ -111,7 +111,8 @@ class ProductDetailWeb extends Component {
             selectionStep,
             currentSelectedProduct,
             productList,
-            fabricList
+            fabricList,
+            isSizeMetricUpdate
         } = this.state;
         let content = "";
         switch (selectionStep) {
@@ -128,7 +129,17 @@ class ProductDetailWeb extends Component {
                 );
                 break;
             case "sizeSelection":
-                content = <SizeSelectionWeb />;
+                content = (
+                    <SizeSelectionWeb
+                        currentSelectedProduct={currentSelectedProduct}
+                        onselectionStepChange={this.onselectionStepChange}
+                        onSizeUpdated={this.onSizeUpdated}
+                        onBodyMetricUpdated={this.onBodyMetricUpdated}
+                        onQuantityUpdated={this.onQuantityUpdated}
+                        isSizeMetricUpdate={isSizeMetricUpdate}
+                        history={this.props.history}
+                    />
+                );
                 break;
             default:
                 break;
@@ -177,7 +188,8 @@ class ProductDetailWeb extends Component {
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.size = size;
         this.setState({
-            currentSelectedProduct
+            currentSelectedProduct,
+            isSizeMetricUpdate: true
         });
     };
 
@@ -185,9 +197,19 @@ class ProductDetailWeb extends Component {
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.bodyMetric = bodyMetric;
         this.setState({
-            currentSelectedProduct
+            currentSelectedProduct,
+            isSizeMetricUpdate: true
         });
     };
+
+    onQuantityUpdated = ( quantity ) => {
+        console.log('quantity', quantity)
+        let { currentSelectedProduct } = this.state;
+        currentSelectedProduct.quantity = quantity;
+        this.setState({
+            currentSelectedProduct
+        })
+    }
 
     render() {
         const { selectionStep, totalProductsOnCart } = this.state;
