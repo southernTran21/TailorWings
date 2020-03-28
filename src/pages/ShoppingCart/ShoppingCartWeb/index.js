@@ -286,15 +286,16 @@ class ShoppingCartWeb extends Component {
     shoppingCartBodyRender = () => {
         const { productsOnCart, subtotalPrice } = this.state;
         return (
-            <React.Fragment>
-                <ProductList
-                    onProductRemove={this.onProductRemove}
-                    onQuantityChange={this.onQuantityChange}
-                    onStepChange={this.onStepChange}
-                    productsOnCart={productsOnCart}
-                />
-                <Summary subtotalPrice={subtotalPrice}/>
-            </React.Fragment>
+            // <React.Fragment>
+            //     <ProductList
+            //         onProductRemove={this.onProductRemove}
+            //         onQuantityChange={this.onQuantityChange}
+            //         onStepChange={this.onStepChange}
+            //         productsOnCart={productsOnCart}
+            //     />
+            //     <Summary subtotalPrice={subtotalPrice}/>
+            // </React.Fragment>
+            <CustomerInfo/>
         );
     };
 
@@ -324,9 +325,9 @@ class ShoppingCartWeb extends Component {
         return (
             <div className="pageShoppingCartWeb">
                 <NavBarWeb from='shopping-cart' history={this.props.history} />
-                <div className="titleHeader_ShoppingCart d-flex justify-content-center">
+                {/* <div className="titleHeader_ShoppingCart d-flex justify-content-center">
                     <span>Giỏ hàng</span>
-                </div>
+                </div> */}
                 <div className="body_ShoppingCart d-flex justify-content-between">
                     {this.shoppingCartBodyRender()}
                 </div>
