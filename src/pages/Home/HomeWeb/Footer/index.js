@@ -5,7 +5,7 @@ import {Input} from 'antd'
 import iconFB from "../../.../../../../assets/imageHomePage/facebook.svg";
 import iconYTB from "../../.../../../../assets/imageHomePage/youtube.svg";
 import iconIG1 from "../../.../../../../assets/imageHomePage/instagram (1).svg";
-import logoTailorWings from "../../.../../../../assets/imageHomePage/tailorwings.svg";
+import logoTailorWings from "../../.../../../../assets/imageHomePage/bird logo.svg";
 
 export default class Footer extends Component {
     render() {
