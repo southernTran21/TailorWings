@@ -46,6 +46,7 @@ export default class FabricSelectionWeb extends Component {
                 <ProductImage
                     images={currentSelectedProduct.image}
                     productName={currentSelectedProduct.name}
+                    onImageView={this.props.onImageView}
                 />
                 <div className="d-flex flex-column">
                     <FabricList

@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./ProductDetailWeb.scss";
+import Steps from "./Steps";
+import { connect } from "react-redux";
+import classNames from "classnames";
+//
 import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
 import FabricSelectionWeb from "./FabricSelection";
-import Steps from "./Steps";
 import SizeSelectionWeb from "./SizeSelection";
-import { connect } from "react-redux";
+import ImageView from "./ImageView";
 
 class ProductDetailWeb extends Component {
     constructor(props) {
@@ -12,6 +15,7 @@ class ProductDetailWeb extends Component {
         this.state = {
             selectionStep: "fabricSelection",
             currentSelectedProduct: {
+                name: '',
                 size: null,
                 quantity: 1,
                 bodyMetric: new Array(3).fill(""),
@@ -23,7 +27,8 @@ class ProductDetailWeb extends Component {
             productList: [],
             size: "",
             bodyMetric: [],
-            isSizeMetricUpdate: false
+            isSizeMetricUpdate: false,
+            isImageView: false
         };
     }
 
@@ -100,6 +105,12 @@ class ProductDetailWeb extends Component {
         }
     }
 
+    onImageView = state => {
+        this.setState({
+            isImageView: state
+        });
+    };
+
     onselectionStepChange = content => {
         this.setState({
             selectionStep: content
@@ -124,6 +135,7 @@ class ProductDetailWeb extends Component {
                         currentSelectedProduct={currentSelectedProduct}
                         onselectionStepChange={this.onselectionStepChange}
                         onSelectedFabricUpdating={this.onSelectedFabricUpdating}
+                        onImageView={this.onImageView}
                         history={this.props.history}
                     />
                 );
@@ -202,26 +214,48 @@ class ProductDetailWeb extends Component {
         });
     };
 
-    onQuantityUpdated = ( quantity ) => {
-        console.log('quantity', quantity)
+    onQuantityUpdated = quantity => {
+        console.log("quantity", quantity);
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.quantity = quantity;
         this.setState({
             currentSelectedProduct
-        })
-    }
+        });
+    };
 
     render() {
-        const { selectionStep, totalProductsOnCart } = this.state;
+        const {
+            selectionStep,
+            totalProductsOnCart,
+            isImageView,
+            currentSelectedProduct
+        } = this.state;
         return (
-            <div>
-                <NavBarWeb
-                    history={this.props.history}
-                    totalProductsOnCart={totalProductsOnCart}
-                />
-                <div className="pageProductDetailWeb">
-                    <Steps selectionStep={selectionStep} />
-                    {this.selectionStepHandling()}
+            <div className="productDetail-container">
+                <div
+                    className={classNames("pageProductDetailWeb-wrapper", {
+                        unvisible: isImageView
+                    })}
+                >
+                    <NavBarWeb
+                        history={this.props.history}
+                        totalProductsOnCart={totalProductsOnCart}
+                    />
+                    <div className="pageProductDetailWeb">
+                        <Steps selectionStep={selectionStep} />
+                        {this.selectionStepHandling()}
+                    </div>
+                </div>
+                <div
+                    className={classNames("imageView", {
+                        unvisible: !isImageView
+                    })}
+                >
+                    <ImageView
+                        onImageView={this.onImageView}
+                        productImages={currentSelectedProduct.image}
+                        productName={currentSelectedProduct.name}
+                    />
                 </div>
             </div>
         );
