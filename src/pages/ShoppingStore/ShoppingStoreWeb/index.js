@@ -195,28 +195,30 @@ export default class ShoppingStoreWeb extends Component {
             isFirstLoaded
         } = this.state;
         return (
-            <div className="shoppingStore_wrapper">
+            <div>
                 <NavBarWeb
                     history={this.props.history}
                     totalProductsOnCart={this.props.totalProductsOnCart}
                 />
-                <Categories
-                    isRenderProductsEmpty={renderProducts.length === 0}
-                    currentActiveCategory={currentActiveCategory}
-                    categoryActiveHandling={this.categoryActiveHandling}
-                />
-                <div className="filterContent d-flex justify-content-between">
-                    <Filter
+                <div className="shoppingStore_wrapper">
+                    <Categories
+                        isRenderProductsEmpty={renderProducts.length === 0}
+                        currentActiveCategory={currentActiveCategory}
                         categoryActiveHandling={this.categoryActiveHandling}
-                        onCollectionFiltering={this.onCollectionFiltering}
-                        collectionsInfo={collectionsInfo}
-                        isEmptyFilter={isEmptyFilter}
                     />
-                    <ProductList
-                        renderProducts={renderProducts}
-                        isFirstLoaded={isFirstLoaded}
-                        firstLoadedConfirm={this.firstLoadedConfirm}
-                    />
+                    <div className="filterContent d-flex justify-content-between">
+                        <Filter
+                            categoryActiveHandling={this.categoryActiveHandling}
+                            onCollectionFiltering={this.onCollectionFiltering}
+                            collectionsInfo={collectionsInfo}
+                            isEmptyFilter={isEmptyFilter}
+                        />
+                        <ProductList
+                            renderProducts={renderProducts}
+                            isFirstLoaded={isFirstLoaded}
+                            firstLoadedConfirm={this.firstLoadedConfirm}
+                        />
+                    </div>
                 </div>
             </div>
         );
