@@ -1,4 +1,4 @@
-.pagePolicy{
+.pageSupport{
     padding: 8.99vh 6.93vw;
     color: #111E6C;
     .titleHeaderPage{
@@ -6,24 +6,10 @@
         font-weight: bold;
         margin-top: 4.49vh;
     }
-    .contentHederPage{
-        margin-top: 4.49vh;
-        :nth-child(1){
-            font-size: 4.8vw;
-            font-weight: bold;
-        }
-        :nth-child(2){
-            margin-top: 1.49vh;
-            font-size: 3.73vw;
-        }
-    }
-    hr{
-        border-top: 1px solid #FF6D3B;
-        margin: 4.49vh 0;
-    }
     .ant-collapse{
         border: none;
         background-color: transparent;
+        margin-top: 3vh;
         .ant-collapse-item{
             border: none;
             margin-bottom: 1.49vh;
@@ -43,7 +29,7 @@
         .ant-collapse-content-box{
             padding: 0;
             margin-bottom: 2.99vh;
-            margin-top: 0.74vh;
+            margin-top: 2.99vh;
             span{
                 font-size: 3.73vw;
                 font-weight: 500;

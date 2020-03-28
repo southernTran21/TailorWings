@@ -8,6 +8,7 @@ import Body from "./Body";
 import Footer from "./Footer";
 import SearchSuggest from "./SearchSuggest";
 import Policy from "./Policy";
+import Support from "./Support";
 
 export default class HomeMobile extends Component {
     constructor(props) {
@@ -103,7 +104,8 @@ export default class HomeMobile extends Component {
                         bestSellerInfo={bestSellerInfo}
                         collectionsInfo={this.props.collectionsInfo}
                     /> */}
-                    <Policy/>
+                    {/* <Policy/> */}
+                    <Support/>
                     <Footer />
                 </React.Fragment>
             );
