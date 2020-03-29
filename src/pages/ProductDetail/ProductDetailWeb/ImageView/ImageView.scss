@@ -41,9 +41,15 @@
         justify-content: center;
         margin-top: -2vh;
     }
-    .ant-btn:hover, .ant-btn:focus{
+    .ant-btn:hover{
         color: #FF6D3B !important;
         background-color: #FFF4E3;
+    }
+    .ant-btn:focus{
+        color: #FF6D3B !important;
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
     }
     .buttonPrev{
         margin-left: -21.5vh;

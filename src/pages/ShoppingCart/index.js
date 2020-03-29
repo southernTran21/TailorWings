@@ -17,6 +17,10 @@ export default class ShoppingCart extends Component {
     componentDidMount() {
         initGA();
         logPageView();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
     render() {
         return (

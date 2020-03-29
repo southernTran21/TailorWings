@@ -17,6 +17,10 @@ const logPageView = () => {
 class ShoppingStore extends Component {
     constructor(props) {
         super(props);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
         this.state = {
             totalProductsOnCart: 0,
             isNewProductAdded: false

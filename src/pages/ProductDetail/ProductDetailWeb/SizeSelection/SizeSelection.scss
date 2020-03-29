@@ -13,7 +13,6 @@
         span {
             font-size: 0.97vw;
             margin-top: 3px;
-            
         }
     }
     .bodyScale {
@@ -75,36 +74,58 @@
         width: 28.61vw;
         height: 57vh;
         margin-left: 8.95vw;
-        padding: 4vh 2.77vw 0 2.77vw;
-        .info{
-            :nth-child(1){
+        padding: 2vh 2.77vw 0 2.77vw;
+        .info {
+            :nth-child(1) {
                 font-size: 1.805vw;
                 font-weight: bold;
             }
-            :nth-child(2){
+            :nth-child(2) {
                 font-size: 1.52vw;
                 font-weight: 600;
             }
-            :nth-child(3){
+            :nth-child(3) {
                 font-size: 1.25vw;
                 font-weight: bold;
-                margin-top: 4.56vh;
+                margin-top: 2vh;
             }
-            :nth-child(4){
+            #designDescription_wrapper {
+                width: 98%;
+                height: 14vh;
+                overflow: hidden;
+            }
+            #designDescription {
+                overflow-y: scroll;
+                max-height: 15vh;
+                width: 106%;
                 font-size: 0.9vw;
+                font-weight: normal;
+                padding-right: .5vw;
+                text-align: justify;
             }
-            :nth-child(5){
+            #fabricDescription_wrapper {
+                width: 98%;
+                height: 9vh;
+                overflow: hidden;
+            }
+            #fabricDescription {
+                overflow-y: scroll;
+                max-height: 10vh;
+                width: 106%;
+                font-size: 0.9vw;
+                font-weight: normal;
+                padding-right: .5vw;
+                text-align: justify;
+            }
+            :nth-child(5) {
                 font-size: 1.25vw;
                 font-weight: bold;
-                margin-top: 2.56vh;
-            }
-            :nth-child(6){
-                font-size: 0.9vw;
+                margin-top: 1vh;
             }
         }
-        .changeQuantity{
-            margin-top: 6.88vh;
-            span{
+        .changeQuantity {
+            margin-top: 1.5vh;
+            span {
                 font-size: 1.25vw;
                 font-weight: bold;
             }
@@ -131,19 +152,20 @@
                 }
             }
         }
-        .total{
-            margin-top: 6.88vh;
+        .total {
+            margin-top: 1.5vh;
             margin-left: 6.11vw;
-            :nth-child(1), :nth-child(2){
+            :nth-child(1),
+            :nth-child(2) {
                 font-size: 1.25vw;
                 font-weight: bold;
             }
-            :nth-child(2){
+            :nth-child(2) {
                 margin-top: 1vh;
             }
         }
     }
-    .buttonApcept{
+    .buttonApcept {
         margin-left: 8.95vw;
         background-color: #ff6d3b;
         height: 5vh;

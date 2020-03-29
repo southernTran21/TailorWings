@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import SideBar from '../../../../components/SideBar/SideBar'
 import Backdrop from '../../../../components/SideBar/Backdrop'
 import Search from './Search';
-
+import logoTW from '../../../../assets/imageHomePage/Logo Header.svg'
 
 class NavbarHeader extends Component {
     constructor(props) {
@@ -67,11 +67,9 @@ class NavbarHeader extends Component {
                 <div className='iconMenu' >
                     {this.sideBarIconChange()}
                 </div>
-                <div className='titleHeader'>TAILOR WINGS</div>
+                <div className='titleHeader'><img src={logoTW} alt=""/></div>
                 <div className='iconSearch d-flex flex-row justify-content-center align-content-center'>
-
                     {this.searchChangeIcon()}
-
                 </div>
                 <SideBar show={isSideBarOpen} changeSideBarState={this.sideBarOpen} history={this.props.history} />
                 <Search

@@ -36,8 +36,27 @@ export default class PaymentConfirm extends Component {
                         </div>
                         <div className="productList">
                             {productsOnCart.map((product, index) => {
+                                let productTotalPrice = 0;
+                                if (
+                                    product.hasOwnProperty("price") &&
+                                    product.hasOwnProperty("quantity")
+                                ) {
+                                    productTotalPrice =
+                                        Number(product.price) *
+                                        Number(product.quantity);
+                                }
+                                productTotalPrice =
+                                    productTotalPrice
+                                        .toString()
+                                        .replace(
+                                            /(\d)(?=(\d{3})+(?!\d))/g,
+                                            "$1."
+                                        ) + " VNĐ" || "0 VNĐ";
                                 return (
-                                    <div className="contentInfo d-flex">
+                                    <div
+                                        key={index}
+                                        className="contentInfo d-flex"
+                                    >
                                         <div className="imageContent">
                                             <img
                                                 src={product.image[0]}
@@ -62,7 +81,7 @@ export default class PaymentConfirm extends Component {
                                                 </div>
                                             </div>
                                             <div className="bottom">
-                                                <span>{subtotalPrice}</span>
+                                                <span>{productTotalPrice}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -124,7 +143,7 @@ export default class PaymentConfirm extends Component {
                         </div>
                         <div className="total d-flex align-items-center justify-content-between">
                             <span>Thành tiền</span>
-                            <span>620.000 VNĐ</span>
+                            <span>{subtotalPrice}</span>
                             {/* <span>{subtotalPrice}</span> */}
                         </div>
                         <div className="buttonApcept d-flex align-items-center justify-content-center">
