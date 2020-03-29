@@ -1,0 +1,146 @@
+.pagePayment{
+    font-family: "Montserrat", sans-serif;
+    .titleHeaderPage{
+        font-weight: bold;
+        font-size: 1.66vw;
+    }
+    .bodyContent{
+        padding: 0 5.69vw;
+        padding-top: 4.49vh;
+        .titleInfo{
+            margin-bottom: .5vw;
+            :nth-child(1){
+                font-size: 1.52vw;
+                font-weight: bold;
+            }
+            :nth-child(2){
+                font-size: 1.11vw;
+                color: #FF6D3B;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+        .col-6{
+            padding: 0;
+        }
+        .productList{
+            background-color: #fff4e3;
+            padding: 1vw 2vw;
+            border-radius: 10px;
+            .contentInfo{
+                padding: 1vw 0;
+                .imageContent{
+                    width: 8vw;
+                    height: 8vw;
+                    background-color: #FFA45C;
+                    margin-right: 1.2vw;
+                }
+                .top{
+                    width: 100%;
+                    .left{
+                        width: 100%;
+                        :nth-child(1){
+                            font-size: 1.35vw;
+                            font-weight: bold;
+                        }
+                        :nth-child(2){
+                            font-size: 1.11vw;
+                        }
+                    }
+                }
+                .bottom{
+                    font-size: 1.35vw;
+                }
+            }
+        }
+        .address {
+            .titleHead {
+                :nth-child(1) {
+                    font-weight: bold;
+                    font-size: 1.52vw;
+                    color: #111e6c;
+                }
+                :nth-child(2) {
+                    font-weight: bold;
+                    font-size: 1.11vw;
+                    color: #ff6d3b;
+                    cursor: pointer;
+                }
+            }
+            .content {
+                background: #fff4e3;
+                color: #111e6c;
+                padding: 18px;
+                border-radius: 5px;
+                margin-top: 8px;
+                :nth-child(1) {
+                    font-weight: 600;
+                    font-size: 0.97vw;
+                }
+                :nth-child(2) {
+                    font-size: 0.97vw;
+                    margin-top: 5px;
+                }
+            }
+        }
+        .selectPayment {
+            margin-top: 1.5vw;
+            .titleHead {
+                font-weight: bold;
+                font-size: 1.52vw;
+                color: #111e6c;
+                margin-bottom: 8px;
+            }
+            .content {
+                .selection {
+                    background: #fff4e3;
+                    border-radius: 5px;
+                    height: 44px;
+                    padding: 0 19px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                    span {
+                        color: #111e6c;
+                        font-size: 0.97vw;
+                    }
+                }
+            }
+        }
+        .cost {
+            color: #111e6c;
+            margin-top: 2vw;
+            :nth-child(1) {
+                font-weight: bold;
+                font-size: 1.25vw;
+            }
+            :nth-child(2) {
+                font-weight: 500;
+                font-size: 1.38vw;
+            }
+        }
+        .total {
+            color: #111e6c;
+            margin-top: 1vh;
+            :nth-child(1) {
+                font-weight: bold;
+                font-weight: 500;
+                font-size: 1.38vw;
+            }
+            :nth-child(2) {
+                font-weight: 600;
+                font-size: 1.38vw;
+            }
+        }
+        .buttonApcept{
+            width: 100%;
+            height: 6vh;
+            background-color: #FF6D3B;
+            color: white;
+            font-size: 1.52vw;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 4vh;
+        }
+    }
+}
