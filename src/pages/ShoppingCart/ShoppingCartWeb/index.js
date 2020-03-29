@@ -309,7 +309,17 @@ class ShoppingCartWeb extends Component {
                 );
                 break;
             case "customerInfo":
-                content = <CustomerInfo onStepChange={this.onStepChange}/>;
+                content = (
+                    <CustomerInfo
+                        onStepChange={this.onStepChange}
+                        onCustomerInfoUpdate={this.onCustomerInfoUpdate}
+                        errorValidate={this.state.errorValidate}
+                        customerInfo={this.state.customerInfo}
+                        onRememberInfo={this.onRememberInfo}
+                        rememberChecked={this.state.rememberChecked}
+                        onCustomerInfoValidate={this.onCustomerInfoValidate}
+                    />
+                );
                 break;
             case "paymentConfirm":
                 content = <PaymentConfirm />;

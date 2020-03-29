@@ -60,4 +60,11 @@
             cursor: pointer;
         }
     }
+    .error {
+        color: red;
+        font-family: "Be Vietnam", sans-serif;
+    }
+    .errorUnvisible {
+        display: none;
+    }
 }
