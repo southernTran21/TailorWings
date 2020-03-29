@@ -5,17 +5,17 @@ export default class ProductInfo extends Component {
         super(props);
         this.state = {
             currentSelectedProduct: this.props.currentSelectedProduct
-        }
+        };
     }
 
     componentDidMount() {
         const { currentSelectedProduct } = this.props;
         this.setState({
             currentSelectedProduct
-        })
+        });
     }
 
-    onQuantityChanged = (type) => {
+    onQuantityChanged = type => {
         const { currentSelectedProduct } = this.state;
         let quantityChanged = 0;
         switch (type) {
@@ -26,7 +26,7 @@ export default class ProductInfo extends Component {
                 }
                 this.setState({
                     currentSelectedProduct
-                })
+                });
                 break;
             case "plus":
                 quantityChanged = Number(currentSelectedProduct.quantity) + 1;
@@ -35,7 +35,7 @@ export default class ProductInfo extends Component {
                 }
                 this.setState({
                     currentSelectedProduct
-                })
+                });
                 break;
             default:
                 break;
@@ -43,8 +43,11 @@ export default class ProductInfo extends Component {
     };
 
     static getDerivedStateFromProps(props, state) {
-        console.log('props.currentSelectedProduct', props.currentSelectedProduct)
-        return null
+        console.log(
+            "props.currentSelectedProduct",
+            props.currentSelectedProduct
+        );
+        return null;
     }
 
     render() {
@@ -69,9 +72,17 @@ export default class ProductInfo extends Component {
                     <span>{name}</span>
                     <span>{productID}</span>
                     <span>Mô tả thiết kế</span>
-                    {/* <span>{designDescription}</span> */}
+                    <div id="designDescription_wrapper">
+                        <div id="designDescription">
+                            {`${designDescription}`}
+                        </div>
+                    </div>
                     <span>Mô tả vải</span>
-                    <span>Đang trong quá trình phát triển.</span>
+                    <div id="fabricDescription_wrapper">
+                        <div id="fabricDescription">
+                            Đang trong quá trình phát triển
+                        </div>
+                    </div>
                 </div>
                 <div className="d-flex">
                     <div className="changeQuantity d-flex flex-column">

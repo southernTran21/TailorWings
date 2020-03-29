@@ -6,7 +6,7 @@
         .titleHeader {
             :nth-child(1) {
                 color: #111e6c;
-                font-size: 24px;
+                font-size: 1.66vw;
                 font-weight: bold;
                 :nth-child(1) {
                     font-weight: normal;
@@ -25,7 +25,7 @@
             }
             .ant-select-selection__placeholder {
                 color: #ff6d3b;
-                font-size: 14px;
+                font-size: 0.97vw;
                 font-weight: bold;
             }
             .ant-select-arrow {
@@ -56,7 +56,7 @@
             }
             span{
                 width: fit-content;
-                font-size: 18px;
+                font-size: 1.25vw;
                 font-weight: bold;
                 margin-top: 10px;
             }
@@ -64,7 +64,7 @@
                 width: fit-content;
                 border-radius: 10px;
                 border: 1px solid #FF6D3B;
-                font-size: 14px;
+                font-size: 0.97vw;
                 color: #FF6D3B;
                 font-weight: bold;
                 padding: 3px 15px;
