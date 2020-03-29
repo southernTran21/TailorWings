@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "antd";
+import { Button, Icon } from "antd";
 import Swiper from "react-id-swiper";
 import "./ImageView.scss";
 
@@ -69,11 +69,15 @@ export default class ImageView extends Component {
         return (
             <div className="imageView-wrapper">
                 <div className="d-flex justify-content-between">
-                    <Button onClick={() => this.props.onImageView(false)}>
-                        Back
+                    <Button onClick={() => this.props.onImageView(false)} className='buttonBack'>
+                        <Icon type="close" />
                     </Button>
-                    <Button onClick={() => this.onSlide("next")}>next</Button>
-                    <Button onClick={() => this.onSlide("prev")}>prev</Button>
+                    <Button onClick={() => this.onSlide("prev")} className='buttonPrev'>
+                        <Icon type="left" />
+                    </Button>
+                    <Button onClick={() => this.onSlide("next")} className='buttonNext'>
+                        <Icon type="right" />
+                    </Button>
                 </div>
                 <div className="swiper">{this.renderContentHandling()}</div>
             </div>

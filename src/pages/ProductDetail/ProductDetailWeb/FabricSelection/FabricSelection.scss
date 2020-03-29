@@ -2,15 +2,16 @@
     .pageFabricSelection {
         margin-top: 30px;
         .iconBack {
-            margin-right: 24px;
             color: #ff6d3b;
             font-weight: bold;
+            cursor: pointer;
             i {
                 font-size: 20px;
             }
             span {
                 font-size: 0.97vw;
                 margin-top: 3px;
+                width: 6.5vw;
             }
         }
         .productImage {
@@ -97,6 +98,7 @@
             color: white;
             padding: 10px 0;
             margin-top: 1.66vh;
+            cursor: pointer;
         }
     }
 }
