@@ -1,5 +1,20 @@
 
 .side-drawer {
+    /* margin-top: 5vh; */
+    height: 100%;
+    background: #0f2944;
+    position: fixed;
+    top: 9vh;
+    left: 0;
+    width: 100%;
+    max-width: 500px;
+    transition: all 0.5s ease-in-out;
+    transform: translateX(-100%);
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    z-index: 7;
+}
+
+.side-drawer-desktop {
     margin-top: 5vh;
     height: 100%;
     background: #0f2944;
@@ -15,6 +30,14 @@
 }
 
 .side-drawer.open {
+    transform: translateX(0);
+    z-index: 10 !important;
+    overflow-x: hidden;
+    overflow: hidden;
+    border-top: 3px solid #ff6d3b;
+}
+
+.side-drawer-desktop.open {
     transform: translateX(0);
     z-index: 10 !important;
     overflow-x: hidden;

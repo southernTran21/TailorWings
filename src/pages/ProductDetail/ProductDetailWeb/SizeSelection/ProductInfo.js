@@ -69,7 +69,7 @@ export default class ProductInfo extends Component {
                     <span>{name}</span>
                     <span>{productID}</span>
                     <span>Mô tả thiết kế</span>
-                    {/* <span>{designDescription}</span> */}
+                    <span>{designDescription}</span>
                     <span>Mô tả vải</span>
                     <span>Đang trong quá trình phát triển.</span>
                 </div>

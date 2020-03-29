@@ -17,9 +17,17 @@ export default class SideBar extends Component {
     }
 
     render() {
-        let drawerClasses = 'side-drawer';
-        if (this.props.show) {
-            drawerClasses = 'side-drawer open'
+        let drawerClasses = ''
+        if ( window.innerWidth < 1024 ) {
+            drawerClasses = 'side-drawer';
+            if (this.props.show) {
+                drawerClasses = 'side-drawer open'
+            }
+        } else {
+            drawerClasses = 'side-drawer-desktop';
+            if (this.props.show) {
+                drawerClasses = 'side-drawer-desktop open'
+            }
         }
         return (
             <nav className={drawerClasses}>

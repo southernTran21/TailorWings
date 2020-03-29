@@ -23,6 +23,7 @@ export default class Header extends Component {
                         <SearchInput
                             visibleProductsList={visibleProductsList}
                             bestSellerInfo={bestSellerInfo}
+                            history={this.props.history}
                         />
                         <PersonalInfo
                             history={this.props.history}

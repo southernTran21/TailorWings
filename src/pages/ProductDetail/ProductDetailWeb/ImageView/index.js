@@ -39,7 +39,6 @@ export default class ImageView extends Component {
         const { productImages, productName } = this.props;
         let isEmpty = productImages.every(image => image === "");
         if (productImages != null && !isEmpty) {
-            console.log("productImages", productImages);
             const params = {
                 slidesPerView: 1,
                 loop: true
@@ -65,7 +64,6 @@ export default class ImageView extends Component {
     };
 
     render() {
-        console.log("this.state.swiper", this.state.swiper);
         return (
             <div className="imageView-wrapper">
                 <div className="d-flex justify-content-between">
