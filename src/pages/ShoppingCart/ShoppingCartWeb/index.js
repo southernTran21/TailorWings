@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactGA from "react-ga";
 import "./ShoppingCartWeb.scss";
+import '../../../components/NavBar/NavBarWeb/NavBarWeb.scss'
 import { notification, message } from "antd";
 import { connect } from "react-redux";
 import * as actions from "./../../../actions/index";
@@ -303,6 +304,7 @@ class ShoppingCartWeb extends Component {
                             <Summary
                                 subtotalPrice={subtotalPrice}
                                 onStepChange={this.onStepChange}
+                                productsOnCart={productsOnCart}
                             />
                         </div>
                     </React.Fragment>
@@ -322,7 +324,18 @@ class ShoppingCartWeb extends Component {
                 );
                 break;
             case "paymentConfirm":
-                content = <PaymentConfirm />;
+                content = (
+                    <PaymentConfirm
+                        onStepChange={this.onStepChange}
+                        customerInfo={this.state.customerInfo}
+                        productsOnCart={this.state.productsOnCart}
+                        subtotalPrice={this.state.subtotalPrice}
+                        paymentMethod={this.state.paymentMethod}
+                        onPaymentMethodChange={this.onPaymentMethodChange}
+                        paymentLoading={this.state.paymentLoading}
+                        uploadNewOrder={this.uploadNewOrder}
+                    />
+                );
                 break;
 
             default:
@@ -331,36 +344,10 @@ class ShoppingCartWeb extends Component {
         return content;
     };
 
-    // customerInfoBodyRender = () => {
-    //     return (
-    //         <CustomerInfo
-    //             onStepChange={this.onStepChange}
-    //             onCustomerInfoUpdate={this.onCustomerInfoUpdate}
-    //             errorValidate={this.state.errorValidate}
-    //             customerInfo={this.state.customerInfo}
-    //             onRememberInfo={this.onRememberInfo}
-    //             rememberChecked={this.state.rememberChecked}
-    //         />
-    //     );
-    // };
-
-    // paymentConfirmBodyRender = () => {
-    //     return (
-    //         <PaymentConfirm
-    //             onStepChange={this.onStepChange}
-    //             customerInfo={this.state.customerInfo}
-    //             productsOnCart={this.state.productsOnCart}
-    //             subtotalPrice={this.state.subtotalPrice}
-    //             paymentMethod={this.state.paymentMethod}
-    //             onPaymentMethodChange={this.onPaymentMethodChange}
-    //         />
-    //     );
-    // };
-
     render() {
         return (
             <div className="pageShoppingCartWeb">
-                <NavBarWeb from="shopping-cart" history={this.props.history} />
+                <NavBarWeb history={this.props.history} />
                 {this.shoppingCartBodyRender()}
             </div>
         );

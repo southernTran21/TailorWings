@@ -25,6 +25,11 @@
             object-fit: fill;
         }
     }
+
+    .logoTailorWings-shoppingCart {
+        margin-right: 37.5vw;
+    }
+
     .Tools {
         .search,
         .shoppingCart {
@@ -59,7 +64,7 @@
             }
         }
     }
-    .unvisile {
+    .unvisible {
         display: none !important;
     }
 }

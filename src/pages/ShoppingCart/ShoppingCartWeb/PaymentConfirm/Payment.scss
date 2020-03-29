@@ -31,9 +31,13 @@
                 padding: 1vw 0;
                 .imageContent{
                     width: 8vw;
-                    height: 8vw;
+                    height: fit-content;
                     background-color: #FFA45C;
                     margin-right: 1.2vw;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
                 }
                 .top{
                     width: 100%;

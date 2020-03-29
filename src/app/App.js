@@ -61,12 +61,12 @@ export default class App extends Component {
         logPageViewGA();
         initPixel();
         logPageViewPixel();
-        // this.getCategories();
-        // this.getVisibilityProducts();
-        // this.getDesigns();
-        // this.getFabrics();
-        // this.getCollection();
-        // this.getTopList();
+        this.getCategories();
+        this.getVisibilityProducts();
+        this.getDesigns();
+        this.getFabrics();
+        this.getCollection();
+        this.getTopList();
     }
 
     getCategories = () => {
