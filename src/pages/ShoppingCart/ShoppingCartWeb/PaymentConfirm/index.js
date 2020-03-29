@@ -5,6 +5,18 @@ import { Radio } from "antd";
 
 export default class PaymentConfirm extends Component {
     render() {
+        let { name, phone, address } = this.props.customerInfo;
+        let { productsOnCart, subtotalPrice, paymentMethod } = this.props;
+        let paymentState = new Array(2).fill(false);
+        let phoneModified = phone.replace(/ /gi, "");
+        subtotalPrice =
+            subtotalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
+                " VNĐ" || "0 VNĐ";
+        if (paymentMethod === "COD") {
+            paymentState[0] = true;
+        } else {
+            paymentState[1] = true;
+        }
         return (
             <div className="pagePayment">
                 <div className="titleHeaderPage d-flex justify-content-center">
@@ -14,49 +26,48 @@ export default class PaymentConfirm extends Component {
                     <div className="col-6" style={{ paddingRight: "2vw" }}>
                         <div className="titleInfo d-flex justify-content-between align-items-center">
                             <span>Thông tin đơn hàng</span>
-                            <span>THAY ĐỔI</span>
+                            <span
+                                onClick={() =>
+                                    this.props.onStepChange("shoppingCart")
+                                }
+                            >
+                                THAY ĐỔI
+                            </span>
                         </div>
                         <div className="productList">
-                            <div className="contentInfo d-flex">
-                                <div className="imageContent"></div>
-                                <div
-                                    className="d-flex flex-column justify-content-between"
-                                    style={{ width: "100%" }}
-                                >
-                                    <div className="top d-flex justify-content-between">
-                                        <div className="left d-flex flex-column">
-                                            <span>Đầm Công Chúa - S</span>
-                                            <span>B001C032</span>
+                            {productsOnCart.map((product, index) => {
+                                return (
+                                    <div className="contentInfo d-flex">
+                                        <div className="imageContent">
+                                            <img
+                                                src={product.image[0]}
+                                                at={product.name}
+                                            />
                                         </div>
-                                        <div className="right">
-                                            <span>x1</span>
-                                        </div>
-                                    </div>
-                                    <div className="bottom">
-                                        <span>290,000 VND</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="contentInfo d-flex">
-                                <div className="imageContent"></div>
-                                <div
-                                    className="d-flex flex-column justify-content-between"
-                                    style={{ width: "100%" }}
-                                >
-                                    <div className="top d-flex justify-content-between">
-                                        <div className="left d-flex flex-column">
-                                            <span>Đầm Công Chúa - S</span>
-                                            <span>B001C032</span>
-                                        </div>
-                                        <div className="right">
-                                            <span>x1</span>
+                                        <div
+                                            className="d-flex flex-column justify-content-between"
+                                            style={{ width: "100%" }}
+                                        >
+                                            <div className="top d-flex justify-content-between">
+                                                <div className="left d-flex flex-column">
+                                                    <span>
+                                                        {`${product.name} - ${product.size}`}
+                                                    </span>
+                                                    <span>
+                                                        {product.productID}
+                                                    </span>
+                                                </div>
+                                                <div className="right">
+                                                    <span>{`x${product.quantity}`}</span>
+                                                </div>
+                                            </div>
+                                            <div className="bottom">
+                                                <span>{subtotalPrice}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="bottom">
-                                        <span>290,000 VND</span>
-                                    </div>
-                                </div>
-                            </div>
+                                );
+                            })}
                         </div>
                     </div>
                     <div className="col-6" style={{ paddingLeft: "4vw" }}>
@@ -64,21 +75,16 @@ export default class PaymentConfirm extends Component {
                             <div className="titleHead d-flex justify-content-between align-items-center">
                                 <span>Địa chỉ nhận hàng</span>
                                 <span
-                                // onClick={() =>
-                                //     this.props.onStepChange("customerInfo")
-                                // }
+                                    onClick={() =>
+                                        this.props.onStepChange("customerInfo")
+                                    }
                                 >
                                     THAY ĐỔI
                                 </span>
                             </div>
                             <div className="content d-flex flex-column">
-                                <span>DUONG DINH DONG KHOA - 0939920405</span>
-                                <span>
-                                    103A NGUYEN VAN LAC, Phường 19, Quận Bình
-                                    Thạnh, Hồ Chí Minh
-                                </span>
-                                {/* <span>{`${name} - ${phoneModified}`}</span>
-                                <span>{address}</span> */}
+                                <span>{`${name} - ${phoneModified}`}</span>
+                                <span>{address}</span>
                             </div>
                         </div>
                         <div className="selectPayment">
@@ -88,24 +94,24 @@ export default class PaymentConfirm extends Component {
                             <div className="content d-flex flex-column">
                                 <div className="selection d-flex flex-column justify-content-center">
                                     <Radio
-                                    // checked={paymentState[0]}
-                                    // onChange={() =>
-                                    //     this.props.onPaymentMethodChange(
-                                    //         "COD"
-                                    //     )
-                                    // }
+                                        checked={paymentState[0]}
+                                        onChange={() =>
+                                            this.props.onPaymentMethodChange(
+                                                "COD"
+                                            )
+                                        }
                                     >
                                         Thanh toán khi nhận hàng (COD)
                                     </Radio>
                                 </div>
                                 <div className="selection d-flex flex-column justify-content-center">
                                     <Radio
-                                    // checked={paymentState[1]}
-                                    // onChange={() =>
-                                    //     this.props.onPaymentMethodChange(
-                                    //         "ATM"
-                                    //     )
-                                    // }
+                                        checked={paymentState[1]}
+                                        onChange={() =>
+                                            this.props.onPaymentMethodChange(
+                                                "ATM"
+                                            )
+                                        }
                                     >
                                         Thanh toán chuyển khoản
                                     </Radio>
@@ -121,8 +127,13 @@ export default class PaymentConfirm extends Component {
                             <span>620.000 VNĐ</span>
                             {/* <span>{subtotalPrice}</span> */}
                         </div>
-                        <div className='buttonApcept d-flex align-items-center justify-content-center'>
-                            <span>HOÀN TẤT ĐẶT HÀNG</span>
+                        <div className="buttonApcept d-flex align-items-center justify-content-center">
+                            <span
+                                loading={this.props.paymentLoading}
+                                onClick={() => this.props.uploadNewOrder()}
+                            >
+                                HOÀN TẤT ĐẶT HÀNG
+                            </span>
                         </div>
                     </div>
                 </div>

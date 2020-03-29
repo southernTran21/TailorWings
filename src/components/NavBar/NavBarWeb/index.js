@@ -19,7 +19,8 @@ class NavBarWeb extends Component {
         this.state = {
             isSideBarOpen: false,
             isSearchOpen: false,
-            isProductDetailPage: currentPage === "/product-detail"
+            isProductDetailPage: currentPage === '/product-detail',
+            isShoppingCartPage: currentPage === '/shopping-cart'
         };
     }
 
@@ -62,7 +63,8 @@ class NavBarWeb extends Component {
 
     render() {
         let { totalProductsOnCart } = this.props;
-        const { isSideBarOpen, isProductDetailPage } = this.state;
+        const { isSideBarOpen, isProductDetailPage, isShoppingCartPage } = this.state;
+        console.log('isShoppingCartPage', isProductDetailPage || isShoppingCartPage)
         if (totalProductsOnCart == null) {
             totalProductsOnCart = 0;
         }
@@ -74,21 +76,17 @@ class NavBarWeb extends Component {
             <div className="navbarWeb d-flex align-items-center justify-content-between">
                 <div className="hamburgerMenu">{this.sideBarIconChange()}</div>
                 <div
-                    className="logoTailorWings"
+                    className={classNames("logoTailorWings", { 'logoTailorWings-shoppingCart': isShoppingCartPage })}
                     onClick={() => this.props.history.push("/")}
                 >
                     <img src={iconLogoTailorWings} alt="" />
                 </div>
                 <div className="Tools d-flex">
-                    <div
-                        className={classNames("search", {
-                            unvisible: isProductDetailPage
-                        })}
-                    >
+                    <div className={classNames("search", { unvisible: isProductDetailPage || isShoppingCartPage})}>
                         <img src={iconSearch} alt="" />
                         <span>TÌM KIẾM</span>
                     </div>
-                    <div className="shoppingCart">
+                    <div className={classNames("shoppingCart", { unvisible: isShoppingCartPage })}>
                         <Link
                             to="/shopping-cart"
                             style={{

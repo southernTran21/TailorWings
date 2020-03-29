@@ -43,8 +43,12 @@
                     border-bottom: 1px solid #111e6c;
                     .imageProduct {
                         width: 11.61vw;
-                        height: 11.61vw;
+                        height: fit-content;
                         background: #ffa45c;
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
                     }
                     .column2 {
                         .top {

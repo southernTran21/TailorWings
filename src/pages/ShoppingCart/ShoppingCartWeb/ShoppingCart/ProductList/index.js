@@ -102,7 +102,12 @@ class ProductList extends Component {
 									className="contentTable d-flex"
 								>
 									<div className="column1">
-										<div className="imageProduct"></div>
+										<div className="imageProduct">
+										<img
+                                                src={product.image[0]}
+                                                at={product.name}
+                                            />
+										</div>
 									</div>
 									<div className="column2 d-flex flex-column justify-content-between">
 										<div className="top d-flex flex-column">
