@@ -10,11 +10,11 @@
         .titleInfo{
             margin-bottom: .5vw;
             :nth-child(1){
-                font-size: 1.52vw;
+                font-size: 1.11vw;
                 font-weight: bold;
             }
             :nth-child(2){
-                font-size: 1.11vw;
+                font-size: 0.83vw;
                 color: #FF6D3B;
                 font-weight: bold;
                 cursor: pointer;
@@ -44,16 +44,16 @@
                     .left{
                         width: 100%;
                         :nth-child(1){
-                            font-size: 1.35vw;
+                            font-size: 0.97vw;
                             font-weight: bold;
                         }
                         :nth-child(2){
-                            font-size: 1.11vw;
+                            font-size: 0.83vw;
                         }
                     }
                 }
                 .bottom{
-                    font-size: 1.35vw;
+                    font-size: 0.97vw;
                 }
             }
         }
@@ -61,12 +61,12 @@
             .titleHead {
                 :nth-child(1) {
                     font-weight: bold;
-                    font-size: 1.52vw;
+                    font-size: 1.11vw;
                     color: #111e6c;
                 }
                 :nth-child(2) {
                     font-weight: bold;
-                    font-size: 1.11vw;
+                    font-size: 0.83vw;
                     color: #ff6d3b;
                     cursor: pointer;
                 }
@@ -91,7 +91,7 @@
             margin-top: 1.5vw;
             .titleHead {
                 font-weight: bold;
-                font-size: 1.52vw;
+                font-size: 1.11vw;
                 color: #111e6c;
                 margin-bottom: 8px;
             }

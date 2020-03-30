@@ -93,6 +93,7 @@ export default class PersonalInfo extends Component {
                             textDecoration: "none",
                             border: "none"
                         }}
+                        className='d-flex justify-content-center align-items-center'
                     >
                         <img
                             src={iconShoppingBadge}
