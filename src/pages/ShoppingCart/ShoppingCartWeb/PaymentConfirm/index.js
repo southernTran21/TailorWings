@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Payment.scss";
 
-import { Radio } from "antd";
+import { Radio, Icon } from "antd";
 
 export default class PaymentConfirm extends Component {
     render() {
@@ -19,8 +19,10 @@ export default class PaymentConfirm extends Component {
         }
         return (
             <div className="pagePayment">
-                <div className="titleHeaderPage d-flex justify-content-center">
+                <div className="titleHeaderPage d-flex justify-content-between align-items-center">
+                <Icon type="arrow-left" />
                     <span>Xác nhận đơn hàng</span>
+                    <div></div>
                 </div>
                 <div className="bodyContent d-flex">
                     <div className="col-6" style={{ paddingRight: "2vw" }}>
