@@ -19,8 +19,9 @@ class NavBarWeb extends Component {
         this.state = {
             isSideBarOpen: false,
             isSearchOpen: false,
-            isProductDetailPage: currentPage === '/product-detail',
-            isShoppingCartPage: currentPage === '/shopping-cart'
+            isProductDetailPage: currentPage === "/product-detail",
+            isShoppingCartPage: currentPage === "/shopping-cart",
+            isShoppingStore: currentPage === "/shopping-store"
         };
     }
 
@@ -63,8 +64,12 @@ class NavBarWeb extends Component {
 
     render() {
         let { totalProductsOnCart } = this.props;
-        const { isSideBarOpen, isProductDetailPage, isShoppingCartPage } = this.state;
-        console.log('isShoppingCartPage', isProductDetailPage || isShoppingCartPage)
+        const {
+            isSideBarOpen,
+            isProductDetailPage,
+            isShoppingCartPage,
+            isShoppingStore
+        } = this.state;
         if (totalProductsOnCart == null) {
             totalProductsOnCart = 0;
         }
@@ -76,17 +81,32 @@ class NavBarWeb extends Component {
             <div className="navbarWeb d-flex align-items-center justify-content-between">
                 <div className="hamburgerMenu">{this.sideBarIconChange()}</div>
                 <div
-                    className={classNames("logoTailorWings", { 'logoTailorWings-shoppingCart': isShoppingCartPage })}
+                    className={classNames("logoTailorWings", {
+                        "logoTailorWings-withoutTools": isShoppingCartPage,
+                        "logoTailorWings-withoutSearch":
+                            isShoppingStore || isProductDetailPage
+                    })}
                     onClick={() => this.props.history.push("/")}
                 >
                     <img src={iconLogoTailorWings} alt="" />
                 </div>
                 <div className="Tools d-flex">
-                    <div className={classNames("search", { unvisible: isProductDetailPage || isShoppingCartPage})}>
+                    <div
+                        className={classNames("search", {
+                            unvisible:
+                                isProductDetailPage ||
+                                isShoppingCartPage ||
+                                isShoppingStore
+                        })}
+                    >
                         <img src={iconSearch} alt="" />
                         <span>TÌM KIẾM</span>
                     </div>
-                    <div className={classNames("shoppingCart", { unvisible: isShoppingCartPage })}>
+                    <div
+                        className={classNames("shoppingCart", {
+                            unvisible: isShoppingCartPage
+                        })}
+                    >
                         <Link
                             to="/shopping-cart"
                             style={{

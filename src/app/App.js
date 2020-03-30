@@ -61,78 +61,97 @@ export default class App extends Component {
         logPageViewGA();
         initPixel();
         logPageViewPixel();
-        this.getCategories();
-        this.getVisibilityProducts();
-        this.getDesigns();
-        this.getFabrics();
-        this.getCollection();
-        this.getTopList();
+        Promise.all([
+            getWithCondition("categories", "visibility", true),
+            getWithCondition("products", "visibility", true),
+            getAllData("designs"),
+            getAllData("fabrics"),
+            getWithCondition("collections", "visibility", true),
+            getWithCondition("topList", "visibility", true)
+        ]).then(dataList => {
+            if ( dataList.every(data => data != null || data !== '') ) {
+                this.setState({
+                    categoriesInfo: dataList[0],
+                    visibilityProducts: dataList[1],
+                    designsInfo: dataList[2],
+                    fabricsInfo: dataList[3],
+                    collectionsInfo: dataList[4],
+                    topListInfo: dataList[5]
+                })
+            }
+        });
     }
 
     getCategories = () => {
-        getWithCondition("categories", "visibility", true).then(
-            categoriesInfo => {
-                if (categoriesInfo != null) {
-                    this.setState({
-                        categoriesInfo
-                    });
-                }
-            }
-        );
+        getWithCondition("categories", "visibility", true);
+        // .then(
+        //     categoriesInfo => {
+        //         if (categoriesInfo != null) {
+        //             this.setState({
+        //                 categoriesInfo
+        //             });
+        //         }
+        //     }
+        // );
     };
 
     getVisibilityProducts = () => {
-        getWithCondition("products", "visibility", true).then(
-            visibilityProducts => {
-                if (visibilityProducts != null) {
-                    this.setState({
-                        visibilityProducts
-                    });
-                }
-            }
-        );
+        getWithCondition("products", "visibility", true);
+        // .then(
+        //     visibilityProducts => {
+        //         if (visibilityProducts != null) {
+        //             this.setState({
+        //                 visibilityProducts
+        //             });
+        //         }
+        //     }
+        // );
     };
 
     getDesigns = () => {
-        getAllData("designs").then(designsInfo => {
-            if (designsInfo != null) {
-                this.setState({
-                    designsInfo
-                });
-            }
-        });
+        getAllData("designs");
+        // .then(designsInfo => {
+        //     if (designsInfo != null) {
+        //         this.setState({
+        //             designsInfo
+        //         });
+        //     }
+        // });
     };
 
     getFabrics = () => {
-        getAllData("fabrics").then(fabricsInfo => {
-            if (fabricsInfo != null) {
-                this.setState({
-                    fabricsInfo
-                });
-            }
-        });
+        getAllData("fabrics");
+        // .then(fabricsInfo => {
+        //     if (fabricsInfo != null) {
+        //         this.setState({
+        //             fabricsInfo
+        //         });
+        //     }
+        // });
     };
 
     getCollection = () => {
-        getWithCondition("collections", "visibility", true).then(
-            collectionsInfo => {
-                if (collectionsInfo != null) {
-                    this.setState({
-                        collectionsInfo
-                    });
-                }
-            }
-        );
+        getWithCondition("collections", "visibility", true);
+        // .then(
+        //     collectionsInfo => {
+        //         if (collectionsInfo != null) {
+        //             this.setState({
+        //                 collectionsInfo
+        //             });
+        //         }
+        //     }
+        // );
     };
 
     getTopList = () => {
-        getWithCondition("topList", "visibility", true).then(topListInfo => {
-            if (topListInfo != null) {
-                this.setState({
-                    topListInfo
-                });
-            }
-        });
+        getWithCondition("topList", "visibility", true);
+        // .then(topListInfo => {
+        //     if (topListInfo != null) {
+        //         this.setState({
+        //             topListInfo
+        //         });
+        //     }
+        // });
     };
 
     render() {

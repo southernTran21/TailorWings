@@ -41,11 +41,23 @@ export default class ImageView extends Component {
         if (productImages != null && !isEmpty) {
             const params = {
                 slidesPerView: 1,
-                loop: true
+                // loop: true,
+                // centeredSlides: true,
             };
+            // const params = {
+            //     pagination: {
+            //         el: ".swiper-pagination",
+            //         type: "fraction"
+            //     },
+            //     navigation: {
+            //         nextEl: ".swiper-button-next",
+            //         prevEl: ".swiper-button-prev"
+            //     }
+            // };
+            console.log("productImages :", productImages);
             return (
                 <Swiper
-                    className="d-flex flex-column align-items-center"
+                    // className="d-flex flex-column align-items-center"
                     {...params}
                     getSwiper={this.getSwiper.bind(this)}
                 >
@@ -67,13 +79,22 @@ export default class ImageView extends Component {
         return (
             <div className="imageView-wrapper">
                 <div className="d-flex justify-content-between">
-                    <Button onClick={() => this.props.onImageView(false)} className='buttonBack'>
+                    <Button
+                        onClick={() => this.props.onImageView(false)}
+                        className="buttonBack"
+                    >
                         <Icon type="close" />
                     </Button>
-                    <Button onClick={() => this.onSlide("prev")} className='buttonPrev'>
+                    <Button
+                        onClick={() => this.onSlide("prev")}
+                        className="buttonPrev"
+                    >
                         <Icon type="left" />
                     </Button>
-                    <Button onClick={() => this.onSlide("next")} className='buttonNext'>
+                    <Button
+                        onClick={() => this.onSlide("next")}
+                        className="buttonNext"
+                    >
                         <Icon type="right" />
                     </Button>
                 </div>
