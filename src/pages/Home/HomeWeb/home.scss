@@ -32,11 +32,16 @@
                     }
                 }
                 .shoppingBadge {
+                    color: #ff6d3b !important ;
                     width: 140px;
                     cursor: pointer;
                     img {
                         height: 3.31vh;
                         margin: 0 7px;
+                        color: #ff6d3b;
+                    }
+                    span {
+                        color: #ff6d3b
                     }
                 }
             }
