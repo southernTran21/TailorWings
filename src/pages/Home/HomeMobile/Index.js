@@ -7,8 +7,6 @@ import NavbarHeader from "./Header/NavbarHeader";
 import Body from "./Body";
 import Footer from "./Footer";
 import SearchSuggest from "./SearchSuggest";
-import Policy from "./Policy";
-import Support from "./Support";
 
 export default class HomeMobile extends Component {
     constructor(props) {
@@ -99,13 +97,11 @@ export default class HomeMobile extends Component {
         } else {
             return (
                 <React.Fragment>
-                    {/* <Body
+                    <Body
                         visibilityProducts={this.props.visibilityProducts}
                         bestSellerInfo={bestSellerInfo}
                         collectionsInfo={this.props.collectionsInfo}
-                    /> */}
-                    {/* <Policy/> */}
-                    <Support/>
+                    />
                     <Footer />
                 </React.Fragment>
             );

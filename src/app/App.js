@@ -18,6 +18,8 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import Media from "react-media";
 import ReactGA from "react-ga";
 import ReactPixel from "react-facebook-pixel";
+import Policy from "../pages/Policy";
+import Support from "../pages/Support";
 
 export const history = createBrowserHistory();
 
@@ -229,6 +231,16 @@ export default class App extends Component {
                             path="/shopping-cart"
                             exact
                             component={() => <ShoppingCart history={history} />}
+                        />
+                        <Route
+                            path="/policy"
+                            exact
+                            component={() => <Policy history={history} />}
+                        />
+                        <Route
+                            path="/support"
+                            exact
+                            component={() => <Support history={history} />}
                         />
                         <ProtectedRoute
                             path="/admin"

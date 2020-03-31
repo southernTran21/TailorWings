@@ -20,9 +20,12 @@ export default class PaymentConfirm extends Component {
         return (
             <div className="pagePayment">
                 <div className="titleHeaderPage d-flex justify-content-between align-items-center">
-                <Icon type="arrow-left" />
+                    <Icon
+                        type="arrow-left"
+                        onClick={() => this.props.onStepChange("customerInfo")}
+                    />
                     <span>Xác nhận đơn hàng</span>
-                    <div></div>
+                    {/* <div></div> */}
                 </div>
                 <div className="bodyContent d-flex">
                     <div className="col-6" style={{ paddingRight: "2vw" }}>

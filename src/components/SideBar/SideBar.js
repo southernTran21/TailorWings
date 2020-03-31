@@ -81,8 +81,8 @@ export default class SideBar extends Component {
                     </div>
                     <hr />
                     <div className='selectionEndSidebar d-flex flex-column'>
-                        <Link to="/" onClick={this.onClickHandling}><span>Về Tailor Wings</span></Link>
-                        <Link to="/" onClick={this.onClickHandling}><span>Trợ Giúp</span></Link>
+                        <Link to="/policy" onClick={this.onClickHandling}><span>Về Tailor Wings</span></Link>
+                        <Link to="/support" onClick={this.onClickHandling}><span>Trợ Giúp</span></Link>
                         <Link to="/" onClick={this.onClickHandling}><span>Tài Khoản</span></Link>
                         <Link to="/" onClick={this.onClickHandling}><span style={{ textDecoration: 'underline' }}>Bạn Là Thợ May</span></Link>
                         <LoginForm onClickHandling={this.onClickHandling} history={this.props.history} />

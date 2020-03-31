@@ -20,7 +20,10 @@ export default class CustomerInfo extends Component {
         return (
             <div className="pageCustomerInfo">
                 <div className="titleHeaderPage d-flex justify-content-between align-items-center">
-                    <Icon type="arrow-left" />
+                    <Icon
+                        type="arrow-left"
+                        onClick={() => this.props.onStepChange("shoppingCart")}
+                    />
                     <span>Địa chỉ nhận hàng</span>
                     <div></div>
                 </div>
