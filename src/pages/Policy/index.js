@@ -3,13 +3,70 @@ import "./Policy.scss";
 import { Collapse } from "antd";
 import Footer from "../Home/HomeMobile/Footer/Footer";
 import NavBar from "./NavBar";
+import { connect } from "react-redux";
+import ReactGA from "react-ga";
+
 const { Panel } = Collapse;
 
-export default class Policy extends Component {
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-1");
+};
+
+const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
+
+class Policy extends Component {
+    constructor(props) {
+        super(props);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        this.state = {
+            totalProductsOnCart: 0,
+            isNewProductAdded: false
+        }
+    }
+
+    componentDidMount() {
+        initGA();
+        logPageView();
+        let { totalProductsOnCart } = this.state;
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
+            return accumulator + Number(current.quantity);
+        }, 0);
+        this.setState({
+            totalProductsOnCart
+        });
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.isNewProductAdded !== prevState.isNewProductAdded) {
+            let productsOnCart = JSON.parse(
+                sessionStorage.getItem("productsOnCart")
+            );
+            let totalProductsOnCart = productsOnCart.reduce(
+                (accumulator, current) => {
+                    return accumulator + current.quantity;
+                },
+                0
+            );
+            return {
+                totalProductsOnCart,
+                isNewProductAdded: nextProps.isNewProductAdded
+            };
+        } else {
+            return null;
+        }
+    }
     render() {
         return (
-            <div className='pagePolicy-container'>
-                <NavBar />
+            <div className="pagePolicy-container">
+                <NavBar totalProductsOnCart={this.state.totalProductsOnCart} history={this.props.history}/>
                 <div className="pagePolicy">
                     <div className="titleHeaderPage">
                         <span>Điều kiện & Điều khoản</span>
@@ -238,3 +295,12 @@ export default class Policy extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        isNewProductAdded: state.listProductOnCart,
+        isCartUpdated: state.updateProductOnCart
+    };
+};
+
+export default connect(mapStateToProps, null)(Policy);

@@ -15,7 +15,7 @@ export default class Navbar extends Component {
                         <Icon type='left' />
                     </a>
                 </div>
-                <div className='titleHeader'>Chọn size</div>
+                <div className='titleHeader d-flex justify-content-center'>Chọn size</div>
                 <Link
                     to={'/shopping-cart'}
                     style={{ color: 'rgb(38, 153, 251)' }}

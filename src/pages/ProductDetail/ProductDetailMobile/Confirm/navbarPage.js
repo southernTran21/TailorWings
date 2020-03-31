@@ -16,7 +16,7 @@ export default class NavBar extends Component {
                         <Icon type='left' />
                     </a>
                 </div>
-                <div className='titleHeader'>Xác nhận</div>
+                <div className='titleHeader d-flex justify-content-center'>Xác nhận</div>
                 <Link
                     to={'/shopping-cart'}
                     style={{ color: 'rgb(38, 153, 251)' }}

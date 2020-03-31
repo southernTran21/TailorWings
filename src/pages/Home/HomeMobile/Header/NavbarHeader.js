@@ -58,10 +58,6 @@ class NavbarHeader extends Component {
     render() {
         const { isSideBarOpen } = this.state;
         const { isSearchOpen } = this.props;
-        let backdrop;
-        if (this.state.isSideBarOpen) {
-            backdrop = <Backdrop click={this.backdropClickHandler} />
-        }
         return (
             <div className={classNames('navbarHeader d-flex flex-row align-items-center justify-content-between', { navbarHeaderFixed: !isSearchOpen })}>
                 <div className='iconMenu' >
@@ -77,7 +73,6 @@ class NavbarHeader extends Component {
                     history={this.props.history}
                     onSearchSuggestionUpdate={this.props.onSearchSuggestionUpdate}
                 />
-                {backdrop}
             </div>
         );
     }

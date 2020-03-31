@@ -2,14 +2,71 @@ import React, { Component } from "react";
 import "./Support.scss";
 import { Collapse } from "antd";
 import NavBar from "./NavBar";
+import { connect } from "react-redux";
+import ReactGA from "react-ga";
+import Footer from "../Home/HomeMobile/Footer/Footer";
 
 const { Panel } = Collapse;
 
-export default class Support extends Component {
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-1");
+};
+
+const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
+
+class Support extends Component {
+    constructor(props) {
+        super(props);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        this.state = {
+            totalProductsOnCart: 0,
+            isNewProductAdded: false
+        };
+    }
+
+    componentDidMount() {
+        initGA();
+        logPageView();
+        let { totalProductsOnCart } = this.state;
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
+            return accumulator + Number(current.quantity);
+        }, 0);
+        this.setState({
+            totalProductsOnCart
+        });
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.isNewProductAdded !== prevState.isNewProductAdded) {
+            let productsOnCart = JSON.parse(
+                sessionStorage.getItem("productsOnCart")
+            );
+            let totalProductsOnCart = productsOnCart.reduce(
+                (accumulator, current) => {
+                    return accumulator + current.quantity;
+                },
+                0
+            );
+            return {
+                totalProductsOnCart,
+                isNewProductAdded: nextProps.isNewProductAdded
+            };
+        } else {
+            return null;
+        }
+    }
     render() {
         return (
             <div className="pageSupport-container">
-                <NavBar />
+                <NavBar totalProductsOnCart={this.state.totalProductsOnCart} history={this.props.history}/>
                 <div className="pageSupport">
                     <div className="titleHeaderPage">
                         <span>Trợ giúp</span>
@@ -100,7 +157,17 @@ export default class Support extends Component {
                         </Panel>
                     </Collapse>
                 </div>
+                <Footer />
             </div>
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        isNewProductAdded: state.listProductOnCart,
+        isCartUpdated: state.updateProductOnCart
+    };
+};
+
+export default connect(mapStateToProps, null)(Support);

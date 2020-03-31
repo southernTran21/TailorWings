@@ -13,6 +13,7 @@
         font-size: 18px;
         font-weight: bold;
         padding: 0 5%;
+        color: #111e6c;
         .iconShoppingCart {
             font-size: 23px;
         }
@@ -26,6 +27,9 @@
             padding: 0 6px;
             font-size: 8px;
             top: -13px;
+        }
+        .titleHeader {
+            font-size: 5.86vw;
         }
     }
     .bodyPage {
@@ -54,7 +58,7 @@
                 width: 70vw;
                 height: 40.07vh;
                 margin-top: 2.84vh;
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: fill;

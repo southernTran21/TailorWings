@@ -353,7 +353,7 @@ class FabricSelection extends Component {
                     <div className="iconBack" onClick={() => window.history.back()}>
                         <Icon type="left" />
                     </div>
-                    <div className="titleHeader">Chọn Vải</div>
+                    <div className="titleHeader d-flex justify-content-center">Chọn Vải</div>
                     <Link style={{ color: "white" }} to={"/shopping-cart"}>
                         <div className="iconShoppingCart">
                             <Icon type="shopping-cart" />

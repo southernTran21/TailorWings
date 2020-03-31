@@ -72,8 +72,8 @@ export default class PageHeader extends Component {
                         <Icon type="left" />
                     </div>
                 </Link> */}
-                <div className="titleHeader">
-                    <span>{this.props.title}</span>
+                <div className="titleHeader d-flex justify-content-center">
+                    <span d-flex justify-content-center>{this.props.title}</span>
                 </div>
                 <div className="divClone"></div>
             </div>
