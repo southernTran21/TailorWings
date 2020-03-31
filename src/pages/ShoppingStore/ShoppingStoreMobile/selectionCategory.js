@@ -36,7 +36,6 @@ export default class SelectionCategory extends Component {
                         <span>Tất cả</span>
                     </div>
                 </Link>
-
                 {categoriesInfo.map((category, index) => {
                     let isActive = currentActiveCategory === category.id;
                     if ( renderProducts.length === 0 ) {

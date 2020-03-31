@@ -17,12 +17,16 @@ export default class ShoppingCart extends Component {
     componentDidMount() {
         initGA();
         logPageView();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
     render() {
         return (
             <Media queries={{ small: { maxWidth: 1024 } }}>
                 {matches =>
-                    matches.small ? <ShoppingCartMobile /> : <ShoppingCartWeb />
+                    matches.small ? <ShoppingCartMobile /> : <ShoppingCartWeb history={this.props.history}/>
                 }
             </Media>
         );

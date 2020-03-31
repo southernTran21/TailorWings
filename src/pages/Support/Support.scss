@@ -1,0 +1,49 @@
+.pageSupport{
+    padding: 2vh 6.93vw;
+    color: #111E6C;
+    .titleHeaderPage{
+        font-size: 6.4vw;
+        font-weight: bold;
+    }
+    .iconShoppingCart {
+        font-size: 23px;
+    }
+    .ant-badge-count {
+        min-height: 10px;
+        min-width: 14px;
+        height: 15px;
+        padding: 0 6px;
+        font-size: 8px;
+        top: -13px;
+    }
+    .ant-collapse{
+        border: none;
+        background-color: transparent;
+        margin-top: 3vh;
+        .ant-collapse-item{
+            border: none;
+            margin-bottom: 1.49vh;
+        }
+        .ant-collapse-header{
+            border: none;
+            padding: 0 !important;
+            color: #FF6D3B !important;
+            font-weight: bold;
+            font-size: 4vw;
+        }
+        .ant-collapse-content{
+            border: none;
+            color: #111E6C !important;
+            
+        }
+        .ant-collapse-content-box{
+            padding: 0;
+            margin-bottom: 2.99vh;
+            margin-top: 2.99vh;
+            span{
+                font-size: 3.73vw;
+                font-weight: 500;
+            }
+        }
+    }
+}

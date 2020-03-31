@@ -2,18 +2,24 @@
     .pageFabricSelection {
         margin-top: 30px;
         .iconBack {
-            margin-right: 24px;
             color: #ff6d3b;
             font-weight: bold;
+            cursor: pointer;
             i {
                 font-size: 20px;
             }
             span {
-                font-size: 14px;
+                font-size: 0.97vw;
                 margin-top: 3px;
+                width: 6.5vw;
             }
         }
         .productImage {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
             .left {
                 .top {
                     margin-bottom: 10px;
@@ -44,12 +50,16 @@
             }
         }
     }
-    .fabricList {
+    #fabricList-wrapper {
         width: 22vw;
-        max-height: 51.88vh;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        height: 51.88vh;
+        overflow: hidden;
         margin-left: 0.83vw;
+        #fabricList-content {
+            width: 23.5vw;
+            max-height: 52.88vh;
+            overflow: auto;
+        }
         .col-4 {
             padding: 0 5.5px;
             float: left;
@@ -58,9 +68,17 @@
         .image {
             width: 6.52vw;
             height: 6.52vw;
-            background-color: #ffa45c;
-            border-radius: 10px;
+            background: none;
             margin: 0;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            .highlight {
+                border-radius: 10px;
+                border: 0.138vw solid #ff6d3b;
+                // border-color: #ff6d3b;
+            }
         }
     }
     .price {
@@ -80,6 +98,7 @@
             color: white;
             padding: 10px 0;
             margin-top: 1.66vh;
+            cursor: pointer;
         }
     }
 }

@@ -108,9 +108,9 @@ export default class StrikingProducts extends Component {
                         <Icon type="right" />
                     </div>
                 </div>
-                <div className="button">
+                {/* <div className="button">
                     <span>XEM TẤT CẢ</span>
-                </div>
+                </div> */}
             </div>
         );
     }

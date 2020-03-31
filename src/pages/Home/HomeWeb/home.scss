@@ -20,7 +20,7 @@
         .navbar {
             margin-top: 4vh;
             .personalInfo_wrapper {
-                font-size: 13px;
+                font-size: 0.9vw;
                 color: #ff6d3b;
                 font-weight: bold;
                 .account {
@@ -32,11 +32,16 @@
                     }
                 }
                 .shoppingBadge {
+                    color: #ff6d3b !important ;
                     width: 140px;
                     cursor: pointer;
                     img {
                         height: 3.31vh;
                         margin: 0 7px;
+                        color: #ff6d3b;
+                    }
+                    span {
+                        color: #ff6d3b
                     }
                 }
             }
@@ -69,7 +74,7 @@
             .blog {
                 width: 13.02vw;
                 span {
-                    font-size: 14px;
+                    font-size: 0.97vw;
                     color: #111e6c;
                     font-weight: bold;
                     padding: 0 7px;
@@ -88,10 +93,13 @@
                     border: none;
                 }
                 span {
-                    font-size: 14px;
+                    font-size: 0.97vw;
                     color: #111e6c;
                     font-weight: bold;
                     padding: 0 7px;
+                }
+                a{
+                    color: #111e6c !important;
                 }
                 .ant-menu-submenu-title {
                     padding: 0 !important;
@@ -139,7 +147,7 @@
                 height: 40px;
             }
             .socialNetwork {
-                font-size: 14px;
+                font-size: 0.97vw;
                 color: #111e6c;
                 font-weight: bold;
                 width: 13.02vw;
@@ -174,7 +182,7 @@
         height: 58vh;
         border-radius: 25px;
         .titleHeader {
-            font-size: 32px;
+            font-size: 2.22vw;
             font-weight: bold;
             color: #111e6c;
             margin-top: 41px;
@@ -226,7 +234,7 @@
             span {
                 font-weight: bold;
                 color: #111e6c;
-                font-size: 18px;
+                font-size: 1.25vw;
             }
         }
         .numberStep {
@@ -236,7 +244,7 @@
                 color: #ff6d3b;
                 border-radius: 50%;
                 border: 1px solid #ff6d3b;
-                font-size: 18px;
+                font-size: 1.25vw;
                 background-color: #fff4e3;
                 padding: 1px 9px;
                 font-weight: bold;
@@ -312,11 +320,11 @@
                     color: #111e6c;
                 }
                 :nth-child(1) {
-                    font-size: 28px;
+                    font-size: 1.94vw;
                     font-weight: bold;
                 }
                 :nth-child(2) {
-                    font-size: 14px;
+                    font-size: 0.97vw;
                     width: 21.61vw;
                     font-weight: 600;
                 }
@@ -340,11 +348,11 @@
                     color: #111e6c;
                 }
                 :nth-child(1) {
-                    font-size: 28px;
+                    font-size: 1.94vw;
                     font-weight: bold;
                 }
                 :nth-child(2) {
-                    font-size: 14px;
+                    font-size: 0.97vw;
                     width: 14.16vw;
                     font-weight: 600;
                     margin-top: 0 !important;
@@ -364,11 +372,11 @@
                     color: #111e6c;
                 }
                 :nth-child(1) {
-                    font-size: 28px;
+                    font-size: 1.94vw;
                     font-weight: bold;
                 }
                 :nth-child(2) {
-                    font-size: 14px;
+                    font-size: 0.97vw;
                     width: 11.4vw;
                     font-weight: 600;
                     margin-top: 0 !important;
@@ -388,15 +396,15 @@
         }
         :nth-child(1) {
             font-weight: bold;
-            font-size: 32px;
+            font-size: 2.22vw;
         }
         :nth-child(2) {
-            font-size: 18px !important;
+            font-size: 1.2wvw !important;
             padding: 0 23vw;
             text-align: center;
             font-weight: 500;
             span {
-                font-size: 18px !important;
+                font-size: 1.25vw !important;
             }
         }
     }
@@ -407,7 +415,7 @@
                 color: #111e6c;
             }
             :nth-child(1) {
-                font-size: 28px;
+                font-size: 1.94vw;
                 font-weight: bold;
             }
             :nth-child(2) {
@@ -415,7 +423,7 @@
             }
             :nth-child(3) {
                 width: 13.5vw;
-                font-size: 14px;
+                font-size: 0.97vw;
                 font-weight: 600;
             }
         }
@@ -444,14 +452,14 @@
                     :nth-child(1) {
                         width: 7.35vw;
                         height: 7.12vh;
-                        font-size: 19px;
+                        font-size: 1.31vw;
                         text-align: center;
                         font-weight: bold;
                         margin-top: 2.31vh;
                     }
                     :nth-child(2) {
                         a {
-                            font-size: 12px;
+                            font-size: 0.83vw;
                             font-weight: bold;
                             color: #ff6d3b;
                             img {
@@ -473,7 +481,7 @@
             margin-top: 6.57vh;
             color: #111e6c;
             font-weight: bold;
-            font-size: 32px;
+            font-size: 2.22vw;
         }
         .carousel-wraper {
             margin-top: 4.72vh;
@@ -482,13 +490,14 @@
             }
             .carouselStriking {
                 width: 75vw;
+                height: 67vh;
             }
             .anticon {
                 vertical-align: 0;
             }
             .iconLeft,
             .iconRight {
-                font-size: 35px;
+                font-size: 2.43vw;
                 color: #ff6d3b;
             }
             .iconLeft {
@@ -511,14 +520,14 @@
                 }
                 .end-carousel {
                     .title {
-                        font-size: 20px;
+                        font-size: 1.38vw;
                         margin-bottom: 7px;
                         margin-top: 1.85vh;
                     }
                     .button {
                         margin: 0;
                         .titleButton {
-                            font-size: 14px;
+                            font-size: 0.97vw;
                             color: #ff6d3b;
                             border: 1px solid #ff6d3b;
                             border-radius: 7px;
@@ -544,10 +553,10 @@
             margin-top: 7.22vh;
             :nth-child(1) {
                 font-weight: bold;
-                font-size: 32px;
+                font-size: 2.22vw;
             }
             :nth-child(2) {
-                font-size: 14px;
+                font-size: 0.97vw;
                 width: 28.5vw;
                 text-align: center;
                 font-weight: bold;
@@ -586,13 +595,13 @@
                 color: #111e6c;
             }
             :nth-child(1) {
-                font-size: 32px;
+                font-size: 2.22vw;
                 font-weight: bold;
             }
             :nth-child(2) {
-                font-weight: 14;
-                font-weight: bold;
-                width: 11vw;
+                font-size: 1.52vw;
+                // font-weight: bold;
+                width: 25vw;
                 margin-top: 4.62vh;
             }
         }
@@ -602,7 +611,7 @@
             background-color: #ffa45c;
             border-radius: 25px;
             margin-top: 4.93vh;
-            margin-left: 15.83vw;
+            margin-left: 5.83vw;
         }
     }
     .instagram {
@@ -615,7 +624,7 @@
             }
             span {
                 font-weight: bold;
-                font-size: 32px;
+                font-size: 2.22vw;
                 color: #111e6c;
             }
         }
@@ -636,8 +645,9 @@
         .info {
             padding-top: 12.26vh;
             color: white;
-            font-size: 16px;
+            font-size: 1.11vw;
             font-weight: bold;
+            cursor: pointer;
             :nth-child(2) {
                 margin: 3.24vh 0;
             }
@@ -647,9 +657,10 @@
             padding-top: 11.85vh;
             text-align: center;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1.11vw;
             .icon {
                 margin-top: 4.62vh;
+                cursor: pointer;
                 img {
                     height: 5.55vh;
                     width: 3.12vw;
@@ -664,15 +675,14 @@
             img {
                 width: 6.64vw;
                 height: 23.28vh;
-                filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(309deg)
-                    brightness(104%) contrast(101%);
+                filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(141deg) brightness(200%) contrast(101%);
             }
         }
         .email {
             color: white;
             margin-top: 11.18vh;
             .title {
-                font-size: 22px;
+                font-size: 1.52vw;
                 font-weight: bold;
             }
             .input {
@@ -685,17 +695,21 @@
                     border-radius: 0;
                     box-shadow: none;
                 }
+                input{
+                    color: white;
+                }
                 ::placeholder {
                     color: white;
                 }
                 .button {
-                    font-size: 8px;
+                    font-size: 0.55vw;
                     font-weight: bold;
                     background-color: white;
                     color: #ff6d3b;
                     width: 6.51vw;
                     height: 3.7vh;
                     border-radius: 40px;
+                    cursor: pointer;
                 }
             }
         }
@@ -703,7 +717,7 @@
             margin-top: 13.47vh;
             color: white;
             opacity: 0.8;
-            font-size: 13px;
+            font-size: 0.9vw;
         }
     }
 }

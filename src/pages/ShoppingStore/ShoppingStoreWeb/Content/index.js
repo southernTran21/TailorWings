@@ -5,7 +5,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
 const { Option } = Select;
-const tmp = new Array(20).fill("1");
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -13,7 +12,7 @@ export default class ProductList extends Component {
         this.state = {
             fetchedProducts: [],
             hasMore: true,
-            loaderContent: <h4>Loading...</h4>
+            // loaderContent: <h4>Loading...</h4>
         };
     }
 
@@ -23,21 +22,21 @@ export default class ProductList extends Component {
             nextProps.firstLoadedConfirm();
             let fetchedProducts = nextProps.renderProducts.slice(0, 9);
             let loaderContent = prevState.loaderContent;
-            if (fetchedProducts.length === 0) {
-                loaderContent = (
-                    <div>
-                        <h4>{`Không tìm thấy sản phẩm!`}</h4>
-                        <Link
-                            to={{
-                                pathname: "/shopping-store",
-                                search: "?cat=all&search="
-                            }}
-                        >
-                            xem tất cả sản phẩm
-                        </Link>
-                    </div>
-                );
-            }
+            // if (fetchedProducts.length === 0) {
+            //     loaderContent = (
+            //         <div>
+            //             {/* <h4>{`Không tìm thấy sản phẩm!`}</h4> */}
+            //             <Link
+            //                 to={{
+            //                     pathname: "/shopping-store",
+            //                     search: "?cat=all&search="
+            //                 }}
+            //             >
+            //                 xem tất cả sản phẩm
+            //             </Link>
+            //         </div>
+            //     );
+            // }
             return {
                 renderProducts: nextProps.renderProducts,
                 fetchedProducts,
@@ -69,23 +68,24 @@ export default class ProductList extends Component {
                     fetchedProducts: addedProduct
                 });
             }, 200);
-        } else {
-            this.setState({
-                loaderContent: (
-                    <div>
-                        <h4>{`Không tìm thấy sản phẩm!`}</h4>
-                        <Link
-                            to={{
-                                pathname: "/shopping-store",
-                                search: "?cat=all&search="
-                            }}
-                        >
-                            xem tất cả sản phẩm
-                        </Link>
-                    </div>
-                )
-            });
         }
+        // } else {
+        //     this.setState({
+        //         loaderContent: (
+        //             <div>
+        //                 <h4>{`Không tìm thấy sản phẩm!`}</h4>
+        //                 <Link
+        //                     to={{
+        //                         pathname: "/shopping-store",
+        //                         search: "?cat=all&search="
+        //                     }}
+        //                 >
+        //                     xem tất cả sản phẩm
+        //                 </Link>
+        //             </div>
+        //         )
+        //     });
+        // }
     };
 
     render() {

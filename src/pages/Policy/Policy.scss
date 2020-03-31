@@ -1,0 +1,156 @@
+.pagePolicy {
+    padding: 2vh 6.93vw;
+    color: #111e6c;
+    .titleHeaderPage {
+        font-size: 6.4vw;
+        font-weight: bold;
+    }
+    .iconShoppingCart {
+        font-size: 23px;
+    }
+    .ant-badge-count {
+        min-height: 10px;
+        min-width: 14px;
+        height: 15px;
+        padding: 0 6px;
+        font-size: 8px;
+        top: -13px;
+    }
+    .contentHederPage {
+        margin-top: 4.49vh;
+        :nth-child(1) {
+            font-size: 4.8vw;
+            font-weight: bold;
+        }
+        :nth-child(2) {
+            margin-top: 1.49vh;
+            font-size: 3.73vw;
+        }
+    }
+    hr {
+        border-top: 1px solid #ff6d3b;
+        margin: 4.49vh 0;
+    }
+    .ant-collapse {
+        border: none;
+        background-color: transparent;
+        .ant-collapse-item {
+            border: none;
+            margin-bottom: 1.49vh;
+        }
+        .ant-collapse-header {
+            border: none;
+            padding: 0 !important;
+            color: #ff6d3b !important;
+            font-weight: bold;
+            font-size: 4vw;
+        }
+        .ant-collapse-content {
+            border: none;
+            color: #111e6c !important;
+        }
+        .ant-collapse-content-box {
+            padding: 0;
+            margin-bottom: 2.99vh;
+            margin-top: 0.74vh;
+            span {
+                font-size: 3.73vw;
+                font-weight: 500;
+            }
+        }
+    }
+}
+.navbarHeader {
+    height: 65px !important;
+    padding: 0 25px;
+    color: #ff6d3b;
+    width: 100vw;
+    z-index: 6;
+    background-color: white;
+    .titleHeader {
+        width: 45.33vw;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+    }
+    i {
+        font-size: 25px;
+    }
+    .anticon {
+        vertical-align: 0 !important;
+    }
+}
+.footerPage {
+    padding: 10px 25px;
+    margin-bottom: 0px;
+    background-color: #ff6d3b;
+    color: white;
+    .titleFooter {
+        font-size: 4.8vw;
+        font-weight: bold;
+        :nth-child(2) {
+            margin-top: 5px;
+        }
+    }
+    .inputEmail {
+        .ant-input {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            color: white;
+            padding-left: 3px;
+            font-size: 14px;
+        }
+        ::placeholder {
+            color: white;
+            font-size: 14px;
+        }
+        border-bottom: 1px solid white;
+        width: 262px;
+        margin-top: 26px;
+    }
+    .infomation {
+        font-size: 3.2vw;
+        font-weight: bold;
+        width: 325px;
+        margin-top: 56px;
+        span {
+            border-bottom: 1px solid white;
+        }
+    }
+    .iconSocialNetwork {
+        width: 200px;
+        margin-top: 51px;
+        img {
+            width: 40px;
+            height: 40px;
+            filter: invert(100%) sepia(71%) saturate(0%) hue-rotate(36deg)
+                brightness(111%) contrast(101%);
+        }
+    }
+    .hotline {
+        font-size: 4.26vw;
+        margin-top: 49px;
+    }
+    .iconLogoTailorWings {
+        margin-top: 40px;
+        img {
+            width: 110px;
+            height: 65.75px;
+        }
+    }
+    .titleEndFooter {
+        margin-top: 19.3px;
+        :nth-child(1) {
+            font-size: 3.73vw;
+        }
+        :nth-child(2) {
+            font-size: 2.4vw;
+        }
+        span {
+            color: #fff4e3 !important;
+        }
+    }
+}

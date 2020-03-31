@@ -1,0 +1,74 @@
+.pageCustomerInfo {
+    font-family: "Montserrat", sans-serif;
+    .titleHeaderPage{
+        font-weight: bold;
+        font-size: 1.66vw;
+        padding: 0 24vw;
+    }
+    .anticon{
+        vertical-align: 0;
+    }
+    .inputInfo {
+        padding: 0 24vw;
+        padding-top: 4.49vh;
+        .input {
+            margin-bottom: 25px;
+            span {
+                font-size: 1.11vw;
+                font-weight: 600;
+                color: #111e6c;
+            }
+            input {
+                font-size: 0.97vw;
+                background: #fff4e3;
+                border-radius: 10px;
+                border: none;
+                box-shadow: none;
+                color: #111e6c;
+                margin-top: 10px;
+                height: 40px;
+                padding-left: 19px;
+            }
+            ::placeholder {
+                font-size: 0.97vw;
+                color: rgba(4, 21, 121, 0.6);
+            }
+            .error {
+                color: red;
+                font-family: "Be Vietnam", sans-serif;
+            }
+            .errorUnvisible {
+                display: none;
+            }
+        }
+    }
+    .checkBox {
+        padding: 0 24vw;
+        .content {
+            font-weight: bold;
+            font-size: 1.11vw;
+            color: #111e6c;
+        }
+    }
+    .buttonApcept {
+        margin-top: 5vh;
+        span {
+            background: #ff6d3b;
+            border-radius: 5px;
+            width: 52vw;
+            padding: 1.5vh 0;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.11vw;
+            cursor: pointer;
+        }
+    }
+    .error {
+        color: red;
+        font-family: "Be Vietnam", sans-serif;
+    }
+    .errorUnvisible {
+        display: none;
+    }
+}

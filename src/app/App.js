@@ -1,154 +1,174 @@
-import './App.scss';
-import { Router, Route, Switch } from 'react-router-dom';
-import React, { Component } from 'react';
+import "./App.scss";
+import { Router, Route, Switch } from "react-router-dom";
+import React, { Component } from "react";
 import { createBrowserHistory } from "history";
-import { getAllData, getWithCondition } from '../services/Fundamental';
-import NavBar from '../components/NavBar/NavBar';
-import Footer from '../components/Footer/Footer';
-import MediaButton from '../components/MediaButton/MediaButton';
-import ShoppingStore from '../pages/ShoppingStore/index';
-import ProductDetail from '../pages/ProductDetail/index';
-import ShoppingCart from '../pages/ShoppingCart/index';
-import Home from '../pages/Home/index';
-import 'antd/dist/antd.css';
+import { getAllData, getWithCondition } from "../services/Fundamental";
+import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/Footer/Footer";
+import MediaButton from "../components/MediaButton/MediaButton";
+import ShoppingStore from "../pages/ShoppingStore/index";
+import ProductDetail from "../pages/ProductDetail/index";
+import ShoppingCart from "../pages/ShoppingCart/index";
+import Home from "../pages/Home/index";
+import "antd/dist/antd.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Admin from '../pages/Admin/Admin';
-import { ProtectedRoute } from './ProtectedRoute';
-import Media from 'react-media';
-import ReactGA from 'react-ga';
-import ReactPixel from 'react-facebook-pixel';
+import Admin from "../pages/Admin/Admin";
+import { ProtectedRoute } from "./ProtectedRoute";
+import Media from "react-media";
+import ReactGA from "react-ga";
+import ReactPixel from "react-facebook-pixel";
+import Policy from "../pages/Policy";
+import Support from "../pages/Support";
 
 export const history = createBrowserHistory();
 
 const initGA = () => {
-  ReactGA.initialize('UA-159143322-1')
-}
+    ReactGA.initialize("UA-159143322-1");
+};
 
 const logPageViewGA = () => {
-  ReactGA.set({ page: window.location.pathname });
-  ReactGA.pageview(window.location.pathname + window.location.search)
-}
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 const initPixel = () => {
-  const options = {
-    autoConfig: true, 	// set pixel's autoConfig
-    debug: false, 		// enable logs
-  };
-  ReactPixel.init('506451380072555', null, options);
-}
+    const options = {
+        autoConfig: true, // set pixel's autoConfig
+        debug: false // enable logs
+    };
+    ReactPixel.init("506451380072555", null, options);
+};
 
 const logPageViewPixel = () => {
-  ReactPixel.pageView(window.location.pathname + window.location.search);
-}
-
+    ReactPixel.pageView(window.location.pathname + window.location.search);
+};
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visibilityProducts: [],
-      categoriesInfo: [],
-      designsInfo: [],
-      fabricsInfo: [],
-      collectionsInfo: [],
-      topListInfo: [],
-      localStorageUpdated: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            visibilityProducts: [],
+            categoriesInfo: [],
+            designsInfo: [],
+            fabricsInfo: [],
+            collectionsInfo: [],
+            topListInfo: [],
+            localStorageUpdated: false
+        };
+    }
+
+    componentDidMount() {
+        initGA();
+        logPageViewGA();
+        initPixel();
+        logPageViewPixel();
+        Promise.all([
+            getWithCondition("categories", "visibility", true),
+            getWithCondition("products", "visibility", true),
+            getAllData("designs"),
+            getAllData("fabrics"),
+            getWithCondition("collections", "visibility", true),
+            getWithCondition("topList", "visibility", true)
+        ]).then(dataList => {
+            if ( dataList.every(data => data != null || data !== '') ) {
+                this.setState({
+                    categoriesInfo: dataList[0],
+                    visibilityProducts: dataList[1],
+                    designsInfo: dataList[2],
+                    fabricsInfo: dataList[3],
+                    collectionsInfo: dataList[4],
+                    topListInfo: dataList[5]
+                })
+            }
+        });
+    }
+
+    getCategories = () => {
+        getWithCondition("categories", "visibility", true);
+        // .then(
+        //     categoriesInfo => {
+        //         if (categoriesInfo != null) {
+        //             this.setState({
+        //                 categoriesInfo
+        //             });
+        //         }
+        //     }
+        // );
     };
-  }
 
-  componentDidMount() {
-    initGA();
-    logPageViewGA();
-    initPixel();
-    logPageViewPixel();
-    this.getCategories();
-    this.getVisibilityProducts();
-    this.getDesigns();
-    this.getFabrics();
-    this.getCollection();
-    this.getTopList();
-  }
+    getVisibilityProducts = () => {
+        getWithCondition("products", "visibility", true);
+        // .then(
+        //     visibilityProducts => {
+        //         if (visibilityProducts != null) {
+        //             this.setState({
+        //                 visibilityProducts
+        //             });
+        //         }
+        //     }
+        // );
+    };
 
-  getCategories = () => {
-    getWithCondition("categories", "visibility", true)
-      .then((categoriesInfo) => {
-        if (categoriesInfo != null) {
-          this.setState({
-            categoriesInfo
-          })
-        }
-      })
-  }
+    getDesigns = () => {
+        getAllData("designs");
+        // .then(designsInfo => {
+        //     if (designsInfo != null) {
+        //         this.setState({
+        //             designsInfo
+        //         });
+        //     }
+        // });
+    };
 
-  getVisibilityProducts = () => {
-    getWithCondition("products", "visibility", true)
-      .then((visibilityProducts) => {
-        if (visibilityProducts != null) {
-          this.setState({
-            visibilityProducts
-          })
-        }
-      })
-  }
+    getFabrics = () => {
+        getAllData("fabrics");
+        // .then(fabricsInfo => {
+        //     if (fabricsInfo != null) {
+        //         this.setState({
+        //             fabricsInfo
+        //         });
+        //     }
+        // });
+    };
 
-  getDesigns = () => {
-    getAllData("designs")
-      .then((designsInfo) => {
-        if (designsInfo != null) {
-          this.setState({
-            designsInfo
-          })
-        }
-      })
-  }
+    getCollection = () => {
+        getWithCondition("collections", "visibility", true);
+        // .then(
+        //     collectionsInfo => {
+        //         if (collectionsInfo != null) {
+        //             this.setState({
+        //                 collectionsInfo
+        //             });
+        //         }
+        //     }
+        // );
+    };
 
-  getFabrics = () => {
-    getAllData("fabrics")
-      .then((fabricsInfo) => {
-        if (fabricsInfo != null) {
-          this.setState({
-            fabricsInfo
-          })
-        }
-      })
-  }
-  
-  getCollection = () => {
-    getWithCondition("collections", "visibility", true)
-      .then((collectionsInfo) => {
-        if (collectionsInfo != null) {
-          this.setState({
-            collectionsInfo
-          })
-        }
-      })
-  }
+    getTopList = () => {
+        getWithCondition("topList", "visibility", true);
+        // .then(topListInfo => {
+        //     if (topListInfo != null) {
+        //         this.setState({
+        //             topListInfo
+        //         });
+        //     }
+        // });
+    };
 
-  getTopList = () => {
-    getWithCondition("topList", "visibility", true)
-      .then((topListInfo) => {
-        if (topListInfo != null) {
-          this.setState({
+    render() {
+        const {
+            visibilityProducts,
+            designsInfo,
+            categoriesInfo,
+            fabricsInfo,
+            collectionsInfo,
             topListInfo
-          })
-        }
-      })
-  }
-
-  render() {
-    const {
-      visibilityProducts,
-      designsInfo,
-      categoriesInfo,
-      fabricsInfo,
-      collectionsInfo,
-      topListInfo
-    } = this.state;
-    return (
-      <React.Fragment>
-        <Router history={history}>
-          {/* <Media queries={{ small: { maxWidth: 1024 } }}>
+        } = this.state;
+        return (
+            <React.Fragment>
+                <Router history={history}>
+                    {/* <Media queries={{ small: { maxWidth: 1024 } }}>
             {matches =>
               matches.small ?
                 (
@@ -167,40 +187,69 @@ export default class App extends Component {
                 )
             }
           </Media> */}
-          <Switch>
-            <Route path="/" exact component={() =>
-              <Home
-                history={history}
-                visibilityProducts={visibilityProducts}
-                designsInfo={designsInfo}
-                topListInfo={topListInfo}
-                collectionsInfo={collectionsInfo}
-              />
-            } />
-            <Route path="/shopping-store" exact component={() =>
-              <ShoppingStore
-                history={history}
-                visibilityProducts={visibilityProducts}
-                designsInfo={designsInfo}
-                categoriesInfo={categoriesInfo}
-                topListInfo={topListInfo}
-                collectionsInfo={collectionsInfo}
-              />
-            } />
-            <Route path="/product-detail" exact component={() =>
-              <ProductDetail
-                history={history}
-                visibilityProducts={visibilityProducts}
-                designsInfo={designsInfo}
-                fabricsInfo={fabricsInfo}
-              />
-            } />
-            <Route path="/shopping-cart" exact component={() => <ShoppingCart />} />
-            <ProtectedRoute path="/admin" component={(props) => <Admin {...props} />} />
-            {/* <ProtectedRoute exact path="/admin" render={(props) => <Admin {...props} />} /> */}
-            <Route path="*" component={() => "404 NOT FOUND"} />
-          </Switch>
-          {/* <Media queries={{ small: { maxWidth: 1024 } }}>
+                    <Switch>
+                        <Route
+                            path="/"
+                            exact
+                            component={() => (
+                                <Home
+                                    history={history}
+                                    visibilityProducts={visibilityProducts}
+                                    designsInfo={designsInfo}
+                                    topListInfo={topListInfo}
+                                    collectionsInfo={collectionsInfo}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/shopping-store"
+                            exact
+                            component={() => (
+                                <ShoppingStore
+                                    history={history}
+                                    visibilityProducts={visibilityProducts}
+                                    designsInfo={designsInfo}
+                                    categoriesInfo={categoriesInfo}
+                                    topListInfo={topListInfo}
+                                    collectionsInfo={collectionsInfo}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/product-detail"
+                            exact
+                            component={() => (
+                                <ProductDetail
+                                    history={history}
+                                    visibilityProducts={visibilityProducts}
+                                    designsInfo={designsInfo}
+                                    fabricsInfo={fabricsInfo}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/shopping-cart"
+                            exact
+                            component={() => <ShoppingCart history={history} />}
+                        />
+                        <Route
+                            path="/policy"
+                            exact
+                            component={() => <Policy history={history} />}
+                        />
+                        <Route
+                            path="/support"
+                            exact
+                            component={() => <Support history={history} />}
+                        />
+                        <ProtectedRoute
+                            path="/admin"
+                            component={props => <Admin {...props} />}
+                        />
+                        {/* <ProtectedRoute exact path="/admin" render={(props) => <Admin {...props} />} /> */}
+                        <Route path="*" component={() => "404 NOT FOUND"} />
+                    </Switch>
+                    {/* <Media queries={{ small: { maxWidth: 1024 } }}>
             {matches =>
               matches.small ?
                 (
@@ -213,8 +262,8 @@ export default class App extends Component {
                 )
             }
           </Media> */}
-        </Router>
-      </React.Fragment>
-    )
-  }
+                </Router>
+            </React.Fragment>
+        );
+    }
 }

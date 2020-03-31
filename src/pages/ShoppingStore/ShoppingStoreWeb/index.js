@@ -4,6 +4,7 @@ import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
 import Categories from "./Categories";
 import Filter from "./Filter";
 import ProductList from "./Content";
+import { removePunctuation } from "../../../services/CommonFunction";
 
 export default class ShoppingStoreWeb extends Component {
     constructor(props) {
@@ -126,7 +127,6 @@ export default class ShoppingStoreWeb extends Component {
                         visibilityProducts,
                         currentCategory
                     );
-                    console.log("renderProducts", renderProducts);
                     break;
                 default:
                     break;
@@ -173,17 +173,29 @@ export default class ShoppingStoreWeb extends Component {
 
     onCollectionFiltering = filterList => {
         let { visibilityProducts } = this.props;
+        let defaultProducts = visibilityProducts.filter(product => product.default === true);
         filterList.forEach(collectionID => {
-            visibilityProducts = this.filterProductsInCollection(
-                visibilityProducts,
+            defaultProducts = this.filterProductsInCollection(
+                defaultProducts,
                 collectionID
             );
         });
         this.setState({
-            renderProducts: visibilityProducts,
+            renderProducts: defaultProducts,
             isEmptyFilter: false,
             isFirstLoaded: false
         });
+    };
+
+    searchFilter = (searchInput, renderProducts) => {
+        renderProducts = renderProducts.filter(product => {
+            let name = product.name.toLowerCase();
+            name = removePunctuation(name);
+            name = name.replace(/ /g, "-");
+            searchInput = searchInput.toLowerCase();
+            return name.search(searchInput) !== -1;
+        });
+        return renderProducts;
     };
 
     render() {
@@ -195,28 +207,30 @@ export default class ShoppingStoreWeb extends Component {
             isFirstLoaded
         } = this.state;
         return (
-            <div className="shoppingStore_wrapper">
+            <div>
                 <NavBarWeb
                     history={this.props.history}
                     totalProductsOnCart={this.props.totalProductsOnCart}
                 />
-                <Categories
-                    isRenderProductsEmpty={renderProducts.length === 0}
-                    currentActiveCategory={currentActiveCategory}
-                    categoryActiveHandling={this.categoryActiveHandling}
-                />
-                <div className="filterContent d-flex justify-content-between">
-                    <Filter
+                <div className="shoppingStore_wrapper">
+                    <Categories
+                        isRenderProductsEmpty={renderProducts.length === 0}
+                        currentActiveCategory={currentActiveCategory}
                         categoryActiveHandling={this.categoryActiveHandling}
-                        onCollectionFiltering={this.onCollectionFiltering}
-                        collectionsInfo={collectionsInfo}
-                        isEmptyFilter={isEmptyFilter}
                     />
-                    <ProductList
-                        renderProducts={renderProducts}
-                        isFirstLoaded={isFirstLoaded}
-                        firstLoadedConfirm={this.firstLoadedConfirm}
-                    />
+                    <div className="filterContent d-flex justify-content-between">
+                        <Filter
+                            categoryActiveHandling={this.categoryActiveHandling}
+                            onCollectionFiltering={this.onCollectionFiltering}
+                            collectionsInfo={collectionsInfo}
+                            isEmptyFilter={isEmptyFilter}
+                        />
+                        <ProductList
+                            renderProducts={renderProducts}
+                            isFirstLoaded={isFirstLoaded}
+                            firstLoadedConfirm={this.firstLoadedConfirm}
+                        />
+                    </div>
                 </div>
             </div>
         );

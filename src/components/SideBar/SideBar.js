@@ -17,9 +17,17 @@ export default class SideBar extends Component {
     }
 
     render() {
-        let drawerClasses = 'side-drawer';
-        if (this.props.show) {
-            drawerClasses = 'side-drawer open'
+        let drawerClasses = ''
+        if ( window.innerWidth < 1024 ) {
+            drawerClasses = 'side-drawer';
+            if (this.props.show) {
+                drawerClasses = 'side-drawer open'
+            }
+        } else {
+            drawerClasses = 'side-drawer-desktop';
+            if (this.props.show) {
+                drawerClasses = 'side-drawer-desktop open'
+            }
         }
         return (
             <nav className={drawerClasses}>
@@ -73,8 +81,8 @@ export default class SideBar extends Component {
                     </div>
                     <hr />
                     <div className='selectionEndSidebar d-flex flex-column'>
-                        <Link to="/" onClick={this.onClickHandling}><span>Về Tailor Wings</span></Link>
-                        <Link to="/" onClick={this.onClickHandling}><span>Trợ Giúp</span></Link>
+                        <Link to="/policy" onClick={this.onClickHandling}><span>Về Tailor Wings</span></Link>
+                        <Link to="/support" onClick={this.onClickHandling}><span>Trợ Giúp</span></Link>
                         <Link to="/" onClick={this.onClickHandling}><span>Tài Khoản</span></Link>
                         <Link to="/" onClick={this.onClickHandling}><span style={{ textDecoration: 'underline' }}>Bạn Là Thợ May</span></Link>
                         <LoginForm onClickHandling={this.onClickHandling} history={this.props.history} />

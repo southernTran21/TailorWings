@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from 'react';
-import './FabricsAdjustment.scss'
-import { uploadImage, setDocument } from '../../../services/Fundamental'
-import { Upload, Icon, Modal, Button, Radio, message } from 'antd';
+import React, { Component } from "react";
+import "./FabricsAdjustment.scss";
+import { uploadImage, setDocument } from "../../../services/Fundamental";
+import { Upload, Icon, Modal, Button, Radio, message } from "antd";
 
 let isLoading = false;
 
@@ -17,21 +17,21 @@ function getBase64(file) {
 export class FabricsAdjustment extends Component {
     state = {
         previewVisible: false,
-        previewImage: '',
+        previewImage: "",
         fileList: [],
-        fabricID: '',
+        fabricID: "",
         inputDisble: false,
         isImageChanged: false,
         isUpdate: false,
         currentFabric: {
             image: [],
-            name: '',
+            name: "",
             price: 0,
             quantity: 0,
-            supplier: '',
-            type: '',
-            unit: '',
-            id: ''
+            supplier: "",
+            type: "",
+            unit: "",
+            id: ""
         }
     };
 
@@ -39,31 +39,38 @@ export class FabricsAdjustment extends Component {
         this._isMounted = true;
         const { fabrics } = this.props;
         let { fabricID, fileList } = this.state;
-        if (window.location.pathname === '/admin/fabric-edit' && fabrics.length > 0) {
-            let currentFabricID = window.location.hasOwnProperty('search') ? window.location.search.match(/id=(.*)\b/)[1] : fabricID;
-            let currentFabric = {...fabrics.find((fabric) => {
-                return fabric.id === currentFabricID;
-            })}
+        if (
+            window.location.pathname === "/admin/fabric-edit" &&
+            fabrics.length > 0
+        ) {
+            let currentFabricID = window.location.hasOwnProperty("search")
+                ? window.location.search.match(/id=(.*)\b/)[1]
+                : fabricID;
+            let currentFabric = {
+                ...fabrics.find(fabric => {
+                    return fabric.id === currentFabricID;
+                })
+            };
             if (currentFabric != null) {
-                let imageName = currentFabric.image.map((url) => {
+                let imageName = currentFabric.image.map(url => {
                     let path = url.match(/\o\/(.*)\?\b/)[1];
                     path = this.decode_utf8(path);
-                    let name = path.split('/')[2];
+                    let name = path.split("/")[2];
                     return name;
-                })
+                });
                 fileList = currentFabric.image.map((element, index) => {
-                    if (element != null && element !== '') {
+                    if (element != null && element !== "") {
                         return {
                             uid: index,
                             name: imageName[index],
-                            status: 'done',
+                            status: "done",
                             url: element,
                             old: true
-                        }
+                        };
                     } else {
                         return element;
                     }
-                })
+                });
                 if (this._isMounted) {
                     this.setState({
                         inputDisble: true,
@@ -71,10 +78,9 @@ export class FabricsAdjustment extends Component {
                         currentFabric,
                         previewImage: currentFabric.image,
                         fileList
-                    })
+                    });
                 }
             }
-
         }
     }
 
@@ -82,10 +88,9 @@ export class FabricsAdjustment extends Component {
         this._isMounted = false;
     }
 
-
-    decode_utf8 = (s) => {
+    decode_utf8 = s => {
         return decodeURIComponent(s);
-    }
+    };
 
     handleCancel = () => this.setState({ previewVisible: false });
 
@@ -96,37 +101,37 @@ export class FabricsAdjustment extends Component {
 
         this.setState({
             previewImage: file.url || file.preview,
-            previewVisible: true,
+            previewVisible: true
         });
     };
 
     handleImageChange = ({ fileList }) => {
-        fileList.forEach((file) => {
-            if (!file.hasOwnProperty('old')) {
+        fileList.forEach(file => {
+            if (!file.hasOwnProperty("old")) {
                 file.old = false;
             }
-        })
+        });
         this.setState({
             fileList,
             isImageChanged: true,
             isUpdate: true
-        })
+        });
     };
 
-    onTextChange = (e) => {
+    onTextChange = e => {
         let { currentFabric } = this.state;
         let value = e.target.value;
         let id = e.target.id;
         switch (id) {
-            case 'price':
+            case "price":
                 value = Number(value);
                 break;
-            case 'quantity':
+            case "quantity":
                 value = Number(value);
                 break;
-            case 'id':
-                if (value != null && value !== '') {
-                    currentFabric.type = value.split('')[0];
+            case "id":
+                if (value != null && value !== "") {
+                    currentFabric.type = value.split("")[0];
                 }
                 break;
 
@@ -137,65 +142,77 @@ export class FabricsAdjustment extends Component {
         this.setState({
             currentFabric,
             isUpdate: true
-        })
+        });
     };
 
-    onUnitChange = (e) => {
+    onUnitChange = e => {
         let { currentFabric } = this.state;
         currentFabric.unit = e.target.value;
         this.setState({
             currentFabric,
             isUpdate: true
-        })
-    }
+        });
+    };
 
     onSaveHandling = () => {
         isLoading = true;
         this.setState({
             isLoading: true
-        })
+        });
         const { isUpdate } = this.state;
         if (isUpdate) {
             switch (window.location.pathname) {
-                case '/admin/fabric-add':
+                case "/admin/fabric-add":
                     this.addHandling();
                     break;
-                case '/admin/fabric-edit':
+                case "/admin/fabric-edit":
                     this.updateHandling();
                     break;
                 default:
                     break;
             }
         } else {
-            message.warning('Vui lòng thay đổi nội dung!');
+            message.warning("Vui lòng thay đổi nội dung!");
             isLoading = false;
         }
-    }
+    };
 
     addHandling = () => {
         isLoading = true;
         let { currentFabric, fileList, isImageChanged } = this.state;
         const { fabrics } = this.props;
-        if (currentFabric.id !== '' && fabrics.find((fabric) => fabric.id === currentFabric.id) == null) {
+        if (
+            currentFabric.id !== "" &&
+            fabrics.find(fabric => fabric.id === currentFabric.id) == null
+        ) {
             if (fileList.length === 2) {
                 if (isImageChanged) {
-                    Promise.all([uploadImage('image/fabrics/', fileList[0].originFileObj), uploadImage('image/fabrics/', fileList[1].originFileObj)])
-                        .then((downloadURLList) => {
+                    Promise.all([
+                        uploadImage(
+                            "image/fabrics/",
+                            fileList[0].originFileObj
+                        ),
+                        uploadImage("image/fabrics/", fileList[1].originFileObj)
+                    ])
+                        .then(downloadURLList => {
                             currentFabric.image = downloadURLList;
-                            setDocument("fabrics", currentFabric, currentFabric.id)
-                                .then(() => {
-                                    isLoading = false;
-                                    window.history.back();
-                                })
+                            setDocument(
+                                "fabrics",
+                                currentFabric,
+                                currentFabric.id
+                            ).then(() => {
+                                isLoading = false;
+                                window.history.back();
+                            });
                         })
-                        .catch(() => isLoading = false)
+                        .catch(() => (isLoading = false));
                 } else {
                     setDocument("fabrics", currentFabric, currentFabric.id)
                         .then(() => {
                             isLoading = false;
                             window.history.back();
                         })
-                        .catch(() => isLoading = false)
+                        .catch(() => (isLoading = false));
                 }
             } else if (fileList.length === 0) {
                 setDocument("fabrics", currentFabric, currentFabric.id)
@@ -203,16 +220,18 @@ export class FabricsAdjustment extends Component {
                         isLoading = false;
                         window.history.back();
                     })
-                    .catch(() => isLoading = false)
+                    .catch(() => (isLoading = false));
             } else {
-                message.error('Vui lòng chọn 2 hình ảnh!');
+                message.error("Yêu cầu có 2 hình ảnh được chọn!");
                 isLoading = false;
             }
         } else {
-            message.error('FabricID không được trống hoặc trùng với các mẫu hiện tại!');
+            message.error(
+                "FabricID không được trống hoặc trùng với các mẫu hiện tại!"
+            );
             isLoading = false;
         }
-    }
+    };
 
     updateHandling = () => {
         isLoading = true;
@@ -220,23 +239,29 @@ export class FabricsAdjustment extends Component {
         const { fabrics } = this.props;
         if (fileList.length === 2) {
             if (isImageChanged) {
-                Promise.all([uploadImage('image/fabrics/', fileList[0].originFileObj), uploadImage('image/fabrics/', fileList[1].originFileObj)])
-                    .then((downloadURLList) => {
+                Promise.all([
+                    uploadImage("image/fabrics/", fileList[0].originFileObj),
+                    uploadImage("image/fabrics/", fileList[1].originFileObj)
+                ])
+                    .then(downloadURLList => {
                         currentFabric.image = downloadURLList;
-                        setDocument("fabrics", currentFabric, currentFabric.id)
-                            .then(() => {
-                                isLoading = false;
-                                window.history.back();
-                            })
+                        setDocument(
+                            "fabrics",
+                            currentFabric,
+                            currentFabric.id
+                        ).then(() => {
+                            isLoading = false;
+                            window.history.back();
+                        });
                     })
-                    .catch(() => isLoading = false)
+                    .catch(() => (isLoading = false));
             } else {
                 setDocument("fabrics", currentFabric, currentFabric.id)
                     .then(() => {
                         isLoading = false;
                         window.history.back();
                     })
-                    .catch(() => isLoading = false)
+                    .catch(() => (isLoading = false));
             }
         } else if (fileList.length === 0) {
             setDocument("fabrics", currentFabric, currentFabric.id)
@@ -244,25 +269,36 @@ export class FabricsAdjustment extends Component {
                     isLoading = false;
                     window.history.back();
                 })
-                .catch(() => isLoading = false)
+                .catch(() => (isLoading = false));
         } else {
-            message.error('Vui lòng chọn 2 hình ảnh!');
+            message.error("Vui lòng chọn 2 hình ảnh!");
             isLoading = false;
         }
-    }
+    };
 
     render() {
-        const { previewVisible, previewImage, fileList, currentFabric, inputDisble } = this.state;
+        const {
+            previewVisible,
+            previewImage,
+            fileList,
+            currentFabric,
+            inputDisble
+        } = this.state;
         const uploadButton = (
             <div>
                 <Icon type="plus" />
                 <div className="ant-upload-text">Upload</div>
             </div>
-        )
+        );
         return (
             <div className="pageFabricsAdjustment">
                 <div className="headerPageFabrics d-flex flex-row justify-content-between align-items-center">
-                    <h2 className="d-flex justify-content-start" style={{ margin: 0 }}>{this.props.title}</h2>
+                    <h2
+                        className="d-flex justify-content-start"
+                        style={{ margin: 0 }}
+                    >
+                        {this.props.title}
+                    </h2>
                     <Button
                         className="buttonAddFabrics d-flex align-items-center"
                         loading={isLoading}
@@ -283,15 +319,25 @@ export class FabricsAdjustment extends Component {
                             >
                                 {fileList.length >= 2 ? null : uploadButton}
                             </Upload>
-                            <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-                                <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                            <Modal
+                                visible={previewVisible}
+                                footer={null}
+                                onCancel={this.handleCancel}
+                            >
+                                <img
+                                    alt="example"
+                                    style={{ width: "100%" }}
+                                    src={previewImage}
+                                />
                             </Modal>
                         </div>
                         <div className="inputNameFabrics d-flex justify-content-end">
-                            <p className="d-flex flex-row align-items-center">Fabrics Name</p>
+                            <p className="d-flex flex-row align-items-center">
+                                Fabrics Name
+                            </p>
                             <div className="inputName d-flex flex-row align-items-center">
                                 <input
-                                    id='name'
+                                    id="name"
                                     className="form-control"
                                     type="text"
                                     placeholder="Tên mẫu vãi"
@@ -305,11 +351,13 @@ export class FabricsAdjustment extends Component {
                     <div className="inputContentBody d-flex">
                         <div className="col-6">
                             <div className="inputFabricsID d-flex">
-                                <p className="d-flex flex-row align-items-center">Fabrics ID</p>
+                                <p className="d-flex flex-row align-items-center">
+                                    Fabrics ID
+                                </p>
                                 <div className="inputID d-flex flex-row align-items-center">
                                     <input
                                         disabled={inputDisble}
-                                        id='id'
+                                        id="id"
                                         className="form-control"
                                         type="text"
                                         placeholder="Mã vãi"
@@ -320,10 +368,12 @@ export class FabricsAdjustment extends Component {
                             </div>
 
                             <div className="inputSupplier d-flex">
-                                <p className="d-flex flex-row align-items-center">Supplier</p>
+                                <p className="d-flex flex-row align-items-center">
+                                    Supplier
+                                </p>
                                 <div className="d-flex flex-row align-items-center">
                                     <input
-                                        id='supplier'
+                                        id="supplier"
                                         className="form-control"
                                         type="text"
                                         placeholder="Tên nhà thiết kế"
@@ -334,10 +384,12 @@ export class FabricsAdjustment extends Component {
                             </div>
 
                             <div className="inputPrice d-flex">
-                                <p className="d-flex flex-row align-items-center">Price</p>
+                                <p className="d-flex flex-row align-items-center">
+                                    Price
+                                </p>
                                 <div className="d-flex flex-row align-items-center">
                                     <input
-                                        id='price'
+                                        id="price"
                                         className="form-control"
                                         type="text"
                                         placeholder="Giá vải"
@@ -350,10 +402,12 @@ export class FabricsAdjustment extends Component {
 
                         <div className="col-6">
                             <div className="inputType d-flex">
-                                <p className="d-flex flex-row align-items-center">Type</p>
+                                <p className="d-flex flex-row align-items-center">
+                                    Type
+                                </p>
                                 <div className="d-flex flex-row align-items-center">
                                     <input
-                                        id='type'
+                                        id="type"
                                         disabled={true}
                                         className="form-control"
                                         type="text"
@@ -363,10 +417,12 @@ export class FabricsAdjustment extends Component {
                                 </div>
                             </div>
                             <div className="inputQuantity d-flex">
-                                <p className="d-flex flex-row align-items-center">Quantity</p>
+                                <p className="d-flex flex-row align-items-center">
+                                    Quantity
+                                </p>
                                 <div className="d-flex flex-row align-items-center">
                                     <input
-                                        id='quantity'
+                                        id="quantity"
                                         className="form-control"
                                         type="text"
                                         placeholder="Số lượng vải"
@@ -377,19 +433,22 @@ export class FabricsAdjustment extends Component {
                             </div>
 
                             <div className="inputUnit d-flex">
-                                <p className="d-flex flex-row align-items-center">Unit</p>
-                                <Radio.Group name="radiogroup" onChange={this.onUnitChange} value={currentFabric.unit} className="d-flex flex-row align-items-center">
-                                    <Radio value='m'>M</Radio>
-                                    <Radio value='kg'>Kg</Radio>
+                                <p className="d-flex flex-row align-items-center">
+                                    Unit
+                                </p>
+                                <Radio.Group
+                                    name="radiogroup"
+                                    onChange={this.onUnitChange}
+                                    value={currentFabric.unit}
+                                    className="d-flex flex-row align-items-center"
+                                >
+                                    <Radio value="m">M</Radio>
+                                    <Radio value="kg">Kg</Radio>
                                 </Radio.Group>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         );
     }

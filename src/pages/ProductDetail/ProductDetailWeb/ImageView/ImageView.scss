@@ -1,0 +1,67 @@
+.imageView-wrapper {
+    width: 100%;
+    height: 100%;
+    // padding: 0 33vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .swiper {
+        width: 100%;
+        height: fit-content;
+        padding: 1vh;
+        .swiper-slide {
+            width: fit-content !important;
+        }
+        .image-wraper {
+            width: 100%;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .anticon{
+        vertical-align: 0;
+    }
+    .swiper{
+        width: 68vh;
+        height: 85vh;
+        background-color: #FFF4E3;
+    }
+    .buttonPrev, .buttonNext, .buttonBack{
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        color: #FF6D3B;
+        font-size: 4.22vw;
+        height: 11vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -2vh;
+    }
+    .ant-btn:hover{
+        color: #FF6D3B !important;
+        background-color: #FFF4E3;
+    }
+    .ant-btn:focus{
+        color: #FF6D3B !important;
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
+    }
+    .buttonPrev{
+        margin-left: -21.5vh;
+    }
+    .buttonNext{
+        margin-left: 77.5vh;
+    }
+    .buttonBack{
+        top: 0;
+        margin-top: 0;
+        margin-left: 61.6vw;
+        font-size: 2.22vw !important;
+        height: 7vh !important;
+    }
+}
