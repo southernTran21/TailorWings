@@ -24,8 +24,7 @@ class Counterpart extends Component {
                                 <img src={Icon1} />
                             </div>
                             <div className='titleBenefit d-flex flex-column justify-content-center align-items-center'>
-                                <span>Tiếp cận</span>
-                                <span>Tiếp cận với khách hàng nhanh chóng</span>
+                                <span>Tạo dựng thương hiệu tay nghề riêng </span>
                             </div>
                         </div>
                         <div className='col-6  d-flex flex-column justify-content-center align-items-center'>
@@ -33,8 +32,7 @@ class Counterpart extends Component {
                                 <img src={Icon2} />
                             </div>
                             <div className='titleBenefit d-flex flex-column justify-content-center align-items-center'>
-                                <span>Lợi ích 2</span>
-                                <span>Tiếp cận với khách hàng nhanh chóng</span>
+                                <span>Tiếp cận lượng lớn khách hàng</span>
                             </div>
                         </div>
                     </div>
@@ -44,8 +42,7 @@ class Counterpart extends Component {
                                 <img src={Icon3} />
                             </div>
                             <div className='titleBenefit d-flex flex-column justify-content-center align-items-center'>
-                                <span>Tiếp cận</span>
-                                <span>Tiếp cận với khách hàng nhanh chóng</span>
+                                <span>Tăng thu nhập</span>
                             </div>
                         </div>
                         <div className='col-6  d-flex flex-column justify-content-center align-items-center'>
@@ -53,8 +50,7 @@ class Counterpart extends Component {
                                 <img src={Icon4} />
                             </div>
                             <div className='titleBenefit d-flex flex-column justify-content-center align-items-center'>
-                                <span>Lợi ích 2</span>
-                                <span>Tiếp cận với khách hàng nhanh chóng</span>
+                                <span>Chủ động về thời gian</span>
                             </div>
                         </div>
                     </div>
