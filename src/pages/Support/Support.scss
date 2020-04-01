@@ -1,7 +1,7 @@
-.pageSupport{
+.pageSupport {
     padding: 2vh 6.93vw;
-    color: #111E6C;
-    .titleHeaderPage{
+    color: #111e6c;
+    .titleHeaderPage {
         font-size: 6.4vw;
         font-weight: bold;
     }
@@ -16,41 +16,161 @@
         font-size: 8px;
         top: -13px;
     }
-    .ant-collapse{
+    .ant-collapse {
         border: none;
         background-color: transparent;
         margin-top: 3vh;
-        .ant-collapse-item{
+        .ant-collapse-item {
             border: none;
             margin-bottom: 1.49vh;
         }
-        .ant-collapse-header{
+        .ant-collapse-header {
             border: none;
             padding: 0 !important;
-            color: #FF6D3B !important;
+            color: #ff6d3b !important;
             font-weight: bold;
             font-size: 4vw;
         }
-        .ant-collapse-content{
+        .ant-collapse-content {
             border: none;
-            color: #111E6C !important;
-            
+            color: #111e6c !important;
         }
-        .ant-collapse-content-box{
+        .ant-collapse-content-box {
             padding: 0;
             margin-bottom: 2.99vh;
             margin-top: 2.99vh;
-            span{
+            span {
                 font-size: 3.73vw;
                 font-weight: 500;
             }
         }
     }
 }
+.pageSupport-container {
+    // Desktop footer
+    .footer_wrapper {
+        padding: 0 5.2vw;
+        height: 53.05vh;
+        background-color: #ff6d3b;
+        margin-top: 4.16vh;
+        .info {
+            padding-top: 12.26vh;
+            color: white;
+            font-size: 1.11vw;
+            font-weight: bold;
+            cursor: pointer;
+            :nth-child(2) {
+                margin: 3.24vh 0;
+            }
+            a {
+                width: fit-content;
+                height: fit-content;
+                text-decoration: none;
+                span {
+                    color: white;
+                }
+            }
+            a:hover {
+                text-decoration: none;
+                span {
+                    color: #111e6c !important;
+                }
+            }
+        }
+        .contact {
+            color: white;
+            padding-top: 11.85vh;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.11vw;
+            .icon {
+                margin-top: 4.62vh;
+                cursor: pointer;
+                a {
+                    width: fit-content;
+                    height: fit-content;
+                    text-decoration: none;
+                    img {
+                        height: 5.55vh;
+                        width: 3.12vw;
+                    }
+                }
+                a:hover {
+                    text-decoration: none;
+                    img {
+                        filter: invert(100%) sepia(100%) saturate(0%)
+                            hue-rotate(141deg) brightness(200%) contrast(101%) !important;
+                    }
+                }
+                :nth-child(2) {
+                    margin: 0 2.6vw;
+                }
+            }
+        }
+        .logo {
+            margin-top: 8.42vh;
+            img {
+                width: 6.64vw;
+                height: 23.28vh;
+                filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(141deg)
+                    brightness(200%) contrast(101%);
+            }
+        }
+        .email {
+            color: white;
+            margin-top: 11.18vh;
+            .title {
+                font-size: 1.52vw;
+                font-weight: bold;
+            }
+            .input {
+                align-items: baseline;
+                margin-top: 4.16vh;
+                .ant-input {
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 1px solid white;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
+                input {
+                    color: white;
+                }
+                ::placeholder {
+                    color: white;
+                }
+                .button {
+                    font-size: 0.55vw;
+                    font-weight: bold;
+                    background-color: white;
+                    color: #ff6d3b;
+                    width: 6.51vw;
+                    height: 3.7vh;
+                    border-radius: 40px;
+                    cursor: pointer;
+                }
+            }
+            .emailError {
+                font-size: 0.97vw;
+                color: #111e6c;
+                display: inline !important;
+            }
+            .emailError_unvisible {
+                display: none;
+            }
+        }
+        .endFooter {
+            margin-top: 13.47vh;
+            color: white;
+            opacity: 0.8;
+            font-size: 0.9vw;
+        }
+    }
+}
 @media only screen and (min-width: 1024px) {
-    .pageSupport{
+    .pageSupport {
         padding: 0 5.69vw;
-        .titleHeaderPage{
+        .titleHeaderPage {
             font-size: 1.66vw;
         }
         .contentHederPage {

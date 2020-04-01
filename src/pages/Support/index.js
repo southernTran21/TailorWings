@@ -4,7 +4,10 @@ import { Collapse } from "antd";
 import NavBar from "./NavBar";
 import { connect } from "react-redux";
 import ReactGA from "react-ga";
-import Footer from "../Home/HomeMobile/Footer/Footer";
+import FooterPage from "../Home/HomeMobile/Footer/Footer";
+import Footer from "../Home/HomeWeb/Footer/index";
+import NavBarWeb from "../../components/NavBar/NavBarWeb";
+import Media from "react-media";
 
 const { Panel } = Collapse;
 
@@ -66,7 +69,25 @@ class Support extends Component {
     render() {
         return (
             <div className="pageSupport-container">
-                <NavBar totalProductsOnCart={this.state.totalProductsOnCart} history={this.props.history}/>
+                <Media queries={{ small: { maxWidth: 1024 } }}>
+                    {matches =>
+                        matches.small ? (
+                            <NavBar
+                                totalProductsOnCart={
+                                    this.state.totalProductsOnCart
+                                }
+                                history={this.props.history}
+                            />
+                        ) : (
+                            <NavBarWeb
+                                totalProductsOnCart={
+                                    this.state.totalProductsOnCart
+                                }
+                                history={this.props.history}
+                            />
+                        )
+                    }
+                </Media>
                 <div className="pageSupport">
                     <div className="titleHeaderPage">
                         <span>Trợ giúp</span>
@@ -157,7 +178,11 @@ class Support extends Component {
                         </Panel>
                     </Collapse>
                 </div>
-                <Footer />
+                <Media queries={{ small: { maxWidth: 1024 } }}>
+                    {matches =>
+                        matches.small ? <FooterPage /> : <Footer />
+                    }
+                </Media>
             </div>
         );
     }

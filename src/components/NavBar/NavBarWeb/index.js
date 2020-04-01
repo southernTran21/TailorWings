@@ -21,7 +21,9 @@ class NavBarWeb extends Component {
             isSearchOpen: false,
             isProductDetailPage: currentPage === "/product-detail",
             isShoppingCartPage: currentPage === "/shopping-cart",
-            isShoppingStore: currentPage === "/shopping-store"
+            isShoppingStore: currentPage === "/shopping-store",
+            isSupportPage: currentPage === "/support",
+            isPolicyPage: currentPage === "/policy"
         };
     }
 
@@ -67,7 +69,9 @@ class NavBarWeb extends Component {
             isSideBarOpen,
             isProductDetailPage,
             isShoppingCartPage,
-            isShoppingStore
+            isShoppingStore,
+            isSupportPage,
+            isPolicyPage
         } = this.state;
         if (totalProductsOnCart == null) {
             totalProductsOnCart = 0;
@@ -83,7 +87,11 @@ class NavBarWeb extends Component {
                     className={classNames("logoTailorWings", {
                         "logoTailorWings-withoutTools": isShoppingCartPage,
                         "logoTailorWings-withoutSearch":
-                            isShoppingStore || isProductDetailPage
+                            isProductDetailPage ||
+                            isShoppingCartPage ||
+                            isShoppingStore ||
+                            isSupportPage ||
+                            isPolicyPage
                     })}
                     onClick={() => this.props.history.push("/")}
                 >
@@ -95,7 +103,9 @@ class NavBarWeb extends Component {
                             unvisible:
                                 isProductDetailPage ||
                                 isShoppingCartPage ||
-                                isShoppingStore
+                                isShoppingStore ||
+                                isSupportPage ||
+                                isPolicyPage
                         })}
                     >
                         <img src={iconSearch} alt="" />

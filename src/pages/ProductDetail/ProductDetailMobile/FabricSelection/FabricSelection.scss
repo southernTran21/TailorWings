@@ -57,15 +57,17 @@
                         height: 18.66vw !important;
                         border: #ff6d3b;
                         border-style: solid;
+                        border-radius: 10px;
                     }
                 }
                 .swiper-slide{
                     margin-right: 1.06vw !important;
+                    border-radius: 10px;
                 }
-                .image {
-                    width: 18.66vw !important;
-                    height: 18.66vw !important;
-                }
+                // .image {
+                //     width: 18.66vw !important;
+                //     height: 18.66vw !important;
+                // }
             }
         }
         .awesome3d {
