@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./home.scss";
+import classNames from 'classnames'
 // import component
 import Header from "./Header/index";
 import Welcome from "./Body/Welcome";
@@ -19,7 +20,8 @@ export default class HomeWeb extends Component {
         this.state = {
             bestSellerInfo: [],
             totalProductsOnCart: 0,
-            visibleProductsList: []
+            visibleProductsList: [],
+            isSideBarOpen: false
         };
     }
 
@@ -60,19 +62,27 @@ export default class HomeWeb extends Component {
         });
     }
 
+    sideBarChange = (state) => {
+        this.setState({
+            isSideBarOpen: state
+        })
+    }
+
     render() {
         const {
             bestSellerInfo,
             totalProductsOnCart,
-            visibleProductsList
+            visibleProductsList,
+            isSideBarOpen
         } = this.state;
         return (
-            <div className="homePage_wrapper">
+            <div className={classNames("homePage_wrapper", { 'disable_scroll': isSideBarOpen })}>
                 <Header
                     history={this.props.history}
                     bestSellerInfo={bestSellerInfo}
                     totalProductsOnCart={totalProductsOnCart}
                     visibleProductsList={visibleProductsList}
+                    sideBarChange={this.sideBarChange}
                 />
                 <Welcome />
                 <FourSteps />

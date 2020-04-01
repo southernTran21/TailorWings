@@ -25,12 +25,19 @@
     padding: 0 25px;
     // border-top: 3px solid #FF6D3B;
     span {
-        color: #111e6c !important;
+        color: #111e6c;
     }
     .selectionCategory {
         margin-top: 34px;
         a {
             height: 7.2vh;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: none;
+            span {
+                color: #ff6d3b !important;
+            }
         }
         span {
             font-family: "Be Vietnam", sans-serif !important;
@@ -51,6 +58,12 @@
         span {
             font-size: 20px;
             line-height: 40px;
+        }
+        a:hover {
+            text-decoration: none;
+            span {
+                color: #ff6d3b !important;
+            }
         }
     }
     .dropdown-toggle::after {

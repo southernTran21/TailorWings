@@ -17,7 +17,12 @@ export default class WeGive extends Component {
                     <img src="" alt="" />
                 </div>
                 <div className="button">
-                    <span>KẾT NỐI NGAY</span>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfuRlkLX1llCN0L9ZAwmhCxLS3NT5efPxNsbRMmxT3Oe7z0qw/viewform"
+                        target="_blank"
+                    >
+                        <span>KẾT NỐI NGAY</span>
+                    </a>
                 </div>
             </div>
         );

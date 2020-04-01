@@ -1,6 +1,6 @@
 
 .side-drawer {
-    /* margin-top: 5vh; */
+    border-top: 3px solid #ff6d3b;
     height: 100%;
     background: #0f2944;
     position: fixed;
@@ -15,6 +15,7 @@
 }
 
 .side-drawer-desktop {
+    border-top: 3px solid #ff6d3b;
     margin-top: 5vh;
     height: 100%;
     background: #0f2944;

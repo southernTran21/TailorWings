@@ -1,6 +1,6 @@
 .homePage_wrapper {
     width: 100vw;
-    height: auto;
+    height: 100%;
     // font defination
     .fontBeVN {
         font-family: "Be Vietnam", sans-serif;
@@ -15,11 +15,11 @@
         margin: 0 !important;
     }
     .homeNavbar_wrapper {
-        padding: 0  5.69vw;
+        padding: 0 5.69vw;
         width: 100%;
+        margin: 5vh 0;
         .navbar {
             width: 100vw;
-            margin-top: 4vh;
             padding: 0;
             .iconMenu {
                 cursor: pointer;
@@ -29,7 +29,7 @@
                     filter: invert(60%) sepia(70%) saturate(3320%)
                         hue-rotate(334deg) brightness(100%) contrast(103%);
                 }
-                span{
+                span {
                     color: #ff6d3b;
                     font-size: 0.97vw;
                     font-weight: bold;
@@ -597,6 +597,13 @@
                 border-radius: 40px;
                 padding: 2.12vh 2.7vw;
             }
+            a {
+                width: 100%;
+                height: 100%;
+            }
+            a:hover {
+                text-decoration: none;
+            }
         }
     }
     .passion {
@@ -667,6 +674,20 @@
             :nth-child(2) {
                 margin: 3.24vh 0;
             }
+            a {
+                width: fit-content;
+                height: fit-content;
+                text-decoration: none;
+                span {
+                    color: white;
+                }
+            }
+            a:hover {
+                text-decoration: none;
+                span {
+                    color: #111e6c !important;
+                }
+            }
         }
         .contact {
             color: white;
@@ -677,9 +698,21 @@
             .icon {
                 margin-top: 4.62vh;
                 cursor: pointer;
-                img {
-                    height: 5.55vh;
-                    width: 3.12vw;
+                a {
+                    width: fit-content;
+                    height: fit-content;
+                    text-decoration: none;
+                    img {
+                        height: 5.55vh;
+                        width: 3.12vw;
+                    }
+                }
+                a:hover {
+                    text-decoration: none;
+                    img {
+                        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(141deg)
+                        brightness(200%) contrast(101%) !important;
+                    }
                 }
                 :nth-child(2) {
                     margin: 0 2.6vw;
@@ -729,6 +762,14 @@
                     cursor: pointer;
                 }
             }
+            .emailError {
+                font-size: 0.97vw;
+                color: #111e6c;
+                display: inline !important;
+            }
+            .emailError_unvisible {
+                display: none;
+            }
         }
         .endFooter {
             margin-top: 13.47vh;
@@ -737,4 +778,8 @@
             font-size: 0.9vw;
         }
     }
+}
+.homePage_wrapper.disable_scroll {
+    position: fixed;
+    top: 0;
 }
