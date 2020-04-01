@@ -8,8 +8,8 @@ import Banner from "./Banner";
 export default class Welcome extends Component {
     render() {
         return (
-            <div className="welcome d-flex fontMontserrat">
-                <SideMenu/>
+            <div className="welcome d-flex justify-content-center fontMontserrat">
+                {/* <SideMenu/> */}
                 <Banner/>
             </div>
         );
