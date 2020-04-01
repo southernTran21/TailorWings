@@ -47,3 +47,29 @@
         }
     }
 }
+@media only screen and (min-width: 1024px) {
+    .pageSupport{
+        padding: 0 5.69vw;
+        .titleHeaderPage{
+            font-size: 1.66vw;
+        }
+        .contentHederPage {
+            :nth-child(1) {
+                font-size: 1.25vw;
+            }
+            :nth-child(2) {
+                font-size: 0.97vw;
+            }
+        }
+        .ant-collapse {
+            .ant-collapse-header {
+                font-size: 1.11vw;
+            }
+            .ant-collapse-content-box {
+                span {
+                    font-size: 0.97vw;
+                }
+            }
+        }
+    }
+}
