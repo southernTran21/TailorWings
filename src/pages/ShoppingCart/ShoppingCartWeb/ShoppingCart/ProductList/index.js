@@ -19,7 +19,6 @@ class ProductList extends Component {
         if (isModalUpdate) {
             productsOnCart[index].size = updatedSize;
             productsOnCart[index].bodyMetric = updatedMetric;
-            console.log("productsOnCart", productsOnCart);
             this.props.onUpdateCart(productsOnCart);
             this.setState({
                 isModalUpdate: false,
@@ -67,7 +66,7 @@ class ProductList extends Component {
 
     render() {
         let { modalVisible } = this.state;
-        const { productsOnCart } = this.props;
+        let productsOnCart = JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         return (
             <div className="left">
                 <div className="productList">

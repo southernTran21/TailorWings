@@ -3,6 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
 import { createBrowserHistory } from "history";
 import { getAllData, getWithCondition } from "../services/Fundamental";
+import { totalPriceCalculation } from "../services/CommonFunction";
 import ShoppingStore from "../pages/ShoppingStore/index";
 import ProductDetail from "../pages/ProductDetail/index";
 import ShoppingCart from "../pages/ShoppingCart/index";
@@ -153,7 +154,7 @@ export default class App extends Component {
     };
 
     render() {
-        const {
+        let {
             visibilityProducts,
             designsInfo,
             categoriesInfo,
@@ -161,6 +162,15 @@ export default class App extends Component {
             collectionsInfo,
             topListInfo
         } = this.state;
+        if ( visibilityProducts.length > 0 ) {
+            visibilityProducts.forEach((product) => {
+                let relatedDesign = designsInfo.filter(design => design.id === product.designID)[0] || { price: 0, length: 0 };
+                let relatedFabric = fabricsInfo.filter(fabric => fabric.id === product.fabricID)[0] || { price: 0 };
+                let price = totalPriceCalculation(relatedDesign.price, relatedDesign.length, relatedFabric.price);
+                price = Math.ceil(price/1000) * 1000;
+                product.price = price;
+            })
+        }
         return (
             <React.Fragment>
                 <Router history={history}>
