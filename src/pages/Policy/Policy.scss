@@ -131,6 +131,15 @@
             align-items: center;
         }
     }
+    .emailError {
+        font-size: 3.2vw;
+        color: #111e6c;
+        display: block !important;
+        margin-top: 1vw;
+    }
+    .emailError_unvisible {
+        display: none;
+    }
     .infomation {
         font-size: 3.2vw;
         font-weight: bold;
@@ -138,6 +147,12 @@
         margin-top: 56px;
         span {
             border-bottom: 1px solid white;
+        }
+        a {
+            width: fit-content;
+            height: fit-content;
+            text-decoration: none;
+            color: white;
         }
     }
     .iconSocialNetwork {

@@ -27,13 +27,14 @@ export default class Footer extends Component {
 
     emailValidation = () => {
         let { email, isEmailError } = this.state;
+        let currentComponent = this;
         if (email != null && email !== "") {
             isEmailError = !validateEmail(email);
             if (!isEmailError) {
                 setDocument("preferentialEmails", { email: email }, email).then(
                     function() {
                         message.success("Hoàn thành đăng ký nhận ưu đãi!");
-                        this.setState({
+                        currentComponent.setState({
                             isEmailError,
                             email: ""
                         });
