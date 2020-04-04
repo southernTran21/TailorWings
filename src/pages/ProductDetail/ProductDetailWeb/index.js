@@ -141,6 +141,7 @@ class ProductDetailWeb extends Component {
                 );
                 break;
             case "sizeSelection":
+                console.log('currentSelectedProduct', currentSelectedProduct)
                 content = (
                     <SizeSelectionWeb
                         currentSelectedProduct={currentSelectedProduct}
@@ -197,6 +198,7 @@ class ProductDetailWeb extends Component {
     };
 
     onSizeUpdated = size => {
+        console.log('size', size)
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.size = size;
         this.setState({

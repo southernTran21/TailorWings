@@ -28,7 +28,7 @@ export default class SizeSelection extends Component {
             let { activeStatus } = this.state;
             activeStatus.fill(false);
             activeStatus[index] = true;
-            this.props.onSizeUpdated(size);
+            this.props.sizeImageUpdate(index, size);
             this.setState({
                 activeStatus
             });
@@ -36,7 +36,6 @@ export default class SizeSelection extends Component {
     };
     render() {
         const { activeStatus } = this.state;
-        console.log('activeStatus', activeStatus)
         return (
             <div className="selectionSize d-flex justify-content-between">
                 {SIZE.map((size, index) => {

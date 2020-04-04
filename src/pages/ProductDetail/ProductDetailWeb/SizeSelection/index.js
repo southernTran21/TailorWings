@@ -17,17 +17,36 @@ import L from "../../../../assets/imageSizeSelection/size L.svg";
 import XL from "../../../../assets/imageSizeSelection/size XL.svg";
 import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
 
-let imageSize = {
-    Empty: Empty,
-    XS: XS,
-    S: S,
-    M: M,
-    L: L,
-    XL: XL,
-    XXL: XXL
-};
+// let imageSize = {
+//     Empty: Empty,
+//     XS: XS,
+//     S: S,
+//     M: M,
+//     L: L,
+//     XL: XL,
+//     XXL: XXL
+// };
+const SIZE = ["XS", "S", "M", "L", "XL", "XXL"];
+let imageSize = [ XS, S, M, L, XL, XXL ]
 
 class SizeSelectionWeb extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            sizeImage: ''
+        }
+    }
+    
+    componentDidMount() {
+        const { currentSelectedProduct } = this.props;
+        console.log('currentSelectedProduct', currentSelectedProduct)
+        let index = SIZE.indexOf(currentSelectedProduct.size);
+        let sizeImage = index > -1 ? imageSize[index] : Empty; 
+        this.setState({
+            sizeImage
+        })
+    }
+
     onConfirmButtonClicked = () => {
         const { currentSelectedProduct, isSizeMetricUpdate } = this.props;
         let isSizeSelected = currentSelectedProduct.size != null;
@@ -40,7 +59,6 @@ class SizeSelectionWeb extends Component {
             (isSizeSelected && isAllMetricEmpty) ||
             (!isSizeSelected && isAllMetricFill)
         ) {
-            console.log('here')
             this.addToCart();
             if (isSizeMetricUpdate) {
                 this.updateSizeMetricToStorage(currentSelectedProduct);
@@ -75,8 +93,19 @@ class SizeSelectionWeb extends Component {
         );
     };
 
+    sizeImageUpdate = (index, size) => {
+        let { sizeImage } = this.state;
+        this.props.onSizeUpdated(size);
+        sizeImage = imageSize[index];
+        this.setState({
+            sizeImage
+        })
+    }
+    
+
     render() {
         let { currentSelectedProduct } = this.props;
+        const { sizeImage } = this.state;
         let size = Empty;
         let bodyMetric = currentSelectedProduct.bodyMetric;
         if (
@@ -97,14 +126,14 @@ class SizeSelectionWeb extends Component {
                     <span>CHỌN VẢI</span>
                 </div>
                 <div className="bodyScale d-flex flex-column align-items-center">
-                    <SizeImage imageSize={imageSize[`${size}`]} size={size} />
+                    <SizeImage imageSize={sizeImage} size={size} />
                     <BodyMetric
                         bodyMetric={bodyMetric}
                         onBodyMetricUpdated={this.props.onBodyMetricUpdated}
                     />
                     <SizeSelection
                         size={size}
-                        onSizeUpdated={this.props.onSizeUpdated}
+                        sizeImageUpdate={this.sizeImageUpdate}
                         currentSelectedProduct={currentSelectedProduct}
                     />
                 </div>
