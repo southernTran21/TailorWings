@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import iconVectorRight from "../../.../../../../assets/imageHomePage/vectorRight.svg";
-import imageCollection from "../../.../../../../assets/imageHomePage/imageBST.jpg";
+import imageCollectionDamDaoPho from "../../../../assets/imageHomePage/colectionDamDaoPho.png";
+import imageCollectionDamDuTiec from '../../../../assets/imageHomePage/colectionDamDuTiec.png';
+import imageCollectionDamCongSo from '../../../../assets/imageHomePage/colectionDamCongSo.png';
+
 
 export default class Collections extends Component {
     render() {
@@ -28,7 +31,7 @@ export default class Collections extends Component {
                 <div className="selectionCollection d-flex">
                     <div className="selection d-flex">
                         <div className="image">
-                            <img src={imageCollection} alt="" />
+                            <img src={imageCollectionDamDaoPho} alt="" />
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>
@@ -61,7 +64,7 @@ export default class Collections extends Component {
                         }}
                     >
                         <div className="image">
-                            <img src={imageCollection} alt="" />
+                            <img src={imageCollectionDamCongSo} alt="" />
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>
@@ -88,7 +91,7 @@ export default class Collections extends Component {
                     </div>
                     <div className="selection d-flex">
                         <div className="image">
-                            <img src={imageCollection} alt="" />
+                            <img src={imageCollectionDamDuTiec} alt="" />
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>

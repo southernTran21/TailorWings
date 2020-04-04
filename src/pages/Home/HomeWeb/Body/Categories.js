@@ -1,91 +1,51 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import imageCategories from "../../.../../../../assets/imageHomePage/collection1.png";
-import iconEnter from "../../.../../../../assets/imageHomePage/iconEnter.svg";
+import imageDamOm from "../../../../assets/imageHomePage/dam om.png";
+import imageDamXoe from "../../../../assets/imageHomePage/dam xoe.png";
+import imageDamSuong from "../../../../assets/imageHomePage/dam suong.png";
 
 export default class Categories extends Component {
     render() {
         return (
-            <div className="categories_wrapper d-flex fontMontserrat">
-                <div className="col-7">
-                    <Link
-                        to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=damsuong&search"
-                        }}
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            textDecoration: "none",
-                            border: "none"
-                        }}
-                    >
-                        <div className="categoriesfirst d-flex">
-                            <div className="image">
-                                <img src={imageCategories} alt="" />
-                            </div>
-                            <div className="title d-flex flex-column">
-                                <span>Đầm Suông</span>
-                                <span>
-                                    Phục vụ với mọi ngữ cảnh như dự tiệc, công
-                                    sở và đi chơi…
-                                </span>
-                                <div className="image d-flex ">
-                                    <img src={iconEnter} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
+            <div className="categories_wrapper d-flex justify-content-between fontMontserrat">
+                <div className="category d-flex flex-column">
+                    <div className="image_wrapper">
+                        <img src={imageDamOm} alt="dam-om" />
+                    </div>
+                    <div className="content d-flex flex-column">
+                        <span className="titleHead">ĐẦM ÔM</span>
+                        <span className="titleSeconds">
+                            Phục vụ với mọi ngữ cảnh như dự tiệc, công sở và dạo
+                            phố...
+                        </span>
+                        <div className="button">XEM THÊM</div>
+                    </div>
                 </div>
-                <div className="col-5 d-flex flex-column">
-                    <Link
-                        to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=damom&search"
-                        }}
-                        style={{
-                            width: "100%",
-                            height: "50%",
-                            textDecoration: "none",
-                            border: "none"
-                        }}
-                    >
-                        <div className="categoriesSecond">
-                            <div className="image"></div>
-                            <div className="titleFirst d-flex flex-column">
-                                <span>Đầm Ôm</span>
-                                <span>
-                                    Xu hướng đang thịnh ở các cửa hàng bán quần
-                                    áo.
-                                </span>
-                                <img src={iconEnter} alt="" />
-                            </div>
-                        </div>
-                    </Link>
-                    <Link
-                        to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=damxoe&search"
-                        }}
-                        style={{
-                            width: "100%",
-                            height: "50%",
-                            textDecoration: "none",
-                            border: "none"
-                        }}
-                    >
-                        <div className="categoriesSecond">
-                            <span className="titleSecond d-flex flex-column">
-                                <span>Đầm Xòe</span>
-                                <span>
-                                    Được sử dụng rộng rãi & ứng dụng nhiều trong
-                                    cuộc sống.
-                                </span>
-                                <img src={iconEnter} alt="" />
-                            </span>
-                        </div>
-                    </Link>
-                    <div className="image"></div>
+                <div className="category d-flex flex-column">
+                    <div className="image_wrapper">
+                        <img src={imageDamXoe} alt="dam-xoe" />
+                    </div>
+                    <div className="content d-flex flex-column">
+                        <span className="titleHead">ĐẦM XÒE</span>
+                        <span className="titleSeconds">
+                            Phục vụ với mọi ngữ cảnh như dự tiệc, công sở và dạo
+                            phố...
+                        </span>
+                        <div className="button">XEM THÊM</div>
+                    </div>
+                </div>
+                <div className="category d-flex flex-column">
+                    <div className="image_wrapper">
+                        <img src={imageDamSuong} alt="dam-suong" />
+                    </div>
+                    <div className="content d-flex flex-column">
+                        <span className="titleHead">ĐẦM SUÔNG</span>
+                        <span className="titleSeconds">
+                            Phục vụ với mọi ngữ cảnh như dự tiệc, công sở và dạo
+                            phố...
+                        </span>
+                        <div className="button">XEM THÊM</div>
+                    </div>
                 </div>
             </div>
         );

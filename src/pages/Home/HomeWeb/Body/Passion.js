@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import imagePassion from '../../../../assets/imageHomePage/imagePasion.png';
 
 export default class Passion extends Component {
     render() {
@@ -14,7 +15,9 @@ export default class Passion extends Component {
                         được bay<br/> lên - những người thợ may<br/> tận tụy.
                     </span>
                 </div>
-                <div className="image"></div>
+                <div className="image">
+                    <img src={imagePassion} alt=""/>
+                </div>
             </div>
         );
     }

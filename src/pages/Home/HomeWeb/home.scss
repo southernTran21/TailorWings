@@ -192,224 +192,76 @@
         }
     }
     .fourStep_wrapper {
-        background-color: #fff4e3;
-        margin-top: 25px;
-        height: 58vh;
-        border-radius: 25px;
         .titleHeader {
             font-size: 1.94vw;
             font-weight: bold;
             color: #111e6c;
-            margin-top: 2.84vw;
+            margin: 5.55vh 0;
         }
-        .fourStep {
-            width: 74.32vw;
-            margin-top: 5px;
-            .step1 {
-                .image {
-                    width: 6.3vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
+        .fourSteps {
+            svg {
+                width: 65.208vw;
+                height: 20.22vh;
             }
-            .step2 {
-                .image {
-                    width: 6.66vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-            .step3 {
-                .image {
-                    width: 7.88vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-            .step4 {
-                .image {
-                    width: 8.17vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-            .title {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
-            span {
-                font-weight: bold;
-                color: #111e6c;
-                font-size: 1.38vw;
-            }
-        }
-        .numberStep {
-            margin-top: 10px;
-            width: 74.32vw;
-            .number {
-                color: #ff6d3b;
-                border-radius: 50%;
-                border: 1px solid #ff6d3b;
-                font-size: 1.25vw;
-                background-color: #fff4e3;
-                width: 6vw;
-                height: 2vw;
-                text-align: center;
-                font-weight: bold;
-            }
-            :nth-child(1) {
-                margin-left: 2.1vw;
-            }
-            :nth-child(2) {
-                width: 97%;
-            }
-            :nth-child(4) {
-                width: 95%;
-            }
-            :nth-child(6) {
-                width: 100%;
-            }
-            :nth-child(7) {
-                margin-right: 2.6vw;
-            }
-        }
-        hr {
-            border-top: 1px solid #ff6d3b;
-            // width: 80%;
-            margin: 0;
-        }
-        .button {
-            background-color: #ff6d3b;
-            color: white;
-            font-weight: bold;
-            margin-top: 53px;
-            width: 14.16vw;
-            height: 5.83vh;
-            border-radius: 20px;
         }
     }
     .categories_wrapper {
-        margin-top: 3.61vh;
+        margin-top: 9.33vh;
         padding: 0 5.41vw;
-        height: 100% !important;
         background-color: white;
-        .col-5,
-        .col-7 {
-            padding: 0;
-            margin: 0;
-        }
-        .col-5 {
-            padding-left: 0.41vw;
-            :nth-child(2) {
-                margin-top: 1.48vh;
-            }
-        }
-        .col-7 {
-            padding-right: 0.41vw;
-        }
-        .categoriesfirst {
-            height: 64.81vh;
+        height: auto;
+        .category {
+            width: 28.75vw;
+            height: 61.11vh;
             background-color: #fff4e3;
-            border-radius: 25px;
-            .image {
-                width: 20vw;
+            border-radius: 10px;
+            .image_wrapper {
+                width: 22vw;
+                height: 61.11vh;
                 img {
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
+                    object-fit: contain;
                 }
             }
-            .title {
+            .content {
                 position: absolute;
-                width: 23.33vw;
-                margin-top: 17.22vh;
-                margin-left: 25.83vw;
-                span {
-                    color: #111e6c;
+                width: 12.5vw;
+                margin-left: 15vw;
+                margin-top: 8.22vh;
+                .titleHead {
+                    font-size: 2.22vw;
+                    font-weight: bold;
+                    color: #ff6d3b;
                 }
-                :nth-child(1) {
-                    font-size: 1.94vw;
+                .titleSeconds {
+                    color: #111e6c;
+                    font-size: 0.97vw;
                     font-weight: bold;
                 }
-                :nth-child(2) {
-                    font-size: 0.97vw;
-                    width: 21.61vw;
-                    font-weight: 600;
-                }
-                :nth-child(3) {
-                    width: 4.2vw;
-                    height: 5.24vh;
-                    margin-left: -1.1vw;
-                }
-            }
-        }
-        .categoriesSecond {
-            height: 31.66vh;
-            background-color: #fff4e3;
-            border-radius: 25px;
-            .titleFirst {
-                position: absolute;
-                width: 23.33vw;
-                margin-top: 6.2vh;
-                margin-left: 18.43vw;
-                span {
-                    color: #111e6c;
-                }
-                :nth-child(1) {
-                    font-size: 1.94vw;
+                .button {
+                    background: #ffffff;
+                    border-radius: 10px;
+                    color: #ff6d3b;
                     font-weight: bold;
-                }
-                :nth-child(2) {
                     font-size: 0.97vw;
-                    width: 14.16vw;
-                    font-weight: 600;
-                    margin-top: 0 !important;
-                }
-                :nth-child(3) {
-                    width: 4.2vw;
-                    height: 5.24vh;
-                    margin-left: -1.1vw;
-                }
-            }
-            .titleSecond {
-                position: absolute;
-                width: 23.33vw;
-                margin-top: 7.59vh;
-                margin-left: 2.7vw;
-                span {
-                    color: #111e6c;
-                }
-                :nth-child(1) {
-                    font-size: 1.94vw;
-                    font-weight: bold;
-                }
-                :nth-child(2) {
-                    font-size: 0.97vw;
-                    width: 11.4vw;
-                    font-weight: 600;
-                    margin-top: 0 !important;
-                }
-                :nth-child(3) {
-                    width: 4.2vw;
-                    height: 5.24vh;
-                    margin-left: -1.1vw;
+                    width: 7.43vw;
+                    height: 5vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
                 }
             }
         }
     }
     .introduction {
-        padding: 12.31vh;
+        background-color: #ff6d3b;
+        margin: 7vh 10.2vw 8.88vh 9.58vw;
+        border-radius: 20px;
+        padding: 4.33vh 0 8.77vh 0;
         span {
-            color: #111e6c;
+            color: white;
         }
         :nth-child(1) {
             font-weight: bold;
@@ -419,9 +271,8 @@
             font-size: 1.52vw !important;
             text-align: center;
             font-weight: 500;
-            span {
-                font-size: 1.52vw !important;
-            }
+            font-style: italic;
+            margin-top: 2.22vh;
         }
     }
     .collection_wrapper {
@@ -573,7 +424,7 @@
                 font-size: 1.94vw;
             }
             :nth-child(2) {
-                font-size: 1.52vw;
+                font-size: 1.38vw;
                 text-align: center;
                 font-weight: normal;
             }
@@ -581,11 +432,6 @@
         .image {
             width: 64.89vw;
             margin-top: 4.62vh;
-            img {
-                width: 21.09vw;
-                height: 24.62vh;
-                background-color: #fff4e3;
-            }
         }
         .button {
             margin: 7.22vh 0;
@@ -596,6 +442,7 @@
                 color: #ff6d3b;
                 border-radius: 40px;
                 padding: 2.12vh 2.7vw;
+                font-size: 0.97vw;
             }
             a {
                 width: 100%;
@@ -631,7 +478,6 @@
         .image {
             width: 51.66vw;
             height: 60.64vh;
-            background-color: #ffa45c;
             border-radius: 25px;
             margin-top: 4.93vh;
             margin-left: 5.83vw;
