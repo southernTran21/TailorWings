@@ -3,6 +3,7 @@ import Media from "react-media";
 import HomeWeb from "./HomeWeb";
 import HomeMobile from "./HomeMobile";
 import ReactGA from "react-ga";
+import { BackTop } from "antd";
 
 const initGA = () => {
     console.log("initGA");
@@ -47,23 +48,33 @@ export default class Home extends Component {
                 product.name = relatedDesignInfo.name;
             });
         }
-        console.log('visibilityProducts', visibilityProducts)
+        console.log("visibilityProducts", visibilityProducts);
         return (
             <Media queries={{ small: { maxWidth: 1024 } }}>
                 {matches =>
                     matches.small ? (
-                        <HomeMobile
-                            history={this.props.history}
-                            visibilityProducts={this.props.visibilityProducts}
-                            bestSellerList={bestSellerList}
-                            collectionsInfo={collectionsInfo}
-                        />
+                        <React.Fragment>
+                            <HomeMobile
+                                history={this.props.history}
+                                visibilityProducts={
+                                    this.props.visibilityProducts
+                                }
+                                bestSellerList={bestSellerList}
+                                collectionsInfo={collectionsInfo}
+                            />
+                            <BackTop />
+                        </React.Fragment>
                     ) : (
-                        <HomeWeb
-                            history={this.props.history}
-                            visibilityProducts={this.props.visibilityProducts}
-                            bestSellerList={bestSellerList}
-                        />
+                        <React.Fragment>
+                            <HomeWeb
+                                history={this.props.history}
+                                visibilityProducts={
+                                    this.props.visibilityProducts
+                                }
+                                bestSellerList={bestSellerList}
+                            />
+                            <BackTop />
+                        </React.Fragment>
                     )
                 }
             </Media>

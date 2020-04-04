@@ -6,7 +6,7 @@ import App from './app/App';
 import { BrowserRouter } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './assets/theme/template/scss/agency.css';
+// import './assets/scss/agency.css';
 import store from './stores/myStore'
 
 

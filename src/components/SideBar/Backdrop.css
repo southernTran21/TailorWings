@@ -6,7 +6,7 @@
     height: 100%;
     top: 9vh;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 6 !important;
     /* display: none; */
 }

@@ -15,6 +15,9 @@ class BodyHeader extends Component {
         return (
             <div className='header__bodyPage'>
                 <img src={Image1} />
+                <div className='textHeader'>
+                    <span>Tự do kết hợp VẢI & THIẾT KẾ</span>
+                </div>
                 <Link
                     to={{
                         pathname: '/shopping-store',
@@ -23,16 +26,13 @@ class BodyHeader extends Component {
                     onClick={this.updatePixel}
                 >
                     <button
-                        type='button'
-                        className='btn btn-warning'
+                        className='buttonHeder'
                         style={{
                             position: 'absolute',
-                            bottom: '100px',
-                            zIndex: 5,
-                            left: '37vw'
+                            bottom: '14.99vw',
                         }}
                     >
-                        Mua ngay
+                        TRẢI NGHIỆM NGAY
                     </button>
                 </Link>
             </div>

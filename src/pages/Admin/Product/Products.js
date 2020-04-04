@@ -40,7 +40,6 @@ export class Products extends Component {
                     let currentDesign = designs.find(design => design.id === product.designID) || { name: 'No Data', price: 0, length: 0 };
                     let currentFabric = fabrics.find(fabric => fabric.id === product.fabricID) || { price: 0 }
                     product.price = currentDesign.price + ((currentFabric.price * currentDesign.length) / 100) + 400000;
-                    console.log('product.price', product.price)
                     product.name = currentDesign.name;
                 }
             })

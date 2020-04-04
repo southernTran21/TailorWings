@@ -18,7 +18,7 @@
         background-color: white;
         .titleHeader {
             width: 45.33vw;
-            img{
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: fill;
@@ -70,13 +70,6 @@
                     outline: none;
                 }
             }
-            // input{
-            //     width: 200px;
-            //     float: right;
-            //     transition: width 500ms;
-            //     position: relative;
-            //
-            // }
         }
     }
     .navbarHeaderFixed {
@@ -167,6 +160,31 @@
                 height: 100vh;
                 object-fit: cover;
             }
+            .textHeader {
+                position: absolute;
+                display: flex;
+                width: 100vw;
+                justify-content: center;
+                align-items: center;
+                bottom: 30.99vw;
+                color: #111e6c;
+                font-size: 5.33vw;
+                font-weight: bold;
+            }
+            .buttonHeder {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                left: 24.53vw;
+                font-size: 3.73vw;
+                font-weight: bold;
+                color: white;
+                border: none;
+                background-color: #ff6d3b;
+                border-radius: 10px;
+                width: 50.4vw;
+                height: 5.99vh;
+            }
         }
         .content__bodyPage {
             padding: 0 25px;
@@ -241,9 +259,9 @@
                 }
                 :nth-child(2) {
                     font-size: 3.73vw;
-                    margin-top: 5px;
                     padding: 0 13px;
                     text-align: center;
+                    margin-bottom: 15px;
                 }
             }
             .carousel-wraper {
@@ -413,9 +431,11 @@
                     font-weight: bold;
                 }
                 .title2 {
-                    margin: 0 83px;
+                    margin: 0 11.2vw;
                     font-size: 3.2vw;
                     margin-top: 5px;
+                    font-weight: bold;
+                    font-style: italic;
                 }
             }
             .image-wraper {
@@ -469,10 +489,8 @@
                     .titleBenefit {
                         :nth-child(1) {
                             font-weight: bold;
-                            font-size: 4.8vw;
-                        }
-                        :nth-child(2) {
-                            font-size: 3.2vw;
+                            font-size: 4.26vw;
+                            padding: 0 5.86vw;
                             text-align: center;
                         }
                     }
@@ -480,17 +498,25 @@
             }
             .buttonConect {
                 margin-top: 7px;
-                span {
-                    height: 5.99vh;
-                    width: 43.73vw;
-                    background-color: #ff6d3b;
-                    color: white;
-                    font-size: 3.73vw;
-                    border-radius: 30px;
-                    font-weight: bold;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                a {
+                    width: fit-content;
+                    height: fit-content;
+                    text-decoration: none;
+                    span {
+                        height: 5.99vh;
+                        width: 43.73vw;
+                        background-color: #ff6d3b;
+                        color: white;
+                        font-size: 3.73vw;
+                        border-radius: 30px;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+                a:active, a:focus {
+                    text-decoration: none;
                 }
             }
         }
@@ -524,7 +550,7 @@
         }
     }
     .footerPage {
-        padding: 10px 25px;
+        padding: 1.49vh 6.66vw;
         margin-bottom: 0px;
         background-color: #ff6d3b;
         color: white;
@@ -549,8 +575,28 @@
                 font-size: 14px;
             }
             border-bottom: 1px solid white;
-            width: 262px;
+            width: 86.13vw;
             margin-top: 26px;
+            .buttonApcept {
+                font-size: 3.2vw;
+                color: #ff6d3b;
+                font-weight: bold;
+                background-color: white;
+                width: 24vw;
+                height: 3vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .emailError {
+            font-size: 3.2vw;
+            color: #111e6c;
+            display: block !important;
+            margin-top: 1vw;
+        }
+        .emailError_unvisible {
+            display: none;
         }
         .infomation {
             font-size: 3.2vw;
@@ -560,15 +606,24 @@
             span {
                 border-bottom: 1px solid white;
             }
+            a {
+                width: fit-content;
+                height: fit-content;
+                text-decoration: none;
+                color: white;
+            }
         }
         .iconSocialNetwork {
             width: 200px;
             margin-top: 51px;
-            img {
-                width: 40px;
-                height: 40px;
-                filter: invert(100%) sepia(71%) saturate(0%) hue-rotate(36deg)
-                    brightness(111%) contrast(101%);
+            a {
+                width: fit-content;
+                height: fit-content;
+                text-decoration: none;
+                img {
+                    width: 10.66vw;
+                    height: 10.66vw;
+                }
             }
         }
         .hotline {
@@ -578,8 +633,10 @@
         .iconLogoTailorWings {
             margin-top: 40px;
             img {
-                width: 110px;
-                height: 65.75px;
+                width: 17.06vw;
+                height: 18.59vh;
+                filter: invert(100%) sepia(71%) saturate(0%) hue-rotate(36deg)
+                    brightness(200%) contrast(101%);
             }
         }
         .titleEndFooter {

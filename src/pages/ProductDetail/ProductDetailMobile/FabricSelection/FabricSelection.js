@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./FabricSelection.scss";
-import FabricSwiper from "./FabricSwiper";
-import ProductSwiper from "./ProductSwiper";
 import { Link } from "react-router-dom";
 import { Icon, Badge } from "antd";
+import classNames from "classnames";
+//
 import ProductModal from "./ProductModal";
+import FabricSwiper from "./FabricSwiper";
+import ProductSwiper from "./ProductSwiper";
 
 class FabricSelection extends Component {
     constructor(props) {
@@ -348,12 +350,22 @@ class FabricSelection extends Component {
             " " +
             "VNĐ";
         return (
-            <div className="pageFabricSelection d-flex flex-column align-items-center justify-content-start">
+            <div
+                className={classNames(
+                    "pageFabricSelection d-flex flex-column align-items-center justify-content-start",
+                    { fixed_top: isProductModalShow }
+                )}
+            >
                 <div className="navbarHeader d-flex flex-row align-items-center justify-content-between">
-                    <div className="iconBack" onClick={() => window.history.back()}>
+                    <div
+                        className="iconBack"
+                        onClick={() => window.history.back()}
+                    >
                         <Icon type="left" />
                     </div>
-                    <div className="titleHeader d-flex justify-content-center">Chọn Vải</div>
+                    <div className="titleHeader d-flex justify-content-center">
+                        Chọn Vải
+                    </div>
                     <Link style={{ color: "white" }} to={"/shopping-cart"}>
                         <div className="iconShoppingCart">
                             <Icon type="shopping-cart" />
@@ -404,7 +416,10 @@ class FabricSelection extends Component {
                             className="button d-flex flex-row align-items-center justify-content-center"
                             onClick={this.onFinishButtonClicked}
                         >
-                            <span>Chọn số đo<Icon type="right" /></span>
+                            <span>
+                                Chọn số đo
+                                <Icon type="right" />
+                            </span>
                         </div>
                     </div>
                 </div>

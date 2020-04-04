@@ -3,9 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
 import { createBrowserHistory } from "history";
 import { getAllData, getWithCondition } from "../services/Fundamental";
-import NavBar from "../components/NavBar/NavBar";
-import Footer from "../components/Footer/Footer";
-import MediaButton from "../components/MediaButton/MediaButton";
+import { totalPriceCalculation } from "../services/CommonFunction";
 import ShoppingStore from "../pages/ShoppingStore/index";
 import ProductDetail from "../pages/ProductDetail/index";
 import ShoppingCart from "../pages/ShoppingCart/index";
@@ -15,7 +13,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Admin from "../pages/Admin/Admin";
 import { ProtectedRoute } from "./ProtectedRoute";
-import Media from "react-media";
 import ReactGA from "react-ga";
 import ReactPixel from "react-facebook-pixel";
 import Policy from "../pages/Policy";
@@ -157,7 +154,7 @@ export default class App extends Component {
     };
 
     render() {
-        const {
+        let {
             visibilityProducts,
             designsInfo,
             categoriesInfo,
@@ -165,28 +162,18 @@ export default class App extends Component {
             collectionsInfo,
             topListInfo
         } = this.state;
+        if ( visibilityProducts.length > 0 ) {
+            visibilityProducts.forEach((product) => {
+                let relatedDesign = designsInfo.filter(design => design.id === product.designID)[0] || { price: 0, length: 0 };
+                let relatedFabric = fabricsInfo.filter(fabric => fabric.id === product.fabricID)[0] || { price: 0 };
+                let price = totalPriceCalculation(relatedDesign.price, relatedDesign.length, relatedFabric.price);
+                price = Math.ceil(price/1000) * 1000;
+                product.price = price;
+            })
+        }
         return (
             <React.Fragment>
                 <Router history={history}>
-                    {/* <Media queries={{ small: { maxWidth: 1024 } }}>
-            {matches =>
-              matches.small ?
-                (
-                  null
-                ) :
-                (
-                  <React.Fragment>
-                    <NavBar
-                      history={history}
-                    // sideBarOpen={this.sideBarOpen}
-                    />
-                    <MediaButton
-                      history={history}
-                    />
-                  </React.Fragment>
-                )
-            }
-          </Media> */}
                     <Switch>
                         <Route
                             path="/"
@@ -249,19 +236,6 @@ export default class App extends Component {
                         {/* <ProtectedRoute exact path="/admin" render={(props) => <Admin {...props} />} /> */}
                         <Route path="*" component={() => "404 NOT FOUND"} />
                     </Switch>
-                    {/* <Media queries={{ small: { maxWidth: 1024 } }}>
-            {matches =>
-              matches.small ?
-                (
-                  null
-                ) :
-                (
-                  <React.Fragment>
-                    <Footer history={history} />
-                  </React.Fragment>
-                )
-            }
-          </Media> */}
                 </Router>
             </React.Fragment>
         );

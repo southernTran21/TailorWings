@@ -7,6 +7,9 @@
     }
     .iconShoppingCart {
         font-size: 23px;
+        a {
+            color: #ff6d3b !important;
+        }
     }
     .ant-badge-count {
         min-height: 10px;
@@ -63,7 +66,7 @@
 .navbarHeader {
     height: 65px !important;
     padding: 0 25px;
-    color: #ff6d3b;
+    color: #ff6d3b !important;
     width: 100vw;
     z-index: 6;
     background-color: white;
@@ -80,6 +83,12 @@
     }
     .anticon {
         vertical-align: 0 !important;
+    }
+    .iconShoppingCart {
+        font-size: 23px;
+        a {
+            color: #ff6d3b !important;
+        }
     }
 }
 .footerPage {
@@ -108,8 +117,28 @@
             font-size: 14px;
         }
         border-bottom: 1px solid white;
-        width: 262px;
+        width: 86.13vw;
         margin-top: 26px;
+        .buttonApcept {
+            font-size: 3.2vw;
+            color: #ff6d3b;
+            font-weight: bold;
+            background-color: white;
+            width: 24vw;
+            height: 3vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .emailError {
+        font-size: 3.2vw;
+        color: #111e6c;
+        display: block !important;
+        margin-top: 1vw;
+    }
+    .emailError_unvisible {
+        display: none;
     }
     .infomation {
         font-size: 3.2vw;
@@ -118,6 +147,12 @@
         margin-top: 56px;
         span {
             border-bottom: 1px solid white;
+        }
+        a {
+            width: fit-content;
+            height: fit-content;
+            text-decoration: none;
+            color: white;
         }
     }
     .iconSocialNetwork {
@@ -151,6 +186,176 @@
         }
         span {
             color: #fff4e3 !important;
+        }
+    }
+}
+.pagePolicy-container {
+    // Desktop footer
+    .footer_wrapper {
+        padding: 0 5.2vw;
+        height: 53.05vh;
+        background-color: #ff6d3b;
+        margin-top: 4.16vh;
+        .info {
+            padding-top: 12.26vh;
+            color: white;
+            font-size: 1.11vw;
+            font-weight: bold;
+            cursor: pointer;
+            :nth-child(2) {
+                margin: 3.24vh 0;
+            }
+            a {
+                width: fit-content;
+                height: fit-content;
+                text-decoration: none;
+                span {
+                    color: white;
+                }
+            }
+            a:hover {
+                text-decoration: none;
+                span {
+                    color: #111e6c !important;
+                }
+            }
+        }
+        .contact {
+            color: white;
+            padding-top: 11.85vh;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.11vw;
+            .icon {
+                margin-top: 4.62vh;
+                cursor: pointer;
+                a {
+                    width: fit-content;
+                    height: fit-content;
+                    text-decoration: none;
+                    img {
+                        height: 5.55vh;
+                        width: 3.12vw;
+                    }
+                }
+                a:hover {
+                    text-decoration: none;
+                    img {
+                        filter: invert(100%) sepia(100%) saturate(0%)
+                            hue-rotate(141deg) brightness(200%) contrast(101%) !important;
+                    }
+                }
+                :nth-child(2) {
+                    margin: 0 2.6vw;
+                }
+            }
+        }
+        .logo {
+            margin-top: 8.42vh;
+            img {
+                width: 6.64vw;
+                height: 23.28vh;
+                filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(141deg)
+                    brightness(200%) contrast(101%);
+            }
+        }
+        .email {
+            color: white;
+            margin-top: 11.18vh;
+            .title {
+                font-size: 1.52vw;
+                font-weight: bold;
+            }
+            .input {
+                align-items: baseline;
+                margin-top: 4.16vh;
+                .ant-input {
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 1px solid white;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
+                input {
+                    color: white;
+                }
+                ::placeholder {
+                    color: white;
+                }
+                .button {
+                    font-size: 0.55vw;
+                    font-weight: bold;
+                    background-color: white;
+                    color: #ff6d3b;
+                    width: 6.51vw;
+                    height: 3.7vh;
+                    border-radius: 40px;
+                    cursor: pointer;
+                }
+            }
+            .emailError {
+                font-size: 0.97vw;
+                color: #111e6c;
+                display: inline !important;
+            }
+            .emailError_unvisible {
+                display: none;
+            }
+        }
+        .endFooter {
+            margin-top: 13.47vh;
+            color: white;
+            opacity: 0.8;
+            font-size: 0.9vw;
+        }
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .pagePolicy {
+        padding: 0 5.69vw;
+        .titleHeaderPage {
+            font-size: 1.66vw;
+        }
+        .contentHederPage {
+            :nth-child(1) {
+                font-size: 1.25vw;
+            }
+            :nth-child(2) {
+                font-size: 0.97vw;
+            }
+        }
+        .ant-collapse {
+            .ant-collapse-header {
+                font-size: 1.11vw;
+            }
+            .ant-collapse-content-box {
+                span {
+                    font-size: 0.97vw;
+                }
+            }
+        }
+    }
+    .navbarHeader {
+        height: 65px !important;
+        padding: 0 5.69vw;
+        color: #ff6d3b;
+        width: 100vw;
+        z-index: 6;
+        background-color: white;
+        .titleHeader {
+            width: 13.68vw;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: fill;
+            }
+        }
+        i {
+            font-size: 25px;
+            color: #ff6d3b;
+        }
+        .anticon {
+            vertical-align: 0 !important;
         }
     }
 }

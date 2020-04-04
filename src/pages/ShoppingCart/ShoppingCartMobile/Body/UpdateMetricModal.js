@@ -35,13 +35,18 @@ export default class UpdateMetricModal extends Component {
     }
 
     handleOk = () => {
+        const { currentSize, currentMetric } = this.state;
         let isDataValidated = this.onDataValidate();
         if (isDataValidated) {
             this.setState({
                 confirmLoading: true
             });
             setTimeout(() => {
-                this.props.onUpdateToStorage();
+                this.props.onUpdateToStorage(
+                    currentSize,
+                    currentMetric,
+                    this.props.currentIndex
+                );
                 this.setState({
                     confirmLoading: false,
                     errorValidate: false
@@ -56,31 +61,35 @@ export default class UpdateMetricModal extends Component {
 
     handleCancel = () => {
         this.props.onModalVisible(false);
+        const { product } = this.props;
+        let { currentMetric, currentSize, activeStatus } = this.state;
+        if (product != null) {
+            let currentSizeIndex = SIZE.indexOf(product.size);
+            activeStatus[currentSizeIndex] = true;
+            currentMetric = product.bodyMetric;
+            currentSize = product.size;
+            this.setState({
+                activeStatus,
+                currentMetric,
+                currentSize
+            });
+        }
     };
 
     onSizeSelected = (index, size) => {
         if (index != null && index > -1) {
-            this.props.onModalUpdate("size", size);
+            this.props.onModalUpdate();
             this.setState({
                 currentSize: size
             });
         }
     };
 
-    // onSizeSelected = e => {
-    //     if (e.target.name != null) {
-    //         this.props.onModalUpdate("size", e.target.name);
-    //         this.setState({
-    //             currentSize: e.target.name
-    //         });
-    //     }
-    // };
-
     onBodyScaleChange = e => {
         let { currentMetric } = this.state;
         currentMetric[Number(e.target.id)] =
             e.target.value !== "" ? Number(e.target.value) : "";
-        this.props.onModalUpdate("metric", currentMetric);
+        this.props.onModalUpdate();
         this.setState({
             currentMetric
         });
@@ -104,13 +113,15 @@ export default class UpdateMetricModal extends Component {
 
     render() {
         const { product, modalVisible } = this.props;
-        let { currentMetric, activeStatus, errorValidate } = this.state;
-        if (product != null) {
-            let currentSizeIndex = SIZE.indexOf(product.size);
-            activeStatus.fill(false);
-            activeStatus[currentSizeIndex] = true;
-            currentMetric = product.bodyMetric;
-        }
+        let {
+            currentMetric,
+            activeStatus,
+            errorValidate,
+            currentSize
+        } = this.state;
+        let currentSizeIndex = SIZE.indexOf(currentSize);
+        activeStatus.fill(false);
+        activeStatus[currentSizeIndex] = true;
         return (
             <div>
                 <Modal

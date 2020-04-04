@@ -297,7 +297,6 @@ class ShoppingCartMobile extends Component {
                 <ProductList
                     key={index}
                     price={price}
-                    product={product}
                     onProductRemove={this.onProductRemove}
                     onQuantityChange={this.onQuantityChange}
                     onStepChange={this.onStepChange}

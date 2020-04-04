@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./Policy.scss";
 import { Collapse } from "antd";
-import Footer from "../Home/HomeMobile/Footer/Footer";
 import NavBar from "./NavBar";
 import { connect } from "react-redux";
 import ReactGA from "react-ga";
+import FooterPage from "../Home/HomeMobile/Footer/Footer";
+import Footer from "../Home/HomeWeb/Footer/index";
+import NavBarWeb from "../../components/NavBar/NavBarWeb";
+import Media from "react-media";
 
 const { Panel } = Collapse;
 
@@ -66,7 +69,25 @@ class Policy extends Component {
     render() {
         return (
             <div className="pagePolicy-container">
-                <NavBar totalProductsOnCart={this.state.totalProductsOnCart} history={this.props.history}/>
+                <Media queries={{ small: { maxWidth: 1024 } }}>
+                    {matches =>
+                        matches.small ? (
+                            <NavBar
+                                totalProductsOnCart={
+                                    this.state.totalProductsOnCart
+                                }
+                                history={this.props.history}
+                            />
+                        ) : (
+                            <NavBarWeb
+                                totalProductsOnCart={
+                                    this.state.totalProductsOnCart
+                                }
+                                history={this.props.history}
+                            />
+                        )
+                    }
+                </Media>
                 <div className="pagePolicy">
                     <div className="titleHeaderPage">
                         <span>Điều kiện & Điều khoản</span>
@@ -290,7 +311,11 @@ class Policy extends Component {
                         </Panel>
                     </Collapse>
                 </div>
-                <Footer />
+                <Media queries={{ small: { maxWidth: 1024 } }}>
+                    {matches =>
+                        matches.small ? <FooterPage /> : <Footer />
+                    }
+                </Media>
             </div>
         );
     }

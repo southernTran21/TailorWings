@@ -56,22 +56,6 @@ export default class PageHeader extends Component {
         return (
             <div className="navbarHeader d-flex flex-row justify-content-between align-items-center">
                 {this.onBackLink()}
-                {/* <Link
-                    to={{
-                        pathname: "/shopping-store",
-                        search: "?cat=all&search="
-                    }}
-                    style={{
-                        border: "none",
-                        textDecoration: "none",
-                        width: "fit-content",
-                        height: "fit-content"
-                    }}
-                >
-                    <div className="iconBack ">
-                        <Icon type="left" />
-                    </div>
-                </Link> */}
                 <div className="titleHeader d-flex justify-content-center">
                     <span d-flex justify-content-center>{this.props.title}</span>
                 </div>
