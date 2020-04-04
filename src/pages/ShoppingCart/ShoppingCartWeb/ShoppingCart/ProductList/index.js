@@ -3,6 +3,7 @@ import { Icon, Input } from "antd";
 import { connect } from "react-redux";
 import * as actions from "./../../../../../actions/index";
 import UpdateMetricModal from "./UpdateMetricModal";
+import iconTrash from '../../../../../assets/iconImage/trash-2.svg'
 
 class ProductList extends Component {
     constructor(props) {
@@ -168,7 +169,7 @@ class ProductList extends Component {
 											this.props.onProductRemove(index)
 										}
 									>
-										<Icon type="delete" />
+										<img src={iconTrash} alt=""/>
 									</div>
 									<UpdateMetricModal
 										currentIndex={index}

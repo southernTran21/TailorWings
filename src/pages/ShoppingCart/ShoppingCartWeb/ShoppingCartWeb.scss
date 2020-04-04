@@ -6,7 +6,29 @@
         padding: 0 5.69vw;
         height: 15vh;
         margin-bottom: 3.77vh;
+        .logoTailorWings-withoutTools{
+            margin-right: 37vw !important;
+        }
     }
+    .ant-checkbox-checked .ant-checkbox-inner{
+        background-color: #FF6D3B;
+        border-color: #FF6D3B;
+    }
+    .ant-checkbox-checked::after{
+        border: 1px solid #FF6D3B;
+    }
+    .ant-checkbox-inner{
+        border: 1px solid #FF6D3B;
+    }
+    .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner{
+        border-color: #FF6D3B !important;
+    }
+    // .ant-radio-checked .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner{
+    //     border-color: #FF6D3B;
+    // }
+    // .ant-radio-checked::after{
+    //     border: 1px solid #FF6D3B;
+    // }
     .titleHeader_ShoppingCart {
         font-size: 2.5vw;
         font-weight: bold;
@@ -116,10 +138,11 @@
                         font-size: 1.11vw;
                     }
                     .column5 {
-                        i {
+                        img{
+                            width: 1.73vw;
+                            height: 2.77vh;
+                            filter: invert(45%) sepia(98%) saturate(422%) hue-rotate(328deg) brightness(99%) contrast(105%);
                             cursor: pointer;
-                            font-size: 1.25vw;
-                            color: #ff6d3b;
                         }
                     }
                 }

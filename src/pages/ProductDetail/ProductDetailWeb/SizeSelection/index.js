@@ -127,14 +127,14 @@ class SizeSelectionWeb extends Component {
                 </div>
                 <div className="bodyScale d-flex flex-column align-items-center">
                     <SizeImage imageSize={sizeImage} size={size} />
-                    <BodyMetric
-                        bodyMetric={bodyMetric}
-                        onBodyMetricUpdated={this.props.onBodyMetricUpdated}
-                    />
                     <SizeSelection
                         size={size}
                         sizeImageUpdate={this.sizeImageUpdate}
                         currentSelectedProduct={currentSelectedProduct}
+                    />
+                    <BodyMetric
+                        bodyMetric={bodyMetric}
+                        onBodyMetricUpdated={this.props.onBodyMetricUpdated}
                     />
                 </div>
                 <div className="d-flex flex-column">
