@@ -22,7 +22,7 @@ export default class Collections extends Component {
                         />
                     </svg>
                     <span>
-                        Khám phá ngay những bộ sưu tập mới nhất từ nhà may.
+                        Khám phá ngay<br/> những bộ sưu tập<br/> mới nhất từ nhà may.
                     </span>
                 </div>
                 <div className="selectionCollection d-flex">

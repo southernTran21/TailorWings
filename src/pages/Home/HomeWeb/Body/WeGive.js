@@ -7,7 +7,7 @@ export default class WeGive extends Component {
                 <div className="title d-flex flex-column align-items-center">
                     <span>We Give Tailor Wings</span>
                     <span>
-                        Trở thành đối tác của Tailor Wings để làm chủ cuộc sống
+                        Trở thành đối tác của Tailor Wings để làm chủ cuộc<br/> sống
                         của mình tốt hơn.
                     </span>
                 </div>

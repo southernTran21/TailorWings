@@ -6,7 +6,7 @@ import classNames from "classnames";
 import "./NavBarWeb.scss";
 import iconMenu from "../../../assets/productDetailWeb/menu-2.svg";
 import iconSearch from "../../../assets/productDetailWeb/search.svg";
-import iconCart from "../../../assets/productDetailWeb/cart.svg";
+import iconCart from "../../../assets/imageHomePage/shopping-cart.svg";
 import iconLogoTailorWings from "../../../assets/imageHomePage/Logo Header.svg";
 import iconClose from "../../../assets/imageHomePage/close.svg";
 import Backdrop from "../../SideBar/Backdrop";

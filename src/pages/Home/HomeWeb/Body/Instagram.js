@@ -6,7 +6,7 @@ export default class Instagram extends Component {
     render() {
         return (
             <div className="instagram fontMontserrat">
-                <div className="title d-flex align-items-center">
+                <div className="title d-flex flex-row align-items-center justify-content-center">
                     <img src={iconIG} alt="instagram" />
                     <span>Instagram</span>
                 </div>

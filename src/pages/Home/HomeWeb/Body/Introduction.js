@@ -8,7 +8,7 @@ export default class Introduction extends Component {
                 <span>
                     Tự do lựa chọn để thể hiện phong cách của chính bạn.{" "}
                     <span className="text-bold">
-                        Tất cả có trên cùng một ứng dụng.
+                        Tất cả có trên cùng<br/> một ứng dụng.
                     </span>
                 </span>
             </div>

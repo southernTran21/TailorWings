@@ -2,9 +2,7 @@
     width: 100vw;
     height: 100%;
     // font defination
-    .fontBeVN {
-        font-family: "Be Vietnam", sans-serif;
-    }
+    font-family: "Montserrat", sans-serif !important;
     .fontMontserrat {
         font-family: "Montserrat", sans-serif;
     }
@@ -54,7 +52,8 @@
                     img {
                         height: 3.31vh;
                         margin: 0 7px;
-                        color: #ff6d3b;
+                        filter: invert(45%) sepia(88%) saturate(1289%)
+                            hue-rotate(337deg) brightness(107%) contrast(101%);
                     }
                     span {
                         color: #ff6d3b;
@@ -198,10 +197,10 @@
         height: 58vh;
         border-radius: 25px;
         .titleHeader {
-            font-size: 2.22vw;
+            font-size: 1.94vw;
             font-weight: bold;
             color: #111e6c;
-            margin-top: 41px;
+            margin-top: 2.84vw;
         }
         .fourStep {
             width: 74.32vw;
@@ -250,7 +249,7 @@
             span {
                 font-weight: bold;
                 color: #111e6c;
-                font-size: 1.25vw;
+                font-size: 1.38vw;
             }
         }
         .numberStep {
@@ -262,14 +261,16 @@
                 border: 1px solid #ff6d3b;
                 font-size: 1.25vw;
                 background-color: #fff4e3;
-                padding: 1px 9px;
+                width: 6vw;
+                height: 2vw;
+                text-align: center;
                 font-weight: bold;
             }
             :nth-child(1) {
                 margin-left: 2.1vw;
             }
             :nth-child(2) {
-                width: 90%;
+                width: 97%;
             }
             :nth-child(4) {
                 width: 95%;
@@ -408,19 +409,18 @@
     .introduction {
         padding: 12.31vh;
         span {
-            color: #ff6d3b;
+            color: #111e6c;
         }
         :nth-child(1) {
             font-weight: bold;
-            font-size: 2.22vw;
+            font-size: 1.94vw;
         }
         :nth-child(2) {
-            font-size: 1.2wvw !important;
-            padding: 0 23vw;
+            font-size: 1.52vw !important;
             text-align: center;
             font-weight: 500;
             span {
-                font-size: 1.25vw !important;
+                font-size: 1.52vw !important;
             }
         }
     }
@@ -438,8 +438,7 @@
                 padding: 2.77vh 0;
             }
             :nth-child(3) {
-                width: 13.5vw;
-                font-size: 0.97vw;
+                font-size: 1.25vw;
                 font-weight: 600;
             }
         }
@@ -497,7 +496,7 @@
             margin-top: 6.57vh;
             color: #111e6c;
             font-weight: bold;
-            font-size: 2.22vw;
+            font-size: 1.94vw;
         }
         .carousel-wraper {
             margin-top: 4.72vh;
@@ -527,28 +526,30 @@
                 .image {
                     width: 21.66vw;
                     height: 55.55vh;
-                    border-radius: 7px;
+                    border-radius: 15px;
                     img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                        border-radius: 15px;
                     }
                 }
                 .end-carousel {
                     .title {
-                        font-size: 1.38vw;
+                        font-size: 1.52vw;
                         margin-bottom: 7px;
                         margin-top: 1.85vh;
                     }
                     .button {
                         margin: 0;
                         .titleButton {
-                            font-size: 0.97vw;
+                            font-size: 1.11vw;
+                            font-weight: bold;
                             color: #ff6d3b;
                             border: 1px solid #ff6d3b;
                             border-radius: 7px;
-                            width: 129px;
-                            padding: 5px 0;
+                            // width: 9.02vw;
+                            padding: 5px 7px;
                             text-align: center;
                         }
                     }
@@ -569,13 +570,12 @@
             margin-top: 7.22vh;
             :nth-child(1) {
                 font-weight: bold;
-                font-size: 2.22vw;
+                font-size: 1.94vw;
             }
             :nth-child(2) {
-                font-size: 0.97vw;
-                width: 28.5vw;
+                font-size: 1.52vw;
                 text-align: center;
-                font-weight: bold;
+                font-weight: normal;
             }
         }
         .image {
@@ -618,7 +618,7 @@
                 color: #111e6c;
             }
             :nth-child(1) {
-                font-size: 2.22vw;
+                font-size: 1.94vw;
                 font-weight: bold;
             }
             :nth-child(2) {
@@ -647,7 +647,7 @@
             }
             span {
                 font-weight: bold;
-                font-size: 2.22vw;
+                font-size: 1.94vw;
                 color: #111e6c;
             }
         }
@@ -695,6 +695,9 @@
             text-align: center;
             font-weight: bold;
             font-size: 1.11vw;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             .icon {
                 margin-top: 4.62vh;
                 cursor: pointer;
@@ -709,13 +712,13 @@
                 }
                 a:hover {
                     text-decoration: none;
-                    img {
-                        filter: invert(100%) sepia(100%) saturate(0%)
-                            hue-rotate(141deg) brightness(200%) contrast(101%) !important;
-                    }
+                    // img {
+                    //     filter: invert(100%) sepia(100%) saturate(0%)
+                    //         hue-rotate(141deg) brightness(200%) contrast(101%) !important;
+                    // }
                 }
                 :nth-child(2) {
-                    margin: 0 2.6vw;
+                    margin: 0 1vw;
                 }
             }
         }

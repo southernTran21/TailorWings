@@ -156,7 +156,7 @@ export default class ProductList extends Component {
                                         </div>
                                     </Link>
                                     <span>{product.name}</span>
-                                    <div className="button">{`${product.totalSupportedFabric} Mẫu Vải`}</div>
+                                    <div className="button">{`${product.totalSupportedFabric} MẪU VẢI`}</div>
                                 </div>
                                 // </div>
                             );

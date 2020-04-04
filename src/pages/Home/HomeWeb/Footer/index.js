@@ -58,7 +58,7 @@ export default class Footer extends Component {
                 <div className="d-flex justify-content-between">
                     <div className="info d-flex flex-column">
                         <a>
-                            <span>VỀ CHÚNG TÔI</span>
+                            <span>VỀ TAILOR WINGS</span>
                         </a>
                         <Link to="/support">
                             <span>CHÍNH SÁCH HỖ TRỢ</span>

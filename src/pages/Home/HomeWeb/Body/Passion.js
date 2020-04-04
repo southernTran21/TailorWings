@@ -9,9 +9,9 @@ export default class Passion extends Component {
                         Passion <br></br> Led Us Here
                     </span>
                     <span>
-                        Quần áo bạn mặc là do bàn tay của người thợ may tạo ra.
-                        Hãy cùng Tailor Wings chắp cho những đôi cánh chưa từng
-                        được bay lên - những người thợ may tận tụy.
+                        Quần áo bạn mặc là do<br/> bàn tay của người thợ may<br/> tạo ra.
+                        Hãy cùng Tailor<br/> Wings chắp cho những đôi<br/> cánh chưa từng
+                        được bay<br/> lên - những người thợ may<br/> tận tụy.
                     </span>
                 </div>
                 <div className="image"></div>

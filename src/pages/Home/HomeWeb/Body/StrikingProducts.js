@@ -58,8 +58,7 @@ export default class StrikingProducts extends Component {
                             </div>
                             <div className="button d-flex justify-content-center align-items-center">
                                 <span className="titleButton">
-                                    {/* {product.totalSupportedFabric + " mẫu vãi"} */}
-                                    24 mau vai
+                                    {product.totalSupportedFabric + " MẪU VẢI"}
                                 </span>
                             </div>
                         </div>

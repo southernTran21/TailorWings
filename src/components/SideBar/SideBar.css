@@ -1,4 +1,3 @@
-
 .side-drawer {
     border-top: 3px solid #ff6d3b;
     height: 100%;
@@ -10,7 +9,7 @@
     max-width: 500px;
     transition: all 0.5s ease-in-out;
     transform: translateX(-100%);
-    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: "Montserrat", sans-serif !important;
     z-index: 7;
 }
 
@@ -26,7 +25,7 @@
     max-width: 30vw;
     transition: all 0.5s ease-in-out;
     transform: translateX(-100%);
-    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: "Montserrat", sans-serif !important;
     z-index: 7;
 }
 
@@ -49,36 +48,34 @@
 #sidebar {
     color: #fff;
     transition: all 0.3s;
-    transform: translateY(80px) 
-
+    transform: translateY(80px);
 }
-#sidebar.active{
-	margin-left: -250px;
-}
-
-#sidebar .sidebar-header{
-	padding: 20px;
-	background: #0f2944;
-}
-#sidebar ul.components{
-	padding: 20px 0px;
+#sidebar.active {
+    margin-left: -250px;
 }
 
-#sidebar ul p{
-	padding: 10px;
-	font-size: 1.1em;
-	display: block; 
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #0f2944;
+}
+#sidebar ul.components {
+    padding: 20px 0px;
 }
 
-#sidebar ul li a{
-	padding: 20px 10px;
-	font-size: 1.1em;
-	display: block;
+#sidebar ul p {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a {
+    padding: 20px 10px;
+    font-size: 1.1em;
+    display: block;
 }
 
 #sidebar ul li a i {
-	padding: 10px;
-
+    padding: 10px;
 }
 #sidebar ul li a:hover {
     color: #0f2944;
@@ -104,10 +101,10 @@ a[data-toggle="collapse"] {
 
 #sidebar ul ul a {
     font-size: 0.9em !important;
-    padding: 5px 0  !important;
+    padding: 5px 0 !important;
     background: #273c75;
     color: #fff;
-}   
+}
 
 #content {
     width: 100%;
@@ -115,4 +112,3 @@ a[data-toggle="collapse"] {
     min-height: 100vh;
     transition: all 0.3s;
 }
-
