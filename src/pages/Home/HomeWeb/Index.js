@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./home.scss";
-import classNames from 'classnames'
+import classNames from "classnames";
 // import component
 import Header from "./Header/index";
 import Welcome from "./Body/Welcome";
@@ -21,7 +21,7 @@ export default class HomeWeb extends Component {
             bestSellerInfo: [],
             totalProductsOnCart: 0,
             visibleProductsList: [],
-            isSideBarOpen: false
+            isSideBarOpen: false,
         };
     }
 
@@ -29,54 +29,57 @@ export default class HomeWeb extends Component {
         let {
             totalProductsOnCart,
             bestSellerInfo,
-            visibleProductsList
+            visibleProductsList,
         } = this.state;
         const { visibilityProducts, bestSellerList } = this.props;
-        console.log("visibilityProducts", visibilityProducts);
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
             return accumulator + Number(current.quantity);
         }, 0);
-        visibilityProducts.forEach(product => {
+        visibilityProducts.forEach((product) => {
             var result = bestSellerList.includes(product.designID);
             if (result && product.default) {
                 let info = {
                     fabricID: product.fabricID,
                     designID: product.designID,
                     name: product.name,
-                    image: product.image[0]
+                    image: product.image[0],
                 };
                 bestSellerInfo.push(info);
             }
             visibleProductsList.push({
                 name: product.name,
-                productID: product.productID
+                productID: product.productID,
             });
         });
 
         this.setState({
             totalProductsOnCart,
             bestSellerInfo,
-            visibleProductsList
+            visibleProductsList,
         });
     }
 
     sideBarChange = (state) => {
         this.setState({
-            isSideBarOpen: state
-        })
-    }
+            isSideBarOpen: state,
+        });
+    };
 
     render() {
         const {
             bestSellerInfo,
             totalProductsOnCart,
             visibleProductsList,
-            isSideBarOpen
+            isSideBarOpen,
         } = this.state;
         return (
-            <div className={classNames("homePage_wrapper", { 'disable_scroll': isSideBarOpen })}>
+            <div
+                className={classNames("homePage_wrapper", {
+                    disable_scroll: isSideBarOpen,
+                })}
+            >
                 <Header
                     history={this.props.history}
                     bestSellerInfo={bestSellerInfo}
@@ -89,7 +92,10 @@ export default class HomeWeb extends Component {
                 <Categories />
                 <Introduction />
                 <Collections />
-                <StrikingProducts bestSellerInfo={bestSellerInfo} />
+                <StrikingProducts
+                    bestSellerInfo={bestSellerInfo}
+                    visibleProductsList={visibleProductsList}
+                />
                 <WeGive />
                 <Passion />
                 <Instagram />

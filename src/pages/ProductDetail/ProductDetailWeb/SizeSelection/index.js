@@ -3,6 +3,7 @@ import "./SizeSelection.scss";
 import { Icon, message } from "antd";
 import { connect } from "react-redux";
 import * as actions from "../../../../actions/index";
+import classNames from 'classnames'
 //
 import SizeImage from "./SizeImage";
 import BodyMetric from "./BodyMetric";
@@ -16,6 +17,7 @@ import M from "../../../../assets/imageSizeSelection/size M.svg";
 import L from "../../../../assets/imageSizeSelection/size L.svg";
 import XL from "../../../../assets/imageSizeSelection/size XL.svg";
 import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
+import SuccessNotification from "./SuccessNotification";
 
 // let imageSize = {
 //     Empty: Empty,
@@ -33,7 +35,8 @@ class SizeSelectionWeb extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sizeImage: ''
+            sizeImage: '',
+            isSuccess: false
         }
     }
     
@@ -81,7 +84,10 @@ class SizeSelectionWeb extends Component {
                 addedProduct,
                 currentSelectedProduct.quantity
             );
-            this.props.history.push('/shopping-cart');
+            // this.props.history.push('/shopping-cart');
+            this.setState({
+                isSuccess: true
+            })
         }
     };
 
@@ -105,7 +111,7 @@ class SizeSelectionWeb extends Component {
 
     render() {
         let { currentSelectedProduct } = this.props;
-        const { sizeImage } = this.state;
+        const { sizeImage, isSuccess } = this.state;
         let size = Empty;
         let bodyMetric = currentSelectedProduct.bodyMetric;
         if (
@@ -149,6 +155,7 @@ class SizeSelectionWeb extends Component {
                         ĐẶT MAY
                     </div>
                 </div>
+                <SuccessNotification />
             </div>
         );
     }

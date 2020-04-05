@@ -33,8 +33,13 @@ export default class StrikingProducts extends Component {
     };
 
     bestSellerContent = () => {
-        let { bestSellerInfo } = this.props;
+        let { bestSellerInfo, visibleProductsList } = this.props;
         return bestSellerInfo.map((product, index) => {
+            let currentDesignID = product.designID;
+            let totalSupportedFabric = visibleProductsList.filter((visibleProduct) => {
+                let designID = visibleProduct.productID.substring(0,4);
+                return designID === currentDesignID;
+            }).length;
             return (
                 <div key={index} className="content-carousel">
                     <Link
@@ -58,7 +63,7 @@ export default class StrikingProducts extends Component {
                             </div>
                             <div className="button d-flex justify-content-center align-items-center">
                                 <span className="titleButton">
-                                    {product.totalSupportedFabric + " MẪU VẢI"}
+                                    {totalSupportedFabric + " MẪU VẢI"}
                                 </span>
                             </div>
                         </div>
@@ -107,9 +112,6 @@ export default class StrikingProducts extends Component {
                         <Icon type="right" />
                     </div>
                 </div>
-                {/* <div className="button">
-                    <span>XEM TẤT CẢ</span>
-                </div> */}
             </div>
         );
     }

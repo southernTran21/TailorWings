@@ -236,7 +236,7 @@ export default class WeGive extends Component {
                         href="https://docs.google.com/forms/d/e/1FAIpQLSfuRlkLX1llCN0L9ZAwmhCxLS3NT5efPxNsbRMmxT3Oe7z0qw/viewform"
                         target="_blank"
                     >
-                        <span>ĐẶT MAY NGAY</span>
+                        <span>KẾT NỐI NGAY</span>
                     </a>
                 </div>
             </div>

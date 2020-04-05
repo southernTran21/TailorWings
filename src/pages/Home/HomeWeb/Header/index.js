@@ -26,10 +26,6 @@ export default class Header extends Component {
         });
     };
 
-    backdropClickHandler = () => {
-        this.setState({ isSideBarOpen: false });
-    };
-
     sideBarIconChange = () => {
         const { isSideBarOpen } = this.state;
         if (isSideBarOpen) {
@@ -48,7 +44,7 @@ export default class Header extends Component {
         const { isSideBarOpen } = this.state;
         let backdrop;
         if (this.state.isSideBarOpen) {
-            backdrop = <Backdrop click={this.backdropClickHandler} />;
+            backdrop = <Backdrop click={this.sideBarOpen} />;
         }
         return (
             <div className="homeNavbar_wrapper d-flex flex-row justify-content-between align-items-center">

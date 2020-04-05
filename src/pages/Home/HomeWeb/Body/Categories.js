@@ -18,7 +18,14 @@ export default class Categories extends Component {
                             Phục vụ với mọi ngữ cảnh như dự tiệc, công sở và dạo
                             phố...
                         </span>
-                        <div className="button">XEM THÊM</div>
+                        <Link
+                            to={{
+                                pathname: "/shopping-store",
+                                search: "?cat=damom&search",
+                            }}
+                        >
+                            <div className="button">XEM THÊM</div>
+                        </Link>
                     </div>
                 </div>
                 <div className="category d-flex flex-column">
@@ -31,7 +38,14 @@ export default class Categories extends Component {
                             Phục vụ với mọi ngữ cảnh như dự tiệc, công sở và dạo
                             phố...
                         </span>
-                        <div className="button">XEM THÊM</div>
+                        <Link
+                            to={{
+                                pathname: "/shopping-store",
+                                search: "?cat=damxoe&search",
+                            }}
+                        >
+                            <div className="button">XEM THÊM</div>
+                        </Link>
                     </div>
                 </div>
                 <div className="category d-flex flex-column">
@@ -44,7 +58,14 @@ export default class Categories extends Component {
                             Phục vụ với mọi ngữ cảnh như dự tiệc, công sở và dạo
                             phố...
                         </span>
-                        <div className="button">XEM THÊM</div>
+                        <Link
+                            to={{
+                                pathname: "/shopping-store",
+                                search: "?cat=damsuong&search",
+                            }}
+                        >
+                            <div className="button">XEM THÊM</div>
+                        </Link>
                     </div>
                 </div>
             </div>
