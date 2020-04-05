@@ -30,6 +30,7 @@ import SuccessNotification from "./SuccessNotification";
 // };
 const SIZE = ["XS", "S", "M", "L", "XL", "XXL"];
 let imageSize = [XS, S, M, L, XL, XXL];
+let timeOut;
 
 class SizeSelectionWeb extends Component {
     constructor(props) {
@@ -48,6 +49,10 @@ class SizeSelectionWeb extends Component {
         this.setState({
             sizeImage,
         });
+    }
+
+    componentWillMount() {
+        clearTimeout(timeOut);
     }
 
     onConfirmButtonClicked = () => {
@@ -84,11 +89,15 @@ class SizeSelectionWeb extends Component {
                 addedProduct,
                 currentSelectedProduct.quantity
             );
-            // this.props.history.push('/shopping-cart');
-            this.setState({
-                isSuccess: true,
-            });
+            this.showSuccessNotification();
         }
+    };
+
+    showSuccessNotification = () => {
+        this.setState({
+            isSuccess: true,
+        });
+        timeOut = setTimeout(() => this.setState({ isSuccess: false }), 5000);
     };
 
     updateSizeMetricToStorage = (selectedProduct) => {
@@ -156,7 +165,7 @@ class SizeSelectionWeb extends Component {
                         </div>
                     </div>
                 </div>
-                <SuccessNotification />
+                <SuccessNotification isSuccess={isSuccess} />
             </div>
         );
     }

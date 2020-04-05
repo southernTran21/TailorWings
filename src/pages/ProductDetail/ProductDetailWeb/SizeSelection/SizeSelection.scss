@@ -192,7 +192,7 @@
 .success_wrapper {
     position: fixed;
     bottom: 0;
-    height: 10.88vh;
+    height: 0;
     width: 100vw;
     background-color: #ff6d3b;
     margin: 0 -5.69vw;
@@ -200,14 +200,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    -webkit-transition: height 0.35s ease-in-out;
+    transition: height 0.35s ease-in-out;
     span {
         color: white;
         font-weight: bold;
         font-size: 1.38vw;
     }
-    .right {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    a {
+        width: fit-content;
+        height: fit-content;
+        text-decoration: none;
+        .right {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
+    a:hover {
+        text-decoration: none;
+    }
+}
+.success_show {
+    bottom: 0;
+    height: 10.88vh;
+    -webkit-transition: height 0.35s ease-in-out;
+    transition: height 0.35s ease-in-out;
 }
