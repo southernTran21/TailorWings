@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import imagePassion from '../../../../assets/imageHomePage/imagePasion.png';
+import imagePassion from '../../../../assets/imageHomePage/imagePassion.svg';
 
 export default class Passion extends Component {
     render() {

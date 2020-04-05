@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import iconVectorRight from "../../.../../../../assets/imageHomePage/vectorRight.svg";
-import imageCollectionDamDaoPho from "../../../../assets/imageHomePage/colectionDamDaoPho.png";
-import imageCollectionDamDuTiec from '../../../../assets/imageHomePage/colectionDamDuTiec.png';
-import imageCollectionDamCongSo from '../../../../assets/imageHomePage/colectionDamCongSo.png';
+import imageCollectionDamDaoPho from "../../../../assets/imageHomePage/collectionDamDaoPho.jpg";
+import imageCollectionDamDuTiec from '../../../../assets/imageHomePage/collectionDamDuTiec.jpg';
+import imageCollectionDamCongSo from '../../../../assets/imageHomePage/collectionDamCongSo.jpg';
 
 
 export default class Collections extends Component {

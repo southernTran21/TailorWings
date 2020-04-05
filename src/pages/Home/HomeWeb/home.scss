@@ -238,6 +238,7 @@
                     color: #111e6c;
                     font-size: 0.97vw;
                     font-weight: bold;
+                    margin: 3.88vh 0;
                 }
                 .button {
                     background: #ffffff;
@@ -251,6 +252,15 @@
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
+                }
+            }
+            .contentDamSuong{
+                margin-top: 5.11vh !important;
+                .titleHead{
+                    font-size: 2.08vw !important;
+                }
+                .titleSeconds{
+                    margin-top: 2vh !important;
                 }
             }
         }
@@ -460,7 +470,7 @@
         margin-top: 5.55vh;
         .title {
             padding-left: 12.91vw;
-            margin-top: 9.72vh;
+            margin-top: 11.33vh;
             span {
                 color: #111e6c;
             }
@@ -472,15 +482,14 @@
                 font-size: 1.52vw;
                 // font-weight: bold;
                 width: 25vw;
-                margin-top: 4.62vh;
+                margin-top: 5.66vh;
             }
         }
         .image {
-            width: 51.66vw;
-            height: 60.64vh;
-            border-radius: 25px;
-            margin-top: 4.93vh;
-            margin-left: 5.83vw;
+            width: 43.75vw;
+            height: 39vh;
+            margin-left: 8.88vw;
+            margin-top: 11.33vh;
         }
     }
     .instagram {
@@ -500,9 +509,12 @@
         .crouselImage {
             margin-top: 2.5vh;
             .image {
-                width: 21.66vw;
-                height: 49.62vh;
-                background-color: #ffa45c;
+                width: 21.11vw;
+                // height: 43.66vh;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
             }
         }
     }

@@ -38,7 +38,7 @@ export default class Categories extends Component {
                     <div className="image_wrapper">
                         <img src={imageDamSuong} alt="dam-suong" />
                     </div>
-                    <div className="content d-flex flex-column">
+                    <div className="content contentDamSuong d-flex flex-column">
                         <span className="titleHead">ĐẦM SUÔNG</span>
                         <span className="titleSeconds">
                             Phục vụ với mọi ngữ cảnh như dự tiệc, công sở và dạo
