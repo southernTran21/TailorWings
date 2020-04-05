@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import imageWelcome from "../../.../../../../assets/imageHomePage/Banner__1276x530_31032020.png";
+import imageWelcome from "../../.../../../../assets/imageHomePage/Hero Banner.png";
 
 export default class Banner extends Component {
     render() {
