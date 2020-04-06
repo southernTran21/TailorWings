@@ -25,7 +25,7 @@ export default class PaymentConfirm extends Component {
                         onClick={() => this.props.onStepChange("customerInfo")}
                     />
                     <span>Xác nhận đơn hàng</span>
-                    <div></div>
+                    <div style={{width:'1.66vw'}}></div>
                 </div>
                 <div className="bodyContent d-flex">
                     <div className="col-6" style={{ paddingRight: "2vw" }}>

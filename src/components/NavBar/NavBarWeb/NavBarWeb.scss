@@ -18,8 +18,6 @@
     }
     .logoTailorWings {
         width: 13.68vw;
-        margin-left: 35.06vw;
-        margin-right: 17.5vw;
         cursor: pointer;
         img {
             width: 100%;
@@ -27,15 +25,6 @@
             object-fit: fill;
         }
     }
-
-    .logoTailorWings-withoutTools {
-        margin-right: 37.5vw;
-    }
-
-    .logoTailorWings-withoutSearch {
-        margin-right: 26vw;
-    }
-
     .Tools {
         .search,
         .shoppingCart {
@@ -72,5 +61,17 @@
     }
     .unvisible {
         display: none !important;
+    }
+    .menu_wrapper, .tool_wrapper{
+        width: 20vw;
+    }
+    .logo_wrapper{
+        width: 60vw;
+        display: flex;
+        justify-content: center;
+    }
+    .tool_wrapper{
+        display: flex;
+        justify-content: flex-end;
     }
 }

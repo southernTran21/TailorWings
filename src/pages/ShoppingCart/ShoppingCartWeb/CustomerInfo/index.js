@@ -25,7 +25,7 @@ export default class CustomerInfo extends Component {
                         onClick={() => this.props.onStepChange("shoppingCart")}
                     />
                     <span>Địa chỉ nhận hàng</span>
-                    <div></div>
+                    <div style={{width:'1.66vw'}}></div>
                 </div>
                 <div className="inputInfo">
                     <div className="input">
