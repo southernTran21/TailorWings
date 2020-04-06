@@ -1,47 +1,51 @@
-.orderConfirm_wrapper{
+.orderConfirm_wrapper {
     margin-top: -2.44vh;
-    color: #111E6C;
-    .imageOrderConfirm{
+    color: #111e6c;
+    .imageOrderConfirm {
         width: 43.61vw;
         height: 38.44vh;
-        img{
+        img {
             width: 100%;
             height: 100%;
-            
         }
     }
-    .iconChecked{
+    .iconChecked {
         height: 5.55vh;
         width: 3.47vw;
         margin-top: 5.55vh;
         margin-bottom: 2.22vh;
-        svg{
+        svg {
             width: 100%;
             height: 100%;
         }
     }
-    .contentPage{
-        .titleHead{
+    .contentPage {
+        .titleHead {
             font-weight: bold;
             font-size: 2.5vw;
         }
-        .titleSecond{
+        .titleSecond {
             font-size: 1.52vw;
             font-weight: bold;
         }
-        .titleEmail{
+        .titleEmail {
             text-decoration: underline;
         }
-        .titleThird{
-            color: #FF6D3B;
-            font-size: 1.38vw;
-            font-weight: bold;
-            margin-top: 3vh;
-            cursor: pointer;
-            svg{
-                width: .8vw;
-                height: 1.8vw; 
-                margin-left: 0.65vw;
+        a {
+            text-decoration: none;
+            width: fit-content;
+            height: fit-content;
+            .titleThird {
+                color: #ff6d3b;
+                font-size: 1.38vw;
+                font-weight: bold;
+                margin-top: 3vh;
+                cursor: pointer;
+                svg {
+                    width: 0.8vw;
+                    height: 1.8vw;
+                    margin-left: 0.65vw;
+                }
             }
         }
     }

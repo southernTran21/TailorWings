@@ -341,7 +341,7 @@ class ShoppingCartWeb extends Component {
                 break;
 
             case "orderConfirm":
-                content = <OrderConfirm />;
+                content = <OrderConfirm phone={this.state.customerInfo.phone}/>;
                 break;
 
             default:
