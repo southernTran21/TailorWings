@@ -11,28 +11,31 @@ const { Option } = Select;
 class ProductList extends Component {
     constructor(props) {
         super(props);
+        let productsOnCart = JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         this.state = {
-            productsOnCart: JSON.parse(sessionStorage.getItem("productsOnCart")) || [],
+            productsOnCart,
             totalProductsOnCart: this.props.totalProductsOnCart,
-            modalVisible: false,
+            modalState: new Array(productsOnCart.length).fill(false),
             isModalUpdate: false
         };
     }
 
     onUpdateToStorage = (updatedSize, updatedMetric, index) => {
-        const { isModalUpdate } = this.state;
+        let { isModalUpdate, modalState } = this.state;
         let { productsOnCart } = this.props;
         if (isModalUpdate) {
             productsOnCart[index].size = updatedSize;
             productsOnCart[index].bodyMetric = updatedMetric;
             this.props.onUpdateCart(productsOnCart);
+            modalState.fill(false);
             this.setState({
                 isModalUpdate: false,
-                modalVisible: false
+                modalState
             });
         } else {
+            modalState.fill(false);
             this.setState({
-                modalVisible: false
+                modalState
             });
         }
     };
@@ -43,15 +46,26 @@ class ProductList extends Component {
         });
     };
 
-    onModalVisible = state => {
+    onModalVisible = index => {
+		let {modalState} = this.state;
+		modalState.fill(false);
+		modalState[index] = true;
         this.setState({
-            modalVisible: state
+            modalState
         });
-    };
+	};
+	
+	onModalClose = () => {
+		let {modalState} = this.state;
+		modalState.fill(false);
+		this.setState({
+			modalState
+		})
+	}
 
     render() {
         const { price, index } = this.props;
-        const { modalVisible } = this.state;
+        const { modalState } = this.state;
         let productsOnCart = JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         let product = {...productsOnCart[this.props.index]};
         return (
@@ -84,7 +98,7 @@ class ProductList extends Component {
                             <div className="d-flex flex-row justify-content-between align-items-center">
                                 <span>{`Eo ${product.bodyMetric[0]}`}</span>
                                 <Button
-                                    onClick={() => this.onModalVisible(true)}
+                                    onClick={() => this.onModalVisible(index)}
                                 >
                                     THAY ĐỔI
                                 </Button>
@@ -119,7 +133,8 @@ class ProductList extends Component {
                 </div>
                 <UpdateMetricModal
                     currentIndex={index}
-                    modalVisible={modalVisible}
+                    modalVisible={modalState[index]}
+                    onModalClose={this.onModalClose}
                     onModalVisible={this.onModalVisible}
                     product={product}
                     onModalUpdate={this.onModalUpdate}
