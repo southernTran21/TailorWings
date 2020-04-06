@@ -60,8 +60,11 @@ export default class Footer extends Component {
                         <a>
                             <span>VỀ TAILOR WINGS</span>
                         </a>
+                        <Link to="/policy">
+                            <span>ĐIỀU KHOẢN</span>
+                        </Link>
                         <Link to="/support">
-                            <span>CHÍNH SÁCH HỖ TRỢ</span>
+                            <span>TRỢ GIÚP</span>
                         </Link>
                         <a>
                             <span>LIÊN HỆ</span>
