@@ -9,13 +9,20 @@
             color: #111e6c;
             .steps {
                 color: #ff6d3b;
-                font-size: 1.25vw;
+                font-size: 1.11vw;
                 span {
-                    margin: 0 5px;
+                    background-color: #FFF4E3;
+                    border-radius: 7px;
+                    padding: 1vh 1.31vw;
+                    font-weight: bold;
                 }
                 .highlight {
-                    font-weight: bold;
-                    font-size: 1.527vw;
+                    font-size: 1.11vw;
+                    background-color: #ff6d3b;
+                    color: white;
+                }
+                svg{
+                    margin: 0 0.76vw;
                 }
             }
         }
