@@ -23,7 +23,7 @@ class NavBarWeb extends Component {
             isShoppingCartPage: currentPage === "/shopping-cart",
             isShoppingStore: currentPage === "/shopping-store",
             isSupportPage: currentPage === "/support",
-            isPolicyPage: currentPage === "/policy"
+            isPolicyPage: currentPage === "/policy",
         };
     }
 
@@ -31,7 +31,7 @@ class NavBarWeb extends Component {
         let { isSideBarOpen } = this.state;
         isSideBarOpen = !isSideBarOpen;
         this.setState({
-            isSideBarOpen
+            isSideBarOpen,
         });
     };
 
@@ -71,7 +71,7 @@ class NavBarWeb extends Component {
             isShoppingCartPage,
             isShoppingStore,
             isSupportPage,
-            isPolicyPage
+            isPolicyPage,
         } = this.state;
         if (totalProductsOnCart == null) {
             totalProductsOnCart = 0;
@@ -81,53 +81,53 @@ class NavBarWeb extends Component {
             backdrop = <Backdrop click={this.backdropClickHandler} />;
         }
         return (
-            <div className="navbarWeb d-flex align-items-center justify-content-between">
-                <div className="hamburgerMenu">{this.sideBarIconChange()}</div>
-                <div
-                    className={classNames("logoTailorWings", {
-                        "logoTailorWings-withoutTools": isShoppingCartPage,
-                        "logoTailorWings-withoutSearch":
-                            isProductDetailPage ||
-                            isShoppingCartPage ||
-                            isShoppingStore ||
-                            isSupportPage ||
-                            isPolicyPage
-                    })}
-                    onClick={() => this.props.history.push("/")}
-                >
-                    <img src={iconLogoTailorWings} alt="" />
-                </div>
-                <div className="Tools d-flex">
-                    <div
-                        className={classNames("search", {
-                            unvisible:
-                                isProductDetailPage ||
-                                isShoppingCartPage ||
-                                isShoppingStore ||
-                                isSupportPage ||
-                                isPolicyPage
-                        })}
-                    >
-                        <img src={iconSearch} alt="" />
-                        <span>TÌM KIẾM</span>
+            <div className="navbarWeb d-flex align-items-center">
+                <div className="menu_wrapper">
+                    <div className="hamburgerMenu">
+                        {this.sideBarIconChange()}
                     </div>
+                </div>
+                <div className="logo_wrapper">
                     <div
-                        className={classNames("shoppingCart", {
-                            unvisible: isShoppingCartPage
-                        })}
+                        className="logoTailorWings"
+                        onClick={() => this.props.history.push("/")}
                     >
-                        <Link
-                            to="/shopping-cart"
-                            style={{
-                                width: "fit-content",
-                                height: "fit-content",
-                                textDecoration: "none",
-                                border: "none"
-                            }}
+                        <img src={iconLogoTailorWings} alt="" />
+                    </div>
+                </div>
+                <div className='tool_wrapper'>
+                    <div className="Tools d-flex">
+                        <div
+                            className={classNames("search", {
+                                unvisible:
+                                    isProductDetailPage ||
+                                    isShoppingCartPage ||
+                                    isShoppingStore ||
+                                    isSupportPage ||
+                                    isPolicyPage,
+                            })}
                         >
-                            <img src={iconCart} alt="" />
-                            <span>{`GIỎ HÀNG (${totalProductsOnCart})`}</span>
-                        </Link>
+                            <img src={iconSearch} alt="" />
+                            <span>TÌM KIẾM</span>
+                        </div>
+                        <div
+                            className={classNames("shoppingCart", {
+                                unvisible: isShoppingCartPage,
+                            })}
+                        >
+                            <Link
+                                to="/shopping-cart"
+                                style={{
+                                    width: "fit-content",
+                                    height: "fit-content",
+                                    textDecoration: "none",
+                                    border: "none",
+                                }}
+                            >
+                                <img src={iconCart} alt="" />
+                                <span>{`GIỎ HÀNG (${totalProductsOnCart})`}</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
                 <SideBar
