@@ -6,10 +6,8 @@ export default class Introduction extends Component {
             <div className="introduction d-flex flex-column justify-content-center align-items-center fontMontserrat">
                 <span>We Tailor Your Wings</span>
                 <span>
-                    Tự do lựa chọn để thể hiện phong cách của chính bạn.{" "}
-                    <span className="text-bold">
-                        Tất cả có trên cùng một ứng dụng.
-                    </span>
+                    “Qua năm tháng, tôi thấu hiểu rằng điều quan trọng của một
+                    bộ váy nằm<br/> ở chính người phụ nữ sẽ mặc nó” - YSL
                 </span>
             </div>
         );

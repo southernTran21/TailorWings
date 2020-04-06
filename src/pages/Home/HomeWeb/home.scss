@@ -2,9 +2,7 @@
     width: 100vw;
     height: 100%;
     // font defination
-    .fontBeVN {
-        font-family: "Be Vietnam", sans-serif;
-    }
+    font-family: "Montserrat", sans-serif !important;
     .fontMontserrat {
         font-family: "Montserrat", sans-serif;
     }
@@ -54,7 +52,8 @@
                     img {
                         height: 3.31vh;
                         margin: 0 7px;
-                        color: #ff6d3b;
+                        filter: invert(45%) sepia(88%) saturate(1289%)
+                            hue-rotate(337deg) brightness(107%) contrast(101%);
                     }
                     span {
                         color: #ff6d3b;
@@ -193,235 +192,100 @@
         }
     }
     .fourStep_wrapper {
-        background-color: #fff4e3;
-        margin-top: 25px;
-        height: 58vh;
-        border-radius: 25px;
         .titleHeader {
-            font-size: 2.22vw;
+            font-size: 1.94vw;
             font-weight: bold;
             color: #111e6c;
-            margin-top: 41px;
+            margin: 5.55vh 0;
         }
-        .fourStep {
-            width: 74.32vw;
-            margin-top: 5px;
-            .step1 {
-                .image {
-                    width: 6.3vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
+        .fourSteps {
+            svg {
+                width: 65.208vw;
+                height: 20.22vh;
             }
-            .step2 {
-                .image {
-                    width: 6.66vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-            .step3 {
-                .image {
-                    width: 7.88vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-            .step4 {
-                .image {
-                    width: 8.17vw;
-                    height: 120px;
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-            .title {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
-            span {
-                font-weight: bold;
-                color: #111e6c;
-                font-size: 1.25vw;
-            }
-        }
-        .numberStep {
-            margin-top: 10px;
-            width: 74.32vw;
-            .number {
-                color: #ff6d3b;
-                border-radius: 50%;
-                border: 1px solid #ff6d3b;
-                font-size: 1.25vw;
-                background-color: #fff4e3;
-                padding: 1px 9px;
-                font-weight: bold;
-            }
-            :nth-child(1) {
-                margin-left: 2.1vw;
-            }
-            :nth-child(2) {
-                width: 90%;
-            }
-            :nth-child(4) {
-                width: 95%;
-            }
-            :nth-child(6) {
-                width: 100%;
-            }
-            :nth-child(7) {
-                margin-right: 2.6vw;
-            }
-        }
-        hr {
-            border-top: 1px solid #ff6d3b;
-            // width: 80%;
-            margin: 0;
-        }
-        .button {
-            background-color: #ff6d3b;
-            color: white;
-            font-weight: bold;
-            margin-top: 53px;
-            width: 14.16vw;
-            height: 5.83vh;
-            border-radius: 20px;
         }
     }
     .categories_wrapper {
-        margin-top: 3.61vh;
+        margin-top: 9.33vh;
         padding: 0 5.41vw;
-        height: 100% !important;
         background-color: white;
-        .col-5,
-        .col-7 {
-            padding: 0;
-            margin: 0;
-        }
-        .col-5 {
-            padding-left: 0.41vw;
-            :nth-child(2) {
-                margin-top: 1.48vh;
-            }
-        }
-        .col-7 {
-            padding-right: 0.41vw;
-        }
-        .categoriesfirst {
-            height: 64.81vh;
+        height: auto;
+        .category {
+            width: 28.75vw;
+            // height: 61.11vh;
             background-color: #fff4e3;
-            border-radius: 25px;
-            .image {
-                width: 20vw;
+            border-radius: 10px;
+            .image_wrapper {
+                width: 28.75vw;
                 img {
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
                 }
             }
-            .title {
+            .content {
                 position: absolute;
-                width: 23.33vw;
-                margin-top: 17.22vh;
-                margin-left: 25.83vw;
-                span {
-                    color: #111e6c;
-                }
-                :nth-child(1) {
-                    font-size: 1.94vw;
+                width: 12.5vw;
+                margin-left: 15vw;
+                margin-top: 8.22vh;
+                .titleHead {
+                    font-size: 2.22vw;
                     font-weight: bold;
+                    color: #ff6d3b;
                 }
-                :nth-child(2) {
+                .titleSeconds {
+                    color: #111e6c;
                     font-size: 0.97vw;
-                    width: 21.61vw;
-                    font-weight: 600;
+                    font-weight: bold;
+                    margin: 3.88vh 0;
                 }
-                :nth-child(3) {
-                    width: 4.2vw;
-                    height: 5.24vh;
-                    margin-left: -1.1vw;
+                a {
+                    width: fit-content;
+                    height: fit-content;
+                    text-decoration: none;
+                    .button {
+                        background: #ffffff;
+                        border-radius: 10px;
+                        color: #ff6d3b;
+                        font-weight: bold;
+                        font-size: 0.97vw;
+                        width: 7.43vw;
+                        height: 5vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                    }
                 }
             }
-        }
-        .categoriesSecond {
-            height: 31.66vh;
-            background-color: #fff4e3;
-            border-radius: 25px;
-            .titleFirst {
-                position: absolute;
-                width: 23.33vw;
-                margin-top: 6.2vh;
-                margin-left: 18.43vw;
-                span {
-                    color: #111e6c;
+            .contentDamSuong{
+                margin-top: 5.11vh !important;
+                .titleHead{
+                    font-size: 2.08vw !important;
                 }
-                :nth-child(1) {
-                    font-size: 1.94vw;
-                    font-weight: bold;
-                }
-                :nth-child(2) {
-                    font-size: 0.97vw;
-                    width: 14.16vw;
-                    font-weight: 600;
-                    margin-top: 0 !important;
-                }
-                :nth-child(3) {
-                    width: 4.2vw;
-                    height: 5.24vh;
-                    margin-left: -1.1vw;
-                }
-            }
-            .titleSecond {
-                position: absolute;
-                width: 23.33vw;
-                margin-top: 7.59vh;
-                margin-left: 2.7vw;
-                span {
-                    color: #111e6c;
-                }
-                :nth-child(1) {
-                    font-size: 1.94vw;
-                    font-weight: bold;
-                }
-                :nth-child(2) {
-                    font-size: 0.97vw;
-                    width: 11.4vw;
-                    font-weight: 600;
-                    margin-top: 0 !important;
-                }
-                :nth-child(3) {
-                    width: 4.2vw;
-                    height: 5.24vh;
-                    margin-left: -1.1vw;
+                .titleSeconds{
+                    margin-top: 2vh !important;
                 }
             }
         }
     }
     .introduction {
-        padding: 12.31vh;
+        background-color: #ff6d3b;
+        margin: 7vh 10.2vw 8.88vh 9.58vw;
+        border-radius: 20px;
+        padding: 4.33vh 0 8.77vh 0;
         span {
-            color: #ff6d3b;
+            color: white;
         }
         :nth-child(1) {
             font-weight: bold;
-            font-size: 2.22vw;
+            font-size: 1.94vw;
         }
         :nth-child(2) {
-            font-size: 1.2wvw !important;
-            padding: 0 23vw;
+            font-size: 1.52vw !important;
             text-align: center;
             font-weight: 500;
-            span {
-                font-size: 1.25vw !important;
-            }
+            font-style: italic;
+            margin-top: 2.22vh;
         }
     }
     .collection_wrapper {
@@ -438,8 +302,7 @@
                 padding: 2.77vh 0;
             }
             :nth-child(3) {
-                width: 13.5vw;
-                font-size: 0.97vw;
+                font-size: 1.25vw;
                 font-weight: 600;
             }
         }
@@ -497,7 +360,7 @@
             margin-top: 6.57vh;
             color: #111e6c;
             font-weight: bold;
-            font-size: 2.22vw;
+            font-size: 1.94vw;
         }
         .carousel-wraper {
             margin-top: 4.72vh;
@@ -513,42 +376,43 @@
             }
             .iconLeft,
             .iconRight {
-                font-size: 2.43vw;
-                color: #ff6d3b;
+                cursor: pointer;
             }
             .iconLeft {
-                margin-right: 79px;
+                margin-right: 2.08vw;
             }
             .iconRight {
-                margin-left: 79px;
+                margin-left: 2.08vw;
             }
             .content-carousel {
                 margin: 0 7px;
                 .image {
                     width: 21.66vw;
                     height: 55.55vh;
-                    border-radius: 7px;
+                    border-radius: 15px;
                     img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                        border-radius: 15px;
                     }
                 }
                 .end-carousel {
                     .title {
-                        font-size: 1.38vw;
+                        font-size: 1.52vw;
                         margin-bottom: 7px;
                         margin-top: 1.85vh;
                     }
                     .button {
                         margin: 0;
                         .titleButton {
-                            font-size: 0.97vw;
+                            font-size: 1.11vw;
+                            font-weight: bold;
                             color: #ff6d3b;
                             border: 1px solid #ff6d3b;
                             border-radius: 7px;
-                            width: 129px;
-                            padding: 5px 0;
+                            // width: 9.02vw;
+                            padding: 5px 7px;
                             text-align: center;
                         }
                     }
@@ -569,23 +433,17 @@
             margin-top: 7.22vh;
             :nth-child(1) {
                 font-weight: bold;
-                font-size: 2.22vw;
+                font-size: 1.94vw;
             }
             :nth-child(2) {
-                font-size: 0.97vw;
-                width: 28.5vw;
+                font-size: 1.38vw;
                 text-align: center;
-                font-weight: bold;
+                font-weight: normal;
             }
         }
         .image {
             width: 64.89vw;
             margin-top: 4.62vh;
-            img {
-                width: 21.09vw;
-                height: 24.62vh;
-                background-color: #fff4e3;
-            }
         }
         .button {
             margin: 7.22vh 0;
@@ -596,6 +454,7 @@
                 color: #ff6d3b;
                 border-radius: 40px;
                 padding: 2.12vh 2.7vw;
+                font-size: 0.97vw;
             }
             a {
                 width: 100%;
@@ -613,28 +472,26 @@
         margin-top: 5.55vh;
         .title {
             padding-left: 12.91vw;
-            margin-top: 9.72vh;
+            margin-top: 11.33vh;
             span {
                 color: #111e6c;
             }
             :nth-child(1) {
-                font-size: 2.22vw;
+                font-size: 1.94vw;
                 font-weight: bold;
             }
             :nth-child(2) {
                 font-size: 1.52vw;
                 // font-weight: bold;
                 width: 25vw;
-                margin-top: 4.62vh;
+                margin-top: 5.66vh;
             }
         }
         .image {
-            width: 51.66vw;
-            height: 60.64vh;
-            background-color: #ffa45c;
-            border-radius: 25px;
-            margin-top: 4.93vh;
-            margin-left: 5.83vw;
+            width: 43.75vw;
+            height: 39vh;
+            margin-left: 8.88vw;
+            margin-top: 11.33vh;
         }
     }
     .instagram {
@@ -647,16 +504,19 @@
             }
             span {
                 font-weight: bold;
-                font-size: 2.22vw;
+                font-size: 1.94vw;
                 color: #111e6c;
             }
         }
         .crouselImage {
             margin-top: 2.5vh;
             .image {
-                width: 21.66vw;
-                height: 49.62vh;
-                background-color: #ffa45c;
+                width: 21.11vw;
+                // height: 43.66vh;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
             }
         }
     }
@@ -671,15 +531,14 @@
             font-size: 1.11vw;
             font-weight: bold;
             cursor: pointer;
-            :nth-child(2) {
-                margin: 3.24vh 0;
-            }
             a {
                 width: fit-content;
                 height: fit-content;
                 text-decoration: none;
+                margin-bottom: 3.24vh;
                 span {
                     color: white;
+                    text-decoration: underline;
                 }
             }
             a:hover {
@@ -692,9 +551,12 @@
         .contact {
             color: white;
             padding-top: 11.85vh;
-            text-align: center;
+            text-align: end;
             font-weight: bold;
             font-size: 1.11vw;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             .icon {
                 margin-top: 4.62vh;
                 cursor: pointer;
@@ -709,13 +571,9 @@
                 }
                 a:hover {
                     text-decoration: none;
-                    img {
-                        filter: invert(100%) sepia(100%) saturate(0%)
-                            hue-rotate(141deg) brightness(200%) contrast(101%) !important;
-                    }
                 }
                 :nth-child(2) {
-                    margin: 0 2.6vw;
+                    margin: 0 1vw;
                 }
             }
         }
@@ -738,10 +596,13 @@
             .input {
                 align-items: baseline;
                 margin-top: 4.16vh;
+                border-bottom: 1px solid white;
+                padding-bottom: 2px;
                 .ant-input {
                     background-color: transparent;
                     border: none;
-                    border-bottom: 1px solid white;
+                    padding: 0;
+                    // border-bottom: 1px solid white;
                     border-radius: 0;
                     box-shadow: none;
                 }
@@ -752,13 +613,13 @@
                     color: white;
                 }
                 .button {
-                    font-size: 0.55vw;
+                    font-size: 0.83vw;
                     font-weight: bold;
                     background-color: white;
                     color: #ff6d3b;
-                    width: 6.51vw;
+                    width: 6.52vw;
                     height: 3.7vh;
-                    border-radius: 40px;
+                    border-radius: 10px;
                     cursor: pointer;
                 }
             }
@@ -772,7 +633,7 @@
             }
         }
         .endFooter {
-            margin-top: 13.47vh;
+            margin-top: 6.44vh;
             color: white;
             opacity: 0.8;
             font-size: 0.9vw;

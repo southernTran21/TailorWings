@@ -1,23 +1,23 @@
 .ant-form {
-  width: 50%;
-  .ant-row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    .ant-col {
-      width: 100%;
-      .has-success {
-        .ant-form-item-children {
-          display: flex;
-          flex-direction: column;
+    width: 50%;
+    .ant-row {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .ant-col {
+            width: 100%;
+            .has-success {
+                .ant-form-item-children {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
         }
-      }
     }
-  }
 }
 
 .ant-message-custom-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

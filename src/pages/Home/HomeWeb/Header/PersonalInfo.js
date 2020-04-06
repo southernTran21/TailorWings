@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import iconAccount from "../../../../assets/imageHomePage/iconAccount.svg";
-import iconShoppingBadge from "../../../../assets/imageHomePage/shopping-bag.svg";
+import iconShoppingBadge from "../../../../assets/imageHomePage/shopping-cart.svg";
 import auth from "../../../../app/auth";
 import WrappedLoginForm from "../../../../components/SideBar/LoginForm";
 import { Modal, message } from "antd";

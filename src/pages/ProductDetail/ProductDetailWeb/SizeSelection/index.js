@@ -3,6 +3,7 @@ import "./SizeSelection.scss";
 import { Icon, message } from "antd";
 import { connect } from "react-redux";
 import * as actions from "../../../../actions/index";
+import classNames from "classnames";
 //
 import SizeImage from "./SizeImage";
 import BodyMetric from "./BodyMetric";
@@ -16,6 +17,7 @@ import M from "../../../../assets/imageSizeSelection/size M.svg";
 import L from "../../../../assets/imageSizeSelection/size L.svg";
 import XL from "../../../../assets/imageSizeSelection/size XL.svg";
 import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
+import SuccessNotification from "./SuccessNotification";
 
 // let imageSize = {
 //     Empty: Empty,
@@ -27,24 +29,30 @@ import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
 //     XXL: XXL
 // };
 const SIZE = ["XS", "S", "M", "L", "XL", "XXL"];
-let imageSize = [ XS, S, M, L, XL, XXL ]
+let imageSize = [XS, S, M, L, XL, XXL];
+let timeOut;
 
 class SizeSelectionWeb extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sizeImage: ''
-        }
+            sizeImage: "",
+            isSuccess: false,
+        };
     }
-    
+
     componentDidMount() {
         const { currentSelectedProduct } = this.props;
-        console.log('currentSelectedProduct', currentSelectedProduct)
+        console.log("currentSelectedProduct", currentSelectedProduct);
         let index = SIZE.indexOf(currentSelectedProduct.size);
-        let sizeImage = index > -1 ? imageSize[index] : Empty; 
+        let sizeImage = index > -1 ? imageSize[index] : Empty;
         this.setState({
-            sizeImage
-        })
+            sizeImage,
+        });
+    }
+
+    componentWillMount() {
+        clearTimeout(timeOut);
     }
 
     onConfirmButtonClicked = () => {
@@ -52,7 +60,7 @@ class SizeSelectionWeb extends Component {
         let isSizeSelected = currentSelectedProduct.size != null;
         let isAllMetricFill = !currentSelectedProduct.bodyMetric.includes("");
         let isAllMetricEmpty = currentSelectedProduct.bodyMetric.every(
-            metric => metric === ""
+            (metric) => metric === ""
         );
         if (
             (isSizeSelected && isAllMetricFill) ||
@@ -81,11 +89,18 @@ class SizeSelectionWeb extends Component {
                 addedProduct,
                 currentSelectedProduct.quantity
             );
-            this.props.history.push('/shopping-cart');
+            this.showSuccessNotification();
         }
     };
 
-    updateSizeMetricToStorage = selectedProduct => {
+    showSuccessNotification = () => {
+        this.setState({
+            isSuccess: true,
+        });
+        timeOut = setTimeout(() => this.setState({ isSuccess: false }), 5000);
+    };
+
+    updateSizeMetricToStorage = (selectedProduct) => {
         localStorage.setItem("size", JSON.stringify(selectedProduct.size));
         localStorage.setItem(
             "bodyMetric",
@@ -98,14 +113,13 @@ class SizeSelectionWeb extends Component {
         this.props.onSizeUpdated(size);
         sizeImage = imageSize[index];
         this.setState({
-            sizeImage
-        })
-    }
-    
+            sizeImage,
+        });
+    };
 
     render() {
         let { currentSelectedProduct } = this.props;
-        const { sizeImage } = this.state;
+        const { sizeImage, isSuccess } = this.state;
         let size = Empty;
         let bodyMetric = currentSelectedProduct.bodyMetric;
         if (
@@ -115,40 +129,43 @@ class SizeSelectionWeb extends Component {
             size = currentSelectedProduct.size;
         }
         return (
-            <div className="pageSizeSelectionWeb d-flex align-items-center">
-                <div
-                    className="iconBack d-flex flex-column"
-                    onClick={() =>
-                        this.props.onselectionStepChange("fabricSelection")
-                    }
-                >
-                    <Icon type="arrow-left" />
-                    <span>CHỌN VẢI</span>
-                </div>
-                <div className="bodyScale d-flex flex-column align-items-center">
-                    <SizeImage imageSize={sizeImage} size={size} />
-                    <BodyMetric
-                        bodyMetric={bodyMetric}
-                        onBodyMetricUpdated={this.props.onBodyMetricUpdated}
-                    />
-                    <SizeSelection
-                        size={size}
-                        sizeImageUpdate={this.sizeImageUpdate}
-                        currentSelectedProduct={currentSelectedProduct}
-                    />
-                </div>
-                <div className="d-flex flex-column">
-                    <ProductInfo
-                        currentSelectedProduct={currentSelectedProduct}
-                        onQuantityUpdated={this.props.onQuantityUpdated}
-                    />
+            <div>
+                <div className="pageSizeSelectionWeb d-flex align-items-center">
                     <div
-                        className="buttonApcept d-flex justify-content-center align-items-center"
-                        onClick={this.onConfirmButtonClicked}
+                        className="iconBack d-flex flex-column"
+                        onClick={() =>
+                            this.props.onselectionStepChange("fabricSelection")
+                        }
                     >
-                        ĐẶT MAY
+                        <Icon type="arrow-left" />
+                        <span>CHỌN VẢI</span>
+                    </div>
+                    <div className="bodyScale d-flex flex-column align-items-center">
+                        <SizeImage imageSize={sizeImage} size={size} />
+                        <SizeSelection
+                            size={size}
+                            sizeImageUpdate={this.sizeImageUpdate}
+                            currentSelectedProduct={currentSelectedProduct}
+                        />
+                        <BodyMetric
+                            bodyMetric={bodyMetric}
+                            onBodyMetricUpdated={this.props.onBodyMetricUpdated}
+                        />
+                    </div>
+                    <div className="d-flex flex-column">
+                        <ProductInfo
+                            currentSelectedProduct={currentSelectedProduct}
+                            onQuantityUpdated={this.props.onQuantityUpdated}
+                        />
+                        <div
+                            className="buttonApcept d-flex justify-content-center align-items-center"
+                            onClick={this.onConfirmButtonClicked}
+                        >
+                            ĐẶT MAY
+                        </div>
                     </div>
                 </div>
+                <SuccessNotification isSuccess={isSuccess} />
             </div>
         );
     }
@@ -158,7 +175,7 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onAddProductToCart: (product, quantity) => {
             dispatch(actions.addProductToCart(product, quantity));
-        }
+        },
     };
 };
 export default connect(null, mapDispatchToProps)(SizeSelectionWeb);

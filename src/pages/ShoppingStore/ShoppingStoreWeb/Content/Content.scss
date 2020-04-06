@@ -37,7 +37,7 @@
     }
     .productList_wrapper {
         padding-left: 7.62vw;
-        padding-top: 6.66vh;
+        padding-top: 3.66vh;
         .col-4{
             float: left;
             padding: 0;
@@ -52,11 +52,12 @@
                 border-radius: 10px;
                 img {
                     width: 100%;
+                    border-radius: 10px;
                 }
             }
             span{
                 width: fit-content;
-                font-size: 1.25vw;
+                font-size: 1.52vw;
                 font-weight: bold;
                 margin-top: 10px;
                 cursor: pointer;
@@ -65,7 +66,7 @@
                 width: fit-content;
                 border-radius: 10px;
                 border: 1px solid #FF6D3B;
-                font-size: 0.97vw;
+                font-size: 1.11vw;
                 color: #FF6D3B;
                 font-weight: bold;
                 padding: 3px 15px;

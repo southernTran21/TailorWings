@@ -9,6 +9,7 @@
     "antd": "^3.26.4",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
+    "dotenv": "^8.2.0",
     "firebase": "^7.6.1",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",

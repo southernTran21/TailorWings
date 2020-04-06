@@ -8,4 +8,14 @@
     a:hover{
         color: #111E6C;
     }
+    .ant-checkbox-checked .ant-checkbox-inner{
+        background-color: #FF6D3B;
+        border-color: #FF6D3B;
+    }
+    .ant-checkbox-checked::after{
+        border: 1px solid #FF6D3B;
+    }
+    .ant-checkbox-inner{
+        border: 1px solid #FF6D3B;
+    }
 }

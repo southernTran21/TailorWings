@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactGA from "react-ga";
 import "./ShoppingCartWeb.scss";
-import '../../../components/NavBar/NavBarWeb/NavBarWeb.scss'
+import "../../../components/NavBar/NavBarWeb/NavBarWeb.scss";
 import { notification, message } from "antd";
 import { connect } from "react-redux";
 import * as actions from "./../../../actions/index";
@@ -13,6 +13,7 @@ import ProductList from "./ShoppingCart/ProductList";
 import Summary from "./ShoppingCart/Summary";
 import CustomerInfo from "./CustomerInfo";
 import PaymentConfirm from "./PaymentConfirm";
+import OrderConfirm from "./OrderConfirm";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -30,7 +31,7 @@ const PRODUCT_DETAIL_FORM = {
     name: "",
     bodyMetric: [],
     size: "",
-    quantity: 0
+    quantity: 0,
 };
 
 class ShoppingCartWeb extends Component {
@@ -38,7 +39,7 @@ class ShoppingCartWeb extends Component {
         super(props);
         window.scrollTo({
             top: 0,
-            behavior: "smooth"
+            behavior: "smooth",
         });
         this.state = {
             // common state
@@ -50,14 +51,14 @@ class ShoppingCartWeb extends Component {
             customerInfo: {
                 name: "",
                 phone: "",
-                address: ""
+                address: "",
             },
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
             rememberChecked: false,
             // state for paymentInfo
             paymentMethod: "COD",
-            paymentLoading: false
+            paymentLoading: false,
         };
     }
 
@@ -87,7 +88,7 @@ class ShoppingCartWeb extends Component {
             totalProductsOnCart,
             subtotalPrice,
             customerInfo,
-            rememberChecked
+            rememberChecked,
         });
     }
 
@@ -111,7 +112,7 @@ class ShoppingCartWeb extends Component {
                 productsOnCart,
                 totalProductsOnCart,
                 subtotalPrice,
-                isCartUpdated: nextProps.isCartUpdated
+                isCartUpdated: nextProps.isCartUpdated,
             };
         }
         return null;
@@ -128,15 +129,15 @@ class ShoppingCartWeb extends Component {
         this.props.onUpdateCart(productsOnCart);
         notification.success({
             message: "Thay đổi thành công",
-            placement: "bottomRight"
+            placement: "bottomRight",
         });
         this.setState({
             productsOnCart,
-            subtotalPrice
+            subtotalPrice,
         });
     };
 
-    onProductRemove = index => {
+    onProductRemove = (index) => {
         let { productsOnCart, subtotalPrice } = this.state;
         let deletedProduct = productsOnCart.splice(Number(index), 1);
         subtotalPrice = productsOnCart.reduce((accumulator, current) => {
@@ -146,11 +147,11 @@ class ShoppingCartWeb extends Component {
         notification.success({
             message: "Thay đổi thành công",
             placement: "bottomRight",
-            description: `${deletedProduct[0].name} đã được xóa khỏi giỏ hàng của bạn`
+            description: `${deletedProduct[0].name} đã được xóa khỏi giỏ hàng của bạn`,
         });
         this.setState({
             productsOnCart,
-            subtotalPrice
+            subtotalPrice,
         });
     };
 
@@ -158,10 +159,10 @@ class ShoppingCartWeb extends Component {
 
     //API FOR CUSTOMER INFO PAGE
 
-    onCustomerInfoUpdate = customerInfo => {
+    onCustomerInfoUpdate = (customerInfo) => {
         if (customerInfo != null) {
             this.setState({
-                customerInfo
+                customerInfo,
             });
         }
     };
@@ -192,19 +193,19 @@ class ShoppingCartWeb extends Component {
                     JSON.stringify({
                         name: "",
                         phone: "",
-                        address: ""
+                        address: "",
                     })
                 );
             }
         }
         this.setState({
-            errorValidate
+            errorValidate,
         });
     };
 
-    onRememberInfo = e => {
+    onRememberInfo = (e) => {
         this.setState({
-            rememberChecked: e.target.checked
+            rememberChecked: e.target.checked,
         });
     };
 
@@ -212,15 +213,15 @@ class ShoppingCartWeb extends Component {
 
     //API FOR PAYMENT INFO PAGE
 
-    onPaymentMethodChange = method => {
+    onPaymentMethodChange = (method) => {
         this.setState({
-            paymentMethod: method
+            paymentMethod: method,
         });
     };
 
     uploadNewOrder = () => {
         this.setState({
-            paymentLoading: true
+            paymentLoading: true,
         });
         const { subtotalPrice, paymentMethod } = this.state;
         let { name, phone, address } = this.state.customerInfo;
@@ -230,11 +231,11 @@ class ShoppingCartWeb extends Component {
         let totalPrice = subtotalPrice;
         let orderDetail = {
             orderID: uniqid.process(),
-            orderItems: []
+            orderItems: [],
         };
-        productsOnCart.forEach(product => {
+        productsOnCart.forEach((product) => {
             let productDetail = PRODUCT_DETAIL_FORM;
-            Object.keys(productDetail).forEach(key => {
+            Object.keys(productDetail).forEach((key) => {
                 productDetail[key] = product[key] || "";
             });
             orderDetail.orderItems.push(productDetail);
@@ -249,7 +250,7 @@ class ShoppingCartWeb extends Component {
             phone: phoneModified || "",
             promo: 0,
             rate: "",
-            wishList: []
+            wishList: [],
         };
         let order = {
             customerID: customer.customerID,
@@ -260,27 +261,27 @@ class ShoppingCartWeb extends Component {
             orderID: orderDetail.orderID,
             status: "new",
             total: totalPrice,
-            paymentMethod: paymentMethod
+            paymentMethod: paymentMethod,
         };
         Promise.all([
             setDocument("customers", customer, customer.phone),
             addDocument("orders", order),
-            addDocument("orderDetail", orderDetail)
+            addDocument("orderDetail", orderDetail),
         ]).then(() => {
             message.success("Giao dịch thành công!");
             this.props.onUpdateCart([]);
-            this.onStepChange("shoppingCart");
+            this.onStepChange("orderConfirm");
             this.setState({
-                paymentLoading: false
+                paymentLoading: false,
             });
         });
     };
 
     // END API FOR CUSTOMER INFO PAGE
 
-    onStepChange = step => {
+    onStepChange = (step) => {
         this.setState({
-            paymentStep: step
+            paymentStep: step,
         });
     };
 
@@ -338,6 +339,10 @@ class ShoppingCartWeb extends Component {
                 );
                 break;
 
+            case "orderConfirm":
+                content = <OrderConfirm phone={this.state.customerInfo.phone}/>;
+                break;
+
             default:
                 break;
         }
@@ -354,17 +359,17 @@ class ShoppingCartWeb extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        isCartUpdated: state.updateProductOnCart
+        isCartUpdated: state.updateProductOnCart,
     };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onUpdateCart: updatedList => {
+        onUpdateCart: (updatedList) => {
             dispatch(actions.updateCart(updatedList));
-        }
+        },
     };
 };
 

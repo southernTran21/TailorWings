@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import iconVectorRight from "../../.../../../../assets/imageHomePage/vectorRight.svg";
-import imageCollection from "../../.../../../../assets/imageHomePage/imageBST.jpg";
+import imageCollectionDamDaoPho from "../../../../assets/imageHomePage/collectionDamDaoPho.jpg";
+import imageCollectionDamDuTiec from '../../../../assets/imageHomePage/collectionDamDuTiec.jpg';
+import imageCollectionDamCongSo from '../../../../assets/imageHomePage/collectionDamCongSo.jpg';
+
 
 export default class Collections extends Component {
     render() {
@@ -22,13 +25,13 @@ export default class Collections extends Component {
                         />
                     </svg>
                     <span>
-                        Khám phá ngay những bộ sưu tập mới nhất từ nhà may.
+                        Khám phá ngay<br/> những bộ sưu tập<br/> mới nhất từ nhà may.
                     </span>
                 </div>
                 <div className="selectionCollection d-flex">
                     <div className="selection d-flex">
                         <div className="image">
-                            <img src={imageCollection} alt="" />
+                            <img src={imageCollectionDamDaoPho} alt="" />
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>
@@ -61,7 +64,7 @@ export default class Collections extends Component {
                         }}
                     >
                         <div className="image">
-                            <img src={imageCollection} alt="" />
+                            <img src={imageCollectionDamCongSo} alt="" />
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>
@@ -88,7 +91,7 @@ export default class Collections extends Component {
                     </div>
                     <div className="selection d-flex">
                         <div className="image">
-                            <img src={imageCollection} alt="" />
+                            <img src={imageCollectionDamDuTiec} alt="" />
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>

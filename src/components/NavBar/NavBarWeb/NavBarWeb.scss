@@ -3,6 +3,7 @@
     margin-bottom: 3.33vh;
     // background: #FFF4E3;
     padding: 0 5.69vw;
+    font-family: "Montserrat", sans-serif !important;
     .hamburgerMenu {
         width: 2.43vw;
         height: 3.88vh;
@@ -19,6 +20,7 @@
         width: 13.68vw;
         margin-left: 35.06vw;
         margin-right: 17.5vw;
+        cursor: pointer;
         img {
             width: 100%;
             height: 100%;
@@ -31,7 +33,7 @@
     }
 
     .logoTailorWings-withoutSearch {
-        margin-right: 26.4vw;
+        margin-right: 26vw;
     }
 
     .Tools {
