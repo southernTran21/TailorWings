@@ -263,18 +263,19 @@ class ShoppingCartWeb extends Component {
             total: totalPrice,
             paymentMethod: paymentMethod,
         };
-        Promise.all([
-            setDocument("customers", customer, customer.phone),
-            addDocument("orders", order),
-            addDocument("orderDetail", orderDetail),
-        ]).then(() => {
-            message.success("Giao dịch thành công!");
-            this.props.onUpdateCart([]);
-            this.onStepChange("orderConfirm");
-            this.setState({
-                paymentLoading: false,
-            });
-        });
+        this.onStepChange("orderConfirm"); // debug
+        // Promise.all([
+        //     setDocument("customers", customer, customer.phone),
+        //     addDocument("orders", order),
+        //     addDocument("orderDetail", orderDetail),
+        // ]).then(() => {
+        //     message.success("Giao dịch thành công!");
+        //     this.props.onUpdateCart([]);
+        //     this.onStepChange("orderConfirm");
+        //     this.setState({
+        //         paymentLoading: false,
+        //     });
+        // });
     };
 
     // END API FOR CUSTOMER INFO PAGE
