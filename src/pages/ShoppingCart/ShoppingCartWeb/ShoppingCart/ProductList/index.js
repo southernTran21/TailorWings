@@ -10,22 +10,25 @@ class ProductList extends Component {
         super(props);
         this.state = {
             modalVisible: false,
-            isModalUpdate: false
+			isModalUpdate: false,
+			modalState: new Array(this.props.productsOnCart.length).fill(false)
         };
     }
 
     onUpdateToStorage = (updatedSize, updatedMetric, index) => {
-        const { isModalUpdate } = this.state;
+        let { isModalUpdate, modalState } = this.state;
         let { productsOnCart } = this.props;
         if (isModalUpdate) {
             productsOnCart[index].size = updatedSize;
             productsOnCart[index].bodyMetric = updatedMetric;
-            this.props.onUpdateCart(productsOnCart);
+			this.props.onUpdateCart(productsOnCart);
+			modalState.fill(false);
             this.setState({
                 isModalUpdate: false,
                 modalVisible: false
             });
         } else {
+			modalState.fill(false);
             this.setState({
                 modalVisible: false
             });
@@ -38,11 +41,22 @@ class ProductList extends Component {
         });
     };
 
-    onModalVisible = state => {
+    onModalVisible = index => {
+		let {modalState} = this.state;
+		modalState.fill(false);
+		modalState[index] = true;
         this.setState({
-            modalVisible: state
+            modalState
         });
-    };
+	};
+	
+	onModalClose = () => {
+		let {modalState} = this.state;
+		modalState.fill(false);
+		this.setState({
+			modalState
+		})
+	}
 
     onQuantityChanged = (index, type) => {
         const { productsOnCart } = this.props;
@@ -66,7 +80,7 @@ class ProductList extends Component {
     };
 
     render() {
-        let { modalVisible } = this.state;
+        let { modalVisible, modalState } = this.state;
         let productsOnCart = JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         return (
             <div className="left">
@@ -128,7 +142,7 @@ class ProductList extends Component {
 													className="buttonChange"
 													onClick={() =>
 														this.onModalVisible(
-															true
+															index
 														)
 													}
 												>
@@ -173,7 +187,8 @@ class ProductList extends Component {
 									</div>
 									<UpdateMetricModal
 										currentIndex={index}
-										modalVisible={modalVisible}
+										modalVisible={modalState[index]}
+										onModalClose={this.onModalClose}
 										onModalVisible={this.onModalVisible}
 										product={product}
 										onModalUpdate={this.onModalUpdate}

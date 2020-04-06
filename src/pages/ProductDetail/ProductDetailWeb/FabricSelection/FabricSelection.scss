@@ -52,14 +52,24 @@
         }
     }
     #fabricList-wrapper {
-        width: 22vw;
+        width: 22.5vw;
         height: 51.88vh;
         overflow: hidden;
         margin-left: 0.83vw;
         #fabricList-content {
-            width: 23.5vw;
+            width: 22.5vw;
+            padding-right: .5vw;
             max-height: 52.88vh;
             overflow: auto;
+        }
+        #fabricList-content::-webkit-scrollbar {
+            width: 10px;
+            background-color: transparent;
+        }
+        #fabricList-content::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #ff6d3b;
+            // border: 1px solid #aaa;
         }
         .col-4 {
             padding: 0 5.5px;

@@ -60,7 +60,7 @@ export default class UpdateMetricModal extends Component {
     };
 
     handleCancel = () => {
-        this.props.onModalVisible(false);
+        this.props.onModalClose();
         const { product } = this.props;
         let { currentMetric, currentSize, activeStatus } = this.state;
         if (product != null) {
