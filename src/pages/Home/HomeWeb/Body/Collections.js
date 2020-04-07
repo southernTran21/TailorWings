@@ -35,13 +35,13 @@ export default class Collections extends Component {
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>
-                                Đầm<br></br> Dạo Phố
+                                Đầm<br></br> Công Sở
                             </span>
                             <span>
                                 <Link
                                     to={{
                                         pathname: "/shopping-store",
-                                        search: "?cat=damdaopho&search"
+                                        search: "?cat=damcongso&search"
                                     }}
                                     style={{
                                         width: "100%",
@@ -68,13 +68,13 @@ export default class Collections extends Component {
                         </div>
                         <div className="title d-flex flex-column align-items-center">
                             <span>
-                                Đầm <br></br> Công Sở
+                                Đầm <br></br> Dạo Phố
                             </span>
                             <span>
                                 <Link
                                     to={{
                                         pathname: "/shopping-store",
-                                        search: "?cat=damcongso&search"
+                                        search: "?cat=damdaopho&search"
                                     }}
                                     style={{
                                         width: "fit-content",

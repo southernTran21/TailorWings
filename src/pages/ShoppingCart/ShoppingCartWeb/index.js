@@ -286,7 +286,7 @@ class ShoppingCartWeb extends Component {
     };
 
     shoppingCartBodyRender = () => {
-        const { productsOnCart, subtotalPrice, paymentStep } = this.state;
+        const { productsOnCart, subtotalPrice, paymentStep, totalProductsOnCart } = this.state;
         let content = "";
         switch (paymentStep) {
             case "shoppingCart":
@@ -306,6 +306,7 @@ class ShoppingCartWeb extends Component {
                                 subtotalPrice={subtotalPrice}
                                 onStepChange={this.onStepChange}
                                 productsOnCart={productsOnCart}
+                                totalProductsOnCart={totalProductsOnCart}
                             />
                         </div>
                     </React.Fragment>
