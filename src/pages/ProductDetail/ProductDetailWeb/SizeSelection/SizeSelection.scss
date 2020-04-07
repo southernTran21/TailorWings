@@ -1,7 +1,7 @@
 .pageSizeSelectionWeb {
     font-family: "Montserrat", sans-serif;
     color: #111e6c;
-    margin-top: 6.16vh;
+    margin-top: 3.16vh;
     .iconBack {
         margin-right: 24px;
         color: #ff6d3b;
@@ -67,13 +67,20 @@
                 color: white !important;
             }
         }
+        .titleBodyMetric{
+            font-size: 0.97vw;
+            font-weight: bold !important;
+            font-style: italic;
+            margin-top: 3px;
+        }
     }
     .infoProduct {
         background: #fff4e3;
         border-radius: 10px;
         width: 28.61vw;
-        height: 57vh;
+        height: 58vh;
         margin-left: 8.95vw;
+        margin-top: -3vh;
         padding: 2vh 2.77vw 0 2.77vw;
         .info {
             :nth-child(1) {

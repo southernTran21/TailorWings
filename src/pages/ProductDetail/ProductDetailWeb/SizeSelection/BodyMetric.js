@@ -59,7 +59,7 @@ export default class BodyMetric extends Component {
                     </div>
                 </div>
                 <div className='titleBodyMetric text-center'>
-                    <small>*Với mong muốn mang lại một sản phầm vừa vặn nhất, bạn vui lòng cung cấp số đo</small>
+                    <span>*Với mong muốn mang lại một sản phầm vừa vặn nhất, bạn vui lòng cung cấp số đo</span>
                 </div>
             </div>
         );

@@ -83,8 +83,12 @@ class NavBarWeb extends Component {
         return (
             <div className="navbarWeb d-flex align-items-center">
                 <div className="menu_wrapper">
-                    <div className="hamburgerMenu">
+                    <div
+                        className="iconMenu d-flex align-items-center"
+                        onClick={this.sideBarOpen}
+                    >
                         {this.sideBarIconChange()}
+                        <span>MENU</span>
                     </div>
                 </div>
                 <div className="logo_wrapper">
@@ -95,7 +99,7 @@ class NavBarWeb extends Component {
                         <img src={iconLogoTailorWings} alt="" />
                     </div>
                 </div>
-                <div className='tool_wrapper'>
+                <div className="tool_wrapper">
                     <div className="Tools d-flex">
                         <div
                             className={classNames("search", {
