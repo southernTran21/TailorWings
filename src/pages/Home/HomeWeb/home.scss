@@ -492,10 +492,14 @@
             }
         }
         .image {
-            width: 43.75vw;
-            height: 39vh;
+            width: 44.75vw;
+            height: 48vh;
             margin-left: 8.88vw;
             margin-top: 11.33vh;
+            img{
+                width: 100%;
+                height: 100%;
+            }
         }
     }
     .instagram {
