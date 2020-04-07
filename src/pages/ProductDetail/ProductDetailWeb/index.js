@@ -244,7 +244,7 @@ class ProductDetailWeb extends Component {
                         totalProductsOnCart={totalProductsOnCart}
                     />
                     <div className="pageProductDetailWeb">
-                        <Steps selectionStep={selectionStep} />
+                        <Steps selectionStep={selectionStep} onContentChange={this.onContentChange}/>
                         {this.selectionStepHandling()}
                     </div>
                 </div>
