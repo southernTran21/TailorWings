@@ -22,6 +22,7 @@ class Summary extends Component {
         return (
             <div className="right d-flex flex-column">
                 <span>Tạm Tính</span>
+                <span>(Số lượng: 4)</span>
                 <span>{subtotalPrice}</span>
                 <span onClick={() => this.goToNextStep()}>
                     THANH TOÁN

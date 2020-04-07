@@ -10,16 +10,29 @@
             .steps {
                 color: #ff6d3b;
                 font-size: 1.11vw;
-                span {
+                a{
+                    color: #ff6d3b;
+                }
+                a:hover{
+                    text-decoration: none;
+                    color: #ff6d3b;
+                }
+                .step {
                     background-color: #FFF4E3;
                     border-radius: 7px;
                     padding: 1vh 1.31vw;
                     font-weight: bold;
+                    cursor: pointer;
                 }
                 .highlight {
                     font-size: 1.11vw;
                     background-color: #ff6d3b;
                     color: white;
+                    cursor: default;
+                }
+                .opacityStep{
+                    opacity: 0.5;
+                    cursor: no-drop;
                 }
                 svg{
                     margin: 0 0.76vw;

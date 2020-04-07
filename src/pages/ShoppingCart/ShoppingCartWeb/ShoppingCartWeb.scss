@@ -158,13 +158,19 @@
                 font-size: 1.66vw;
                 font-weight: 600;
             }
-            :nth-child(2) {
-                font-size: 1.66vw;
-                font-weight: 700;
+            :nth-child(2){
+                font-size: 1.11vw;
+                font-weight: bold;
             }
             :nth-child(3) {
+                font-size: 1.66vw;
+                font-weight: 700;
+                margin-top: 2.77vh;
+            }
+            :nth-child(4) {
                 background-color: #ff6d3b;
                 color: white;
+                font-weight: bold;
                 border-radius: 20px;
                 text-align: center;
                 padding: 1vh 2vw;
