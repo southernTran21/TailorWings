@@ -389,7 +389,7 @@ class FabricSelection extends Component {
                 <div className="contentBody">
                     <div className="header__contentBody">
                         <div className="title">
-                            <span className='font-weight-bold'>{currentProductIndex+1}</span>
+                            <span className='font-weight-bold' style={{fontSize:"3.6vw"}}>{currentProductIndex+1}</span>
                             <span>/{productList.length}</span>
                         </div>
                         <FabricSwiper
