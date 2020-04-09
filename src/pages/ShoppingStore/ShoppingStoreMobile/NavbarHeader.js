@@ -6,6 +6,8 @@ import SideBar from "../../../components/SideBar/SideBar";
 import Backdrop from "../../../components/SideBar/Backdrop";
 import Search from "./Search";
 import logoTW from "../../../assets/imageHomePage/Logo Header.svg";
+import iconMenu from "../../../assets/productDetailWeb/menu-2.svg";
+import iconClose from "../../../assets/imageHomePage/close.svg";
 
 class NavbarHeader extends Component {
     constructor(props) {
@@ -32,9 +34,9 @@ class NavbarHeader extends Component {
     sideBarIconChange = () => {
         const { isSideBarOpen } = this.state;
         if (isSideBarOpen) {
-            return <Icon type="close" onClick={this.sideBarOpen} />;
+            return <img src={iconClose} alt="" />;
         } else {
-            return <Icon type="menu" onClick={this.sideBarOpen} />;
+            return <img src={iconMenu} alt="" />;
         }
     };
 
@@ -74,7 +76,12 @@ class NavbarHeader extends Component {
         );
         return (
             <div className={changeClassname}>
-                <div className="iconMenu">{this.sideBarIconChange()}</div>
+                <div
+                    className="iconMenu d-flex align-items-center"
+                    onClick={this.sideBarOpen}
+                >
+                    {this.sideBarIconChange()}
+                </div>
                 <div
                     className="titleHeader"
                     onClick={() => this.props.history.push("/")}

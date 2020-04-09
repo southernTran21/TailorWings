@@ -16,6 +16,15 @@
         width: 100vw;
         z-index: 6;
         background-color: white;
+        .iconMenu {
+            cursor: pointer;
+            img {
+                width: 7.2vw;
+                height: 4.04vh;
+                filter: invert(60%) sepia(70%) saturate(3320%)
+                    hue-rotate(334deg) brightness(100%) contrast(103%);
+            }
+        }
         .titleHeader {
             width: 45.33vw;
             img {
@@ -23,9 +32,6 @@
                 height: 100%;
                 object-fit: fill;
             }
-        }
-        i {
-            font-size: 25px;
         }
         .search-wraper {
             width: 0;
@@ -188,7 +194,6 @@
         }
         .content__bodyPage {
             padding: 0 25px;
-            height: 230px;
             margin-top: 28px;
             .title {
                 text-align: center;
@@ -203,9 +208,9 @@
                 }
             }
             .fourStep-wraper {
+                margin-top: 1.79vh;
                 .fourStep-content {
                     width: 20vw;
-                    height: 22vw;
                     .image {
                         height: 11.54vh;
                         display: flex;
@@ -227,14 +232,15 @@
                 }
             }
             .numberStep {
-                padding: 0 26px;
+                padding: 0 6.93vw;
+                margin-top: 1.49vh;
                 .number {
                     color: #ff6d3b;
                     border-radius: 50%;
                     border: 1px solid #ff6d3b;
-                    font-size: 18px;
+                    font-size: 4.8vw;
                     background-color: #fff4e3;
-                    padding: 1px 9px;
+                    padding: 0.14vh 2.4vw;
                     font-weight: bold;
                 }
             }
@@ -247,9 +253,7 @@
         .strikingDesign-wraper {
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            // height: 610px;
-            margin-top: 39px;
+            margin-top: 5.84vh;
             .title {
                 text-align: center;
                 padding: 0 25px;
@@ -269,15 +273,16 @@
                     width: fit-content !important;
                 }
                 .content-carousel {
-                    margin: 0 7px;
+                    margin: 0 1.86vw;
                     .image {
-                        width: 280px;
-                        height: 435px;
+                        width: 74.66vw;
+                        height: 65.21vh;
                         border-radius: 7px;
                         img {
                             width: 100%;
                             height: 100%;
                             object-fit: cover;
+                            border-radius: 15px;
                         }
                     }
                     .end-carousel {
@@ -288,21 +293,26 @@
                             margin-top: 10px;
                         }
                         .button {
-                            border: 1px solid #ff6d3b;
-                            margin: 0 42px;
+                            margin: 0 9.6vw;
                             border-radius: 7px;
                             .titleButton {
                                 font-size: 3.73vw;
                                 color: #ff6d3b;
+                                border-radius: 10px 0px 0px 10px;
+                                border: 1px solid #ff6d3b;
+                                width: 100%;
+                                padding: 1.04vh 0;
+                                text-align: center;
                             }
                             .col-6 {
                                 padding: 0;
                             }
                             .putButton {
+                                border: 1px solid #ff6d3b;
                                 background-color: #ff6d3b;
                                 color: white;
                                 font-size: 3.73vw;
-                                border-radius: 7px;
+                                border-radius: 0px 10px 10px 0px;
                                 width: 100%;
                                 padding: 1.04vh 0;
                                 .anticon {
