@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import iconSliderCircle from "../../../assets/iconImage/slider-circle-h.svg";
-import cellFull from "../../../assets/iconImage/cell-full.svg";
 import { Icon, Badge } from "antd";
 import { Link } from "react-router-dom";
 class Filter extends Component {

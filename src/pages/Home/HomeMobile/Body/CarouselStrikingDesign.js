@@ -17,7 +17,7 @@ export default class CarouselStrikingDesign extends Component {
                         <div className="button d-flex justify-content-between align-items-center">
                             <div className="col-6 d-flex flex-row justify-content-center align-items-center">
                                 <span className="titleButton">
-                                    {product.totalSupportedFabric + ' mẫu vãi'}
+                                    {product.totalSupportedFabric + ' MẪU VẢI'}
                                 </span>
                             </div>
                             <div className="col-6">
