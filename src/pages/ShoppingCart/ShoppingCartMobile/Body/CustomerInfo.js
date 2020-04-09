@@ -77,6 +77,24 @@ export default class CustomerInfo extends Component {
                             Vui lòng nhập địa chỉ giao hàng
                         </small>
                     </div>
+                    <div className="input">
+                        <span>note</span>
+                        <Input
+                            name="address"
+                            value={address}
+                            placeholder="note"
+                            maxLength={50}
+                            onChange={this.onInputChange}
+                        />
+                        <small
+                            className={classNames({
+                                error: errorValidate[2],
+                                errorUnvisible: !errorValidate[2]
+                            })}
+                        >
+                            note
+                        </small>
+                    </div>
                 </div>
                 <div className="checkBox">
                     <Checkbox

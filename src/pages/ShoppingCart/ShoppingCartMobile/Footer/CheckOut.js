@@ -23,9 +23,8 @@ export default class CheckOut extends Component {
                     <span>{this.props.subtotalPrice}</span>
                 </div>
                 <div className='button d-flex flex-row align-items-center justify-content-center'>
-                    <span onClick={() => this.goToNextStep()}>
+                    <span onClick={() => this.goToNextStep()} className='font-weight-bold'>
                         Thanh toán
-                            <Icon type='right' />
                     </span>
                 </div>
             </div>
