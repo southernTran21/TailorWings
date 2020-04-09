@@ -110,7 +110,6 @@ class Confirm extends Component {
                         className="buttonApcept d-flex flex-row align-items-center justify-content-center"
                     >
                         <a>Mua Hàng</a>
-                        <Icon type="right" />
                     </Link>
                 </div>
             </div>

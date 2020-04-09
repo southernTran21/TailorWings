@@ -1,32 +1,41 @@
 .pageConfirm {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    font-family: "Montserrat", sans-serif !important;
     color: #111e6c !important;
     .anticon {
         vertical-align: 0;
     }
     .navbarHeader {
         background-color: #fff4e3;
-        height: 7.49vh;
+        width: 100%;
+        height: 9.74vh !important;
+        color: #111e6c;
+        padding: 0 6.66vw;
         font-size: 18px;
         font-weight: bold;
-        padding: 0 5%;
-        color: #111e6c;
+        .iconBack {
+            width: 20vw;
+        }
         .iconShoppingCart {
-            font-size: 23px;
-        }
-        i {
-            color: #ff6d3b !important;
-        }
-        .ant-badge-count {
-            min-height: 10px;
-            min-width: 14px;
-            height: 15px;
-            padding: 0 6px;
-            font-size: 8px;
-            top: -13px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 20vw;
+            img {
+                width: 6.66vw;
+                height: 3.74vh;
+                filter: invert(48%) sepia(72%) saturate(1366%)
+                    hue-rotate(335deg) brightness(105%) contrast(106%);
+            }
+            span{
+                font-size: 3.5vw;
+                color: #ff6d3b;
+            }
         }
         .titleHeader {
             font-size: 5.86vw;
+            font-weight: bold;
+            color: #111e6c;
+            width: 46.68vw;
         }
     }
     .bodyPage {
@@ -73,6 +82,7 @@
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    border-radius: 5px;
                 }
             }
         }
@@ -145,9 +155,7 @@
             cursor: pointer;
             font-size: 16px;
             border-radius: 7px;
-            i {
-                margin-left: 3px;
-            }
+            font-size: 5.33vw;
         }
     }
 }
