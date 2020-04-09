@@ -84,7 +84,7 @@ class ShoppingStore extends Component {
             });
         }
         return (
-            <Media queries={{ small: { maxWidth: 1024 } }}>
+            <Media queries={{ small: { maxWidth: 750 } }}>
                 {matches =>
                     matches.small ? (
                         <ShoppingStoreMobile

@@ -69,7 +69,7 @@ class Support extends Component {
     render() {
         return (
             <div className="pageSupport-container">
-                <Media queries={{ small: { maxWidth: 1024 } }}>
+                <Media queries={{ small: { maxWidth: 750 } }}>
                     {matches =>
                         matches.small ? (
                             <NavBar
@@ -93,7 +93,7 @@ class Support extends Component {
                         <span>Trợ giúp</span>
                     </div>
                     <Collapse
-                        defaultActiveKey={["1", "2", "3", "4"]}
+                        // defaultActiveKey={["1", "2", "3", "4"]}
                         expandIconPosition="right"
                     >
                         <Panel

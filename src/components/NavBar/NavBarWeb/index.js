@@ -94,9 +94,22 @@ class NavBarWeb extends Component {
                 <div className="logo_wrapper">
                     <div
                         className="logoTailorWings"
-                        onClick={() => this.props.history.push("/")}
+                        // onClick={() =>
+                        //     window.history.pushState(
+                        //         { prevUrl: window.location.href },
+                        //         null,
+                        //         "/"
+                        //     )
+                        // }
                     >
-                        <img src={iconLogoTailorWings} alt="" />
+                        <Link to={{
+                            pathname: '/',
+                            state: {
+                                prevPath: window.location.pathname
+                            }
+                        }}>
+                            <img src={iconLogoTailorWings} alt="tailor-wings" />
+                        </Link>
                     </div>
                 </div>
                 <div className="tool_wrapper">

@@ -69,7 +69,7 @@ class Policy extends Component {
     render() {
         return (
             <div className="pagePolicy-container">
-                <Media queries={{ small: { maxWidth: 1024 } }}>
+                <Media queries={{ small: { maxWidth: 750 } }}>
                     {matches =>
                         matches.small ? (
                             <NavBar
@@ -107,20 +107,20 @@ class Policy extends Component {
                     </div>
                     <hr />
                     <Collapse
-                        defaultActiveKey={[
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6",
-                            "7",
-                            "8",
-                            "9",
-                            "10",
-                            "11",
-                            "12"
-                        ]}
+                        // defaultActiveKey={[
+                        //     "1",
+                        //     "2",
+                        //     "3",
+                        //     "4",
+                        //     "5",
+                        //     "6",
+                        //     "7",
+                        //     "8",
+                        //     "9",
+                        //     "10",
+                        //     "11",
+                        //     "12"
+                        // ]}
                         expandIconPosition="right"
                     >
                         <Panel header="1. Cam kết" key="1">

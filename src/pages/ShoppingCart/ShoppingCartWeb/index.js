@@ -52,6 +52,7 @@ class ShoppingCartWeb extends Component {
                 name: "",
                 phone: "",
                 address: "",
+                note: "",
             },
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
@@ -65,12 +66,12 @@ class ShoppingCartWeb extends Component {
     componentDidMount() {
         initGA();
         logPageView();
-        let { rememberChecked } = this.state;
+        let { rememberChecked, customerInfo } = this.state;
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-        let customerInfo =
-            JSON.parse(localStorage.getItem("customerInfo")) ||
-            this.state.customerInfo;
+        customerInfo =
+            { ...JSON.parse(localStorage.getItem("customerInfo")), note: "" } ||
+            customerInfo;
         let totalProductsOnCart = productsOnCart.reduce(
             (accumulator, current) => {
                 return accumulator + current.quantity;
@@ -263,6 +264,7 @@ class ShoppingCartWeb extends Component {
             total: totalPrice,
             paymentMethod: paymentMethod,
         };
+        // this.onStepChange("orderConfirm");
         Promise.all([
             setDocument("customers", customer, customer.phone),
             addDocument("orders", order),
@@ -286,7 +288,12 @@ class ShoppingCartWeb extends Component {
     };
 
     shoppingCartBodyRender = () => {
-        const { productsOnCart, subtotalPrice, paymentStep, totalProductsOnCart } = this.state;
+        const {
+            productsOnCart,
+            subtotalPrice,
+            paymentStep,
+            totalProductsOnCart,
+        } = this.state;
         let content = "";
         switch (paymentStep) {
             case "shoppingCart":
@@ -341,7 +348,12 @@ class ShoppingCartWeb extends Component {
                 break;
 
             case "orderConfirm":
-                content = <OrderConfirm phone={this.state.customerInfo.phone}/>;
+                content = (
+                    <OrderConfirm
+                        phone={this.state.customerInfo.phone}
+                        name={this.state.customerInfo.name}
+                    />
+                );
                 break;
 
             default:

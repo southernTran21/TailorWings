@@ -30,10 +30,23 @@ export default class Home extends Component {
             top: 0,
             behavior: "smooth",
         });
-        timeOut = setTimeout(
-            () => this.setState({ isPageLoading: false }),
-            3000
-        );
+        if (this.props.history.location.state != null) {
+            if (this.props.history.location.state.prevPath != null) {
+                this.setState({
+                    isPageLoading: false,
+                });
+            } else {
+                timeOut = setTimeout(
+                    () => this.setState({ isPageLoading: false }),
+                    3000
+                );
+            }
+        } else {
+            timeOut = setTimeout(
+                () => this.setState({ isPageLoading: false }),
+                3000
+            );
+        }
     }
 
     componentWillMount() {
@@ -67,7 +80,7 @@ export default class Home extends Component {
                 });
             }
             return (
-                <Media queries={{ small: { maxWidth: 1024 } }}>
+                <Media queries={{ small: { maxWidth: 750 } }}>
                     {(matches) =>
                         matches.small ? (
                             <React.Fragment>

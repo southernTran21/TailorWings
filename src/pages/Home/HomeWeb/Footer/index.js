@@ -130,8 +130,8 @@ export default class Footer extends Component {
                 <div className="endFooter d-flex flex-column">
                     <span>© 2020 Tailor Wings</span>
                     <span>
-                        Công ty TNHH Tailor Wings với số đăng ký kinh doanh:
-                        0105777650
+                        Công ty TNHH Thương Mại Kết Nối Á Âu / Số đăng ký kinh
+                        doanh : 0313114301
                     </span>
                 </div>
             </div>

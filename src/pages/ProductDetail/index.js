@@ -65,7 +65,7 @@ export default class ProductDetail extends Component {
 
     render() {
         return (
-            <Media queries={{ small: { maxWidth: 1024 } }}>
+            <Media queries={{ small: { maxWidth: 750 } }}>
                 {matches =>
                     matches.small ?
                         (
