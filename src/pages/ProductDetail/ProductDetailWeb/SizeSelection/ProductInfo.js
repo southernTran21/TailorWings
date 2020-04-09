@@ -4,18 +4,18 @@ export default class ProductInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentSelectedProduct: this.props.currentSelectedProduct
+            currentSelectedProduct: this.props.currentSelectedProduct,
         };
     }
 
     componentDidMount() {
         const { currentSelectedProduct } = this.props;
         this.setState({
-            currentSelectedProduct
+            currentSelectedProduct,
         });
     }
 
-    onQuantityChanged = type => {
+    onQuantityChanged = (type) => {
         const { currentSelectedProduct } = this.state;
         let quantityChanged = 0;
         switch (type) {
@@ -25,7 +25,7 @@ export default class ProductInfo extends Component {
                     this.props.onQuantityUpdated(quantityChanged);
                 }
                 this.setState({
-                    currentSelectedProduct
+                    currentSelectedProduct,
                 });
                 break;
             case "plus":
@@ -34,7 +34,7 @@ export default class ProductInfo extends Component {
                     this.props.onQuantityUpdated(quantityChanged);
                 }
                 this.setState({
-                    currentSelectedProduct
+                    currentSelectedProduct,
                 });
                 break;
             default:
@@ -56,7 +56,7 @@ export default class ProductInfo extends Component {
             productID,
             designDescription,
             quantity,
-            price
+            price,
         } = this.state.currentSelectedProduct;
         console.log(
             "this.props.currentSelectedProduct",
@@ -82,6 +82,14 @@ export default class ProductInfo extends Component {
                         <div id="fabricDescription">
                             Đang trong quá trình phát triển
                         </div>
+                    </div>
+                    <div className="note">
+                        <span>Lưu ý</span>
+                        <span>
+                            Trường hợp bạn chọn cả hai thông tin: Size chuẩn và
+                            Số đo 3 vòng, Tailor Wings sẽ lấy Số đo 3 vòng để
+                            may sản phẩm cho bạn.
+                        </span>
                     </div>
                 </div>
                 <div className="d-flex">

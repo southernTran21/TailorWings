@@ -78,10 +78,10 @@
         background: #fff4e3;
         border-radius: 10px;
         width: 28.61vw;
-        height: 58vh;
+        height: 62vh;
         margin-left: 8.95vw;
-        margin-top: -3vh;
-        padding: 2vh 2.77vw 0 2.77vw;
+        margin-top: -1vh;
+        padding: 1.5vh 2.77vw 0 2.77vw;
         .info {
             :nth-child(1) {
                 font-size: 1.805vw;
@@ -94,7 +94,7 @@
             :nth-child(3) {
                 font-size: 1.25vw;
                 font-weight: bold;
-                margin-top: 2vh;
+                margin-top: 1vh;
             }
             #designDescription_wrapper {
                 width: 98%;
@@ -112,12 +112,11 @@
             }
             #fabricDescription_wrapper {
                 width: 98%;
-                height: 9vh;
+                height: 5vh;
                 overflow: hidden;
             }
             #fabricDescription {
                 overflow-y: scroll;
-                max-height: 8.5vh;
                 width: 100%;
                 font-size: 0.9vw;
                 font-weight: normal;
@@ -140,6 +139,24 @@
                 font-size: 1.25vw;
                 font-weight: bold;
                 margin-top: 1vh;
+            }
+            .note{
+                display: flex;
+                flex-direction: column;
+                :nth-child(1){
+                    font-size: 0.9vw;
+                    background-color: #111e6c;
+                    color: white;
+                    padding: .2vw 0;
+                    border-radius: 5px;
+                    width: 4.51vw;
+                    text-align: center;
+                }
+                :nth-child(2){
+                    font-size: 0.9vw;
+                    font-weight: normal;
+                    margin-top: 0.55vh;
+                }
             }
         }
         .changeQuantity {
