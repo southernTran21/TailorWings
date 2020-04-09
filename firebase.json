@@ -15,8 +15,24 @@
     ],
     "rewrites": [
       {
+        "source": "sitemap**",
+        "destination": "/sitemap"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/sitemap",
+        "destination": "/sitemap.xml",
+        "type": 301
+      },
+      {
+        "source": "/sitemap/**",
+        "destination": "/sitemap.xml",
+        "type": 302
       }
     ]
   },

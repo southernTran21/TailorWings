@@ -34,7 +34,7 @@ const initPixel = () => {
         autoConfig: true, // set pixel's autoConfig
         debug: false // enable logs
     };
-    ReactPixel.init("506451380072555", null, options);
+    ReactPixel.init("218331376051723", null, options);
 };
 
 const logPageViewPixel = () => {

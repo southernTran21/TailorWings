@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./SizeSelection.scss";
-import { Icon, message } from "antd";
+import { message } from "antd";
 import { connect } from "react-redux";
 import * as actions from "../../../../actions/index";
-import classNames from "classnames";
 //
 import SizeImage from "./SizeImage";
 import BodyMetric from "./BodyMetric";
@@ -19,16 +18,32 @@ import XL from "../../../../assets/imageSizeSelection/size XL.svg";
 import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
 import SuccessNotification from "./SuccessNotification";
 
-// let imageSize = {
-//     Empty: Empty,
-//     XS: XS,
-//     S: S,
-//     M: M,
-//     L: L,
-//     XL: XL,
-//     XXL: XXL
-// };
-const SIZE = ["XS", "S", "M", "L", "XL", "XXL"];
+const SIZE = [
+    {
+        id: 'XS',
+        bodyMetric: [79, 62, 84]
+    },
+    {
+        id: 'S',
+        bodyMetric: [83, 66, 88]
+    },
+    {
+        id: 'M',
+        bodyMetric: [87, 70, 92]
+    },
+    {
+        id: 'L',
+        bodyMetric: [93, 76, 98]
+    },
+    {
+        id: 'XL',
+        bodyMetric: [99, 82, 104]
+    },
+    {
+        id: 'XXL',
+        bodyMetric: [105, 88, 110]
+    }
+];
 let imageSize = [XS, S, M, L, XL, XXL];
 let timeOut;
 
@@ -43,8 +58,7 @@ class SizeSelectionWeb extends Component {
 
     componentDidMount() {
         const { currentSelectedProduct } = this.props;
-        console.log("currentSelectedProduct", currentSelectedProduct);
-        let index = SIZE.indexOf(currentSelectedProduct.size);
+        let index = SIZE.findIndex(size => size.id === currentSelectedProduct.size);
         let sizeImage = index > -1 ? imageSize[index] : Empty;
         this.setState({
             sizeImage,
@@ -109,16 +123,17 @@ class SizeSelectionWeb extends Component {
     };
 
     sizeImageUpdate = (index, size) => {
-        let { sizeImage } = this.state;
-        this.props.onSizeUpdated(size);
+        let { sizeImage, currentSelectedProduct } = this.state;
+        this.props.onSizeUpdated(size, SIZE[index].bodyMetric);
         sizeImage = imageSize[index];
         this.setState({
             sizeImage,
+            currentSelectedProduct
         });
     };
 
     render() {
-        let { currentSelectedProduct } = this.props;
+        const { currentSelectedProduct } = this.props;
         const { sizeImage, isSuccess } = this.state;
         let size = Empty;
         let bodyMetric = currentSelectedProduct.bodyMetric;

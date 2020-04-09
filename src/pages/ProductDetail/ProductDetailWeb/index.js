@@ -141,7 +141,6 @@ class ProductDetailWeb extends Component {
                 );
                 break;
             case "sizeSelection":
-                console.log('currentSelectedProduct', currentSelectedProduct)
                 content = (
                     <SizeSelectionWeb
                         currentSelectedProduct={currentSelectedProduct}
@@ -197,10 +196,11 @@ class ProductDetailWeb extends Component {
         });
     };
 
-    onSizeUpdated = size => {
-        console.log('size', size)
+    onSizeUpdated = (size, bodyMetric) => {
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.size = size;
+        // currentSelectedProduct.bodyMetric = bodyMetric;
+        currentSelectedProduct.bodyMetric.fill('');
         this.setState({
             currentSelectedProduct,
             isSizeMetricUpdate: true
@@ -217,7 +217,6 @@ class ProductDetailWeb extends Component {
     };
 
     onQuantityUpdated = quantity => {
-        console.log("quantity", quantity);
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.quantity = quantity;
         this.setState({
