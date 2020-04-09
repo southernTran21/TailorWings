@@ -8,33 +8,36 @@
     }
     .navbarHeader {
         background-color: #fff4e3;
-        height: 7.49vh;
         width: 100%;
+        height: 9.74vh !important;
         color: #111e6c;
-        padding: 0 5%;
+        padding: 0 6.66vw;
         font-size: 18px;
         font-weight: bold;
         .iconBack {
-            color: rgb(244, 122, 33);
+            width: 20vw;
         }
         .iconShoppingCart {
-            font-size: 23px;
-            color: rgb(244, 122, 33);
-        }
-        .ant-badge-count {
-            min-height: 10px;
-            min-width: 14px;
-            height: 15px;
-            font-size: 8px;
-            top: -15px;
-        }
-        .ant-badge {
-            p {
-                line-height: 2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 20vw;
+            img {
+                width: 6.66vw;
+                height: 3.74vh;
+                filter: invert(48%) sepia(72%) saturate(1366%)
+                    hue-rotate(335deg) brightness(105%) contrast(106%);
+            }
+            span{
+                font-size: 3.5vw;
+                color: #ff6d3b;
             }
         }
         .titleHeader {
             font-size: 5.86vw;
+            font-weight: bold;
+            color: #111e6c;
+            width: 46.68vw;
         }
     }
     .contentBody {
@@ -45,7 +48,7 @@
         .header__contentBody {
             padding-top: 12px;
             .title {
-                font-size: 12px;
+                font-size: 3.2vw;
                 color: #111e6c;
                 line-height: 30px;
                 white-space: nowrap;
@@ -119,7 +122,9 @@
                 justify-content: center;
                 transition: transform 350ms ease;
             }
-
+            img{
+                border-radius: 10px;
+            }
             #slider label img {
                 height: 100%;
                 width: 100%;
@@ -202,7 +207,7 @@
     .end__contentBody {
         margin-top: 1vh;
         .title {
-            font-size: 4.26vw;
+            font-size: 4.8vw;
             color: #111e6c;
             line-height: 30px;
             white-space: nowrap;
@@ -221,10 +226,8 @@
             border-radius: 5px;
             font-size: 18px;
             margin-top: 2vh;
-            i {
-                vertical-align: 0;
-                margin-left: 23px;
-            }
+            font-weight: bold;
+            font-size: 5.33vw;
         }
     }
 }
@@ -336,5 +339,3 @@
         bottom: 0px !important;
     }
 }
-
-

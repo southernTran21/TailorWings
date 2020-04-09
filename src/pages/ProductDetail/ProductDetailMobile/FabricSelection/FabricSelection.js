@@ -8,6 +8,8 @@ import ProductModal from "./ProductModal";
 import FabricSwiper from "./FabricSwiper";
 import ProductSwiper from "./ProductSwiper";
 
+import iconShoppingBadge from "../../../../assets/imageHomePage/shopping-cart.svg";
+
 class FabricSelection extends Component {
     constructor(props) {
         super(props);
@@ -20,13 +22,13 @@ class FabricSelection extends Component {
                 { image: [""], price: 0 },
                 { image: [""], price: 0 },
                 { image: [""], price: 0 },
-                { image: [""], price: 0 }
+                { image: [""], price: 0 },
             ],
             currentProductIndex: 0,
             isSwiperTouch: false,
             currentDesign: { name: "" },
             price: 0,
-            isProductModalShow: false
+            isProductModalShow: false,
         };
     }
 
@@ -43,13 +45,13 @@ class FabricSelection extends Component {
         for (let i = 0; i < this.state.productSelectedState.length; i++) {
             renderProducts[i] = productList[i] || { image: [""], price: 0 };
         }
-        let currentDesign = designsInfo.find(design => {
+        let currentDesign = designsInfo.find((design) => {
             return design.id === designID;
         }) || { name: "" };
         this.setState({
             renderProducts,
             currentDesign,
-            price: renderProducts[0].price
+            price: renderProducts[0].price,
         });
     }
 
@@ -59,7 +61,7 @@ class FabricSelection extends Component {
             productSelectedState,
             productSliderIndex,
             swiper,
-            renderProducts
+            renderProducts,
         } = this.state;
         productSelectedState[productSliderIndex] = false;
         let indexOfNextProduct = 0;
@@ -138,17 +140,17 @@ class FabricSelection extends Component {
             productSelectedState,
             renderProducts,
             isSwiperTouch: false,
-            price: renderProducts[productSliderIndex].price
+            price: renderProducts[productSliderIndex].price,
         });
     }
 
-    selectHandling = e => {
+    selectHandling = (e) => {
         const { productList } = this.props;
         let {
             productSelectedState,
             productSliderIndex,
             swiper,
-            renderProducts
+            renderProducts,
         } = this.state;
         let selectedProductIndex = 0;
         let productListDouble = [];
@@ -176,7 +178,7 @@ class FabricSelection extends Component {
                     productSelectedState,
                     productSliderIndex: 0,
                     isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex]
+                    price: renderProducts[selectedProductIndex],
                 });
                 swiper.slideTo(selectedProductIndex);
                 break;
@@ -197,7 +199,7 @@ class FabricSelection extends Component {
                     productSelectedState,
                     productSliderIndex: 1,
                     isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex]
+                    price: renderProducts[selectedProductIndex],
                 });
                 swiper.slideTo(selectedProductIndex);
                 break;
@@ -218,7 +220,7 @@ class FabricSelection extends Component {
                     productSelectedState,
                     productSliderIndex: 2,
                     isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex]
+                    price: renderProducts[selectedProductIndex],
                 });
                 swiper.slideTo(selectedProductIndex);
                 break;
@@ -239,7 +241,7 @@ class FabricSelection extends Component {
                     productSelectedState,
                     productSliderIndex: 3,
                     isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex]
+                    price: renderProducts[selectedProductIndex],
                 });
                 swiper.slideTo(selectedProductIndex);
                 break;
@@ -260,7 +262,7 @@ class FabricSelection extends Component {
                     productSelectedState,
                     productSliderIndex: 4,
                     isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex]
+                    price: renderProducts[selectedProductIndex],
                 });
                 swiper.slideTo(selectedProductIndex);
                 break;
@@ -269,15 +271,15 @@ class FabricSelection extends Component {
         }
     };
 
-    getSwiper = swiper => {
+    getSwiper = (swiper) => {
         this.setState({
-            swiper
+            swiper,
         });
     };
 
     onSwiperTouchStart = () => {
         this.setState({
-            isSwiperTouch: true
+            isSwiperTouch: true,
         });
     };
 
@@ -293,7 +295,7 @@ class FabricSelection extends Component {
             swiper,
             renderProducts,
             productSelectedState,
-            isSwiperTouch
+            isSwiperTouch,
         } = this.state;
         if (isSwiperTouch) {
             let productListDouble = productList.concat(productList);
@@ -309,7 +311,7 @@ class FabricSelection extends Component {
                 productSelectedState,
                 renderProducts,
                 productSliderIndex: 0,
-                price: renderProducts[0].price
+                price: renderProducts[0].price,
             });
         }
     };
@@ -328,9 +330,9 @@ class FabricSelection extends Component {
         this.props.onContentChange("size");
     };
 
-    onProductModalStatusChanged = isShow => {
+    onProductModalStatusChanged = (isShow) => {
         this.setState({
-            isProductModalShow: isShow
+            isProductModalShow: isShow,
         });
     };
 
@@ -343,7 +345,7 @@ class FabricSelection extends Component {
             currentDesign,
             price,
             productSliderIndex,
-            isProductModalShow
+            isProductModalShow,
         } = this.state;
         let priceModified =
             price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
@@ -361,29 +363,34 @@ class FabricSelection extends Component {
                         className="iconBack"
                         onClick={() => window.history.back()}
                     >
-                        <Icon type="left" />
+                        <svg
+                            width="11"
+                            height="18"
+                            viewBox="0 0 11 18"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M8.26668 17.3333C8.04218 17.3325 7.82016 17.2863 7.61395 17.1975C7.40774 17.1087 7.22159 16.9792 7.06668 16.8167L0.63335 10.15C0.327972 9.83845 0.156921 9.41959 0.156921 8.98333C0.156921 8.54708 0.327972 8.12822 0.63335 7.81667L7.30002 1.15C7.45541 0.994606 7.6399 0.871339 7.84294 0.787238C8.04597 0.703138 8.26359 0.659851 8.48335 0.659851C8.70312 0.659851 8.92073 0.703138 9.12377 0.787238C9.3268 0.871339 9.51129 0.994606 9.66668 1.15C9.82208 1.3054 9.94535 1.48989 10.0295 1.69292C10.1136 1.89596 10.1568 2.11357 10.1568 2.33334C10.1568 2.5531 10.1136 2.77072 10.0295 2.97375C9.94535 3.17679 9.82208 3.36127 9.66668 3.51667L4.16668 9L9.46668 14.5C9.7771 14.8123 9.95134 15.2347 9.95134 15.675C9.95134 16.1153 9.7771 16.5377 9.46668 16.85C9.30897 17.0065 9.12157 17.1298 8.91549 17.2128C8.70942 17.2958 8.48882 17.3368 8.26668 17.3333Z"
+                                fill="#FF6D3B"
+                            />
+                        </svg>
                     </div>
                     <div className="titleHeader d-flex justify-content-center">
-                        Chọn Vải
+                        Chọn vải
                     </div>
                     <Link style={{ color: "white" }} to={"/shopping-cart"}>
                         <div className="iconShoppingCart">
-                            <Icon type="shopping-cart" />
-                            <Badge count={totalProductsOnCart}>
-                                <a className="head-example" />
-                            </Badge>
+                            <img src={iconShoppingBadge} alt="" />
+                            <span>({totalProductsOnCart})</span>
                         </div>
                     </Link>
                 </div>
                 <div className="contentBody">
                     <div className="header__contentBody">
                         <div className="title">
-                            <span>
-                                {currentProductIndex +
-                                    1 +
-                                    "/" +
-                                    productList.length}
-                            </span>
+                            <span className='font-weight-bold'>{currentProductIndex+1}</span>
+                            <span>/{productList.length}</span>
                         </div>
                         <FabricSwiper
                             fabricList={fabricList}
@@ -398,11 +405,11 @@ class FabricSelection extends Component {
                             productSliderIndex={productSliderIndex}
                             renderProducts={renderProducts}
                             productSelectedState={productSelectedState}
-                            onProductImageSwiped={direction =>
+                            onProductImageSwiped={(direction) =>
                                 this.onProductImageSwiped(direction)
                             }
-                            selectHandling={e => this.onProductImageSwiped(e)}
-                            onProductModalStatusChanged={isShow =>
+                            selectHandling={(e) => this.onProductImageSwiped(e)}
+                            onProductModalStatusChanged={(isShow) =>
                                 this.onProductModalStatusChanged(isShow)
                             }
                         />
@@ -417,8 +424,7 @@ class FabricSelection extends Component {
                             onClick={this.onFinishButtonClicked}
                         >
                             <span>
-                                Chọn số đo
-                                <Icon type="right" />
+                                CHỌN SIZE
                             </span>
                         </div>
                     </div>
@@ -427,7 +433,7 @@ class FabricSelection extends Component {
                     renderProducts={renderProducts}
                     productSliderIndex={productSliderIndex}
                     isProductModalShow={isProductModalShow}
-                    onProductModalStatusChanged={isShow =>
+                    onProductModalStatusChanged={(isShow) =>
                         this.onProductModalStatusChanged(isShow)
                     }
                 />

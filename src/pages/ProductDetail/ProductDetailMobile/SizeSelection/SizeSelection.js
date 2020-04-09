@@ -133,7 +133,6 @@ export default class SizeSelection extends Component {
                         onClick={this.onConfirmButtonClicked}
                     >
                         <a>Xác nhận </a>
-                        <Icon type="right" />
                     </div>
                 </div>
             </div>
