@@ -15,13 +15,13 @@ export default class Footer extends Component {
         super(props);
         this.state = {
             email: "",
-            isEmailError: false
+            isEmailError: false,
         };
     }
 
-    onEmailChange = e => {
+    onEmailChange = (e) => {
         this.setState({
-            email: e.target.value
+            email: e.target.value,
         });
     };
 
@@ -32,22 +32,22 @@ export default class Footer extends Component {
             isEmailError = !validateEmail(email);
             if (!isEmailError) {
                 setDocument("preferentialEmails", { email: email }, email).then(
-                    function() {
+                    function () {
                         message.success("Hoàn thành đăng ký nhận ưu đãi!");
                         currentComponent.setState({
                             isEmailError,
-                            email: ""
+                            email: "",
                         });
                     }
                 );
             } else {
                 this.setState({
-                    isEmailError
+                    isEmailError,
                 });
             }
         } else {
             this.setState({
-                isEmailError: true
+                isEmailError: true,
             });
         }
     };
@@ -72,7 +72,8 @@ export default class Footer extends Component {
                     </div>
                     <div className="contact">
                         <span>
-                            HOTLINE 0939929405<br></br>wetailor@gmail.com
+                            HOTLINE 0902 541 398 <br></br>
+                            info.tailorwings@gmail.com
                         </span>
                         <div className="icon">
                             <a>
@@ -119,7 +120,7 @@ export default class Footer extends Component {
                         </div>
                         <smal
                             className={classNames("emailError_unvisible", {
-                                emailError: this.state.isEmailError
+                                emailError: this.state.isEmailError,
                             })}
                         >
                             Lỗi: Email sai vui lòng nhập lại!

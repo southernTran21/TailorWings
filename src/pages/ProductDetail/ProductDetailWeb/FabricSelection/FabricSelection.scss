@@ -29,6 +29,7 @@
                         height: 21.77vh;
                         background-color: #ffa45c;
                         border-radius: 10px;
+                        cursor: pointer;
                     }
                 }
                 .bottom {
@@ -37,6 +38,7 @@
                         height: 47.11vh;
                         background-color: #ffa45c;
                         border-radius: 10px;
+                        cursor: pointer;
                     }
                 }
             }
@@ -47,6 +49,7 @@
                     height: 70vh;
                     background-color: #ffa45c;
                     border-radius: 10px;
+                    cursor: pointer;
                 }
             }
         }
@@ -69,7 +72,6 @@
         #fabricList-content::-webkit-scrollbar-thumb {
             border-radius: 10px;
             background: #ff6d3b;
-            // border: 1px solid #aaa;
         }
         .col-4 {
             padding: 0 5.5px;
