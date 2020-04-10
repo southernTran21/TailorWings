@@ -7,24 +7,38 @@ export default class ShowImage extends Component {
         return (
             <div className="imgProduct d-flex justify-content-center align-items-center">
                 <div className="row1">
-                    <div className="image">
-                        <img
-                            src={currentSelectedProduct.image[0]}
-                        />
+                    <div
+                        className="image"
+                        onClick={() =>
+                            this.props.onProductModalStatusChanged(true)
+                        }
+                    >
+                        <img src={currentSelectedProduct.image[0]} />
                     </div>
-                    <div className="image">
-                        <img
-                            src={currentSelectedProduct.image[1]}
-                        />
+                    <div
+                        className="image"
+                        onClick={() =>
+                            this.props.onProductModalStatusChanged(true)
+                        }
+                    >
+                        <img src={currentSelectedProduct.image[1]} />
                     </div>
                 </div>
                 <div className="row2">
-                    <div className="image">
-                        <img
-                            src={currentSelectedProduct.image[2]}
-                        />
+                    <div
+                        className="image"
+                        onClick={() =>
+                            this.props.onProductModalStatusChanged(true)
+                        }
+                    >
+                        <img src={currentSelectedProduct.image[2]} />
                     </div>
-                    <div className='image'>
+                    <div
+                        className="image"
+                        onClick={() =>
+                            this.props.onProductModalStatusChanged(true)
+                        }
+                    >
                         <img
                             style={{ objectFit: "cover" }}
                             src={currentFabricInfo.image[1]}

@@ -225,7 +225,7 @@ class ShoppingCartWeb extends Component {
             paymentLoading: true,
         });
         const { subtotalPrice, paymentMethod } = this.state;
-        let { name, phone, address } = this.state.customerInfo;
+        let { name, phone, address, note } = this.state.customerInfo;
         let phoneModified = phone.replace(/ /gi, "");
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
@@ -257,7 +257,7 @@ class ShoppingCartWeb extends Component {
             customerID: customer.customerID,
             doneDate: "",
             id: "",
-            notes: "",
+            notes: note,
             orderDate: "",
             orderID: orderDetail.orderID,
             status: "new",

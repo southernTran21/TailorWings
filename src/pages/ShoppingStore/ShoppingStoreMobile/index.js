@@ -20,14 +20,14 @@ class ShoppingStoreMobile extends Component {
             isSideBarOpen: false,
             isSearchOpen: false,
             suggestedSearch: [],
-            bestSellerInfo: []
+            bestSellerInfo: [],
         };
     }
 
     componentDidMount() {
         const { history } = this.props;
         this.initialDataUpdateHandling(history.location);
-        this.unlisten = history.listen(location => {
+        this.unlisten = history.listen((location) => {
             this.initialDataUpdateHandling(location);
         });
     }
@@ -36,13 +36,13 @@ class ShoppingStoreMobile extends Component {
         this.unlisten();
     }
 
-    initialDataUpdateHandling = location => {
+    initialDataUpdateHandling = (location) => {
         let { visibilityProducts, bestSellerList } = this.props;
         let { renderProducts, bestSellerInfo } = this.state;
         bestSellerInfo = [];
-        visibilityProducts.forEach(product => {
+        visibilityProducts.forEach((product) => {
             let totalSupportedFabric = visibilityProducts.filter(
-                visibleProduct => visibleProduct.designID === product.designID
+                (visibleProduct) => visibleProduct.designID === product.designID
             ).length;
             product.totalSupportedFabric = totalSupportedFabric;
             if (
@@ -57,7 +57,7 @@ class ShoppingStoreMobile extends Component {
             if (categoryID === "all") {
                 renderProducts =
                     visibilityProducts.filter(
-                        product => product.default === true
+                        (product) => product.default === true
                     ) || [];
                 if (location.search.match(/search=(.*)\b/) != null) {
                     renderProducts = this.searchFilter(
@@ -75,7 +75,7 @@ class ShoppingStoreMobile extends Component {
                 renderProducts,
                 isFirstLoaded: false,
                 currentActiveCategory: categoryID,
-                bestSellerInfo
+                bestSellerInfo,
             });
         }
     };
@@ -87,7 +87,7 @@ class ShoppingStoreMobile extends Component {
                 case "damom":
                     renderProducts =
                         visibilityProducts.filter(
-                            product =>
+                            (product) =>
                                 product.catID === categoryID &&
                                 product.default === true
                         ) || [];
@@ -95,7 +95,7 @@ class ShoppingStoreMobile extends Component {
                 case "damxoe":
                     renderProducts =
                         visibilityProducts.filter(
-                            product =>
+                            (product) =>
                                 product.catID === categoryID &&
                                 product.default === true
                         ) || [];
@@ -103,7 +103,7 @@ class ShoppingStoreMobile extends Component {
                 case "damsuong":
                     renderProducts =
                         visibilityProducts.filter(
-                            product =>
+                            (product) =>
                                 product.catID === categoryID &&
                                 product.default === true
                         ) || [];
@@ -138,10 +138,10 @@ class ShoppingStoreMobile extends Component {
         const { collectionsInfo } = this.props;
         if (collectionsInfo.length > 0) {
             let currentCollection = collectionsInfo.filter(
-                collection => collection.id === collectionID
+                (collection) => collection.id === collectionID
             )[0];
             let productsInCollection = [];
-            visibilityProducts.forEach(product => {
+            visibilityProducts.forEach((product) => {
                 if (currentCollection.products.includes(product.productID)) {
                     productsInCollection.push(product);
                 }
@@ -154,24 +154,24 @@ class ShoppingStoreMobile extends Component {
 
     firstLoadedConfirm = () => {
         this.setState({
-            isFirstLoaded: true
+            isFirstLoaded: true,
         });
     };
 
-    categoryActiveHandling = activeID => {
+    categoryActiveHandling = (activeID) => {
         const { currentActiveCategory } = this.state;
         if (currentActiveCategory === activeID) {
             this.setState({
-                currentActiveCategory: activeID
+                currentActiveCategory: activeID,
             });
         }
     };
 
-    sideBarChange = isOpen => {
+    sideBarChange = (isOpen) => {
         if (isOpen != null) {
             this.setState({
                 isSideBarOpen: isOpen,
-                isFirstLoaded: false
+                isFirstLoaded: false,
             });
         }
     };
@@ -181,12 +181,12 @@ class ShoppingStoreMobile extends Component {
         isSearchOpen = !isSearchOpen;
         this.setState({
             isFirstLoaded: false,
-            isSearchOpen
+            isSearchOpen,
         });
     };
 
     searchFilter = (searchInput, renderProducts) => {
-        renderProducts = renderProducts.filter(product => {
+        renderProducts = renderProducts.filter((product) => {
             let name = product.name.toLowerCase();
             name = removePunctuation(name);
             name = name.replace(/ /g, "-");
@@ -196,28 +196,27 @@ class ShoppingStoreMobile extends Component {
         return renderProducts;
     };
 
-    onSearchSuggestionUpdate = searchInput => {
+    onSearchSuggestionUpdate = (searchInput) => {
         let { visibilityProducts } = this.props;
         let { suggestedSearch } = this.state;
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.filter(product => {
-            let name = product.name.toLowerCase();
-            name = removePunctuation(name);
-            searchInput = searchInput.toLowerCase();
-            searchInput = removePunctuation(searchInput);
-            return name.search(searchInput) !== -1;
+        visibilityProducts = visibilityProducts.filter((product) => {
+            if (product.default) {
+                let name = product.name.toLowerCase();
+                name = removePunctuation(name);
+                searchInput = searchInput.toLowerCase();
+                searchInput = removePunctuation(searchInput);
+                return name.search(searchInput) !== -1;
+            }
         });
         if (searchInput !== "") {
-            suggestedSearch = visibilityProducts.map(product => {
+            suggestedSearch = visibilityProducts.map((product) => {
                 return product.name;
             });
         } else {
             suggestedSearch = [];
         }
         this.setState({
-            suggestedSearch
+            suggestedSearch,
         });
     };
 
@@ -228,7 +227,7 @@ class ShoppingStoreMobile extends Component {
             currentActiveCategory,
             suggestedSearch,
             isSearchOpen,
-            bestSellerInfo
+            bestSellerInfo,
         } = this.state;
         if (isSearchOpen) {
             return (
@@ -243,7 +242,9 @@ class ShoppingStoreMobile extends Component {
         } else {
             return (
                 <React.Fragment>
-                    <Filter totalProductsOnCart={this.props.totalProductsOnCart}/>
+                    <Filter
+                        totalProductsOnCart={this.props.totalProductsOnCart}
+                    />
                     <SelectionCategory
                         history={this.props.history}
                         categoriesInfo={this.props.categoriesInfo}
@@ -267,7 +268,7 @@ class ShoppingStoreMobile extends Component {
         return (
             <div
                 className={classNames("pageShoppingStore", {
-                    pageFix: this.state.isSideBarOpen
+                    pageFix: this.state.isSideBarOpen,
                 })}
             >
                 <NavbarHeader

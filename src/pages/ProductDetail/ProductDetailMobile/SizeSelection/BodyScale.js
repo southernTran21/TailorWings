@@ -3,24 +3,14 @@ import './SizeSelection.scss';
 import NumberFormat from 'react-number-format';
 
 export default class BodyScale extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            bodyMetric: [...this.props.currentSelectedProduct.bodyMetric]
-        }
-    }
-
     onBodyScaleChange = (e) => {
-        let { bodyMetric } = this.state;
+        let { bodyMetric } = this.props;
         bodyMetric[Number(e.target.id)] = e.target.value !== '' ? Number(e.target.value) : '' ;
         this.props.onBodyMetricUpdated(bodyMetric);
-        this.setState({
-            bodyMetric,
-        })
     }
 
     render() {
-        const { bodyMetric } = this.state;
+        const { bodyMetric } = this.props;
         return (
             <div className='scaleBody d-flex flex-column justify-content-between'>
                 <div className='title__scaleBody'>

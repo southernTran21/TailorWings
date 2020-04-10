@@ -14,7 +14,7 @@ const defaultSuggestion = [
 
 export default class SearchSuggest extends Component {
     suggestionContent = () => {
-        const { suggestedSearch } = this.props;
+        const { suggestedSearch, bestSellerInfo } = this.props;
         let content = "";
         if (suggestedSearch.length > 0) {
             content = suggestedSearch.map((suggestion, index) => {
@@ -42,9 +42,9 @@ export default class SearchSuggest extends Component {
                 );
             });
         } else {
-            content = defaultSuggestion.map((suggestion, index) => {
-                let name = suggestion;
-                let url = suggestion.toLowerCase();
+            content = bestSellerInfo.map((suggestion, index) => {
+                let name = suggestion.name;
+                let url = suggestion.name.toLowerCase();
                 url = removePunctuation(url);
                 url = url.replace(/ /g, "-");
                 return (

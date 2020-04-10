@@ -11,8 +11,16 @@ import Quantity from "./Quantity";
 
 // import libs ant design
 import { Icon, Modal } from "antd";
+import ProductModal from "../ProductModal";
 
 class Confirm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isProductModalShow: false,
+        };
+    }
+
     addToCart = () => {
         const { currentSelectedProduct, currentDesignInfo } = this.props;
         let addedProduct = { ...currentSelectedProduct };
@@ -36,8 +44,14 @@ class Confirm extends Component {
                 <div>
                     <p>{this.props.currentDesignInfo.description}</p>
                 </div>
-            )
+            ),
             // onOk() { },
+        });
+    };
+
+    onProductModalStatusChanged = (isShow) => {
+        this.setState({
+            isProductModalShow: isShow,
         });
     };
 
@@ -45,18 +59,24 @@ class Confirm extends Component {
         const {
             currentDesignInfo,
             currentFabricInfo,
-            currentSelectedProduct
+            currentSelectedProduct,
         } = this.props;
+        const { isProductModalShow } = this.state;
         let priceModified =
             currentSelectedProduct.price
                 .toString()
                 .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
             " " +
             "VNĐ";
+        let modalImages = currentSelectedProduct.image.map((image) => {
+            return image;
+        });
+        modalImages.push(currentFabricInfo.image[0]);
+        console.log("modalImages :", modalImages);
         return (
             <div className="pageConfirm">
                 <Navbar
-                    onContentChange={step => this.props.onContentChange(step)}
+                    onContentChange={(step) => this.props.onContentChange(step)}
                     totalProductsOnCart={this.props.totalProductsOnCart}
                 />
                 <div className="bodyPage">
@@ -76,13 +96,16 @@ class Confirm extends Component {
                         <ShowImage
                             currentFabricInfo={currentFabricInfo}
                             currentSelectedProduct={currentSelectedProduct}
+                            onProductModalStatusChanged={
+                                this.onProductModalStatusChanged
+                            }
                         />
                     </div>
                 </div>
                 <div className="change_wraper d-flex flex-row">
                     <div className="col-6">
                         <ChangeSize
-                            onContentChange={step =>
+                            onContentChange={(step) =>
                                 this.props.onContentChange(step)
                             }
                             currentSelectedProduct={currentSelectedProduct}
@@ -93,7 +116,9 @@ class Confirm extends Component {
                             currentSelectedProduct={
                                 this.props.currentSelectedProduct
                             }
-                            onSelectedProductUpdating={currentSelectedProduct =>
+                            onSelectedProductUpdating={(
+                                currentSelectedProduct
+                            ) =>
                                 this.props.onSelectedProductUpdating(
                                     currentSelectedProduct
                                 )
@@ -112,6 +137,13 @@ class Confirm extends Component {
                         <a>Mua Hàng</a>
                     </Link>
                 </div>
+                <ProductModal
+                    modalImages={modalImages}
+                    isProductModalShow={isProductModalShow}
+                    onProductModalStatusChanged={
+                        this.onProductModalStatusChanged
+                    }
+                />
             </div>
         );
     }
@@ -121,7 +153,7 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onAddProductToCart: (product, quantity) => {
             dispatch(actions.addProductToCart(product, quantity));
-        }
+        },
     };
 };
 export default connect(null, mapDispatchToProps)(Confirm);

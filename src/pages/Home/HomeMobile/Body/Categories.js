@@ -44,7 +44,7 @@ class Categories extends Component {
                             <img src={Categorie1} />
                             <div className='contentProduct d-flex flex-column justify-content-center align-items-center'>
                                 <span>Đầm Suông</span>
-                                <span>{`+${totalDamSuong} thiết kế`}</span>
+                                <span>{`+${totalDamSuong} sản phẩm`}</span>
                             </div>
                         </div>
                     </Link>
@@ -64,7 +64,7 @@ class Categories extends Component {
                             <img src={Categorie2} />
                             <div className='contentProduct d-flex flex-column justify-content-center align-items-center'>
                                 <span>Đầm Ôm</span>
-                                <span>{`+${totalDamOm} thiết kế`}</span>
+                                <span>{`+${totalDamOm} sản phẩm`}</span>
                             </div>
                         </div>
                     </Link>
@@ -84,7 +84,7 @@ class Categories extends Component {
                             <img src={Categorie3} />
                             <div className='contentProduct d-flex flex-column justify-content-center align-items-center'>
                                 <span>Đầm Xoè</span>
-                                <span>{`+${totalDamXoe} thiết kế`}</span>
+                                <span>{`+${totalDamXoe} sản phẩm`}</span>
                             </div>
                         </div>
                     </Link>

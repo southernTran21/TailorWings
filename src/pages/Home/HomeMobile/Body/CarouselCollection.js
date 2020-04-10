@@ -12,7 +12,7 @@ export default class CarouselCollection extends Component {
         const params = {
             slidesPerView: "auto",
             spaceBetween: 20,
-            loop: true
+            loop: true,
         };
         if (collectionsInfo == null) {
             collectionsInfo = [];
@@ -24,18 +24,29 @@ export default class CarouselCollection extends Component {
                         <div key={index} className="content-carousel">
                             <div className="title">{collection.name}</div>
                             <div className="image">
-                                <div className="popupImage">{`${collection.products.length} thiết kế`}</div>
-                                <img src={BST1} />
+                                <Link
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                    }}
+                                    to={{
+                                        pathname: "/shopping-store",
+                                        search: `?cat=${collection.id}&search=`,
+                                    }}
+                                >
+                                    <div className="popupImage">{`${collection.products.length} thiết kế`}</div>
+                                    <img src={BST1} />
+                                </Link>
                             </div>
                             <div className="end-carousel">
                                 <Link
                                     style={{
                                         width: "100%",
-                                        height: "100%"
+                                        height: "100%",
                                     }}
                                     to={{
                                         pathname: "/shopping-store",
-                                        search: `?cat=${collection.id}&search=`
+                                        search: `?cat=${collection.id}&search=`,
                                     }}
                                 >
                                     <div className="button d-flex align-items-center justify-content-center">

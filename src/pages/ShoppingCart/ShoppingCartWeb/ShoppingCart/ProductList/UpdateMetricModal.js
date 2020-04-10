@@ -3,7 +3,6 @@ import { Modal, Button } from "antd";
 import classNames from "classnames";
 import NumberFormat from "react-number-format";
 
-// const SIZE = ["XS", "S", "M", "L", "XL", "XXL"];
 const SIZE = [
     {
         id: "XS",
@@ -48,7 +47,9 @@ export default class UpdateMetricModal extends Component {
         const { product } = this.props;
         let { currentMetric, currentSize, activeStatus } = this.state;
         if (product != null) {
-            let currentSizeIndex = SIZE.indexOf(product.size);
+            let currentSizeIndex = SIZE.findIndex(
+                (size) => size.id === product.size
+            );
             activeStatus[currentSizeIndex] = true;
             currentMetric = product.bodyMetric;
             currentSize = product.size;
@@ -108,7 +109,7 @@ export default class UpdateMetricModal extends Component {
         let { currentMetric } = this.state;
         if (index != null && index > -1) {
             this.props.onModalUpdate();
-            currentMetric = SIZE[index].bodyMetric;
+            currentMetric = [...SIZE[index].bodyMetric];
             this.setState({
                 currentSize: size,
                 currentMetric

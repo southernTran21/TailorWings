@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Icon, Badge } from "antd";
 import classNames from "classnames";
 //
-import ProductModal from "./ProductModal";
+import ProductModal from "../ProductModal";
 import FabricSwiper from "./FabricSwiper";
 import ProductSwiper from "./ProductSwiper";
 
@@ -430,8 +430,7 @@ class FabricSelection extends Component {
                     </div>
                 </div>
                 <ProductModal
-                    renderProducts={renderProducts}
-                    productSliderIndex={productSliderIndex}
+                    modalImages={renderProducts[productSliderIndex].image}
                     isProductModalShow={isProductModalShow}
                     onProductModalStatusChanged={(isShow) =>
                         this.onProductModalStatusChanged(isShow)

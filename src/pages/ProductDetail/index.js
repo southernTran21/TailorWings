@@ -83,7 +83,6 @@ export default class ProductDetail extends Component {
                                 visibilityProducts={this.props.visibilityProducts}
                                 designsInfo={this.props.designsInfo}
                                 fabricsInfo={this.props.fabricsInfo}
-                                // scrollToTop={this._scrollToTop}
                                 localStorageUpdatedHandling={this.props.localStorageUpdatedHandling}
                             />
                         )

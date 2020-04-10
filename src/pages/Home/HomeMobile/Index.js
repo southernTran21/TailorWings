@@ -15,14 +15,14 @@ export default class HomeMobile extends Component {
             isSideBarOpen: false,
             isSearchOpen: false,
             suggestedSearch: [],
-            bestSellerInfo: []
+            bestSellerInfo: [],
         };
     }
 
     componentDidMount() {
         const { bestSellerList, visibilityProducts } = this.props;
         let { bestSellerInfo } = this.state;
-        visibilityProducts.forEach(product => {
+        visibilityProducts.forEach((product) => {
             if (
                 bestSellerList.includes(product.designID) &&
                 product.default === true
@@ -30,14 +30,14 @@ export default class HomeMobile extends Component {
                 bestSellerInfo.push(product);
             }
         });
-        bestSellerInfo.forEach(info => {
+        bestSellerInfo.forEach((info) => {
             let totalSupportedFabric = visibilityProducts.filter(
-                product => product.designID === info.designID
+                (product) => product.designID === info.designID
             ).length;
             info.totalSupportedFabric = totalSupportedFabric;
         });
         this.setState({
-            bestSellerInfo
+            bestSellerInfo,
         });
     }
 
@@ -45,40 +45,39 @@ export default class HomeMobile extends Component {
         let { isSearchOpen } = this.state;
         isSearchOpen = !isSearchOpen;
         this.setState({
-            isSearchOpen
+            isSearchOpen,
         });
     };
 
-    sideBarChange = isOpen => {
+    sideBarChange = (isOpen) => {
         if (isOpen != null) {
             this.setState({
-                isSideBarOpen: isOpen
+                isSideBarOpen: isOpen,
             });
         }
     };
 
-    onSearchSuggestionUpdate = searchInput => {
+    onSearchSuggestionUpdate = (searchInput) => {
         let { visibilityProducts } = this.props;
         let { suggestedSearch } = this.state;
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.concat(visibilityProducts);
-        visibilityProducts = visibilityProducts.filter(product => {
-            let name = product.name.toLowerCase();
-            name = removePunctuation(name);
-            searchInput = searchInput.toLowerCase();
-            searchInput = removePunctuation(searchInput);
-            return name.search(searchInput) !== -1;
+        visibilityProducts = visibilityProducts.filter((product) => {
+            if (product.default) {
+                let name = product.name.toLowerCase();
+                name = removePunctuation(name);
+                searchInput = searchInput.toLowerCase();
+                searchInput = removePunctuation(searchInput);
+                return name.search(searchInput) !== -1;
+            }
         });
         if (searchInput !== "") {
-            suggestedSearch = visibilityProducts.map(product => {
+            suggestedSearch = visibilityProducts.map((product) => {
                 return product.name;
             });
         } else {
             suggestedSearch = [];
         }
         this.setState({
-            suggestedSearch
+            suggestedSearch,
         });
     };
 
@@ -113,7 +112,7 @@ export default class HomeMobile extends Component {
         return (
             <div
                 className={classNames("pageHomeMobile", {
-                    pageFix: this.state.isSideBarOpen
+                    pageFix: this.state.isSideBarOpen,
                 })}
             >
                 <NavbarHeader
