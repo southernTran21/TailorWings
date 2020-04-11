@@ -411,7 +411,7 @@ class ShoppingCartMobile extends Component {
         let currentStepRender = "";
         switch (paymentStep) {
             case "shoppingCart":
-                currentStepRender = this.shoppingCartBodyRender();
+                currentStepRender = <div className='productList_wrapper'>{this.shoppingCartBodyRender()}</div>;
                 break;
             case "customerInfo":
                 currentStepRender = this.customerInfoBodyRender();

@@ -16,13 +16,13 @@ export default class FooterPage extends Component {
         super(props);
         this.state = {
             email: "",
-            isEmailError: false
+            isEmailError: false,
         };
     }
 
-    onEmailChange = e => {
+    onEmailChange = (e) => {
         this.setState({
-            email: e.target.value
+            email: e.target.value,
         });
     };
 
@@ -33,23 +33,23 @@ export default class FooterPage extends Component {
             isEmailError = !validateEmail(email);
             if (!isEmailError) {
                 setDocument("preferentialEmails", { email: email }, email).then(
-                    function() {
+                    function () {
                         message.success("Hoàn thành đăng ký nhận ưu đãi!");
                         console.log("isEmailError", isEmailError);
                         currentComponent.setState({
                             isEmailError,
-                            email: ""
+                            email: "",
                         });
                     }
                 );
             } else {
                 this.setState({
-                    isEmailError
+                    isEmailError,
                 });
             }
         } else {
             this.setState({
-                isEmailError: true
+                isEmailError: true,
             });
         }
     };
@@ -75,7 +75,7 @@ export default class FooterPage extends Component {
                 </div>
                 <smal
                     className={classNames("emailError_unvisible", {
-                        emailError: this.state.isEmailError
+                        emailError: this.state.isEmailError,
                     })}
                 >
                     Lỗi: Email sai vui lòng nhập lại!
@@ -122,8 +122,8 @@ export default class FooterPage extends Component {
                 <div className="titleEndFooter  d-flex flex-column align-items-center">
                     <span>© 2020 Tailor Wings</span>
                     <span>
-                        Công ty TNHH Tailor Wings với số đăng ký kinh doanh:
-                        0105777650
+                        Công ty TNHH Thương Mại Kết Nối Á Âu / Số đăng ký kinh
+                        doanh : 0313114301
                     </span>
                 </div>
             </div>

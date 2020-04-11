@@ -1,8 +1,9 @@
 .bodyPageCustomerInfo {
     font-family: "Montserrat", sans-serif;
+    margin-bottom: 10vh;
     .inputInfo {
         padding: 0 8.8vw;
-        padding-top: 4.49vh;
+        padding-top: 2.49vh;
         .input {
             margin-bottom: 25px;
             span {
@@ -47,7 +48,7 @@
 .bodyPagePaymentConfirm {
     font-family: "Montserrat", sans-serif;
     padding: 0 8.8vw;
-    padding-top: 4.49vh;
+    padding-top: 2.49vh;
     .address {
         .titleHead {
             :nth-child(1) {
@@ -123,8 +124,8 @@
             .infoProduct {
                 padding: 15px 0;
                 .image {
-                    width: 59px;
-                    height: 59px;
+                    width: 15.73vw;
+                    height: 8.84vh;
                     background: #ffa45c;
                     img {
                         width: 100%;

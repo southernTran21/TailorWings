@@ -1,15 +1,15 @@
 .footerPageConfirmInfo {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 5.39vh;
+    margin-bottom: 2vh;
     font-family: "Montserrat", sans-serif;
     button {
-        padding: 10px 32px;
-        height: 45px;
+        padding: 0 32px;
+        height: 6.74vh;
         background: #ff6d3b;
         border-radius: 5px;
         border: none;
@@ -24,7 +24,7 @@
 }
 .footerPageConfirmPayment{
     margin-top: 10px;
-    margin-bottom: 46px;
+    margin-bottom: 2vh;
     display: flex;
     flex-direction: row;
     justify-content: center;

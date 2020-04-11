@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Image from "../../../../assets/imageHomePage/HM Studio 2020.png";
+import imagePassion from '../../../../assets/imageHomePage/imagePassion.svg';
 
 class Passion extends Component {
     render() {
@@ -15,7 +15,7 @@ class Passion extends Component {
                     </span>
                 </div>
                 <div className="video">
-                    <img src={Image} />
+                    <img src={imagePassion} />
                 </div>
                 <hr />
             </div>
