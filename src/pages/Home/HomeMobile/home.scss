@@ -578,11 +578,11 @@
                 box-shadow: none;
                 color: white;
                 padding-left: 3px;
-                font-size: 12px; //fix 12px since IOS zoom bug
+                font-size: 16px; //fix 16px since IOS zoom bug
             }
             ::placeholder {
                 color: white;
-                font-size: 12px; //fix 12px since IOS zoom bug
+                font-size: 12px !important; //fix 16px since IOS zoom bug
             }
             border-bottom: 1px solid white;
             width: 86.13vw;

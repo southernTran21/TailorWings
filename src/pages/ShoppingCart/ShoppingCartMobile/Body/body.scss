@@ -23,7 +23,7 @@
                 padding-left: 19px;
             }
             ::placeholder {
-                font-size: 12px;
+                font-size: 13px;
                 color: rgba(4, 21, 121, 0.6);
             }
             .error {
@@ -237,14 +237,5 @@
                 margin-top: -2px;
             }
         }
-    }
-}
-
-.ant-modal-content {
-    input {
-        font-size: 12px !important; //fix 12px since IOS zoom bug
-    }
-    ::placeholder {
-        font-size: 12px !important; //fix 12px since IOS zoom bug
     }
 }
