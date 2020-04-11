@@ -101,8 +101,8 @@ class FabricSelection extends Component {
             indexOfNextProduct = productList.indexOf(
                 renderProducts[productSliderIndex]
             );
-            console.log("indexOfNextProduct :", indexOfNextProduct);
-            swiper.slideTo(indexOfNextProduct);
+            swiper.updateActiveIndex(indexOfNextProduct);
+            swiper.slideTo(swiper.activeIndex + 5);
         } else {
             if (productSliderIndex === 0) {
                 if (renderProducts[0] === productList[0]) {
@@ -132,7 +132,8 @@ class FabricSelection extends Component {
             indexOfNextProduct = productList.indexOf(
                 renderProducts[productSliderIndex]
             );
-            swiper.slideTo(indexOfNextProduct);
+            swiper.updateActiveIndex(indexOfNextProduct);
+            swiper.slideTo(swiper.activeIndex + 5);
         }
         productSelectedState[productSliderIndex] = true;
         this.setState({
@@ -278,44 +279,25 @@ class FabricSelection extends Component {
         });
     };
 
-    onSwiperTouchStart = () => {
-        // this.setState({
-        //     isSwiperTouch: true,
-        // });
+    onFabricClicked = (e) => {
+        const { swiper } = this.state;
+        const { productList } = this.props;
+        let index = swiper.realIndex;
+        let { renderProducts, productSelectedState } = this.state;
+        let productListDouble = productList.concat(productList);
+        for (let i = 0; i < productSelectedState.length; i++) {
+            renderProducts[i] = productListDouble[index + i];
+            productSelectedState[i] = false;
+        }
+        productSelectedState[0] = true;
+        this.setState({
+            currentProductIndex: index,
+            productSelectedState,
+            renderProducts,
+            productSliderIndex: 0,
+            price: renderProducts[0].price,
+        });
     };
-
-    onSwiperTouchEnd = () => {
-        // this.setState({
-        //     currentProductIndex: this.state.swiper.activeIndex
-        // })
-    };
-
-    // onSwiperSlideChange = () => {
-    //     const { productList } = this.props;
-    //     let {
-    //         swiper,
-    //         renderProducts,
-    //         productSelectedState,
-    //         isSwiperTouch,
-    //     } = this.state;
-    //     if (isSwiperTouch) {
-    //         let productListDouble = productList.concat(productList);
-    //         for (let i = 0; i < productSelectedState.length; i++) {
-    //             renderProducts[i] = productListDouble[swiper.activeIndex + i];
-    //             productSelectedState[i] = false;
-    //         }
-    //         productSelectedState[0] = true;
-    //         swiper.slideTo(swiper.activeIndex);
-    //         console.log("swiper.activeIndex", swiper.activeIndex);
-    //         this.setState({
-    //             currentProductIndex: swiper.activeIndex,
-    //             productSelectedState,
-    //             renderProducts,
-    //             productSliderIndex: 0,
-    //             price: renderProducts[0].price,
-    //         });
-    //     }
-    // };
 
     onFinishButtonClicked = () => {
         const { productSliderIndex, renderProducts } = this.state;
@@ -352,7 +334,6 @@ class FabricSelection extends Component {
             price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
             " " +
             "VNĐ";
-        console.log("this.state.swiper :", this.state.swiper);
         return (
             <div
                 className={classNames(
@@ -404,9 +385,9 @@ class FabricSelection extends Component {
                         <FabricSwiper
                             fabricList={fabricList}
                             productSelectedState={productSelectedState}
+                            currentProductIndex={currentProductIndex}
                             getSwiper={this.getSwiper}
-                            onSwiperTouchStart={this.onSwiperTouchStart}
-                            onSwiperSlideChange={this.onSwiperSlideChange}
+                            onFabricClicked={this.onFabricClicked}
                         />
                     </div>
                     <div className="d-flex align-items-center justify-content-center flex-column">
