@@ -9,11 +9,11 @@ export default class NavBar extends Component {
         const { totalProductsOnCart } = this.props;
         return (
             <div className="navbarHeader d-flex flex-row align-items-center justify-content-between">
-                <div
-                    className="iconBack"
-                    onClick={() => this.props.onContentChange("size")}
-                >
-                    <a>
+                <div className="iconBack_wrapper">
+                    <div
+                        className="iconBack"
+                        onClick={() => this.props.onContentChange("size")}
+                    >
                         <svg
                             width="11"
                             height="18"
@@ -26,7 +26,7 @@ export default class NavBar extends Component {
                                 fill="#FF6D3B"
                             />
                         </svg>
-                    </a>
+                    </div>
                 </div>
                 <div className="titleHeader d-flex justify-content-center">
                     Xác nhận

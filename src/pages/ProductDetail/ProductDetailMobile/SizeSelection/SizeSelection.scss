@@ -12,8 +12,16 @@
         padding: 0 6.66vw;
         font-size: 18px;
         font-weight: bold;
-        .iconBack {
+        .iconBack_wrapper {
             width: 20vw;
+            height: 100%;
+            .iconBack{
+                height: 100%;
+                width: 10vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
         }
         .iconShoppingCart {
             display: flex;
@@ -146,11 +154,30 @@
         }
     }
 }
-
 .ant-modal-confirm-body-wrapper {
     width: 100% !important;
-    padding: 0px 20px !important;
+    // padding: 0px 20px !important;
+    font-family: "Montserrat", sans-serif !important;
+    color: #111e6c !important;
+}
+.ant-modal-confirm-title{
+    font-weight: bold !important;
+    color: #111e6c !important;
+}
+.ant-modal-confirm-content{
+    color: #111e6c !important;
 }
 .ant-modal-confirm-content {
     margin-left: 0px !important;
 }
+.ant-modal-confirm-info .ant-modal-confirm-body > .anticon{
+    color: #ff6d3b !important;
+}
+.ant-btn-primary{
+    background-color: #ff6d3b !important;
+    border: none !important;
+}
+.ant-modal-content .ant-btn:focus{
+    background-color: #ff6d3b !important;
+}
+// .ant-btn:focus

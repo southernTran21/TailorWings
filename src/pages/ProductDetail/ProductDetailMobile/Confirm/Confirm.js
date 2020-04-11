@@ -85,8 +85,8 @@ class Confirm extends Component {
                             <div className="nameProduct d-flex flex-column align-items-center justify-content-center">
                                 <span>{currentDesignInfo.name}</span>
                                 <span>{priceModified}</span>
-                                <div className="info d-flex flex-row align-items-center justify-content-center">
-                                    <span onClick={this.onDescriptionClicked}>
+                                <div className="info d-flex flex-row align-items-center justify-content-center" onClick={this.onDescriptionClicked}>
+                                    <span>
                                         Mô tả thiết kế & vải
                                     </span>
                                     <Icon type="info-circle" />
