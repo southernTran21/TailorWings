@@ -134,7 +134,7 @@ class Confirm extends Component {
                         }}
                         className="buttonApcept d-flex flex-row align-items-center justify-content-center"
                     >
-                        <a>Mua Hàng</a>
+                        <a>MUA HÀNG</a>
                     </Link>
                 </div>
                 <ProductModal

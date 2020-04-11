@@ -132,7 +132,7 @@ export default class SizeSelection extends Component {
                         className="buttonApcept d-flex flex-row align-items-center justify-content-center"
                         onClick={this.onConfirmButtonClicked}
                     >
-                        <a>Xác nhận </a>
+                        <a>XÁC NHẬN</a>
                     </div>
                 </div>
             </div>
