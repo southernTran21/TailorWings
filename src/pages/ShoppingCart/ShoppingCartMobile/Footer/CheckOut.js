@@ -25,7 +25,7 @@ export default class CheckOut extends Component {
                     className="button d-flex flex-row align-items-center justify-content-center"
                     onClick={() => this.goToNextStep()}
                 >
-                    <span className="font-weight-bold">Thanh toán</span>
+                    <span className="font-weight-bold">THANH TOÁN</span>
                 </div>
             </div>
         );
