@@ -101,6 +101,7 @@ class FabricSelection extends Component {
             indexOfNextProduct = productList.indexOf(
                 renderProducts[productSliderIndex]
             );
+            console.log('indexOfNextProduct :', indexOfNextProduct);
             swiper.slideTo(indexOfNextProduct);
         } else {
             if (productSliderIndex === 0) {
@@ -278,9 +279,9 @@ class FabricSelection extends Component {
     };
 
     onSwiperTouchStart = () => {
-        this.setState({
-            isSwiperTouch: true,
-        });
+        // this.setState({
+        //     isSwiperTouch: true,
+        // });
     };
 
     onSwiperTouchEnd = () => {
@@ -289,32 +290,32 @@ class FabricSelection extends Component {
         // })
     };
 
-    onSwiperSlideChange = () => {
-        const { productList } = this.props;
-        let {
-            swiper,
-            renderProducts,
-            productSelectedState,
-            isSwiperTouch,
-        } = this.state;
-        if (isSwiperTouch) {
-            let productListDouble = productList.concat(productList);
-            for (let i = 0; i < productSelectedState.length; i++) {
-                renderProducts[i] = productListDouble[swiper.activeIndex + i];
-                productSelectedState[i] = false;
-            }
-            productSelectedState[0] = true;
-            swiper.slideTo(swiper.activeIndex);
-            console.log("swiper.activeIndex", swiper.activeIndex);
-            this.setState({
-                currentProductIndex: swiper.activeIndex,
-                productSelectedState,
-                renderProducts,
-                productSliderIndex: 0,
-                price: renderProducts[0].price,
-            });
-        }
-    };
+    // onSwiperSlideChange = () => {
+    //     const { productList } = this.props;
+    //     let {
+    //         swiper,
+    //         renderProducts,
+    //         productSelectedState,
+    //         isSwiperTouch,
+    //     } = this.state;
+    //     if (isSwiperTouch) {
+    //         let productListDouble = productList.concat(productList);
+    //         for (let i = 0; i < productSelectedState.length; i++) {
+    //             renderProducts[i] = productListDouble[swiper.activeIndex + i];
+    //             productSelectedState[i] = false;
+    //         }
+    //         productSelectedState[0] = true;
+    //         swiper.slideTo(swiper.activeIndex);
+    //         console.log("swiper.activeIndex", swiper.activeIndex);
+    //         this.setState({
+    //             currentProductIndex: swiper.activeIndex,
+    //             productSelectedState,
+    //             renderProducts,
+    //             productSliderIndex: 0,
+    //             price: renderProducts[0].price,
+    //         });
+    //     }
+    // };
 
     onFinishButtonClicked = () => {
         const { productSliderIndex, renderProducts } = this.state;

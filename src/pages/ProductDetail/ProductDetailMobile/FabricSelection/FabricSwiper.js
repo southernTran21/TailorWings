@@ -12,14 +12,14 @@ class FabricSwiper extends Component {
         const params = {
             slidesPerView: renderedSlideNumber,
             spaceBetween: 0,
-            loop: false,
+            loop: true,
             slideToClickedSlide: true,
             on: {
                 //ref: https://swiperjs.com/api/#events
-                touchStart: () => this.props.onSwiperTouchStart(),
-                slideChangeTransitionEnd: () =>
-                    this.props.onSwiperSlideChange(),
-                click: () => this.props.onSwiperSlideChange()
+                // touchStart: () => this.props.onSwiperTouchStart(),
+                // slideChangeTransitionEnd: () =>
+                    // this.props.onSwiperSlideChange(),
+                // click: () => this.props.onSwiperSlideChange()
             }
         };
         return (
