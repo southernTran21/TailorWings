@@ -111,9 +111,7 @@ export default class UpdateMetricModal extends Component {
         let { currentMetric } = this.state;
         if (index != null && index > -1) {
             this.props.onModalUpdate();
-            console.log('SIZE[index].bodyMetric :', SIZE[index].bodyMetric);
             currentMetric = [...SIZE[index].bodyMetric];
-            console.log('currentMetric :', currentMetric);
             this.setState({
                 currentSize: size,
                 currentMetric

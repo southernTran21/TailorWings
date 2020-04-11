@@ -127,10 +127,12 @@
                         border-radius: 0;
                         border-left: 1.2px solid #ffa45c;
                         padding: 2px 11px !important;
-                        font-size: 3.73vw !important;
+                        // font-size: 3.73vw;
+                        font-size: 12px !important;
                         box-shadow: none;
                     }
                     ::placeholder {
+                        font-size: 12px !important;
                         color: #ffa45c !important;
                     }
                     .inputBodyScale {

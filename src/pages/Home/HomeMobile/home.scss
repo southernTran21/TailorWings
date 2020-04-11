@@ -525,7 +525,8 @@
                         justify-content: center;
                     }
                 }
-                a:active, a:focus {
+                a:active,
+                a:focus {
                     text-decoration: none;
                 }
             }
@@ -577,11 +578,11 @@
                 box-shadow: none;
                 color: white;
                 padding-left: 3px;
-                font-size: 14px;
+                font-size: 12px; //fix 12px since IOS zoom bug
             }
             ::placeholder {
                 color: white;
-                font-size: 14px;
+                font-size: 12px; //fix 12px since IOS zoom bug
             }
             border-bottom: 1px solid white;
             width: 86.13vw;

@@ -239,3 +239,12 @@
         }
     }
 }
+
+.ant-modal-content {
+    input {
+        font-size: 12px !important; //fix 12px since IOS zoom bug
+    }
+    ::placeholder {
+        font-size: 12px !important; //fix 12px since IOS zoom bug
+    }
+}
