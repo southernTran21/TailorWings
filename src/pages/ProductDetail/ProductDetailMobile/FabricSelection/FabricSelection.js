@@ -101,7 +101,7 @@ class FabricSelection extends Component {
             indexOfNextProduct = productList.indexOf(
                 renderProducts[productSliderIndex]
             );
-            console.log('indexOfNextProduct :', indexOfNextProduct);
+            console.log("indexOfNextProduct :", indexOfNextProduct);
             swiper.slideTo(indexOfNextProduct);
         } else {
             if (productSliderIndex === 0) {
@@ -352,6 +352,7 @@ class FabricSelection extends Component {
             price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
             " " +
             "VNĐ";
+        console.log("this.state.swiper :", this.state.swiper);
         return (
             <div
                 className={classNames(
@@ -360,10 +361,11 @@ class FabricSelection extends Component {
                 )}
             >
                 <div className="navbarHeader d-flex flex-row align-items-center justify-content-between">
-                    <div
-                        className="iconBack_wrapper"
-                    >
-                        <div className='iconBack' onClick={() => window.history.back()}>
+                    <div className="iconBack_wrapper">
+                        <div
+                            className="iconBack"
+                            onClick={() => window.history.back()}
+                        >
                             <svg
                                 width="11"
                                 height="18"
