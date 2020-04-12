@@ -337,7 +337,7 @@
         }
         .listProduct {
             margin: 0;
-            margin-top: 10.49vh;
+            margin-top: 5.49vh;
             .title__listProduct {
                 font-size: 6.4vw;
                 font-weight: bold;
@@ -443,7 +443,6 @@
             }
         }
         .weYour-wraper {
-            height: 335px;
             .title__weyour {
                 .title1 {
                     font-size: 6.4vw;
@@ -458,8 +457,7 @@
                 }
             }
             .image-wraper {
-                height: 220px;
-                background-color: #7fc4fd;
+                margin-top: 2.99vh;
                 img {
                     width: 100%;
                     height: 100%;
@@ -469,11 +467,11 @@
             }
         }
         .weGive-wraper {
-            margin-top: 20px;
+            margin-top: 7.49vh;
             .title {
                 margin: 0 28px;
                 :nth-child(1) {
-                    font-size: 6.4vw;
+                    font-size: 6.34vw;
                     font-weight: bold;
                     width: 100%;
                     display: flex;
@@ -489,16 +487,12 @@
             }
             .fourBenefit-wraper {
                 margin: 0 7vw;
-                margin-top: 5.24vh;
+                margin: 3.49vh 0;
                 .svgWeGive {
                     width: 77.86vw;
-                    height: 54.27vh;
-                    svg{
-                    }
                 }
             }
             .buttonConect {
-                margin-top: 4.19vh;
                 a {
                     width: fit-content;
                     height: fit-content;
@@ -602,7 +596,7 @@
         .infomation {
             font-size: 3.2vw;
             font-weight: bold;
-            width: 325px;
+            width: 86vw;
             margin-top: 56px;
             span {
                 border-bottom: 1px solid white;
@@ -615,7 +609,7 @@
             }
         }
         .iconSocialNetwork {
-            width: 200px;
+            width: 50.66vw;
             margin-top: 51px;
             a {
                 width: fit-content;
@@ -646,7 +640,7 @@
                 font-size: 3.73vw;
             }
             :nth-child(2) {
-                font-size: 2.4vw;
+                font-size: 2.2vw;
             }
             span {
                 color: #fff4e3 !important;

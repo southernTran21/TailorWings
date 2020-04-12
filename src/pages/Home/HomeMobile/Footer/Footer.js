@@ -84,7 +84,7 @@ export default class FooterPage extends Component {
                     <div className="d-flex justify-content-between">
                         <a href='https://www.facebook.com/TailorWings' target='_blank'>VỀ TAILOR WINGS</a>
                         <Link to="/support">
-                            <span>CHÍNH SÁCH HỖ TRỢ</span>
+                            <span>TRỢ GIÚP</span>
                         </Link>
                     </div>
                     <br></br>
