@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Image from "../../../../assets/imageHomePage/Dottie.jpg";
+import Image from "../../../../assets/imageHomePage/imageWeYour.png";
 
 class AboutTailorWings extends Component {
     render() {

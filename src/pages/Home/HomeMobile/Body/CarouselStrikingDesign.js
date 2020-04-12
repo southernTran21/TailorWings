@@ -43,8 +43,7 @@ export default class CarouselStrikingDesign extends Component {
                                     }}
                                 >
                                 <div className="putButton d-flex flex-row justify-content-center align-items-center">
-                                    <span>Đặt may</span>
-                                    <Icon type="right" />
+                                    <span>CHỌN VẢI</span>
                                 </div>
                                 </Link>
                             </div>

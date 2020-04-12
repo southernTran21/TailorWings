@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactPixel from 'react-facebook-pixel';
 
 // import image Home Page
-import Image1 from '../../../../assets/imageHomePage/hero img.jpg';
+import Image1 from '../../../../assets/imageHomePage/bannerHomePageMobile.png';
 
 class BodyHeader extends Component {
     updatePixel = () => {
@@ -27,10 +27,6 @@ class BodyHeader extends Component {
                 >
                     <button
                         className='buttonHeder'
-                        style={{
-                            position: 'absolute',
-                            bottom: '14.99vw',
-                        }}
                     >
                         TRẢI NGHIỆM NGAY
                     </button>
