@@ -21,8 +21,7 @@ export default class SelectionCategory extends Component {
             <Swiper {...params}>
                 <Link
                     style={{
-                        height: 'fit-content',
-                        width: 'fit-content',
+                        width: 'auto',
                         border: 'none',
                         textDecoration: 'none',
                     }}

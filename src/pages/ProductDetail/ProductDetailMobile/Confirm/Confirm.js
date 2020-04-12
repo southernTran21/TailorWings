@@ -133,6 +133,7 @@ class Confirm extends Component {
                             this.addToCart();
                         }}
                         className="buttonApcept d-flex flex-row align-items-center justify-content-center"
+                        style={{textDecoration: 'none',}}
                     >
                         <a>MUA HÀNG</a>
                     </Link>
