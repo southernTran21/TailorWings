@@ -36,7 +36,7 @@ export default class ProductModal extends Component {
                 <Slider {...settings}>
                     {modalImages.map((image, index) => {
                         return (
-                            <div className="image-wrapper">
+                            <div key={index} className="image-wrapper">
                                 <img
                                     key={index}
                                     className="modal-content"
