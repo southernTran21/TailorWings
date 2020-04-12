@@ -159,12 +159,17 @@
     }
     .bodyPage {
         color: #111e6c !important;
+        margin-top: 9.74vh;
         .header__bodyPage {
+            background-color: #fff4e3;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
             img {
                 width: 100vw;
                 border-radius: 0;
-                height: 100vh;
-                object-fit: cover;
+                height: 90.5vh;
+                object-fit: fill;
             }
             .textHeader {
                 position: absolute;
@@ -172,7 +177,8 @@
                 width: 100vw;
                 justify-content: center;
                 align-items: center;
-                bottom: 30.99vw;
+                // bottom: 30.99vw;
+                top: 14.77vh;
                 color: #111e6c;
                 font-size: 5.33vw;
                 font-weight: bold;
@@ -190,6 +196,8 @@
                 border-radius: 10px;
                 width: 50.4vw;
                 height: 5.99vh;
+                position: absolute;
+                top: 21vh;
             }
         }
         .content__bodyPage {
@@ -330,10 +338,10 @@
         .listProduct {
             margin: 0;
             margin-top: 10.49vh;
-            margin-bottom: 10px;
             .title__listProduct {
                 font-size: 6.4vw;
                 font-weight: bold;
+                margin-bottom: 2.22vh;
             }
             .categoryProduct {
                 .image {
@@ -365,12 +373,13 @@
             }
             hr {
                 border-top: 1px solid #ff6d3b;
-                margin: 0 25px;
-                margin-top: 20px;
+                margin: 0 6.66vw;
+                margin-top: 8.69vh;
+                margin-bottom: 7.49vh;
             }
         }
         .collection-wraper {
-            padding: 0 25px;
+            padding: 0 6.66vw;
             hr {
                 border-top: 1px solid #ff6d3b;
                 margin: 0;
@@ -398,19 +407,19 @@
                         font-weight: 500;
                     }
                     .image {
-                        width: 250px;
-                        height: 360px;
-                        border-radius: 7px;
+                        width: 66.66vw;
+                        height: 53.97vh;
                         img {
                             width: 100%;
                             height: 100%;
                             object-fit: cover;
+                            border-radius: 7px;
                         }
                         .popupImage {
                             position: absolute;
                             background: #fff4e3;
                             color: #ff6d3b;
-                            font-size: 12px;
+                            font-size: 3.2vw;
                             padding: 3px 10px;
                             border-radius: 7px;
                             margin-left: 14px;
@@ -480,34 +489,16 @@
             }
             .fourBenefit-wraper {
                 margin: 0 7vw;
-                margin-top: 10px;
-                .twoBenefit {
-                    margin: 10px 0;
-                    .image {
-                        width: 29.86vw;
-                        height: 16.79vh;
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: fill;
-                        }
-                    }
-                    .col-6 {
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .titleBenefit {
-                        :nth-child(1) {
-                            font-weight: bold;
-                            font-size: 4.26vw;
-                            padding: 0 5.86vw;
-                            text-align: center;
-                        }
+                margin-top: 5.24vh;
+                .svgWeGive {
+                    width: 77.86vw;
+                    height: 54.27vh;
+                    svg{
                     }
                 }
             }
             .buttonConect {
-                margin-top: 7px;
+                margin-top: 4.19vh;
                 a {
                     width: fit-content;
                     height: fit-content;
@@ -539,7 +530,7 @@
                     margin-top: 30px;
                 }
                 :nth-child(2) {
-                    margin: 0 28px;
+                    margin: 0 1.33vw;
                     text-align: center;
                     font-size: 3.73vw;
                     margin-top: 9px;

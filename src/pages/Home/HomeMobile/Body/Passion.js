@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import imagePassion from '../../../../assets/imageHomePage/imagePassion.svg';
+import imagePassion from "../../../../assets/imageHomePage/imagePassion.svg";
 
 class Passion extends Component {
     render() {
@@ -10,8 +10,9 @@ class Passion extends Component {
                     <span>Passion Led Us Here</span>
                     <span>
                         Quần áo bạn mặc là do bàn tay của người thợ may tạo ra.
-                        Hãy cùng Tailor Wings chắp cho những đôi cánh chưa từng
-                        được bay lên - những người thợ may tận tụy.
+                        Tailor Wings mong muốn đem giá trị về đúng người đã tạo
+                        ra nó. Hãy cùng Tailor Wings chắp cho những đôi cánh
+                        chưa từng được bay lên - những người thợ may tận tụy.
                     </span>
                 </div>
                 <div className="video">

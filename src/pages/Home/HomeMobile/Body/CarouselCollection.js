@@ -51,7 +51,7 @@ export default class CarouselCollection extends Component {
                                 >
                                     <div className="button d-flex align-items-center justify-content-center">
                                         <span className="titleButton">
-                                            Chọn mẫu
+                                            CHỌN MẪU
                                         </span>
                                     </div>
                                 </Link>
