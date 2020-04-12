@@ -22,7 +22,7 @@ export default class ProductModal extends Component {
             >
                 <div
                     className="d-flex flex-column justify-content-center align-items-end"
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100vw", height: "20vh" }}
                 >
                     <span
                         className="closeModal"
@@ -36,16 +36,18 @@ export default class ProductModal extends Component {
                 <Slider {...settings}>
                     {modalImages.map((image, index) => {
                         return (
-                            <img
-                                key={index}
-                                className="modal-content"
-                                id="img01"
-                                src={image}
-                            />
+                            <div className="image-wrapper">
+                                <img
+                                    key={index}
+                                    className="modal-content"
+                                    id="img01"
+                                    src={image}
+                                />
+                            </div>
                         );
                     })}
                 </Slider>
-                <div id="caption" style={{ width: "100%", height: "100%" }} />
+                <div id="caption" style={{ width: "100vw", height: "20vh" }} />
             </div>
         );
     }

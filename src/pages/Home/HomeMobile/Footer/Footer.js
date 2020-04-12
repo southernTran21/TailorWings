@@ -82,7 +82,7 @@ export default class FooterPage extends Component {
                 </smal>
                 <div className="infomation d-flex flex-column">
                     <div className="d-flex justify-content-between">
-                        <span>VỀ TAILOR WINGS</span>
+                        <a href='https://www.facebook.com/TailorWings' target='_blank'>VỀ TAILOR WINGS</a>
                         <Link to="/support">
                             <span>CHÍNH SÁCH HỖ TRỢ</span>
                         </Link>

@@ -57,7 +57,10 @@ export default class Footer extends Component {
             <div className="footer_wrapper fontMontserrat">
                 <div className="d-flex justify-content-between">
                     <div className="info d-flex flex-column">
-                        <a>
+                        <a
+                            href="https://www.facebook.com/TailorWings"
+                            target="_blank"
+                        >
                             <span>VỀ TAILOR WINGS</span>
                         </a>
                         <Link to="/policy">

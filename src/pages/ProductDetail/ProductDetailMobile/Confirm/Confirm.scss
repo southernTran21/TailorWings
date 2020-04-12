@@ -15,7 +15,7 @@
         .iconBack_wrapper {
             width: 20vw;
             height: 100%;
-            .iconBack{
+            .iconBack {
                 height: 100%;
                 width: 10vw;
                 display: flex;
@@ -177,9 +177,60 @@
         justify-content: center;
     }
 
+    // .modal {
+    //     .slick-dots {
+    //         bottom: 0px !important;
+    //     }
+    // }
+    // Product Modal
     .modal {
-        .slick-dots {
-            bottom: 0px !important;
+        display: none; /* Hidden by default */
+        // position: fixed; /* Stay in place */
+        z-index: 10; /* Sit on top */
+        // padding-top: 100px; /* Location of the box */
+        // left: 0;
+        // top: 0;
+        width: 100vw; /* Full width */
+        height: 100vh; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        /* Modal Content (image) */
+        .image-wrapper {
+            width: 100vw !important;
+            height: auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            .modal-content {
+                // margin: auto;
+                display: block;
+                width: 95vw !important;
+                // max-width: 700px;
+                background: none !important;
+            }
         }
+
+        /* The Close Button */
+        .closeModal {
+            height: fit-content;
+            width: fit-content;
+            color: #f1f1f1;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .closeModal:hover,
+        .closeModal:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        // /* 100% Image Width on Smaller Screens */
+        // @media only screen and (max-width: 700px) {
+        //     .modal-content {
+        //         width: 100%;
+        //     }
+        // }
     }
 }
