@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Categorie1 from '../../../../assets/imageHomePage/danh muc 1.jpg.jpg';
-import Categorie2 from '../../../../assets/imageHomePage/danh muc 2.jpg';
-import Categorie3 from '../../../../assets/imageHomePage/danh muc 3.jpg.jpg';
+import Categorie1 from '../../../../assets/imageHomePage/CategoryDamSuong.png';
+import Categorie2 from '../../../../assets/imageHomePage/CategoryDamXoe.png';
+import Categorie3 from '../../../../assets/imageHomePage/CategoryDamOm.png';
 
 class Categories extends Component {
     render() {
