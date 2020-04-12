@@ -243,6 +243,7 @@
                 box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
                     0 2px 2px rgba(0, 0, 0, 0.2);
                 transform: translate3d(10%, 0, -70px);
+                opacity: 0.7;
             }
 
             /* Next to Next Slide */
@@ -253,6 +254,7 @@
             #s5:checked ~ #slide2 {
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
                 transform: translate3d(20%, 0, -140px);
+                opacity: 0.5;
             }
 
             #s1:checked ~ #slide4,
@@ -262,6 +264,7 @@
             #s5:checked ~ #slide3 {
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
                 transform: translate3d(30%, 0, -210px);
+                opacity: 0.3;
             }
 
             #s1:checked ~ #slide5,
@@ -272,6 +275,7 @@
                 box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
                     0 2px 2px rgba(0, 0, 0, 0.2);
                 transform: translate3d(40%, 0, -280px);
+                opacity: 0.1;
             }
         }
     }
