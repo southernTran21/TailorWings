@@ -280,17 +280,13 @@ class FabricSelection extends Component {
     };
 
     onFabricClicked = (e) => {
-        let { swiper, productSliderIndex } = this.state;
+        let { swiper, productSliderIndex, renderProducts, productSelectedState } = this.state;
         const { productList } = this.props;
         let index = swiper.realIndex;
-        let { renderProducts, productSelectedState } = this.state;
-        let productListDouble = productList.concat(productList);
-        for (let i = 0; i < productSelectedState.length; i++) {
-            renderProducts[i] = productListDouble[index + i];
-            productSelectedState[i] = false;
-        }
         productSliderIndex = productSliderIndex === 4 ? 0 : productSliderIndex + 1;
+        productSelectedState.fill(false);
         productSelectedState[productSliderIndex] = true;
+        renderProducts[productSliderIndex] = productList[index];
         this.setState({
             currentProductIndex: index,
             productSelectedState,

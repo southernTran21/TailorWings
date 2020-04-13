@@ -22,7 +22,7 @@ export default class ProductModal extends Component {
             >
                 <div
                     className="d-flex flex-column justify-content-center align-items-end"
-                    style={{ width: "100vw", height: "20vh" }}
+                    style={{ width: "100vw", height: "10vh" }}
                 >
                     <span
                         className="closeModal"
@@ -47,7 +47,7 @@ export default class ProductModal extends Component {
                         );
                     })}
                 </Slider>
-                <div id="caption" style={{ width: "100vw", height: "20vh" }} />
+                <div id="caption" style={{ width: "100vw", height: "10vh" }} />
             </div>
         );
     }

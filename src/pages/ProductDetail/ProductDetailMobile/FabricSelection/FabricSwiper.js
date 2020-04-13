@@ -37,9 +37,6 @@ class FabricSwiper extends Component {
                         return (
                             <div
                                 key={index}
-                                onClick={() =>
-                                    this.props.onFabricClicked(index)
-                                }
                             >
                                 <img
                                     className={classNames("image", {

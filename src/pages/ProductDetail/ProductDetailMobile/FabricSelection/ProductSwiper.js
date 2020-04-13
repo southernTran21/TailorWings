@@ -36,10 +36,9 @@ class ProductSwiper extends Component {
     };
 
     render() {
-        const { productSelectedState, renderProducts } = this.props;
-        let index = productSelectedState.indexOf(true);
+        const { productSelectedState, renderProducts, productSliderIndex } = this.props;
         let imageList = new Array(5).fill("");
-        imageList[index] = renderProducts[index].image[0];
+        imageList[productSliderIndex] = renderProducts[productSliderIndex].image[0];
         return (
             <Swipeable
                 trackMouse
