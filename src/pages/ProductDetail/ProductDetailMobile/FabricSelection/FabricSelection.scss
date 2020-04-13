@@ -8,33 +8,44 @@
     }
     .navbarHeader {
         background-color: #fff4e3;
-        height: 7.49vh;
         width: 100%;
+        height: 9.74vh !important;
         color: #111e6c;
-        padding: 0 5%;
+        padding: 0 6.66vw;
         font-size: 18px;
         font-weight: bold;
-        .iconBack {
-            color: rgb(244, 122, 33);
+        .iconBack_wrapper {
+            width: 20vw;
+            height: 100%;
+            .iconBack {
+                height: 100%;
+                width: 10vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
         }
         .iconShoppingCart {
-            font-size: 23px;
-            color: rgb(244, 122, 33);
-        }
-        .ant-badge-count {
-            min-height: 10px;
-            min-width: 14px;
-            height: 15px;
-            font-size: 8px;
-            top: -15px;
-        }
-        .ant-badge {
-            p {
-                line-height: 2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 20vw;
+            img {
+                width: 6.66vw;
+                height: 3.74vh;
+                filter: invert(48%) sepia(72%) saturate(1366%)
+                    hue-rotate(335deg) brightness(105%) contrast(106%);
+            }
+            span {
+                font-size: 3.5vw;
+                color: #ff6d3b;
             }
         }
         .titleHeader {
             font-size: 5.86vw;
+            font-weight: bold;
+            color: #111e6c;
+            width: 46.68vw;
         }
     }
     .contentBody {
@@ -43,9 +54,9 @@
         height: 92.51vh;
         padding: 0 5%;
         .header__contentBody {
-            padding-top: 12px;
+            padding-top: 1.64vh;
             .title {
-                font-size: 12px;
+                font-size: 3.2vw;
                 color: #111e6c;
                 line-height: 30px;
                 white-space: nowrap;
@@ -61,7 +72,7 @@
                     }
                 }
                 .swiper-slide {
-                    margin-right: 1.06vw !important;
+                    margin-right: 1.5vw !important;
                     border-radius: 10px;
                 }
                 .image {
@@ -69,6 +80,11 @@
                     height: 18.66vw !important;
                     border-radius: 10px;
                 }
+                // .active {
+                //     border: #ff6d3b;
+                //     border-style: solid;
+                //     border-radius: 10px;
+                // }
             }
         }
         .awesome3d {
@@ -76,7 +92,7 @@
             #slider {
                 position: relative;
                 height: 87.5vw;
-                margin: 20px 0;
+                margin: 2.99vh 0;
                 font-family: "Helvetica Neue", sans-serif;
                 perspective: 1400px;
                 transform-style: preserve-3d;
@@ -109,20 +125,80 @@
                 height: 87.5vw;
                 left: 0;
                 top: 0;
-                color: white;
+                background-color: #ff6d3b;
                 font-size: 70px;
                 font-weight: bold;
-                border-radius: 5px;
+                border-radius: 10px;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 transition: transform 350ms ease;
-            }
-
-            #slider label img {
-                height: 100%;
-                width: 100%;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 10px;
+                }
+                // CSS for spinner
+                .lds-heart {
+                    display: inline-block;
+                    position: relative;
+                    width: 80px;
+                    height: 80px;
+                    transform: rotate(45deg);
+                    transform-origin: 40px 40px;
+                }
+                .lds-heart div {
+                    top: 32px;
+                    left: 32px;
+                    position: absolute;
+                    width: 32px;
+                    height: 32px;
+                    background: #fff;
+                    animation: lds-heart 1.2s infinite
+                        cubic-bezier(0.215, 0.61, 0.355, 1);
+                }
+                .lds-heart div:after,
+                .lds-heart div:before {
+                    content: " ";
+                    position: absolute;
+                    display: block;
+                    width: 32px;
+                    height: 32px;
+                    background: #fff;
+                }
+                .lds-heart div:before {
+                    left: -24px;
+                    border-radius: 50% 0 0 50%;
+                }
+                .lds-heart div:after {
+                    top: -24px;
+                    border-radius: 50% 50% 0 0;
+                }
+                @keyframes lds-heart {
+                    0% {
+                        transform: scale(0.95);
+                    }
+                    5% {
+                        transform: scale(1.1);
+                    }
+                    39% {
+                        transform: scale(0.85);
+                    }
+                    45% {
+                        transform: scale(1);
+                    }
+                    60% {
+                        transform: scale(0.95);
+                    }
+                    100% {
+                        transform: scale(0.9);
+                    }
+                }
+                // End for spinner
+                .unvisible {
+                    display: none !important;
+                }
             }
 
             #slide1 {
@@ -167,6 +243,7 @@
                 box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
                     0 2px 2px rgba(0, 0, 0, 0.2);
                 transform: translate3d(10%, 0, -70px);
+                opacity: 0.7;
             }
 
             /* Next to Next Slide */
@@ -177,6 +254,7 @@
             #s5:checked ~ #slide2 {
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
                 transform: translate3d(20%, 0, -140px);
+                opacity: 0.5;
             }
 
             #s1:checked ~ #slide4,
@@ -186,6 +264,7 @@
             #s5:checked ~ #slide3 {
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
                 transform: translate3d(30%, 0, -210px);
+                opacity: 0.3;
             }
 
             #s1:checked ~ #slide5,
@@ -196,13 +275,14 @@
                 box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3),
                     0 2px 2px rgba(0, 0, 0, 0.2);
                 transform: translate3d(40%, 0, -280px);
+                opacity: 0.1;
             }
         }
     }
     .end__contentBody {
         margin-top: 1vh;
         .title {
-            font-size: 4.26vw;
+            font-size: 4.8vw;
             color: #111e6c;
             line-height: 30px;
             white-space: nowrap;
@@ -220,11 +300,9 @@
             color: white;
             border-radius: 5px;
             font-size: 18px;
-            margin-top: 2vh;
-            i {
-                vertical-align: 0;
-                margin-left: 23px;
-            }
+            margin-top: 2.09vh;
+            font-weight: bold;
+            font-size: 5.33vw;
         }
     }
 }
@@ -278,23 +356,31 @@
 // Product Modal
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
     z-index: 10; /* Sit on top */
-    // padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100vw; /* Full width */
-    height: 100vh; /* Full height */
+    width: 100vw !important; /* Full width */
+    height: 100vh !important; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
     /* Modal Content (image) */
-    .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        background: none !important;
+    .image-wrapper {
+        width: 100vw !important;
+        height: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        .modal-content {
+            display: block;
+            width: 95vw !important;
+            height: 118.75vw !important;
+            background: none !important;
+        }
+    }
+    .slick-slider {
+        width: 100vw;
+        height: 60vh;
+        .slick-dots {
+            bottom: -12vw !important;
+        }
     }
     /* The Close Button */
     .closeModal {
@@ -312,12 +398,6 @@
         text-decoration: none;
         cursor: pointer;
     }
-    /* 100% Image Width on Smaller Screens */
-    @media only screen and (max-width: 700px) {
-        .modal-content {
-            width: 100%;
-        }
-    }
 }
 
 .fixed_top {
@@ -328,13 +408,6 @@
 .popUpShow {
     display: flex !important;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
-
-.modal {
-    .slick-dots {
-        bottom: 0px !important;
-    }
-}
-
-

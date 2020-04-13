@@ -5,6 +5,7 @@ import Categories from "./Categories";
 import Filter from "./Filter";
 import ProductList from "./Content";
 import { removePunctuation } from "../../../services/CommonFunction";
+import classNames from 'classnames'
 
 export default class ShoppingStoreWeb extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ export default class ShoppingStoreWeb extends Component {
             bestSellerInfo: [],
             isFirstLoaded: false,
             currentActiveCategory: "all",
-            isEmptyFilter: true
+            isEmptyFilter: true,
+            isSideBarOpen: false
         };
     }
 
@@ -198,19 +200,27 @@ export default class ShoppingStoreWeb extends Component {
         return renderProducts;
     };
 
+    sideBarChange = (state) => {
+        this.setState({
+            isSideBarOpen: state
+        })
+    }
+
     render() {
         const { collectionsInfo } = this.props;
         const {
             renderProducts,
             currentActiveCategory,
             isEmptyFilter,
-            isFirstLoaded
+            isFirstLoaded,
+            isSideBarOpen
         } = this.state;
         return (
-            <div>
+            <div className={classNames({ fixed_top: isSideBarOpen })}>
                 <NavBarWeb
                     history={this.props.history}
                     totalProductsOnCart={this.props.totalProductsOnCart}
+                    sideBarChange={this.sideBarChange}
                 />
                 <div className="shoppingStore_wrapper">
                     <Categories

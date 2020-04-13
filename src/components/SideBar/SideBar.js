@@ -81,11 +81,11 @@ export default class SideBar extends Component {
                     </div>
                     <hr />
                     <div className="selectionEndSidebar d-flex flex-column">
-                        <Link to="/" onClick={this.onClickHandling}>
+                        <a href="https://www.facebook.com/TailorWings" target='_blank' onClick={this.onClickHandling}>
                             <span>
                                 Về TailorWings
                             </span>
-                        </Link>
+                        </a>
                         <Link to="/support" onClick={this.onClickHandling}>
                             <span>Trợ Giúp</span>
                         </Link>

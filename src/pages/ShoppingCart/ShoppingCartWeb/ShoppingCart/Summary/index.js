@@ -15,13 +15,14 @@ class Summary extends Component {
     };
 
     render() {
-        let { subtotalPrice } = this.props;
+        let { subtotalPrice, totalProductsOnCart } = this.props;
         subtotalPrice =
             subtotalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
             " VNĐ";
         return (
             <div className="right d-flex flex-column">
                 <span>Tạm Tính</span>
+                <span>{`(Số lượng: ${totalProductsOnCart})`}</span>
                 <span>{subtotalPrice}</span>
                 <span onClick={() => this.goToNextStep()}>
                     THANH TOÁN

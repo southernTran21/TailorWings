@@ -28,8 +28,18 @@
             font-size: 1.52vw;
             font-weight: bold;
         }
-        .titleEmail {
+        .underline {
             text-decoration: underline;
+        }
+        .giftButton {
+            width: 21.8vw;
+            height: 5.2vh;
+            color: white;
+            background-color: #ff6d3b;
+            border-radius: 10px;
+            margin: 2.2vh 0;
+            font-weight: bold;
+            font-size: 0.972vw;
         }
         a {
             text-decoration: none;
@@ -39,7 +49,6 @@
                 color: #ff6d3b;
                 font-size: 1.38vw;
                 font-weight: bold;
-                margin-top: 3vh;
                 cursor: pointer;
                 svg {
                     width: 0.8vw;

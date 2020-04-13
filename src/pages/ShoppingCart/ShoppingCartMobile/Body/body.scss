@@ -1,33 +1,32 @@
 .bodyPageCustomerInfo {
     font-family: "Montserrat", sans-serif;
+    margin-bottom: 10vh;
     .inputInfo {
         padding: 0 8.8vw;
-        padding-top: 4.49vh;
+        padding-top: 1vh;
         .input {
-            margin-bottom: 25px;
+            margin-bottom: 2.74vh;
             span {
                 font-size: 3.73vw;
                 font-weight: 600;
                 color: #111e6c;
             }
             input {
-                font-size: 12px;
                 background: #fff4e3;
                 border-radius: 10px;
                 border: none;
                 box-shadow: none;
                 color: #111e6c;
-                margin-top: 10px;
-                height: 40px;
+                margin-top: .7vh;
+                height: 5.99vh;
                 padding-left: 19px;
             }
             ::placeholder {
-                font-size: 12px;
+                font-size: 13px;
                 color: rgba(4, 21, 121, 0.6);
             }
             .error {
                 color: red;
-                font-family: "Be Vietnam", sans-serif;
             }
             .errorUnvisible {
                 display: none;
@@ -42,11 +41,12 @@
             color: #111e6c;
         }
     }
+    
 }
 .bodyPagePaymentConfirm {
     font-family: "Montserrat", sans-serif;
     padding: 0 8.8vw;
-    padding-top: 4.49vh;
+    padding-top: 2.49vh;
     .address {
         .titleHead {
             :nth-child(1) {
@@ -122,8 +122,8 @@
             .infoProduct {
                 padding: 15px 0;
                 .image {
-                    width: 59px;
-                    height: 59px;
+                    width: 15.73vw;
+                    height: 8.84vh;
                     background: #ffa45c;
                     img {
                         width: 100%;
@@ -178,6 +178,62 @@
         :nth-child(2) {
             font-weight: 600;
             font-size: 4.8vw;
+        }
+    }
+}
+.orderConfirmMobile_wrapper{
+    padding: 0 6.66vw;
+    .imageOrderConfirm{
+        width: 85vw;
+        margin-top: 2vh;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .iconChecked{
+        width: 8vw;
+        height: 4.49vh;
+        margin-top: 2vh;
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .contentPage{
+        color: #111e6c;
+        margin-top: 5vh;
+        .titleHead{
+            font-size: 5.33vw;
+            font-weight: bold;
+        }
+        .titleSecond{
+            text-align: center;
+            font-size: 3.73vw;
+            font-weight: bold;
+            margin-top: .5vh;
+            .underline{
+                text-decoration: underline;
+            }
+        }
+        .giftButton{
+            background-color: #ff6d3b;
+            color: white !important;
+            font-size: 3.2vw;
+            font-weight: bold;
+            padding: 1vh 5vw;
+            border-radius: 7px;
+            margin-top: 3vh;
+            margin-bottom: 3vh;
+        }
+        .titleThird{
+            color: #ff6d3b !important;
+            font-size: 3.73vw;
+            font-weight: bold;
+            svg{
+                margin-left: 3px;
+                margin-top: -2px;
+            }
         }
     }
 }

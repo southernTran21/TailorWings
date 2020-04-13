@@ -28,7 +28,8 @@ class ProductDetailWeb extends Component {
             size: "",
             bodyMetric: [],
             isSizeMetricUpdate: false,
-            isImageView: false
+            isImageView: false,
+            isSideBarOpen: false
         };
     }
 
@@ -141,7 +142,6 @@ class ProductDetailWeb extends Component {
                 );
                 break;
             case "sizeSelection":
-                console.log('currentSelectedProduct', currentSelectedProduct)
                 content = (
                     <SizeSelectionWeb
                         currentSelectedProduct={currentSelectedProduct}
@@ -197,10 +197,11 @@ class ProductDetailWeb extends Component {
         });
     };
 
-    onSizeUpdated = size => {
-        console.log('size', size)
+    onSizeUpdated = (size, bodyMetric) => {
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.size = size;
+        // currentSelectedProduct.bodyMetric = bodyMetric;
+        currentSelectedProduct.bodyMetric.fill('');
         this.setState({
             currentSelectedProduct,
             isSizeMetricUpdate: true
@@ -217,7 +218,6 @@ class ProductDetailWeb extends Component {
     };
 
     onQuantityUpdated = quantity => {
-        console.log("quantity", quantity);
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.quantity = quantity;
         this.setState({
@@ -225,12 +225,19 @@ class ProductDetailWeb extends Component {
         });
     };
 
+    sideBarChange = (state) => {
+        this.setState({
+            isSideBarOpen: state
+        })
+    }
+
     render() {
         const {
             selectionStep,
             totalProductsOnCart,
             isImageView,
-            currentSelectedProduct
+            currentSelectedProduct,
+            isSideBarOpen
         } = this.state;
         return (
             <div className="productDetail-container">
@@ -242,9 +249,10 @@ class ProductDetailWeb extends Component {
                     <NavBarWeb
                         history={this.props.history}
                         totalProductsOnCart={totalProductsOnCart}
+                        sideBarChange={this.sideBarChange}
                     />
                     <div className="pageProductDetailWeb">
-                        <Steps selectionStep={selectionStep} />
+                        <Steps selectionStep={selectionStep} onContentChange={this.onContentChange}/>
                         {this.selectionStepHandling()}
                     </div>
                 </div>

@@ -16,7 +16,7 @@ export default class CustomerInfo extends Component {
     };
     render() {
         const { errorValidate } = this.props;
-        const { name, address, phone } = this.props.customerInfo;
+        const { name, address, phone, note } = this.props.customerInfo;
         return (
             <div className="pageCustomerInfo">
                 <div className="titleHeaderPage d-flex justify-content-between align-items-center">
@@ -25,7 +25,7 @@ export default class CustomerInfo extends Component {
                         onClick={() => this.props.onStepChange("shoppingCart")}
                     />
                     <span>Địa chỉ nhận hàng</span>
-                    <div></div>
+                    <div style={{width:'1.66vw'}}></div>
                 </div>
                 <div className="inputInfo">
                     <div className="input">
@@ -34,7 +34,7 @@ export default class CustomerInfo extends Component {
                             name="name"
                             value={name}
                             placeholder="Nhập họ & tên người nhận"
-                            maxLength={30}
+                            maxLength={50}
                             onChange={this.onInputChange}
                         />
                         <small
@@ -72,7 +72,7 @@ export default class CustomerInfo extends Component {
                             name="address"
                             value={address}
                             placeholder="Nhập số nhà, tên đường..."
-                            maxLength={50}
+                            maxLength={100}
                             onChange={this.onInputChange}
                         />
                         <small
@@ -83,6 +83,16 @@ export default class CustomerInfo extends Component {
                         >
                             Vui lòng nhập địa chỉ giao hàng
                         </small>
+                    </div>
+                    <div className="input">
+                        <span>Ghi chú</span>
+                        <Input
+                            name="note"
+                            value={note}
+                            placeholder="Ghi chú đơn hàng"
+                            maxLength={500}
+                            onChange={this.onInputChange}
+                        />
                     </div>
                 </div>
                 <div className="checkBox">

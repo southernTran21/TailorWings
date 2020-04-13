@@ -16,6 +16,7 @@ import CustomerInfo from "./Body/CustomerInfo";
 import PaymentConfirm from "./Body/PaymentConfirm";
 import ConfirmInfo from "./Footer/ConfirmInfo";
 import ConfirmPayment from "./Footer/ConfirmPayment";
+import OrderConfirm from "./Body/OrderConfirm";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -33,7 +34,7 @@ const PRODUCT_DETAIL_FORM = {
     name: "",
     bodyMetric: [],
     size: "",
-    quantity: 0
+    quantity: 0,
 };
 
 class ShoppingCartMobile extends Component {
@@ -41,7 +42,7 @@ class ShoppingCartMobile extends Component {
         super(props);
         window.scrollTo({
             top: 0,
-            behavior: "smooth"
+            behavior: "smooth",
         });
         this.state = {
             // common state
@@ -53,14 +54,15 @@ class ShoppingCartMobile extends Component {
             customerInfo: {
                 name: "",
                 phone: "",
-                address: ""
+                address: "",
+                note: "",
             },
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
             rememberChecked: false,
             // state for paymentInfo
             paymentMethod: "COD",
-            paymentLoading: false
+            paymentLoading: false,
         };
     }
 
@@ -90,7 +92,7 @@ class ShoppingCartMobile extends Component {
             totalProductsOnCart,
             subtotalPrice,
             customerInfo,
-            rememberChecked
+            rememberChecked,
         });
     }
 
@@ -114,7 +116,7 @@ class ShoppingCartMobile extends Component {
                 productsOnCart,
                 totalProductsOnCart,
                 subtotalPrice,
-                isCartUpdated: nextProps.isCartUpdated
+                isCartUpdated: nextProps.isCartUpdated,
             };
         }
         return null;
@@ -130,15 +132,15 @@ class ShoppingCartMobile extends Component {
         this.props.onUpdateCart(productsOnCart);
         notification.success({
             message: "Thay đổi thành công",
-            placement: "bottomRight"
+            placement: "bottomRight",
         });
         this.setState({
             productsOnCart,
-            subtotalPrice
+            subtotalPrice,
         });
     };
 
-    onProductRemove = index => {
+    onProductRemove = (index) => {
         let { productsOnCart, subtotalPrice } = this.state;
         let deletedProduct = productsOnCart.splice(Number(index), 1);
         subtotalPrice = productsOnCart.reduce((accumulator, current) => {
@@ -148,11 +150,11 @@ class ShoppingCartMobile extends Component {
         notification.success({
             message: "Thay đổi thành công",
             placement: "bottomRight",
-            description: `${deletedProduct[0].name} đã được xóa khỏi giỏ hàng của bạn`
+            description: `${deletedProduct[0].name} đã được xóa khỏi giỏ hàng của bạn`,
         });
         this.setState({
             productsOnCart,
-            subtotalPrice
+            subtotalPrice,
         });
     };
 
@@ -160,10 +162,10 @@ class ShoppingCartMobile extends Component {
 
     //API FOR CUSTOMER INFO PAGE
 
-    onCustomerInfoUpdate = customerInfo => {
+    onCustomerInfoUpdate = (customerInfo) => {
         if (customerInfo != null) {
             this.setState({
-                customerInfo
+                customerInfo,
             });
         }
     };
@@ -194,19 +196,19 @@ class ShoppingCartMobile extends Component {
                     JSON.stringify({
                         name: "",
                         phone: "",
-                        address: ""
+                        address: "",
                     })
                 );
             }
         }
         this.setState({
-            errorValidate
+            errorValidate,
         });
     };
 
-    onRememberInfo = e => {
+    onRememberInfo = (e) => {
         this.setState({
-            rememberChecked: e.target.checked
+            rememberChecked: e.target.checked,
         });
     };
 
@@ -214,29 +216,29 @@ class ShoppingCartMobile extends Component {
 
     //API FOR PAYMENT INFO PAGE
 
-    onPaymentMethodChange = method => {
+    onPaymentMethodChange = (method) => {
         this.setState({
-            paymentMethod: method
+            paymentMethod: method,
         });
     };
 
     uploadNewOrder = () => {
         this.setState({
-            paymentLoading: true
+            paymentLoading: true,
         });
         const { subtotalPrice, paymentMethod } = this.state;
-        let { name, phone, address } = this.state.customerInfo;
+        let { name, phone, address, note } = this.state.customerInfo;
         let phoneModified = phone.replace(/ /gi, "");
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         let totalPrice = subtotalPrice;
         let orderDetail = {
             orderID: uniqid.process(),
-            orderItems: []
+            orderItems: [],
         };
-        productsOnCart.forEach(product => {
+        productsOnCart.forEach((product) => {
             let productDetail = PRODUCT_DETAIL_FORM;
-            Object.keys(productDetail).forEach(key => {
+            Object.keys(productDetail).forEach((key) => {
                 productDetail[key] = product[key] || "";
             });
             orderDetail.orderItems.push(productDetail);
@@ -251,38 +253,39 @@ class ShoppingCartMobile extends Component {
             phone: phoneModified || "",
             promo: 0,
             rate: "",
-            wishList: []
+            wishList: [],
         };
         let order = {
             customerID: customer.customerID,
             doneDate: "",
             id: "",
-            notes: "",
+            notes: note,
             orderDate: "",
             orderID: orderDetail.orderID,
             status: "new",
             total: totalPrice,
-            paymentMethod: paymentMethod
+            paymentMethod: paymentMethod,
         };
+        // this.onStepChange("orderConfirm");
         Promise.all([
             setDocument("customers", customer, customer.phone),
             addDocument("orders", order),
-            addDocument("orderDetail", orderDetail)
+            addDocument("orderDetail", orderDetail),
         ]).then(() => {
-            message.success('Giao dịch thành công!')
+            message.success("Giao dịch thành công!");
             this.props.onUpdateCart([]);
-            this.onStepChange("shoppingCart");
+            this.onStepChange("orderConfirm");
             this.setState({
-                paymentLoading: false
-            })
+                paymentLoading: false,
+            });
         });
     };
 
     // END API FOR CUSTOMER INFO PAGE
 
-    onStepChange = step => {
+    onStepChange = (step) => {
         this.setState({
-            paymentStep: step
+            paymentStep: step,
         });
     };
 
@@ -366,6 +369,15 @@ class ShoppingCartMobile extends Component {
         );
     };
 
+    orderConfirmBodyRender = () => {
+        return (
+            <OrderConfirm
+                onStepChange={this.onStepChange}
+                customerInfo={this.state.customerInfo}
+            />
+        );
+    };
+
     onHeaderRenderChange = () => {
         const { paymentStep } = this.state;
         let currentTitle = "";
@@ -378,6 +390,9 @@ class ShoppingCartMobile extends Component {
                 break;
             case "paymentConfirm":
                 currentTitle = "Xác nhận đơn hàng";
+                break;
+            case "orderConfirm":
+                currentTitle = "Hoàn thành";
                 break;
             default:
                 break;
@@ -396,13 +411,16 @@ class ShoppingCartMobile extends Component {
         let currentStepRender = "";
         switch (paymentStep) {
             case "shoppingCart":
-                currentStepRender = this.shoppingCartBodyRender();
+                currentStepRender = <div className='productList_wrapper'>{this.shoppingCartBodyRender()}</div>;
                 break;
             case "customerInfo":
                 currentStepRender = this.customerInfoBodyRender();
                 break;
             case "paymentConfirm":
                 currentStepRender = this.paymentConfirmBodyRender();
+                break;
+            case "orderConfirm":
+                currentStepRender = this.orderConfirmBodyRender();
                 break;
             default:
                 break;
@@ -440,17 +458,17 @@ class ShoppingCartMobile extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        isCartUpdated: state.updateProductOnCart
+        isCartUpdated: state.updateProductOnCart,
     };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onUpdateCart: updatedList => {
+        onUpdateCart: (updatedList) => {
             dispatch(actions.updateCart(updatedList));
-        }
+        },
     };
 };
 

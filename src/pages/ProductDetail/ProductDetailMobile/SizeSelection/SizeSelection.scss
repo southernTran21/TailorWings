@@ -1,35 +1,50 @@
 .pageSizeSelection {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    font-family: "Montserrat", sans-serif !important;
     color: #111e6c !important;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    .anticon {
-        vertical-align: 0;
-    }
     .navbarHeader {
         background-color: #fff4e3;
-        height: 7.49vh;
+        width: 100%;
+        height: 9.74vh !important;
+        color: #111e6c;
+        padding: 0 6.66vw;
         font-size: 18px;
         font-weight: bold;
-        padding: 0 5%;
-        color: #111e6c;
+        .iconBack_wrapper {
+            width: 20vw;
+            height: 100%;
+            .iconBack{
+                height: 100%;
+                width: 10vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
         .iconShoppingCart {
-            font-size: 23px;
-        }
-        i {
-            color: #ff6d3b !important;
-        }
-        .ant-badge-count {
-            min-height: 10px;
-            min-width: 14px;
-            height: 15px;
-            padding: 0 6px;
-            font-size: 8px;
-            top: -13px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 20vw;
+            img {
+                width: 6.66vw;
+                height: 3.74vh;
+                filter: invert(48%) sepia(72%) saturate(1366%)
+                    hue-rotate(335deg) brightness(105%) contrast(106%);
+            }
+            span{
+                font-size: 3.5vw;
+                color: #ff6d3b;
+            }
         }
         .titleHeader {
             font-size: 5.86vw;
+            font-weight: bold;
+            color: #111e6c;
+            width: 46.68vw;
+            text-align: center;
         }
     }
     .bodyPage {
@@ -57,7 +72,7 @@
             .imgProduct {
                 width: 70vw;
                 height: 40.07vh;
-                margin-top: 2.84vh;
+                margin-top: .8vh;
                 img {
                     width: 100%;
                     height: 100%;
@@ -95,7 +110,7 @@
                     text-align: center;
                     font-weight: 500;
                     line-height: 1.4;
-                    margin-top: 2.69vh;
+                    margin-top: 1.69vh;
                 }
                 .inputScale {
                     margin-top: 1.34vh;
@@ -112,9 +127,12 @@
                         border-radius: 0;
                         border-left: 1.2px solid #ffa45c;
                         padding: 2px 11px !important;
-                        font-size: 3.73vw !important;
+                        // font-size: 3.73vw;
+                        font-size: 16px;
+                        box-shadow: none;
                     }
                     ::placeholder {
+                        font-size: 12px;
                         color: #ffa45c !important;
                     }
                     .inputBodyScale {
@@ -134,17 +152,33 @@
             cursor: pointer;
             font-size: 16px;
             border-radius: 7px;
-            i {
-                margin-left: 8.4%;
-            }
+            font-size: 5.33vw;
         }
     }
 }
-
 .ant-modal-confirm-body-wrapper {
     width: 100% !important;
-    padding: 0px 20px !important;
+    // padding: 0px 20px !important;
+    font-family: "Montserrat", sans-serif !important;
+    color: #111e6c !important;
+}
+.ant-modal-confirm-title{
+    font-weight: bold !important;
+    color: #111e6c !important;
+}
+.ant-modal-confirm-content{
+    color: #111e6c !important;
 }
 .ant-modal-confirm-content {
     margin-left: 0px !important;
+}
+.ant-modal-confirm-info .ant-modal-confirm-body > .anticon{
+    color: #ff6d3b !important;
+}
+.ant-btn-primary{
+    background-color: #ff6d3b !important;
+    border: none !important;
+}
+.ant-modal-content .ant-btn:focus{
+    background-color: #ff6d3b !important;
 }

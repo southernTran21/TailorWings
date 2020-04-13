@@ -65,7 +65,7 @@ export default class ProductDetail extends Component {
 
     render() {
         return (
-            <Media queries={{ small: { maxWidth: 1024 } }}>
+            <Media queries={{ small: { maxWidth: 750 } }}>
                 {matches =>
                     matches.small ?
                         (
@@ -83,7 +83,6 @@ export default class ProductDetail extends Component {
                                 visibilityProducts={this.props.visibilityProducts}
                                 designsInfo={this.props.designsInfo}
                                 fabricsInfo={this.props.fabricsInfo}
-                                // scrollToTop={this._scrollToTop}
                                 localStorageUpdatedHandling={this.props.localStorageUpdatedHandling}
                             />
                         )

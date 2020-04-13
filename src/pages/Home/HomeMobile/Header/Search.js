@@ -46,22 +46,6 @@ export default class Search extends Component {
                         onChange={e => this.onSearchInputChange(e)}
                         onPressEnter={() => this.props.history.push(`/shopping-store?cat=all&search=${modifiedSearchValue}`)}
                     />
-                    {/* <Link
-                        style={{
-                            border: 'none',
-                            textDecoration: 'none',
-                            width: 'fit-content',
-                            height: 'fit-content'
-                        }}
-                        to={{
-                            pathname: '/shopping-store',
-                            search: `?cat=all&search=${modifiedSearchValue}`
-                        }}
-                    >
-                        <Button className='buttonSearch'>
-                            Tìm
-                        </Button>
-                    </Link> */}
                 </div>
             </div>
         );

@@ -31,7 +31,6 @@ export default class SizeSelection extends Component {
 
     onSizeUpdated = size => {
         let { sizeImages } = this.props;
-        console.log("sizeImages", sizeImages);
         sizeImages = sizeImages.filter(image => image.id === size)[0];
         this.props.onSizeUpdated(size);
         this.setState({
@@ -97,6 +96,7 @@ export default class SizeSelection extends Component {
     render() {
         const { currentSelectedProduct } = this.props;
         const { sizeImages } = this.state;
+        console.log('currentSelectedProduct :', currentSelectedProduct);
         return (
             <div className="pageSizeSelection">
                 <NavBar
@@ -124,7 +124,7 @@ export default class SizeSelection extends Component {
                             onSizeUpdated={this.onSizeUpdated}
                         />
                         <BodyScale
-                            currentSelectedProduct={currentSelectedProduct}
+                            bodyMetric={currentSelectedProduct.bodyMetric}
                             onBodyMetricUpdated={this.onBodyMetricUpdated}
                         />
                     </div>
@@ -132,8 +132,7 @@ export default class SizeSelection extends Component {
                         className="buttonApcept d-flex flex-row align-items-center justify-content-center"
                         onClick={this.onConfirmButtonClicked}
                     >
-                        <a>Xác nhận </a>
-                        <Icon type="right" />
+                        <a>XÁC NHẬN</a>
                     </div>
                 </div>
             </div>

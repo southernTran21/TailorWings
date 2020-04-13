@@ -1,17 +1,32 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Steps extends Component {
+
+    onFabricNavigating = () => {
+        if(this.props.selectionStep !== 'fabricSelection' ){
+            this.props.onContentChange('fabricSelection');
+        }
+    }
+
     render() {
         const { selectionStep } = this.props;
-        let highLight = ["", ""];
+        let classStep = ["", ""];
         if (selectionStep === "fabricSelection") {
-            highLight[0] = "highlight";
+            classStep[0] = "highlight step";
+            classStep[1] = "opacityStep step";
         } else {
-            highLight[1] = "highlight";
+            classStep[0] = "step";
+            classStep[1] = "highlight step";
         }
         return (
             <div className="steps d-flex justify-content-center align-items-center">
-                <span>Chọn mẫu</span>
+                <Link to={{
+                    pathname: '/shopping-store',
+                    search: '?cat=all&search'
+                }}>
+                    <span className="step">Chọn mẫu</span>
+                </Link>
                 <svg
                     width="10"
                     height="13"
@@ -24,7 +39,7 @@ export default class Steps extends Component {
                         fill="#FF6D3B"
                     />
                 </svg>
-                <span className={highLight[0]}>Chọn vải</span>
+                <span className={classStep[0]} onClick={this.onFabricNavigating}>Chọn vải</span>
                 <svg
                     width="10"
                     height="13"
@@ -37,7 +52,7 @@ export default class Steps extends Component {
                         fill="#FF6D3B"
                     />
                 </svg>
-                <span className={highLight[1]}>Chọn size</span>
+                <span className={classStep[1]}>Chọn size</span>
                 <svg
                     width="10"
                     height="13"
@@ -50,7 +65,7 @@ export default class Steps extends Component {
                         fill="#FF6D3B"
                     />
                 </svg>
-                <span>Đặt hàng</span>
+                <span className="opacityStep step">Đặt hàng</span>
             </div>
         );
     }

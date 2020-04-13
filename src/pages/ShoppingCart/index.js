@@ -24,7 +24,7 @@ export default class ShoppingCart extends Component {
     }
     render() {
         return (
-            <Media queries={{ small: { maxWidth: 1024 } }}>
+            <Media queries={{ small: { maxWidth: 750 } }}>
                 {matches =>
                     matches.small ? <ShoppingCartMobile /> : <ShoppingCartWeb history={this.props.history}/>
                 }

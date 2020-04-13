@@ -9,6 +9,18 @@ export default class BodyMetric extends Component {
         };
     }
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (
+            nextProps.bodyMetric.toString() !== prevState.bodyMetric.toString()
+        ) {
+            return {
+                bodyMetric: nextProps.bodyMetric,
+            };
+        } else {
+            return null;
+        }
+    }
+
     onBodyScaleChange = (e) => {
         let { bodyMetric } = this.state;
         bodyMetric[Number(e.target.id)] =
@@ -20,9 +32,9 @@ export default class BodyMetric extends Component {
     };
 
     render() {
-        const { bodyMetric } = this.props;
+        const { bodyMetric } = this.state;
         return (
-            <div style={{width:'100%'}}>
+            <div style={{ width: "100%" }}>
                 <div className="inputBody d-flex justify-content-between">
                     <div className="d-flex flex-column">
                         <span>NGỰC</span>
@@ -58,8 +70,11 @@ export default class BodyMetric extends Component {
                         />
                     </div>
                 </div>
-                <div className='titleBodyMetric text-center'>
-                    <small>*Với mong muốn mang lại một sản phầm vừa vặn nhất, bạn vui lòng cung cấp số đo</small>
+                <div className="titleBodyMetric text-center">
+                    <span>
+                        * Nếu bạn cung cấp số đo trên ( không bắt buộc ) chúng
+                        tôi sẽ dùng nó để may sản phẩm cho bạn .
+                    </span>
                 </div>
             </div>
         );

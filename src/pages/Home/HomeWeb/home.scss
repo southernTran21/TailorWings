@@ -238,31 +238,30 @@
                     font-weight: bold;
                     margin: 3.88vh 0;
                 }
-                a {
-                    width: fit-content;
-                    height: fit-content;
-                    text-decoration: none;
-                    .button {
-                        background: #ffffff;
-                        border-radius: 10px;
-                        color: #ff6d3b;
-                        font-weight: bold;
-                        font-size: 0.97vw;
-                        width: 7.43vw;
-                        height: 5vh;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        cursor: pointer;
-                    }
+                .button {
+                    background: #ffffff;
+                    border-radius: 10px;
+                    color: #ff6d3b;
+                    font-weight: bold;
+                    font-size: 0.97vw;
+                    width: 7.43vw;
+                    height: 5vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+                .button:hover {
+                    color: white;
+                    background-color: #ff6d3b;
                 }
             }
-            .contentDamSuong{
+            .contentDamSuong {
                 margin-top: 5.11vh !important;
-                .titleHead{
+                .titleHead {
                     font-size: 2.08vw !important;
                 }
-                .titleSeconds{
+                .titleSeconds {
                     margin-top: 2vh !important;
                 }
             }
@@ -337,14 +336,12 @@
                         margin-top: 2.31vh;
                     }
                     :nth-child(2) {
-                        a {
-                            font-size: 0.83vw;
-                            font-weight: bold;
-                            color: #ff6d3b;
-                            img {
-                                width: 1.35vw;
-                                margin-top: 0;
-                            }
+                        font-size: 0.83vw;
+                        font-weight: bold;
+                        color: #ff6d3b;
+                        img {
+                            width: 1.35vw;
+                            margin-top: 0;
                         }
                     }
                 }
@@ -488,10 +485,14 @@
             }
         }
         .image {
-            width: 43.75vw;
-            height: 39vh;
+            width: 44.75vw;
+            height: 48vh;
             margin-left: 8.88vw;
             margin-top: 11.33vh;
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
     .instagram {
@@ -513,9 +514,9 @@
             .image {
                 width: 21.11vw;
                 // height: 43.66vh;
-                img{
-                    width: 100%;
-                    height: 100%;
+                img {
+                    width: 21.11vw;
+                    height: auto;
                 }
             }
         }
@@ -578,7 +579,7 @@
             }
         }
         .logo {
-            margin-top: 8.42vh;
+            margin-top: 10.6vh;
             img {
                 width: 6.64vw;
                 height: 23.28vh;

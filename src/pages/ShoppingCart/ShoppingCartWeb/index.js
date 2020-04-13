@@ -52,7 +52,9 @@ class ShoppingCartWeb extends Component {
                 name: "",
                 phone: "",
                 address: "",
+                note: "",
             },
+            isSideBarOpen: false,
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
             rememberChecked: false,
@@ -65,12 +67,12 @@ class ShoppingCartWeb extends Component {
     componentDidMount() {
         initGA();
         logPageView();
-        let { rememberChecked } = this.state;
+        let { rememberChecked, customerInfo } = this.state;
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-        let customerInfo =
-            JSON.parse(localStorage.getItem("customerInfo")) ||
-            this.state.customerInfo;
+        customerInfo =
+            { ...JSON.parse(localStorage.getItem("customerInfo")), note: "" } ||
+            customerInfo;
         let totalProductsOnCart = productsOnCart.reduce(
             (accumulator, current) => {
                 return accumulator + current.quantity;
@@ -224,7 +226,7 @@ class ShoppingCartWeb extends Component {
             paymentLoading: true,
         });
         const { subtotalPrice, paymentMethod } = this.state;
-        let { name, phone, address } = this.state.customerInfo;
+        let { name, phone, address, note } = this.state.customerInfo;
         let phoneModified = phone.replace(/ /gi, "");
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
@@ -256,13 +258,14 @@ class ShoppingCartWeb extends Component {
             customerID: customer.customerID,
             doneDate: "",
             id: "",
-            notes: "",
+            notes: note,
             orderDate: "",
             orderID: orderDetail.orderID,
             status: "new",
             total: totalPrice,
             paymentMethod: paymentMethod,
         };
+        // this.onStepChange("orderConfirm");
         Promise.all([
             setDocument("customers", customer, customer.phone),
             addDocument("orders", order),
@@ -286,7 +289,12 @@ class ShoppingCartWeb extends Component {
     };
 
     shoppingCartBodyRender = () => {
-        const { productsOnCart, subtotalPrice, paymentStep } = this.state;
+        const {
+            productsOnCart,
+            subtotalPrice,
+            paymentStep,
+            totalProductsOnCart,
+        } = this.state;
         let content = "";
         switch (paymentStep) {
             case "shoppingCart":
@@ -306,6 +314,7 @@ class ShoppingCartWeb extends Component {
                                 subtotalPrice={subtotalPrice}
                                 onStepChange={this.onStepChange}
                                 productsOnCart={productsOnCart}
+                                totalProductsOnCart={totalProductsOnCart}
                             />
                         </div>
                     </React.Fragment>
@@ -340,7 +349,12 @@ class ShoppingCartWeb extends Component {
                 break;
 
             case "orderConfirm":
-                content = <OrderConfirm phone={this.state.customerInfo.phone}/>;
+                content = (
+                    <OrderConfirm
+                        phone={this.state.customerInfo.phone}
+                        name={this.state.customerInfo.name}
+                    />
+                );
                 break;
 
             default:
@@ -349,10 +363,19 @@ class ShoppingCartWeb extends Component {
         return content;
     };
 
+    sideBarChange = (state) => {
+        this.setState({
+            isSideBarOpen: state,
+        });
+    };
+
     render() {
         return (
             <div className="pageShoppingCartWeb">
-                <NavBarWeb history={this.props.history} />
+                <NavBarWeb
+                    history={this.props.history}
+                    sideBarChange={this.sideBarChange}
+                />
                 {this.shoppingCartBodyRender()}
             </div>
         );

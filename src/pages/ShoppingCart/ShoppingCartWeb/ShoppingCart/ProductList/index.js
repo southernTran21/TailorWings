@@ -9,7 +9,6 @@ class ProductList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalVisible: false,
 			isModalUpdate: false,
 			modalState: new Array(this.props.productsOnCart.length).fill(false)
         };
@@ -25,12 +24,12 @@ class ProductList extends Component {
 			modalState.fill(false);
             this.setState({
                 isModalUpdate: false,
-                modalVisible: false
+                modalState
             });
         } else {
 			modalState.fill(false);
             this.setState({
-                modalVisible: false
+                modalState
             });
         }
     };
@@ -80,7 +79,7 @@ class ProductList extends Component {
     };
 
     render() {
-        let { modalVisible, modalState } = this.state;
+        let { modalState } = this.state;
         let productsOnCart = JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
         return (
             <div className="left">

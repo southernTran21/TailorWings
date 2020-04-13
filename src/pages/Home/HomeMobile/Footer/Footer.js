@@ -16,13 +16,13 @@ export default class FooterPage extends Component {
         super(props);
         this.state = {
             email: "",
-            isEmailError: false
+            isEmailError: false,
         };
     }
 
-    onEmailChange = e => {
+    onEmailChange = (e) => {
         this.setState({
-            email: e.target.value
+            email: e.target.value,
         });
     };
 
@@ -33,23 +33,23 @@ export default class FooterPage extends Component {
             isEmailError = !validateEmail(email);
             if (!isEmailError) {
                 setDocument("preferentialEmails", { email: email }, email).then(
-                    function() {
+                    function () {
                         message.success("Hoàn thành đăng ký nhận ưu đãi!");
                         console.log("isEmailError", isEmailError);
                         currentComponent.setState({
                             isEmailError,
-                            email: ""
+                            email: "",
                         });
                     }
                 );
             } else {
                 this.setState({
-                    isEmailError
+                    isEmailError,
                 });
             }
         } else {
             this.setState({
-                isEmailError: true
+                isEmailError: true,
             });
         }
     };
@@ -75,16 +75,21 @@ export default class FooterPage extends Component {
                 </div>
                 <smal
                     className={classNames("emailError_unvisible", {
-                        emailError: this.state.isEmailError
+                        emailError: this.state.isEmailError,
                     })}
                 >
                     Lỗi: Email sai vui lòng nhập lại!
                 </smal>
                 <div className="infomation d-flex flex-column">
                     <div className="d-flex justify-content-between">
-                        <span>VỀ TAILOR WINGS</span>
+                        <a
+                            href="https://www.facebook.com/TailorWings"
+                            target="_blank"
+                        >
+                            VỀ TAILOR WINGS
+                        </a>
                         <Link to="/support">
-                            <span>CHÍNH SÁCH HỖ TRỢ</span>
+                            <span>TRỢ GIÚP</span>
                         </Link>
                     </div>
                     <br></br>
@@ -92,7 +97,7 @@ export default class FooterPage extends Component {
                         <Link to="/policy">
                             <span>ĐIỀU KIỆN & ĐIỀU KHOẢN</span>
                         </Link>
-                        <span>Liên hệ</span>
+                        <span>LIÊN HỆ</span>
                     </div>
                 </div>
                 <div className="iconSocialNetwork d-flex flex-row justify-content-between">
@@ -113,8 +118,8 @@ export default class FooterPage extends Component {
                     </a>
                 </div>
                 <div className="hotline d-flex flex-column align-items-center">
-                    <span>HOTLINE 0939929405</span>
-                    <span>wetailor@gmail.com</span>
+                    <span>HOTLINE 0902 541 398</span>
+                    <span>info.tailorwings@gmail.com</span>
                 </div>
                 <div className="iconLogoTailorWings">
                     <img src={iconTailorWings} />
@@ -122,8 +127,8 @@ export default class FooterPage extends Component {
                 <div className="titleEndFooter  d-flex flex-column align-items-center">
                     <span>© 2020 Tailor Wings</span>
                     <span>
-                        Công ty TNHH Tailor Wings với số đăng ký kinh doanh:
-                        0105777650
+                        Công ty TNHH Thương Mại Kết Nối Á Âu / Số đăng ký kinh
+                        doanh : 0313114301
                     </span>
                 </div>
             </div>

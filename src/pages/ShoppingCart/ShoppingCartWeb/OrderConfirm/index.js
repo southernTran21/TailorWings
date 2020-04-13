@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import "./orderConfirm.scss";
 import imageOrderConfirm from "../../../../assets/iconImage/fogg-delivery-1 1.svg";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
 
 export default class OrderConfirm extends Component {
     render() {
-        const { phone } = this.props;
+        const { phone, name } = this.props;
         return (
             <div className="orderConfirm_wrapper d-flex flex-column align-items-center">
                 <div className="imageOrderConfirm">
@@ -26,11 +27,18 @@ export default class OrderConfirm extends Component {
                     </svg>
                 </div>
                 <div className="contentPage d-flex flex-column align-items-center">
-                    <span className="titleHead">Cảm Ơn Bạn Đã Đặt May!</span>
+                    <span className="titleHead">{`Cảm Ơn ${name} Đã Đặt May!`}</span>
                     <span className="titleSecond">
-                        Thông tin chi tiết về đơn hàng đã được gửi đến{" "}
-                        <span className="titleEmail">{phone}</span>
+                        Đơn hàng của bạn đang được xử lý & giao tới bạn trong{" "}
+                        <span className="underline">3-5 ngày làm việc.</span>
                     </span>
+                    <a
+                        href="https://www.facebook.com/TailorWings"
+                        target="_blank"
+                        className="giftButton d-flex justify-content-center align-items-center"
+                    >
+                        BẤM VÀO ĐÂY NHẬN QUÀ BẤT NGỜ
+                    </a>
                     <Link
                         to={{
                             pathname: "/shopping-store",

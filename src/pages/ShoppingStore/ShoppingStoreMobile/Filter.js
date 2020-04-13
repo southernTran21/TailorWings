@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import iconSliderCircle from "../../../assets/iconImage/slider-circle-h.svg";
-import cellFull from "../../../assets/iconImage/cell-full.svg";
+import iconShoppingBadge from "../../../assets/imageHomePage/shopping-cart.svg";
 import { Icon, Badge } from "antd";
 import { Link } from "react-router-dom";
 class Filter extends Component {
@@ -19,7 +19,7 @@ class Filter extends Component {
                     </div>
                     <Link style={{ color: "white" }} to={"/shopping-cart"}>
                         <div className="iconShoppingCart d-flex justify-content-between align-items-center">
-                            <Icon type="shopping-cart" />
+                            <img src={iconShoppingBadge} alt=""/>
                             <Badge count={this.props.totalProductsOnCart}>
                                 <a className="head-example" />
                             </Badge>
