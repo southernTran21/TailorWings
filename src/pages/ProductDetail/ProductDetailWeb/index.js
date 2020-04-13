@@ -28,7 +28,8 @@ class ProductDetailWeb extends Component {
             size: "",
             bodyMetric: [],
             isSizeMetricUpdate: false,
-            isImageView: false
+            isImageView: false,
+            isSideBarOpen: false
         };
     }
 
@@ -224,12 +225,19 @@ class ProductDetailWeb extends Component {
         });
     };
 
+    sideBarChange = (state) => {
+        this.setState({
+            isSideBarOpen: state
+        })
+    }
+
     render() {
         const {
             selectionStep,
             totalProductsOnCart,
             isImageView,
-            currentSelectedProduct
+            currentSelectedProduct,
+            isSideBarOpen
         } = this.state;
         return (
             <div className="productDetail-container">
@@ -241,6 +249,7 @@ class ProductDetailWeb extends Component {
                     <NavBarWeb
                         history={this.props.history}
                         totalProductsOnCart={totalProductsOnCart}
+                        sideBarChange={this.sideBarChange}
                     />
                     <div className="pageProductDetailWeb">
                         <Steps selectionStep={selectionStep} onContentChange={this.onContentChange}/>

@@ -54,6 +54,7 @@ class ShoppingCartWeb extends Component {
                 address: "",
                 note: "",
             },
+            isSideBarOpen: false,
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
             rememberChecked: false,
@@ -362,10 +363,19 @@ class ShoppingCartWeb extends Component {
         return content;
     };
 
+    sideBarChange = (state) => {
+        this.setState({
+            isSideBarOpen: state,
+        });
+    };
+
     render() {
         return (
             <div className="pageShoppingCartWeb">
-                <NavBarWeb history={this.props.history} />
+                <NavBarWeb
+                    history={this.props.history}
+                    sideBarChange={this.sideBarChange}
+                />
                 {this.shoppingCartBodyRender()}
             </div>
         );
