@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Swipeable } from "react-swipeable";
-
+import ProductSwiperImages from "./ProductSwiperImages";
 
 class ProductSwiper extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isDetailShow: false
-        }
+            isDetailShow: false,
+            isImageLoad: new Array(5).fill(false),
+        };
     }
 
     onProductImageSwiped = (direction) => {
         this.props.onProductImageSwiped(direction);
-    }
+    };
 
     onImageClicked = (e) => {
         const { productSliderIndex } = this.props;
@@ -20,12 +21,24 @@ class ProductSwiper extends Component {
         if (index === productSliderIndex) {
             this.props.onProductModalStatusChanged(true);
         } else {
-            this.props.selectHandling(e)
+            this.props.selectHandling(e);
         }
-    }
+    };
+
+    onImageLoaded = (e) => {
+        console.log("loaded");
+        let { isImageLoad } = this.state;
+        let index = e.target.name;
+        isImageLoad[index] = true;
+        this.setState({
+            isImageLoad,
+        });
+    };
 
     render() {
-        const { productSelectedState, renderProducts } = this.props;
+        const { productSelectedState, renderProducts, productSliderIndex } = this.props;
+        let imageList = new Array(5).fill("");
+        imageList[productSliderIndex] = renderProducts[productSliderIndex].image[0];
         return (
             <Swipeable
                 trackMouse
@@ -33,27 +46,142 @@ class ProductSwiper extends Component {
                 onSwipedLeft={() => this.onProductImageSwiped(+1)}
                 onSwipedRight={() => this.onProductImageSwiped(-1)}
             >
-                <div className='awesome3d'>
+                <div className="awesome3d">
                     <section style={{ padding: "none" }} id="slider">
-                        <input style={{ display: "none" }} type="radio" name="slider" id="s1" checked={productSelectedState[0]} />
-                        <input style={{ display: "none" }} type="radio" name="slider" id="s2" checked={productSelectedState[1]} />
-                        <input style={{ display: "none" }} type="radio" name="slider" id="s3" checked={productSelectedState[2]} />
-                        <input style={{ display: "none" }} type="radio" name="slider" id="s4" checked={productSelectedState[3]} />
-                        <input style={{ display: "none" }} type="radio" name="slider" id="s5" checked={productSelectedState[4]} />
-                        <label onClick={(e) => this.onImageClicked(e)} htmlFor="s1" id="slide1">
-                            <img name='0' id="slide1" onClick={(e) => this.onImageClicked(e)} src={renderProducts[0].image[0]} />
+                        <input
+                            style={{ display: "none" }}
+                            type="radio"
+                            name="slider"
+                            id="s1"
+                            checked={productSelectedState[0]}
+                        />
+                        <input
+                            style={{ display: "none" }}
+                            type="radio"
+                            name="slider"
+                            id="s2"
+                            checked={productSelectedState[1]}
+                        />
+                        <input
+                            style={{ display: "none" }}
+                            type="radio"
+                            name="slider"
+                            id="s3"
+                            checked={productSelectedState[2]}
+                        />
+                        <input
+                            style={{ display: "none" }}
+                            type="radio"
+                            name="slider"
+                            id="s4"
+                            checked={productSelectedState[3]}
+                        />
+                        <input
+                            style={{ display: "none" }}
+                            type="radio"
+                            name="slider"
+                            id="s5"
+                            checked={productSelectedState[4]}
+                        />
+                        <label
+                            onClick={(e) => this.onImageClicked(e)}
+                            htmlFor="s1"
+                            id="slide1"
+                        >
+                            {/* <img
+                                name="0"
+                                id="slide1"
+                                onClick={(e) => this.onImageClicked(e)}
+                                src={renderProducts[0].image[0]}
+                                onLoad={this.onImageLoaded}
+                            /> */}
+                            {imageList[0] !== "" ? (
+                                <ProductSwiperImages
+                                    name="0"
+                                    id="slide1"
+                                    src={imageList[0]}
+                                />
+                            ) : null}
                         </label>
-                        <label onClick={(e) => this.onImageClicked(e)} htmlFor="s2" id="slide2">
-                            <img name='1' id="slide2" onClick={(e) => this.onImageClicked(e)} src={renderProducts[1].image[0]} />
+                        <label
+                            onClick={(e) => this.onImageClicked(e)}
+                            htmlFor="s2"
+                            id="slide2"
+                        >
+                            {/* <img
+                                name="1"
+                                id="slide2"
+                                onClick={(e) => this.onImageClicked(e)}
+                                src={renderProducts[1].image[0]}
+                                onLoad={this.onImageLoaded}
+                            /> */}
+                            {imageList[1] !== "" ? (
+                                <ProductSwiperImages
+                                    name="1"
+                                    id="slide2"
+                                    src={imageList[1]}
+                                />
+                            ) : null}
                         </label>
-                        <label onClick={(e) => this.onImageClicked(e)} htmlFor="s3" id="slide3">
-                            <img name='2' id="slide3" onClick={(e) => this.onImageClicked(e)} src={renderProducts[2].image[0]} />
+                        <label
+                            onClick={(e) => this.onImageClicked(e)}
+                            htmlFor="s3"
+                            id="slide3"
+                        >
+                            {/* <img
+                                name="2"
+                                id="slide3"
+                                onClick={(e) => this.onImageClicked(e)}
+                                src={renderProducts[2].image[0]}
+                                onLoad={this.onImageLoaded}
+                            /> */}
+                            {imageList[2] !== "" ? (
+                                <ProductSwiperImages
+                                    name="2"
+                                    id="slide3"
+                                    src={imageList[2]}
+                                />
+                            ) : null}
                         </label>
-                        <label onClick={(e) => this.onImageClicked(e)} htmlFor="s4" id="slide4">
-                            <img name='3' id="slide4" onClick={(e) => this.onImageClicked(e)} src={renderProducts[3].image[0]} />
+                        <label
+                            onClick={(e) => this.onImageClicked(e)}
+                            htmlFor="s4"
+                            id="slide4"
+                        >
+                            {/* <img
+                                name="3"
+                                id="slide4"
+                                onClick={(e) => this.onImageClicked(e)}
+                                src={renderProducts[3].image[0]}
+                                onLoad={this.onImageLoaded}
+                            /> */}
+                            {imageList[3] !== "" ? (
+                                <ProductSwiperImages
+                                    name="3"
+                                    id="slide4"
+                                    src={imageList[3]}
+                                />
+                            ) : null}
                         </label>
-                        <label onClick={(e) => this.onImageClicked(e)} htmlFor="s5" id="slide5">
-                            <img name='4' id="slide5" onClick={(e) => this.onImageClicked(e)} src={renderProducts[4].image[0]} />
+                        <label
+                            onClick={(e) => this.onImageClicked(e)}
+                            htmlFor="s5"
+                            id="slide5"
+                        >
+                            {/* <img
+                                name="4"
+                                id="slide5"
+                                onClick={(e) => this.onImageClicked(e)}
+                                src={renderProducts[4].image[0]}
+                                onLoad={this.onImageLoaded}
+                            /> */}
+                            {imageList[4] !== "" ? (
+                                <ProductSwiperImages
+                                    name="4"
+                                    id="slide5"
+                                    src={imageList[4]}
+                                />
+                            ) : null}
                         </label>
                     </section>
                 </div>

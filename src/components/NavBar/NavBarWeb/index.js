@@ -30,12 +30,14 @@ class NavBarWeb extends Component {
     sideBarOpen = () => {
         let { isSideBarOpen } = this.state;
         isSideBarOpen = !isSideBarOpen;
+        this.props.sideBarChange(isSideBarOpen);
         this.setState({
             isSideBarOpen,
         });
     };
 
     backdropClickHandler = () => {
+        this.props.sideBarChange(false);
         this.setState({ isSideBarOpen: false });
     };
 

@@ -82,7 +82,12 @@ export default class FooterPage extends Component {
                 </smal>
                 <div className="infomation d-flex flex-column">
                     <div className="d-flex justify-content-between">
-                        <a href='https://www.facebook.com/TailorWings' target='_blank'>VỀ TAILOR WINGS</a>
+                        <a
+                            href="https://www.facebook.com/TailorWings"
+                            target="_blank"
+                        >
+                            VỀ TAILOR WINGS
+                        </a>
                         <Link to="/support">
                             <span>TRỢ GIÚP</span>
                         </Link>
@@ -92,7 +97,7 @@ export default class FooterPage extends Component {
                         <Link to="/policy">
                             <span>ĐIỀU KIỆN & ĐIỀU KHOẢN</span>
                         </Link>
-                        <span>Liên hệ</span>
+                        <span>LIÊN HỆ</span>
                     </div>
                 </div>
                 <div className="iconSocialNetwork d-flex flex-row justify-content-between">
@@ -113,8 +118,8 @@ export default class FooterPage extends Component {
                     </a>
                 </div>
                 <div className="hotline d-flex flex-column align-items-center">
-                    <span>HOTLINE 0939929405</span>
-                    <span>wetailor@gmail.com</span>
+                    <span>HOTLINE 0902 541 398</span>
+                    <span>info.tailorwings@gmail.com</span>
                 </div>
                 <div className="iconLogoTailorWings">
                     <img src={iconTailorWings} />

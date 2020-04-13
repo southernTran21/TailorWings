@@ -146,132 +146,132 @@ class FabricSelection extends Component {
         });
     }
 
-    selectHandling = (e) => {
-        const { productList } = this.props;
-        let {
-            productSelectedState,
-            productSliderIndex,
-            swiper,
-            renderProducts,
-        } = this.state;
-        let selectedProductIndex = 0;
-        let productListDouble = [];
-        if (productList.length < productSelectedState.length) {
-            productListDouble = productList.concat(productList);
-            productListDouble = productListDouble.concat(productList);
-        } else {
-            productListDouble = productList.concat(productList);
-        }
-        switch (e.target.id) {
-            case "slide1":
-                selectedProductIndex = productList.indexOf(renderProducts[0]);
-                renderProducts[0] = productListDouble[selectedProductIndex];
-                renderProducts[1] = productListDouble[selectedProductIndex + 1];
-                renderProducts[2] = productListDouble[selectedProductIndex + 2];
-                renderProducts[3] = productListDouble[selectedProductIndex + 3];
-                renderProducts[4] = productListDouble[selectedProductIndex + 4];
-                productSelectedState[
-                    productSliderIndex
-                ] = !productSelectedState[productSliderIndex];
-                productSelectedState[0] = true;
-                this.setState({
-                    currentProductIndex: selectedProductIndex,
-                    renderProducts,
-                    productSelectedState,
-                    productSliderIndex: 0,
-                    isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex],
-                });
-                swiper.slideTo(selectedProductIndex);
-                break;
-            case "slide2":
-                selectedProductIndex = productList.indexOf(renderProducts[1]);
-                renderProducts[0] = productListDouble[selectedProductIndex + 4];
-                renderProducts[1] = productListDouble[selectedProductIndex];
-                renderProducts[2] = productListDouble[selectedProductIndex + 1];
-                renderProducts[3] = productListDouble[selectedProductIndex + 2];
-                renderProducts[4] = productListDouble[selectedProductIndex + 3];
-                productSelectedState[
-                    productSliderIndex
-                ] = !productSelectedState[productSliderIndex];
-                productSelectedState[1] = true;
-                this.setState({
-                    currentProductIndex: selectedProductIndex,
-                    renderProducts,
-                    productSelectedState,
-                    productSliderIndex: 1,
-                    isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex],
-                });
-                swiper.slideTo(selectedProductIndex);
-                break;
-            case "slide3":
-                selectedProductIndex = productList.indexOf(renderProducts[2]);
-                renderProducts[0] = productListDouble[selectedProductIndex + 3];
-                renderProducts[1] = productListDouble[selectedProductIndex + 4];
-                renderProducts[2] = productListDouble[selectedProductIndex];
-                renderProducts[3] = productListDouble[selectedProductIndex + 1];
-                renderProducts[4] = productListDouble[selectedProductIndex + 2];
-                productSelectedState[
-                    productSliderIndex
-                ] = !productSelectedState[productSliderIndex];
-                productSelectedState[2] = true;
-                this.setState({
-                    currentProductIndex: selectedProductIndex,
-                    renderProducts,
-                    productSelectedState,
-                    productSliderIndex: 2,
-                    isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex],
-                });
-                swiper.slideTo(selectedProductIndex);
-                break;
-            case "slide4":
-                selectedProductIndex = productList.indexOf(renderProducts[3]);
-                renderProducts[0] = productListDouble[selectedProductIndex + 2];
-                renderProducts[1] = productListDouble[selectedProductIndex + 3];
-                renderProducts[2] = productListDouble[selectedProductIndex + 4];
-                renderProducts[3] = productListDouble[selectedProductIndex];
-                renderProducts[4] = productListDouble[selectedProductIndex + 1];
-                productSelectedState[
-                    productSliderIndex
-                ] = !productSelectedState[productSliderIndex];
-                productSelectedState[3] = true;
-                this.setState({
-                    currentProductIndex: selectedProductIndex,
-                    renderProducts,
-                    productSelectedState,
-                    productSliderIndex: 3,
-                    isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex],
-                });
-                swiper.slideTo(selectedProductIndex);
-                break;
-            case "slide5":
-                selectedProductIndex = productList.indexOf(renderProducts[4]);
-                renderProducts[0] = productListDouble[selectedProductIndex + 1];
-                renderProducts[1] = productListDouble[selectedProductIndex + 2];
-                renderProducts[2] = productListDouble[selectedProductIndex + 3];
-                renderProducts[3] = productListDouble[selectedProductIndex + 4];
-                renderProducts[4] = productListDouble[selectedProductIndex];
-                productSelectedState[
-                    productSliderIndex
-                ] = !productSelectedState[productSliderIndex];
-                productSelectedState[4] = true;
-                this.setState({
-                    currentProductIndex: selectedProductIndex,
-                    renderProducts,
-                    productSelectedState,
-                    productSliderIndex: 4,
-                    isSwiperTouch: false,
-                    price: renderProducts[selectedProductIndex],
-                });
-                swiper.slideTo(selectedProductIndex);
-                break;
-            default:
-                break;
-        }
-    };
+    // selectHandling = (e) => {
+    //     const { productList } = this.props;
+    //     let {
+    //         productSelectedState,
+    //         productSliderIndex,
+    //         swiper,
+    //         renderProducts,
+    //     } = this.state;
+    //     let selectedProductIndex = 0;
+    //     let productListDouble = [];
+    //     if (productList.length < productSelectedState.length) {
+    //         productListDouble = productList.concat(productList);
+    //         productListDouble = productListDouble.concat(productList);
+    //     } else {
+    //         productListDouble = productList.concat(productList);
+    //     }
+    //     switch (e.target.id) {
+    //         case "slide1":
+    //             selectedProductIndex = productList.indexOf(renderProducts[0]);
+    //             renderProducts[0] = productListDouble[selectedProductIndex];
+    //             renderProducts[1] = productListDouble[selectedProductIndex + 1];
+    //             renderProducts[2] = productListDouble[selectedProductIndex + 2];
+    //             renderProducts[3] = productListDouble[selectedProductIndex + 3];
+    //             renderProducts[4] = productListDouble[selectedProductIndex + 4];
+    //             productSelectedState[
+    //                 productSliderIndex
+    //             ] = !productSelectedState[productSliderIndex];
+    //             productSelectedState[0] = true;
+    //             this.setState({
+    //                 currentProductIndex: selectedProductIndex,
+    //                 renderProducts,
+    //                 productSelectedState,
+    //                 productSliderIndex: 0,
+    //                 isSwiperTouch: false,
+    //                 price: renderProducts[selectedProductIndex],
+    //             });
+    //             swiper.slideTo(selectedProductIndex);
+    //             break;
+    //         case "slide2":
+    //             selectedProductIndex = productList.indexOf(renderProducts[1]);
+    //             renderProducts[0] = productListDouble[selectedProductIndex + 4];
+    //             renderProducts[1] = productListDouble[selectedProductIndex];
+    //             renderProducts[2] = productListDouble[selectedProductIndex + 1];
+    //             renderProducts[3] = productListDouble[selectedProductIndex + 2];
+    //             renderProducts[4] = productListDouble[selectedProductIndex + 3];
+    //             productSelectedState[
+    //                 productSliderIndex
+    //             ] = !productSelectedState[productSliderIndex];
+    //             productSelectedState[1] = true;
+    //             this.setState({
+    //                 currentProductIndex: selectedProductIndex,
+    //                 renderProducts,
+    //                 productSelectedState,
+    //                 productSliderIndex: 1,
+    //                 isSwiperTouch: false,
+    //                 price: renderProducts[selectedProductIndex],
+    //             });
+    //             swiper.slideTo(selectedProductIndex);
+    //             break;
+    //         case "slide3":
+    //             selectedProductIndex = productList.indexOf(renderProducts[2]);
+    //             renderProducts[0] = productListDouble[selectedProductIndex + 3];
+    //             renderProducts[1] = productListDouble[selectedProductIndex + 4];
+    //             renderProducts[2] = productListDouble[selectedProductIndex];
+    //             renderProducts[3] = productListDouble[selectedProductIndex + 1];
+    //             renderProducts[4] = productListDouble[selectedProductIndex + 2];
+    //             productSelectedState[
+    //                 productSliderIndex
+    //             ] = !productSelectedState[productSliderIndex];
+    //             productSelectedState[2] = true;
+    //             this.setState({
+    //                 currentProductIndex: selectedProductIndex,
+    //                 renderProducts,
+    //                 productSelectedState,
+    //                 productSliderIndex: 2,
+    //                 isSwiperTouch: false,
+    //                 price: renderProducts[selectedProductIndex],
+    //             });
+    //             swiper.slideTo(selectedProductIndex);
+    //             break;
+    //         case "slide4":
+    //             selectedProductIndex = productList.indexOf(renderProducts[3]);
+    //             renderProducts[0] = productListDouble[selectedProductIndex + 2];
+    //             renderProducts[1] = productListDouble[selectedProductIndex + 3];
+    //             renderProducts[2] = productListDouble[selectedProductIndex + 4];
+    //             renderProducts[3] = productListDouble[selectedProductIndex];
+    //             renderProducts[4] = productListDouble[selectedProductIndex + 1];
+    //             productSelectedState[
+    //                 productSliderIndex
+    //             ] = !productSelectedState[productSliderIndex];
+    //             productSelectedState[3] = true;
+    //             this.setState({
+    //                 currentProductIndex: selectedProductIndex,
+    //                 renderProducts,
+    //                 productSelectedState,
+    //                 productSliderIndex: 3,
+    //                 isSwiperTouch: false,
+    //                 price: renderProducts[selectedProductIndex],
+    //             });
+    //             swiper.slideTo(selectedProductIndex);
+    //             break;
+    //         case "slide5":
+    //             selectedProductIndex = productList.indexOf(renderProducts[4]);
+    //             renderProducts[0] = productListDouble[selectedProductIndex + 1];
+    //             renderProducts[1] = productListDouble[selectedProductIndex + 2];
+    //             renderProducts[2] = productListDouble[selectedProductIndex + 3];
+    //             renderProducts[3] = productListDouble[selectedProductIndex + 4];
+    //             renderProducts[4] = productListDouble[selectedProductIndex];
+    //             productSelectedState[
+    //                 productSliderIndex
+    //             ] = !productSelectedState[productSliderIndex];
+    //             productSelectedState[4] = true;
+    //             this.setState({
+    //                 currentProductIndex: selectedProductIndex,
+    //                 renderProducts,
+    //                 productSelectedState,
+    //                 productSliderIndex: 4,
+    //                 isSwiperTouch: false,
+    //                 price: renderProducts[selectedProductIndex],
+    //             });
+    //             swiper.slideTo(selectedProductIndex);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // };
 
     getSwiper = (swiper) => {
         this.setState({
@@ -280,21 +280,18 @@ class FabricSelection extends Component {
     };
 
     onFabricClicked = (e) => {
-        const { swiper } = this.state;
+        let { swiper, productSliderIndex, renderProducts, productSelectedState } = this.state;
         const { productList } = this.props;
         let index = swiper.realIndex;
-        let { renderProducts, productSelectedState } = this.state;
-        let productListDouble = productList.concat(productList);
-        for (let i = 0; i < productSelectedState.length; i++) {
-            renderProducts[i] = productListDouble[index + i];
-            productSelectedState[i] = false;
-        }
-        productSelectedState[0] = true;
+        productSliderIndex = productSliderIndex === 4 ? 0 : productSliderIndex + 1;
+        productSelectedState.fill(false);
+        productSelectedState[productSliderIndex] = true;
+        renderProducts[productSliderIndex] = productList[index];
         this.setState({
             currentProductIndex: index,
             productSelectedState,
             renderProducts,
-            productSliderIndex: 0,
+            productSliderIndex,
             price: renderProducts[0].price,
         });
     };

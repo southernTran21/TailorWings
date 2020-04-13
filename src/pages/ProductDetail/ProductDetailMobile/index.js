@@ -7,6 +7,10 @@ import { connect } from "react-redux";
 class ProductDetailMobile extends Component {
     constructor(props) {
         super(props);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
         this.state = {
             selectionStep: "fabric",
             currentSelectedProduct: {
@@ -179,9 +183,9 @@ class ProductDetailMobile extends Component {
     onSizeUpdated = (size) => {
         let { currentSelectedProduct } = this.state;
         currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric.fill('');
+        currentSelectedProduct.bodyMetric.fill("");
         this.setState({
-            currentSelectedProduct
+            currentSelectedProduct,
         });
     };
 
