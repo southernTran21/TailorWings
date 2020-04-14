@@ -7,7 +7,7 @@ import { uploadImage, setDocument } from "../../../services/Fundamental";
 const categoryIDMapping = {
     B: "damom",
     S: "damsuong",
-    X: "damxoe"
+    X: "damxoe",
 };
 let isLoading = false;
 
@@ -16,7 +16,7 @@ function getBase64(file) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
+        reader.onerror = (error) => reject(error);
     });
 }
 
@@ -39,16 +39,16 @@ export class ProductAdjustment extends Component {
             image: [],
             price: 0,
             productID: "",
-            visibility: false
+            visibility: false,
         },
         designList: [],
         fabricList: [],
         currentDesignImage: {
-            image: ""
+            image: "",
         },
         currentFabricImage: {
-            image: []
-        }
+            image: [],
+        },
     };
 
     componentDidMount() {
@@ -63,9 +63,9 @@ export class ProductAdjustment extends Component {
                 ? window.location.search.match(/id=(.*)\b/)[1]
                 : productID;
             let currentProduct = {
-                ...products.find(product => {
+                ...products.find((product) => {
                     return product.productID === currentProductID;
-                })
+                }),
             };
             if (currentProduct != null) {
                 let fileList = currentProduct.image.map((url, index) => {
@@ -78,27 +78,27 @@ export class ProductAdjustment extends Component {
                             name: imageName,
                             status: "done",
                             url: url,
-                            old: true
+                            old: true,
                         };
                     } else {
                         return {};
                     }
                 });
-                let designList = designs.map(design => {
+                let designList = designs.map((design) => {
                     if (design != null) {
                         return {
                             value: design.id,
-                            label: design.id
+                            label: design.id,
                         };
                     } else {
                         return {};
                     }
                 });
-                let fabricList = fabrics.map(fabric => {
+                let fabricList = fabrics.map((fabric) => {
                     if (fabric != null) {
                         return {
                             value: fabric.id,
-                            label: fabric.id
+                            label: fabric.id,
                         };
                     } else {
                         return {};
@@ -106,11 +106,11 @@ export class ProductAdjustment extends Component {
                 });
                 let currentDesignImage =
                     designs.find(
-                        design => design.id === currentProduct.designID
+                        (design) => design.id === currentProduct.designID
                     ) || this.state.currentDesignImage;
                 let currentFabricImage =
                     fabrics.find(
-                        fabric => fabric.id === currentProduct.fabricID
+                        (fabric) => fabric.id === currentProduct.fabricID
                     ) || this.state.currentFabricImage;
                 if (this._isMounted) {
                     this.setState({
@@ -122,26 +122,26 @@ export class ProductAdjustment extends Component {
                         currentDesignImage,
                         currentFabricImage,
                         productID: currentProductID,
-                        previewImage: currentProduct.image
+                        previewImage: currentProduct.image,
                     });
                 }
             }
         } else if (products != null) {
-            let designList = designs.map(design => {
+            let designList = designs.map((design) => {
                 if (design != null) {
                     return {
                         value: design.id,
-                        label: design.id
+                        label: design.id,
                     };
                 } else {
                     return {};
                 }
             });
-            let fabricList = fabrics.map(fabric => {
+            let fabricList = fabrics.map((fabric) => {
                 if (fabric != null) {
                     return {
                         value: fabric.id,
-                        label: fabric.id
+                        label: fabric.id,
                     };
                 } else {
                     return {};
@@ -150,7 +150,7 @@ export class ProductAdjustment extends Component {
             if (this._isMounted) {
                 this.setState({
                     designList,
-                    fabricList
+                    fabricList,
                 });
             }
         }
@@ -160,25 +160,25 @@ export class ProductAdjustment extends Component {
         this._isMounted = false;
     }
 
-    decode_utf8 = s => {
+    decode_utf8 = (s) => {
         return decodeURIComponent(s);
     };
 
     handleCancel = () => this.setState({ previewVisible: false });
 
-    handlePreview = async file => {
+    handlePreview = async (file) => {
         if (!file.url && !file.preview) {
             file.preview = await getBase64(file.originFileObj);
         }
 
         this.setState({
             previewImage: file.url || file.preview,
-            previewVisible: true
+            previewVisible: true,
         });
     };
 
     handleImageChange = ({ fileList }) => {
-        fileList.forEach(file => {
+        fileList.forEach((file) => {
             if (!file.hasOwnProperty("old")) {
                 file.old = false;
             }
@@ -186,38 +186,38 @@ export class ProductAdjustment extends Component {
         this.setState({
             fileList,
             isImageChanged: true,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onDiscountChange = e => {
+    onDiscountChange = (e) => {
         let { currentProduct } = this.state;
         currentProduct.discount = e.target.value;
         this.setState({
             currentProduct,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onVisibilityChange = e => {
+    onVisibilityChange = (e) => {
         let { currentProduct } = this.state;
         currentProduct.visibility = e.target.checked ? true : false;
         this.setState({
             currentProduct,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onDefaultChange = e => {
+    onDefaultChange = (e) => {
         let { currentProduct } = this.state;
         currentProduct.default = e.target.checked ? true : false;
         this.setState({
             currentProduct,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onDesignChange = value => {
+    onDesignChange = (value) => {
         const { designs, categories } = this.props;
         let { currentProduct, currentDesignImage } = this.state;
         let firstCharacter = value[0].split("")[0];
@@ -229,16 +229,16 @@ export class ProductAdjustment extends Component {
             currentProduct.fabricID
         );
         currentDesignImage =
-            designs.find(design => design.id === currentProduct.designID) ||
+            designs.find((design) => design.id === currentProduct.designID) ||
             this.state.currentDesignImage;
         this.setState({
             currentProduct,
             currentDesignImage,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onFabricChange = value => {
+    onFabricChange = (value) => {
         const { fabrics } = this.props;
         let { currentProduct, currentFabricImage } = this.state;
         currentProduct.fabricID =
@@ -247,19 +247,19 @@ export class ProductAdjustment extends Component {
             currentProduct.fabricID
         );
         currentFabricImage =
-            fabrics.find(fabric => fabric.id === currentProduct.fabricID) ||
+            fabrics.find((fabric) => fabric.id === currentProduct.fabricID) ||
             this.state.currentFabricImage;
         this.setState({
             currentProduct,
             currentFabricImage,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
     onSaveHandling = () => {
         isLoading = true;
         this.setState({
-            isLoading: true
+            isLoading: true,
         });
         let { isUpdate } = this.state;
         if (isUpdate) {
@@ -302,10 +302,10 @@ export class ProductAdjustment extends Component {
         let { currentProduct, fileList, isImageChanged } = this.state;
         const { products, fabrics, designs } = this.props;
         let relatedDesign = designs.find(
-            design => design.id === currentProduct.designID
+            (design) => design.id === currentProduct.designID
         );
         let relatedFabric = fabrics.find(
-            fabric => fabric.id === currentProduct.fabricID
+            (fabric) => fabric.id === currentProduct.fabricID
         );
         let purePrice =
             relatedDesign.price +
@@ -320,7 +320,7 @@ export class ProductAdjustment extends Component {
             currentProduct.designID !== "" &&
             currentProduct.fabricID !== "" &&
             products.find(
-                product => product.productID === currentProduct.productID
+                (product) => product.productID === currentProduct.productID
             ) == null
         ) {
             if (fileList.length === 3) {
@@ -337,9 +337,9 @@ export class ProductAdjustment extends Component {
                         uploadImage(
                             "image/products/",
                             fileList[2].originFileObj
-                        )
+                        ),
                     ])
-                        .then(downloadURLList => {
+                        .then((downloadURLList) => {
                             currentProduct.image = downloadURLList;
                             setDocument(
                                 "products",
@@ -391,12 +391,13 @@ export class ProductAdjustment extends Component {
         let { currentProduct, fileList, isImageChanged } = this.state;
         if (fileList.length === 3) {
             if (isImageChanged) {
+                console.log("update", fileList);
                 Promise.all([
                     uploadImage("image/products/", fileList[0].originFileObj),
                     uploadImage("image/products/", fileList[1].originFileObj),
-                    uploadImage("image/products/", fileList[2].originFileObj)
-                ])
-                    .then(downloadURLList => {
+                    uploadImage("image/products/", fileList[2].originFileObj),
+                ]).then((downloadURLList) => {
+                    console.log('downloadURLList', downloadURLList)
                         currentProduct.image = downloadURLList;
                         setDocument(
                             "products",
@@ -444,7 +445,7 @@ export class ProductAdjustment extends Component {
             fabricList,
             currentProduct,
             currentDesignImage,
-            currentFabricImage
+            currentFabricImage,
         } = this.state;
         const uploadButton = (
             <div>
