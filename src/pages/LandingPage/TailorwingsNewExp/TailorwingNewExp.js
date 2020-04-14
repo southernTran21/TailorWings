@@ -1,16 +1,85 @@
 import React, { Component } from "react";
 import "./TailorwingNewExp.scss";
-import { Input } from "antd";
-
+import { Input, message } from "antd";
+import { setDocument } from "../../../services/Fundamental";
+import { Link } from "react-router-dom";
+import classNames from "classnames";
+import NumberFormat from "react-number-format";
+import ReactGA from "react-ga";
 // import image
 import imageStep from "../../../assets/imageLandingPage/Step.svg";
 import imageContentSecond from "../../../assets/imageLandingPage/landingPage1.svg";
 import imageContentFour from "../../../assets/imageLandingPage/Group33.svg";
 import logo from "../../../assets/imageLandingPage/logo.svg";
-import group34 from '../../../assets/imageLandingPage/Group 34.svg';
+import group34 from "../../../assets/imageLandingPage/Group 34.svg";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 export default class TailorwingNewExp extends Component {
+    constructor(props) {
+        super(props);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        initGA();
+        logPageView();
+        this.state = {
+            name: "",
+            phone: "",
+            errorValidate: new Array(2).fill(false),
+        };
+    }
+
+    onInputChange = (e) => {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value,
+        });
+    };
+
+    onCustomerInfoValidate = () => {
+        let { name, phone, errorValidate } = this.state;
+        let phoneModified = phone.replace(/ /gi, "");
+        errorValidate[0] = name === "" ? true : false;
+        errorValidate[1] =
+            isNaN(phoneModified) ||
+            phone === "" ||
+            phoneModified.split("")[0] != 0
+                ? true
+                : false;
+        if (!errorValidate.includes(true)) {
+            setDocument(
+                "newExpLandingPage",
+                { name, phone: phoneModified },
+                phoneModified
+            ).then(() => {
+                message.success(
+                    "Chúc mừng bạn đã nhận được ưu đãi từ TailorWings!"
+                );
+                name = "";
+                phone = "";
+                this.setState({
+                    errorValidate,
+                    name,
+                    phone,
+                });
+            });
+        } else {
+            this.setState({
+                errorValidate,
+            });
+        }
+    };
     render() {
+        const { name, phone, errorValidate } = this.state;
         return (
             <div className="tailorwingNewExp_wrapper d-flex flex-column align-items-center">
                 <div className="logoHederPage">
@@ -47,7 +116,12 @@ export default class TailorwingNewExp extends Component {
                             <br />
                             từ <span className="colorOrange">500.000đ</span>
                         </span>
-                        <span className="button">ĐẶT MAY NGAY</span>
+                        <span
+                            className="button"
+                            onClick={() => this.props.history.push("/")}
+                        >
+                            ĐẶT MAY NGAY
+                        </span>
                     </div>
                 </div>
                 <div className="footerPage">
@@ -114,10 +188,45 @@ export default class TailorwingNewExp extends Component {
                         </span>
                     </div>
                     <div className="inputInfo d-flex flex-column align-items-center">
-                        <Input placeholder="Họ và tên" />
-                        <Input placeholder="Số điện thoại" />
+                        <Input
+                            name="name"
+                            value={name}
+                            placeholder="Nhập họ & tên người nhận"
+                            maxLength={50}
+                            onChange={this.onInputChange}
+                        />
+                        <small
+                            className={classNames({
+                                error: errorValidate[0],
+                                errorUnvisible: !errorValidate[0],
+                            })}
+                        >
+                            Vui lòng nhập tên khách hàng
+                        </small>
+                        <NumberFormat
+                            name="phone"
+                            value={phone}
+                            className="ant-input"
+                            placeholder="Nhập số điện thoại nhận hàng"
+                            format="#### ### ###"
+                            mask="_"
+                            onChange={this.onInputChange}
+                        />
+                        <small
+                            className={classNames({
+                                error: errorValidate[1],
+                                errorUnvisible: !errorValidate[1],
+                            })}
+                        >
+                            Vui lòng nhập đúng 10 số điện thoại
+                        </small>
                     </div>
-                    <div className="buttonAccept">NHẬN NGAY</div>
+                    <div
+                        className="buttonAccept"
+                        onClick={this.onCustomerInfoValidate}
+                    >
+                        NHẬN NGAY
+                    </div>
                 </div>
             </div>
         );

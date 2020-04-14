@@ -5,6 +5,7 @@ import { setDocument } from "../../../services/Fundamental";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import NumberFormat from "react-number-format";
+import ReactGA from "react-ga";
 //
 import imageCovid1 from "../../../assets/imageLandingPage/imagePageCovid1.png";
 import imageCovid2 from "../../../assets/imageLandingPage/Group 28.svg";
@@ -14,7 +15,6 @@ import imageCovid5 from "../../../assets/imageLandingPage/Group 31.svg";
 import imageCovid6 from "../../../assets/imageLandingPage/Group 32.svg";
 import logo from "../../../assets/imageLandingPage/logo.svg";
 import threedot from "../../../assets/imageLandingPage/Group 9.svg";
-import ReactGA from "react-ga";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
