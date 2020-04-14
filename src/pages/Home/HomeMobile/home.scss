@@ -35,6 +35,7 @@
         }
         .search-wraper {
             width: 0;
+            height: 0;
             z-index: -1;
             position: absolute;
             right: -100px;
@@ -50,7 +51,7 @@
             position: absolute;
             left: 0;
             background-color: white;
-            height: 65px;
+            height: 9.74vh;
             width: 80vw;
             padding-left: 86.5vw;
             .borderSearch {
@@ -598,9 +599,6 @@
             font-weight: bold;
             width: 86vw;
             margin-top: 56px;
-            span {
-                border-bottom: 1px solid white;
-            }
             a {
                 width: fit-content;
                 height: fit-content;

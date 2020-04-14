@@ -97,7 +97,9 @@ export default class FooterPage extends Component {
                         <Link to="/policy">
                             <span>ĐIỀU KIỆN & ĐIỀU KHOẢN</span>
                         </Link>
-                        <span>LIÊN HỆ</span>
+                        <a href="#">
+                            <span>LIÊN HỆ</span>
+                        </a>
                     </div>
                 </div>
                 <div className="iconSocialNetwork d-flex flex-row justify-content-between">
