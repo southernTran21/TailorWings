@@ -5,7 +5,7 @@ import ShoppingCartMobile from './ShoppingCartMobile/index';
 import ShoppingCartWeb from './ShoppingCartWeb/index'
 
 const initGA = () => {
-    ReactGA.initialize("UA-159143322-1");
+    ReactGA.initialize("UA-159143322-2");
 };
 
 const logPageView = () => {

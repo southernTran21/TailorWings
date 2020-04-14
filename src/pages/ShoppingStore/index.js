@@ -6,7 +6,7 @@ import ReactGA from "react-ga";
 import { connect } from "react-redux";
 
 const initGA = () => {
-    ReactGA.initialize("UA-159143322-1");
+    ReactGA.initialize("UA-159143322-2");
 };
 
 const logPageView = () => {

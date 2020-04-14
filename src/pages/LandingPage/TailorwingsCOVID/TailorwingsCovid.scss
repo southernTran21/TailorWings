@@ -32,23 +32,28 @@
     }
     .collectionFirst {
         margin-top: 4.04vh;
-        .imageCovid2 {
-            width: 91.54vw;
-        }
-        .button_collectionFirst {
-            background-color: #ff6d3b;
-            padding: 1.5vh 0;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-            font-size: 4.26vw;
-            text-align: center;
-            margin-left: 15vw;
-            margin-top: 0.7vh;
-            cursor: pointer;
+        a {
+            width: fit-content;
+            height: fit-content;
+            text-decoration: none;
+            .imageCovid2 {
+                width: 91.54vw;
+            }
+            .button_collectionFirst {
+                background-color: #ff6d3b;
+                padding: 1.5vh 0;
+                border-radius: 8px;
+                color: white;
+                font-weight: bold;
+                font-size: 4.26vw;
+                text-align: center;
+                margin-left: 15vw;
+                margin-top: 0.7vh;
+                cursor: pointer;
+            }
         }
     }
-    .threedot{
+    .threedot {
         width: 21.06vw;
     }
     .contentSecond {
@@ -66,7 +71,7 @@
     }
     .endContent {
         margin-top: 3.59vh;
-        svg{
+        svg {
             width: 100vw;
         }
         .button_endContent {
@@ -91,7 +96,7 @@
         margin-top: 5.99vh;
         .iconSVG {
             margin-top: 4.49vh;
-            svg{
+            svg {
                 width: 18.13vw;
             }
         }
@@ -114,7 +119,7 @@
             .ant-input:hover {
                 border: none;
             }
-            :nth-child(2) {
+            :nth-child(3) {
                 margin-top: 2.24vh;
             }
             ::placeholder {
@@ -133,10 +138,16 @@
             margin-bottom: 8.99vh;
         }
     }
+    .error {
+        color: white;
+    }
+    .errorUnvisible {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 1100px) {
-    .tailorwingsCovid_wrapper{
+    .tailorwingsCovid_wrapper {
         .logoHederPage {
             margin-top: 2.69vh;
             width: 10vw;
@@ -145,58 +156,58 @@
             border-top: 10px solid #ff6d3b;
             width: 14.73vw;
         }
-        .contentFirst_tailorwingsCovid{
+        .contentFirst_tailorwingsCovid {
             font-size: 2.5vw;
         }
-        .imageCovid1{
+        .imageCovid1 {
             margin: 0;
             margin-top: 2vh;
             width: 25.22vw;
         }
-        .imageCovid2{
+        .imageCovid2 {
             width: 33vw !important;
         }
-        .button_collectionFirst{
+        .button_collectionFirst {
             font-size: 1.11vw !important;
         }
-        .threedot{
+        .threedot {
             width: 7vw;
         }
-        .title_contentSecond{
+        .title_contentSecond {
             font-size: 2.5vw !important;
         }
-        .image_contentSecond{
+        .image_contentSecond {
             width: 20vw !important;
         }
-        .endContent{
+        .endContent {
             margin-top: 5vh !important;
             display: flex;
             flex-direction: column;
             align-items: center;
-            svg{
+            svg {
                 width: 25vw;
             }
-            .button_endContent{
+            .button_endContent {
                 font-size: 1.38vw;
                 padding: 1vw 5vw;
                 cursor: pointer;
             }
         }
-        .footerPage{
-            .iconSVG{
-                svg{
+        .footerPage {
+            .iconSVG {
+                svg {
                     width: 7vw !important;
                 }
             }
-            .contentFooter{
+            .contentFooter {
                 font-size: 1.38vw;
             }
-            .inputInfo{
-                .ant-input{
+            .inputInfo {
+                .ant-input {
                     width: 35vw !important;
                 }
             }
-            .buttonAccept{
+            .buttonAccept {
                 width: 35vw;
             }
         }

@@ -45,7 +45,7 @@ const sizeImages = [
 
 const initGA = () => {
     console.log('initGA');
-    ReactGA.initialize('UA-159143322-1')
+    ReactGA.initialize('UA-159143322-2')
 }
 
 const logPageView = () => {
