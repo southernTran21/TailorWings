@@ -104,6 +104,7 @@ export const addDocument = (collection, newItem) => {
 }
 
 export const setDocument = (collection, newItem, docName) => {
+    console.log('here');
     newItem.timestamp = firebase.firestore.FieldValue.serverTimestamp();
     return database
         .collection(collection)

@@ -27,9 +27,9 @@ const ContentNoteAnt = (noteContent, orderID, OnChangeInputNoteAnt, onNoteUpdate
 const ContentUpdateAnt = (onStatusChange, orderID) => {
     return (
         <div className="contentUpdate d-flex flex-column justify-content-center align-items-center">
-            <a name='new' onClick={(e) => onStatusChange(e, orderID)} >New</a>
-            <a name='repair' onClick={(e) => onStatusChange(e, orderID)} >Repair</a>
-            <a name='done' onClick={(e) => onStatusChange(e, orderID)} >Done</a>
+            <a name='new' onClick={(e) => onStatusChange(e, orderID)} >Mới</a>
+            <a name='repair' onClick={(e) => onStatusChange(e, orderID)} >Chuẩn bị</a>
+            <a name='done' onClick={(e) => onStatusChange(e, orderID)} >Xong</a>
         </div>
     )
 }
@@ -49,11 +49,15 @@ export class Order extends Component {
 
     componentDidMount() {
         const { orders, customers } = this.props;
-        let renderOrders = orders || [];
+        let renderOrders = [...orders];
         if (renderOrders.length > 0) {
             renderOrders.forEach((order) => {
-                if (order.orderDate.seconds != null && order.doneDate.seconds != null) {
+                if (order.orderDate.hasOwnProperty('seconds')) {
+                    console.log('order.orderDate.seconds :', order.orderDate.seconds);
                     order.orderDate = this.timeConverter(order.orderDate.seconds);
+                }
+                if (order.doneDate.hasOwnProperty('seconds')) {
+                    console.log('order.doneDate.seconds :', order.doneDate.seconds);
                     order.doneDate = this.timeConverter(order.doneDate.seconds);
                 }
                 let currentCustomer = customers.find(customer => customer.customerID === order.customerID) || { cusName: '' }
@@ -203,6 +207,7 @@ export class Order extends Component {
     render() {
         const { renderOrders } = this.state;
         const { customers } = this.props;
+        console.log('renderOrders :', renderOrders);
         return (
             <div className="pageOrder">
                 <div className="headerPageOrder d-flex flex-row justify-content-between align-items-center">
@@ -227,12 +232,12 @@ export class Order extends Component {
                     </div>
                     <div className="tableProduct">
                         <div className="headerTable d-flex">
-                            <div className="column1 text-center">Order ID</div>
-                            <div className="column2">Cus_Name</div>
-                            <div className="column3">Total</div>
-                            <div className="column4 text-center">Ordered Date</div>
-                            <div className="column5 text-center">Done Date</div>
-                            <div className="column6 text-center">Status</div>
+                            <div className="column1 text-center">Mã</div>
+                            <div className="column2">Khách hàng</div>
+                            <div className="column3">Tổng tiền</div>
+                            <div className="column4 text-center">Ngày đặt hàng</div>
+                            <div className="column5 text-center">Ngày hoàn tất</div>
+                            <div className="column6 text-center">Tình trạng</div>
                             <div className="column7"></div>
                             <div className="column8"></div>
                         </div>
@@ -247,6 +252,8 @@ export class Order extends Component {
                                         <div className="column3">{order.total}</div>
                                         <div className="column4 text-center">{order.orderDate}</div>
                                         <div className="column5 text-center">{order.doneDate}</div>
+                                        {/* <div className="column4 text-center"></div>
+                                        <div className="column5 text-center"></div> */}
                                         <div className="column6 text-center">{order.status}</div>
                                         <div className="column7">
                                             <div className="d-flex flex-row justify-content-center align-items-center">

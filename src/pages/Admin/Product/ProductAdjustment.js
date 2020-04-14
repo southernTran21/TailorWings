@@ -170,7 +170,6 @@ export class ProductAdjustment extends Component {
         if (!file.url && !file.preview) {
             file.preview = await getBase64(file.originFileObj);
         }
-
         this.setState({
             previewImage: file.url || file.preview,
             previewVisible: true,
@@ -261,11 +260,15 @@ export class ProductAdjustment extends Component {
         this.setState({
             isLoading: true,
         });
-        let { isUpdate } = this.state;
+        let { isUpdate, currentProduct } = this.state;
         if (isUpdate) {
             switch (window.location.pathname) {
                 case "/admin/product-add":
-                    this.addHandling();
+                    if (currentProduct.catID != null) {
+                        this.addHandling();
+                    } else {
+                        message.error("Category trống!");
+                    }
                     break;
                 case "/admin/product-edit":
                     this.updateHandling();
@@ -325,6 +328,7 @@ export class ProductAdjustment extends Component {
         ) {
             if (fileList.length === 3) {
                 if (isImageChanged) {
+                    console.log("update", fileList);
                     Promise.all([
                         uploadImage(
                             "image/products/",
@@ -340,12 +344,15 @@ export class ProductAdjustment extends Component {
                         ),
                     ])
                         .then((downloadURLList) => {
-                            currentProduct.image = downloadURLList;
+                            console.log("downloadURLList", downloadURLList);
+                            currentProduct.image = [...downloadURLList];
+                            console.log("currentProduct :", currentProduct);
                             setDocument(
                                 "products",
                                 currentProduct,
                                 currentProduct.productID
                             ).then(() => {
+                                message.success("Thay đổi thành công");
                                 isLoading = false;
                                 window.history.back();
                             });
@@ -391,19 +398,29 @@ export class ProductAdjustment extends Component {
         let { currentProduct, fileList, isImageChanged } = this.state;
         if (fileList.length === 3) {
             if (isImageChanged) {
-                console.log("update", fileList);
-                Promise.all([
-                    uploadImage("image/products/", fileList[0].originFileObj),
-                    uploadImage("image/products/", fileList[1].originFileObj),
-                    uploadImage("image/products/", fileList[2].originFileObj),
-                ]).then((downloadURLList) => {
-                    console.log('downloadURLList', downloadURLList)
-                        currentProduct.image = downloadURLList;
+                let indexesOfChanged = [];
+                fileList.forEach((file, index) => {
+                    if (!file.old) {
+                        indexesOfChanged.push(index);
+                    }
+                });
+                let promiseFunctionArray = indexesOfChanged.map((index, i) => {
+                    return uploadImage(
+                        "image/products/",
+                        fileList[index].originFileObj
+                    );
+                });
+                Promise.all([...promiseFunctionArray])
+                    .then((downloadURLList) => {
+                        indexesOfChanged.forEach((index, i) => {
+                            currentProduct.image[index] = downloadURLList[i];
+                        });
                         setDocument(
                             "products",
                             currentProduct,
                             currentProduct.productID
                         ).then(() => {
+                            message.success("Thay đổi thành công");
                             isLoading = false;
                             window.history.back();
                         });
@@ -457,6 +474,7 @@ export class ProductAdjustment extends Component {
             currentProduct.designID !== "" ? [currentProduct.designID] : [];
         let currentFabricID =
             currentProduct.fabricID !== "" ? [currentProduct.fabricID] : [];
+        console.log("fileList :", fileList);
         return (
             <div className="pageProductAdjustment">
                 <div className="headerPageProduct d-flex flex-row justify-content-between align-items-center">

@@ -239,12 +239,22 @@ export class FabricsAdjustment extends Component {
         const { fabrics } = this.props;
         if (fileList.length === 2) {
             if (isImageChanged) {
+                let indexesOfChanged =  [];
+                fileList.forEach((file, index) => {
+                    if ( !file.old ) {
+                        indexesOfChanged.push(index);
+                    }
+                })
+                let promiseFunctionArray = indexesOfChanged.map((index, i) => {
+                    return uploadImage("image/fabrics/", fileList[index].originFileObj);
+                })
                 Promise.all([
-                    uploadImage("image/fabrics/", fileList[0].originFileObj),
-                    uploadImage("image/fabrics/", fileList[1].originFileObj)
+                    ...promiseFunctionArray
                 ])
                     .then(downloadURLList => {
-                        currentFabric.image = downloadURLList;
+                        indexesOfChanged.forEach((index, i) => {
+                            currentFabric.image[index] = downloadURLList[i];
+                        })
                         setDocument(
                             "fabrics",
                             currentFabric,
