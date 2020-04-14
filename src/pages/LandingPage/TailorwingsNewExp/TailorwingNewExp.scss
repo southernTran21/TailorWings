@@ -1,0 +1,79 @@
+.tailorwingNewExp_wrapper {
+    font-family: "Montserrat", sans-serif !important;
+    .colorOrange {
+        color: #ff6d3b !important;
+    }
+    .colorBlue {
+        color: #111e6c !important;
+    }
+    .logoHederPage {
+        margin-top: 2.69vh;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    .contentFirst_wrapper {
+        margin-top: 7.49vh;
+        .contentFirst {
+            margin-left: 8.06vw;
+            span {
+                font-size: 9.6vw;
+                font-weight: bold;
+            }
+        }
+        .image_contentFirst {
+            width: 100vw;
+            height: 56.221vh;
+            margin-top: -19vh;
+        }
+    }
+    .contentSecond_wrapper {
+        margin-top: 7.49vh;
+        .imageContentSecond {
+            height: 31.934vh;
+            width: 41.33vw;
+            img{
+                object-fit: fill;
+            }
+        }
+        .contentSecond {
+            width: 58.73vw;
+            .text1_contentSecond {
+                font-size: 6.933vw;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-left: -5vw;
+            }
+            .text2_contentSecond {
+                font-size: 3.73vw;
+                width: 42.73vw;
+                line-height: 130%;
+                margin-left: 5.06vw;
+            }
+        }
+    }
+    .svg_contentSecond {
+        margin-top: -6vw;
+    }
+    .contentThird_wrapper {
+        margin-top: 7.49vh;
+        .text1_contentThird {
+            font-weight: bold;
+            font-size: 6.93vw;
+            text-align: center;
+            margin-bottom: 4.49vh;
+        }
+        .image_contentThird{
+            z-index: 1;
+            width: 96.2vw;
+            height: 30.03vh;
+        }
+        .step1{
+            width: 94.4vw;
+            position: absolute;
+            margin-top: 35.3vh;
+        }
+    }
+}
