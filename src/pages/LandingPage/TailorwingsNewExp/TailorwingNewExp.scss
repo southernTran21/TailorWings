@@ -25,6 +25,9 @@
         margin-top: 7.49vh;
         .imageContentSecond {
             width: 100vw;
+            img{
+                object-fit: fill;
+            }
         }
     }
     .contentThird_wrapper {
@@ -85,6 +88,7 @@
             text-align: center;
             font-size: 4.26vw;
             margin-top: 2.24vh;
+            font-weight: bold;
         }
         .inputInfo {
             margin-top: 4.04vh;
