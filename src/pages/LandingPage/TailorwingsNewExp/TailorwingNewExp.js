@@ -3,7 +3,7 @@ import "./TailorwingNewExp.scss";
 import { Input } from "antd";
 
 // import image
-import imageStep from "../../../assets/imageLandingPage/Step.svg";
+import imageStep from "../../../assets/imageLandingPage/Step.png";
 import imageContentSecond from "../../../assets/imageLandingPage/landingPage1.svg";
 import imageContentFour from "../../../assets/imageLandingPage/Group33.svg";
 import logo from "../../../assets/imageLandingPage/logo.svg";
