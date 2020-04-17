@@ -54,7 +54,7 @@ export class ProductAdjustment extends Component {
     componentDidMount() {
         this._isMounted = true;
         const { products, designs, fabrics, categories } = this.props;
-        let { productID } = this.state;
+        let { productID, currentProduct } = this.state;
         if (
             window.location.pathname === "/admin/product-edit" &&
             products.length > 0
@@ -62,12 +62,17 @@ export class ProductAdjustment extends Component {
             let currentProductID = window.location.hasOwnProperty("search")
                 ? window.location.search.match(/id=(.*)\b/)[1]
                 : productID;
-            let currentProduct = {
-                ...products.find((product) => {
-                    return product.productID === currentProductID;
-                }),
-            };
-            if (currentProduct != null) {
+            if (products.length > 0) {
+                currentProduct = products.find((product) => {
+                    let productID = product.productID.replace(/\s+/g, '');
+                    currentProductID = currentProductID.replace(/\s+/g, '');
+                    return productID === currentProductID;
+                });
+            }
+            if (
+                currentProduct != null &&
+                currentProduct.hasOwnProperty("image")
+            ) {
                 let fileList = currentProduct.image.map((url, index) => {
                     if (url != null && url !== "") {
                         let imageName = url.match(/\o\/(.*)\?\b/)[1];

@@ -15,6 +15,7 @@ import imageCovid5 from "../../../assets/imageLandingPage/Group 31.svg";
 import imageCovid6 from "../../../assets/imageLandingPage/Group 32.svg";
 import logo from "../../../assets/imageLandingPage/logo.svg";
 import threedot from "../../../assets/imageLandingPage/Group 9.svg";
+import { Helmet } from "react-helmet";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -30,7 +31,7 @@ export default class TailorwingsCovid extends Component {
         super(props);
         window.scrollTo({
             top: 0,
-            behavior: "smooth"
+            behavior: "smooth",
         });
         initGA();
         logPageView();
@@ -82,10 +83,38 @@ export default class TailorwingsCovid extends Component {
         }
     };
 
+    // onShopNowClicked = () => {
+    //     gtag_report_conversion();
+    //     this.props.history.push('/');
+    // }
+
     render() {
         const { name, phone, errorValidate } = this.state;
         return (
             <div className="tailorwingsCovid_wrapper d-flex flex-column align-items-center">
+                <Helmet>
+                    <script>
+                        {`gtag("event", "conversion", {
+                            send_to: "AW-652284793/RekoCLDz2swBEPmmhLcC",
+                        })`}
+                    </script>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-652284793/8TQ8CLvQ3MwBEPmmhLcC',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 <div className="logoHederPage">
                     <img src={logo} alt="" />
                 </div>
@@ -186,7 +215,10 @@ export default class TailorwingsCovid extends Component {
                         />
                     </svg>
                     <div
-                        onClick={() => this.props.history.push("/")}
+                        onClick={() => {
+                            window.gtag_report_conversion()
+                            this.props.history.push("/");
+                        }}
                         className="button_endContent"
                     >
                         ĐẶT MAY NGAY

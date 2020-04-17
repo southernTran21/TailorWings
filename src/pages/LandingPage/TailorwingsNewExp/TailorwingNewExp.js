@@ -12,6 +12,7 @@ import imageContentSecond from "../../../assets/imageLandingPage/landingPage1.sv
 import imageContentFour from "../../../assets/imageLandingPage/Group33.svg";
 import logo from "../../../assets/imageLandingPage/logo.svg";
 import group34 from "../../../assets/imageLandingPage/Group 34.svg";
+import { Helmet } from "react-helmet";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -82,6 +83,29 @@ export default class TailorwingNewExp extends Component {
         const { name, phone, errorValidate } = this.state;
         return (
             <div className="tailorwingNewExp_wrapper d-flex flex-column align-items-center">
+                <Helmet>
+                    <script>
+                        {`gtag("event", "conversion", {
+                            send_to: "AW-652284793/080iCP2a6swBEPmmhLcC",
+                        })`}
+                    </script>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-652284793/EONaCN7M3MwBEPmmhLcC',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 <div className="logoHederPage">
                     <img src={logo} alt="" />
                 </div>
@@ -118,7 +142,10 @@ export default class TailorwingNewExp extends Component {
                         </span>
                         <span
                             className="button"
-                            onClick={() => this.props.history.push("/")}
+                            onClick={() => {
+                                window.gtag_report_conversion();
+                                this.props.history.push("/");
+                            }}
                         >
                             ĐẶT MAY NGAY
                         </span>

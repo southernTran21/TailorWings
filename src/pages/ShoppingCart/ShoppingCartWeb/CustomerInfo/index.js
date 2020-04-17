@@ -89,7 +89,7 @@ export default class CustomerInfo extends Component {
                         <Input
                             name="note"
                             value={note}
-                            placeholder="Ghi chú đơn hàng"
+                            placeholder="Ghi chú đơn hàng hoặc điền mã giảm giá"
                             maxLength={500}
                             onChange={this.onInputChange}
                         />

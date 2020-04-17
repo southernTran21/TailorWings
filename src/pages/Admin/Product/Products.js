@@ -10,6 +10,7 @@ import {
     deleteImage,
     deleteDocument,
 } from "../../../services/Fundamental";
+import LazyLoad from "react-lazy-load";
 
 var isLoading = false;
 
@@ -520,111 +521,132 @@ export class Products extends Component {
                                     let checkedStatus =
                                         checkedList[product.productID];
                                     return (
-                                        <div
+                                        <LazyLoad
                                             key={index}
-                                            className="contentTable d-flex flex-row align-items-center"
+                                            height={108.5}
+                                            offsetVertical={300}
+                                            throttle
                                         >
-                                            <div className="column1 d-flex justify-content-center">
-                                                <div className="imgProduct">
-                                                    {/* <Link
+                                            <div
+                                                key={index}
+                                                className="contentTable d-flex flex-row align-items-center"
+                                            >
+                                                <div className="column1 d-flex justify-content-center">
+                                                    <div className="imgProduct">
+                                                        <Link
+                                                            to={{
+                                                                pathname:
+                                                                    "/admin/product-edit",
+                                                                search: `?id=${product.productID}`,
+                                                            }}
+                                                        >
+                                                            <LazyLoad
+                                                                key={index}
+                                                                height={87.5}
+                                                                offsetVertical={
+                                                                    300
+                                                                }
+                                                                throttle
+                                                            >
+                                                                <img
+                                                                    src={
+                                                                        product
+                                                                            .image[0]
+                                                                    }
+                                                                    alt={
+                                                                        product.productID
+                                                                    }
+                                                                    style={{
+                                                                        width:
+                                                                            "100%",
+                                                                        height:
+                                                                            "auto",
+                                                                    }}
+                                                                />
+                                                            </LazyLoad>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    id="product-name"
+                                                    className="column2"
+                                                >
+                                                    <Link
                                                         to={{
                                                             pathname:
                                                                 "/admin/product-edit",
                                                             search: `?id=${product.productID}`,
                                                         }}
                                                     >
-                                                        <img
-                                                            src={
-                                                                product.image[0]
-                                                            }
-                                                            alt={
-                                                                product.productID
-                                                            }
-                                                            style={{
-                                                                width: "100%",
-                                                                height: "auto",
-                                                            }}
-                                                        />
-                                                    </Link> */}
+                                                        <p>
+                                                            {currentDesign.name}
+                                                        </p>
+                                                    </Link>
+                                                </div>
+                                                <div
+                                                    id="product-design-id"
+                                                    className="column3"
+                                                >
+                                                    <Link
+                                                        to={{
+                                                            pathname:
+                                                                "/admin/design-edit",
+                                                            search: `?id=${product.designID}`,
+                                                        }}
+                                                    >
+                                                        <p className="text-center">
+                                                            {product.designID}
+                                                        </p>
+                                                    </Link>
+                                                </div>
+                                                <div
+                                                    id="product-fabric-id"
+                                                    className="column4"
+                                                >
+                                                    <Link
+                                                        to={{
+                                                            pathname:
+                                                                "/admin/fabric-edit",
+                                                            search: `?id=${product.fabricID}`,
+                                                        }}
+                                                    >
+                                                        <p className="text-center">
+                                                            {product.fabricID}
+                                                        </p>
+                                                    </Link>
+                                                </div>
+                                                <div className="column5 text-center">
+                                                    <p className="text-center">
+                                                        {modifiedPrice}
+                                                    </p>
+                                                </div>
+                                                <div className="column6 text-center">
+                                                    <a
+                                                        className={
+                                                            product.visibility
+                                                                ? "far fa-eye"
+                                                                : "far fa-eye-slash"
+                                                        }
+                                                        onClick={() =>
+                                                            this.onSpecificVisibilityChange(
+                                                                index
+                                                            )
+                                                        }
+                                                    />
+                                                </div>
+                                                <div
+                                                    className="column7 d-flex justify-content-center"
+                                                    style={{ height: "100%" }}
+                                                >
+                                                    {this.onCheckBoxVisibile(
+                                                        index,
+                                                        product.id,
+                                                        checkedStatus
+                                                    )}
+                                                    {/* <Checkbox name={product.id} onChange={(e) => this.onSelectOne(e)} checked={checkedStatus} /> */}
                                                 </div>
                                             </div>
-                                            <div
-                                                id="product-name"
-                                                className="column2"
-                                            >
-                                                <Link
-                                                    to={{
-                                                        pathname:
-                                                            "/admin/product-edit",
-                                                        search: `?id=${product.productID}`,
-                                                    }}
-                                                >
-                                                    <p>{currentDesign.name}</p>
-                                                </Link>
-                                            </div>
-                                            <div
-                                                id="product-design-id"
-                                                className="column3"
-                                            >
-                                                <Link
-                                                    to={{
-                                                        pathname:
-                                                            "/admin/design-edit",
-                                                        search: `?id=${product.designID}`,
-                                                    }}
-                                                >
-                                                    <p className="text-center">
-                                                        {product.designID}
-                                                    </p>
-                                                </Link>
-                                            </div>
-                                            <div
-                                                id="product-fabric-id"
-                                                className="column4"
-                                            >
-                                                <Link
-                                                    to={{
-                                                        pathname:
-                                                            "/admin/fabric-edit",
-                                                        search: `?id=${product.fabricID}`,
-                                                    }}
-                                                >
-                                                    <p className="text-center">
-                                                        {product.fabricID}
-                                                    </p>
-                                                </Link>
-                                            </div>
-                                            <div className="column5 text-center">
-                                                <p className="text-center">
-                                                    {modifiedPrice}
-                                                </p>
-                                            </div>
-                                            <div className="column6 text-center">
-                                                <a
-                                                    className={
-                                                        product.visibility
-                                                            ? "far fa-eye"
-                                                            : "far fa-eye-slash"
-                                                    }
-                                                    onClick={() =>
-                                                        this.onSpecificVisibilityChange(
-                                                            index
-                                                        )
-                                                    }
-                                                />
-                                            </div>
-                                            <div
-                                                className="column7 d-flex justify-content-center"
-                                                style={{ height: "100%" }}
-                                            >
-                                                {this.onCheckBoxVisibile(
-                                                    index,
-                                                    product.id,
-                                                    checkedStatus
-                                                )}
-                                                {/* <Checkbox name={product.id} onChange={(e) => this.onSelectOne(e)} checked={checkedStatus} /> */}
-                                            </div>
-                                        </div>
+                                        </LazyLoad>
                                     );
                                 }
                             })}

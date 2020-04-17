@@ -17,7 +17,7 @@ import Category from './Category/Category';
 import CategoryAdjustment from './Category/CategoryAdjustment';
 import Customer from './Customer/Customer';
 import Customerdetail from './Customer/CustomerDetail';
-import Order from './Order/Order';
+import Order from './Order/index.js';
 import store from '../../stores/myStore'
 
 export const DESIGN_TITLE = ['Add A Design', 'Edit A Design']
