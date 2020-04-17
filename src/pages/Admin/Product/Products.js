@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import "./Products.scss";
-import { Switch, Checkbox, Cascader, Spin, message } from "antd";
+import { Switch, Checkbox, message } from "antd";
 import { Link } from "react-router-dom";
 import NonSelect from "./NonSelect";
 import Selected from "./Selected";
@@ -10,9 +10,7 @@ import {
     deleteImage,
     deleteDocument,
 } from "../../../services/Fundamental";
-import LazyLoad from "react-lazy-load";
-
-var isLoading = false;
+import ProductList from "./ProductList";
 
 export class Products extends Component {
     constructor(props) {
@@ -35,24 +33,31 @@ export class Products extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        const { products, designs, fabrics, categories } = this.props;
+        const { products, designs, fabrics } = this.props;
         if (products != null) {
             let checkedList = {};
             let renderProducts = [...products];
             renderProducts.forEach((product) => {
                 if (product != null) {
+                    //
                     checkedList[product.productID] = false;
+                    //
                     let currentDesign = designs.find(
                         (design) => design.id === product.designID
                     ) || { name: "No Data", price: 0, length: 0 };
+                    //
                     let currentFabric = fabrics.find(
                         (fabric) => fabric.id === product.fabricID
                     ) || { price: 0 };
+                    //
+                    let designName = currentDesign.name
+                    product.name = product.default
+                        ? designName + " - " + "DEFAULT"
+                        : designName;
                     product.price =
                         currentDesign.price +
                         (currentFabric.price * currentDesign.length) / 100 +
                         400000;
-                    product.name = currentDesign.name;
                 }
             });
             if (this._isMounted) {
@@ -214,10 +219,6 @@ export class Products extends Component {
     deleteHanding = () => {
         this._isMounted = true;
         const { selectedProducts } = this.state;
-        // isLoading = true;
-        // this.setState({
-        //     isLoading: true
-        // })
         this.isLoading = true;
         if (selectedProducts != null) {
             let allDeletedImagePath = selectedProducts.flatMap((product) => {
@@ -242,13 +243,9 @@ export class Products extends Component {
                         .then(() => {
                             this.isLoading = false;
                         })
-                        .catch(() => {
-                            // this.setState({ isLoading: false })
-                        });
+                        .catch(() => {});
                 })
-                .catch(() => {
-                    // this.setState({ isLoading: false })
-                });
+                .catch(() => {});
         }
     };
 
@@ -274,7 +271,6 @@ export class Products extends Component {
     };
 
     updateDiscountHandling = (discountType, valueDiscountK, valueDiscountP) => {
-        const { designs } = this.props;
         const { selectedProducts } = this.state;
         let changedProducts = [...selectedProducts];
         switch (discountType) {
@@ -331,6 +327,7 @@ export class Products extends Component {
     };
 
     onSearching = (searchedProducts) => {
+        console.log("searchedProducts :", searchedProducts);
         this.setState({
             renderProducts: searchedProducts,
         });
@@ -361,7 +358,6 @@ export class Products extends Component {
                 });
             }
         } else {
-            // if (productID != null && !collections[collectionIndex].products.includes(productID)) {
             collections[collectionIndex].products.push(productID);
             setDocument(
                 "collections",
@@ -373,7 +369,6 @@ export class Products extends Component {
                     currentCollectionStatus,
                 });
             });
-            // }
         }
     };
 
@@ -419,21 +414,15 @@ export class Products extends Component {
     };
 
     render() {
-        const {
-            products,
-            designs,
-            fabrics,
-            categories,
-            collections,
-        } = this.props;
+        const { products, designs, categories, collections } = this.props;
         const {
             isAnySelected,
             selectedProducts,
             checkedList,
-            checkedAll,
             renderProducts,
             initialProducts,
         } = this.state;
+        console.log("renderProducts :", renderProducts);
         return (
             <div className="pageProduct">
                 <div className="headerPageProduct d-flex flex-row justify-content-between align-items-center">
@@ -447,212 +436,35 @@ export class Products extends Component {
                         </div>
                     </Link>
                 </div>
-                <Spin spinning={this.state.isLoading}>
-                    <div className="showProduct ">
-                        <NonSelect
-                            isOpen={!isAnySelected}
-                            collections={collections}
-                            categories={categories}
-                            onCategoryFilter={this.onCategoryFilter}
-                            onCollectionFilter={this.onCollectionFilter}
-                            renderProducts={initialProducts}
-                            onSearching={this.onSearching}
-                        />
-                        <Selected
-                            isOpen={isAnySelected}
-                            selectedProducts={selectedProducts}
-                            deleteHanding={this.deleteHanding}
-                            setVisibilityHandling={this.setVisibilityHandling}
-                            updateDiscountHandling={this.updateDiscountHandling}
-                        />
-                        <div className="tableProduct">
-                            <div className="headerTable d-flex">
-                                <div className="column1"></div>
-                                <div className="column2">Name</div>
-                                <div className="column3 text-center">
-                                    Design ID
-                                </div>
-                                <div className="column4 text-center">
-                                    Fabrics ID
-                                </div>
-                                <div className="column5 text-center">Price</div>
-                                <div className="column6 text-center">
-                                    Visibility
-                                </div>
-                                <div
-                                    className="column7 d-flex justify-content-center"
-                                    style={{ height: "100%" }}
-                                >
-                                    {/* <Checkbox onChange={this.onSelectAll} checked={checkedAll} /> */}
-                                    {this.onCheckBoxVisibile(
-                                        "",
-                                        "tableHeader",
-                                        ""
-                                    )}
-                                </div>
-                            </div>
-                            {renderProducts.map((product, index) => {
-                                if (product != null) {
-                                    let currentDesign = designs.find(
-                                        (design) =>
-                                            design.id === product.designID
-                                    ) || {
-                                        name: "No Data",
-                                        price: 0,
-                                        length: 0,
-                                    };
-                                    // let currentFabric = fabrics.find(fabric => fabric.id === product.fabricID) || { price: 0 }
-                                    let relatedCategory = categories.find(
-                                        (category) =>
-                                            category.id === product.catID
-                                    ) || { discount: 0 };
-                                    // let purePrice = currentDesign.price + ((currentFabric.price * currentDesign.length) / 100) + 320000;
-                                    let discountPrice = this.priceCalculationHandling(
-                                        product.price,
-                                        product.discount,
-                                        relatedCategory.discount
-                                    );
-                                    let modifiedPrice = discountPrice
-                                        .toString()
-                                        .replace(
-                                            /(\d)(?=(\d{3})+(?!\d))/g,
-                                            "$1."
-                                        );
-                                    let checkedStatus =
-                                        checkedList[product.productID];
-                                    return (
-                                        <LazyLoad
-                                            key={index}
-                                            height={108.5}
-                                            offsetVertical={300}
-                                            throttle
-                                        >
-                                            <div
-                                                key={index}
-                                                className="contentTable d-flex flex-row align-items-center"
-                                            >
-                                                <div className="column1 d-flex justify-content-center">
-                                                    <div className="imgProduct">
-                                                        <Link
-                                                            to={{
-                                                                pathname:
-                                                                    "/admin/product-edit",
-                                                                search: `?id=${product.productID}`,
-                                                            }}
-                                                        >
-                                                            <LazyLoad
-                                                                key={index}
-                                                                height={87.5}
-                                                                offsetVertical={
-                                                                    300
-                                                                }
-                                                                throttle
-                                                            >
-                                                                <img
-                                                                    src={
-                                                                        product
-                                                                            .image[0]
-                                                                    }
-                                                                    alt={
-                                                                        product.productID
-                                                                    }
-                                                                    style={{
-                                                                        width:
-                                                                            "100%",
-                                                                        height:
-                                                                            "auto",
-                                                                    }}
-                                                                />
-                                                            </LazyLoad>
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    id="product-name"
-                                                    className="column2"
-                                                >
-                                                    <Link
-                                                        to={{
-                                                            pathname:
-                                                                "/admin/product-edit",
-                                                            search: `?id=${product.productID}`,
-                                                        }}
-                                                    >
-                                                        <p>
-                                                            {currentDesign.name}
-                                                        </p>
-                                                    </Link>
-                                                </div>
-                                                <div
-                                                    id="product-design-id"
-                                                    className="column3"
-                                                >
-                                                    <Link
-                                                        to={{
-                                                            pathname:
-                                                                "/admin/design-edit",
-                                                            search: `?id=${product.designID}`,
-                                                        }}
-                                                    >
-                                                        <p className="text-center">
-                                                            {product.designID}
-                                                        </p>
-                                                    </Link>
-                                                </div>
-                                                <div
-                                                    id="product-fabric-id"
-                                                    className="column4"
-                                                >
-                                                    <Link
-                                                        to={{
-                                                            pathname:
-                                                                "/admin/fabric-edit",
-                                                            search: `?id=${product.fabricID}`,
-                                                        }}
-                                                    >
-                                                        <p className="text-center">
-                                                            {product.fabricID}
-                                                        </p>
-                                                    </Link>
-                                                </div>
-                                                <div className="column5 text-center">
-                                                    <p className="text-center">
-                                                        {modifiedPrice}
-                                                    </p>
-                                                </div>
-                                                <div className="column6 text-center">
-                                                    <a
-                                                        className={
-                                                            product.visibility
-                                                                ? "far fa-eye"
-                                                                : "far fa-eye-slash"
-                                                        }
-                                                        onClick={() =>
-                                                            this.onSpecificVisibilityChange(
-                                                                index
-                                                            )
-                                                        }
-                                                    />
-                                                </div>
-                                                <div
-                                                    className="column7 d-flex justify-content-center"
-                                                    style={{ height: "100%" }}
-                                                >
-                                                    {this.onCheckBoxVisibile(
-                                                        index,
-                                                        product.id,
-                                                        checkedStatus
-                                                    )}
-                                                    {/* <Checkbox name={product.id} onChange={(e) => this.onSelectOne(e)} checked={checkedStatus} /> */}
-                                                </div>
-                                            </div>
-                                        </LazyLoad>
-                                    );
-                                }
-                            })}
-                        </div>
-                    </div>
-                </Spin>
+                <div className="showProduct ">
+                    <NonSelect
+                        isOpen={!isAnySelected}
+                        collections={collections}
+                        categories={categories}
+                        onCategoryFilter={this.onCategoryFilter}
+                        onCollectionFilter={this.onCollectionFilter}
+                        initialProducts={initialProducts}
+                        onSearching={this.onSearching}
+                    />
+                    <Selected
+                        isOpen={isAnySelected}
+                        selectedProducts={selectedProducts}
+                        deleteHanding={this.deleteHanding}
+                        setVisibilityHandling={this.setVisibilityHandling}
+                        updateDiscountHandling={this.updateDiscountHandling}
+                    />
+                    <ProductList
+                        renderProducts={renderProducts}
+                        categories={categories}
+                        checkedList={checkedList}
+                        designs={designs}
+                        onCheckBoxVisibile={this.onCheckBoxVisibile}
+                        priceCalculationHandling={this.priceCalculationHandling}
+                        onSpecificVisibilityChange={
+                            this.onSpecificVisibilityChange
+                        }
+                    />
+                </div>
             </div>
         );
     }
