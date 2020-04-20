@@ -203,7 +203,8 @@ class ProductDetailMobile extends Component {
                 style={{
                     height: "100vh",
                     width: "100vw",
-                    overflow: "hidden",
+                    overflowY: "auto",
+                    overflowX: "hidden"
                 }}
             >
                 {this.contentHandling()}

@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import { Icon, Popover, Button, Input, DatePicker } from 'antd';
+import { Icon, Popover, Button, Input, DatePicker } from "antd";
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const { TextArea } = Input;
 
-const ContentNoteAnt = (noteContent, orderID, OnChangeInputNoteAnt, onNoteUpdate) => {
+const ContentNoteAnt = (
+    noteContent,
+    orderID,
+    OnChangeInputNoteAnt,
+    onNoteUpdate
+) => {
     return (
         <div className="contentNote d-flex flex-column">
             <TextArea
@@ -13,23 +18,29 @@ const ContentNoteAnt = (noteContent, orderID, OnChangeInputNoteAnt, onNoteUpdate
                 autoSize={{ minRows: 3, maxRows: 5 }}
             />
             <div className="buttonSave d-flex justify-content-end">
-                <a onClick={() => onNoteUpdate(orderID)} >Save</a>
+                <a onClick={() => onNoteUpdate(orderID)}>Save</a>
             </div>
         </div>
     );
-}
+};
 
 const ContentUpdateAnt = (onStatusChange, orderID) => {
     return (
         <div className="contentUpdate d-flex flex-column justify-content-center align-items-center">
-            <a name='new' onClick={(e) => onStatusChange(e, orderID)} >Mới</a>
-            <a name='repair' onClick={(e) => onStatusChange(e, orderID)} >Chuẩn bị</a>
-            <a name='done' onClick={(e) => onStatusChange(e, orderID)} >Xong</a>
+            <a name="new" onClick={(e) => onStatusChange(e, orderID)}>
+                Mới
+            </a>
+            <a name="repair" onClick={(e) => onStatusChange(e, orderID)}>
+                Chuẩn bị
+            </a>
+            <a name="done" onClick={(e) => onStatusChange(e, orderID)}>
+                Xong
+            </a>
         </div>
-    )
-}
+    );
+};
 
-const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
+const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
 
 export default class OrderContent extends Component {
     render() {
@@ -100,7 +111,16 @@ export default class OrderContent extends Component {
                                         key={index}
                                         className="contentTable d-flex flex-row align-items-center"
                                     >
-                                        <div className="column1 text-center" onClick={() => this.props.onOrderDetailView(order.orderID)}>
+                                        <div
+                                            className="column1 text-center"
+                                            onClick={() =>
+                                                this.props.onOrderDetailView(
+                                                    order.orderID,
+                                                    currentCustomer.cusName,
+                                                    order.total
+                                                )
+                                            }
+                                        >
                                             {order.orderID}
                                         </div>
                                         <div className="column2">
@@ -144,7 +164,8 @@ export default class OrderContent extends Component {
                                                 <Popover
                                                     placement="left"
                                                     content={ContentUpdateAnt(
-                                                        this.props.onStatusChange,
+                                                        this.props
+                                                            .onStatusChange,
                                                         order.id
                                                     )}
                                                     trigger="click"

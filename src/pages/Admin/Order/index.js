@@ -14,8 +14,9 @@ export class Order extends Component {
             renderOrders: [],
             fromDate: "NaN",
             toDate: "NaN",
-            renderState: 'content',
-            currentOrderID: ''
+            renderState: "content",
+            currentOrderID: "",
+            currentOrderDetail: null,
         };
     }
 
@@ -25,19 +26,11 @@ export class Order extends Component {
         if (renderOrders.length > 0) {
             renderOrders.forEach((order) => {
                 if (order.orderDate.hasOwnProperty("seconds")) {
-                    console.log(
-                        "order.orderDate.seconds :",
-                        order.orderDate.seconds
-                    );
                     order.orderDate = this.timeConverter(
                         order.orderDate.seconds
                     );
                 }
                 if (order.doneDate.hasOwnProperty("seconds")) {
-                    console.log(
-                        "order.doneDate.seconds :",
-                        order.doneDate.seconds
-                    );
                     order.doneDate = this.timeConverter(order.doneDate.seconds);
                 }
                 let currentCustomer = customers.find(
@@ -201,39 +194,69 @@ export class Order extends Component {
         });
     };
 
-    onOrderDetailView = (orderID) => {
-        this.setState({
-            renderState: 'detail',
-            currentOrderID: orderID
-        })
-    }
+    onOrderDetailView = (orderID, customerName, totalPrice) => {
+        console.log("customerName :", customerName);
+        console.log("totalPrice :", totalPrice);
+        const { orderDetail } = this.props;
+        console.log("orderDetail :", orderDetail);
+        let currentOrderDetail = {
+            ...orderDetail.find((order) => {
+                return order.orderID === orderID;
+            }),
+        };
+        if (currentOrderDetail != null) {
+            currentOrderDetail.cusName = customerName;
+            currentOrderDetail.total = totalPrice;
+            this.setState({
+                renderState: "detail",
+                currentOrderDetail,
+            });
+        }
+    };
 
     render() {
-        const { renderOrders, renderState, currentOrderID } = this.state;
+        const { renderOrders, renderState, currentOrderDetail } = this.state;
         const { customers } = this.props;
-        let content = <div></div>;
-        switch (renderState) {
-            case 'content':
-                content = <OrderContent
-                customers={customers}
-                renderOrders={renderOrders}
-                searchFilter={this.searchFilter}
-                OnFromDateChange={this.OnFromDateChange}
-                OnToDateChange={this.OnToDateChange}
-                onNoteUpdate={this.onNoteUpdate}
-                onStatusChange={this.onStatusChange}
-                onOrderDetailView={this.onOrderDetailView}
-            />
-                break;
-            case 'detail':
-                content = <OrderDetail currentOrderID={currentOrderID}/>
-                break;
-            default:
-                break;
-        }
         return (
-            content
+            <div className="order-container">
+                <OrderDetail currentOrderDetail={currentOrderDetail} />
+                <OrderContent
+                    customers={customers}
+                    renderOrders={renderOrders}
+                    searchFilter={this.searchFilter}
+                    OnFromDateChange={this.OnFromDateChange}
+                    OnToDateChange={this.OnToDateChange}
+                    onNoteUpdate={this.onNoteUpdate}
+                    onStatusChange={this.onStatusChange}
+                    onOrderDetailView={this.onOrderDetailView}
+                />
+            </div>
         );
+        //     let content = <div></div>;
+        //     switch (renderState) {
+        //         case "content":
+        //             content = (
+        //                 <OrderContent
+        //                     customers={customers}
+        //                     renderOrders={renderOrders}
+        //                     searchFilter={this.searchFilter}
+        //                     OnFromDateChange={this.OnFromDateChange}
+        //                     OnToDateChange={this.OnToDateChange}
+        //                     onNoteUpdate={this.onNoteUpdate}
+        //                     onStatusChange={this.onStatusChange}
+        //                     onOrderDetailView={this.onOrderDetailView}
+        //                 />
+        //             );
+        //             break;
+        //         case "detail":
+        //             content = (
+        //                 <OrderDetail currentOrderDetail={currentOrderDetail} />
+        //             );
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        //     return content;
     }
 }
 

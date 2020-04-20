@@ -9,7 +9,7 @@ import {
     setDocument,
     deleteImage,
     deleteDocument,
-} from "../../../services/Fundamental";
+} from "../../../../services/Fundamental";
 import ProductList from "./ProductList";
 
 export class Products extends Component {
@@ -28,6 +28,7 @@ export class Products extends Component {
             isCheckBoxVisible: true,
             currentCollectionStatus: [],
             currentCollectionFilterIndex: "",
+            isFirstLoaded: false,
         };
     }
 
@@ -50,7 +51,7 @@ export class Products extends Component {
                         (fabric) => fabric.id === product.fabricID
                     ) || { price: 0 };
                     //
-                    let designName = currentDesign.name
+                    let designName = currentDesign.name;
                     product.name = product.default
                         ? designName + " - " + "DEFAULT"
                         : designName;
@@ -166,20 +167,22 @@ export class Products extends Component {
 
     onCategoryFilter = (catID) => {
         const { products } = this.props;
+        let renderProducts = [];
         if (catID === "allProducts") {
-            let renderProducts = [...products];
+            renderProducts = [...products];
             this.setState({
                 renderProducts,
             });
         } else {
-            let renderProducts = products.filter(
-                (product) => product.catID === catID
-            );
-            if (renderProducts != null) {
-                this.setState({
-                    renderProducts,
-                });
-            }
+            renderProducts = [
+                ...products.filter((product) => product.catID === catID),
+            ];
+        }
+        if (renderProducts != null) {
+            this.setState({
+                renderProducts,
+                isFirstLoaded: false
+            });
         }
     };
 
@@ -206,12 +209,14 @@ export class Products extends Component {
                     currentCollectionFilterIndex: collections.findIndex(
                         (collection) => collection.id === collectionID
                     ),
+                    isFirstLoaded: false
                 });
             }
         } else {
             this.setState({
                 isCheckBoxVisible: true,
                 currentCollectionFilterIndex: "",
+                isFirstLoaded: false
             });
         }
     };
@@ -286,7 +291,6 @@ export class Products extends Component {
             case "P":
                 if (!isNaN(valueDiscountP)) {
                     changedProducts.forEach((product) => {
-                        // let currentDesign = designs.find(design => design.id === product.designID) || { name: 'No Data', price: 0, length: 0 };
                         product.discount = Number(valueDiscountP);
                         product.discount = Math.ceil(
                             (product.price * product.discount) / (100 * 1000)
@@ -327,9 +331,9 @@ export class Products extends Component {
     };
 
     onSearching = (searchedProducts) => {
-        console.log("searchedProducts :", searchedProducts);
         this.setState({
             renderProducts: searchedProducts,
+            isFirstLoaded: false
         });
     };
 
@@ -413,6 +417,15 @@ export class Products extends Component {
         }
     };
 
+    // Function name: firstLoadedConfirm
+    // Description: to turn on flag that data has been loaded first time
+    firstLoadedConfirm = () => {
+        this.setState({
+            isFirstLoaded: true,
+        });
+    };
+    // END
+
     render() {
         const { products, designs, categories, collections } = this.props;
         const {
@@ -421,8 +434,8 @@ export class Products extends Component {
             checkedList,
             renderProducts,
             initialProducts,
+            isFirstLoaded
         } = this.state;
-        console.log("renderProducts :", renderProducts);
         return (
             <div className="pageProduct">
                 <div className="headerPageProduct d-flex flex-row justify-content-between align-items-center">
@@ -458,11 +471,13 @@ export class Products extends Component {
                         categories={categories}
                         checkedList={checkedList}
                         designs={designs}
+                        isFirstLoaded={isFirstLoaded}
                         onCheckBoxVisibile={this.onCheckBoxVisibile}
                         priceCalculationHandling={this.priceCalculationHandling}
                         onSpecificVisibilityChange={
                             this.onSpecificVisibilityChange
                         }
+                        firstLoadedConfirm={this.firstLoadedConfirm}
                     />
                 </div>
             </div>

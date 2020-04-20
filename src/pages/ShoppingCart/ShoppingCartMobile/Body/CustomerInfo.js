@@ -5,13 +5,13 @@ import NumberFormat from "react-number-format";
 import classNames from "classnames";
 
 export default class CustomerInfo extends Component {
-    onInputChange = e => {
+    onInputChange = (e) => {
         let { name, value } = e.target;
         let { customerInfo } = this.props;
         customerInfo[name] = value;
         this.props.onCustomerInfoUpdate(customerInfo);
         this.setState({
-            customerInfo
+            customerInfo,
         });
     };
 
@@ -33,7 +33,7 @@ export default class CustomerInfo extends Component {
                         <small
                             className={classNames({
                                 error: errorValidate[0],
-                                errorUnvisible: !errorValidate[0]
+                                errorUnvisible: !errorValidate[0],
                             })}
                         >
                             Vui lòng nhập tên khách hàng
@@ -53,7 +53,7 @@ export default class CustomerInfo extends Component {
                         <small
                             className={classNames({
                                 error: errorValidate[1],
-                                errorUnvisible: !errorValidate[1]
+                                errorUnvisible: !errorValidate[1],
                             })}
                         >
                             Vui lòng nhập đúng 10 số điện thoại
@@ -71,7 +71,7 @@ export default class CustomerInfo extends Component {
                         <small
                             className={classNames({
                                 error: errorValidate[2],
-                                errorUnvisible: !errorValidate[2]
+                                errorUnvisible: !errorValidate[2],
                             })}
                         >
                             Vui lòng nhập địa chỉ giao hàng
@@ -82,15 +82,19 @@ export default class CustomerInfo extends Component {
                         <Input
                             name="note"
                             value={note}
-                            placeholder="Ghi chú đơn hàng hoặc điền mã giảm giá"
+                            placeholder="Điền mã Voucher hoặc ghi chú"
                             maxLength={300}
                             onChange={this.onInputChange}
                         />
+                        <span className="note-content">
+                            * Ưu đãi từ mã Voucher sẽ được trừ trực tiếp khi
+                            nhận hàng và thanh toán. Hotline: 0902541398
+                        </span>
                     </div>
                 </div>
                 <div className="checkBox">
                     <Checkbox
-                        onChange={e => this.props.onRememberInfo(e)}
+                        onChange={(e) => this.props.onRememberInfo(e)}
                         defaultChecked={this.props.rememberChecked}
                     >
                         <span className="content">

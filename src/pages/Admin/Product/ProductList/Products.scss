@@ -41,8 +41,8 @@
     background-color: white;
     border-radius: 8px;
     height: 75vh;
-    overflow: scroll;
-    overflow-x: hidden;
+    // overflow: scroll;
+    // overflow-x: hidden;
     .inputCollection,
     .inputFilter {
       p.d-flex.flex-row.align-items-center {
@@ -88,6 +88,10 @@
       .fa-trash-alt {
         color: red;
       }
+    }
+    #productItems  {
+      overflow: auto;
+      height: 425px;
     }
   }
 }

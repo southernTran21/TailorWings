@@ -17,7 +17,6 @@ export default class ProductList extends Component {
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.isFirstLoaded === false) {
-            console.log("nextProps", nextProps);
             nextProps.firstLoadedConfirm();
             let fetchedProducts = nextProps.renderProducts.slice(0, 9);
             let loaderContent = prevState.loaderContent;

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Checkbox, message, Cascader, Upload, Icon, Modal, Button } from "antd";
 import "./ProductAdjustment.scss";
-import { uploadImage, setDocument } from "../../../services/Fundamental";
+import { uploadImage, setDocument } from "../../../../services/Fundamental";
 
 const categoryIDMapping = {
     B: "damom",

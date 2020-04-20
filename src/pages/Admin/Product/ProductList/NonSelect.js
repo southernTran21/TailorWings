@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Icon, Cascader, Input } from "antd";
 import "./NonSelect.scss";
 import classNames from "classnames";
-import { removePunctuation } from "../../../services/CommonFunction";
+import { removePunctuation } from "../../../../services/CommonFunction";
 
 export class NonSelect extends Component {
     constructor(props) {
