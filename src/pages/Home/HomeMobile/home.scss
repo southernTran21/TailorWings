@@ -249,8 +249,9 @@
                     border: 1px solid #ff6d3b;
                     font-size: 4.8vw;
                     background-color: #fff4e3;
-                    padding: 0.14vh 2.4vw;
                     font-weight: bold;
+                    width: 35vw;
+                    text-align: center;
                 }
             }
             hr {
@@ -268,10 +269,10 @@
                 padding: 0 25px;
                 :nth-child(1) {
                     font-weight: bold;
-                    font-size: 6.4vw;
+                    font-size: 6.3vw;
                 }
                 :nth-child(2) {
-                    font-size: 3.73vw;
+                    font-size: 3.63vw;
                     padding: 0 13px;
                     text-align: center;
                     margin-bottom: 15px;
@@ -340,7 +341,7 @@
             margin: 0;
             margin-top: 5.49vh;
             .title__listProduct {
-                font-size: 6.4vw;
+                font-size: 6.3vw;
                 font-weight: bold;
                 margin-bottom: 2.22vh;
             }
@@ -389,11 +390,11 @@
             }
             .title__collection {
                 :nth-child(1) {
-                    font-size: 6.4vw;
+                    font-size: 6.3vw;
                     font-weight: bold;
                 }
                 :nth-child(2) {
-                    font-size: 3.73vw;
+                    font-size: 3.63vw;
                 }
             }
             .carousel-wraper {
@@ -446,7 +447,7 @@
         .weYour-wraper {
             .title__weyour {
                 .title1 {
-                    font-size: 6.4vw;
+                    font-size: 6.3vw;
                     font-weight: bold;
                 }
                 .title2 {
@@ -472,14 +473,14 @@
             .title {
                 margin: 0 7.46vw;
                 :nth-child(1) {
-                    font-size: 6.34vw;
+                    font-size: 6.2vw;
                     font-weight: bold;
                     width: 100%;
                     display: flex;
                     justify-content: center;
                 }
                 :nth-child(2) {
-                    font-size: 3.73vw;
+                    font-size: 3.53vw;
                     margin-top: 5px;
                     width: 100%;
                     display: flex;
@@ -520,14 +521,14 @@
         .passion {
             .titleHeader {
                 :nth-child(1) {
-                    font-size: 6.4vw;
+                    font-size: 6.3vw;
                     font-weight: bold;
                     margin-top: 4.49vh;
                 }
                 :nth-child(2) {
                     margin: 0 1.33vw;
                     text-align: center;
-                    font-size: 3.73vw;
+                    font-size: 3.63vw;
                     margin-top: 9px;
                     padding: 0 7vw;
                 }
