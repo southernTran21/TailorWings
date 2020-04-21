@@ -247,6 +247,20 @@ export default class TailorwingNewExp extends Component {
                         >
                             Vui lòng nhập đúng 10 số điện thoại
                         </small>
+                        <Input
+                            name="email"
+                            placeholder="Nhập email"
+                            maxLength={50}
+                            // onChange={this.onInputChange}
+                        />
+                        {/* <small
+                            // className={classNames({
+                            //     error: errorValidate[0],
+                            //     errorUnvisible: !errorValidate[0],
+                            // })}
+                        >
+                            Vui lòng nhập email
+                        </small> */}
                     </div>
                     <div
                         className="buttonAccept"

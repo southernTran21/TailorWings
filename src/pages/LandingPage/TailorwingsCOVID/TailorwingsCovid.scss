@@ -120,7 +120,7 @@
             .ant-input:hover {
                 border: none;
             }
-            :nth-child(3) {
+            :nth-child(3), :nth-child(5) {
                 margin-top: 2.24vh;
             }
             ::placeholder {
