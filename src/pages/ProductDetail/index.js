@@ -45,7 +45,7 @@ const sizeImages = [
 
 const initGA = () => {
     console.log('initGA');
-    ReactGA.initialize('UA-159143322-1')
+    ReactGA.initialize('UA-159143322-2')
 }
 
 const logPageView = () => {
@@ -64,6 +64,7 @@ export default class ProductDetail extends Component {
     }
 
     render() {
+        const { match } = this.props;
         return (
             <Media queries={{ small: { maxWidth: 750 } }}>
                 {matches =>
@@ -75,6 +76,7 @@ export default class ProductDetail extends Component {
                                 designsInfo={this.props.designsInfo}
                                 fabricsInfo={this.props.fabricsInfo}
                                 sizeImages={sizeImages}
+                                match={match}
                             />
                         ) :
                         (
@@ -84,6 +86,7 @@ export default class ProductDetail extends Component {
                                 designsInfo={this.props.designsInfo}
                                 fabricsInfo={this.props.fabricsInfo}
                                 localStorageUpdatedHandling={this.props.localStorageUpdatedHandling}
+                                match={match}
                             />
                         )
                 }

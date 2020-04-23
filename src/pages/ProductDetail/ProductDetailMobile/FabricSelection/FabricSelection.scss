@@ -1,8 +1,9 @@
-.pageFabricSelection {
+.pageFabricSelection_mobile {
     font-family: "Montserrat", sans-serif !important;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: "auto";
+    overflow-x: "hidden";
     .anticon {
         vertical-align: 0;
     }
@@ -49,7 +50,6 @@
         }
     }
     .contentBody {
-        // test
         width: 100%;
         height: 92.51vh;
         padding: 0 5%;
@@ -74,11 +74,17 @@
                 .swiper-slide {
                     margin-right: 1.5vw !important;
                     border-radius: 10px;
+                    width: 18.66vw !important;
+                    height: 18.66vw !important;
                 }
                 .image {
                     width: 18.66vw !important;
                     height: 18.66vw !important;
                     border-radius: 10px;
+                }
+                .LazyLoad {
+                    height: fit-content;
+                    width: fit-content;
                 }
                 // .active {
                 //     border: #ff6d3b;

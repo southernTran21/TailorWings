@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
 import iconVectorRight from "../../.../../../../assets/imageHomePage/vectorRight.svg";
+import imageCollectionDamCongSo from "../../../../assets/imageHomePage/collectionDamCongSo.jpg";
 import imageCollectionDamDaoPho from "../../../../assets/imageHomePage/collectionDamDaoPho.jpg";
 import imageCollectionDamDuTiec from "../../../../assets/imageHomePage/collectionDamDuTiec.jpg";
-import imageCollectionDamCongSo from "../../../../assets/imageHomePage/collectionDamCongSo.jpg";
 
 export default class Collections extends Component {
     render() {
@@ -33,12 +35,17 @@ export default class Collections extends Component {
                     <Link
                         to={{
                             pathname: "/shopping-store",
-                            search: "?cat=damdaopho&search",
+                            search: "?cat=damcongso&search",
                         }}
                     >
                         <div className="selection d-flex">
                             <div className="image">
-                                <img src={imageCollectionDamDaoPho} alt="" />
+                                {/* <img src={imageCollectionDamDaoPho} alt="" /> */}
+                                <LazyLoadImage
+                                    alt="dam-cong-so"
+                                    effect="blur"
+                                    src={imageCollectionDamCongSo}
+                                />
                             </div>
                             <div className="title d-flex flex-column align-items-center">
                                 <span>
@@ -65,7 +72,12 @@ export default class Collections extends Component {
                             }}
                         >
                             <div className="image">
-                                <img src={imageCollectionDamCongSo} alt="" />
+                                {/* <img src={imageCollectionDamCongSo} alt="" /> */}
+                                <LazyLoadImage
+                                    alt="dam-dao-pho"
+                                    effect="blur"
+                                    src={imageCollectionDamDaoPho}
+                                />
                             </div>
                             <div className="title d-flex flex-column align-items-center">
                                 <span>
@@ -86,7 +98,12 @@ export default class Collections extends Component {
                     >
                         <div className="selection d-flex">
                             <div className="image">
-                                <img src={imageCollectionDamDuTiec} alt="" />
+                                {/* <img src={imageCollectionDamDuTiec} alt="" /> */}
+                                <LazyLoadImage
+                                    alt="dam-du-tiec"
+                                    effect="blur"
+                                    src={imageCollectionDamDuTiec}
+                                />
                             </div>
                             <div className="title d-flex flex-column align-items-center">
                                 <span>

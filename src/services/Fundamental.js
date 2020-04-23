@@ -104,6 +104,7 @@ export const addDocument = (collection, newItem) => {
 }
 
 export const setDocument = (collection, newItem, docName) => {
+    console.log('here');
     newItem.timestamp = firebase.firestore.FieldValue.serverTimestamp();
     return database
         .collection(collection)
@@ -173,7 +174,7 @@ export const uploadImage = (ref, file) => {
                 // Observe state change events such as progress, pause, and resume
                 // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                // console.log('Upload is ' + progress + '% done');
+                console.log('Upload is ' + progress + '% done');
                 // switch (snapshot.state) {
                 //     case firebase.storage.TaskState.PAUSED: // or 'paused'
                 //         console.log('Upload is paused');
@@ -190,20 +191,20 @@ export const uploadImage = (ref, file) => {
                 // Handle successful uploads on complete
                 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                 uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                    // console.log('File available at', downloadURL);
                     if (downloadURL) {
+                        console.log('File available at', downloadURL);
                         _resolve(downloadURL);
                     } else {
-                        // message.error('Lỗi: upload hình ảnh thất bại!');
+                        message.error('Lỗi: upload hình ảnh thất bại!');
                         _reject();
                     }
                 }).catch(() => {
-                    // message.error('Lỗi: upload hình ảnh thất bại!');
+                    message.error('Lỗi: upload hình ảnh thất bại!');
                     _reject();
                 })
             });
         } else {
-            // message.error('Lỗi: upload hình ảnh thất bại!');
+            message.error('Lỗi: upload hình ảnh thất bại!');
             _reject('File already existed');
         }
 

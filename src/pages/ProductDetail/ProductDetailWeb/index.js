@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import "./ProductDetailWeb.scss";
-import Steps from "./Steps";
-import { connect } from "react-redux";
 import classNames from "classnames";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 //
 import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
 import FabricSelectionWeb from "./FabricSelection";
-import SizeSelectionWeb from "./SizeSelection";
 import ImageView from "./ImageView";
+import "./ProductDetailWeb.scss";
+import SizeSelectionWeb from "./SizeSelection";
+import Steps from "./Steps";
 
 class ProductDetailWeb extends Component {
     constructor(props) {

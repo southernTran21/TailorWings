@@ -1,49 +1,52 @@
-import React, { Component } from "react";
-import "./SizeSelection.scss";
-import ReactGA from "react-ga";
 // import libs ant design
 import { Icon, message, Modal } from "antd";
+import React, { Component } from "react";
+import ReactGA from "react-ga";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import BodyScale from "./BodyScale";
 // import component
 import NavBar from "./navbarPage";
 import Selection from "./Selection";
-import BodyScale from "./BodyScale";
+import "./SizeSelection.scss";
 
 export default class SizeSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
             sizeImages: this.props.sizeImages[6],
-            isUpdate: false
+            isUpdate: false,
         };
     }
 
     componentDidMount() {
         const { currentSelectedProduct } = this.props;
         let { sizeImages } = this.state;
-        console.log('this.props.sizeImages', this.props.sizeImages)
-        sizeImages = this.props.sizeImages.filter(size => currentSelectedProduct.size === size.id)[0];
-        if ( sizeImages != null ) {
+        console.log("this.props.sizeImages", this.props.sizeImages);
+        sizeImages = this.props.sizeImages.filter(
+            (size) => currentSelectedProduct.size === size.id
+        )[0];
+        if (sizeImages != null) {
             this.setState({
-                sizeImages
-            })
+                sizeImages,
+            });
         }
     }
 
-    onSizeUpdated = size => {
+    onSizeUpdated = (size) => {
         let { sizeImages } = this.props;
-        sizeImages = sizeImages.filter(image => image.id === size)[0];
+        sizeImages = sizeImages.filter((image) => image.id === size)[0];
         this.props.onSizeUpdated(size);
         this.setState({
             sizeImages,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onBodyMetricUpdated = bodyMetric => {
+    onBodyMetricUpdated = (bodyMetric) => {
         this.props.onBodyMetricUpdated(bodyMetric);
         this.setState({
-            isUpdate: true
-        })
+            isUpdate: true,
+        });
     };
 
     onConfirmButtonClicked = () => {
@@ -51,7 +54,7 @@ export default class SizeSelection extends Component {
         let isSizeSelected = currentSelectedProduct.size != null;
         let isAllMetricFill = !currentSelectedProduct.bodyMetric.includes("");
         let isAllMetricEmpty = currentSelectedProduct.bodyMetric.every(
-            metric => metric === ""
+            (metric) => metric === ""
         );
         if (
             (isSizeSelected && isAllMetricFill) ||
@@ -60,14 +63,14 @@ export default class SizeSelection extends Component {
         ) {
             this.props.onSelectedProductUpdating(currentSelectedProduct);
             this.props.onContentChange("confirm");
-            if ( this.state.isUpdate ) {
+            if (this.state.isUpdate) {
                 this.updateSizeMetricToStorage(currentSelectedProduct);
             }
             if (isSizeSelected) {
                 ReactGA.event({
                     category: "SizeSelection",
                     action: "Selected Size",
-                    label: `${currentSelectedProduct.size}`
+                    label: `${currentSelectedProduct.size}`,
                 });
             }
         } else {
@@ -76,10 +79,12 @@ export default class SizeSelection extends Component {
     };
 
     updateSizeMetricToStorage = (selectedProduct) => {
-        localStorage.setItem('size', JSON.stringify(selectedProduct.size));
-        localStorage.setItem('bodyMetric', JSON.stringify(selectedProduct.bodyMetric));
-    }
-    
+        localStorage.setItem("size", JSON.stringify(selectedProduct.size));
+        localStorage.setItem(
+            "bodyMetric",
+            JSON.stringify(selectedProduct.bodyMetric)
+        );
+    };
 
     onDescriptionClicked = () => {
         Modal.info({
@@ -88,7 +93,7 @@ export default class SizeSelection extends Component {
                 <div>
                     <p>{this.props.currentDesignInfo.description}</p>
                 </div>
-            )
+            ),
             // onOk() { },
         });
     };
@@ -96,11 +101,11 @@ export default class SizeSelection extends Component {
     render() {
         const { currentSelectedProduct } = this.props;
         const { sizeImages } = this.state;
-        console.log('currentSelectedProduct :', currentSelectedProduct);
+        console.log("currentSelectedProduct :", currentSelectedProduct);
         return (
             <div className="pageSizeSelection">
                 <NavBar
-                    onContentChange={step => this.props.onContentChange(step)}
+                    onContentChange={(step) => this.props.onContentChange(step)}
                     totalProductsOnCart={this.props.totalProductsOnCart}
                 />
                 <div className="bodyPage d-flex flex-column justify-content-start">

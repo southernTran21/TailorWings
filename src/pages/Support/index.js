@@ -12,7 +12,7 @@ import Media from "react-media";
 const { Panel } = Collapse;
 
 const initGA = () => {
-    ReactGA.initialize("UA-159143322-1");
+    ReactGA.initialize("UA-159143322-2");
 };
 
 const logPageView = () => {

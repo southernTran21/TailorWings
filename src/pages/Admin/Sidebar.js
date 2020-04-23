@@ -1,45 +1,47 @@
-import React, { Component } from 'react';
-import './Sidebar.scss'
-import { getAllDataTest, listAllImage, getAllData } from '../../services/Fundamental'
+import React, { Component } from "react";
+import "./Sidebar.scss";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Link,
-    Route,
-} from 'react-router-dom'
-import DesignAdjustment from './DesignPage/DesignAdjustment';
-import Design from './DesignPage/Design';
-import Fabrics from './FabricsPage/Fabrics';
-import FabricsAdjustment from './FabricsPage/FabricsAdjustment';
-import Products from './Product/Products';
-import ProductAdjustment from './Product/ProductAdjustment';
-import Category from './Category/Category';
-import CategoryAdjustment from './Category/CategoryAdjustment';
-import Customer from './Customer/Customer';
-import Customerdetail from './Customer/CustomerDetail';
-import Order from './Order/Order';
-import store from '../../stores/myStore'
+    getAllDataTest,
+    listAllImage,
+    getAllData,
+} from "../../services/Fundamental";
+import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import DesignAdjustment from "./DesignPage/DesignAdjustment";
+import Design from "./DesignPage/Design";
+import Fabrics from "./FabricsPage/Fabrics";
+import FabricsAdjustment from "./FabricsPage/FabricsAdjustment";
+import Products from "./Product/ProductList";
+import ProductAdjustment from "./Product/ProductAdjustment/ProductAdjustment";
+import Category from "./Category/Category";
+import CategoryAdjustment from "./Category/CategoryAdjustment";
+import Customer from "./Customer/Customer";
+import Customerdetail from "./Customer/CustomerDetail";
+import Order from "./Order/index.js";
+import store from "../../stores/myStore";
 
-export const DESIGN_TITLE = ['Add A Design', 'Edit A Design']
-export const FABRIC_TITLE = ['Add A Fabric', 'Edit A Fabric']
-export const PRODUCT_TITLE = ['Add A Product', 'Edit A Product']
-export const CATEGORY_TITLE = ['Add A Category', 'Edit A Category']
+export const DESIGN_TITLE = ["Add A Design", "Edit A Design"];
+export const FABRIC_TITLE = ["Add A Fabric", "Edit A Fabric"];
+export const PRODUCT_TITLE = ["Add A Product", "Edit A Product"];
+export const CATEGORY_TITLE = ["Add A Category", "Edit A Category"];
 
 const _store = store;
 
 const MenuLink = ({ label, to, activeWhenExact }) => {
     return (
-        <Route path={to} exact={activeWhenExact} children={({ math }) => {
-            var active = math ? 'active' : '';
-            return (
-                <li className={active}>
-                    <Link to={to}> {label} </Link>
-                </li>
-            )
-        }} />
-    )
-}
-
+        <Route
+            path={to}
+            exact={activeWhenExact}
+            children={({ math }) => {
+                var active = math ? "active" : "";
+                return (
+                    <li className={active}>
+                        <Link to={to}> {label} </Link>
+                    </li>
+                );
+            }}
+        />
+    );
+};
 
 export class Sidebar extends Component {
     constructor(props) {
@@ -53,59 +55,65 @@ export class Sidebar extends Component {
             customers: [],
             listDesignImage: [],
             collections: [],
-            topList: []
-        }
+            topList: [],
+            orderDetail: [],
+        };
     }
 
     componentDidMount() {
         this._isMounted = true;
         const databaseReducer = (_state, action) => {
             switch (action.collection) {
-                case 'designs':
+                case "designs":
                     this.setState({
-                        designs: action.data
-                    })
+                        designs: action.data,
+                    });
                     break;
-                case 'fabrics':
+                case "fabrics":
                     this.setState({
-                        fabrics: action.data
-                    })
+                        fabrics: action.data,
+                    });
                     break;
-                case 'products':
+                case "products":
                     this.setState({
-                        products: action.data
-                    })
+                        products: action.data,
+                    });
                     break;
-                case 'categories':
+                case "categories":
                     this.setState({
-                        categories: action.data
-                    })
+                        categories: action.data,
+                    });
                     break;
-                case 'orders':
+                case "orders":
                     this.setState({
-                        orders: action.data
-                    })
+                        orders: action.data,
+                    });
                     break;
-                case 'customers':
+                case "customers":
                     this.setState({
-                        customers: action.data
-                    })
+                        customers: action.data,
+                    });
                     break;
                 // case 'collections':
                 //     this.setState({
                 //         collections: action.data
                 //     })
                 //     break;
-                case 'topList':
+                case "topList":
                     this.setState({
-                        topList: action.data
-                    })
+                        topList: action.data,
+                    });
+                    break;
+                case "orderDetail":
+                    this.setState({
+                        orderDetail: action.data,
+                    });
                     break;
                 default:
                     break;
             }
             return null;
-        }
+        };
 
         // listAllImage('image/designs')
         // .then((result) => {
@@ -119,63 +127,63 @@ export class Sidebar extends Component {
         // var counter = 1;
 
         var promiseDesign = new Promise((_resolve, _reject) => {
-            getAllDataTest('designs', (collectionData) => {
+            getAllDataTest("designs", (collectionData) => {
                 if (collectionData != null && this._isMounted === true) {
                     _resolve(collectionData);
                 } else {
-                    _reject('designs');
+                    _reject("designs");
                 }
-            })
+            });
         });
 
         var promiseFabric = new Promise((_resolve, _reject) => {
-            getAllDataTest('fabrics', (collectionData) => {
+            getAllDataTest("fabrics", (collectionData) => {
                 if (collectionData != null && this._isMounted === true) {
                     _resolve(collectionData);
                 } else {
-                    _reject('fabrics');
+                    _reject("fabrics");
                 }
-            })
+            });
         });
 
         var promiseProduct = new Promise((_resolve, _reject) => {
-            getAllDataTest('products', (collectionData) => {
+            getAllDataTest("products", (collectionData) => {
                 if (collectionData != null && this._isMounted === true) {
                     _resolve(collectionData);
                 } else {
-                    _reject('products');
+                    _reject("products");
                 }
-            })
+            });
         });
 
         var promiseCategory = new Promise((_resolve, _reject) => {
-            getAllDataTest('categories', (collectionData) => {
+            getAllDataTest("categories", (collectionData) => {
                 if (collectionData != null && this._isMounted === true) {
                     _resolve(collectionData);
                 } else {
-                    _reject('categories');
+                    _reject("categories");
                 }
-            })
+            });
         });
 
         var promiseOrder = new Promise((_resolve, _reject) => {
-            getAllDataTest('orders', (collectionData) => {
+            getAllDataTest("orders", (collectionData) => {
                 if (collectionData != null && this._isMounted === true) {
                     _resolve(collectionData);
                 } else {
-                    _reject('orders');
+                    _reject("orders");
                 }
-            })
+            });
         });
 
         var promiseCustomer = new Promise((_resolve, _reject) => {
-            getAllDataTest('customers', (collectionData) => {
+            getAllDataTest("customers", (collectionData) => {
                 if (collectionData != null && this._isMounted === true) {
                     _resolve(collectionData);
                 } else {
-                    _reject('customers');
+                    _reject("customers");
                 }
-            })
+            });
         });
 
         // var promiseCollection = new Promise((_resolve, _reject) => {
@@ -189,51 +197,73 @@ export class Sidebar extends Component {
         // });
 
         var promiseTopList = new Promise((_resolve, _reject) => {
-            getAllDataTest('topList', (collectionData) => {
+            getAllDataTest("topList", (collectionData) => {
                 if (collectionData != null && this._isMounted === true) {
                     _resolve(collectionData);
                 } else {
-                    _reject('topList');
+                    _reject("topList");
                 }
-            })
+            });
+        });
+
+        var promiseOrderDetail = new Promise((_resolve, _reject) => {
+            getAllDataTest("orderDetail", (collectionData) => {
+                if (collectionData != null && this._isMounted === true) {
+                    _resolve(collectionData);
+                } else {
+                    _reject("orderDetail");
+                }
+            });
         });
 
         Promise.all([
-            promiseDesign, 
-            promiseFabric, 
-            promiseProduct, 
-            promiseCategory, 
-            promiseOrder, 
+            promiseDesign,
+            promiseFabric,
+            promiseProduct,
+            promiseCategory,
+            promiseOrder,
             promiseCustomer,
             // promiseCollection,
-            getAllData('collections'),
-            promiseTopList
-        ]).then(dataList => {
-            this.setState({
-                designs: dataList[0],
-                fabrics: dataList[1],
-                products: dataList[2],
-                categories: dataList[3],
-                orders: dataList[4],
-                customers: dataList[5],
-                collections: dataList[6],
-                topList: dataList[7]
+            getAllData("collections"),
+            promiseTopList,
+            promiseOrderDetail,
+        ])
+            .then((dataList) => {
+                this.setState({
+                    designs: dataList[0],
+                    fabrics: dataList[1],
+                    products: dataList[2],
+                    categories: dataList[3],
+                    orders: dataList[4],
+                    customers: dataList[5],
+                    collections: dataList[6],
+                    topList: dataList[7],
+                    orderDetail: dataList[8],
+                });
+            })
+            .catch((ex) => {
+                // console.log(ex);
             });
-        }).catch(ex => {
-            // console.log(ex);
-        })
-        _store.reducerManager.add('sidebarListenData', databaseReducer);
+        _store.reducerManager.add("sidebarListenData", databaseReducer);
     }
 
     componentWillUnmount() {
         this._isMounted = false;
-        _store.reducerManager.remove('sidebarListenData');
+        _store.reducerManager.remove("sidebarListenData");
     }
 
-
-
     render() {
-        const { designs, fabrics, products, categories, orders, customers, collections, topList } = this.state;
+        const {
+            designs,
+            fabrics,
+            products,
+            categories,
+            orders,
+            customers,
+            collections,
+            topList,
+            orderDetail,
+        } = this.state;
         return (
             <Router>
                 <div className="row" style={{ margin: 0 }}>
@@ -241,10 +271,16 @@ export class Sidebar extends Component {
                     <div className="sideBar col-2">
                         <ul className="menuSideBar">
                             <MenuLink label="Products" to="/admin/products" />
-                            <MenuLink label="Categories" to="/admin/categories" />
+                            <MenuLink
+                                label="Categories"
+                                to="/admin/categories"
+                            />
                             <MenuLink label="Fabrics" to="/admin/fabrics" />
                             <MenuLink label="Designs" to="/admin/designs" />
-                            <MenuLink label="Recommends" to="/admin/recommends" />
+                            <MenuLink
+                                label="Recommends"
+                                to="/admin/recommends"
+                            />
                             <MenuLink label="Customers" to="/admin/customers" />
                             <MenuLink label="Orders" to="/admin/orders" />
                         </ul>
@@ -256,35 +292,35 @@ export class Sidebar extends Component {
                             <Route
                                 path="/admin/designs"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <Design
                                         designs={designs}
                                         products={products}
                                         topList={topList}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/design-add"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <DesignAdjustment
                                         history={this.props.history}
                                         designs={designs}
                                         title={DESIGN_TITLE[0]}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/design-edit"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <DesignAdjustment
                                         history={this.props.history}
                                         designs={designs}
                                         title={DESIGN_TITLE[1]}
                                     />
-                                }
+                                )}
                             />
                             {/* end */}
 
@@ -292,34 +328,34 @@ export class Sidebar extends Component {
                             <Route
                                 path="/admin/fabrics"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <Fabrics
                                         fabrics={fabrics}
                                         products={products}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/fabric-add"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <FabricsAdjustment
                                         history={this.props.history}
                                         fabrics={fabrics}
                                         title={FABRIC_TITLE[0]}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/fabric-edit"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <FabricsAdjustment
                                         history={this.props.history}
                                         fabrics={fabrics}
                                         title={FABRIC_TITLE[1]}
                                     />
-                                }
+                                )}
                             />
                             {/* end */}
 
@@ -327,7 +363,7 @@ export class Sidebar extends Component {
                             <Route
                                 path="/admin/products"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <Products
                                         products={products}
                                         designs={designs}
@@ -335,12 +371,12 @@ export class Sidebar extends Component {
                                         categories={categories}
                                         collections={collections}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/product-add"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <ProductAdjustment
                                         history={this.props.history}
                                         title={PRODUCT_TITLE[0]}
@@ -349,12 +385,12 @@ export class Sidebar extends Component {
                                         fabrics={fabrics}
                                         categories={categories}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/product-edit"
                                 exact
-                                component={() =>
+                                component={() => (
                                     <ProductAdjustment
                                         history={this.props.history}
                                         title={PRODUCT_TITLE[1]}
@@ -363,68 +399,79 @@ export class Sidebar extends Component {
                                         fabrics={fabrics}
                                         categories={categories}
                                     />
-                                }
+                                )}
                             />
                             {/* end */}
 
                             {/* Category */}
                             <Route
                                 path="/admin/categories"
-                                exact component={() =>
+                                exact
+                                component={() => (
                                     <Category
                                         categories={categories}
                                         products={products}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/category-add"
-                                exact component={() =>
+                                exact
+                                component={() => (
                                     <CategoryAdjustment
                                         history={this.props.history}
                                         categories={categories}
                                         title={CATEGORY_TITLE[0]}
                                     />
-                                }
+                                )}
                             />
                             <Route
                                 path="/admin/category-edit"
-                                exact component={() =>
+                                exact
+                                component={() => (
                                     <CategoryAdjustment
                                         history={this.props.history}
                                         categories={categories}
                                         title={CATEGORY_TITLE[1]}
                                     />
-                                }
+                                )}
                             />
                             {/* end */}
+
                             {/* Customers */}
                             <Route
                                 path="/admin/customers"
-                                exact component={() =>
+                                exact
+                                component={() => (
                                     <Customer
                                         customers={customers}
                                         orders={orders}
-                                    />}
+                                    />
+                                )}
                             />
                             <Route
                                 path="/admin/customer-detail"
-                                exact component={() =>
+                                exact
+                                component={() => (
                                     <Customerdetail
                                         customers={customers}
                                         orders={orders}
-                                    />}
+                                    />
+                                )}
                             />
                             {/* end */}
+
                             {/* Orders */}
                             <Route
                                 path="/admin/orders"
-                                exact component={() =>
+                                exact
+                                component={() => (
                                     <Order
                                         orders={orders}
                                         customers={customers}
+                                        orderDetail={orderDetail}
                                     />
-                                }
+                                )}
                             />
                             {/* end */}
                         </Switch>

@@ -17,6 +17,8 @@ import ReactGA from "react-ga";
 import ReactPixel from "react-facebook-pixel";
 import Policy from "../pages/Policy";
 import Support from "../pages/Support";
+import TailorwingNewExp from "../pages/LandingPage/TailorwingsNewExp/TailorwingNewExp";
+import TailorwingsCovid from "../pages/LandingPage/TailorwingsCOVID/TailorwingsCovid";
 
 export const history = createBrowserHistory();
 
@@ -205,12 +207,13 @@ export default class App extends Component {
                         <Route
                             path="/product-detail"
                             exact
-                            component={() => (
+                            component={({match}) => (
                                 <ProductDetail
                                     history={history}
                                     visibilityProducts={visibilityProducts}
                                     designsInfo={designsInfo}
                                     fabricsInfo={fabricsInfo}
+                                    match={match}
                                 />
                             )}
                         />
@@ -228,6 +231,16 @@ export default class App extends Component {
                             path="/support"
                             exact
                             component={() => <Support history={history} />}
+                        />
+                        <Route
+                            path="/tailorwings-new-experience"
+                            exact
+                            component={() => <TailorwingNewExp history={history} />}
+                        />
+                        <Route
+                            path="/tailorwings-covid"
+                            exact
+                            component={() => <TailorwingsCovid history={history} />}
                         />
                         <ProtectedRoute
                             path="/admin"

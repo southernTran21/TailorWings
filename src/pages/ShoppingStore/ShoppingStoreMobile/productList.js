@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -8,8 +10,8 @@ export default class ProductList extends Component {
         this.state = {
             fetchedProducts: [],
             hasMore: true,
-            loaderContent: <h4>Loading...</h4>
-        }
+            loaderContent: <h4>Loading...</h4>,
+        };
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -18,21 +20,28 @@ export default class ProductList extends Component {
             let fetchedProducts = nextProps.renderProducts.slice(0, 9);
             let loaderContent = prevState.loaderContent;
             if (fetchedProducts.length === 0) {
-                loaderContent = <div>
-                    <h4>{`Không tìm thấy sản phẩm!`}</h4>
-                    <Link to={{ pathname: '/shopping-store', search: '?cat=all&search=' }} >
-                        xem tất cả sản phẩm
-                    </Link>
-                </div>
+                loaderContent = (
+                    <div>
+                        <h4>{`Không tìm thấy sản phẩm!`}</h4>
+                        <Link
+                            to={{
+                                pathname: "/shopping-store",
+                                search: "?cat=all&search=",
+                            }}
+                        >
+                            xem tất cả sản phẩm
+                        </Link>
+                    </div>
+                );
             }
             return {
                 renderProducts: nextProps.renderProducts,
                 fetchedProducts,
                 hasMore: true,
-                loaderContent
-            }
+                loaderContent,
+            };
         } else {
-            return null
+            return null;
         }
     }
 
@@ -47,28 +56,38 @@ export default class ProductList extends Component {
                 return;
             }
             setTimeout(() => {
-                let addedProduct = renderProducts.slice(fetchedProducts.length, fetchedProducts.length + 9);
-                addedProduct = fetchedProducts.concat(addedProduct)
+                let addedProduct = renderProducts.slice(
+                    fetchedProducts.length,
+                    fetchedProducts.length + 9
+                );
+                addedProduct = fetchedProducts.concat(addedProduct);
                 this.setState({
                     fetchedProducts: addedProduct,
                 });
             }, 200);
         } else {
             this.setState({
-                loaderContent: <div>
-                    <h4>{`Không tìm thấy sản phẩm!`}</h4>
-                    <Link to={{ pathname: '/shopping-store', search: '?cat=all&search=' }} >
-                        xem tất cả sản phẩm
-                </Link>
-                </div>
-            })
+                loaderContent: (
+                    <div>
+                        <h4>{`Không tìm thấy sản phẩm!`}</h4>
+                        <Link
+                            to={{
+                                pathname: "/shopping-store",
+                                search: "?cat=all&search=",
+                            }}
+                        >
+                            xem tất cả sản phẩm
+                        </Link>
+                    </div>
+                ),
+            });
         }
     };
 
     render() {
         const { fetchedProducts, loaderContent } = this.state;
         return (
-            <div className='productList-wraper d-flex flex-wrap'>
+            <div className="productList-wraper d-flex flex-wrap">
                 <InfiniteScroll
                     style={{ overflow: "unset" }}
                     className="d-flex flex-wrap"
@@ -76,40 +95,45 @@ export default class ProductList extends Component {
                     next={this._fetchMoreData}
                     hasMore={this.state.hasMore}
                     loader={loaderContent}
-                // endMessage={
-                //     <button
-                //         // onClick={() => this.props.scrollToTop()}
-                //         type="button"
-                //         className="btn btn-link"
-                //         style={{ width: "100%", alignItems: "center" }}
-                //     >
-                //         Quay về đầu trang
-                //     </button>
-                // }
+                    // endMessage={
+                    //     <button
+                    //         // onClick={() => this.props.scrollToTop()}
+                    //         type="button"
+                    //         className="btn btn-link"
+                    //         style={{ width: "100%", alignItems: "center" }}
+                    //     >
+                    //         Quay về đầu trang
+                    //     </button>
+                    // }
                 >
                     {fetchedProducts.map((product, index) => {
                         return (
-                            <div key={index} className='col-6'>
+                            <div key={index} className="col-6">
                                 <Link
                                     style={{
-                                        height: 'fit-content',
-                                        width: 'fit-content',
-                                        border: 'none',
-                                        textDecoration: 'none',
+                                        height: "fit-content",
+                                        width: "fit-content",
+                                        border: "none",
+                                        textDecoration: "none",
                                     }}
                                     to={{
-                                        pathname: '/product-detail',
-                                        search: `?id=${product.designID}&pattern=${product.fabricID}`
+                                        pathname: "/product-detail",
+                                        search: `?id=${product.designID}&pattern=${product.fabricID}`,
                                     }}
                                 >
-                                    <div className='imageProduct'>
-                                        <img src={product.image[0]} alt={product.productID} ></img>
+                                    <div className="imageProduct">
+                                        {/* <img src={product.image[0]} alt={product.productID} ></img> */}
+                                        <LazyLoadImage
+                                            alt={product.productID}
+                                            effect="blur"
+                                            src={product.image[0]}
+                                        />
                                     </div>
                                 </Link>
-                                <div className='titleProduct'>
+                                <div className="titleProduct">
                                     <span>{product.name}</span>
                                 </div>
-                                <div className='button d-flex flex-row justify-content-center'>
+                                <div className="button d-flex flex-row justify-content-center">
                                     <span>{`${product.totalSupportedFabric} mẫu vải`}</span>
                                 </div>
                             </div>

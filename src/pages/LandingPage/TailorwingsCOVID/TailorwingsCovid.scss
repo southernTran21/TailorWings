@@ -1,0 +1,216 @@
+.tailorwingsCovid_wrapper {
+    font-family: "Montserrat", sans-serif !important;
+    .colorOrange {
+        color: #ff6d3b !important;
+    }
+    .colorBlue {
+        color: #111e6c !important;
+    }
+    .logoHederPage {
+        margin-top: 2.69vh;
+        width: 24vw;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    hr {
+        border-top: 10px solid #ff6d3b;
+        width: 19.73vw;
+        margin: 0;
+        margin-top: 6.74vh;
+    }
+    .contentFirst_tailorwingsCovid {
+        margin-top: 1.499vh;
+        text-align: center;
+        font-size: 8.53vw;
+        font-weight: bold;
+    }
+    .imageCovid1 {
+        margin: 4.34vh 7.2vw 0 7.2vw;
+    }
+    .collectionFirst {
+        margin-top: 4.04vh;
+        a {
+            width: fit-content;
+            height: fit-content;
+            text-decoration: none;
+            .imageCovid2 {
+                width: 91.54vw;
+            }
+            .button_collectionFirst {
+                background-color: #ff6d3b;
+                padding: 1.5vh 0;
+                border-radius: 8px;
+                color: white;
+                font-weight: bold;
+                font-size: 4.26vw;
+                text-align: center;
+                margin-left: 15vw;
+                margin-top: 0.7vh;
+                cursor: pointer;
+            }
+        }
+    }
+    .threedot {
+        width: 21.06vw;
+    }
+    .contentSecond {
+        margin-top: 5.49vh;
+        .title_contentSecond {
+            text-align: center;
+            font-size: 6.93vw;
+            font-weight: bold;
+            line-height: 110%;
+        }
+        .image_contentSecond {
+            width: 66.93vw;
+            margin-top: 2.59vh;
+        }
+    }
+    .endContent {
+        margin-top: 3.59vh;
+        svg {
+            width: 100vw;
+        }
+        .button_endContent {
+            background-color: #ff6d3b;
+            border-radius: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            font-size: 4.26vw;
+            padding: 1.5vh 0;
+            margin: 0 20.53vw;
+            margin-top: 1.94vh;
+        }
+    }
+    .footerPage {
+        background: #ff6d3b;
+        border-radius: 40px 40px 0px 0px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5.99vh;
+        .iconSVG {
+            margin-top: 4.49vh;
+            svg {
+                width: 18.13vw;
+            }
+        }
+        .contentFooter {
+            text-align: center;
+            font-size: 4vw;
+            margin-top: 2.24vh;
+            font-weight: bold;
+        }
+        .inputInfo {
+            margin-top: 4.04vh;
+            .ant-input {
+                box-shadow: none;
+                width: 73.33vw;
+                background: #fff4e3;
+                border-radius: 10px;
+                font-size: 4.26vw;
+                color: #111e6c;
+                height: 6.74vh;
+            }
+            .ant-input:hover {
+                border: none;
+            }
+            :nth-child(3) {
+                margin-top: 2.24vh;
+            }
+            ::placeholder {
+                color: #ffa45c;
+            }
+        }
+        .buttonAccept {
+            text-align: center;
+            color: #ff6d3b;
+            font-weight: bold;
+            background-color: white;
+            width: 73.33vw;
+            border-radius: 10px;
+            padding: 2vh 0;
+            margin-top: 4.19vh;
+            margin-bottom: 8.99vh;
+        }
+    }
+    .error {
+        color: white;
+    }
+    .errorUnvisible {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .tailorwingsCovid_wrapper {
+        .logoHederPage {
+            margin-top: 2.69vh;
+            width: 10vw;
+        }
+        hr {
+            border-top: 10px solid #ff6d3b;
+            width: 14.73vw;
+        }
+        .contentFirst_tailorwingsCovid {
+            font-size: 2.5vw;
+        }
+        .imageCovid1 {
+            margin: 0;
+            margin-top: 2vh;
+            width: 25.22vw;
+        }
+        .imageCovid2 {
+            width: 33vw !important;
+        }
+        .button_collectionFirst {
+            font-size: 1.11vw !important;
+        }
+        .threedot {
+            width: 7vw;
+        }
+        .title_contentSecond {
+            font-size: 2.5vw !important;
+        }
+        .image_contentSecond {
+            width: 20vw !important;
+        }
+        .endContent {
+            margin-top: 5vh !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            svg {
+                width: 25vw;
+            }
+            .button_endContent {
+                font-size: 1.38vw;
+                padding: 1vw 5vw;
+                cursor: pointer;
+            }
+        }
+        .footerPage {
+            .iconSVG {
+                svg {
+                    width: 7vw !important;
+                }
+            }
+            .contentFooter {
+                font-size: 1.38vw;
+            }
+            .inputInfo {
+                .ant-input {
+                    width: 35vw !important;
+                }
+            }
+            .buttonAccept {
+                width: 35vw;
+            }
+        }
+    }
+}
