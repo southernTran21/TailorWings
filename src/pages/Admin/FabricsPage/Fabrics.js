@@ -159,7 +159,7 @@ export class Fabrics extends Component {
                                             okText="Yes"
                                             cancelText="No"
                                         >
-                                            <a className="far fa-trash-alt"></a>
+                                            <a className="far fa-trash-alt" aria-hidden={false}></a>
                                         </Popconfirm>
                                     </div>
                                 </div>

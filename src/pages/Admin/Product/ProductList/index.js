@@ -28,7 +28,7 @@ export class Products extends Component {
             isCheckBoxVisible: true,
             currentCollectionStatus: [],
             currentCollectionFilterIndex: "",
-            isFirstLoaded: false,
+            isFirstLoaded: false
         };
     }
 
@@ -181,7 +181,7 @@ export class Products extends Component {
         if (renderProducts != null) {
             this.setState({
                 renderProducts,
-                isFirstLoaded: false
+                isFirstLoaded: false,
             });
         }
     };
@@ -209,14 +209,14 @@ export class Products extends Component {
                     currentCollectionFilterIndex: collections.findIndex(
                         (collection) => collection.id === collectionID
                     ),
-                    isFirstLoaded: false
+                    isFirstLoaded: false,
                 });
             }
         } else {
             this.setState({
                 isCheckBoxVisible: true,
                 currentCollectionFilterIndex: "",
-                isFirstLoaded: false
+                isFirstLoaded: false,
             });
         }
     };
@@ -333,7 +333,7 @@ export class Products extends Component {
     onSearching = (searchedProducts) => {
         this.setState({
             renderProducts: searchedProducts,
-            isFirstLoaded: false
+            isFirstLoaded: false,
         });
     };
 
@@ -434,7 +434,7 @@ export class Products extends Component {
             checkedList,
             renderProducts,
             initialProducts,
-            isFirstLoaded
+            isFirstLoaded,
         } = this.state;
         return (
             <div className="pageProduct">
@@ -444,8 +444,16 @@ export class Products extends Component {
                         style={{ margin: 0 }}
                     >{`Products (${products.length})`}</h2>
                     <Link to="/admin/product-add">
-                        <div className="buttonAddProduct d-flex justify-content-end">
-                            <span>Add Product</span>
+                        <div
+                            className="buttonAddProduct d-flex justify-content-end"
+                            style={{ width: "12vw" }}
+                        >
+                            <span
+                                className="d-flex justify-content-center"
+                                style={{ width: "100%" }}
+                            >
+                                Add Product
+                            </span>
                         </div>
                     </Link>
                 </div>

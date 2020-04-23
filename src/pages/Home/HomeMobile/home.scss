@@ -8,8 +8,6 @@
         vertical-align: 0 !important;
     }
     .navbarHeader {
-        // position: fixed;
-        // top: 0;
         height: 9.74vh !important;
         padding: 0 25px;
         color: #ff6d3b;
@@ -166,6 +164,8 @@
             border-radius: 20px;
             display: flex;
             justify-content: center;
+            height: 90.5vh;
+            width: 100vw;
             img {
                 width: 100vw;
                 border-radius: 0;

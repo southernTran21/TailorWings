@@ -1,18 +1,19 @@
-import React, { Component } from "react";
-import "./home.scss";
 import classNames from "classnames";
-// import component
-import Header from "./Header/index";
-import Welcome from "./Body/Welcome";
-import FourSteps from "./Body/FourSteps";
+import React, { Component } from "react";
+import LazyLoad from "react-lazy-load";
 import Categories from "./Body/Categories";
-import Introduction from "./Body/Introduction";
 import Collections from "./Body/Collections";
+import FourSteps from "./Body/FourSteps";
+import Instagram from "./Body/Instagram";
+import Introduction from "./Body/Introduction";
+import Passion from "./Body/Passion";
 import StrikingProducts from "./Body/StrikingProducts";
 import WeGive from "./Body/WeGive";
-import Passion from "./Body/Passion";
-import Instagram from "./Body/Instagram";
+import Welcome from "./Body/Welcome";
 import Footer from "./Footer";
+// import component
+import Header from "./Header/index";
+import "./home.scss";
 
 export default class HomeWeb extends Component {
     constructor(props) {
@@ -80,26 +81,49 @@ export default class HomeWeb extends Component {
                     disable_scroll: isSideBarOpen,
                 })}
             >
-                <Header
-                    history={this.props.history}
-                    bestSellerInfo={bestSellerInfo}
-                    totalProductsOnCart={totalProductsOnCart}
-                    visibleProductsList={visibleProductsList}
-                    sideBarChange={this.sideBarChange}
-                />
-                <Welcome />
-                <FourSteps />
-                <Categories />
-                <Introduction />
-                <Collections />
-                <StrikingProducts
-                    bestSellerInfo={bestSellerInfo}
-                    visibleProductsList={visibleProductsList}
-                />
-                <WeGive />
-                <Passion />
-                <Instagram />
-                <Footer />
+                {/* {" "} */}
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Header
+                        history={this.props.history}
+                        bestSellerInfo={bestSellerInfo}
+                        totalProductsOnCart={totalProductsOnCart}
+                        visibleProductsList={visibleProductsList}
+                        sideBarChange={this.sideBarChange}
+                    />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Welcome />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <FourSteps />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Categories />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Introduction />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Collections />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <StrikingProducts
+                        bestSellerInfo={bestSellerInfo}
+                        visibleProductsList={visibleProductsList}
+                    />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <WeGive />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Passion />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Instagram />
+                </LazyLoad>
+                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                    <Footer />
+                </LazyLoad>
             </div>
         );
     }

@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import "./Content.scss";
 import { Select } from "antd";
+import React, { Component } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
+import "./Content.scss";
 
 const { Option } = Select;
 
@@ -106,12 +108,17 @@ export default class ProductList extends Component {
                                         }}
                                     >
                                         <div className="image">
-                                            <img
+                                            {/* <img
                                                 src={product.image[0]}
                                                 alt={product.productID}
-                                            ></img>
+                                            ></img> */}
+                                            <LazyLoadImage
+                                                alt={product.productID}
+                                                effect="blur"
+                                                src={product.image[0]}
+                                            />
                                         </div>
-                                        <span>{product.name}</span>
+                                        <span className='productName'>{product.name}</span>
                                         <div className="button">{`${product.totalSupportedFabric} MẪU VẢI`}</div>
                                     </Link>
                                 </div>

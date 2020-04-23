@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import imagePassion from '../../../../assets/imageHomePage/imagePassion.svg';
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import imagePassion from "../../../../assets/imageHomePage/imagePassion.svg";
 export default class Passion extends Component {
     render() {
         return (
@@ -10,13 +11,22 @@ export default class Passion extends Component {
                         Passion <br></br> Led Us Here
                     </span>
                     <span>
-                        Quần áo bạn mặc là do<br/> bàn tay của người thợ may<br/> tạo ra.
-                        Hãy cùng Tailor<br/> Wings chắp cho những đôi<br/> cánh chưa từng
-                        được bay<br/> lên - những người thợ may<br/> tận tụy.
+                        Quần áo bạn mặc là do
+                        <br /> bàn tay của người thợ may
+                        <br /> tạo ra. Hãy cùng Tailor
+                        <br /> Wings chắp cho những đôi
+                        <br /> cánh chưa từng được bay
+                        <br /> lên - những người thợ may
+                        <br /> tận tụy.
                     </span>
                 </div>
                 <div className="image">
-                    <img src={imagePassion} alt=""/>
+                    {/* <img src={imagePassion} alt=""/> */}
+                    <LazyLoadImage
+                        alt="tailor-wings-passion"
+                        effect="blur"
+                        src={imagePassion}
+                    />
                 </div>
             </div>
         );

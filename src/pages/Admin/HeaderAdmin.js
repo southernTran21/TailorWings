@@ -10,7 +10,7 @@ export class HeaderAdmin extends Component {
         return (
             <div className="headerAdmin d-flex flex-row justify-content-between align-items-center">
                 <div className="titleHeader d-flex justify-content-start">
-                    <a>Admin Home</a>
+                    <a>TailorWings Admin</a>
                 </div>
                 <div className="titleHeader d-flex justify-content-end">
                     <a

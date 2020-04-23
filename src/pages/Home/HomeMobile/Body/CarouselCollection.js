@@ -1,31 +1,28 @@
 import React, { Component } from "react";
 import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
-import { Icon } from "antd";
-
+import collectionDamCongSo from "../../../../assets/imageHomePage/collectionDamCongSo.jpg";
 import collectionDamDaoPho from "../../../../assets/imageHomePage/collectionDamDaoPho.jpg";
 import collectionDamDuTiec from "../../../../assets/imageHomePage/collectionDamDuTiec.jpg";
-import collectionDamCongSo from '../../../../assets/imageHomePage/collectionDamCongSo.jpg';
 
 export default class CarouselCollection extends Component {
-
     getCollectionImage = (id) => {
-        let image = ''
+        let image = "";
         switch (id) {
             case "damcongso":
                 image = collectionDamDaoPho;
                 break;
             case "damdaopho":
-                image= collectionDamCongSo;
+                image = collectionDamCongSo;
                 break;
             case "damdutiec":
-                image= collectionDamDuTiec;
+                image = collectionDamDuTiec;
                 break;
             default:
                 break;
         }
         return image;
-    }
+    };
 
     AutoSlidesPerView = () => {
         let { collectionsInfo } = this.props;
@@ -40,15 +37,17 @@ export default class CarouselCollection extends Component {
         return collectionsInfo.length > 0 ? (
             <Swiper {...params}>
                 {collectionsInfo.map((collection, index) => {
-                    let imageCollection = this.getCollectionImage(collection.id)
+                    let imageCollection = this.getCollectionImage(
+                        collection.id
+                    );
                     return (
                         <div key={index} className="content-carousel">
                             <div className="title">{collection.name}</div>
                             <div className="image">
                                 <Link
                                     style={{
-                                        width: "100%",
-                                        height: "100%",
+                                        width: "fit-content",
+                                        height: "fit-content",
                                     }}
                                     to={{
                                         pathname: "/shopping-store",
@@ -56,7 +55,10 @@ export default class CarouselCollection extends Component {
                                     }}
                                 >
                                     <div className="popupImage">{`${collection.products.length} thiết kế`}</div>
-                                    <img src={imageCollection} alt={collection.id} />
+                                    <img
+                                        src={imageCollection}
+                                        alt={collection.id}
+                                    />
                                 </Link>
                             </div>
                             <div className="end-carousel">

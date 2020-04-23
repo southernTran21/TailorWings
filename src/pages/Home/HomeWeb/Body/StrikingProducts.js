@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Swiper from "react-id-swiper";
-import { Icon } from "antd";
+import { Link } from "react-router-dom";
 
 export default class StrikingProducts extends Component {
     constructor(props) {

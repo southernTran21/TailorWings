@@ -26,18 +26,6 @@ export default class FabricSelectionWeb extends Component {
         const { aciveFabricIndex } = this.state;
         return (
             <div className="pageFabricSelection d-flex align-items-center">
-                {/* <Link
-                    style={{
-                        height: "fit-content",
-                        width: "fit-content",
-                        border: "none",
-                        textDecoration: "none",
-                    }}
-                    to={{
-                        pathname: "/shopping-store",
-                        search: "?cat=all&search=",
-                    }}
-                > */}
                 <div
                     className="iconBack d-flex flex-column align-items-center"
                     onClick={() => window.history.back()}
@@ -56,7 +44,6 @@ export default class FabricSelectionWeb extends Component {
                     </svg>
                     <span>CHỌN MẪU</span>
                 </div>
-                {/* </Link> */}
                 <ProductImage
                     images={currentSelectedProduct.image}
                     productName={currentSelectedProduct.name}

@@ -38,7 +38,7 @@
     .productList_wrapper {
         padding-left: 7.62vw;
         padding-top: 3.66vh;
-        .col-4{
+        .col-4 {
             float: left;
             padding: 0;
             padding-left: 1.38vw;
@@ -47,27 +47,28 @@
             margin-bottom: 7.77vh;
             .image {
                 width: 21.11vw;
-                height: auto;
+                height: 26.3875vw;
                 background: #ffa45c;
                 border-radius: 10px;
                 img {
-                    width: 100%;
+                    width: 21.11vw;
+                    height: 26.3875vw;
                     border-radius: 10px;
                 }
             }
-            span{
+            .productName {
                 width: fit-content;
                 font-size: 1.52vw;
                 font-weight: bold;
                 margin-top: 10px;
                 cursor: pointer;
             }
-            .button{
+            .button {
                 width: fit-content;
                 border-radius: 10px;
-                border: 1px solid #FF6D3B;
+                border: 1px solid #ff6d3b;
                 font-size: 1.11vw;
-                color: #FF6D3B;
+                color: #ff6d3b;
                 font-weight: bold;
                 padding: 3px 15px;
                 margin-top: 8px;

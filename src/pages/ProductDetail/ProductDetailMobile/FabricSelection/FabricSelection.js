@@ -334,7 +334,7 @@ class FabricSelection extends Component {
         return (
             <div
                 className={classNames(
-                    "pageFabricSelection d-flex flex-column align-items-center justify-content-start",
+                    "pageFabricSelection_mobile d-flex flex-column align-items-center justify-content-start",
                     { fixed_top: isProductModalShow }
                 )}
             >

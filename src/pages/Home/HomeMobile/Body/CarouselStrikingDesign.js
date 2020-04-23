@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Swiper from "react-id-swiper";
-import { Icon } from "antd";
+import { Link } from "react-router-dom";
 
 export default class CarouselStrikingDesign extends Component {
     bestSellerContent = () => {
@@ -35,16 +34,16 @@ export default class CarouselStrikingDesign extends Component {
                                 <Link
                                     style={{
                                         width: "100%",
-                                        height: "100%"
+                                        height: "100%",
                                     }}
                                     to={{
                                         pathname: "/product-detail",
-                                        search: `?id=${product.designID}&pattern=${product.fabricID}`
+                                        search: `?id=${product.designID}&pattern=${product.fabricID}`,
                                     }}
                                 >
-                                <div className="putButton d-flex flex-row justify-content-center align-items-center">
-                                    <span>CHỌN VẢI</span>
-                                </div>
+                                    <div className="putButton d-flex flex-row justify-content-center align-items-center">
+                                        <span>CHỌN VẢI</span>
+                                    </div>
                                 </Link>
                             </div>
                         </div>

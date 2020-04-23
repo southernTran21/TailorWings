@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
 import imageDamOm from "../../../../assets/imageHomePage/dam om.png";
-import imageDamXoe from "../../../../assets/imageHomePage/dam xoe.png";
 import imageDamSuong from "../../../../assets/imageHomePage/dam suong.png";
+import imageDamXoe from "../../../../assets/imageHomePage/dam xoe.png";
 
 export default class Categories extends Component {
     render() {
