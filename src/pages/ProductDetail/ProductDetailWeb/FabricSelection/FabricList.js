@@ -28,7 +28,6 @@ export default class FabricList extends Component {
                                         alt={fabric.name}
                                         effect="blur"
                                         src={fabric.image[0]}
-                                        className={classNames({ highlight: isHighLight})}
                                     />
                                 </div>
                             </div>

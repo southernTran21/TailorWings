@@ -206,7 +206,7 @@ export default class App extends Component {
                         />
                         <Route
                             path="/product-detail"
-                            exact
+                            // exact
                             component={({match}) => (
                                 <ProductDetail
                                     history={history}

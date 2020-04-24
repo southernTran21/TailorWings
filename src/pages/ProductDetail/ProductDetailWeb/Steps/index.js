@@ -2,17 +2,53 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class Steps extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectionStep: "fabric-selection",
+            productName: "",
+            urlSearch: "",
+        };
+    }
 
-    onFabricNavigating = () => {
-        if(this.props.selectionStep !== 'fabricSelection' ){
-            this.props.onContentChange('fabricSelection');
-        }
+    componentDidMount() {
+        const { history, match } = this.props;
+        let selectionStep = window.location.pathname.match(
+            /product-detail\/(.*)\b\//
+        )[1];
+        let productName = window.location.pathname.match(
+            /selection\/(.*)\b/
+        )[1];
+        let urlSearch = window.location.search;
+        this.setState({
+            selectionStep,
+            productName,
+            urlSearch,
+        });
+        this.unlisten = history.listen((location) => {
+            let selectionStep = location.pathname.match(
+                /product-detail\/(.*)\b\//
+            )[1];
+            let productName = window.location.pathname.match(
+                /selection\/(.*)\b/
+            )[1];
+            let urlSearch = location.search;
+            this.setState({
+                selectionStep,
+                productName,
+                urlSearch,
+            });
+        });
+    }
+
+    componentWillUnmount() {
+        this.unlisten();
     }
 
     render() {
-        const { selectionStep } = this.props;
+        const { selectionStep, productName, urlSearch } = this.state;
         let classStep = ["", ""];
-        if (selectionStep === "fabricSelection") {
+        if (selectionStep === "fabric-selection") {
             classStep[0] = "highlight step";
             classStep[1] = "opacityStep step";
         } else {
@@ -21,10 +57,12 @@ export default class Steps extends Component {
         }
         return (
             <div className="steps d-flex justify-content-center align-items-center">
-                <Link to={{
-                    pathname: '/shopping-store',
-                    search: '?cat=all&search'
-                }}>
+                <Link
+                    to={{
+                        pathname: "/shopping-store",
+                        search: "?cat=all&search",
+                    }}
+                >
                     <span className="step">Chọn mẫu</span>
                 </Link>
                 <svg
@@ -39,7 +77,19 @@ export default class Steps extends Component {
                         fill="#FF6D3B"
                     />
                 </svg>
-                <span className={classStep[0]} onClick={this.onFabricNavigating}>Chọn vải</span>
+                <Link
+                    to={{
+                        pathname: `/product-detail/fabric-selection/${productName}`,
+                        search: `${urlSearch}`,
+                    }}
+                >
+                    <span
+                        className={classStep[0]}
+                        onClick={this.onFabricNavigating}
+                    >
+                        Chọn vải
+                    </span>
+                </Link>
                 <svg
                     width="10"
                     height="13"
