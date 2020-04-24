@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import "./TailorwingNewExp.scss";
 import { Input, message } from "antd";
-import { setDocument } from "../../../services/Fundamental";
-import { Link } from "react-router-dom";
 import classNames from "classnames";
-import NumberFormat from "react-number-format";
+import React, { Component } from "react";
 import ReactGA from "react-ga";
+import { Helmet } from "react-helmet";
+import NumberFormat from "react-number-format";
+import group34 from "../../../assets/imageLandingPage/Group 34.svg";
+import imageContentFour from "../../../assets/imageLandingPage/Group33.svg";
+import imageContentSecond from "../../../assets/imageLandingPage/landingPage1.svg";
+import logo from "../../../assets/imageLandingPage/logo.svg";
 // import image
 import imageStep from "../../../assets/imageLandingPage/Step.png";
-import imageContentSecond from "../../../assets/imageLandingPage/landingPage1.svg";
-import imageContentFour from "../../../assets/imageLandingPage/Group33.svg";
-import logo from "../../../assets/imageLandingPage/logo.svg";
-import group34 from "../../../assets/imageLandingPage/Group 34.svg";
-import { Helmet } from "react-helmet";
+import { validateEmail } from "../../../services/CommonFunction";
+import { setDocument } from "../../../services/Fundamental";
+import "./TailorwingNewExp.scss";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -35,7 +35,8 @@ export default class TailorwingNewExp extends Component {
         this.state = {
             name: "",
             phone: "",
-            errorValidate: new Array(2).fill(false),
+            email: "",
+            errorValidate: new Array(3).fill(false),
         };
     }
 
@@ -47,7 +48,7 @@ export default class TailorwingNewExp extends Component {
     };
 
     onCustomerInfoValidate = () => {
-        let { name, phone, errorValidate } = this.state;
+        let { name, phone, email, errorValidate } = this.state;
         let phoneModified = phone.replace(/ /gi, "");
         errorValidate[0] = name === "" ? true : false;
         errorValidate[1] =
@@ -56,10 +57,11 @@ export default class TailorwingNewExp extends Component {
             phoneModified.split("")[0] != 0
                 ? true
                 : false;
+        errorValidate[2] = !validateEmail(email);
         if (!errorValidate.includes(true)) {
             setDocument(
                 "newExpLandingPage",
-                { name, phone: phoneModified },
+                { name, phone: phoneModified, email },
                 phoneModified
             ).then(() => {
                 message.success(
@@ -67,10 +69,12 @@ export default class TailorwingNewExp extends Component {
                 );
                 name = "";
                 phone = "";
+                email = "";
                 this.setState({
                     errorValidate,
                     name,
                     phone,
+                    email
                 });
             });
         } else {
@@ -80,7 +84,7 @@ export default class TailorwingNewExp extends Component {
         }
     };
     render() {
-        const { name, phone, errorValidate } = this.state;
+        const { name, phone, email, errorValidate } = this.state;
         return (
             <div className="tailorwingNewExp_wrapper d-flex flex-column align-items-center">
                 <Helmet>
@@ -251,16 +255,16 @@ export default class TailorwingNewExp extends Component {
                             name="email"
                             placeholder="Nhập email"
                             maxLength={50}
-                            // onChange={this.onInputChange}
+                            onChange={this.onInputChange}
                         />
-                        {/* <small
-                            // className={classNames({
-                            //     error: errorValidate[0],
-                            //     errorUnvisible: !errorValidate[0],
-                            // })}
+                        <small
+                            className={classNames({
+                                error: errorValidate[2],
+                                errorUnvisible: !errorValidate[2],
+                            })}
                         >
-                            Vui lòng nhập email
-                        </small> */}
+                            Vui lòng nhập đúng email
+                        </small>
                     </div>
                     <div
                         className="buttonAccept"

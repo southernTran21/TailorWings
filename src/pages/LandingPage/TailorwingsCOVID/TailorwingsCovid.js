@@ -16,6 +16,7 @@ import imageCovid6 from "../../../assets/imageLandingPage/Group 32.svg";
 import logo from "../../../assets/imageLandingPage/logo.svg";
 import threedot from "../../../assets/imageLandingPage/Group 9.svg";
 import { Helmet } from "react-helmet";
+import { validateEmail } from "../../../services/CommonFunction";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -38,7 +39,8 @@ export default class TailorwingsCovid extends Component {
         this.state = {
             name: "",
             phone: "",
-            errorValidate: new Array(2).fill(false),
+            email: "",
+            errorValidate: new Array(3).fill(false),
         };
     }
 
@@ -50,7 +52,7 @@ export default class TailorwingsCovid extends Component {
     };
 
     onCustomerInfoValidate = () => {
-        let { name, phone, errorValidate } = this.state;
+        let { name, phone, email, errorValidate } = this.state;
         let phoneModified = phone.replace(/ /gi, "");
         errorValidate[0] = name === "" ? true : false;
         errorValidate[1] =
@@ -59,10 +61,11 @@ export default class TailorwingsCovid extends Component {
             phoneModified.split("")[0] != 0
                 ? true
                 : false;
+        errorValidate[2] = !validateEmail(email);
         if (!errorValidate.includes(true)) {
             setDocument(
                 "covidLandingPage",
-                { name, phone: phoneModified },
+                { name, phone: phoneModified, email },
                 phoneModified
             ).then(() => {
                 message.success(
@@ -70,10 +73,12 @@ export default class TailorwingsCovid extends Component {
                 );
                 name = "";
                 phone = "";
+                email = "";
                 this.setState({
                     errorValidate,
                     name,
                     phone,
+                    email
                 });
             });
         } else {
@@ -89,7 +94,7 @@ export default class TailorwingsCovid extends Component {
     // }
 
     render() {
-        const { name, phone, errorValidate } = this.state;
+        const { name, phone, email, errorValidate } = this.state;
         return (
             <div className="tailorwingsCovid_wrapper d-flex flex-column align-items-center">
                 <Helmet>
@@ -323,17 +328,18 @@ export default class TailorwingsCovid extends Component {
                         <Input
                             name="email"
                             placeholder="Nhập email"
+                            value={email}
                             maxLength={50}
-                            // onChange={this.onInputChange}
+                            onChange={this.onInputChange}
                         />
-                        {/* <small
-                            // className={classNames({
-                            //     error: errorValidate[0],
-                            //     errorUnvisible: !errorValidate[0],
-                            // })}
+                        <small
+                            className={classNames({
+                                error: errorValidate[2],
+                                errorUnvisible: !errorValidate[2],
+                            })}
                         >
-                            Vui lòng nhập email
-                        </small> */}
+                            Vui lòng nhập đúng địa chỉ email
+                        </small>
                     </div>
                     <div
                         className="buttonAccept"
