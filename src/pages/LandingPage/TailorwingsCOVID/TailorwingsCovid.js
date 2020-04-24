@@ -78,7 +78,7 @@ export default class TailorwingsCovid extends Component {
                     errorValidate,
                     name,
                     phone,
-                    email
+                    email,
                 });
             });
         } else {
@@ -125,9 +125,9 @@ export default class TailorwingsCovid extends Component {
                 </div>
                 <hr />
                 <div className="contentFirst_tailorwingsCovid d-flex flex-column">
-                    <span className="colorBlue">Ở Nhà Vì</span>
-                    <span className="colorOrange">GHEN CÔ VY </span>
-                    <span className="colorBlue">Càng phải Mặc Đẹp</span>
+                    <span className="colorBlue">Hậu Cô Vy</span>
+                    <span className="colorOrange">MỴ TRỞ LẠI </span>
+                    <span className="colorBlue">Và Lợi Hại Hơn Xưa!</span>
                 </div>
                 <div className="imageCovid1">
                     <img src={imageCovid1} alt="" />
@@ -221,7 +221,7 @@ export default class TailorwingsCovid extends Component {
                     </svg>
                     <div
                         onClick={() => {
-                            window.gtag_report_conversion()
+                            window.gtag_report_conversion();
                             this.props.history.push("/");
                         }}
                         className="button_endContent"
