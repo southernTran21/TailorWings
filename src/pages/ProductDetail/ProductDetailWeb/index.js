@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Route } from "react-router-dom";
 //
 import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
 import FabricSelectionWeb from "./FabricSelection";
@@ -8,7 +9,6 @@ import ImageView from "./ImageView";
 import "./ProductDetailWeb.scss";
 import SizeSelectionWeb from "./SizeSelection";
 import Steps from "./Steps";
-import { Route } from "react-router-dom";
 
 class ProductDetailWeb extends Component {
     constructor(props) {
@@ -113,53 +113,21 @@ class ProductDetailWeb extends Component {
         });
     };
 
-    // onselectionStepChange = (content) => {
-    //     this.setState({
-    //         selectionStep: content,
-    //     });
-    // };
-
-    // selectionStepHandling = () => {
-    //     const {
-    //         selectionStep,
-    //         currentSelectedProduct,
-    //         productList,
-    //         fabricList,
-    //         isSizeMetricUpdate,
-    //     } = this.state;
-    //     let content = "";
-    //     switch (selectionStep) {
-    //         case "fabricSelection":
-    //             content = (
-    //                 <FabricSelectionWeb
-    //                     productList={productList}
-    //                     fabricList={fabricList}
-    //                     currentSelectedProduct={currentSelectedProduct}
-    //                     onselectionStepChange={this.onselectionStepChange}
-    //                     onSelectedFabricUpdating={this.onSelectedFabricUpdating}
-    //                     onImageView={this.onImageView}
-    //                     history={this.props.history}
-    //                 />
-    //             );
-    //             break;
-    //         case "sizeSelection":
-    //             content = (
-    //                 <SizeSelectionWeb
-    //                     currentSelectedProduct={currentSelectedProduct}
-    //                     onselectionStepChange={this.onselectionStepChange}
-    //                     onSizeUpdated={this.onSizeUpdated}
-    //                     onBodyMetricUpdated={this.onBodyMetricUpdated}
-    //                     onQuantityUpdated={this.onQuantityUpdated}
-    //                     isSizeMetricUpdate={isSizeMetricUpdate}
-    //                     history={this.props.history}
-    //                 />
-    //             );
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //     return content;
-    // };
+    /* Function name: onSelectedProductUpdating
+     *  Description: update new $currentSelectedProduct.
+     *
+     *
+     *  Call by: FabricSelection and SizeSelection
+     */
+    onSelectedProductUpdating = (updateSelectedProduct) => {
+        if (updateSelectedProduct) {
+            let currentSelectedProduct = { ...updateSelectedProduct };
+            this.setState({
+                currentSelectedProduct,
+            });
+        }
+    };
+    // END
 
     swapProductPosition = (productList, fabricID) => {
         let currentSelectedProductIndex = productList.findIndex(
@@ -173,30 +141,24 @@ class ProductDetailWeb extends Component {
         return productList;
     };
 
-    // onContentChange = (selectionStep) => {
+    // onSelectedFabricUpdating = (selectedFabric) => {
+    //     let {
+    //         productList,
+    //         currentSelectedProduct,
+    //         size,
+    //         bodyMetric,
+    //     } = this.state;
+    //     let info = productList.find(
+    //         (product) => product.fabricID === selectedFabric
+    //     );
+    //     currentSelectedProduct = { ...info };
+    //     currentSelectedProduct.size = size;
+    //     currentSelectedProduct.bodyMetric = bodyMetric;
+    //     currentSelectedProduct.quantity = 1;
     //     this.setState({
-    //         selectionStep,
+    //         currentSelectedProduct,
     //     });
     // };
-
-    onSelectedFabricUpdating = (selectedFabric) => {
-        let {
-            productList,
-            currentSelectedProduct,
-            size,
-            bodyMetric,
-        } = this.state;
-        let info = productList.find(
-            (product) => product.fabricID === selectedFabric
-        );
-        currentSelectedProduct = { ...info };
-        currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        currentSelectedProduct.quantity = 1;
-        this.setState({
-            currentSelectedProduct,
-        });
-    };
 
     onSizeUpdated = (size, bodyMetric) => {
         let { currentSelectedProduct } = this.state;
@@ -243,7 +205,7 @@ class ProductDetailWeb extends Component {
             isSizeMetricUpdate,
         } = this.state;
         const { match } = this.props;
-        let url = match.url;
+
         return (
             <div className="productDetail-container">
                 <div
@@ -282,13 +244,16 @@ class ProductDetailWeb extends Component {
                                     onImageView={this.onImageView}
                                     history={this.props.history}
                                     match={match}
+                                    onSelectedProductUpdating={
+                                        this.onSelectedProductUpdating
+                                    }
                                 />
                             )}
                         />
                         <Route
                             path="/product-detail/size-selection/:productName"
                             exact
-                            component={({match}) => (
+                            component={({ match }) => (
                                 <SizeSelectionWeb
                                     currentSelectedProduct={
                                         currentSelectedProduct

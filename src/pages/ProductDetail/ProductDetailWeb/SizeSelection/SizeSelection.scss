@@ -2,18 +2,26 @@
     font-family: "Montserrat", sans-serif;
     color: #111e6c;
     margin-top: 3.16vh;
-    .iconBack {
-        margin-right: 24px;
-        color: #ff6d3b;
-        font-weight: bold;
-        cursor: pointer;
-        i {
-            font-size: 20px;
+    .link {
+        text-decoration: none;
+        width: fit-content;
+        height: fit-content;
+        .iconBack {
+            margin-right: 24px;
+            color: #ff6d3b;
+            font-weight: bold;
+            cursor: pointer;
+            i {
+                font-size: 20px;
+            }
+            span {
+                font-size: 0.97vw;
+                margin-top: 3px;
+            }
         }
-        span {
-            font-size: 0.97vw;
-            margin-top: 3px;
-        }
+    }
+    .link:hover {
+        text-decoration: none;
     }
     .bodyScale {
         width: 43.61vw;
@@ -67,7 +75,7 @@
                 color: white !important;
             }
         }
-        .titleBodyMetric{
+        .titleBodyMetric {
             font-size: 0.97vw;
             font-weight: bold !important;
             font-style: italic;
@@ -140,19 +148,19 @@
                 font-weight: bold;
                 margin-top: 1vh;
             }
-            .note{
+            .note {
                 display: flex;
                 flex-direction: column;
-                :nth-child(1){
+                :nth-child(1) {
                     font-size: 0.9vw;
                     background-color: #111e6c;
                     color: white;
-                    padding: .2vw 0;
+                    padding: 0.2vw 0;
                     border-radius: 5px;
                     width: 4.51vw;
                     text-align: center;
                 }
-                :nth-child(2){
+                :nth-child(2) {
                     font-size: 0.9vw;
                     font-weight: normal;
                     margin-top: 0.55vh;

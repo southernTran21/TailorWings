@@ -28,7 +28,7 @@ export default class SizeSelection extends Component {
             let { activeStatus } = this.state;
             activeStatus.fill(false);
             activeStatus[index] = true;
-            this.props.sizeImageUpdate(index, size);
+            this.props.onSizeUpdated(index, size);
             this.setState({
                 activeStatus
             });

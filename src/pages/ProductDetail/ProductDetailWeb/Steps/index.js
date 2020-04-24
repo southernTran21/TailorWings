@@ -13,6 +13,7 @@ export default class Steps extends Component {
 
     componentDidMount() {
         const { history, match } = this.props;
+        console.log("window.location :>> ", window.location);
         let selectionStep = window.location.pathname.match(
             /product-detail\/(.*)\b\//
         )[1];
@@ -26,13 +27,22 @@ export default class Steps extends Component {
             urlSearch,
         });
         this.unlisten = history.listen((location) => {
-            let selectionStep = location.pathname.match(
-                /product-detail\/(.*)\b\//
-            )[1];
-            let productName = window.location.pathname.match(
-                /selection\/(.*)\b/
-            )[1];
-            let urlSearch = location.search;
+            let selectionStep = "";
+            let productName = "";
+            let urlSearch = "";
+            if (window.location.pathname.match(/product-detail\/(.*)\b\//)) {
+                selectionStep = window.location.pathname.match(
+                    /product-detail\/(.*)\b\//
+                )[1];
+            }
+            if (window.location.pathname.match(/selection\/(.*)\b/)) {
+                productName = window.location.pathname.match(
+                    /selection\/(.*)\b/
+                )[1];
+            }
+            if ( location.search !== '') {
+                urlSearch = location.search;
+            }
             this.setState({
                 selectionStep,
                 productName,

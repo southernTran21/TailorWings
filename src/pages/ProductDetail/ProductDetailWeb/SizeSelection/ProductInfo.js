@@ -42,14 +42,6 @@ export default class ProductInfo extends Component {
         }
     };
 
-    static getDerivedStateFromProps(props, state) {
-        console.log(
-            "props.currentSelectedProduct",
-            props.currentSelectedProduct
-        );
-        return null;
-    }
-
     render() {
         let {
             name,
@@ -58,10 +50,6 @@ export default class ProductInfo extends Component {
             quantity,
             price,
         } = this.state.currentSelectedProduct;
-        console.log(
-            "this.props.currentSelectedProduct",
-            this.props.currentSelectedProduct
-        );
         let subtotalPrice = price * quantity;
         subtotalPrice =
             subtotalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +

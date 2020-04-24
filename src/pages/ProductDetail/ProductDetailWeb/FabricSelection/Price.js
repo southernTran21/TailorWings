@@ -22,8 +22,10 @@ export default class Price extends Component {
                 {/* <span className="button" onClick={() => this.props.onselectionStepChange('sizeSelection')}>CHỌN SIZE</span> */}
                 <Link to={{
                     pathname: `/product-detail/size-selection/${productNameModified}`,
-                    search: `${urlSearch}`
-                }}>
+                    search: `${urlSearch}`,
+                }}
+                onClick={() => this.props.onSizeSelectionNavigating()}
+                >
                     <span className="button">CHỌN SIZE</span>
                 </Link>
             </div>

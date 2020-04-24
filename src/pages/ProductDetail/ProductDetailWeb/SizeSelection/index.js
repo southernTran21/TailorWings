@@ -1,21 +1,23 @@
-import React, { Component } from "react";
-import "./SizeSelection.scss";
 import { message } from "antd";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import * as actions from "../../../../actions/index";
 //
-import SizeImage from "./SizeImage";
+import Empty from "../../../../assets/imageSizeSelection/Asset 9.svg";
+import L from "../../../../assets/imageSizeSelection/size L.svg";
+import M from "../../../../assets/imageSizeSelection/size M.svg";
+import S from "../../../../assets/imageSizeSelection/size S.svg";
+import XL from "../../../../assets/imageSizeSelection/size XL.svg";
+import XS from "../../../../assets/imageSizeSelection/size XS.svg";
+import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
+import { removePunctuation } from "../../../../services/CommonFunction";
 import BodyMetric from "./BodyMetric";
-import SizeSelection from "./SizeSelection";
 import ProductInfo from "./ProductInfo";
 //
-import Empty from "../../../../assets/imageSizeSelection/Asset 9.svg";
-import XS from "../../../../assets/imageSizeSelection/size XS.svg";
-import S from "../../../../assets/imageSizeSelection/size S.svg";
-import M from "../../../../assets/imageSizeSelection/size M.svg";
-import L from "../../../../assets/imageSizeSelection/size L.svg";
-import XL from "../../../../assets/imageSizeSelection/size XL.svg";
-import XXL from "../../../../assets/imageSizeSelection/size XXL.svg";
+import SizeImage from "./SizeImage";
+import SizeSelection from "./SizeSelection";
+import "./SizeSelection.scss";
 import SuccessNotification from "./SuccessNotification";
 
 const SIZE = [
@@ -53,26 +55,63 @@ class SizeSelectionWeb extends Component {
         this.state = {
             sizeImage: "",
             isSuccess: false,
+            currentSelectedProduct: { ...this.props.currentSelectedProduct },
+            isSizeMetricUpdate: false,
         };
     }
 
     componentDidMount() {
-        const { currentSelectedProduct } = this.props;
-        let index = SIZE.findIndex(
-            (size) => size.id === currentSelectedProduct.size
-        );
-        let sizeImage = index > -1 ? imageSize[index] : Empty;
-        this.setState({
-            sizeImage,
-        });
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
+        if (currentSelectedProduct) {
+            let index = SIZE.findIndex(
+                (size) => size.id === currentSelectedProduct.size
+            );
+            let sizeImage = index > -1 ? imageSize[index] : Empty;
+            this.setState({
+                sizeImage,
+                currentSelectedProduct,
+            });
+        }
     }
 
     componentWillMount() {
         clearTimeout(timeOut);
     }
 
+    onSizeUpdated = (index, size) => {
+        const { currentSelectedProduct } = this.state;
+        let updatedProduct = { ...currentSelectedProduct };
+        updatedProduct.size = size;
+        updatedProduct.bodyMetric.fill("");
+        let updatedSizeImage = imageSize[index];
+        this.setState({
+            currentSelectedProduct: updatedProduct,
+            sizeImage: updatedSizeImage,
+            isSizeMetricUpdate: true,
+        });
+    };
+
+    onBodyMetricUpdated = (bodyMetric) => {
+        const { currentSelectedProduct } = this.state;
+        let updatedProduct = { ...currentSelectedProduct };
+        updatedProduct.bodyMetric = bodyMetric;
+        this.setState({
+            currentSelectedProduct: updatedProduct,
+            isSizeMetricUpdate: true,
+        });
+    };
+
+    onQuantityUpdated = (quantity) => {
+        const { currentSelectedProduct } = this.state;
+        let updatedProduct = { ...currentSelectedProduct };
+        updatedProduct.quantity = quantity;
+        this.setState({
+            currentSelectedProduct: updatedProduct,
+        });
+    };
+
     onConfirmButtonClicked = () => {
-        const { currentSelectedProduct, isSizeMetricUpdate } = this.props;
+        const { currentSelectedProduct, isSizeMetricUpdate } = this.state;
         let isSizeSelected = currentSelectedProduct.size != null;
         let isAllMetricFill = !currentSelectedProduct.bodyMetric.includes("");
         let isAllMetricEmpty = currentSelectedProduct.bodyMetric.every(
@@ -93,7 +132,7 @@ class SizeSelectionWeb extends Component {
     };
 
     addToCart = () => {
-        const { currentSelectedProduct } = this.props;
+        const { currentSelectedProduct } = this.state;
         let addedProduct = { ...currentSelectedProduct };
         delete addedProduct["default"];
         delete addedProduct["timestamp"];
@@ -124,18 +163,18 @@ class SizeSelectionWeb extends Component {
         );
     };
 
-    sizeImageUpdate = (index, size) => {
-        let { sizeImage, currentSelectedProduct } = this.state;
-        this.props.onSizeUpdated(size, SIZE[index].bodyMetric);
-        sizeImage = imageSize[index];
-        this.setState({
-            sizeImage,
-            currentSelectedProduct,
-        });
-    };
+    // sizeImageUpdate = (index, size) => {
+    //     let { sizeImage, currentSelectedProduct } = this.state;
+    //     this.onSizeUpdated(size, SIZE[index].bodyMetric);
+    //     sizeImage = imageSize[index];
+    //     this.setState({
+    //         sizeImage,
+    //         currentSelectedProduct,
+    //     });
+    // };
 
     render() {
-        const { currentSelectedProduct } = this.props;
+        const { currentSelectedProduct, history } = this.props;
         const { sizeImage, isSuccess } = this.state;
         let size = Empty;
         let bodyMetric = currentSelectedProduct.bodyMetric;
@@ -145,21 +184,24 @@ class SizeSelectionWeb extends Component {
         ) {
             size = currentSelectedProduct.size;
         }
+        let urlSearch = history.location.hasOwnProperty("search")
+            ? history.location.search
+            : "?design=''&fabric=''";
+        let productNameModified = "";
+        productNameModified = currentSelectedProduct.name.toLowerCase();
+        productNameModified = removePunctuation(productNameModified);
+        productNameModified = productNameModified.replace(/ /gi, "-");
         return (
             <div>
                 <div className="pageSizeSelectionWeb d-flex align-items-center">
-                    {/* <Link
+                    <Link
+                        className="link"
                         to={{
                             pathname: `/product-detail/fabric-selection/${productNameModified}`,
                             search: `${urlSearch}`,
                         }}
-                    > */}
-                        <div
-                            className="iconBack d-flex flex-column align-items-center"
-                            // onClick={() =>
-                            //     this.props.onselectionStepChange("fabricSelection")
-                            // }
-                        >
+                    >
+                        <div className="iconBack d-flex flex-column align-items-center">
                             <svg
                                 width="1.73vw"
                                 height="2.33vh"
@@ -174,23 +216,23 @@ class SizeSelectionWeb extends Component {
                             </svg>
                             <span>CHỌN VẢI</span>
                         </div>
-                    {/* </Link> */}
+                    </Link>
                     <div className="bodyScale d-flex flex-column align-items-center">
                         <SizeImage imageSize={sizeImage} size={size} />
                         <SizeSelection
                             size={size}
-                            sizeImageUpdate={this.sizeImageUpdate}
+                            onSizeUpdated={this.onSizeUpdated}
                             currentSelectedProduct={currentSelectedProduct}
                         />
                         <BodyMetric
                             bodyMetric={bodyMetric}
-                            onBodyMetricUpdated={this.props.onBodyMetricUpdated}
+                            onBodyMetricUpdated={this.onBodyMetricUpdated}
                         />
                     </div>
                     <div className="d-flex flex-column">
                         <ProductInfo
                             currentSelectedProduct={currentSelectedProduct}
-                            onQuantityUpdated={this.props.onQuantityUpdated}
+                            onQuantityUpdated={this.onQuantityUpdated}
                         />
                         <div
                             className="buttonApcept d-flex justify-content-center align-items-center"
