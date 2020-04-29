@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
-import imageDamOm from "../../../../assets/imageHomePage/dam om.png";
-import imageDamSuong from "../../../../assets/imageHomePage/dam suong.png";
-import imageDamXoe from "../../../../assets/imageHomePage/dam xoe.png";
+import imageDamOm from "../../../../assets/imageHomePageDesktop/category-dam-om.png";
+import imageDamSuong from "../../../../assets/imageHomePageDesktop/category-dam-suong.png";
+import imageDamXoe from "../../../../assets/imageHomePageDesktop/category-dam-xoe.png";
 
 export default class Categories extends Component {
     render() {
@@ -18,7 +18,12 @@ export default class Categories extends Component {
                 >
                     <div className="category d-flex flex-column">
                         <div className="image_wrapper">
-                            <img src={imageDamOm} alt="dam-om" />
+                            {/* <img src={imageDamOm} alt="dam-om" /> */}
+                            <LazyLoadImage
+                                alt="dam-om"
+                                effect="blur"
+                                src={imageDamOm}
+                            />
                         </div>
                         <div className="content d-flex flex-column">
                             <span className="titleHead">ĐẦM ÔM</span>
@@ -38,7 +43,12 @@ export default class Categories extends Component {
                 >
                     <div className="category d-flex flex-column">
                         <div className="image_wrapper">
-                            <img src={imageDamXoe} alt="dam-xoe" />
+                            {/* <img src={imageDamXoe} alt="dam-xoe" /> */}
+                            <LazyLoadImage
+                                alt="dam-xoe"
+                                effect="blur"
+                                src={imageDamXoe}
+                            />
                         </div>
                         <div className="content d-flex flex-column">
                             <span className="titleHead">ĐẦM XÒE</span>
@@ -59,7 +69,12 @@ export default class Categories extends Component {
                 >
                     <div className="category d-flex flex-column">
                         <div className="image_wrapper">
-                            <img src={imageDamSuong} alt="dam-suong" />
+                            {/* <img src={imageDamSuong} alt="dam-suong" /> */}
+                            <LazyLoadImage
+                                alt="dam-suong"
+                                effect="blur"
+                                src={imageDamSuong}
+                            />
                         </div>
                         <div className="content contentDamSuong d-flex flex-column">
                             <span className="titleHead">ĐẦM SUÔNG</span>

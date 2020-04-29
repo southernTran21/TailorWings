@@ -5,10 +5,6 @@ export default class PageLoading extends Component {
     render() {
         return (
             <div className="spinner_wrapper">
-                {/* <div className="lds-ripple">
-                    <div></div>
-                    <div></div>
-                </div> */}
                 <div id="fountainTextG">
                     <div id="fountainTextG_1" className="fountainTextG">
                         T
