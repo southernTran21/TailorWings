@@ -7,7 +7,7 @@ import imagePassion from "../../../../assets/imageHomePage/imagePassion.svg";
 class Passion extends Component {
     render() {
         return (
-            <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+            // <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                 <div className="passion">
                     <div className="titleHeader d-flex flex-column justify-content-center align-items-center">
                         <span>Passion Led Us Here</span>
@@ -28,7 +28,7 @@ class Passion extends Component {
                     </div>
                     <hr />
                 </div>
-            </LazyLoad>
+            // </LazyLoad>
         );
     }
 }

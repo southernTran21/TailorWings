@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Icon } from "antd";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import { connect } from "react-redux";
 //
 import "./NavBarWeb.scss";
 import iconMenu from "../../../assets/productDetailWeb/menu-2.svg";
@@ -19,12 +20,55 @@ class NavBarWeb extends Component {
         this.state = {
             isSideBarOpen: false,
             isSearchOpen: false,
-            isProductDetailPage: currentPage === "/product-detail",
+            isProductDetailPage: currentPage.search("/product-detail") !== -1,
             isShoppingCartPage: currentPage === "/shopping-cart",
             isShoppingStore: currentPage === "/shopping-store",
             isSupportPage: currentPage === "/support",
             isPolicyPage: currentPage === "/policy",
+            isNewProductAdded: false,
+            isCartUpdated: false,
+            totalProductsOnCart: 0,
         };
+    }
+
+    componentDidMount() {
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        let totalProductsOnCart = productsOnCart.reduce(
+            (accumulator, current) => {
+                return accumulator + Number(current.quantity);
+            },
+            0
+        );
+        if ( totalProductsOnCart != null ) {
+            this.setState({
+                totalProductsOnCart
+            });
+        }
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (
+            nextProps.isNewProductAdded !== prevState.isNewProductAdded ||
+            nextProps.isCartUpdated !== prevState.isCartUpdated
+        ) {
+            let productsOnCart = JSON.parse(
+                sessionStorage.getItem("productsOnCart")
+            );
+            let totalProductsOnCart = productsOnCart.reduce(
+                (accumulator, current) => {
+                    return accumulator + current.quantity;
+                },
+                0
+            );
+            return {
+                totalProductsOnCart,
+                isNewProductAdded: nextProps.isNewProductAdded,
+                isCartUpdated: nextProps.isCartUpdated,
+            };
+        } else {
+            return null;
+        }
     }
 
     sideBarOpen = () => {
@@ -66,8 +110,8 @@ class NavBarWeb extends Component {
     };
 
     render() {
-        let { totalProductsOnCart } = this.props;
         const {
+            totalProductsOnCart,
             isSideBarOpen,
             isProductDetailPage,
             isShoppingCartPage,
@@ -104,12 +148,14 @@ class NavBarWeb extends Component {
                         //     )
                         // }
                     >
-                        <Link to={{
-                            pathname: '/',
-                            state: {
-                                prevPath: window.location.pathname
-                            }
-                        }}>
+                        <Link
+                            to={{
+                                pathname: "/",
+                                state: {
+                                    prevPath: window.location.pathname,
+                                },
+                            }}
+                        >
                             <img src={iconLogoTailorWings} alt="tailor-wings" />
                         </Link>
                     </div>
@@ -160,4 +206,11 @@ class NavBarWeb extends Component {
     }
 }
 
-export default NavBarWeb;
+const mapStateToProps = (state) => {
+    return {
+        isNewProductAdded: state.listProductOnCart,
+        isCartUpdated: state.updateProductOnCart,
+    };
+};
+
+export default connect(mapStateToProps, null)(NavBarWeb);

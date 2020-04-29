@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import imageWelcome from "../../.../../../../assets/imageHomePage/Hero Banner.png";
+import imageWelcome from "../../.../../../../assets/imageHomePageDesktop/banner-homepage.jpg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 

@@ -3,9 +3,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
 import iconVectorRight from "../../.../../../../assets/imageHomePage/vectorRight.svg";
-import imageCollectionDamCongSo from "../../../../assets/imageHomePage/collectionDamCongSo.jpg";
-import imageCollectionDamDaoPho from "../../../../assets/imageHomePage/collectionDamDaoPho.jpg";
-import imageCollectionDamDuTiec from "../../../../assets/imageHomePage/collectionDamDuTiec.jpg";
+import imageCollectionDamCongSo from "../../../../assets/imageHomePageDesktop/collection-dam-cong-so.jpg";
+import imageCollectionDamDaoPho from "../../../../assets/imageHomePageDesktop/collection-dam-dao-pho.jpg";
+import imageCollectionDamDuTiec from "../../../../assets/imageHomePageDesktop/collection-dam-du-tiec.jpg";
 
 export default class Collections extends Component {
     render() {

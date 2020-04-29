@@ -23,7 +23,7 @@ class Categories extends Component {
             }).length;
         }
         return (
-            <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+            // <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                 <div className="listProduct d-flex flex-column justify-content-between">
                     <div className="title__listProduct d-flex flex-row justify-content-center">
                         Danh Mục Sản Phẩm
@@ -92,7 +92,7 @@ class Categories extends Component {
                     </div>
                     <hr />
                 </div>
-            </LazyLoad>
+            // </LazyLoad>
         );
     }
 }

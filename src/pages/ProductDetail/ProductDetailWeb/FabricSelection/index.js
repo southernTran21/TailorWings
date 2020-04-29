@@ -1,29 +1,68 @@
 import React, { Component } from "react";
-import { Icon } from "antd";
-import "./FabricSelection.scss";
-import { Link } from "react-router-dom";
-import ProductImage from "./ProductImage";
+import { removePunctuation } from "../../../../services/CommonFunction";
 import FabricList from "./FabricList";
+import "./FabricSelection.scss";
 import Price from "./Price";
+import ProductImage from "./ProductImage";
 
 export default class FabricSelectionWeb extends Component {
     constructor(props) {
         super(props);
         this.state = {
             aciveFabricIndex: 0,
+            currentSelectedProduct: { ...this.props.currentSelectedProduct },
         };
     }
 
+    componentDidMount() {
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
+        if (currentSelectedProduct) {
+            this.setState({
+                currentSelectedProduct,
+            });
+        }
+    }
+
+    onSelectedFabricUpdating = (selectedFabric) => {
+        const { productList } = this.props;
+        let info = productList.find(
+            (product) => product.fabricID === selectedFabric
+        );
+        let updatedProduct = { ...info };
+        updatedProduct.size = '';
+        updatedProduct.bodyMetric = new Array(3).fill('');
+        updatedProduct.quantity = 1;
+        this.setState({
+            currentSelectedProduct: updatedProduct,
+        });
+    };
+
     onFabricChanged = (aciveFabricIndex, activeFabricID) => {
-        this.props.onSelectedFabricUpdating(activeFabricID);
+        this.onSelectedFabricUpdating(activeFabricID);
         this.setState({
             aciveFabricIndex,
         });
     };
 
+    // Function name: onSizeSelectionNavigating
+    // Description: used for update new $currentSelectedProduct to ProductDetailWeb/index.js. Then, navigate to SizeSelection
+    onSizeSelectionNavigating = () => {
+        console.log('onSizeSelectionNavigating');
+        const { currentSelectedProduct } = this.state;
+        if ( currentSelectedProduct ) {
+            console.log('currentSelectedProduct :>> ', currentSelectedProduct);
+            this.props.onSelectedProductUpdating( currentSelectedProduct )
+        }
+    };
+    // END
+
     render() {
-        const { fabricList, currentSelectedProduct } = this.props;
-        const { aciveFabricIndex } = this.state;
+        const { fabricList, history } = this.props;
+        const { aciveFabricIndex, currentSelectedProduct } = this.state;
+        let productNameModified = "";
+        productNameModified = currentSelectedProduct.name.toLowerCase();
+        productNameModified = removePunctuation(productNameModified);
+        productNameModified = productNameModified.replace(/ /gi, "-");
         return (
             <div className="pageFabricSelection d-flex align-items-center">
                 <div
@@ -59,6 +98,8 @@ export default class FabricSelectionWeb extends Component {
                         productName={currentSelectedProduct.name}
                         productPrice={currentSelectedProduct.price}
                         onselectionStepChange={this.props.onselectionStepChange}
+                        urlSearch={`?design=${currentSelectedProduct.designID}&fabric=${currentSelectedProduct.fabricID}`}
+                        onSizeSelectionNavigating={this.onSizeSelectionNavigating}
                     />
                 </div>
             </div>

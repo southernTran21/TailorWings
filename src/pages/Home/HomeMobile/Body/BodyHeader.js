@@ -19,11 +19,11 @@ class BodyHeader extends Component {
 
     render() {
         return (
-            <LazyLoad
-                height={'fit-content'}
-                offset={0}
-                throttle={250}
-            >
+            // <LazyLoad
+            //     height={'fit-content'}
+            //     offset={0}
+            //     throttle={250}
+            // >
                 <div className="header__bodyPage">
                     {/* <img src={Image1} /> */}
                     <LazyLoadImage
@@ -46,7 +46,7 @@ class BodyHeader extends Component {
                         </button>
                     </Link>
                 </div>
-            </LazyLoad>
+            // </LazyLoad>
         );
     }
 }

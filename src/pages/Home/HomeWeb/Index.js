@@ -81,7 +81,6 @@ export default class HomeWeb extends Component {
                     disable_scroll: isSideBarOpen,
                 })}
             >
-                {/* {" "} */}
                 <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                     <Header
                         history={this.props.history}
@@ -118,9 +117,9 @@ export default class HomeWeb extends Component {
                 <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                     <Passion />
                 </LazyLoad>
-                <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+                {/* <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                     <Instagram />
-                </LazyLoad>
+                </LazyLoad> */}
                 <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                     <Footer />
                 </LazyLoad>

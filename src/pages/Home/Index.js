@@ -38,13 +38,13 @@ export default class Home extends Component {
             } else {
                 timeOut = setTimeout(
                     () => this.setState({ isPageLoading: false }),
-                    3000
+                    2000
                 );
             }
         } else {
             timeOut = setTimeout(
                 () => this.setState({ isPageLoading: false }),
-                3000
+                2000
             );
         }
     }

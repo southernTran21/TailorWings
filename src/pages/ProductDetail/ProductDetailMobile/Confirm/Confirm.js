@@ -1,34 +1,55 @@
-import React, { Component } from "react";
-import "./Confirm.scss";
-import { connect } from "react-redux";
-import * as actions from "../../../../actions/index";
-import { Link } from "react-router-dom";
-// import conponent
-import Navbar from "./navbarPage";
-import ShowImage from "./ShowImage";
-import ChangeSize from "./ChangeSize";
-import Quantity from "./Quantity";
-
 // import libs ant design
 import { Icon, Modal } from "antd";
-import ProductModal from "../ProductModal";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import * as actions from "../../../../actions/index";
+import ChangeSize from "./ChangeSize";
+import "./Confirm.scss";
+// import conponent
+import Navbar from "./navbarPage";
+import Quantity from "./Quantity";
+import ShowImage from "./ShowImage";
 
 class Confirm extends Component {
     constructor(props) {
         super(props);
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        let totalProductsOnCart = productsOnCart.reduce(
+            (accumulator, current) => {
+                return accumulator + Number(current.quantity);
+            },
+            0
+        );
         this.state = {
-            isProductModalShow: false,
+            totalProductsOnCart,
+            currentSelectedProduct: { ...this.props.currentSelectedProduct },
+            currentSelectedFabric: { ...this.props.currentSelectedFabric },
         };
     }
 
+    componentDidMount() {
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
+        let currentSelectedFabric = { ...this.props.currentSelectedFabric };
+        if (currentSelectedProduct != null && currentSelectedFabric != null) {
+            this.setState({
+                currentSelectedProduct,
+                currentSelectedFabric,
+            });
+        }
+    }
+
     addToCart = () => {
-        const { currentSelectedProduct, currentDesignInfo } = this.props;
+        const { currentSelectedProduct } = this.state;
+        /* ------------- */
         let addedProduct = { ...currentSelectedProduct };
-        addedProduct.name = currentDesignInfo.name;
+        /* ------------- */
         delete addedProduct["default"];
         delete addedProduct["timestamp"];
         delete addedProduct["visibility"];
         delete addedProduct["id"];
+        /* ------------- */
         if (addedProduct) {
             this.props.onAddProductToCart(
                 addedProduct,
@@ -38,91 +59,104 @@ class Confirm extends Component {
     };
 
     onDescriptionClicked = () => {
+        const { currentSelectedProduct } = this.props;
+        /* ------------- */
+        let description = "Hiện không có mô tả cho sản phẩm này!";
+        if (currentSelectedProduct.hasOwnProperty("description")) {
+            description = currentSelectedProduct.description;
+        }
+        /* ------------- */
         Modal.info({
             title: "Mô tả thiết kế & vải",
             content: (
                 <div>
-                    <p>{this.props.currentDesignInfo.description}</p>
+                    <p>{description}</p>
                 </div>
             ),
             // onOk() { },
         });
     };
 
-    onProductModalStatusChanged = (isShow) => {
-        this.setState({
-            isProductModalShow: isShow,
-        });
+    onQuantityChange = (currentSelectedProduct) => {
+        if ( currentSelectedProduct != null ) {
+            this.setState({
+                currentSelectedProduct
+            });
+        }
     };
 
     render() {
         const {
-            currentDesignInfo,
-            currentFabricInfo,
             currentSelectedProduct,
-        } = this.props;
-        const { isProductModalShow } = this.state;
-        let priceModified =
-            currentSelectedProduct.price
-                .toString()
-                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
-            " " +
-            "VNĐ";
-        let modalImages = currentSelectedProduct.image.map((image) => {
-            return image;
-        });
-        modalImages.push(currentFabricInfo.image[0]);
-        console.log("modalImages :", modalImages);
+            currentSelectedFabric,
+            totalProductsOnCart,
+        } = this.state;
+        const { history } = this.props;
+        /* ------------- */
+        let priceModified = 0;
+        let modalImages = [];
+        if (currentSelectedProduct.hasOwnProperty("price")) {
+            /* ------------- */
+            priceModified =
+                currentSelectedProduct.price
+                    .toString()
+                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
+                " " +
+                "VNĐ";
+            /* ------------- */
+            modalImages = currentSelectedProduct.image.map((image) => {
+                return image;
+            });
+            modalImages.push(currentSelectedFabric.image[0]);
+        }
+        /* ------------- */
+        let urlProductName = history.match.params.hasOwnProperty("productName")
+            ? history.match.params.productName
+            : "";
+        /* ------------- */
+        let urlSearch = window.location.search;
         return (
             <div className="pageConfirm">
                 <Navbar
-                    onContentChange={(step) => this.props.onContentChange(step)}
-                    totalProductsOnCart={this.props.totalProductsOnCart}
+                    url={`/product-detail/size-selection/${urlProductName}`}
+                    urlSearch={urlSearch}
+                    totalProductsOnCart={totalProductsOnCart}
+                    confirmNavigating={this.props.confirmNavigating}
                 />
                 <div className="bodyPage">
                     <div className="infProduct d-flex flex-column align-items-center justify-content-center">
                         <div className="title__infProduct">
                             <div className="nameProduct d-flex flex-column align-items-center justify-content-center">
-                                <span>{currentDesignInfo.name}</span>
+                                <span>{currentSelectedProduct.name}</span>
                                 <span>{priceModified}</span>
-                                <div className="info d-flex flex-row align-items-center justify-content-center" onClick={this.onDescriptionClicked}>
-                                    <span>
-                                        Mô tả thiết kế & vải
-                                    </span>
+                                <div
+                                    className="info d-flex flex-row align-items-center justify-content-center"
+                                    onClick={this.onDescriptionClicked}
+                                >
+                                    <span>Mô tả thiết kế & vải</span>
                                     <Icon type="info-circle" />
                                 </div>
                             </div>
                         </div>
                         <ShowImage
-                            currentFabricInfo={currentFabricInfo}
+                            currentFabricInfo={currentSelectedFabric}
                             currentSelectedProduct={currentSelectedProduct}
-                            onProductModalStatusChanged={
-                                this.onProductModalStatusChanged
-                            }
                         />
                     </div>
                 </div>
                 <div className="change_wraper d-flex flex-row">
                     <div className="col-6">
                         <ChangeSize
-                            onContentChange={(step) =>
-                                this.props.onContentChange(step)
-                            }
+                            url={`/product-detail/size-selection/${urlProductName}`}
+                            urlSearch={urlSearch}
                             currentSelectedProduct={currentSelectedProduct}
+                            confirmNavigating={this.props.confirmNavigating}
                         />
                     </div>
                     <div className="col-6">
                         <Quantity
-                            currentSelectedProduct={
-                                this.props.currentSelectedProduct
-                            }
-                            onSelectedProductUpdating={(
-                                currentSelectedProduct
-                            ) =>
-                                this.props.onSelectedProductUpdating(
-                                    currentSelectedProduct
-                                )
-                            }
+                            currentSelectedProduct={currentSelectedProduct}
+                            onQuantityChange={this.onQuantityChange}
                         />
                     </div>
                 </div>
@@ -133,18 +167,11 @@ class Confirm extends Component {
                             this.addToCart();
                         }}
                         className="buttonApcept d-flex flex-row align-items-center justify-content-center"
-                        style={{textDecoration: 'none',}}
+                        style={{ textDecoration: "none" }}
                     >
                         <a>MUA HÀNG</a>
                     </Link>
                 </div>
-                <ProductModal
-                    modalImages={modalImages}
-                    isProductModalShow={isProductModalShow}
-                    onProductModalStatusChanged={
-                        this.onProductModalStatusChanged
-                    }
-                />
             </div>
         );
     }

@@ -3,6 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { removePunctuation } from "../../../services/CommonFunction";
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -107,6 +108,9 @@ export default class ProductList extends Component {
                     // }
                 >
                     {fetchedProducts.map((product, index) => {
+                        let modifiedName = product.name.toLowerCase();
+                        modifiedName = removePunctuation(modifiedName);
+                        modifiedName = modifiedName.replace(/ /gi, '-');
                         return (
                             <div key={index} className="col-6">
                                 <Link
@@ -117,12 +121,11 @@ export default class ProductList extends Component {
                                         textDecoration: "none",
                                     }}
                                     to={{
-                                        pathname: "/product-detail",
-                                        search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                                        pathname: `/product-detail/fabric-selection/${modifiedName}`,
+                                        search: `?design=${product.designID}&fabric=${product.fabricID}`,
                                     }}
                                 >
                                     <div className="imageProduct">
-                                        {/* <img src={product.image[0]} alt={product.productID} ></img> */}
                                         <LazyLoadImage
                                             alt={product.productID}
                                             effect="blur"
