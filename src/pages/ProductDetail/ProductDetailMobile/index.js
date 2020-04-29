@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import Confirm from "./Confirm/Confirm";
 import FabricSelection from "./FabricSelection/FabricSelection";
 import SizeSelection from "./SizeSelection/SizeSelection";
-import Confirm from "./Confirm/Confirm";
-import { connect } from "react-redux";
+import ProductModal from "./ProductModal";
 
 class ProductDetailMobile extends Component {
     constructor(props) {
@@ -12,74 +13,65 @@ class ProductDetailMobile extends Component {
             behavior: "smooth",
         });
         this.state = {
-            selectionStep: "fabric",
             currentSelectedProduct: {
+                name: "",
                 size: null,
                 quantity: 1,
                 bodyMetric: new Array(3).fill(""),
+                image: new Array(3).fill(""),
             },
-            currentFabricInfo: { image: ["", ""], price: 0 },
+            currentSelectedFabric: { image: ["", ""] },
             isNewProductAdded: false,
             totalProductsOnCart: 0,
+            productList: [],
+            fabricList: [],
+            isConfirmNavigate: false,
+            modalImages: new Array(4).fill(""),
         };
     }
 
     componentDidMount() {
-        let { totalProductsOnCart, currentSelectedProduct } = this.state;
-        let productsOnCart =
-            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-        let size = JSON.parse(localStorage.getItem("size")) || null;
-        let bodyMetric =
-            JSON.parse(localStorage.getItem("bodyMetric")) ||
-            new Array(3).fill("");
-        currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
-            return accumulator + Number(current.quantity);
-        }, 0);
-        this.setState({
-            totalProductsOnCart,
-            currentSelectedProduct,
+        const { history } = this.props;
+        this.dataInit(history.location);
+        this.unlisten = history.listen((location) => {
+            this.dataInit(location);
         });
     }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.isNewProductAdded !== prevState.isNewProductAdded) {
-            let productsOnCart = JSON.parse(
-                sessionStorage.getItem("productsOnCart")
-            );
-            let totalProductsOnCart = productsOnCart.reduce(
-                (accumulator, current) => {
-                    return accumulator + current.quantity;
-                },
-                0
-            );
-            return {
-                totalProductsOnCart,
-                isNewProductAdded: nextProps.isNewProductAdded,
-            };
-        } else {
-            return null;
-        }
+    componentWillUnmount() {
+        this.unlisten();
     }
 
-    contentHandling = () => {
+    dataInit = (location) => {
         const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
-        const {
-            selectionStep,
-            currentSelectedProduct,
-            currentFabricInfo,
-            totalProductsOnCart,
-        } = this.state;
-        let designID = window.location.search.match(/id=(.*)&\b/)[1];
-        let fabricID = window.location.search.match(/pattern=(.*)\b/)[1];
-        let currentDesignInfo = designsInfo.find((design) => {
+        /* ------------- */
+        let designID = location.search.match(/design=(.*)&\b/)
+            ? location.search.match(/design=(.*)&\b/)[1]
+            : "";
+        let fabricID = location.search.match(/&fabric=(.*)\b/)
+            ? location.search.match(/&fabric=(.*)\b/)[1]
+            : "";
+        /* ------------- */
+        let relatedDesign = designsInfo.find((design) => {
             return design.id === designID;
-        }) || { description: "none" };
+        });
+        let designName = "";
+        let designDescription = "";
+        if (
+            relatedDesign != null &&
+            relatedDesign.hasOwnProperty("description") &&
+            relatedDesign.hasOwnProperty("name")
+        ) {
+            designName = relatedDesign.name;
+            designDescription = relatedDesign.description;
+        }
+        /* ------------- */
         let productList = visibilityProducts.filter((product) => {
             return product.designID === designID;
         });
         productList = this.swapProductPosition(productList, fabricID);
+
+        /* ------------- */
         let fabricList = [];
         productList.forEach((product) => {
             let fabric = fabricsInfo.find((fabric) => {
@@ -87,137 +79,163 @@ class ProductDetailMobile extends Component {
             }) || { image: "" };
             fabricList.push(fabric);
         });
-        let renderComponents = "";
-        switch (selectionStep) {
-            case "fabric":
-                renderComponents = (
-                    <FabricSelection
-                        totalProductsOnCart={totalProductsOnCart}
-                        productList={productList}
-                        fabricList={fabricList}
-                        designsInfo={designsInfo}
-                        currentSelectedProduct={currentSelectedProduct}
-                        onContentChange={(step) => this.onContentChange(step)}
-                        onSelectedProductUpdating={(currentSelectedProduct) =>
-                            this.onSelectedProductUpdating(
-                                currentSelectedProduct
-                            )
-                        }
-                        history={this.props.history}
-                    />
-                );
-                break;
-            case "size":
-                renderComponents = (
-                    <SizeSelection
-                        totalProductsOnCart={totalProductsOnCart}
-                        currentDesignInfo={currentDesignInfo}
-                        currentSelectedProduct={currentSelectedProduct}
-                        onContentChange={(step) => this.onContentChange(step)}
-                        onSelectedProductUpdating={(currentSelectedProduct) =>
-                            this.onSelectedProductUpdating(
-                                currentSelectedProduct
-                            )
-                        }
-                        onSizeUpdated={(size) => this.onSizeUpdated(size)}
-                        onBodyMetricUpdated={(bodyMetric) =>
-                            this.onBodyMetricUpdated(bodyMetric)
-                        }
-                        sizeImages={this.props.sizeImages}
-                    />
-                );
-                break;
-            case "confirm":
-                renderComponents = (
-                    <Confirm
-                        totalProductsOnCart={totalProductsOnCart}
-                        currentDesignInfo={currentDesignInfo}
-                        currentFabricInfo={currentFabricInfo}
-                        currentSelectedProduct={currentSelectedProduct}
-                        onContentChange={(step) => this.onContentChange(step)}
-                        onSelectedProductUpdating={(currentSelectedProduct) =>
-                            this.onSelectedProductUpdating(
-                                currentSelectedProduct
-                            )
-                        }
-                    />
-                );
-                break;
-
-            default:
-                break;
+        /* ------------- */
+        let currentSelectedProduct = { ...this.state.currentSelectedProduct };
+        if (productList.length > 0) {
+            currentSelectedProduct = {
+                ...currentSelectedProduct,
+                ...productList[0],
+            };
+            currentSelectedProduct.description = designDescription;
+            currentSelectedProduct.name = designName;
+            currentSelectedProduct.size =
+                JSON.parse(localStorage.getItem("size")) || null;
+            currentSelectedProduct.bodyMetric =
+                JSON.parse(localStorage.getItem("bodyMetric")) ||
+                new Array(3).fill("");
         }
-        return renderComponents;
+        /* ------------- */
+        let currentSelectedFabric = { ...this.state.currentSelectedFabric };
+        if (fabricList.length > 0) {
+            currentSelectedFabric = { ...fabricList[0] };
+        }
+        /* ------------- */
+        let modalImages = [...currentSelectedProduct.image];
+        modalImages.push(currentSelectedFabric.image);
+        /* ------------- */
+        this.setState({
+            currentSelectedProduct,
+            currentSelectedFabric,
+            productList,
+            fabricList,
+            modalImages,
+        });
     };
 
     swapProductPosition = (productList, fabricID) => {
-        let currentSelectedProductIndex = productList.findIndex(
-            (product) => product.fabricID === fabricID
-        );
+        let currentSelectedProductIndex = productList.findIndex((product) => {
+            return (
+                product.fabricID.replace(/ /gi, "") ===
+                fabricID.replace(/ /gi, "")
+            );
+        });
+        /* ------------- */
         if (currentSelectedProductIndex > 0) {
             let temp = { ...productList[0] };
             productList[0] = productList[currentSelectedProductIndex];
             productList[currentSelectedProductIndex] = temp;
         }
+        /* ------------- */
         return productList;
     };
 
-    onContentChange = (selectionStep) => {
-        this.setState({
-            selectionStep,
-        });
+    onSelectedProductUpdating = (currentSelectedProduct, from) => {
+        const { fabricList } = this.state;
+        if (currentSelectedProduct != null) {
+            let currentSelectedFabric = fabricList.find(
+                (fabric) => fabric.id === currentSelectedProduct.fabricID
+            ) || { image: [""] };
+            let modalImages = [...currentSelectedProduct.image];
+            modalImages.push(currentSelectedFabric.image);
+            if (from === "size-selection") {
+                this.setState({
+                    currentSelectedProduct,
+                    isConfirmNavigate: true,
+                    currentSelectedFabric,
+                    modalImages,
+                });
+            } else {
+                this.setState({
+                    currentSelectedProduct,
+                    currentSelectedFabric,
+                    modalImages,
+                    isConfirmNavigate: false,
+                });
+            }
+        }
     };
 
-    onSelectedProductUpdating = (currentSelectedProduct) => {
-        const { fabricsInfo } = this.props;
-        let currentFabricInfo = fabricsInfo.find((fabric) => {
-            return fabric.id === currentSelectedProduct.fabricID;
-        }) || { image: ["", ""], price: 0 };
-        console.log("currentSelectedProduct", currentSelectedProduct);
-        this.setState({
-            currentFabricInfo,
-            currentSelectedProduct,
-        });
-    };
-
-    onSizeUpdated = (size) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric.fill("");
-        this.setState({
-            currentSelectedProduct,
-        });
-    };
-
-    onBodyMetricUpdated = (bodyMetric) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        this.setState({
-            currentSelectedProduct,
-        });
+    confirmNavigating = (isNavigate) => {
+        if (isNavigate != null) {
+            this.setState({
+                isConfirmNavigate: isNavigate,
+            });
+        }
     };
 
     render() {
+        const {
+            productList,
+            fabricList,
+            currentSelectedProduct,
+            currentSelectedFabric,
+            isConfirmNavigate,
+            modalImages,
+        } = this.state;
+        const { sizeImages } = this.props;
+
         return (
             <div
                 style={{
                     height: "100vh",
                     width: "100vw",
                     overflowY: "auto",
-                    overflowX: "hidden"
+                    overflowX: "hidden",
                 }}
             >
-                {this.contentHandling()}
+                <Route
+                    path="/product-detail/fabric-selection/:productName"
+                    exact
+                    component={({ location }) => (
+                        <FabricSelection
+                            productList={productList}
+                            fabricList={fabricList}
+                            currentSelectedProduct={currentSelectedProduct}
+                            onSelectedProductUpdating={
+                                this.onSelectedProductUpdating
+                            }
+                            location={location}
+                        />
+                    )}
+                />
+                <Route
+                    path="/product-detail/size-selection/:productName"
+                    exact
+                    component={(history) => (
+                        <SizeSelection
+                            currentSelectedProduct={currentSelectedProduct}
+                            onSelectedProductUpdating={
+                                this.onSelectedProductUpdating
+                            }
+                            sizeImages={sizeImages}
+                            isConfirmNavigate={isConfirmNavigate}
+                            history={history}
+                        />
+                    )}
+                />
+                <Route
+                    path="/product-detail/confirm-selection/:productName"
+                    exact
+                    component={(history) => (
+                        <Confirm
+                            currentSelectedProduct={currentSelectedProduct}
+                            currentSelectedFabric={currentSelectedFabric}
+                            onSelectedProductUpdating={
+                                this.onSelectedProductUpdating
+                            }
+                            confirmNavigating={this.confirmNavigating}
+                            history={history}
+                        />
+                    )}
+                />
+                <Route
+                    path="/product-detail/image-view"
+                    exact
+                    component={() => <ProductModal modalImages={modalImages} />}
+                />
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isNewProductAdded: state.listProductOnCart,
-        isCartUpdated: state.updateProductOnCart,
-    };
-};
-
-export default connect(mapStateToProps, null)(ProductDetailMobile);
+export default ProductDetailMobile;

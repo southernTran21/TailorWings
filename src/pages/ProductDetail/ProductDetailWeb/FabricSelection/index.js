@@ -29,6 +29,8 @@ export default class FabricSelectionWeb extends Component {
             (product) => product.fabricID === selectedFabric
         );
         let updatedProduct = { ...info };
+        updatedProduct.size = '';
+        updatedProduct.bodyMetric = new Array(3).fill('');
         updatedProduct.quantity = 1;
         this.setState({
             currentSelectedProduct: updatedProduct,
@@ -57,9 +59,6 @@ export default class FabricSelectionWeb extends Component {
     render() {
         const { fabricList, history } = this.props;
         const { aciveFabricIndex, currentSelectedProduct } = this.state;
-        let urlSearch = history.location.hasOwnProperty("search")
-            ? history.location.search
-            : "?design=''&fabric=''";
         let productNameModified = "";
         productNameModified = currentSelectedProduct.name.toLowerCase();
         productNameModified = removePunctuation(productNameModified);

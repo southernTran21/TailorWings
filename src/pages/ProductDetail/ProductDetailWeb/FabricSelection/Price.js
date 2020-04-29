@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { removePunctuation } from "../../../../services/CommonFunction";
 
 export default class Price extends Component {
     render() {
@@ -13,7 +14,7 @@ export default class Price extends Component {
                     .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") +
                 " " +
                 "VNĐ";
-        let productNameModified = productName.toLowerCase();
+        let productNameModified = removePunctuation(productName.toLowerCase());
         productNameModified = productNameModified.replace(/ /gi, "-");
         return (
             <div className="price d-flex flex-column justify-content-end">

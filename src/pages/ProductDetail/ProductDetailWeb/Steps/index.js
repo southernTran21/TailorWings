@@ -13,14 +13,22 @@ export default class Steps extends Component {
 
     componentDidMount() {
         const { history, match } = this.props;
-        console.log("window.location :>> ", window.location);
-        let selectionStep = window.location.pathname.match(
-            /product-detail\/(.*)\b\//
-        )[1];
-        let productName = window.location.pathname.match(
-            /selection\/(.*)\b/
-        )[1];
-        let urlSearch = window.location.search;
+        let selectionStep = "";
+        let productName = "";
+        let urlSearch = "";
+        if (window.location.pathname.match(/product-detail\/(.*)\b\//)) {
+            selectionStep = window.location.pathname.match(
+                /product-detail\/(.*)\b\//
+            )[1];
+        }
+        if (window.location.pathname.match(/selection\/(.*)\b/)) {
+            productName = window.location.pathname.match(
+                /selection\/(.*)\b/
+            )[1];
+        }
+        if (window.location.search !== "") {
+            urlSearch = window.location.search;
+        }
         this.setState({
             selectionStep,
             productName,
@@ -30,17 +38,15 @@ export default class Steps extends Component {
             let selectionStep = "";
             let productName = "";
             let urlSearch = "";
-            if (window.location.pathname.match(/product-detail\/(.*)\b\//)) {
-                selectionStep = window.location.pathname.match(
+            if (location.pathname.match(/product-detail\/(.*)\b\//)) {
+                selectionStep = location.pathname.match(
                     /product-detail\/(.*)\b\//
                 )[1];
             }
-            if (window.location.pathname.match(/selection\/(.*)\b/)) {
-                productName = window.location.pathname.match(
-                    /selection\/(.*)\b/
-                )[1];
+            if (location.pathname.match(/selection\/(.*)\b/)) {
+                productName = location.pathname.match(/selection\/(.*)\b/)[1];
             }
-            if ( location.search !== '') {
+            if (location.search !== "") {
                 urlSearch = location.search;
             }
             this.setState({

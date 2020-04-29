@@ -5,6 +5,20 @@
     height: 100vh;
     overflow-y: "auto";
     overflow-x: "hidden";
+    .link {
+        /* Positioning */
+        width: 100%;
+        height: 100%;
+        /* Display & Box Model */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Color */
+        color: white;
+        /* Text */
+        text-decoration: none;
+        /* Others: transition & animations, ... */
+    }
     .anticon {
         vertical-align: 0;
     }

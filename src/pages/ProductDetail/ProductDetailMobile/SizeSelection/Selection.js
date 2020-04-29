@@ -8,32 +8,43 @@ export default class Selection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStatus: new Array(6).fill(false)
+            size: '',
+            activeStatus: new Array(6).fill(false),
         };
     }
-    componentDidMount() {
-        const { size } = this.props.currentSelectedProduct;
-        let { activeStatus } = this.state;
-        if (size != null) {
-            let currentActiveIndex = SIZE.indexOf(size);
-            if (currentActiveIndex != null) {
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.size !== prevState.size && nextProps.size != null) {
+            /* ------------- */
+            let activeStatus = [...prevState.activeStatus];
+            let currentActiveIndex = SIZE.indexOf(nextProps.size);
+            /* ------------- */
+            if (currentActiveIndex > -1) {
+                /* ------------- */
+                activeStatus.fill(false);
                 activeStatus[currentActiveIndex] = true;
-                this.setState({
-                    activeStatus
-                });
+                /* ------------- */
+                return {
+                    activeStatus,
+                    size: nextProps.size,
+                };
+            } else {
+                return null;
             }
+            /* ------------- */
+        } else {
+            return null;
         }
     }
+
     onSizeSelected = (index, size) => {
-        console.log('index', index)
-        console.log('size', size)
         if (index != null && index > -1) {
             let { activeStatus } = this.state;
             activeStatus.fill(false);
             activeStatus[index] = true;
             this.props.onSizeUpdated(size);
             this.setState({
-                activeStatus
+                activeStatus,
             });
         }
     };
@@ -48,7 +59,7 @@ export default class Selection extends Component {
                                 id={index}
                                 onClick={() => this.onSizeSelected(index, size)}
                                 className={classNames("titleSize", {
-                                    actived: activeStatus[index]
+                                    actived: activeStatus[index],
                                 })}
                             >
                                 <a id={index} name={size}>

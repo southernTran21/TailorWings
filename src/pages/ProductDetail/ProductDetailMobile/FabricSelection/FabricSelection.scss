@@ -4,6 +4,22 @@
     height: 100vh;
     overflow-y: "auto";
     overflow-x: "hidden";
+
+    .link {
+        /* Positioning */
+        width: 100%;
+        height: 100%;
+        /* Display & Box Model */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Color */
+        color: white;
+        /* Text */
+        text-decoration: none;
+        /* Others: transition & animations, ... */
+    }
+
     .anticon {
         vertical-align: 0;
     }
@@ -361,12 +377,14 @@
 
 // Product Modal
 .modal {
-    display: none; /* Hidden by default */
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     z-index: 10; /* Sit on top */
     width: 100vw !important; /* Full width */
     height: 100vh !important; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
     /* Modal Content (image) */
     .image-wrapper {
@@ -409,11 +427,4 @@
 .fixed_top {
     position: fixed;
     top: 0;
-}
-
-.popUpShow {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
 }

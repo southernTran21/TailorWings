@@ -7,18 +7,19 @@ export default class SizeSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStatus: new Array(6).fill(false)
+            activeStatus: new Array(6).fill(false),
         };
     }
     componentDidMount() {
-        const { size } = this.props.currentSelectedProduct;
+        const { size } = this.props;
         let { activeStatus } = this.state;
         if (size != null) {
             let currentActiveIndex = SIZE.indexOf(size);
             if (currentActiveIndex != null) {
                 activeStatus[currentActiveIndex] = true;
+
                 this.setState({
-                    activeStatus
+                    activeStatus,
                 });
             }
         }
@@ -30,12 +31,19 @@ export default class SizeSelection extends Component {
             activeStatus[index] = true;
             this.props.onSizeUpdated(index, size);
             this.setState({
-                activeStatus
+                activeStatus,
             });
         }
     };
     render() {
-        const { activeStatus } = this.state;
+        let { activeStatus } = this.state;
+        const { size } = this.props;
+        if (size != null) {
+            let currentActiveIndex = SIZE.indexOf(size);
+            if (currentActiveIndex != null) {
+                activeStatus[currentActiveIndex] = true;
+            }
+        }
         return (
             <div className="selectionSize d-flex justify-content-between">
                 {SIZE.map((size, index) => {

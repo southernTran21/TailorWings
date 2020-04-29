@@ -1,36 +1,22 @@
+import { Icon } from "antd";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Confirm.scss";
 
-import { Icon, Input } from "antd";
 
 export default class ChangeSize extends Component {
-    onSizeShowing = () => {
-        const { currentSelectedProduct } = this.props;
-        let content = "";
-        let isSizeSelected = currentSelectedProduct.size != null;
-        let isAllMetricFill = !currentSelectedProduct.bodyMetric.includes("");
-        let size = currentSelectedProduct.size;
-        let metric = currentSelectedProduct.bodyMetric.join("-");
-        if (isSizeSelected && isAllMetricFill) {
-            content = `Số đo ( ${size} , ${metric} )`;
-        } else if (isSizeSelected) {
-            content = `Size ( ${size} )`;
-        } else if (isAllMetricFill) {
-            content = `Số đo ( ${metric} )`;
-        } else {
-            content = `Số đo ( Chưa Chọn )`;
-        }
-        return <span>{content}</span>;
-    };
-
     render() {
+        const { url, urlSearch } = this.props;
         return (
             <div className="changeSize d-flex flex-row align-items-center justify-content-center">
-                {/* {this.onSizeShowing()} */}
-                <Icon type="left" />
-                <a onClick={() => this.props.onContentChange("size")}>
+                <Link
+                    className="link"
+                    to={{ pathname: `${url}`, search: `${urlSearch}` }}
+                    onClick={() => this.props.confirmNavigating(false)}
+                >
+                    <Icon type="left" />
                     <span>THAY ĐỔI SIZE</span>
-                </a>
+                </Link>
             </div>
         );
     }

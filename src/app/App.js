@@ -46,6 +46,7 @@ const logPageViewPixel = () => {
 export default class App extends Component {
     constructor(props) {
         super(props);
+        console.log('app');
         this.state = {
             visibilityProducts: [],
             categoriesInfo: [],
@@ -53,7 +54,6 @@ export default class App extends Component {
             fabricsInfo: [],
             collectionsInfo: [],
             topListInfo: [],
-            localStorageUpdated: false
         };
     }
 
@@ -180,7 +180,7 @@ export default class App extends Component {
                         <Route
                             path="/"
                             exact
-                            component={() => (
+                            render={() => (
                                 <Home
                                     history={history}
                                     visibilityProducts={visibilityProducts}

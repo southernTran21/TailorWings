@@ -52,6 +52,7 @@ let timeOut;
 class SizeSelectionWeb extends Component {
     constructor(props) {
         super(props);
+        console.log('constructure');
         this.state = {
             sizeImage: "",
             isSuccess: false,
@@ -62,7 +63,12 @@ class SizeSelectionWeb extends Component {
 
     componentDidMount() {
         let currentSelectedProduct = { ...this.props.currentSelectedProduct };
-        if (currentSelectedProduct) {
+        if (currentSelectedProduct != null) {
+            currentSelectedProduct.size =
+                JSON.parse(localStorage.getItem("size")) || null;
+            currentSelectedProduct.bodyMetric =
+                JSON.parse(localStorage.getItem("bodyMetric")) ||
+                new Array(3).fill("");
             let index = SIZE.findIndex(
                 (size) => size.id === currentSelectedProduct.size
             );
@@ -74,7 +80,7 @@ class SizeSelectionWeb extends Component {
         }
     }
 
-    componentWillMount() {
+    componentWillUnmount() {
         clearTimeout(timeOut);
     }
 
@@ -102,8 +108,7 @@ class SizeSelectionWeb extends Component {
     };
 
     onQuantityUpdated = (quantity) => {
-        const { currentSelectedProduct } = this.state;
-        let updatedProduct = { ...currentSelectedProduct };
+        let updatedProduct = { ...this.state.currentSelectedProduct };
         updatedProduct.quantity = quantity;
         this.setState({
             currentSelectedProduct: updatedProduct,
@@ -163,20 +168,10 @@ class SizeSelectionWeb extends Component {
         );
     };
 
-    // sizeImageUpdate = (index, size) => {
-    //     let { sizeImage, currentSelectedProduct } = this.state;
-    //     this.onSizeUpdated(size, SIZE[index].bodyMetric);
-    //     sizeImage = imageSize[index];
-    //     this.setState({
-    //         sizeImage,
-    //         currentSelectedProduct,
-    //     });
-    // };
-
     render() {
-        const { currentSelectedProduct, history } = this.props;
-        const { sizeImage, isSuccess } = this.state;
-        let size = Empty;
+        const { history } = this.props;
+        const { sizeImage, isSuccess, currentSelectedProduct } = this.state;
+        let size = null;
         let bodyMetric = currentSelectedProduct.bodyMetric;
         if (
             currentSelectedProduct.size != null &&
@@ -191,6 +186,7 @@ class SizeSelectionWeb extends Component {
         productNameModified = currentSelectedProduct.name.toLowerCase();
         productNameModified = removePunctuation(productNameModified);
         productNameModified = productNameModified.replace(/ /gi, "-");
+        console.log('isSuccess :>> ', isSuccess);
         return (
             <div>
                 <div className="pageSizeSelectionWeb d-flex align-items-center">
@@ -222,7 +218,6 @@ class SizeSelectionWeb extends Component {
                         <SizeSelection
                             size={size}
                             onSizeUpdated={this.onSizeUpdated}
-                            currentSelectedProduct={currentSelectedProduct}
                         />
                         <BodyMetric
                             bodyMetric={bodyMetric}

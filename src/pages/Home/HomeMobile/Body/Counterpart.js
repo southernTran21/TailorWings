@@ -4,7 +4,7 @@ import LazyLoad from "react-lazy-load";
 class Counterpart extends Component {
     render() {
         return (
-            <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+            // <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                 <div className="weGive-wraper">
                     <div className="title d-flex flex-column justify-content-center align-items-center">
                         <span>We Give Tailor The Wings</span>
@@ -244,7 +244,7 @@ class Counterpart extends Component {
                         </a>
                     </div>
                 </div>
-            </LazyLoad>
+            // </LazyLoad>
         );
     }
 }

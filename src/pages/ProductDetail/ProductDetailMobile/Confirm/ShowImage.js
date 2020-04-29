@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Confirm.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Link } from "react-router-dom";
 
 export default class ShowImage extends Component {
     render() {
@@ -11,61 +12,70 @@ export default class ShowImage extends Component {
                 <div className="row1">
                     <div
                         className="image"
-                        onClick={() =>
-                            this.props.onProductModalStatusChanged(true)
-                        }
                     >
-                        {/* <img src={currentSelectedProduct.image[0]} /> */}
-                        <LazyLoadImage
-                            alt={currentSelectedProduct.name}
-                            effect="blur"
-                            src={currentSelectedProduct.image[0]}
-                        />
+                        <Link
+                            className="link"
+                            to={{
+                                pathname: "/product-detail/image-view",
+                            }}
+                        >
+                            <LazyLoadImage
+                                alt={currentSelectedProduct.name}
+                                effect="blur"
+                                src={currentSelectedProduct.image[0]}
+                            />
+                        </Link>
                     </div>
                     <div
                         className="image"
-                        onClick={() =>
-                            this.props.onProductModalStatusChanged(true)
-                        }
                     >
-                        {/* <img src={currentSelectedProduct.image[1]} /> */}
-                        <LazyLoadImage
-                            alt={currentSelectedProduct.name}
-                            effect="blur"
-                            src={currentSelectedProduct.image[1]}
-                        />
+                        <Link
+                            className="link"
+                            to={{
+                                pathname: "/product-detail/image-view",
+                            }}
+                        >
+                            <LazyLoadImage
+                                alt={currentSelectedProduct.name}
+                                effect="blur"
+                                src={currentSelectedProduct.image[1]}
+                            />
+                        </Link>
                     </div>
                 </div>
                 <div className="row2">
                     <div
                         className="image"
-                        onClick={() =>
-                            this.props.onProductModalStatusChanged(true)
-                        }
                     >
-                        {/* <img src={currentSelectedProduct.image[2]} /> */}
-                        <LazyLoadImage
-                            alt={currentSelectedProduct.name}
-                            effect="blur"
-                            src={currentSelectedProduct.image[2]}
-                        />
+                        <Link
+                            className="link"
+                            to={{
+                                pathname: "/product-detail/image-view",
+                            }}
+                        >
+                            <LazyLoadImage
+                                alt={currentSelectedProduct.name}
+                                effect="blur"
+                                src={currentSelectedProduct.image[2]}
+                            />
+                        </Link>
                     </div>
                     <div
                         className="image"
-                        onClick={() =>
-                            this.props.onProductModalStatusChanged(true)
-                        }
                     >
-                        {/* <img
-                            style={{ objectFit: "cover" }}
-                            src={currentFabricInfo.image[1]}
-                        /> */}
-                        <LazyLoadImage
-                            alt={currentFabricInfo.name}
-                            effect="blur"
-                            src={currentFabricInfo.image[1]}
-                            style={{objectFit: "cover"}}
-                        />
+                        <Link
+                            className="link"
+                            to={{
+                                pathname: "/product-detail/image-view",
+                            }}
+                        >
+                            <LazyLoadImage
+                                alt={currentFabricInfo.name}
+                                effect="blur"
+                                src={currentFabricInfo.image[1]}
+                                style={{ objectFit: "cover" }}
+                            />
+                        </Link>
                     </div>
                 </div>
             </div>

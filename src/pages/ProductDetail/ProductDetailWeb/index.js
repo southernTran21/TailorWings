@@ -1,6 +1,4 @@
-import classNames from "classnames";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 //
 import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
@@ -26,9 +24,6 @@ class ProductDetailWeb extends Component {
             totalProductsOnCart: 0,
             fabricList: [],
             productList: [],
-            size: "",
-            bodyMetric: [],
-            isSizeMetricUpdate: false,
             isImageView: false,
             isSideBarOpen: false,
         };
@@ -36,16 +31,14 @@ class ProductDetailWeb extends Component {
 
     componentDidMount() {
         const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
-        let { totalProductsOnCart, currentSelectedProduct } = this.state;
-        let designID = window.location.search.match(/design=(.*)&\b/)[1];
-        let fabricID = window.location.search.match(/fabric=(.*)\b/)[1];
-        let productsOnCart =
-            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-        let size = JSON.parse(localStorage.getItem("size")) || null;
-        let bodyMetric =
-            JSON.parse(localStorage.getItem("bodyMetric")) ||
-            new Array(3).fill("");
-        // ------------ //
+        let designID = "";
+        let fabricID = "";
+        if (window.location.search.match(/design=(.*)&\b/)) {
+            designID = window.location.search.match(/design=(.*)&\b/)[1];
+        }
+        if (window.location.search.match(/fabric=(.*)\b/)) {
+            fabricID = window.location.search.match(/fabric=(.*)\b/)[1];
+        }
         let productList = visibilityProducts.filter((product) => {
             return product.designID === designID;
         });
@@ -58,12 +51,13 @@ class ProductDetailWeb extends Component {
             product.designDescription = currentDesign.description;
         });
         // ------------ //
+        let currentSelectedProduct = { ...this.state.currentSelectedProduct };
         if (productList.length > 0) {
             currentSelectedProduct = { ...productList[0] };
+            currentSelectedProduct.size = null;
+            currentSelectedProduct.bodyMetric = new Array(3).fill("");
+            currentSelectedProduct.quantity = 1;
         }
-        currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        currentSelectedProduct.quantity = 1;
         // ------------ //
         let fabricList = [];
         productList.forEach((product) => {
@@ -73,38 +67,11 @@ class ProductDetailWeb extends Component {
             fabricList.push(fabric);
         });
         // ------------ //
-        totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
-            return accumulator + Number(current.quantity);
-        }, 0);
-        // ------------ //
         this.setState({
-            totalProductsOnCart,
             currentSelectedProduct,
             fabricList,
             productList,
-            size,
-            bodyMetric,
         });
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.isNewProductAdded !== prevState.isNewProductAdded) {
-            let productsOnCart = JSON.parse(
-                sessionStorage.getItem("productsOnCart")
-            );
-            let totalProductsOnCart = productsOnCart.reduce(
-                (accumulator, current) => {
-                    return accumulator + current.quantity;
-                },
-                0
-            );
-            return {
-                totalProductsOnCart,
-                isNewProductAdded: nextProps.isNewProductAdded,
-            };
-        } else {
-            return null;
-        }
     }
 
     onImageView = (state) => {
@@ -141,52 +108,6 @@ class ProductDetailWeb extends Component {
         return productList;
     };
 
-    // onSelectedFabricUpdating = (selectedFabric) => {
-    //     let {
-    //         productList,
-    //         currentSelectedProduct,
-    //         size,
-    //         bodyMetric,
-    //     } = this.state;
-    //     let info = productList.find(
-    //         (product) => product.fabricID === selectedFabric
-    //     );
-    //     currentSelectedProduct = { ...info };
-    //     currentSelectedProduct.size = size;
-    //     currentSelectedProduct.bodyMetric = bodyMetric;
-    //     currentSelectedProduct.quantity = 1;
-    //     this.setState({
-    //         currentSelectedProduct,
-    //     });
-    // };
-
-    onSizeUpdated = (size, bodyMetric) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric.fill("");
-        this.setState({
-            currentSelectedProduct,
-            isSizeMetricUpdate: true,
-        });
-    };
-
-    onBodyMetricUpdated = (bodyMetric) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        this.setState({
-            currentSelectedProduct,
-            isSizeMetricUpdate: true,
-        });
-    };
-
-    onQuantityUpdated = (quantity) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.quantity = quantity;
-        this.setState({
-            currentSelectedProduct,
-        });
-    };
-
     sideBarChange = (state) => {
         this.setState({
             isSideBarOpen: state,
@@ -196,26 +117,16 @@ class ProductDetailWeb extends Component {
     render() {
         const {
             selectionStep,
-            totalProductsOnCart,
-            isImageView,
             currentSelectedProduct,
-            isSideBarOpen,
             productList,
             fabricList,
-            isSizeMetricUpdate,
         } = this.state;
         const { match } = this.props;
-
         return (
             <div className="productDetail-container">
-                <div
-                    className={classNames("pageProductDetailWeb-wrapper", {
-                        unvisible: isImageView,
-                    })}
-                >
+                <div className="pageProductDetailWeb-wrapper">
                     <NavBarWeb
                         history={this.props.history}
-                        totalProductsOnCart={totalProductsOnCart}
                         sideBarChange={this.sideBarChange}
                     />
                     <div className="pageProductDetailWeb">
@@ -224,7 +135,6 @@ class ProductDetailWeb extends Component {
                             onContentChange={this.onContentChange}
                             history={this.props.history}
                         />
-                        {/* {this.selectionStepHandling()} */}
                         <Route
                             path="/product-detail/fabric-selection/:productName"
                             exact
@@ -235,12 +145,6 @@ class ProductDetailWeb extends Component {
                                     currentSelectedProduct={
                                         currentSelectedProduct
                                     }
-                                    // onselectionStepChange={
-                                    //     this.onselectionStepChange
-                                    // }
-                                    // onSelectedFabricUpdating={
-                                    //     this.onSelectedFabricUpdating
-                                    // }
                                     onImageView={this.onImageView}
                                     history={this.props.history}
                                     match={match}
@@ -258,43 +162,27 @@ class ProductDetailWeb extends Component {
                                     currentSelectedProduct={
                                         currentSelectedProduct
                                     }
-                                    onselectionStepChange={
-                                        this.onselectionStepChange
-                                    }
-                                    onSizeUpdated={this.onSizeUpdated}
-                                    onBodyMetricUpdated={
-                                        this.onBodyMetricUpdated
-                                    }
-                                    onQuantityUpdated={this.onQuantityUpdated}
-                                    isSizeMetricUpdate={isSizeMetricUpdate}
                                     history={this.props.history}
                                     match={match}
                                 />
                             )}
                         />
+                        <Route
+                            path="/product-detail/image-view"
+                            exact
+                            component={() => (
+                                <ImageView
+                                    history={this.props.history}
+                                    productImages={currentSelectedProduct.image}
+                                    productName={currentSelectedProduct.name}
+                                />
+                            )}
+                        />
                     </div>
-                </div>
-                <div
-                    className={classNames("imageView", {
-                        unvisible: !isImageView,
-                    })}
-                >
-                    <ImageView
-                        onImageView={this.onImageView}
-                        productImages={currentSelectedProduct.image}
-                        productName={currentSelectedProduct.name}
-                    />
                 </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isNewProductAdded: state.listProductOnCart,
-        isCartUpdated: state.updateProductOnCart,
-    };
-};
-
-export default connect(mapStateToProps, null)(ProductDetailWeb);
+export default ProductDetailWeb;

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import classNames from "classnames";
 
 export default class ProductModal extends Component {
     render() {
-        const { isProductModalShow, modalImages } = this.props;
+        const { modalImages } = this.props;
         const settings = {
             dots: true,
             infinite: true,
@@ -14,21 +13,14 @@ export default class ProductModal extends Component {
             arrows: false,
         };
         return (
-            <div
-                id="myModal"
-                className={classNames("modal", {
-                    popUpShow: isProductModalShow,
-                })}
-            >
+            <div id="myModal" className="modal">
                 <div
                     className="d-flex flex-column justify-content-center align-items-end"
                     style={{ width: "100vw", height: "10vh" }}
                 >
                     <span
                         className="closeModal"
-                        onClick={() =>
-                            this.props.onProductModalStatusChanged(false)
-                        }
+                        onClick={() => window.history.back()}
                     >
                         &times;
                     </span>

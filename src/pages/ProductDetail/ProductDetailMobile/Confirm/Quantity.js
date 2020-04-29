@@ -1,23 +1,23 @@
+import { Icon } from "antd";
 import React, { Component } from "react";
 import "./Confirm.scss";
-import { Icon, Input, message } from "antd";
-import NumberFormat from "react-number-format";
 
 export default class Quantity extends Component {
     constructor(props) {
         super(props);
         this.state = {
             quantity: this.props.currentSelectedProduct.quantity,
-            currentSelectedProduct: { ...this.props.currentSelectedProduct },
+            // currentSelectedProduct: { ...this.props.currentSelectedProduct },
         };
     }
 
     onQuantityPlus = () => {
-        let { quantity, currentSelectedProduct } = this.state;
+        let { quantity } = this.state;
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
         quantity = Number(quantity) + 1;
         if (quantity < 10) {
             currentSelectedProduct.quantity = quantity;
-            this.props.onSelectedProductUpdating(currentSelectedProduct);
+            this.props.onQuantityChange(currentSelectedProduct);
             this.setState({
                 quantity,
             });
@@ -25,11 +25,12 @@ export default class Quantity extends Component {
     };
 
     onQuantityMinus = () => {
-        let { quantity, currentSelectedProduct } = this.state;
+        let { quantity } = this.state;
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
         quantity = Number(quantity) - 1;
         if (quantity > 0) {
             currentSelectedProduct.quantity = quantity;
-            this.props.onSelectedProductUpdating(currentSelectedProduct);
+            this.props.onQuantityChange(currentSelectedProduct);
             this.setState({
                 quantity,
             });
