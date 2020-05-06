@@ -13,18 +13,16 @@ export default class Collections extends Component {
             <div className="collection_wrapper d-flex fontMontserrat">
                 <div className="collection d-flex flex-column justify-content-center">
                     <span>Bộ Sưu Tập</span>
-                    <svg height="45.18vh" width="14.16vw">
-                        <line
-                            x1="0"
-                            y1="0"
-                            x2="14.16vw"
-                            y2="45.18vh"
-                            style={{
-                                stroke: "#111e6c",
-                                strokeWidth: "1.2",
-                            }}
-                        />
+                    <svg
+                        width="13.75vw"
+                        height="17.59vw"
+                        viewBox="0 0 198 253"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M0.5 0.5L197 252" stroke="#111E6C" />
                     </svg>
+
                     <span>
                         Khám phá ngay
                         <br /> những bộ sưu tập
