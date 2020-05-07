@@ -19,6 +19,7 @@ import Policy from "../pages/Policy";
 import Support from "../pages/Support";
 import TailorwingNewExp from "../pages/LandingPage/TailorwingsNewExp/TailorwingNewExp";
 import TailorwingsCovid from "../pages/LandingPage/TailorwingsCOVID/TailorwingsCovid";
+import TailorwingsWelcome from "../pages/LandingPage/TailorwingsWelcome/TailorwingsWelcome";
 
 export const history = createBrowserHistory();
 
@@ -232,7 +233,7 @@ export default class App extends Component {
                             exact
                             component={() => <Support history={history} />}
                         />
-                        <Route
+                        {/* <Route
                             path="/tailorwings-new-experience"
                             exact
                             component={() => <TailorwingNewExp history={history} />}
@@ -241,6 +242,11 @@ export default class App extends Component {
                             path="/tailorwings-covid"
                             exact
                             component={() => <TailorwingsCovid history={history} />}
+                        /> */}
+                        <Route
+                            path="/tailorwings-welcome"
+                            exact
+                            component={() => <TailorwingsWelcome history={history} />}
                         />
                         <ProtectedRoute
                             path="/admin"

@@ -81,6 +81,7 @@ export default class StrikingProducts extends Component {
             loop: true,
         };
         const { bestSellerInfo } = this.props;
+        console.log('bestSellerInfo :>> ', bestSellerInfo);
         return (
             <div className="strikingProducts d-flex flex-column align-items-center fontMontserrat">
                 <div className="title">
