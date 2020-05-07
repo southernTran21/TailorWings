@@ -19,7 +19,7 @@ import Policy from "../pages/Policy";
 import Support from "../pages/Support";
 import TailorwingNewExp from "../pages/LandingPage/TailorwingsNewExp/TailorwingNewExp";
 import TailorwingsCovid from "../pages/LandingPage/TailorwingsCOVID/TailorwingsCovid";
-import TailorwingsWelcome from "../pages/LandingPage/TailorwingsWelcome/TailorwingsWelcome";
+import TailorwingsWelcome from "../pages/LandingPage/TailorwingsWelcome/index.js";
 
 export const history = createBrowserHistory();
 
