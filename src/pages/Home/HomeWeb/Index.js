@@ -69,12 +69,40 @@ export default class HomeWeb extends Component {
     };
 
     render() {
-        const {
+        let {
             bestSellerInfo,
             totalProductsOnCart,
             visibleProductsList,
             isSideBarOpen,
         } = this.state;
+        const { visibilityProducts, bestSellerList } = this.props;
+        if (bestSellerInfo.length === 0 && visibleProductsList.length === 0) {
+            let productsOnCart =
+                JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+            totalProductsOnCart = productsOnCart.reduce(
+                (accumulator, current) => {
+                    return accumulator + Number(current.quantity);
+                },
+                0
+            );
+            visibilityProducts.forEach((product) => {
+                var result = bestSellerList.includes(product.designID);
+                if (result && product.default) {
+                    let info = {
+                        fabricID: product.fabricID,
+                        designID: product.designID,
+                        name: product.name,
+                        image: product.image[0],
+                    };
+                    bestSellerInfo.push(info);
+                }
+                visibleProductsList.push({
+                    name: product.name,
+                    productID: product.productID,
+                });
+            });
+        }
+
         return (
             <div
                 className={classNames("homePage_wrapper", {
