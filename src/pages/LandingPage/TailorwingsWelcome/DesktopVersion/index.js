@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class TailorwingsWelcome extends Component {
+class DesktopVersion extends Component {
     render() {
         return (
             <div>
-                Tailorwings Welcome
+                DesktopVersion
             </div>
         );
     }
 }
 
-export default TailorwingsWelcome;
+export default DesktopVersion;

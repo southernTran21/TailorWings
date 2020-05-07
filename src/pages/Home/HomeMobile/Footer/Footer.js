@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import "../home.scss";
-import { Input, Icon, message } from "antd";
-import { validateEmail } from "../../../../services/CommonFunction";
+import { Input, message } from "antd";
 import classNames from "classnames";
-import { setDocument } from "../../../../services/Fundamental";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import iconFacebook from "../../../../assets/iconImage/facebook.svg";
 //
 import iconIG from "../../../../assets/iconImage/instagram.svg";
-import iconFacebook from "../../../../assets/iconImage/facebook.svg";
 import iconYoutube from "../../../../assets/iconImage/youtube.svg";
 import iconTailorWings from "../../../../assets/imageHomePage/bird logo.svg";
+import { validateEmail } from "../../../../services/CommonFunction";
+import { setDocument } from "../../../../services/Fundamental";
+import "../home.scss";
 
 export default class FooterPage extends Component {
     constructor(props) {
