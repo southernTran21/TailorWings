@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
-import Categorie3 from "../../../../assets/imageHomePage/CategoryDamOm.png";
-import Categorie1 from "../../../../assets/imageHomePage/CategoryDamSuong.png";
-import Categorie2 from "../../../../assets/imageHomePage/CategoryDamXoe.png";
+import Categorie3 from "../../../../assets/imageHomePageMobile/imgCategories_DamOm.jpg";
+import Categorie1 from "../../../../assets/imageHomePageMobile/imgCategories_DamSuong.jpg";
+import Categorie2 from "../../../../assets/imageHomePageMobile/imgCategories_DamXoe.jpg";
 
 class Categories extends Component {
     render() {

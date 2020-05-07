@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import LazyLoad from "react-lazy-load";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import Image from "../../../../assets/imageHomePage/imageWeYour.png";
+import Image from "../../../../assets/imageHomePageMobile/img_WeTailorYourWings.jpg";
 
 class AboutTailorWings extends Component {
     render() {
