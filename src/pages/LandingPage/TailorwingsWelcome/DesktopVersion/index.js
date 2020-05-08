@@ -5,7 +5,7 @@ import { Input } from "antd";
 // import Image, SVG
 import logoTW from "../../../../assets/imageHomePage/Logo Header.svg";
 import titleBanner from "../../../../assets/imageLandingPageWelcomeDesktop/titleBanner.png";
-import Models from "../../../../assets/imageLandingPageWelcomeDesktop/Models.png";
+import Models from "../../../../assets/imageLandingPageWelcomeDesktop/Models.jpg";
 import Overlay from "../../../../assets/imageLandingPageWelcomeDesktop/Overlay image.jpg";
 import Tailor from "../../../../assets/imageLandingPageWelcomeDesktop/tho-may.jpg";
 
@@ -23,7 +23,7 @@ class DesktopVersion extends Component {
                 </div>
                 <div className="bannerLandingPage d-flex">
                     <div className="image_wrapper">
-                        {/* <img src={Models} alt=""/> */}
+                        <img src={Models} alt=""/>
                     </div>
                     <div className="contentBanner_wrapper d-flex flex-column align-content-center">
                         <div className="title1">
