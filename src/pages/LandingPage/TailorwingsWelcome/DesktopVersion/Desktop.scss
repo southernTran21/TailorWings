@@ -61,6 +61,10 @@
                     width: 35.55vw;
                     .inputName,
                     .inputPhoneNumber {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
                         input {
                             width: 16.73vw;
                             height: 4.51vw;
@@ -74,9 +78,16 @@
                         ::placeholder {
                             color: #ffa45c;
                         }
+                        small {
+                            margin-left: 5px;
+                        }
                     }
                     .inputEmail {
                         margin-top: 1.73vw;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
                         input {
                             height: 4.51vw;
                             border: none;
@@ -88,6 +99,9 @@
                         }
                         ::placeholder {
                             color: #ffa45c;
+                        }
+                        small {
+                            margin-left: 5px;
                         }
                     }
                 }
@@ -169,6 +183,10 @@
                 font-weight: bold;
                 cursor: pointer;
                 margin-top: 1.97vw;
+                a {
+                    color: #ff6d3b;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -192,6 +210,10 @@
                 width: 42.15vw;
                 .inputName,
                 .inputPhoneNumber {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
                     input {
                         width: 19.83vw;
                         height: 4.51vw;
@@ -205,9 +227,16 @@
                     ::placeholder {
                         color: #ffa45c;
                     }
+                    small {
+                        margin-left: 5px;
+                    }
                 }
                 .inputEmail {
                     margin-top: 1.73vw;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
                     input {
                         height: 4.51vw;
                         border: none;
@@ -219,6 +248,9 @@
                     }
                     ::placeholder {
                         color: #ffa45c;
+                    }
+                    small {
+                        margin-left: 5px;
                     }
                 }
             }
@@ -236,13 +268,23 @@
                 }
             }
         }
-        .socialIcon_wrapper{
+        .socialIcon_wrapper {
             width: 19.86vw;
             margin-top: 6.66vw;
         }
-        .logoFooter_wrapper{
+        .logoFooter_wrapper {
             margin-top: 6.18vw;
             margin-bottom: 6.31vw;
         }
+    }
+    .lazy-load-image-background {
+        width: 100%;
+        height: 100%;
+    }
+    .error {
+        color: red;
+    }
+    .errorUnvisible {
+        display: none;
     }
 }

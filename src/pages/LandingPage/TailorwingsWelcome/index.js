@@ -4,10 +4,11 @@ import MobileVersion from "./MobileVersion";
 import DesktopVersion from "./DesktopVersion";
 class TailorwingsWelcome extends Component {
     render() {
+        const { history } = this.props;
         return (
             <Media queries={{ small: { maxWidth: 750 } }}>
                 {(matches) =>
-                    matches.small ? <MobileVersion /> : <DesktopVersion />
+                    matches.small ? <MobileVersion history={history}/> : <DesktopVersion history={history}/>
                 }
             </Media>
         );

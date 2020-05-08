@@ -35,7 +35,7 @@ const logPageViewGA = () => {
 const initPixel = () => {
     const options = {
         autoConfig: true, // set pixel's autoConfig
-        debug: false // enable logs
+        debug: false, // enable logs
     };
     ReactPixel.init("218331376051723", null, options);
 };
@@ -47,7 +47,7 @@ const logPageViewPixel = () => {
 export default class App extends Component {
     constructor(props) {
         super(props);
-        console.log('app');
+        console.log("app");
         this.state = {
             visibilityProducts: [],
             categoriesInfo: [],
@@ -69,17 +69,17 @@ export default class App extends Component {
             getAllData("designs"),
             getAllData("fabrics"),
             getWithCondition("collections", "visibility", true),
-            getWithCondition("topList", "visibility", true)
-        ]).then(dataList => {
-            if ( dataList.every(data => data != null || data !== '') ) {
+            getWithCondition("topList", "visibility", true),
+        ]).then((dataList) => {
+            if (dataList.every((data) => data != null || data !== "")) {
                 this.setState({
                     categoriesInfo: dataList[0],
                     visibilityProducts: dataList[1],
                     designsInfo: dataList[2],
                     fabricsInfo: dataList[3],
                     collectionsInfo: dataList[4],
-                    topListInfo: dataList[5]
-                })
+                    topListInfo: dataList[5],
+                });
             }
         });
     }
@@ -163,16 +163,24 @@ export default class App extends Component {
             categoriesInfo,
             fabricsInfo,
             collectionsInfo,
-            topListInfo
+            topListInfo,
         } = this.state;
-        if ( visibilityProducts.length > 0 ) {
+        if (visibilityProducts.length > 0) {
             visibilityProducts.forEach((product) => {
-                let relatedDesign = designsInfo.filter(design => design.id === product.designID)[0] || { price: 0, length: 0 };
-                let relatedFabric = fabricsInfo.filter(fabric => fabric.id === product.fabricID)[0] || { price: 0 };
-                let price = totalPriceCalculation(relatedDesign.price, relatedDesign.length, relatedFabric.price);
-                price = Math.ceil(price/1000) * 1000;
+                let relatedDesign = designsInfo.filter(
+                    (design) => design.id === product.designID
+                )[0] || { price: 0, length: 0 };
+                let relatedFabric = fabricsInfo.filter(
+                    (fabric) => fabric.id === product.fabricID
+                )[0] || { price: 0 };
+                let price = totalPriceCalculation(
+                    relatedDesign.price,
+                    relatedDesign.length,
+                    relatedFabric.price
+                );
+                price = Math.ceil(price / 1000) * 1000;
                 product.price = price;
-            })
+            });
         }
         return (
             <React.Fragment>
@@ -208,7 +216,7 @@ export default class App extends Component {
                         <Route
                             path="/product-detail"
                             // exact
-                            component={({match}) => (
+                            component={({ match }) => (
                                 <ProductDetail
                                     history={history}
                                     visibilityProducts={visibilityProducts}
@@ -246,13 +254,14 @@ export default class App extends Component {
                         <Route
                             path="/tailorwings-welcome"
                             exact
-                            component={() => <TailorwingsWelcome history={history} />}
+                            component={() => (
+                                <TailorwingsWelcome history={history} />
+                            )}
                         />
                         <ProtectedRoute
                             path="/admin"
-                            component={props => <Admin {...props} />}
+                            component={(props) => <Admin {...props} />}
                         />
-                        {/* <ProtectedRoute exact path="/admin" render={(props) => <Admin {...props} />} /> */}
                         <Route path="*" component={() => "404 NOT FOUND"} />
                     </Switch>
                 </Router>
