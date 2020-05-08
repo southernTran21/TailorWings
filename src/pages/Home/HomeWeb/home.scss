@@ -194,17 +194,16 @@
         // }
         .bannerLandingPage {
             background-color: #fff4e3;
-            height: 42.7vw;
+            min-height: 42.7vw;
             width: 100%;
-            margin-top: -1.73vw;
-            img{
+            img {
                 width: 100%;
                 height: 100%;
             }
             .contentBanner_wrapper {
                 position: absolute;
                 color: #ff6d3b;
-                margin-top: 5.48vw;
+                margin-top: 10.79vh;
                 margin-left: 50.2vw;
                 .title1 {
                     width: 40.41vw;
@@ -292,7 +291,7 @@
         width: 100%;
         background-color: #fff4e3;
         margin-top: 3.46vw;
-        img{
+        img {
             width: 100%;
             height: 100%;
         }

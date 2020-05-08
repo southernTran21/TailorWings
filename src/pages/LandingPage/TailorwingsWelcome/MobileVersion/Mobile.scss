@@ -31,7 +31,8 @@
         }
     }
     .bannerLandingPage {
-        margin-top: -4.27vw;
+        min-height: 53.14vh;
+        background-color: #fff4e3;
     }
     .formInput_wrapper {
         background-color: #fff4e3;
@@ -90,6 +91,7 @@
         margin-top: 8vw;
         .imageSection2_wrapper {
             height: 96.53vw;
+            background-color: #ffa45c;
         }
         .contentSection2_wrapper {
             position: absolute;
@@ -114,6 +116,10 @@
     }
     .section3_wrapper {
         margin-top: 6.13vw;
+        .imageSection3_wrapper{
+            background-color: #fff4e3;
+            min-height: 75.46vw;
+        }
         .contentSection3_wrapper {
             .title1Section3 {
                 font-weight: bold;
