@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 import Overlay from "../../../../assets/imageLandingPageWelcomeDesktop/Overlay image.jpg";
 import "./Desktop.scss";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 class WhyTailorwings extends Component {
     render() {
@@ -77,12 +78,19 @@ class WhyTailorwings extends Component {
                             stroke-width="5"
                         />
                     </svg>
-                    <div
-                        className="buttonContent_wrapper"
-                        onClick={() => this.props.history.push("/")}
+                    <Link
+                        style={{ textDecoration: "none" }}
+                        to={{
+                            pathname: "/shopping-store",
+                            search: "?cat=all&search",
+                        }}
                     >
-                        <span className="buttonContent">TRẢI NGHIỆM NGAY</span>
-                    </div>
+                        <div className="buttonContent_wrapper">
+                            <span className="buttonContent">
+                                TRẢI NGHIỆM NGAY
+                            </span>
+                        </div>
+                    </Link>
                 </div>
             </div>
         );

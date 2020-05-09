@@ -159,7 +159,7 @@
     .bodyPage {
         color: #111e6c !important;
         margin-top: 9.74vh;
-        img{
+        img {
             width: 100%;
             height: 100%;
         }
@@ -205,61 +205,80 @@
         //         top: 21vh;
         //     }
         // }
-        .bannerLandingPage {
-            min-height: 53.14vh;
-            background-color: #fff4e3;
-        }
-        .formInput_wrapper {
-            background-color: #fff4e3;
-            .title1FormInput {
-                width: 78.4vw;
-                margin-top: 7.39vw;
+        .bannerLandingPage_wrapper {
+            .bannerLandingPage {
+                min-height: 53.14vh;
+                background-color: #fff4e3;
             }
-            .title2FormInput {
-                font-size: 3.73vw;
-                font-weight: bold;
-                height: 17.6vw;
-                display: flex;
-                align-items: center;
-            }
-            .title3FormInput {
-                font-size: 2.66vw;
-            }
-            .formInput {
-                margin-top: 5.33vw;
-                .inputName,
-                .inputPhoneNumber,
-                .inputEmail {
-                    input {
-                        border: none;
-                        box-shadow: none;
-                        color: #ff6d3b;
-                        font-size: 3.2vw;
-                        width: 72.53vw;
-                        height: 12vw;
-                        border-radius: 8px;
+            .formInput_wrapper {
+                background-color: #fff4e3;
+                .title1FormInput {
+                    width: 78.4vw;
+                    margin-top: 7.39vw;
+                }
+                .title2FormInput {
+                    font-size: 3.73vw;
+                    font-weight: bold;
+                    height: 17.6vw;
+                    display: flex;
+                    align-items: center;
+                }
+                .title3FormInput {
+                    font-size: 2.66vw;
+                }
+                .formInput {
+                    margin-top: 5.33vw;
+                    .inputName,
+                    .inputPhoneNumber,
+                    .inputEmail {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        input {
+                            border: none;
+                            box-shadow: none;
+                            color: #ff6d3b;
+                            font-size: 3.2vw;
+                            width: 72.53vw;
+                            height: 12vw;
+                            border-radius: 8px;
+                        }
+                        ::placeholder {
+                            color: #ffa45c;
+                        }
+                        small {
+                            margin-left: 5px;
+                        }
                     }
-                    ::placeholder {
-                        color: #ffa45c;
+                    .inputPhoneNumber,
+                    .inputEmail {
+                        margin-top: 4vw;
+                    }
+                    .buttonAcceptForm_wrapper {
+                        margin-top: 6.66vw;
+                        margin-bottom: 10.4vw;
+                        .buttonAcceptForm {
+                            background-color: #ff6d3b;
+                            color: white;
+                            font-weight: bold;
+                            font-size: 3.73vw;
+                            border-radius: 15px;
+                            width: 58.13vw;
+                            height: 13.06vw;
+                        }
                     }
                 }
-                .inputPhoneNumber,
-                .inputEmail {
-                    margin-top: 4vw;
-                }
-                .buttonAcceptForm_wrapper {
-                    margin-top: 6.66vw;
-                    margin-bottom: 10.4vw;
-                    .buttonAcceptForm {
-                        background-color: #ff6d3b;
-                        color: white;
-                        font-weight: bold;
-                        font-size: 3.73vw;
-                        border-radius: 15px;
-                        width: 58.13vw;
-                        height: 13.06vw;
-                    }
-                }
+            }
+            .lazy-load-image-background {
+                width: 100%;
+                height: 100%;
+            }
+            .error {
+                color: red;
+            }
+            .errorUnvisible {
+                display: none;
             }
         }
         .section2_wrapper {

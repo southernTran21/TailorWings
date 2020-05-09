@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // import Image, SVG
 import logoTW from "../../../../assets/imageHomePage/Logo Header.svg";
 
@@ -9,12 +10,17 @@ class Navbar extends Component {
                 <div className="logoTW">
                     <img src={logoTW} alt="" />
                 </div>
-                <div
-                    className="button d-flex justify-content-center align-items-center"
-                    onClick={() => this.props.history.push("/")}
+                <Link
+                    style={{ textDecoration: "none" }}
+                    to={{
+                        pathname: "/shopping-store",
+                        search: "?cat=all&search",
+                    }}
                 >
-                    KHÁM PHÁ NGAY
-                </div>
+                    <div className="button d-flex justify-content-center align-items-center">
+                        KHÁM PHÁ NGAY
+                    </div>
+                </Link>
             </div>
         );
     }

@@ -83,8 +83,8 @@ class Banner extends Component {
                     </div>
                     <div className="title2FormInput text-center">
                         <span>
-                            Đầm Thiết Kế May Theo Số Đo Của
-                            <br /> Bạn Giá Chỉ Từ 500K
+                            Đầm Thiết Kế May Theo Số Đo
+                            <br /> Của Bạn Giá Chỉ Từ 500K
                         </span>
                     </div>
                     <div className="title3FormInput">

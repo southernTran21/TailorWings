@@ -225,6 +225,10 @@
                         width: 35.55vw;
                         .inputName,
                         .inputPhoneNumber {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
                             input {
                                 width: 16.73vw;
                                 height: 4.51vw;
@@ -238,9 +242,16 @@
                             ::placeholder {
                                 color: #ffa45c;
                             }
+                            small {
+                                margin-left: 5px;
+                            }
                         }
                         .inputEmail {
                             margin-top: 1.73vw;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
                             input {
                                 height: 4.51vw;
                                 border: none;
@@ -252,6 +263,9 @@
                             }
                             ::placeholder {
                                 color: #ffa45c;
+                            }
+                            small {
+                                margin-left: 5px;
                             }
                         }
                     }
@@ -269,6 +283,16 @@
                         }
                     }
                 }
+            }
+            .lazy-load-image-background {
+                width: 100%;
+                height: 100%;
+            }
+            .error {
+                color: red;
+            }
+            .errorUnvisible {
+                display: none;
             }
         }
     }
@@ -320,6 +344,9 @@
                     border-radius: 15px;
                 }
             }
+        }
+        a {
+            text-decoration: none;
         }
     }
     .categories_wrapper {

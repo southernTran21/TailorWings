@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import OverLay from "../../../../assets/imageLandingPageWelcomeMobile/Overlay image.jpg";
+import { Link } from "react-router-dom";
 
 class WhyTailorwings extends Component {
     render() {
@@ -64,12 +65,17 @@ class WhyTailorwings extends Component {
                             stroke-width="5"
                         />
                     </svg>
-                    <div
-                        className="buttonSection2 d-flex justify-content-center align-items-center"
-                        onClick={() => this.props.history.push("/")}
+                    <Link
+                        style={{ textDecoration: "none" }}
+                        to={{
+                            pathname: "/shopping-store",
+                            search: "?cat=all&search",
+                        }}
                     >
-                        <span>TRẢI NGHIỆM NGAY</span>
-                    </div>
+                        <div className="buttonSection2 d-flex justify-content-center align-items-center">
+                            <span>TRẢI NGHIỆM NGAY</span>
+                        </div>
+                    </Link>
                 </div>
             </div>
         );

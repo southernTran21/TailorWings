@@ -84,8 +84,8 @@ class Banner extends Component {
                     </div>
                     <div className="title2 d-flex align-items-center justify-content-center text-center">
                         <span>
-                            Đầm Thiết Kế May Theo Số Đo Của
-                            <br /> Bạn Giá Chỉ Từ 500K
+                            Đầm Thiết Kế May Theo Số Đo
+                            <br /> Của Bạn Giá Chỉ Từ 500K
                         </span>
                     </div>
                     <div className="title3 d-flex justify-content-center">
