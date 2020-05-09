@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import NumberFormat from "react-number-format";
 import { validateEmail } from "../../../../services/CommonFunction";
 import { setDocument } from "../../../../services/Fundamental";
-
 class Footer extends Component {
     constructor(props) {
         super(props);
@@ -65,52 +64,51 @@ class Footer extends Component {
             <div className="footerLandingPage_wrapper d-flex flex-column align-items-center">
                 <span className="title1Footer text-center">
                     TAILOR WINGS <br />
-                    WEBSITE ĐẶT MAY ĐẦM THIẾT KẾ CỦA BẠN
+                    WEBSITE ĐẶT MAY
+                    <br /> ĐẦM THIẾT KẾ CỦA BẠN
                 </span>
                 <span className="title2Footer text-center">
-                    ĐĂNG KÝ ĐỂ NHẬN NGAY PHIẾU MUA
-                    <br /> HÀNG{" "}
-                    <span className="text-underline">TRỊ GIÁ 168.000đ</span>
+                    ĐĂNG KÝ ĐỂ NHẬN NGAY PHIẾU MUA HÀNG
+                    <br />
+                    TRỊ GIÁ 168.000đ
                 </span>
                 <div className="formInput_wrapper d-flex flex-column align-items-center">
                     <div className="formInput">
-                        <div className="d-flex justify-content-between">
-                            <div className="inputName">
-                                <Input
-                                    name="name"
-                                    value={name}
-                                    placeholder="Họ Tên"
-                                    maxLength={50}
-                                    onChange={this.onInputChange}
-                                />
-                                <small
-                                    className={classNames({
-                                        error: errorValidate[0],
-                                        errorUnvisible: !errorValidate[0],
-                                    })}
-                                >
-                                    Vui lòng nhập tên khách hàng
-                                </small>
-                            </div>
-                            <div className="inputPhoneNumber">
-                                <NumberFormat
-                                    name="phone"
-                                    value={phone}
-                                    className="ant-input"
-                                    placeholder="Số Điện Thoại"
-                                    format="#### ### ###"
-                                    mask="_"
-                                    onChange={this.onInputChange}
-                                />
-                                <small
-                                    className={classNames({
-                                        error: errorValidate[1],
-                                        errorUnvisible: !errorValidate[1],
-                                    })}
-                                >
-                                    Vui lòng nhập đúng 10 số điện thoại
-                                </small>
-                            </div>
+                        <div className="inputName">
+                            <Input
+                                name="name"
+                                value={name}
+                                placeholder="Họ Tên"
+                                maxLength={50}
+                                onChange={this.onInputChange}
+                            />
+                            <small
+                                className={classNames({
+                                    error: errorValidate[0],
+                                    errorUnvisible: !errorValidate[0],
+                                })}
+                            >
+                                Vui lòng nhập tên khách hàng
+                            </small>
+                        </div>
+                        <div className="inputPhoneNumber">
+                            <NumberFormat
+                                name="phone"
+                                value={phone}
+                                className="ant-input"
+                                placeholder="Số Điện Thoại"
+                                format="#### ### ###"
+                                mask="_"
+                                onChange={this.onInputChange}
+                            />
+                            <small
+                                className={classNames({
+                                    error: errorValidate[1],
+                                    errorUnvisible: !errorValidate[1],
+                                })}
+                            >
+                                Vui lòng nhập đúng 10 số điện thoại
+                            </small>
                         </div>
                         <div className="inputEmail">
                             <Input
@@ -129,14 +127,14 @@ class Footer extends Component {
                                 Vui lòng nhập đúng địa chỉ email
                             </small>
                         </div>
-                    </div>
-                    <div className="buttonAcceptForm_wrapper">
-                        <span
-                            className="buttonAcceptForm d-flex justify-content-center align-items-center"
-                            onClick={this.onCustomerInfoValidate}
-                        >
-                            NHẬN QUÀ NGAY
-                        </span>
+                        <div className="buttonAcceptForm_wrapper d-flex justify-content-center">
+                            <span
+                                className="buttonAcceptForm d-flex justify-content-center align-items-center"
+                                onClick={this.onCustomerInfoValidate}
+                            >
+                                NHẬN QUÀ NGAY
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div className="socialIcon_wrapper d-flex justify-content-between">
@@ -146,8 +144,8 @@ class Footer extends Component {
                         target="_blank"
                     >
                         <svg
-                            width="3.33vw"
-                            height="3.33vw"
+                            width="8.8vw"
+                            height="8.8vw"
                             viewBox="0 0 48 48"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -220,8 +218,8 @@ class Footer extends Component {
                         target="_blank"
                     >
                         <svg
-                            width="3.33vw"
-                            height="3.33vw"
+                            width="8.8vw"
+                            height="8.8vw"
                             viewBox="0 0 48 48"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -254,8 +252,8 @@ class Footer extends Component {
                         </svg>
                     </a>
                     <svg
-                        width="3.33vw"
-                        height="3.33vw"
+                        width="8.8vw"
+                        height="8.8vw"
                         viewBox="0 0 48 48"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -285,8 +283,8 @@ class Footer extends Component {
                 </div>
                 <div className="logoFooter_wrapper">
                     <svg
-                        width="15.55vw"
-                        height="12.01vw"
+                        width="35.2vw"
+                        height="27.2vw"
                         viewBox="0 0 224 173"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

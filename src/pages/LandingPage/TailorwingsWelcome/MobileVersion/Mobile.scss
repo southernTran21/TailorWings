@@ -55,6 +55,10 @@
             .inputName,
             .inputPhoneNumber,
             .inputEmail {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
                 input {
                     border: none;
                     box-shadow: none;
@@ -66,6 +70,9 @@
                 }
                 ::placeholder {
                     color: #ffa45c;
+                }
+                small {
+                    margin-left: 5px;
                 }
             }
             .inputPhoneNumber,
@@ -116,7 +123,7 @@
     }
     .section3_wrapper {
         margin-top: 6.13vw;
-        .imageSection3_wrapper{
+        .imageSection3_wrapper {
             background-color: #fff4e3;
             min-height: 75.46vw;
         }
@@ -143,6 +150,10 @@
                 justify-content: center;
                 align-items: center;
             }
+            a {
+                color: #ff6d3b;
+                text-decoration: none;
+            }
         }
     }
     .footerLandingPage_wrapper {
@@ -153,23 +164,34 @@
             font-size: 5.33vw;
             margin-top: 9.06vw;
         }
-        .title2Footer{
+        .title2Footer {
             font-size: 2.66vw;
             font-weight: bold;
             margin-top: 2.8vw;
         }
-        .formInput_wrapper{
+        .formInput_wrapper {
             margin-top: 8vw;
-            .formInput{
+            .formInput {
                 margin: 0;
             }
         }
-        .socialIcon_wrapper{
+        .socialIcon_wrapper {
             width: 36.8vw;
         }
-        .logoFooter_wrapper{
+        .logoFooter_wrapper {
             margin-top: 11.33vw;
             margin-bottom: 10.66vw;
         }
+    }
+
+    .lazy-load-image-background {
+        width: 100%;
+        height: 100%;
+    }
+    .error {
+        color: red;
+    }
+    .errorUnvisible {
+        display: none;
     }
 }

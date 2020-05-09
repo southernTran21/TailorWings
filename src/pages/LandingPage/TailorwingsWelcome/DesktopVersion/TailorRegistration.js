@@ -34,15 +34,13 @@ class TailorRegistration extends Component {
                         Từ 10.000.000 - 15.000.000 <br />
                         triệu đồng / tháng
                     </span>
-                    <div className="buttonAccept">
-                        <a
-                            className='buttonAcceptForm'
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSfuRlkLX1llCN0L9ZAwmhCxLS3NT5efPxNsbRMmxT3Oe7z0qw/viewform"
-                            target="_blank"
-                        >
-                            ĐĂNG KÝ NHẬN MAY
-                        </a>
-                    </div>
+                    <a
+                        className="buttonAcceptForm"
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfuRlkLX1llCN0L9ZAwmhCxLS3NT5efPxNsbRMmxT3Oe7z0qw/viewform"
+                        target="_blank"
+                    >
+                        <div className="buttonAccept">ĐĂNG KÝ NHẬN MAY</div>
+                    </a>
                 </div>
             </div>
         );

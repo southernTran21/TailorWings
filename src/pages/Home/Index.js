@@ -49,9 +49,9 @@ export default class Home extends Component {
         // }
     }
 
-    componentWillMount() {
-        clearTimeout(timeOut);
-    }
+    // componentWillMount() {
+    //     clearTimeout(timeOut);
+    // }
 
     renderContentHandling = () => {
         const { isPageLoading } = this.state;

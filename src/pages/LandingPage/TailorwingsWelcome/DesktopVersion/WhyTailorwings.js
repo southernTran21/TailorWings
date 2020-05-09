@@ -77,7 +77,10 @@ class WhyTailorwings extends Component {
                             stroke-width="5"
                         />
                     </svg>
-                    <div className="buttonContent_wrapper" onClick={() => this.props.history.push('/')}>
+                    <div
+                        className="buttonContent_wrapper"
+                        onClick={() => this.props.history.push("/")}
+                    >
                         <span className="buttonContent">TRẢI NGHIỆM NGAY</span>
                     </div>
                 </div>

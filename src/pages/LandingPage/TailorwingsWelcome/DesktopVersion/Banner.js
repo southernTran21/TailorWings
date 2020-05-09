@@ -2,11 +2,11 @@ import { Input, message } from "antd";
 import classNames from "classnames";
 import React, { Component } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import NumberFormat from "react-number-format";
 import Models from "../../../../assets/imageLandingPageWelcomeDesktop/Models.jpg";
 import titleBanner from "../../../../assets/imageLandingPageWelcomeDesktop/titleBanner.png";
 import { validateEmail } from "../../../../services/CommonFunction";
 import { setDocument } from "../../../../services/Fundamental";
-import NumberFormat from "react-number-format";
 
 class Banner extends Component {
     constructor(props) {
