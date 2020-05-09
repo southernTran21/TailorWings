@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default class ProductImage extends Component {
     render() {
-        const { images, productName } = this.props;
-
+        const { images, productName, productID } = this.props;
+        let url = `/product-detail/image-view/${productID}`;
         return (
             <div className="productImage d-flex">
                 <div className="left">
@@ -12,13 +12,10 @@ export default class ProductImage extends Component {
                         <Link
                             className="link"
                             to={{
-                                pathname: "/product-detail/image-view",
+                                pathname: url,
                             }}
                         >
-                            <div
-                                className="image"
-                                // onClick={() => this.props.onImageView(true)}
-                            >
+                            <div className="image">
                                 <img src={images[2]} alt={productName} />
                             </div>
                         </Link>
@@ -27,13 +24,10 @@ export default class ProductImage extends Component {
                         <Link
                             className="link"
                             to={{
-                                pathname: "/product-detail/image-view",
+                                pathname: url,
                             }}
                         >
-                            <div
-                                className="image"
-                                // onClick={() => this.props.onImageView(true)}
-                            >
+                            <div className="image">
                                 <img src={images[1]} alt={productName} />
                             </div>
                         </Link>
@@ -43,13 +37,10 @@ export default class ProductImage extends Component {
                     <Link
                         className="link"
                         to={{
-                            pathname: "/product-detail/image-view",
+                            pathname: url,
                         }}
                     >
-                        <div
-                            className="image"
-                            // onClick={() => this.props.onImageView(true)}
-                        >
+                        <div className="image">
                             <img src={images[0]} alt={productName} />
                         </div>
                     </Link>

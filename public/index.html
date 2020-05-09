@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    "gtm.start": new Date().getTime(),
+                    event: "gtm.js",
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != "dataLayer" ? "&l=" + l : "";
+                j.async = true;
+                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, "script", "dataLayer", "GTM-MQNW5B5");
+        </script>
+        <!-- End Google Tag Manager -->
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159143322-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-652284793');
-      gtag('config', 'UA-159143322-2');
-    </script>
-  <!-- END -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-159143322-2"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "AW-652284793");
+            gtag("config", "UA-159143322-2");
+        </script>
+        <!-- END -->
 
-  <!-- Event snippet for Click Đặt may ngay - Covid 1 conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<!-- <script>
-    function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion', {
-        'send_to': 'AW-652284793/8TQ8CLvQ3MwBEPmmhLcC',
-        'event_callback': callback
-    });
-    return false;
-  }
-  </script> -->
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-XXXX');</script>
-  <!-- End Google Tag Manager -->
-  
-  <!-- Facebook Pixel Code -->
-  <!-- <script>
+        <!-- Facebook Pixel Code -->
+        <!-- <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
@@ -54,45 +51,89 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     fbq('init', '506451380072555');
     fbq('track', 'PageView');
   </script> -->
-  
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=506451380072555&ev=PageView&noscript=1" /></noscript>
-  <!-- End Facebook Pixel Code -->
-  <meta charset="utf-8" />
-  <link rel="shortcut icon" href="logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="logo.png" />
-  <!--
+
+        <noscript
+            ><img
+                height="1"
+                width="1"
+                style="display: none;"
+                src="https://www.facebook.com/tr?id=506451380072555&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Facebook Pixel Code -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="logo.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta
+            name="description"
+            content="Web site created using create-react-app"
+        />
+        <link rel="apple-touch-icon" href="logo.png" />
+        <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <!-- Bootstrap core CSS -->
-  <link href="%PUBLIC_URL%/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <!-- Bootstrap core CSS -->
+        <link
+            href="%PUBLIC_URL%/vendor/bootstrap/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
 
-  <!-- Custom fonts for this template -->
-  <link href="%PUBLIC_URL%/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
-    type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900|Varela+Round&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+        <!-- Custom fonts for this template -->
+        <link
+            href="%PUBLIC_URL%/vendor/fontawesome-free/css/all.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Kaushan+Script"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900|Varela+Round&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+            rel="stylesheet"
+        />
 
-  <!-- react-id-swiper -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+        <!-- react-id-swiper -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
+        />
 
-  <!-- Custom styles for this template -->
-  <!-- <link href="%PUBLIC_URL%/css/agency.min.css" rel="stylesheet"> -->
-  <link href="./scss/agency.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <!-- <link href="%PUBLIC_URL%/css/agency.min.css" rel="stylesheet"> -->
+        <link href="./scss/agency.css" rel="stylesheet" />
 
-  <!--
+        <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -101,24 +142,32 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/42f4e83243.js"></script>
-  <!-- ... -->
-  <title>TailorWings</title>
-</head>
+        <!-- Google Font -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/42f4e83243.js"></script>
+        <!-- ... -->
+        <title>TailorWings</title>
+    </head>
 
-<body style="background-color: white;">
-  
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQNW5B5"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <body style="background-color: white;">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript
+            ><iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-MQNW5B5"
+                height="0"
+                width="0"
+                style="display: none; visibility: hidden;"
+            ></iframe
+        ></noscript>
+        <!-- End Google Tag Manager (noscript) -->
 
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-  <!--
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -128,32 +177,33 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0"></script>
+        <script
+            async
+            defer
+            crossorigin="anonymous"
+            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0"
+        ></script>
 
+        <!-- Bootstrap core JavaScript -->
+        <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+        <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
+        <!-- Plugin JavaScript -->
+        <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
-  <!-- Bootstrap core JavaScript -->
-  <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
-  <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+        <!-- Contact form JavaScript -->
+        <!-- <script src="js/jqBootstrapValidation.js"></script> -->
+        <!-- <script src="js/contact_me.js"></script> -->
 
-  <!-- Plugin JavaScript -->
-  <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
+        <!-- Custom scripts for this template -->
+        <!-- <script src="js/agency.min.js"></script> -->
+    </body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- <script src="/__/firebase/7.6.1/firebase-app.js"></script> -->
 
-  <!-- Contact form JavaScript -->
-  <!-- <script src="js/jqBootstrapValidation.js"></script> -->
-  <!-- <script src="js/contact_me.js"></script> -->
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!-- <script src="/__/firebase/7.6.1/firebase-analytics.js"></script> -->
 
-  <!-- Custom scripts for this template -->
-  <!-- <script src="js/agency.min.js"></script> -->
-</body>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<!-- <script src="/__/firebase/7.6.1/firebase-app.js"></script> -->
-
-<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-<!-- <script src="/__/firebase/7.6.1/firebase-analytics.js"></script> -->
-
-<!-- Initialize Firebase -->
-<!-- <script src="/__/firebase/init.js"></script> -->
-
+    <!-- Initialize Firebase -->
+    <!-- <script src="/__/firebase/init.js"></script> -->
 </html>

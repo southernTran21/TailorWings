@@ -16,16 +16,6 @@ class ProductSwiper extends Component {
         this.props.onProductImageSwiped(direction);
     };
 
-    // onImageClicked = (e) => {
-    //     const { productSliderIndex } = this.props;
-    //     let index = Number(e.target.name);
-    //     if (index === productSliderIndex) {
-    //         this.props.onProductModalStatusChanged(true);
-    //     } else {
-    //         this.props.selectHandling(e);
-    //     }
-    // };
-
     onImageLoaded = (e) => {
         console.log("loaded");
         let { isImageLoad } = this.state;
@@ -45,6 +35,7 @@ class ProductSwiper extends Component {
         let imageList = new Array(5).fill("");
         imageList[productSliderIndex] =
             renderProducts[productSliderIndex].image[0];
+        let imageViewUrl = `/product-detail/image-view/${renderProducts[productSliderIndex].productID}`;
         return (
             <Swipeable
                 trackMouse
@@ -89,15 +80,11 @@ class ProductSwiper extends Component {
                             id="s5"
                             checked={productSelectedState[4]}
                         />
-                        <label
-                            // onClick={(e) => this.onImageClicked(e)}
-                            htmlFor="s1"
-                            id="slide1"
-                        >
+                        <label htmlFor="s1" id="slide1">
                             <Link
                                 className="link"
                                 to={{
-                                    pathname: "/product-detail/image-view",
+                                    pathname: imageViewUrl,
                                 }}
                             >
                                 {imageList[0] !== "" ? (
@@ -109,15 +96,11 @@ class ProductSwiper extends Component {
                                 ) : null}
                             </Link>
                         </label>
-                        <label
-                            // onClick={(e) => this.onImageClicked(e)}
-                            htmlFor="s2"
-                            id="slide2"
-                        >
+                        <label htmlFor="s2" id="slide2">
                             <Link
                                 className="link"
                                 to={{
-                                    pathname: "/product-detail/image-view",
+                                    pathname: imageViewUrl,
                                 }}
                             >
                                 {imageList[1] !== "" ? (
@@ -129,15 +112,11 @@ class ProductSwiper extends Component {
                                 ) : null}
                             </Link>
                         </label>
-                        <label
-                            // onClick={(e) => this.onImageClicked(e)}
-                            htmlFor="s3"
-                            id="slide3"
-                        >
+                        <label htmlFor="s3" id="slide3">
                             <Link
                                 className="link"
                                 to={{
-                                    pathname: "/product-detail/image-view",
+                                    pathname: imageViewUrl,
                                 }}
                             >
                                 {imageList[2] !== "" ? (
@@ -149,15 +128,11 @@ class ProductSwiper extends Component {
                                 ) : null}
                             </Link>
                         </label>
-                        <label
-                            // onClick={(e) => this.onImageClicked(e)}
-                            htmlFor="s4"
-                            id="slide4"
-                        >
+                        <label htmlFor="s4" id="slide4">
                             <Link
                                 className="link"
                                 to={{
-                                    pathname: "/product-detail/image-view",
+                                    pathname: imageViewUrl,
                                 }}
                             >
                                 {imageList[3] !== "" ? (
@@ -169,15 +144,11 @@ class ProductSwiper extends Component {
                                 ) : null}
                             </Link>
                         </label>
-                        <label
-                            // onClick={(e) => this.onImageClicked(e)}
-                            htmlFor="s5"
-                            id="slide5"
-                        >
+                        <label htmlFor="s5" id="slide5">
                             <Link
                                 className="link"
                                 to={{
-                                    pathname: "/product-detail/image-view",
+                                    pathname: imageViewUrl,
                                 }}
                             >
                                 {imageList[4] !== "" ? (

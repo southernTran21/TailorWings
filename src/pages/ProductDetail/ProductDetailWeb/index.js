@@ -121,7 +121,7 @@ class ProductDetailWeb extends Component {
             productList,
             fabricList,
         } = this.state;
-        const { match } = this.props;
+        const { match, visibilityProducts, fabricsInfo } = this.props;
         return (
             <div className="productDetail-container">
                 <div className="pageProductDetailWeb-wrapper">
@@ -137,7 +137,7 @@ class ProductDetailWeb extends Component {
                         />
                         <Route
                             path="/product-detail/fabric-selection/:productName"
-                            exact
+                            // exact
                             component={() => (
                                 <FabricSelectionWeb
                                     productList={productList}
@@ -168,13 +168,14 @@ class ProductDetailWeb extends Component {
                             )}
                         />
                         <Route
-                            path="/product-detail/image-view"
+                            path="/product-detail/image-view/:productID"
                             exact
-                            component={() => (
+                            component={({ match }) => (
                                 <ImageView
+                                    match={match}
                                     history={this.props.history}
-                                    productImages={currentSelectedProduct.image}
-                                    productName={currentSelectedProduct.name}
+                                    visibilityProducts={visibilityProducts}
+                                    fabricsInfo={fabricsInfo}
                                 />
                             )}
                         />

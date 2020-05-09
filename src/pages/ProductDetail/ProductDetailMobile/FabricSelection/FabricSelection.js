@@ -2,12 +2,10 @@ import classNames from "classnames";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import iconShoppingBadge from "../../../../assets/imageHomePage/shopping-cart.svg";
-//
-import ProductModal from "../ProductModal";
+import { removePunctuation } from "../../../../services/CommonFunction";
 import "./FabricSelection.scss";
 import FabricSwiper from "./FabricSwiper";
 import ProductSwiper from "./ProductSwiper";
-import { removePunctuation } from "../../../../services/CommonFunction";
 
 class FabricSelection extends Component {
     constructor(props) {
@@ -18,7 +16,6 @@ class FabricSelection extends Component {
             price: 0,
             totalProductsOnCart: 0,
             /* ------------- */
-            isProductModalShow: false,
             isSwiperTouch: false,
             currentProductIndex: 0,
             productSliderIndex: 0,
@@ -264,12 +261,6 @@ class FabricSelection extends Component {
         );
     };
 
-    onProductModalStatusChanged = (isShow) => {
-        this.setState({
-            isProductModalShow: isShow,
-        });
-    };
-
     render() {
         const { currentSelectedProduct, productList, fabricList } = this.props;
         const {
@@ -278,7 +269,6 @@ class FabricSelection extends Component {
             currentProductIndex,
             price,
             productSliderIndex,
-            isProductModalShow,
             totalProductsOnCart,
         } = this.state;
         /* ------------- */
@@ -311,16 +301,12 @@ class FabricSelection extends Component {
         return (
             <div
                 className={classNames(
-                    "pageFabricSelection_mobile d-flex flex-column align-items-center justify-content-start",
-                    { fixed_top: isProductModalShow }
+                    "pageFabricSelection_mobile d-flex flex-column align-items-center justify-content-start"
                 )}
             >
                 <div className="navbarHeader d-flex flex-row align-items-center justify-content-between">
                     <div className="iconBack_wrapper">
-                        <div
-                            className="iconBack"
-                            // onClick={() => window.history.back()}
-                        >
+                        <div className="iconBack">
                             <Link
                                 to={{
                                     pathname: "/shopping-store",
@@ -404,13 +390,6 @@ class FabricSelection extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <ProductModal
-                    modalImages={renderProducts[productSliderIndex].image}
-                    isProductModalShow={isProductModalShow}
-                    onProductModalStatusChanged={(isShow) =>
-                        this.onProductModalStatusChanged(isShow)
-                    }
-                /> */}
             </div>
         );
     }

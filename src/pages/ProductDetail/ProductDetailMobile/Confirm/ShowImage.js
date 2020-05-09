@@ -7,16 +7,15 @@ import { Link } from "react-router-dom";
 export default class ShowImage extends Component {
     render() {
         const { currentFabricInfo, currentSelectedProduct } = this.props;
+        let imageViewUrl = `/product-detail/image-view/${currentSelectedProduct.productID}`;
         return (
             <div className="imgProduct d-flex justify-content-center align-items-center">
                 <div className="row1">
-                    <div
-                        className="image"
-                    >
+                    <div className="image">
                         <Link
                             className="link"
                             to={{
-                                pathname: "/product-detail/image-view",
+                                pathname: imageViewUrl,
                             }}
                         >
                             <LazyLoadImage
@@ -26,13 +25,11 @@ export default class ShowImage extends Component {
                             />
                         </Link>
                     </div>
-                    <div
-                        className="image"
-                    >
+                    <div className="image">
                         <Link
                             className="link"
                             to={{
-                                pathname: "/product-detail/image-view",
+                                pathname: imageViewUrl,
                             }}
                         >
                             <LazyLoadImage
@@ -44,13 +41,11 @@ export default class ShowImage extends Component {
                     </div>
                 </div>
                 <div className="row2">
-                    <div
-                        className="image"
-                    >
+                    <div className="image">
                         <Link
                             className="link"
                             to={{
-                                pathname: "/product-detail/image-view",
+                                pathname: imageViewUrl,
                             }}
                         >
                             <LazyLoadImage
@@ -60,13 +55,11 @@ export default class ShowImage extends Component {
                             />
                         </Link>
                     </div>
-                    <div
-                        className="image"
-                    >
+                    <div className="image">
                         <Link
                             className="link"
                             to={{
-                                pathname: "/product-detail/image-view",
+                                pathname: imageViewUrl,
                             }}
                         >
                             <LazyLoadImage

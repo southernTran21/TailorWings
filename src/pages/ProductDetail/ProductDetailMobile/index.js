@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import Confirm from "./Confirm/Confirm";
 import FabricSelection from "./FabricSelection/FabricSelection";
 import SizeSelection from "./SizeSelection/SizeSelection";
-import ProductModal from "./ProductModal";
+import ImageView from "./ImageView";
 
 class ProductDetailMobile extends Component {
     constructor(props) {
@@ -26,7 +26,6 @@ class ProductDetailMobile extends Component {
             productList: [],
             fabricList: [],
             isConfirmNavigate: false,
-            modalImages: new Array(4).fill(""),
         };
     }
 
@@ -100,15 +99,12 @@ class ProductDetailMobile extends Component {
             currentSelectedFabric = { ...fabricList[0] };
         }
         /* ------------- */
-        let modalImages = [...currentSelectedProduct.image];
-        modalImages.push(currentSelectedFabric.image);
         /* ------------- */
         this.setState({
             currentSelectedProduct,
             currentSelectedFabric,
             productList,
             fabricList,
-            modalImages,
         });
     };
 
@@ -135,20 +131,16 @@ class ProductDetailMobile extends Component {
             let currentSelectedFabric = fabricList.find(
                 (fabric) => fabric.id === currentSelectedProduct.fabricID
             ) || { image: [""] };
-            let modalImages = [...currentSelectedProduct.image];
-            modalImages.push(currentSelectedFabric.image);
             if (from === "size-selection") {
                 this.setState({
                     currentSelectedProduct,
                     isConfirmNavigate: true,
                     currentSelectedFabric,
-                    modalImages,
                 });
             } else {
                 this.setState({
                     currentSelectedProduct,
                     currentSelectedFabric,
-                    modalImages,
                     isConfirmNavigate: false,
                 });
             }
@@ -170,9 +162,8 @@ class ProductDetailMobile extends Component {
             currentSelectedProduct,
             currentSelectedFabric,
             isConfirmNavigate,
-            modalImages,
         } = this.state;
-        const { sizeImages } = this.props;
+        const { sizeImages, visibilityProducts, fabricsInfo } = this.props;
 
         return (
             <div
@@ -229,9 +220,16 @@ class ProductDetailMobile extends Component {
                     )}
                 />
                 <Route
-                    path="/product-detail/image-view"
+                    path="/product-detail/image-view/:productID"
                     exact
-                    component={() => <ProductModal modalImages={modalImages} />}
+                    component={({ match }) => (
+                        <ImageView
+                            match={match}
+                            history={this.props.history}
+                            visibilityProducts={visibilityProducts}
+                            fabricsInfo={fabricsInfo}
+                        />
+                    )}
                 />
             </div>
         );

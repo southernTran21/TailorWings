@@ -28,13 +28,16 @@ export default class FabricSelectionWeb extends Component {
         let info = productList.find(
             (product) => product.fabricID === selectedFabric
         );
-        let updatedProduct = { ...info };
-        updatedProduct.size = '';
-        updatedProduct.bodyMetric = new Array(3).fill('');
-        updatedProduct.quantity = 1;
-        this.setState({
-            currentSelectedProduct: updatedProduct,
-        });
+        if (info.hasOwnProperty("fabricID")) {
+            let updatedProduct = { ...info };
+            updatedProduct.size = "";
+            updatedProduct.bodyMetric = new Array(3).fill("");
+            updatedProduct.quantity = 1;
+            // this.props.onSelectedProductUpdating(updatedProduct);
+            this.setState({
+                currentSelectedProduct: updatedProduct,
+            });
+        }
     };
 
     onFabricChanged = (aciveFabricIndex, activeFabricID) => {
@@ -47,11 +50,10 @@ export default class FabricSelectionWeb extends Component {
     // Function name: onSizeSelectionNavigating
     // Description: used for update new $currentSelectedProduct to ProductDetailWeb/index.js. Then, navigate to SizeSelection
     onSizeSelectionNavigating = () => {
-        console.log('onSizeSelectionNavigating');
+        console.log("onSizeSelectionNavigating");
         const { currentSelectedProduct } = this.state;
-        if ( currentSelectedProduct ) {
-            console.log('currentSelectedProduct :>> ', currentSelectedProduct);
-            this.props.onSelectedProductUpdating( currentSelectedProduct )
+        if (currentSelectedProduct) {
+            this.props.onSelectedProductUpdating(currentSelectedProduct);
         }
     };
     // END
@@ -86,6 +88,7 @@ export default class FabricSelectionWeb extends Component {
                 <ProductImage
                     images={currentSelectedProduct.image}
                     productName={currentSelectedProduct.name}
+                    productID={currentSelectedProduct.productID}
                     onImageView={this.props.onImageView}
                 />
                 <div className="d-flex flex-column">
@@ -99,7 +102,9 @@ export default class FabricSelectionWeb extends Component {
                         productPrice={currentSelectedProduct.price}
                         onselectionStepChange={this.props.onselectionStepChange}
                         urlSearch={`?design=${currentSelectedProduct.designID}&fabric=${currentSelectedProduct.fabricID}`}
-                        onSizeSelectionNavigating={this.onSizeSelectionNavigating}
+                        onSizeSelectionNavigating={
+                            this.onSizeSelectionNavigating
+                        }
                     />
                 </div>
             </div>

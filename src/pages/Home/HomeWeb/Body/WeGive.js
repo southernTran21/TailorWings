@@ -11,7 +11,7 @@ export default class WeGive extends Component {
                         <br /> sống của mình tốt hơn.
                     </span>
                 </div>
-                <div className="image d-flex justify-content-between align-items-center">
+                <div className="image d-flex justify-content-center align-items-center">
                     <svg
                         width="992"
                         height="189"
