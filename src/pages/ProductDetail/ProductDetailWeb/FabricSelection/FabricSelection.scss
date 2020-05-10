@@ -62,7 +62,7 @@
         margin-left: 0.83vw;
         #fabricList-content {
             width: 22.5vw;
-            padding-right: .5vw;
+            padding-right: 0.5vw;
             max-height: 51.88vh;
             overflow: auto;
         }
@@ -89,10 +89,16 @@
                 height: 100%;
                 border-radius: 10px;
             }
-            .highlight {
-                border-radius: 10px;
-                border: 0.138vw solid #ff6d3b;
-                // border-color: #ff6d3b;
+        }
+        .highlight {
+            .lazy-load-image-background {
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 10px;
+                    border: 2px solid #ff6d3b;
+                    border-color: #ff6d3b;
+                }
             }
         }
     }

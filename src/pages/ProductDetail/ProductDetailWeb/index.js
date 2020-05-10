@@ -1,6 +1,5 @@
-import classNames from "classnames";
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import { Route } from "react-router-dom";
 //
 import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
 import FabricSelectionWeb from "./FabricSelection";
@@ -15,154 +14,117 @@ class ProductDetailWeb extends Component {
         this.state = {
             selectionStep: "fabricSelection",
             currentSelectedProduct: {
-                name: '',
+                name: "",
                 size: null,
                 quantity: 1,
                 bodyMetric: new Array(3).fill(""),
-                image: new Array(3).fill("")
+                image: new Array(3).fill(""),
             },
             isNewProductAdded: false,
             totalProductsOnCart: 0,
             fabricList: [],
             productList: [],
-            size: "",
-            bodyMetric: [],
-            isSizeMetricUpdate: false,
             isImageView: false,
-            isSideBarOpen: false
+            isSideBarOpen: false,
         };
     }
 
     componentDidMount() {
-        const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
-        let { totalProductsOnCart, currentSelectedProduct } = this.state;
-        let designID = window.location.search.match(/id=(.*)&\b/)[1];
-        let fabricID = window.location.search.match(/pattern=(.*)\b/)[1];
-        let productsOnCart =
-            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-        let size = JSON.parse(localStorage.getItem("size")) || null;
-        let bodyMetric =
-            JSON.parse(localStorage.getItem("bodyMetric")) ||
-            new Array(3).fill("");
+        const { history } = this.props;
         // ------------ //
-        let productList = visibilityProducts.filter(product => {
+        this.handleInitialData();
+        // ------------ //
+        this.unlisten = history.listen((location) => {
+            if (location.pathname.includes("fabric-selection")) {
+                this.handleInitialData();
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        this.unlisten();
+    }
+
+    /* Function name: handleInitialData
+     *  Description: handle logic to get initial data and setState at CDM
+     *
+     *
+     *  Call by: ComponentDidMount
+     */
+    handleInitialData = () => {
+        const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
+        // ------------ //
+        let designID = "";
+        let fabricID = "";
+        // ------------ //
+        if (window.location.search.match(/design=(.*)&\b/)) {
+            designID = window.location.search.match(/design=(.*)&\b/)[1];
+        }
+        if (window.location.search.match(/fabric=(.*)\b/)) {
+            fabricID = window.location.search.match(/fabric=(.*)\b/)[1];
+        }
+        // ------------ //
+        let productList = visibilityProducts.filter((product) => {
             return product.designID === designID;
         });
         productList = this.swapProductPosition(productList, fabricID);
-        productList.forEach(product => {
+        productList.forEach((product) => {
             let currentDesign = designsInfo.find(
-                design => design.id === product.designID
+                (design) => design.id === product.designID
             ) || { name: "" };
             product.name = currentDesign.name;
             product.designDescription = currentDesign.description;
         });
         // ------------ //
+        let currentSelectedProduct = { ...this.state.currentSelectedProduct };
         if (productList.length > 0) {
             currentSelectedProduct = { ...productList[0] };
+            currentSelectedProduct.size = null;
+            currentSelectedProduct.bodyMetric = new Array(3).fill("");
+            currentSelectedProduct.quantity = 1;
         }
-        currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        currentSelectedProduct.quantity = 1;
         // ------------ //
         let fabricList = [];
-        productList.forEach(product => {
-            let fabric = fabricsInfo.find(fabric => {
+        productList.forEach((product) => {
+            let fabric = fabricsInfo.find((fabric) => {
                 return fabric.id === product.fabricID;
             }) || { image: "" };
             fabricList.push(fabric);
         });
         // ------------ //
-        totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
-            return accumulator + Number(current.quantity);
-        }, 0);
-        // ------------ //
         this.setState({
-            totalProductsOnCart,
             currentSelectedProduct,
             fabricList,
             productList,
-            size,
-            bodyMetric
         });
-    }
+    };
+    // END
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.isNewProductAdded !== prevState.isNewProductAdded) {
-            let productsOnCart = JSON.parse(
-                sessionStorage.getItem("productsOnCart")
-            );
-            let totalProductsOnCart = productsOnCart.reduce(
-                (accumulator, current) => {
-                    return accumulator + current.quantity;
-                },
-                0
-            );
-            return {
-                totalProductsOnCart,
-                isNewProductAdded: nextProps.isNewProductAdded
-            };
-        } else {
-            return null;
-        }
-    }
-
-    onImageView = state => {
+    onImageView = (state) => {
         this.setState({
-            isImageView: state
+            isImageView: state,
         });
     };
 
-    onselectionStepChange = content => {
-        this.setState({
-            selectionStep: content
-        });
-    };
-
-    selectionStepHandling = () => {
-        const {
-            selectionStep,
-            currentSelectedProduct,
-            productList,
-            fabricList,
-            isSizeMetricUpdate
-        } = this.state;
-        let content = "";
-        switch (selectionStep) {
-            case "fabricSelection":
-                content = (
-                    <FabricSelectionWeb
-                        productList={productList}
-                        fabricList={fabricList}
-                        currentSelectedProduct={currentSelectedProduct}
-                        onselectionStepChange={this.onselectionStepChange}
-                        onSelectedFabricUpdating={this.onSelectedFabricUpdating}
-                        onImageView={this.onImageView}
-                        history={this.props.history}
-                    />
-                );
-                break;
-            case "sizeSelection":
-                content = (
-                    <SizeSelectionWeb
-                        currentSelectedProduct={currentSelectedProduct}
-                        onselectionStepChange={this.onselectionStepChange}
-                        onSizeUpdated={this.onSizeUpdated}
-                        onBodyMetricUpdated={this.onBodyMetricUpdated}
-                        onQuantityUpdated={this.onQuantityUpdated}
-                        isSizeMetricUpdate={isSizeMetricUpdate}
-                        history={this.props.history}
-                    />
-                );
-                break;
-            default:
-                break;
+    /* Function name: onSelectedProductUpdating
+     *  Description: update new $currentSelectedProduct.
+     *
+     *
+     *  Call by: FabricSelection and SizeSelection
+     */
+    onSelectedProductUpdating = (updateSelectedProduct) => {
+        if (updateSelectedProduct) {
+            let currentSelectedProduct = { ...updateSelectedProduct };
+            this.setState({
+                currentSelectedProduct,
+            });
         }
-        return content;
     };
+    // END
 
     swapProductPosition = (productList, fabricID) => {
         let currentSelectedProductIndex = productList.findIndex(
-            product => product.fabricID === fabricID
+            (product) => product.fabricID === fabricID
         );
         if (currentSelectedProductIndex > 0) {
             let temp = { ...productList[0] };
@@ -172,111 +134,82 @@ class ProductDetailWeb extends Component {
         return productList;
     };
 
-    onContentChange = selectionStep => {
-        this.setState({
-            selectionStep
-        });
-    };
-
-    onSelectedFabricUpdating = selectedFabric => {
-        let {
-            productList,
-            currentSelectedProduct,
-            size,
-            bodyMetric
-        } = this.state;
-        let info = productList.find(
-            product => product.fabricID === selectedFabric
-        );
-        currentSelectedProduct = { ...info };
-        currentSelectedProduct.size = size;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        currentSelectedProduct.quantity = 1;
-        this.setState({
-            currentSelectedProduct
-        });
-    };
-
-    onSizeUpdated = (size, bodyMetric) => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.size = size;
-        // currentSelectedProduct.bodyMetric = bodyMetric;
-        currentSelectedProduct.bodyMetric.fill('');
-        this.setState({
-            currentSelectedProduct,
-            isSizeMetricUpdate: true
-        });
-    };
-
-    onBodyMetricUpdated = bodyMetric => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.bodyMetric = bodyMetric;
-        this.setState({
-            currentSelectedProduct,
-            isSizeMetricUpdate: true
-        });
-    };
-
-    onQuantityUpdated = quantity => {
-        let { currentSelectedProduct } = this.state;
-        currentSelectedProduct.quantity = quantity;
-        this.setState({
-            currentSelectedProduct
-        });
-    };
-
     sideBarChange = (state) => {
         this.setState({
-            isSideBarOpen: state
-        })
-    }
+            isSideBarOpen: state,
+        });
+    };
 
     render() {
         const {
             selectionStep,
-            totalProductsOnCart,
-            isImageView,
             currentSelectedProduct,
-            isSideBarOpen
+            productList,
+            fabricList,
         } = this.state;
+        const { match, visibilityProducts, fabricsInfo } = this.props;
         return (
             <div className="productDetail-container">
-                <div
-                    className={classNames("pageProductDetailWeb-wrapper", {
-                        unvisible: isImageView
-                    })}
-                >
+                <div className="pageProductDetailWeb-wrapper">
                     <NavBarWeb
                         history={this.props.history}
-                        totalProductsOnCart={totalProductsOnCart}
                         sideBarChange={this.sideBarChange}
                     />
                     <div className="pageProductDetailWeb">
-                        <Steps selectionStep={selectionStep} onContentChange={this.onContentChange}/>
-                        {this.selectionStepHandling()}
+                        <Steps
+                            selectionStep={selectionStep}
+                            onContentChange={this.onContentChange}
+                            history={this.props.history}
+                        />
+                        <Route
+                            path="/product-detail/fabric-selection/:productName"
+                            // exact
+                            component={() => (
+                                <FabricSelectionWeb
+                                    productList={productList}
+                                    fabricList={fabricList}
+                                    currentSelectedProduct={
+                                        currentSelectedProduct
+                                    }
+                                    onImageView={this.onImageView}
+                                    history={this.props.history}
+                                    match={match}
+                                    onSelectedProductUpdating={
+                                        this.onSelectedProductUpdating
+                                    }
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/product-detail/size-selection/:productName"
+                            exact
+                            component={({ match }) => (
+                                <SizeSelectionWeb
+                                    currentSelectedProduct={
+                                        currentSelectedProduct
+                                    }
+                                    history={this.props.history}
+                                    match={match}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/product-detail/image-view/:productID"
+                            exact
+                            component={({ match }) => (
+                                <ImageView
+                                    match={match}
+                                    history={this.props.history}
+                                    visibilityProducts={visibilityProducts}
+                                    fabricsInfo={fabricsInfo}
+                                />
+                            )}
+                        />
                     </div>
-                </div>
-                <div
-                    className={classNames("imageView", {
-                        unvisible: !isImageView
-                    })}
-                >
-                    <ImageView
-                        onImageView={this.onImageView}
-                        productImages={currentSelectedProduct.image}
-                        productName={currentSelectedProduct.name}
-                    />
                 </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        isNewProductAdded: state.listProductOnCart,
-        isCartUpdated: state.updateProductOnCart
-    };
-};
-
-export default connect(mapStateToProps, null)(ProductDetailWeb);
+export default ProductDetailWeb;

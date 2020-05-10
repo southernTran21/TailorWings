@@ -18,7 +18,6 @@ class ProductSwiperImages extends Component {
                     className={classNames({ unvisible: !isLoaded })}
                     name={name}
                     id={id}
-                    // onClick={(e) => this.onImageClicked(e)}
                     src={src}
                     onLoad={() => this.setState({ isLoaded: true })}
                 />

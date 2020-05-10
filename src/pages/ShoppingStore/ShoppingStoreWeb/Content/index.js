@@ -4,6 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
+import { removePunctuation } from '../../../../services/CommonFunction';
 import "./Content.scss";
 
 const { Option } = Select;
@@ -89,6 +90,9 @@ export default class ProductList extends Component {
                         loader={loaderContent}
                     >
                         {fetchedProducts.map((product, index) => {
+                            let modifiedName = product.name.toLowerCase();
+                            modifiedName = removePunctuation(modifiedName);
+                            modifiedName = modifiedName.replace(/ /gi, '-');
                             return (
                                 <div
                                     className="contentProduct col-4 d-flex flex-column align-items-center"
@@ -103,15 +107,11 @@ export default class ProductList extends Component {
                                             textDecoration: "none",
                                         }}
                                         to={{
-                                            pathname: "/product-detail",
-                                            search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                                            pathname: `/product-detail/fabric-selection/${modifiedName}`,
+                                            search: `?design=${product.designID}&fabric=${product.fabricID}`,
                                         }}
                                     >
                                         <div className="image">
-                                            {/* <img
-                                                src={product.image[0]}
-                                                alt={product.productID}
-                                            ></img> */}
                                             <LazyLoadImage
                                                 alt={product.productID}
                                                 effect="blur"

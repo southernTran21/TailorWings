@@ -11,7 +11,7 @@ export default class WeGive extends Component {
                         <br /> sống của mình tốt hơn.
                     </span>
                 </div>
-                <div className="image d-flex justify-content-between align-items-center">
+                <div className="image d-flex justify-content-center align-items-center">
                     <svg
                         width="992"
                         height="189"
@@ -148,8 +148,8 @@ export default class WeGive extends Component {
                                 y2="6.01531"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="#FF6D3B" />
-                                <stop offset="1" stop-color="#FF6D3B" />
+                                <stop stopColor="#FF6D3B" />
+                                <stop offset="1" stopColor="#FF6D3B" />
                             </linearGradient>
                             <linearGradient
                                 id="paint1_linear"
@@ -159,7 +159,7 @@ export default class WeGive extends Component {
                                 y2="63.8904"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="white" />
+                                <stop stopColor="white" />
                             </linearGradient>
                             <linearGradient
                                 id="paint2_linear"
@@ -169,8 +169,8 @@ export default class WeGive extends Component {
                                 y2="44.6257"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="white" />
-                                <stop offset="1" stop-color="white" />
+                                <stop stopColor="white" />
+                                <stop offset="1" stopColor="white" />
                             </linearGradient>
                             <linearGradient
                                 id="paint3_linear"
@@ -180,9 +180,9 @@ export default class WeGive extends Component {
                                 y2="32.3602"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="#FFE985" />
-                                <stop offset="0.0001" stop-color="white" />
-                                <stop offset="1" stop-color="white" />
+                                <stop stopColor="#FFE985" />
+                                <stop offset="0.0001" stopColor="white" />
+                                <stop offset="1" stopColor="white" />
                             </linearGradient>
                             <linearGradient
                                 id="paint4_linear"
@@ -192,8 +192,8 @@ export default class WeGive extends Component {
                                 y2="99.0748"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="white" />
-                                <stop offset="1" stop-color="white" />
+                                <stop stopColor="white" />
+                                <stop offset="1" stopColor="white" />
                             </linearGradient>
                             <linearGradient
                                 id="paint5_linear"
@@ -203,8 +203,8 @@ export default class WeGive extends Component {
                                 y2="86.8093"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="white" />
-                                <stop offset="1" stop-color="white" />
+                                <stop stopColor="white" />
+                                <stop offset="1" stopColor="white" />
                             </linearGradient>
                             <linearGradient
                                 id="paint6_linear"
@@ -214,8 +214,8 @@ export default class WeGive extends Component {
                                 y2="5.06041"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="white" />
-                                <stop offset="1" stop-color="white" />
+                                <stop stopColor="white" />
+                                <stop offset="1" stopColor="white" />
                             </linearGradient>
                             <linearGradient
                                 id="paint7_linear"
@@ -225,8 +225,8 @@ export default class WeGive extends Component {
                                 y2="21.478"
                                 gradientUnits="userSpaceOnUse"
                             >
-                                <stop stop-color="white" />
-                                <stop offset="1" stop-color="white" />
+                                <stop stopColor="white" />
+                                <stop offset="1" stopColor="white" />
                             </linearGradient>
                         </defs>
                     </svg>

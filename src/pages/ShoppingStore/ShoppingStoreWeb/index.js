@@ -5,7 +5,7 @@ import Categories from "./Categories";
 import Filter from "./Filter";
 import ProductList from "./Content";
 import { removePunctuation } from "../../../services/CommonFunction";
-import classNames from 'classnames'
+import classNames from "classnames";
 
 export default class ShoppingStoreWeb extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ export default class ShoppingStoreWeb extends Component {
             isFirstLoaded: false,
             currentActiveCategory: "all",
             isEmptyFilter: true,
-            isSideBarOpen: false
+            isSideBarOpen: false,
         };
     }
 
@@ -25,7 +25,7 @@ export default class ShoppingStoreWeb extends Component {
         // Inital prepare data
         this.initialDataUpdateHandling(history.location);
         // Reload data after url changed
-        this.unlisten = history.listen(location => {
+        this.unlisten = history.listen((location) => {
             this.initialDataUpdateHandling(location);
         });
     }
@@ -34,13 +34,13 @@ export default class ShoppingStoreWeb extends Component {
         this.unlisten();
     }
 
-    initialDataUpdateHandling = location => {
+    initialDataUpdateHandling = (location) => {
         let { visibilityProducts, bestSellerList } = this.props;
         let { renderProducts, bestSellerInfo } = this.state;
-        visibilityProducts.forEach(product => {
+        visibilityProducts.forEach((product) => {
             // Find totalSupportedFabric
             let totalSupportedFabric = visibilityProducts.filter(
-                visibleProduct => visibleProduct.designID === product.designID
+                (visibleProduct) => visibleProduct.designID === product.designID
             ).length;
             product.totalSupportedFabric = totalSupportedFabric;
             // push product that bestSellerList contains to bestSellerInfo
@@ -53,12 +53,15 @@ export default class ShoppingStoreWeb extends Component {
         });
         if (location.pathname === "/shopping-store" && location.search !== "") {
             // url: www.----.com/shoppping-store?cat=abc&search=def. Có cách nào khác cách em cắt nội dung cat và search ra không anh?
-            let currentCategory =
-                location.search.match(/cat=(.*)\b&/)[1] || "all";
+            let currentCategory = "all";
+            if (location.search.match(/cat=(.*)\b&/) != null) {
+                currentCategory =
+                    location.search.match(/cat=(.*)\b&/)[1] || "all";
+            }
             if (currentCategory === "all") {
                 renderProducts =
                     visibilityProducts.filter(
-                        product => product.default === true
+                        (product) => product.default === true
                     ) || [];
                 // Check search content and filter new renderProducts
                 if (location.search.match(/search=(.*)\b/) != null) {
@@ -79,7 +82,7 @@ export default class ShoppingStoreWeb extends Component {
                 isFirstLoaded: false,
                 currentActiveCategory: currentCategory,
                 bestSellerInfo,
-                isEmptyFilter: true
+                isEmptyFilter: true,
             });
         }
     };
@@ -91,7 +94,7 @@ export default class ShoppingStoreWeb extends Component {
                 case "damom":
                     renderProducts =
                         visibilityProducts.filter(
-                            product =>
+                            (product) =>
                                 product.catID === currentCategory &&
                                 product.default === true
                         ) || [];
@@ -99,7 +102,7 @@ export default class ShoppingStoreWeb extends Component {
                 case "damxoe":
                     renderProducts =
                         visibilityProducts.filter(
-                            product =>
+                            (product) =>
                                 product.catID === currentCategory &&
                                 product.default === true
                         ) || [];
@@ -107,7 +110,7 @@ export default class ShoppingStoreWeb extends Component {
                 case "damsuong":
                     renderProducts =
                         visibilityProducts.filter(
-                            product =>
+                            (product) =>
                                 product.catID === currentCategory &&
                                 product.default === true
                         ) || [];
@@ -144,10 +147,10 @@ export default class ShoppingStoreWeb extends Component {
         const { collectionsInfo } = this.props;
         if (collectionsInfo.length > 0) {
             let currentCollection = collectionsInfo.filter(
-                collection => collection.id === collectionID
+                (collection) => collection.id === collectionID
             )[0];
             let productsInCollection = [];
-            visibilityProducts.forEach(product => {
+            visibilityProducts.forEach((product) => {
                 if (currentCollection.products.includes(product.productID)) {
                     productsInCollection.push(product);
                 }
@@ -160,23 +163,25 @@ export default class ShoppingStoreWeb extends Component {
 
     firstLoadedConfirm = () => {
         this.setState({
-            isFirstLoaded: true
+            isFirstLoaded: true,
         });
     };
 
-    categoryActiveHandling = activeID => {
+    categoryActiveHandling = (activeID) => {
         const { currentActiveCategory } = this.state;
         if (currentActiveCategory === activeID) {
             this.setState({
-                currentActiveCategory: activeID
+                currentActiveCategory: activeID,
             });
         }
     };
 
-    onCollectionFiltering = filterList => {
+    onCollectionFiltering = (filterList) => {
         let { visibilityProducts } = this.props;
-        let defaultProducts = visibilityProducts.filter(product => product.default === true);
-        filterList.forEach(collectionID => {
+        let defaultProducts = visibilityProducts.filter(
+            (product) => product.default === true
+        );
+        filterList.forEach((collectionID) => {
             defaultProducts = this.filterProductsInCollection(
                 defaultProducts,
                 collectionID
@@ -185,12 +190,12 @@ export default class ShoppingStoreWeb extends Component {
         this.setState({
             renderProducts: defaultProducts,
             isEmptyFilter: false,
-            isFirstLoaded: false
+            isFirstLoaded: false,
         });
     };
 
     searchFilter = (searchInput, renderProducts) => {
-        renderProducts = renderProducts.filter(product => {
+        renderProducts = renderProducts.filter((product) => {
             let name = product.name.toLowerCase();
             name = removePunctuation(name);
             name = name.replace(/ /g, "-");
@@ -202,9 +207,9 @@ export default class ShoppingStoreWeb extends Component {
 
     sideBarChange = (state) => {
         this.setState({
-            isSideBarOpen: state
-        })
-    }
+            isSideBarOpen: state,
+        });
+    };
 
     render() {
         const { collectionsInfo } = this.props;
@@ -213,7 +218,7 @@ export default class ShoppingStoreWeb extends Component {
             currentActiveCategory,
             isEmptyFilter,
             isFirstLoaded,
-            isSideBarOpen
+            isSideBarOpen,
         } = this.state;
         return (
             <div className={classNames({ fixed_top: isSideBarOpen })}>

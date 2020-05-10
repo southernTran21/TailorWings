@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
-import Categorie3 from "../../../../assets/imageHomePage/CategoryDamOm.png";
-import Categorie1 from "../../../../assets/imageHomePage/CategoryDamSuong.png";
-import Categorie2 from "../../../../assets/imageHomePage/CategoryDamXoe.png";
+import Categorie3 from "../../../../assets/imageHomePageMobile/imgCategories_DamOm.jpg";
+import Categorie1 from "../../../../assets/imageHomePageMobile/imgCategories_DamSuong.jpg";
+import Categorie2 from "../../../../assets/imageHomePageMobile/imgCategories_DamXoe.jpg";
 
 class Categories extends Component {
     render() {
@@ -23,7 +23,7 @@ class Categories extends Component {
             }).length;
         }
         return (
-            <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+            // <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                 <div className="listProduct d-flex flex-column justify-content-between">
                     <div className="title__listProduct d-flex flex-row justify-content-center">
                         Danh Mục Sản Phẩm
@@ -92,7 +92,7 @@ class Categories extends Component {
                     </div>
                     <hr />
                 </div>
-            </LazyLoad>
+            // </LazyLoad>
         );
     }
 }

@@ -1,12 +1,14 @@
-import React, { Component } from "react";
-import "./home.scss";
 import classNames from "classnames";
+import React, { Component, lazy, Suspense } from "react";
 import { removePunctuation } from "../../../services/CommonFunction";
+import Body from "./Body";
+// import Footer from "./Footer";
 // import component
 import NavbarHeader from "./Header/NavbarHeader";
-import Body from "./Body";
-import Footer from "./Footer";
+import "./home.scss";
 import SearchSuggest from "./SearchSuggest";
+
+const Footer = lazy(() => import("./Footer"));
 
 export default class HomeMobile extends Component {
     constructor(props) {
@@ -17,28 +19,6 @@ export default class HomeMobile extends Component {
             suggestedSearch: [],
             bestSellerInfo: [],
         };
-    }
-
-    componentDidMount() {
-        const { bestSellerList, visibilityProducts } = this.props;
-        let { bestSellerInfo } = this.state;
-        visibilityProducts.forEach((product) => {
-            if (
-                bestSellerList.includes(product.designID) &&
-                product.default === true
-            ) {
-                bestSellerInfo.push(product);
-            }
-        });
-        bestSellerInfo.forEach((info) => {
-            let totalSupportedFabric = visibilityProducts.filter(
-                (product) => product.designID === info.designID
-            ).length;
-            info.totalSupportedFabric = totalSupportedFabric;
-        });
-        this.setState({
-            bestSellerInfo,
-        });
     }
 
     searchOpen = () => {
@@ -82,7 +62,24 @@ export default class HomeMobile extends Component {
     };
 
     onBodyContentChange = () => {
-        const { isSearchOpen, suggestedSearch, bestSellerInfo } = this.state;
+        let { isSearchOpen, suggestedSearch, bestSellerInfo } = this.state;
+        const { bestSellerList, visibilityProducts } = this.props;
+        if (bestSellerList.length > 0 && visibilityProducts.length > 0) {
+            visibilityProducts.forEach((product) => {
+                if (
+                    bestSellerList.includes(product.designID) &&
+                    product.default === true
+                ) {
+                    bestSellerInfo.push(product);
+                }
+            });
+            bestSellerInfo.forEach((info) => {
+                let totalSupportedFabric = visibilityProducts.filter(
+                    (product) => product.designID === info.designID
+                ).length;
+                info.totalSupportedFabric = totalSupportedFabric;
+            });
+        }
         if (isSearchOpen) {
             return (
                 <div>
@@ -95,20 +92,22 @@ export default class HomeMobile extends Component {
             );
         } else {
             return (
-                <React.Fragment>
-                    <Body
-                        visibilityProducts={this.props.visibilityProducts}
-                        bestSellerInfo={bestSellerInfo}
-                        collectionsInfo={this.props.collectionsInfo}
-                    />
-                    <Footer />
-                </React.Fragment>
+                <Suspense fallback={<div>Loading...</div>}>
+                    {/* <React.Fragment> */}
+                        <Body
+                            visibilityProducts={this.props.visibilityProducts}
+                            bestSellerInfo={bestSellerInfo}
+                            collectionsInfo={this.props.collectionsInfo}
+                        />
+                        <Footer />
+                    {/* </React.Fragment> */}
+                </Suspense>
             );
         }
     };
 
     render() {
-        const { isSearchOpen } = this.state;
+        let { isSearchOpen } = this.state;
         return (
             <div
                 className={classNames("pageHomeMobile", {

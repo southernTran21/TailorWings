@@ -5,7 +5,7 @@ import CarouselCollection from "./CarouselCollection";
 class Collections extends Component {
     render() {
         return (
-            <LazyLoad height={"fit-content"} offset={0} throttle={250}>
+            // <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                 <div className="collection-wraper d-flex flex-column justify-content-around">
                     <div className="title__collection d-flex flex-column">
                         <span>Bộ Sưu Tập</span>
@@ -16,7 +16,7 @@ class Collections extends Component {
                     />
                     <hr />
                 </div>
-            </LazyLoad>
+            // </LazyLoad>
         );
     }
 }

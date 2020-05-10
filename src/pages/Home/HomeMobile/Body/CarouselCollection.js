@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
-import collectionDamCongSo from "../../../../assets/imageHomePage/collectionDamCongSo.jpg";
-import collectionDamDaoPho from "../../../../assets/imageHomePage/collectionDamDaoPho.jpg";
-import collectionDamDuTiec from "../../../../assets/imageHomePage/collectionDamDuTiec.jpg";
+import collectionDamCongSo from "../../../../assets/imageHomePageMobile/imgCollection_DamCongSo.jpg";
+import collectionDamDaoPho from "../../../../assets/imageHomePageMobile/imgCollection_DamDaoPHo.jpg";
+import collectionDamDuTiec from "../../../../assets/imageHomePageMobile/imgCollection_DamDuTiec.jpg";
 
 export default class CarouselCollection extends Component {
     getCollectionImage = (id) => {

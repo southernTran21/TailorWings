@@ -1,8 +1,8 @@
 // import libs ant design
 import { Icon, message, Modal } from "antd";
 import React, { Component } from "react";
-import ReactGA from "react-ga";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Redirect } from "react-router-dom";
 import BodyScale from "./BodyScale";
 // import component
 import NavBar from "./navbarPage";
@@ -13,66 +13,97 @@ export default class SizeSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sizeImages: this.props.sizeImages[6],
+            currentSelectedProduct: { ...this.props.currentSelectedProduct },
+            sizeImage: this.props.sizeImages[6],
             isUpdate: false,
+            isConfirmNavigate: false,
+            totalProductsOnCart: 0,
         };
     }
 
     componentDidMount() {
-        const { currentSelectedProduct } = this.props;
-        let { sizeImages } = this.state;
-        console.log("this.props.sizeImages", this.props.sizeImages);
-        sizeImages = this.props.sizeImages.filter(
-            (size) => currentSelectedProduct.size === size.id
-        )[0];
-        if (sizeImages != null) {
-            this.setState({
-                sizeImages,
-            });
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
+        const { sizeImages } = this.props;
+        /* ------------- */
+        currentSelectedProduct.size =
+            JSON.parse(localStorage.getItem("size")) || null;
+        currentSelectedProduct.bodyMetric =
+            JSON.parse(localStorage.getItem("bodyMetric")) ||
+            new Array(3).fill("");
+        /* ------------- */
+        let sizeImage = this.state.sizeImage;
+        if (currentSelectedProduct.hasOwnProperty("size")) {
+            sizeImage = sizeImages.find(
+                (size) => currentSelectedProduct.size === size.id
+            );
         }
+        /* ------------- */
+        let productsOnCart =
+            JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
+        let totalProductsOnCart = productsOnCart.reduce(
+            (accumulator, current) => {
+                return accumulator + Number(current.quantity);
+            },
+            0
+        );
+        /* ------------- */
+        this.setState({
+            sizeImage,
+            currentSelectedProduct,
+            totalProductsOnCart,
+        });
     }
 
     onSizeUpdated = (size) => {
-        let { sizeImages } = this.props;
-        sizeImages = sizeImages.filter((image) => image.id === size)[0];
-        this.props.onSizeUpdated(size);
+        const { sizeImages } = this.props;
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
+        /* ------------- */
+        currentSelectedProduct.size = size;
+        currentSelectedProduct.bodyMetric.fill("");
+        /* ------------- */
+        let sizeImage = sizeImages.find((image) => image.id === size);
+        /* ------------- */
         this.setState({
-            sizeImages,
+            currentSelectedProduct,
+            sizeImage,
             isUpdate: true,
         });
     };
 
     onBodyMetricUpdated = (bodyMetric) => {
-        this.props.onBodyMetricUpdated(bodyMetric);
+        let currentSelectedProduct = { ...this.props.currentSelectedProduct };
+        /* ------------- */
+        currentSelectedProduct.bodyMetric = bodyMetric;
+        /* ------------- */
         this.setState({
+            currentSelectedProduct,
             isUpdate: true,
         });
     };
 
     onConfirmButtonClicked = () => {
-        const { currentSelectedProduct } = this.props;
+        const { currentSelectedProduct } = this.state;
+        /* ------------- */
         let isSizeSelected = currentSelectedProduct.size != null;
         let isAllMetricFill = !currentSelectedProduct.bodyMetric.includes("");
         let isAllMetricEmpty = currentSelectedProduct.bodyMetric.every(
             (metric) => metric === ""
         );
+        /* ------------- */
         if (
             (isSizeSelected && isAllMetricFill) ||
             (isSizeSelected && isAllMetricEmpty) ||
             (!isSizeSelected && isAllMetricFill)
         ) {
-            this.props.onSelectedProductUpdating(currentSelectedProduct);
-            this.props.onContentChange("confirm");
+            this.props.onSelectedProductUpdating(
+                currentSelectedProduct,
+                "size-selection"
+            );
+            /* ------------- */
             if (this.state.isUpdate) {
                 this.updateSizeMetricToStorage(currentSelectedProduct);
             }
-            if (isSizeSelected) {
-                ReactGA.event({
-                    category: "SizeSelection",
-                    action: "Selected Size",
-                    label: `${currentSelectedProduct.size}`,
-                });
-            }
+            /* ------------- */
         } else {
             message.error("Vui lòng chọn size hoặc cung cấp 3 số đo cơ thể!");
         }
@@ -91,7 +122,7 @@ export default class SizeSelection extends Component {
             title: "Mô tả thiết kế & vải",
             content: (
                 <div>
-                    <p>{this.props.currentDesignInfo.description}</p>
+                    <p>{this.state.currentSelectedProduct.description}</p>
                 </div>
             ),
             // onOk() { },
@@ -99,20 +130,41 @@ export default class SizeSelection extends Component {
     };
 
     render() {
-        const { currentSelectedProduct } = this.props;
-        const { sizeImages } = this.state;
-        console.log("currentSelectedProduct :", currentSelectedProduct);
+        const {
+            sizeImage,
+            currentSelectedProduct,
+            totalProductsOnCart,
+        } = this.state;
+        console.log('currentSelectedProduct :>> ', currentSelectedProduct);
+        const { history, isConfirmNavigate } = this.props;
+        let urlProductName = history.match.params.hasOwnProperty("productName")
+            ? history.match.params.productName
+            : "";
+        // let urlSearch =
+        //     currentSelectedProduct.hasOwnProperty("designID") &&
+        //     currentSelectedProduct.hasOwnProperty("fabricID")
+        //         ? `?design=${currentSelectedProduct.designID}&fabric=${currentSelectedProduct.fabricID}`
+        //         : "?design=&fabric=";
+        let urlSearch = window.location.search;
+        if (isConfirmNavigate) {
+            return (
+                <Redirect
+                    to={`/product-detail/confirm-selection/${urlProductName}${urlSearch}`}
+                />
+            );
+        }
         return (
             <div className="pageSizeSelection">
                 <NavBar
-                    onContentChange={(step) => this.props.onContentChange(step)}
-                    totalProductsOnCart={this.props.totalProductsOnCart}
+                    url={`/product-detail/fabric-selection/${urlProductName}`}
+                    urlSearch={urlSearch}
+                    totalProductsOnCart={totalProductsOnCart}
                 />
                 <div className="bodyPage d-flex flex-column justify-content-start">
                     <div className="infProduct d-flex flex-column align-items-center">
                         <div className="title__infProduct">
                             <div className="nameProduct">
-                                <span>ĐẦM CÔNG CHÚA</span>
+                                <span>{currentSelectedProduct.name}</span>
                             </div>
                             <div className="info d-flex flex-row align-items-center justify-content-center">
                                 <span onClick={this.onDescriptionClicked}>
@@ -122,10 +174,10 @@ export default class SizeSelection extends Component {
                             </div>
                         </div>
                         <div className="imgProduct">
-                            <img src={sizeImages.image} alt={sizeImages.id} />
+                            <img src={sizeImage.image} alt={sizeImage.id} />
                         </div>
                         <Selection
-                            currentSelectedProduct={currentSelectedProduct}
+                            size={currentSelectedProduct.size}
                             onSizeUpdated={this.onSizeUpdated}
                         />
                         <BodyScale

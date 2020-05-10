@@ -121,13 +121,13 @@ export default class Footer extends Component {
                                 <span>ĐĂNG KÝ </span>
                             </div>
                         </div>
-                        <smal
+                        <small
                             className={classNames("emailError_unvisible", {
                                 emailError: this.state.isEmailError,
                             })}
                         >
                             Lỗi: Email sai vui lòng nhập lại!
-                        </smal>
+                        </small>
                     </div>
                 </div>
                 <div className="endFooter d-flex flex-column">

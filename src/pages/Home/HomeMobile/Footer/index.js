@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import FitMenu from './FitMenu';
-import FooterPage from './Footer';
+import React, { Component } from "react";
+import FitMenu from "./FitMenu";
+import FooterPage from "./Footer";
 
 class Footer extends Component {
     render() {

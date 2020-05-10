@@ -19,7 +19,7 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isPageLoading: true,
+            isPageLoading: false,
         };
     }
 
@@ -30,28 +30,28 @@ export default class Home extends Component {
             top: 0,
             behavior: "smooth",
         });
-        if (this.props.history.location.state != null) {
-            if (this.props.history.location.state.prevPath != null) {
-                this.setState({
-                    isPageLoading: false,
-                });
-            } else {
-                timeOut = setTimeout(
-                    () => this.setState({ isPageLoading: false }),
-                    3000
-                );
-            }
-        } else {
-            timeOut = setTimeout(
-                () => this.setState({ isPageLoading: false }),
-                3000
-            );
-        }
+        // if (this.props.history.location.state != null) {
+        //     if (this.props.history.location.state.prevPath != null) {
+        //         this.setState({
+        //             isPageLoading: false,
+        //         });
+        //     } else {
+        //         timeOut = setTimeout(
+        //             () => this.setState({ isPageLoading: false }),
+        //             2000
+        //         );
+        //     }
+        // } else {
+        //     timeOut = setTimeout(
+        //         () => this.setState({ isPageLoading: false }),
+        //         2000
+        //     );
+        // }
     }
 
-    componentWillMount() {
-        clearTimeout(timeOut);
-    }
+    // componentWillMount() {
+    //     clearTimeout(timeOut);
+    // }
 
     renderContentHandling = () => {
         const { isPageLoading } = this.state;

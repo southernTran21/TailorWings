@@ -1,104 +1,82 @@
-import React, { Component } from "react";
 import { Button, Icon } from "antd";
-import Swiper from "react-id-swiper";
-import "./ImageView.scss";
+import React, { Component } from "react";
 import Slider from "react-slick";
+import "./ImageView.scss";
+import { Link } from "react-router-dom";
+import { removePunctuation } from "../../../../services/CommonFunction";
 
 export default class ImageView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            swiper: null
+            renderImages: [],
+            productName: "",
+            backSearch: "?design=&fabric=",
         };
     }
 
-    getSwiper = swiper => {
-        this.setState({
-            swiper
-        });
-    };
-
-    onSlide = type => {
-        const { swiper } = this.state;
-        console.log("type", type);
-        switch (type) {
-            case "prev":
-                console.log("prev");
-                swiper.slidePrev();
-                break;
-            case "next":
-                console.log("next");
-                swiper.slideNext();
-                break;
-
-            default:
-                break;
+    componentDidMount() {
+        const { visibilityProducts, fabricsInfo, match } = this.props;
+        /* ------------- */
+        let productID = match.params.productID || "";
+        productID = productID.replace(/ /gi, "");
+        /* ------------- */
+        if (visibilityProducts.length > 0 && fabricsInfo.length > 0) {
+            let currentSelectedProduct = visibilityProducts.find(
+                (product) => product.productID === productID
+            ) || { image: [], fabricID: "" };
+            /* ------------- */
+            let currentSelectedFabric = fabricsInfo.find(
+                (fabric) => fabric.id === currentSelectedProduct.fabricID
+            ) || { image: [] };
+            /* ------------- */
+            let renderImages = [...currentSelectedProduct.image];
+            renderImages.push(currentSelectedFabric.image[1]);
+            /* ------------- */
+            let backSearch = `?design=${currentSelectedProduct.designID}&fabric=${currentSelectedProduct.fabricID}`;
+            /* ------------- */
+            this.setState({
+                renderImages,
+                productName: currentSelectedProduct.name,
+                backSearch,
+            });
         }
-    };
-
-    renderContentHandling = () => {
-        const { productImages, productName } = this.props;
-        let isEmpty = productImages.every(image => image === "");
-        if (productImages != null && !isEmpty) {
-            // const params = {
-            // slidesPerView: 1,
-            // space: 20,
-            // loop: true,
-            // centeredSlides: true,
-            // };
-            console.log("productImages :", productImages);
-            return (
-                <Swiper
-                    className="d-flex flex-column align-items-center"
-                    // {...params}
-                    getSwiper={this.getSwiper.bind(this)}
-                >
-                    {/* {productImages.map((image, index) => {
-                        return (
-                            <div key={index} className="image-wrapper">
-                                <img src={image} alt={productName} />
-                            </div>
-                        );
-                    })} */}
-                    <div className="image-wrapper">
-                        {/* <img src={productImages[0]} alt={productName} /> */}
-                    </div>
-                    <div className="image-wrapper">
-                        {/* <img src={productImages[1]} alt={productName} /> */}
-                    </div>
-                    <div className="image-wrapper">
-                        {/* <img src={productImages[2]} alt={productName} /> */}
-                    </div>
-                </Swiper>
-            );
-        } else {
-            return "";
-        }
-    };
+    }
 
     render() {
-        const { productImages, productName } = this.props;
+        let { renderImages, productName, backSearch } = this.state;
+        /* ------------- */
+        if (productName != null && productName !== "") {
+            productName = removePunctuation(productName.toLowerCase());
+            productName.replace(/ /gi, "");
+        }
+        /* ------------- */
         const settings = {
             dots: true,
             infinite: true,
             speed: 500,
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
         };
+
         return (
             <div className="imageView-wrapper">
                 <div className="back-btn d-flex justify-content-end">
-                    <Button
-                        onClick={() => this.props.onImageView(false)}
-                        className="buttonBack"
-                    >
-                        <Icon type="close" />
+                    <Button className="buttonBack">
+                        <Link
+                            to={{
+                                pathname: `/product-detail/fabric-selection/${productName}`,
+                                search: backSearch,
+                            }}
+                        >
+                            <Icon type="close" />
+                        </Link>
                     </Button>
                 </div>
                 <Slider {...settings}>
-                    {productImages.map((image, index) => {
+                    {renderImages.map((image, index) => {
                         return (
-                            <div key={index} className='image-wrapper'>
+                            <div key={index} className="image-wrapper">
                                 <img src={image} alt={productName} />
                             </div>
                         );
