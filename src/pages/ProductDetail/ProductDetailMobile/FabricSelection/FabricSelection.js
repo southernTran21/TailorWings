@@ -39,9 +39,9 @@ class FabricSelection extends Component {
                 productList.length > 0
                     ? { ...productList[i] }
                     : {
-                          image: [""],
-                          price: 0,
-                      };
+                        image: [""],
+                        price: 0,
+                    };
         }
         /* ------------- */
         let productsOnCart =

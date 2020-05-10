@@ -50,7 +50,6 @@ export default class FabricSelectionWeb extends Component {
     // Function name: onSizeSelectionNavigating
     // Description: used for update new $currentSelectedProduct to ProductDetailWeb/index.js. Then, navigate to SizeSelection
     onSizeSelectionNavigating = () => {
-        console.log("onSizeSelectionNavigating");
         const { currentSelectedProduct } = this.state;
         if (currentSelectedProduct) {
             this.props.onSelectedProductUpdating(currentSelectedProduct);

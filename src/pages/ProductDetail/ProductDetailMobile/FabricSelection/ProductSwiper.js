@@ -85,6 +85,7 @@ class ProductSwiper extends Component {
                                 className="link"
                                 to={{
                                     pathname: imageViewUrl,
+                                    from: 'fabric'
                                 }}
                             >
                                 {imageList[0] !== "" ? (
@@ -101,6 +102,7 @@ class ProductSwiper extends Component {
                                 className="link"
                                 to={{
                                     pathname: imageViewUrl,
+                                    from: 'fabric'
                                 }}
                             >
                                 {imageList[1] !== "" ? (
@@ -117,6 +119,7 @@ class ProductSwiper extends Component {
                                 className="link"
                                 to={{
                                     pathname: imageViewUrl,
+                                    from: 'fabric'
                                 }}
                             >
                                 {imageList[2] !== "" ? (
@@ -133,6 +136,7 @@ class ProductSwiper extends Component {
                                 className="link"
                                 to={{
                                     pathname: imageViewUrl,
+                                    from: 'fabric'
                                 }}
                             >
                                 {imageList[3] !== "" ? (
@@ -149,6 +153,7 @@ class ProductSwiper extends Component {
                                 className="link"
                                 to={{
                                     pathname: imageViewUrl,
+                                    from: 'fabric'
                                 }}
                             >
                                 {imageList[4] !== "" ? (

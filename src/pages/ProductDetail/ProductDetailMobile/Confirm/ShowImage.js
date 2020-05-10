@@ -16,6 +16,7 @@ export default class ShowImage extends Component {
                             className="link"
                             to={{
                                 pathname: imageViewUrl,
+                                from: "confirm",
                             }}
                         >
                             <LazyLoadImage
@@ -30,6 +31,7 @@ export default class ShowImage extends Component {
                             className="link"
                             to={{
                                 pathname: imageViewUrl,
+                                from: "confirm",
                             }}
                         >
                             <LazyLoadImage
@@ -46,6 +48,7 @@ export default class ShowImage extends Component {
                             className="link"
                             to={{
                                 pathname: imageViewUrl,
+                                from: "confirm",
                             }}
                         >
                             <LazyLoadImage
@@ -60,6 +63,7 @@ export default class ShowImage extends Component {
                             className="link"
                             to={{
                                 pathname: imageViewUrl,
+                                from: "confirm",
                             }}
                         >
                             <LazyLoadImage

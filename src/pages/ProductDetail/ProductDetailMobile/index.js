@@ -222,10 +222,10 @@ class ProductDetailMobile extends Component {
                 <Route
                     path="/product-detail/image-view/:productID"
                     exact
-                    component={({ match }) => (
+                    component={({ match, location }) => (
                         <ImageView
                             match={match}
-                            history={this.props.history}
+                            location={location}
                             visibilityProducts={visibilityProducts}
                             fabricsInfo={fabricsInfo}
                         />

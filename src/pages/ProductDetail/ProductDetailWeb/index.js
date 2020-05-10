@@ -30,15 +30,40 @@ class ProductDetailWeb extends Component {
     }
 
     componentDidMount() {
+        const { history } = this.props;
+        // ------------ //
+        this.handleInitialData();
+        // ------------ //
+        this.unlisten = history.listen((location) => {
+            if (location.pathname.includes("fabric-selection")) {
+                this.handleInitialData();
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        this.unlisten();
+    }
+
+    /* Function name: handleInitialData
+     *  Description: handle logic to get initial data and setState at CDM
+     *
+     *
+     *  Call by: ComponentDidMount
+     */
+    handleInitialData = () => {
         const { visibilityProducts, fabricsInfo, designsInfo } = this.props;
+        // ------------ //
         let designID = "";
         let fabricID = "";
+        // ------------ //
         if (window.location.search.match(/design=(.*)&\b/)) {
             designID = window.location.search.match(/design=(.*)&\b/)[1];
         }
         if (window.location.search.match(/fabric=(.*)\b/)) {
             fabricID = window.location.search.match(/fabric=(.*)\b/)[1];
         }
+        // ------------ //
         let productList = visibilityProducts.filter((product) => {
             return product.designID === designID;
         });
@@ -72,7 +97,8 @@ class ProductDetailWeb extends Component {
             fabricList,
             productList,
         });
-    }
+    };
+    // END
 
     onImageView = (state) => {
         this.setState({

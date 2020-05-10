@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
+import { removePunctuation } from "../../../../services/CommonFunction";
 
 class index extends Component {
     constructor(props) {
@@ -7,31 +9,52 @@ class index extends Component {
         this.state = {
             renderImages: [],
             productName: "",
+            backSearch: "?design=&fabric=",
         };
     }
 
     componentDidMount() {
         const { visibilityProducts, fabricsInfo, match } = this.props;
+        /* ------------- */
         let productID = match.params.productID || "";
         productID = productID.replace(/ /gi, "");
+        /* ------------- */
         if (visibilityProducts.length > 0 && fabricsInfo.length > 0) {
             let currentSelectedProduct = visibilityProducts.find(
                 (product) => product.productID === productID
-            ) || { image: new Array(3).fill('') , fabricID: "" };
+            ) || { image: [], fabricID: "" };
+            /* ------------- */
             let currentSelectedFabric = fabricsInfo.find(
                 (fabric) => fabric.id === currentSelectedProduct.fabricID
-            ) || { image: new Array(2).fill('') };
+            ) || { image: [] };
+            /* ------------- */
             let renderImages = [...currentSelectedProduct.image];
             renderImages.push(currentSelectedFabric.image[1]);
+            /* ------------- */
+            let backSearch = `?design=${currentSelectedProduct.designID}&fabric=${currentSelectedProduct.fabricID}`;
+            /* ------------- */
             this.setState({
                 renderImages,
                 productName: currentSelectedProduct.name,
+                backSearch,
             });
         }
     }
 
     render() {
-        const { renderImages, productName } = this.state;
+        let { renderImages, productName, backSearch } = this.state;
+        const { location } = this.props;
+        /* ------------- */
+        if (productName != null && productName !== "") {
+            productName = removePunctuation(productName.toLowerCase());
+            productName.replace(/ /gi, "");
+        }
+        /* ------------- */
+        let pathName =
+            location.from === "fabric"
+                ? `/product-detail/fabric-selection/${productName}`
+                : `/product-detail/confirm-selection/${productName}`;
+        /* ------------- */
         const settings = {
             dots: true,
             infinite: true,
@@ -40,20 +63,21 @@ class index extends Component {
             slidesToScroll: 1,
             arrows: false,
         };
-        console.log('renderImages :>> ', renderImages);
-        console.log('productName :>> ', productName);
+        /* ------------- */
         return (
             <div id="myModal" className="modal">
                 <div
                     className="d-flex flex-column justify-content-center align-items-end"
                     style={{ width: "100vw", height: "10vh" }}
                 >
-                    <span
-                        className="closeModal"
-                        onClick={() => window.history.back()}
+                    <Link
+                        to={{
+                            pathname: pathName,
+                            search: backSearch,
+                        }}
                     >
-                        &times;
-                    </span>
+                        <span className="closeModal">&times;</span>
+                    </Link>
                 </div>
                 <Slider {...settings}>
                     {renderImages.map((image, index) => {
