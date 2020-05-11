@@ -1,7 +1,17 @@
 .pageProductDetailWeb {
     margin-top: 3.33vh;
+    .categoryFabric_wrapper{
+        height: 2.3vw;
+        font-size: 0.97vw;
+        .contentSeeMore{
+            color: #ff6d3b;
+            font-size: 0.83vw;
+            margin-left: .5vw;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
     .pageFabricSelection {
-        margin-top: 30px;
         .iconBack {
             color: #ff6d3b;
             font-weight: bold;
