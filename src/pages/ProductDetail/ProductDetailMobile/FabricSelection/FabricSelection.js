@@ -39,9 +39,9 @@ class FabricSelection extends Component {
                 productList.length > 0
                     ? { ...productList[i] }
                     : {
-                        image: [""],
-                        price: 0,
-                    };
+                          image: [""],
+                          price: 0,
+                      };
         }
         /* ------------- */
         let productsOnCart =
@@ -340,14 +340,23 @@ class FabricSelection extends Component {
                 </div>
                 <div className="contentBody">
                     <div className="header__contentBody">
-                        <div className="title">
-                            <span
-                                className="font-weight-bold"
-                                style={{ fontSize: "3.6vw" }}
-                            >
-                                {currentProductIndex + 1}
-                            </span>
-                            <span>/{productList.length}</span>
+                        <div className="title_wrapper d-flex justify-content-between">
+                            <div className="title1 d-flex align-items-end">
+                                <span
+                                    className="font-weight-bold"
+                                    style={{ fontSize: "3.6vw" }}
+                                >
+                                    {currentProductIndex + 1}
+                                </span>
+                                <span>/{productList.length}</span>
+                            </div>
+                            <div className="title2 d-flex flex-column align-items-end">
+                                <div className='content_categoryFabric'>
+                                    <span>Loại vải: </span>
+                                    <span className='font-weight-bold'>Lụa</span>
+                                </div>
+                                <span className="contentSeeMore d-flex align-items-center">Xem thêm</span>
+                            </div>
                         </div>
                         <FabricSwiper
                             fabricList={fabricList}
