@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
+import { removePunctuation } from "../../../../services/CommonFunction";
 
 export default class CarouselStrikingDesign extends Component {
     bestSellerContent = () => {
         const { bestSellerInfo } = this.props;
         return bestSellerInfo.map((product, index) => {
+            let productName = removePunctuation(product.name.toLowerCase());
+            productName = productName.replace(/ /gi, '');
             return (
                 <div key={index} className="content-carousel">
                     <div className="image">
@@ -15,8 +18,8 @@ export default class CarouselStrikingDesign extends Component {
                                 height: "100%",
                             }}
                             to={{
-                                pathname: "/product-detail",
-                                search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                                pathname: `/product-detail/fabric-selection/${productName}`,
+                                search: `?design=${product.designID}&pattern=${product.fabricID}`,
                             }}
                         >
                             <img src={product.image} atl={product.name} />
@@ -37,8 +40,8 @@ export default class CarouselStrikingDesign extends Component {
                                         height: "100%",
                                     }}
                                     to={{
-                                        pathname: "/product-detail",
-                                        search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                                        pathname: `/product-detail/fabric-selection/${productName}`,
+                                        search: `?design=${product.designID}&pattern=${product.fabricID}`,
                                     }}
                                 >
                                     <div className="putButton d-flex flex-row justify-content-center align-items-center">

@@ -124,7 +124,6 @@ export class Design extends Component {
 
     render() {
         const { renderDesigns, bestSellerStatus } = this.state;
-        // console.log('bestSellerStatus', bestSellerStatus)
         return (
             <div className="pageDesign">
                 <div className="headerPageDesign d-flex flex-row justify-content-between align-items-center">

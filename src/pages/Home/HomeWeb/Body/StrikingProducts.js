@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
+import { removePunctuation } from "../../../../services/CommonFunction";
 
 export default class StrikingProducts extends Component {
     constructor(props) {
@@ -41,12 +42,14 @@ export default class StrikingProducts extends Component {
                     return designID === currentDesignID;
                 }
             ).length;
+            let productName = removePunctuation(product.name.toLowerCase());
+            productName = productName.replace(/ /gi, "");
             return (
                 <div key={index} className="content-carousel">
                     <Link
                         to={{
-                            pathname: "/product-detail",
-                            search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                            pathname: `/product-detail/fabric-selection/${productName}`,
+                            search: `?design=${product.designID}&pattern=${product.fabricID}`,
                         }}
                         style={{
                             width: "100%",
@@ -81,7 +84,7 @@ export default class StrikingProducts extends Component {
             loop: true,
         };
         const { bestSellerInfo } = this.props;
-        console.log('bestSellerInfo :>> ', bestSellerInfo);
+        console.log("bestSellerInfo :>> ", bestSellerInfo);
         return (
             <div className="strikingProducts d-flex flex-column align-items-center fontMontserrat">
                 <div className="title">

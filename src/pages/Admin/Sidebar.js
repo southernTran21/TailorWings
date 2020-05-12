@@ -5,7 +5,7 @@ import {
     listAllImage,
     getAllData,
 } from "../../services/Fundamental";
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Link, Route, Redirect } from "react-router-dom";
 import DesignAdjustment from "./DesignPage/DesignAdjustment";
 import Design from "./DesignPage/Design";
 import Fabrics from "./FabricsPage/Fabrics";
@@ -288,6 +288,9 @@ export class Sidebar extends Component {
                     {/* this is content */}
                     <div className="col-10 design">
                         <Switch>
+                            <Route path="/admin" exact>
+                                <Redirect to="/admin/designs" />
+                            </Route>
                             {/* designs */}
                             <Route
                                 path="/admin/designs"

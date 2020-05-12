@@ -2,16 +2,18 @@
 import React, { Component } from "react";
 import "./FabricsAdjustment.scss";
 import { uploadImage, setDocument } from "../../../services/Fundamental";
-import { Upload, Icon, Modal, Button, Radio, message } from "antd";
+import { Upload, Icon, Modal, Button, Radio, message, Select } from "antd";
+import TextArea from "antd/lib/input/TextArea";
 
 let isLoading = false;
+const { Option } = Select;
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
+        reader.onerror = (error) => reject(error);
     });
 }
 export class FabricsAdjustment extends Component {
@@ -31,8 +33,9 @@ export class FabricsAdjustment extends Component {
             supplier: "",
             type: "",
             unit: "",
-            id: ""
-        }
+            id: "",
+            description: "",
+        },
     };
 
     componentDidMount() {
@@ -47,12 +50,12 @@ export class FabricsAdjustment extends Component {
                 ? window.location.search.match(/id=(.*)\b/)[1]
                 : fabricID;
             let currentFabric = {
-                ...fabrics.find(fabric => {
+                ...fabrics.find((fabric) => {
                     return fabric.id === currentFabricID;
-                })
+                }),
             };
             if (currentFabric != null) {
-                let imageName = currentFabric.image.map(url => {
+                let imageName = currentFabric.image.map((url) => {
                     let path = url.match(/\o\/(.*)\?\b/)[1];
                     path = this.decode_utf8(path);
                     let name = path.split("/")[2];
@@ -65,7 +68,7 @@ export class FabricsAdjustment extends Component {
                             name: imageName[index],
                             status: "done",
                             url: element,
-                            old: true
+                            old: true,
                         };
                     } else {
                         return element;
@@ -77,7 +80,7 @@ export class FabricsAdjustment extends Component {
                         fabricID: currentFabricID,
                         currentFabric,
                         previewImage: currentFabric.image,
-                        fileList
+                        fileList,
                     });
                 }
             }
@@ -88,25 +91,25 @@ export class FabricsAdjustment extends Component {
         this._isMounted = false;
     }
 
-    decode_utf8 = s => {
+    decode_utf8 = (s) => {
         return decodeURIComponent(s);
     };
 
     handleCancel = () => this.setState({ previewVisible: false });
 
-    handlePreview = async file => {
+    handlePreview = async (file) => {
         if (!file.url && !file.preview) {
             file.preview = await getBase64(file.originFileObj);
         }
 
         this.setState({
             previewImage: file.url || file.preview,
-            previewVisible: true
+            previewVisible: true,
         });
     };
 
     handleImageChange = ({ fileList }) => {
-        fileList.forEach(file => {
+        fileList.forEach((file) => {
             if (!file.hasOwnProperty("old")) {
                 file.old = false;
             }
@@ -114,11 +117,11 @@ export class FabricsAdjustment extends Component {
         this.setState({
             fileList,
             isImageChanged: true,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onTextChange = e => {
+    onTextChange = (e) => {
         let { currentFabric } = this.state;
         let value = e.target.value;
         let id = e.target.id;
@@ -141,23 +144,23 @@ export class FabricsAdjustment extends Component {
         currentFabric[id] = value;
         this.setState({
             currentFabric,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
-    onUnitChange = e => {
+    onUnitChange = (e) => {
         let { currentFabric } = this.state;
         currentFabric.unit = e.target.value;
         this.setState({
             currentFabric,
-            isUpdate: true
+            isUpdate: true,
         });
     };
 
     onSaveHandling = () => {
         isLoading = true;
         this.setState({
-            isLoading: true
+            isLoading: true,
         });
         const { isUpdate } = this.state;
         if (isUpdate) {
@@ -177,13 +180,25 @@ export class FabricsAdjustment extends Component {
         }
     };
 
+    onDescriptionChange = (e) => {
+        let updateFabric = { ...this.state.currentFabric };
+        let value = e.target.value; 
+        if (value != null) {
+            updateFabric.description = value;
+            this.setState({
+                currentFabric: updateFabric,
+                isUpdate: true,
+            });
+        }
+    };
+
     addHandling = () => {
         isLoading = true;
         let { currentFabric, fileList, isImageChanged } = this.state;
         const { fabrics } = this.props;
         if (
             currentFabric.id !== "" &&
-            fabrics.find(fabric => fabric.id === currentFabric.id) == null
+            fabrics.find((fabric) => fabric.id === currentFabric.id) == null
         ) {
             if (fileList.length === 2) {
                 if (isImageChanged) {
@@ -192,9 +207,12 @@ export class FabricsAdjustment extends Component {
                             "image/fabrics/",
                             fileList[0].originFileObj
                         ),
-                        uploadImage("image/fabrics/", fileList[1].originFileObj)
+                        uploadImage(
+                            "image/fabrics/",
+                            fileList[1].originFileObj
+                        ),
                     ])
-                        .then(downloadURLList => {
+                        .then((downloadURLList) => {
                             currentFabric.image = downloadURLList;
                             setDocument(
                                 "fabrics",
@@ -239,22 +257,23 @@ export class FabricsAdjustment extends Component {
         const { fabrics } = this.props;
         if (fileList.length === 2) {
             if (isImageChanged) {
-                let indexesOfChanged =  [];
+                let indexesOfChanged = [];
                 fileList.forEach((file, index) => {
-                    if ( !file.old ) {
+                    if (!file.old) {
                         indexesOfChanged.push(index);
                     }
-                })
+                });
                 let promiseFunctionArray = indexesOfChanged.map((index, i) => {
-                    return uploadImage("image/fabrics/", fileList[index].originFileObj);
-                })
-                Promise.all([
-                    ...promiseFunctionArray
-                ])
-                    .then(downloadURLList => {
+                    return uploadImage(
+                        "image/fabrics/",
+                        fileList[index].originFileObj
+                    );
+                });
+                Promise.all([...promiseFunctionArray])
+                    .then((downloadURLList) => {
                         indexesOfChanged.forEach((index, i) => {
                             currentFabric.image[index] = downloadURLList[i];
-                        })
+                        });
                         setDocument(
                             "fabrics",
                             currentFabric,
@@ -292,7 +311,7 @@ export class FabricsAdjustment extends Component {
             previewImage,
             fileList,
             currentFabric,
-            inputDisble
+            inputDisble,
         } = this.state;
         const uploadButton = (
             <div>
@@ -408,6 +427,34 @@ export class FabricsAdjustment extends Component {
                                     />
                                 </div>
                             </div>
+                            <div className="inputFabricType d-flex">
+                                <p className="d-flex flex-row align-items-center">
+                                    Type Name
+                                </p>
+                                <Select
+                                    defaultValue="Voan"
+                                    style={{ width: 120 }}
+                                    // onChange={handleChange}
+                                >
+                                    <Option value="voan">Voan</Option>
+                                    <Option value="kaki">Kaki</Option>
+                                    <Option value="lua">Lụa</Option>
+                                </Select>
+                            </div>
+                            <div className="inputOrigin d-flex">
+                                <p className="d-flex flex-row align-items-center">
+                                    Origin
+                                </p>
+                                <Select
+                                    defaultValue="Việt Nam"
+                                    style={{ width: 120 }}
+                                    // onChange={handleChange}
+                                >
+                                    <Option value="vietnam">Việt Nam</Option>
+                                    <Option value="hanquoc">Hàn Quốc</Option>
+                                    <Option value="thailan">Thái Lan</Option>
+                                </Select>
+                            </div>
                         </div>
 
                         <div className="col-6">
@@ -441,7 +488,6 @@ export class FabricsAdjustment extends Component {
                                     />
                                 </div>
                             </div>
-
                             <div className="inputUnit d-flex">
                                 <p className="d-flex flex-row align-items-center">
                                     Unit
@@ -455,6 +501,16 @@ export class FabricsAdjustment extends Component {
                                     <Radio value="m">M</Radio>
                                     <Radio value="kg">Kg</Radio>
                                 </Radio.Group>
+                            </div>
+                            <div className="inputDescription">
+                                <TextArea
+                                    id="description"
+                                    defaultValue={currentFabric.description}
+                                    value={currentFabric.description}
+                                    onChange={this.onDescriptionChange}
+                                    placeholder="Description"
+                                    autoSize={{ minRows: 10, maxRows: 10 }}
+                                />
                             </div>
                         </div>
                     </div>
