@@ -71,18 +71,18 @@
         padding: 0 5%;
         .header__contentBody {
             padding-top: 1.5vh;
-            .title_wrapper{
+            .title_wrapper {
                 margin-bottom: 1vh;
                 .title1 {
                     font-size: 3.2vw;
                     color: #111e6c;
                     white-space: nowrap;
                 }
-                .title2{
-                    .content_categoryFabric{
+                .title2 {
+                    .content_categoryFabric {
                         font-size: 3.2vw;
                     }
-                    .contentSeeMore{
+                    .contentSeeMore {
                         font-size: 2.66vw;
                         color: #ff6d3b;
                         text-decoration: underline;
@@ -439,4 +439,24 @@
 .fixed_top {
     position: fixed;
     top: 0;
+}
+.modalDescriptionFabricMobile {
+    .modalInfoFabric_wrapper {
+        .imageFabric_wrapper {
+            img {
+                border-radius: 12px;
+            }
+        }
+        .contentInfoFabric {
+            margin-top: 2vh;
+            font-size: 3.73vw;
+            hr {
+                margin: 1vh 0;
+                border-top: 1px solid #ff6d3b;
+            }
+        }
+    }
+    .ant-modal-body {
+        padding: 3vh 4vw !important;
+    }
 }

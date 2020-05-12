@@ -58,23 +58,50 @@ export default class FabricSelectionWeb extends Component {
         });
     };
 
+    handleDescriptionModify = (arrDescription) => {
+        const description = arrDescription.split("-");
+        description.shift();
+        return description.map((result, index) => {
+            return <span key={index}> - {result}</span>;
+        });
+    };
+
     onTypeNameClick = () => {
         const { currentSelectedFabric } = this.state;
         if (!currentSelectedFabric) {
             message.info("Hiện không có thông tin!");
             return;
         }
-
         Modal.info({
             title: "THÔNG TIN VẢI",
+            className:"modalDescriptionFabricDesktop",
             content: (
-                <div>
-                    <img
-                        style={{ width: "70vw" }}
-                        src={currentSelectedFabric.image[1]}
-                        alt={currentSelectedFabric.name}
-                    />
-                    <p>{currentSelectedFabric.description}</p>
+                <div className="descriptionFabricDesktop_wrapper d-flex">
+                    <div className="imageFabricDesktop">
+                        <img
+                            style={{ width: "20vw" }}
+                            src={currentSelectedFabric.image[1]}
+                            alt={currentSelectedFabric.name}
+                        />
+                    </div>
+                    <div className="contentInfoFabricDesktop">
+                        <div className="contentName">
+                            <span className="font-weight-bold">Tên:&nbsp;</span>
+                            <span>{currentSelectedFabric.name}</span>
+                        </div>
+                        <div className="contentID">
+                            <span className="font-weight-bold">
+                                Mã vải:&nbsp;
+                            </span>
+                            <span>{currentSelectedFabric.id}</span>
+                        </div>
+                        <span className="font-weight-bold">Mô tả:</span>
+                        <div className="d-flex flex-column">
+                            {this.handleDescriptionModify(
+                                currentSelectedFabric.description
+                            )}
+                        </div>
+                    </div>
                 </div>
             ),
             centered: true,
