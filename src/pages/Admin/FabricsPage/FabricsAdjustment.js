@@ -26,6 +26,7 @@ export class FabricsAdjustment extends Component {
         isImageChanged: false,
         isUpdate: false,
         currentFabric: {
+            id: "",
             image: [],
             name: "",
             price: 0,
@@ -33,7 +34,8 @@ export class FabricsAdjustment extends Component {
             supplier: "",
             type: "",
             unit: "",
-            id: "",
+            typeName: "",
+            origin: "",
             description: "",
         },
     };
@@ -148,6 +150,28 @@ export class FabricsAdjustment extends Component {
         });
     };
 
+    onTypeNameChange = (value) => {
+        let updateFabric = { ...this.state.currentFabric };
+        if (!value) return;
+
+        updateFabric.typeName = value;
+        this.setState({
+            currentFabric: updateFabric,
+            isUpdate: true,
+        });
+    };
+
+    onOriginChange = (value) => {
+        let updateFabric = { ...this.state.currentFabric };
+        if (!value) return;
+
+        updateFabric.origin = value;
+        this.setState({
+            currentFabric: updateFabric,
+            isUpdate: true,
+        });
+    };
+
     onUnitChange = (e) => {
         let { currentFabric } = this.state;
         currentFabric.unit = e.target.value;
@@ -155,6 +179,18 @@ export class FabricsAdjustment extends Component {
             currentFabric,
             isUpdate: true,
         });
+    };
+
+    onDescriptionChange = (e) => {
+        let updateFabric = { ...this.state.currentFabric };
+        let value = e.target.value;
+        if (value != null) {
+            updateFabric.description = value;
+            this.setState({
+                currentFabric: updateFabric,
+                isUpdate: true,
+            });
+        }
     };
 
     onSaveHandling = () => {
@@ -177,18 +213,6 @@ export class FabricsAdjustment extends Component {
         } else {
             message.warning("Vui lòng thay đổi nội dung!");
             isLoading = false;
-        }
-    };
-
-    onDescriptionChange = (e) => {
-        let updateFabric = { ...this.state.currentFabric };
-        let value = e.target.value; 
-        if (value != null) {
-            updateFabric.description = value;
-            this.setState({
-                currentFabric: updateFabric,
-                isUpdate: true,
-            });
         }
     };
 
@@ -319,6 +343,7 @@ export class FabricsAdjustment extends Component {
                 <div className="ant-upload-text">Upload</div>
             </div>
         );
+        console.table(currentFabric);
         return (
             <div className="pageFabricsAdjustment">
                 <div className="headerPageFabrics d-flex flex-row justify-content-between align-items-center">
@@ -432,13 +457,14 @@ export class FabricsAdjustment extends Component {
                                     Type Name
                                 </p>
                                 <Select
-                                    defaultValue="Voan"
+                                    value={currentFabric.typeName}
                                     style={{ width: 120 }}
-                                    // onChange={handleChange}
+                                    onChange={this.onTypeNameChange}
+                                    allowClear
                                 >
-                                    <Option value="voan">Voan</Option>
-                                    <Option value="kaki">Kaki</Option>
-                                    <Option value="lua">Lụa</Option>
+                                    <Option value="Voan">Voan</Option>
+                                    <Option value="Kaki">Kaki</Option>
+                                    <Option value="Lụa">Lụa</Option>
                                 </Select>
                             </div>
                             <div className="inputOrigin d-flex">
@@ -446,13 +472,14 @@ export class FabricsAdjustment extends Component {
                                     Origin
                                 </p>
                                 <Select
-                                    defaultValue="Việt Nam"
+                                    value={currentFabric.origin}
                                     style={{ width: 120 }}
-                                    // onChange={handleChange}
+                                    onChange={this.onOriginChange}
+                                    allowClear
                                 >
-                                    <Option value="vietnam">Việt Nam</Option>
-                                    <Option value="hanquoc">Hàn Quốc</Option>
-                                    <Option value="thailan">Thái Lan</Option>
+                                    <Option value="Việt Nam">Việt Nam</Option>
+                                    <Option value="Hàn Quốc">Hàn Quốc</Option>
+                                    <Option value="Thái Lan">Thái Lan</Option>
                                 </Select>
                             </div>
                         </div>

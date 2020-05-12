@@ -5,6 +5,7 @@ import "./FabricSelection.scss";
 import Price from "./Price";
 import ProductImage from "./ProductImage";
 import { Link } from "react-router-dom";
+import { message, Modal } from "antd";
 
 export default class FabricSelectionWeb extends Component {
     constructor(props) {
@@ -12,39 +13,72 @@ export default class FabricSelectionWeb extends Component {
         this.state = {
             aciveFabricIndex: 0,
             currentSelectedProduct: { ...this.props.currentSelectedProduct },
+            currentSelectedFabric: { typeName: "", description: "" },
         };
     }
 
     componentDidMount() {
         let currentSelectedProduct = { ...this.props.currentSelectedProduct };
-        if (currentSelectedProduct) {
-            this.setState({
-                currentSelectedProduct,
-            });
-        }
+        if (!currentSelectedProduct) return;
+
+        let currentSelectedFabric = { ...this.state.currentSelectedFabric };
+        currentSelectedFabric = {
+            ...currentSelectedFabric,
+            ...this.props.fabricList.find(
+                (fabric) => fabric.id === currentSelectedProduct.fabricID
+            ),
+        };
+        if (!currentSelectedFabric) return;
+
+        this.setState({
+            currentSelectedProduct,
+            currentSelectedFabric,
+        });
     }
 
-    onSelectedFabricUpdating = (selectedFabric) => {
-        const { productList } = this.props;
+    onFabricChanged = (aciveFabricIndex, selectedFabric) => {
+        const { productList, fabricList } = this.props;
         let info = productList.find(
             (product) => product.fabricID === selectedFabric
         );
-        if (info.hasOwnProperty("fabricID")) {
-            let updatedProduct = { ...info };
-            updatedProduct.size = "";
-            updatedProduct.bodyMetric = new Array(3).fill("");
-            updatedProduct.quantity = 1;
-            // this.props.onSelectedProductUpdating(updatedProduct);
-            this.setState({
-                currentSelectedProduct: updatedProduct,
-            });
-        }
+        let currentSelectedFabric = { typeName: "", description: "" };
+        currentSelectedFabric = {
+            ...currentSelectedFabric,
+            ...fabricList.find((fabric) => fabric.id === selectedFabric),
+        };
+        if (!info.hasOwnProperty("fabricID")) return;
+
+        info.size = "";
+        info.bodyMetric = new Array(3).fill("");
+        info.quantity = 1;
+        this.setState({
+            currentSelectedProduct: info,
+            currentSelectedFabric,
+            aciveFabricIndex,
+        });
     };
 
-    onFabricChanged = (aciveFabricIndex, activeFabricID) => {
-        this.onSelectedFabricUpdating(activeFabricID);
-        this.setState({
-            aciveFabricIndex,
+    onTypeNameClick = () => {
+        const { currentSelectedFabric } = this.state;
+        if (!currentSelectedFabric) {
+            message.info("Hiện không có thông tin!");
+            return;
+        }
+
+        Modal.info({
+            title: "THÔNG TIN VẢI",
+            content: (
+                <div>
+                    <img
+                        style={{ width: "70vw" }}
+                        src={currentSelectedFabric.image[1]}
+                        alt={currentSelectedFabric.name}
+                    />
+                    <p>{currentSelectedFabric.description}</p>
+                </div>
+            ),
+            centered: true,
+            okText: "Thoát",
         });
     };
 
@@ -59,20 +93,31 @@ export default class FabricSelectionWeb extends Component {
     // END
 
     render() {
-        const { fabricList, history } = this.props;
-        const { aciveFabricIndex, currentSelectedProduct } = this.state;
+        const { fabricList } = this.props;
+        const {
+            aciveFabricIndex,
+            currentSelectedProduct,
+            currentSelectedFabric,
+        } = this.state;
         let productNameModified = "";
         productNameModified = currentSelectedProduct.name.toLowerCase();
         productNameModified = removePunctuation(productNameModified);
         productNameModified = productNameModified.replace(/ /gi, "-");
         return (
             <div>
-                <div className="categoryFabric_wrapper d-flex justify-content-end align-items-center">
+                <div
+                    className="categoryFabric_wrapper d-flex justify-content-end align-items-center"
+                    onClick={this.onTypeNameClick}
+                >
                     <div className="content_categoryFabric">
                         <span>Loại vải: </span>
-                        <span className="font-weight-bold">Lụa</span>
+                        <span className="font-weight-bold">
+                            {currentSelectedFabric.typeName}
+                        </span>
                     </div>
-                    <span className="contentSeeMore d-flex align-items-center">Xem thêm</span>
+                    <span className="contentSeeMore d-flex align-items-center">
+                        Xem thêm
+                    </span>
                 </div>
                 <div className="pageFabricSelection d-flex align-items-center">
                     <div

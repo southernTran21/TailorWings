@@ -6,6 +6,7 @@ import { removePunctuation } from "../../../../services/CommonFunction";
 import "./FabricSelection.scss";
 import FabricSwiper from "./FabricSwiper";
 import ProductSwiper from "./ProductSwiper";
+import { message, Modal } from "antd";
 
 class FabricSelection extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class FabricSelection extends Component {
             renderProducts: new Array(5).fill({ image: [""], price: 0 }),
             price: 0,
             totalProductsOnCart: 0,
+            currentFabric: { typeName: "", description: "" },
             /* ------------- */
             isSwiperTouch: false,
             currentProductIndex: 0,
@@ -24,9 +26,10 @@ class FabricSelection extends Component {
     }
 
     componentDidMount() {
-        let { productList } = this.props;
+        const { fabricList } = this.props;
         const { productSelectedState } = this.state;
         /* ------------- */
+        let productList = [...this.props.productList];
         if (productList.length < productSelectedState.length) {
             productList = productList.concat(productList);
             productList = productList.concat(productList);
@@ -53,15 +56,51 @@ class FabricSelection extends Component {
             0
         );
         /* ------------- */
+        let currentFabric = { ...this.state.currentFabric };
+        currentFabric = {
+            ...currentFabric,
+            ...fabricList.find(
+                (fabric) => fabric.id === renderProducts[0].fabricID
+            ),
+        };
         this.setState({
             renderProducts,
             price: renderProducts[0].price,
             totalProductsOnCart,
+            currentFabric,
         });
     }
 
+    onTypeNameClick = () => {
+        const { currentFabric } = this.state;
+        if (!currentFabric) {
+            message.info("Hiện không có thông tin!");
+            return;
+        }
+
+        Modal.info({
+            title: "THÔNG TIN VẢI",
+            content: (
+                <div>
+                    <img
+                        style={{ width: "70vw" }}
+                        src={currentFabric.image[1]}
+                        alt={currentFabric.name}
+                    />
+                    <p>{currentFabric.name}</p>
+                    <p>{currentFabric.id}</p>
+                    <hr></hr>
+                    <p>Miêu tả:</p>
+                    <p>{currentFabric.description}</p>
+                </div>
+            ),
+            centered: true,
+            okText: "Thoát",
+        });
+    };
+
     onProductImageSwiped(direction) {
-        let { productList } = this.props;
+        const { fabricList } = this.props;
         const { swiper } = this.state;
         let renderProducts = [...this.state.renderProducts];
         let productSelectedState = [...this.state.productSelectedState];
@@ -70,6 +109,7 @@ class FabricSelection extends Component {
         productSelectedState[productSliderIndex] = false;
         let indexOfNextProduct = 0;
         /* ------------- */
+        let productList = [...this.props.productList];
         if (productList.length < productSelectedState.length) {
             productList = productList.concat(productList);
             productList = productList.concat(productList);
@@ -203,6 +243,15 @@ class FabricSelection extends Component {
         /* ------------- */
         productSelectedState[productSliderIndex] = true;
         /* ------------- */
+        let currentFabric = { typeName: "", description: "" };
+        currentFabric = {
+            ...currentFabric,
+            ...fabricList.find(
+                (fabric) =>
+                    fabric.id === renderProducts[productSliderIndex].fabricID
+            ),
+        };
+        /* ------------- */
         this.setState({
             currentProductIndex: indexOfNextProduct,
             productSliderIndex,
@@ -210,6 +259,7 @@ class FabricSelection extends Component {
             renderProducts,
             isSwiperTouch: false,
             price: renderProducts[productSliderIndex].price,
+            currentFabric,
         });
     }
 
@@ -226,7 +276,7 @@ class FabricSelection extends Component {
             renderProducts,
             productSelectedState,
         } = this.state;
-        const { productList } = this.props;
+        const { productList, fabricList } = this.props;
         /* ------------- */
         let index = swiper.realIndex;
         /* ------------- */
@@ -238,12 +288,22 @@ class FabricSelection extends Component {
         /* ------------- */
         renderProducts[productSliderIndex] = productList[index];
         /* ------------- */
+        let currentFabric = { typeName: "", description: "" };
+        currentFabric = {
+            ...currentFabric,
+            ...fabricList.find(
+                (fabric) =>
+                    fabric.id === renderProducts[productSliderIndex].fabricID
+            ),
+        };
+        /* ------------- */
         this.setState({
             currentProductIndex: index,
             productSelectedState,
             renderProducts,
             productSliderIndex,
-            price: renderProducts[0].price,
+            price: renderProducts[productSliderIndex].price,
+            currentFabric,
         });
     };
 
@@ -270,6 +330,7 @@ class FabricSelection extends Component {
             price,
             productSliderIndex,
             totalProductsOnCart,
+            currentFabric,
         } = this.state;
         /* ------------- */
         let priceModified = 0;
@@ -298,6 +359,7 @@ class FabricSelection extends Component {
             urlSearch = `?design=${designID}&fabric=${fabricID}`;
         }
         /* ------------- */
+
         return (
             <div
                 className={classNames(
@@ -350,12 +412,19 @@ class FabricSelection extends Component {
                                 </span>
                                 <span>/{productList.length}</span>
                             </div>
-                            <div className="title2 d-flex flex-column align-items-end">
-                                <div className='content_categoryFabric'>
+                            <div
+                                className="title2 d-flex flex-column align-items-end"
+                                onClick={this.onTypeNameClick}
+                            >
+                                <div className="content_categoryFabric">
                                     <span>Loại vải: </span>
-                                    <span className='font-weight-bold'>Lụa</span>
+                                    <span className="font-weight-bold">
+                                        {currentFabric.typeName}
+                                    </span>
                                 </div>
-                                <span className="contentSeeMore d-flex align-items-center">Xem thêm</span>
+                                <span className="contentSeeMore d-flex align-items-center">
+                                    Xem thêm
+                                </span>
                             </div>
                         </div>
                         <FabricSwiper
