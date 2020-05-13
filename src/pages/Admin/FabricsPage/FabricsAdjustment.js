@@ -463,8 +463,14 @@ export class FabricsAdjustment extends Component {
                                     allowClear
                                 >
                                     <Option value="Voan">Voan</Option>
-                                    <Option value="Kaki">Kaki</Option>
+                                    <Option value="Thô">Thô</Option>
                                     <Option value="Lụa">Lụa</Option>
+                                    <Option value="Cotton">Cotton</Option>
+                                    <Option value="Tuýt-si">Tuýt-si</Option>
+                                    <Option value="Lanh">Lanh</Option>
+                                    <Option value="Kate">Kate</Option>
+                                    <Option value="Phi">Phi</Option>
+                                    <Option value="Polyester">Polyester</Option>
                                 </Select>
                             </div>
                             <div className="inputOrigin d-flex">
@@ -479,7 +485,7 @@ export class FabricsAdjustment extends Component {
                                 >
                                     <Option value="Việt Nam">Việt Nam</Option>
                                     <Option value="Hàn Quốc">Hàn Quốc</Option>
-                                    <Option value="Thái Lan">Thái Lan</Option>
+                                    <Option value="Thái Lan">Pháp</Option>
                                 </Select>
                             </div>
                         </div>
