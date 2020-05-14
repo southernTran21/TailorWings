@@ -1,12 +1,13 @@
-.my-style {
-/* Positioning */
+.admin {
+    /* Positioning */
 
-/* Display & Box Model */
+    /* Display & Box Model */
+    width: 100%;
+    height: 100vh;
+    /* Color */
+    background: #f8f9fb;
+    /* Text */
+    font-family: 'Raleway', sans-serif !important;
 
-/* Color */
-
-/* Text */
-
-/* Others: transition & animations, ... */
-
-}   
+    /* Others: transition & animations, ... */
+}

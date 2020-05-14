@@ -7,8 +7,8 @@ Title.propTypes = {
 
 function Title(props) {
     return (
-        <div>
-            Title
+        <div className='admin-order-general__header__title'>
+            <span>Orders (34 items)</span>
         </div>
     );
 }

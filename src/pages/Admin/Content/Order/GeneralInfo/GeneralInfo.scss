@@ -1,0 +1,119 @@
+.admin-order-general {
+    /* Positioning */
+    /* Display & Box Model */
+    padding-left: 19.92vw;
+    padding-right: 4.29vw;
+    padding-top: 4.1vh;
+    /* Color */
+    /* Text */
+    /* Others: transition & animations, ... */
+    &__header {
+        /* Positioning */
+        /* Display & Box Model */
+        /* Color */
+        /* Text */
+        /* Others: transition & animations, ... */
+        &__title {
+            /* Positioning */
+            /* Display & Box Model */
+            margin-left: 4.14vw;
+            /* Color */
+            /* Text */
+            font-weight: bold;
+            font-size: 2.8125vw;
+            /* Others: transition & animations, ... */
+        }
+        &__search {
+            /* Positioning */
+            /* Display & Box Model */
+            display: flex;
+            align-items: center;
+            width: 24.76vw;
+            height: 5.48vh;
+            border: 1px solid #939fac;
+            border-radius: 10px;
+            padding-left: 1.09vw;
+            /* Color */
+            background-color: white;
+            /* Text */
+            /* Others: transition & animations, ... */
+            input {
+                /* Positioning */
+                /* Display & Box Model */
+                border: none;
+                box-shadow: none !important;
+                /* Color */
+                color: black;
+                /* Text */
+                font-size: 0.9vw;
+                /* Others: transition & animations, ... */
+                outline: none;
+            }
+        }
+    }
+    &__column1 {
+        width: 10%;
+    }
+    &__column2 {
+        width: 15%;
+    }
+    &__column3 {
+        width: 20%;
+    }
+    &__column4 {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+    }
+    &__column5 {
+        width: 13%;
+        text-align: center;
+    }
+    &__column6 {
+        width: 15%;
+        text-align: end;
+    }
+    &__column1,
+    &__column2,
+    &__column3,
+    &__column4,
+    &__column5,
+    &__column6 {
+        margin: 0 1%;
+    }
+    &__order-list {
+        /* Positioning */
+        /* Display & Box Model */
+        height: 77.3vh;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 15px;
+        margin-top: 1.5vh;
+        /* Color */
+        background-color: white;
+        /* Text */
+        font-weight: bold;
+        font-size: 0.97vw;
+        /* Others: transition & animations, ... */
+        &__title {
+            /* Positioning */
+            /* Display & Box Model */
+            display: flex;
+            align-items: center;
+            height: 9.72vh;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 0 3.5%;
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+        }
+    }
+    &__order-item {
+        /* Positioning */
+        /* Display & Box Model */
+        display: flex;
+        padding: 0 3.5%;
+        /* Color */
+        /* Text */
+        /* Others: transition & animations, ... */
+    }
+}

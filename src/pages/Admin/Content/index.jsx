@@ -12,7 +12,6 @@ function Content() {
             <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
                     <Redirect exact from={`${match.url}`} to="/admin/order" />
-
                     <Route path={`${match.url}/order`} component={Order} />
                 </Switch>
             </Suspense>

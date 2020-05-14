@@ -7,8 +7,8 @@ Header.propTypes = {};
 
 function Header(props) {
     return (
-        <div className='admin-order-general__header'>
-            <Title />
+        <div className='admin-order-general__header d-flex justify-content-between align-items-center'>
+            <Title/>
             <Search />
         </div>
     );
