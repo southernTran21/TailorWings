@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import HeaderAdmin from "./HeaderAdmin";
 import Sidebar from "./Sidebar";
 import ReactGA from "react-ga";
+import AdminSidebar from '../../components/AdminSideBar'
+import Content from "./Content/index";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -18,12 +20,19 @@ export class Admin extends Component {
         logPageView();
     }
     render() {
-        const { match, history } = this.props;
+        // const { match, history } = this.props; keep this
         return (
             <div className="admin">
-                <HeaderAdmin history={history} />
-                <Sidebar match={match} history={history} />
-            </div>
+
+                <AdminSidebar />
+                <Content />
+
+                {/* keep this */}
+                {/* <HeaderAdmin history={history} /> */}
+                {/* <Sidebar match={match} history={history} /> */}
+                {/* keep this */}
+
+            </div>  
         );
     }
 }
