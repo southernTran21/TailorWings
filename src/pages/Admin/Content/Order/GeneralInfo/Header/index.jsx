@@ -1,13 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Title from './Title';
-import Search from './Search';
+import Search from "./Search";
+import Title from "./Title";
 
-Header.propTypes = {};
-
-function Header(props) {
+function Header() {
     return (
-        <div className='admin-order-general__header'>
+        <div className="admin-order-general__header">
             <Title />
             <Search />
         </div>

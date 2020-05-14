@@ -17,7 +17,7 @@
 //     return str;
 // }
 
-export const removePunctuation = str => {
+export const removePunctuation = (str) => {
     // remove accents
     var from =
             "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñç",
@@ -36,7 +36,7 @@ export const removePunctuation = str => {
     return str;
 };
 
-export const validateEmail = email => {
+export const validateEmail = (email) => {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 };
@@ -80,4 +80,33 @@ const priceAfterDiscounted = (purePrice, productDiscount, categoryDiscount) => {
     discountPrice = discountPrice / 1000;
     discountPrice = Math.ceil(discountPrice) * 1000;
     return discountPrice;
+};
+
+export const timeConverter = (UNIX_timestamp) => {
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+    ];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    if (Number(month) < 10) {
+        month = "0" + month;
+    }
+    if (Number(date) < 10) {
+        date = "0" + date;
+    }
+    var time = date + "/" + month + "/" + year;
+    return time;
 };

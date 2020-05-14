@@ -1,11 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-Title.propTypes = {
-    
-};
-
-function Title(props) {
+function Title() {
+    const orderList = useSelector(state => state.adminOrderReducer.orderList);
     return (
         <div>
             Title

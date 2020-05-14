@@ -1,11 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Header from "./Header";
 import OrderList from "./OrderList";
 
-GeneralInfo.propTypes = {};
-
-function GeneralInfo(props) {
+function GeneralInfo() {
     return (
         <div className="admin-order-general">
             <Header />

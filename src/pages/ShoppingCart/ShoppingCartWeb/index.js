@@ -262,6 +262,7 @@ class ShoppingCartWeb extends Component {
             orderDate: "",
             orderID: orderDetail.orderID,
             status: "new",
+            isPaid: false,
             total: totalPrice,
             paymentMethod: paymentMethod,
         };
