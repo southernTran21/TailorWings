@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { modifyPrice } from "../../../../../../services/CommonFunction";
 
+import { Select } from "antd";
+
+const { Option } = Select;
+
 OrderItem.propTypes = {
     order: PropTypes.object,
 };
@@ -17,7 +21,7 @@ function OrderItem(props) {
     return (
         <div className="admin-order-general__order-item">
             <div className="admin-order-general__column1">
-                <a href="#">{`#${orderID}`}</a>
+                <a href="#" className='admin-order-general__order-item__id-order' >{`#${orderID}`}</a>
             </div>
             <div className="admin-order-general__column2">
                 <span>{orderDate}</span>
@@ -26,7 +30,15 @@ function OrderItem(props) {
                 <span>{cusName}</span>
             </div>
             <div className="admin-order-general__column4">
-                <span>{status}</span>
+                <Select
+                    defaultValue={`${status}`}
+                    // onChange={handleChange}
+                    className='admin-order-general__order-item__select'
+                >
+                    <Option value="new">New</Option>
+                    <Option value="repaid">Repaid</Option>
+                </Select>
+                <span></span>
             </div>
             <div className="admin-order-general__column5">
                 <span>{isPaid}</span>

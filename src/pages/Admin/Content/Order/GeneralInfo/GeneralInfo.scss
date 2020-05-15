@@ -84,7 +84,7 @@
     &__order-list {
         /* Positioning */
         /* Display & Box Model */
-        height: 77.3vh;
+        height: 83.3vh;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
         border-radius: 15px;
         margin-top: 1.5vh;
@@ -111,9 +111,41 @@
         /* Positioning */
         /* Display & Box Model */
         display: flex;
-        padding: 0 3.5%;
+        align-items: center;
+        padding: 1vh 3.5%;
         /* Color */
         /* Text */
+        font-size: 0.97vw;
         /* Others: transition & animations, ... */
+        &__select {
+            /* Positioning */
+            /* Display & Box Model */
+            width: 9.375vw;
+            border: 2px solid #387a1f;
+            border-radius: 15px;
+            /* Color */
+            color: #387a1f;
+            /* Text */
+            /* Others: transition & animations, ... */
+            .ant-select-selection {
+                /* Positioning */
+                /* Display & Box Model */
+                border: none;
+                box-shadow: none;
+                /* Color */
+                background: transparent;
+                /* Text */
+                /* Others: transition & animations, ... */
+            }
+        }
+        &__id-order {
+            /* Positioning */
+            /* Display & Box Model */
+            /* Color */
+            color: #105592;
+            /* Text */
+            text-decoration: underline;
+            /* Others: transition & animations, ... */
+        }
     }
 }

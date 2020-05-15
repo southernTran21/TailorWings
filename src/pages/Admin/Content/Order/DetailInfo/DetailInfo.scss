@@ -1,0 +1,513 @@
+.admin-order-detail {
+    /* Positioning */
+    /* Display & Box Model */
+    padding-left: 19.92vw;
+    padding-right: 4.29vw;
+    padding-top: 6.1vh;
+    /* Color */
+    background-color: #f8f9fb;
+    /* Text */
+    /* Others: transition & animations, ... */
+    .anticon {
+        vertical-align: 0;
+    }
+    &__title {
+        /* Positioning */
+        /* Display & Box Model */
+        /* Color */
+        /* Text */
+        /* Others: transition & animations, ... */
+        &__head {
+            /* Positioning */
+            /* Display & Box Model */
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+            &--content {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                /* Text */
+                font-size: 1.25vw;
+                /* Others: transition & animations, ... */
+            }
+        }
+        &__body {
+            /* Positioning */
+            /* Display & Box Model */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            width: 52.03vw;
+            height: 24.93vh;
+            margin-top: 0.97vw;
+            padding-left: 3.593vw;
+            padding-top: 4.48vh;
+            padding-right: 21.9vw;
+            /* Color */
+            background-color: white;
+            /* Text */
+            /* Others: transition & animations, ... */
+            &__top {
+                /* Positioning */
+                /* Display & Box Model */
+
+                /* Color */
+                /* Text */
+                /* Others: transition & animations, ... */
+                &--title1 {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    /* Color */
+                    /* Text */
+                    font-weight: bold;
+                    font-size: 2.8125vw;
+                    /* Others: transition & animations, ... */
+                }
+                &--title2 {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    margin-left: 1.17vw;
+                    /* Color */
+                    /* Text */
+                    font-size: 1.11vw;
+                    /* Others: transition & animations, ... */
+                }
+            }
+            &__bot {
+                /* Positioning */
+                /* Display & Box Model */
+                margin-top: 1.24vw;
+                /* Color */
+                /* Text */
+                /* Others: transition & animations, ... */
+                &__print {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    /* Color */
+                    /* Text */
+                    /* Others: transition & animations, ... */
+                    cursor: pointer;
+                    &--content {
+                        /* Positioning */
+                        /* Display & Box Model */
+                        margin-left: 0.4vw;
+                        /* Color */
+                        /* Text */
+                        font-size: 1.11vw;
+                        /* Others: transition & animations, ... */
+                    }
+                }
+                &__edit {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    margin-left: 1.64vw;
+                    /* Color */
+                    /* Text */
+                    /* Others: transition & animations, ... */
+                    cursor: pointer;
+                    &--content {
+                        /* Positioning */
+                        /* Display & Box Model */
+                        margin-left: 0.4vw;
+                        /* Color */
+                        /* Text */
+                        font-size: 1.11vw;
+                        /* Others: transition & animations, ... */
+                    }
+                }
+                &__select {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border: 2px solid #387a1f;
+                    border-radius: 15px;
+                    width: 9.375vw;
+                    height: 4.48vh;
+                    /* Color */
+                    color: #387a1f;
+                    /* Text */
+                    font-size: 1.11vw;
+                    line-height: 0;
+                    /* Others: transition & animations, ... */
+                    .ant-select-selection--single
+                        .ant-select-selection__rendered {
+                        /* Positioning */
+                        /* Display & Box Model */
+                        margin: 0;
+                        margin-left: 1vw;
+                        width: 8vw;
+                        /* Color */
+                        /* Text */
+                        /* Others: transition & animations, ... */
+                    }
+                    .ant-select-selection {
+                        /* Positioning */
+                        /* Display & Box Model */
+                        border: none;
+                        box-shadow: none;
+                        /* Color */
+                        background: transparent;
+                        /* Text */
+                        /* Others: transition & animations, ... */
+                    }
+                }
+            }
+        }
+    }
+    &__item-list {
+        /* Positioning */
+        /* Display & Box Model */
+        width: 52.03vw;
+        height: 80.92vh;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        margin-top: 1.74vh;
+        padding: 3.36vh 3.125vw 0 3.5vw;
+        /* Color */
+        background-color: white;
+        /* Text */
+        /* Others: transition & animations, ... */
+        // overflow-y: scroll;
+        &__title {
+            /* Positioning */
+            /* Display & Box Model */
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+            &--1 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                /* Text */
+                font-weight: bold;
+                font-size: 2.8125vw;
+                /* Others: transition & animations, ... */
+            }
+            &--2 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                /* Text */
+                font-size: 1.66vw;
+                /* Others: transition & animations, ... */
+            }
+        }
+        &__content-wrapper {
+            /* Positioning */
+            /* Display & Box Model */
+            margin-top: 2vh;
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+            &__image {
+                /* Positioning */
+                /* Display & Box Model */
+                width: 6.25vw;
+                min-height: 14vh;
+                /* Color */
+                background-color: #fff4e3;
+                /* Text */
+                /* Others: transition & animations, ... */
+            }
+            &__content {
+                /* Positioning */
+                /* Display & Box Model */
+                width: 86%;
+                padding-left: 1.56vw;
+                /* Color */
+                /* Text */
+                /* Others: transition & animations, ... */
+                &--text1 {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    /* Color */
+                    /* Text */
+                    font-size: 1.25vw;
+                    /* Others: transition & animations, ... */
+                }
+                &--text2 {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    /* Color */
+                    /* Text */
+                    font-size: 0.83vw;
+                    /* Others: transition & animations, ... */
+                }
+                &--text3 {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    /* Color */
+                    /* Text */
+                    font-size: 0.78vw;
+                    /* Others: transition & animations, ... */
+                }
+                &--text4 {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    /* Color */
+                    /* Text */
+                    font-size: 1.25vw;
+                    /* Others: transition & animations, ... */
+                }
+                &--text5 {
+                    /* Positioning */
+                    /* Display & Box Model */
+                    /* Color */
+                    /* Text */
+                    font-size: 0.83vw;
+                    /* Others: transition & animations, ... */
+                }
+            }
+        }
+    }
+    &__payment-status {
+        /* Positioning */
+        /* Display & Box Model */
+        width: 52.03vw;
+        height: 40vh;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        margin-top: 1.74vh;
+        margin-bottom: 12.46vh;
+        padding: 4.11vh 2.96vw 0 3.59vw;
+        /* Color */
+        background-color: white;
+        /* Text */
+        /* Others: transition & animations, ... */
+        &__top {
+            /* Positioning */
+            /* Display & Box Model */
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+            &--text {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                color: #e5484a;
+                /* Text */
+                font-size: 1.66vw;
+                font-weight: bold;
+                /* Others: transition & animations, ... */
+            }
+            &__button-mark-as-paid {
+                /* Positioning */
+                /* Display & Box Model */
+                width: 9.84vw;
+                height: 4.613vh;
+                border: 1.5px solid #77c44c;
+                border-radius: 10px;
+                /* Color */
+                color: #77c44c;
+                /* Text */
+                font-weight: bold;
+                font-size: 0.9vw;
+                /* Others: transition & animations, ... */
+                cursor: pointer;
+            }
+        }
+        &__bot {
+            /* Positioning */
+            /* Display & Box Model */
+            margin-top: 2vh;
+            /* Color */
+            /* Text */
+            font-size: 1.25vw;
+            line-height: 3.51vw;
+            /* Others: transition & animations, ... */
+        }
+    }
+    &__customer-info {
+        /* Positioning */
+        /* Display & Box Model */
+        width: 21.09vw;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        margin-left: 2.34vw;
+        margin-top: 4.5vh;
+        /* Color */
+        background-color: white;
+        /* Text */
+        /* Others: transition & animations, ... */
+        &__contact-info {
+            /* Positioning */
+            /* Display & Box Model */
+            padding: 4.36vh 1.95vw 4.98vh 1.95vw;
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+            &--b2 {
+                /* Positioning */
+                /* Display & Box Model */
+                margin-top: 6.85vh;
+                /* Color */
+                /* Text */
+                /* Others: transition & animations, ... */
+            }
+            &--text1 {
+                /* Positioning */
+                /* Display & Box Model */
+                width: 10vw;
+                /* Color */
+                /* Text */
+                font-weight: bold;
+                font-size: 1.66vw;
+                /* Others: transition & animations, ... */
+            }
+            &--text2 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                color: #145895;
+                /* Text */
+                font-size: 0.97vw;
+                font-weight: bold;
+                /* Others: transition & animations, ... */
+                cursor: pointer;
+            }
+            &--text3 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                /* Text */
+                font-size: 0.97vw;
+                font-weight: bold;
+                /* Others: transition & animations, ... */
+            }
+            &--text4 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                color: #145895;
+                /* Text */
+                font-size: 0.97vw;
+                font-weight: bold;
+                /* Others: transition & animations, ... */
+                cursor: pointer;
+            }
+            &--text5 {
+                /* Positioning */
+                /* Display & Box Model */
+                margin-top: 4.36vh;
+                /* Color */
+                color: #145895;
+                /* Text */
+                font-size: 0.97vw;
+                font-weight: bold;
+                /* Others: transition & animations, ... */
+                cursor: pointer;
+            }
+            &--text6 {
+                /* Positioning */
+                /* Display & Box Model */
+                margin-top: 0.625vh;
+                /* Color */
+                /* Text */
+                font-size: 0.97vw;
+                font-weight: bold;
+                /* Others: transition & animations, ... */
+            }
+        }
+        &__shipping-address {
+            /* Positioning */
+            /* Display & Box Model */
+            padding: 4.36vh 1.95vw 4.98vh 1.95vw;
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+            &--text1 {
+                /* Positioning */
+                /* Display & Box Model */
+                margin-bottom: 4.36vh;
+                /* Color */
+                font-weight: bold;
+                font-size: 0.97vw;
+                /* Text */
+                /* Others: transition & animations, ... */
+            }
+            &--text2 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                color: #145895;
+                /* Text */
+                font-size: 0.97vw;
+                font-weight: bold;
+                /* Others: transition & animations, ... */
+                cursor: pointer;
+            }
+            &--text3 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                /* Text */
+                font-size: 0.83vw;
+                /* Others: transition & animations, ... */
+            }
+        }
+        &__billing-address {
+            /* Positioning */
+            /* Display & Box Model */
+            padding: 4.36vh 1.95vw 4.98vh 1.95vw;
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+            &--text3 {
+                /* Positioning */
+                /* Display & Box Model */
+                /* Color */
+                color: #999999;
+                /* Text */
+                font-size: 0.83vw;
+                /* Others: transition & animations, ... */
+            }
+        }
+        hr {
+            /* Positioning */
+            /* Display & Box Model */
+            width: 21.09vw;
+            border-top: 1px solid #e5e5e5;
+            margin: 0;
+            padding: 0;
+            /* Color */
+            /* Text */
+            /* Others: transition & animations, ... */
+        }
+    }
+    &__note {
+        /* Positioning */
+        /* Display & Box Model */
+        width: 21.09vw;
+        height: 33.66vh;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        margin-left: 2.34vw;
+        margin-top: 1.74vh;
+        padding: 4.36vh 1.95vw 4.98vh 1.95vw;
+        /* Color */
+        background-color: white;
+        /* Text */
+        /* Others: transition & animations, ... */
+        &--text1 {
+            /* Positioning */
+            /* Display & Box Model */
+            /* Color */
+            /* Text */
+            font-weight: bold;
+            font-size: 1.66vw;
+            /* Others: transition & animations, ... */
+        }
+        &--text2 {
+            /* Positioning */
+            /* Display & Box Model */
+            margin-top: 1.5vh;
+            /* Color */
+            color: #999999;
+            /* Text */
+            font-size: 0.83vw;
+            /* Others: transition & animations, ... */
+        }
+    }
+}
