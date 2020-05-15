@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import OrderList from "./OrderList";
+import './GeneralInfo.scss'
 
 function GeneralInfo() {
     return (

@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import ReactGA from "react-ga";
 import AdminSidebar from '../../components/AdminSideBar'
 import Content from "./Content/index";
+import './Admin.scss';
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
