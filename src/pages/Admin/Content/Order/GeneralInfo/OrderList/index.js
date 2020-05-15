@@ -8,9 +8,7 @@ function OrderList() {
     return (
         <div className="admin-order-general__order-list">
             <div className="admin-order-general__order-list__title">
-                <div className="admin-order-general__column1">
-                    Order
-                </div>
+                <div className="admin-order-general__column1">Order</div>
                 <div className="admin-order-general__column2">
                     Date{" "}
                     <svg
@@ -26,9 +24,7 @@ function OrderList() {
                         />
                     </svg>
                 </div>
-                <div className="admin-order-general__column3">
-                    Customer
-                </div>
+                <div className="admin-order-general__column3">Customer</div>
                 <div className="admin-order-general__column4">
                     Status
                     <svg
@@ -44,14 +40,12 @@ function OrderList() {
                         />
                     </svg>
                 </div>
-                <div className="admin-order-general__column5">
-                    Payment
-                </div>
-                <div className="admin-order-general__column6">
-                    Total
-                </div>
+                <div className="admin-order-general__column5">Payment</div>
+                <div className="admin-order-general__column6">Total</div>
             </div>
-            <OrderItem />
+            {renderList.map((order, index) => {
+                return <OrderItem key={index} order={order} />;
+            })}
         </div>
     );
 }

@@ -66,7 +66,7 @@ function Order() {
             (customer) => customer.customerID === customerID
         );
         /* Check and update customer name */
-        if (customerList[relatedCustomerIndex].hasOwnProperty("cusName")) {
+        if (relatedCustomerIndex > -1) {
             let customerName = customerList[relatedCustomerIndex].cusName;
             return customerName;
         } else {

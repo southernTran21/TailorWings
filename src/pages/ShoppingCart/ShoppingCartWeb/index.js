@@ -245,17 +245,17 @@ class ShoppingCartWeb extends Component {
         let customer = {
             adddress: address || "",
             cusName: name || "",
-            customerID: uniqid.time() || "",
-            id: "",
+            id: phoneModified,
             lock: false,
             note: "",
-            phone: phoneModified || "",
+            phone: phoneModified,
             promo: 0,
             rate: "",
             wishList: [],
         };
         let order = {
             customerID: customer.customerID,
+            cusName: customer.cusName,
             doneDate: "",
             id: "",
             notes: note,
@@ -268,7 +268,7 @@ class ShoppingCartWeb extends Component {
         };
         // this.onStepChange("orderConfirm");
         Promise.all([
-            setDocument("customers", customer, customer.phone),
+            setDocument("customers", customer, customer.id),
             addDocument("orders", order),
             addDocument("orderDetail", orderDetail),
         ]).then(() => {

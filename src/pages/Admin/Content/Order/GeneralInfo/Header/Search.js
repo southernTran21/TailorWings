@@ -11,6 +11,12 @@ function Search() {
         useSelector((state) => state.adminOrderReducer.orderList) || [];
     const dispatch = useDispatch();
 
+    /*********************************
+     *  Description: get newSearchTerm => filter renderList with searchTerm => update renderList to redux store
+     *
+     *
+     *  Call by: event trigger from search input
+     */
     function handleSearch(e) {
         /* set input value to searchItem */
         const value = e.target.value;
@@ -29,7 +35,14 @@ function Search() {
             dispatch(updateRenderList);
         }, 300);
     }
+    /************_END_****************/
 
+    /*********************************
+     *  Description: handle filter renderList from searchTerm
+     *
+     *
+     *  Call by: handleSearch()
+     */
     function handleFilter(searchList, searchTerm) {
         if (searchTerm && searchTerm !== "") {
             const newRenderList = searchList.filter((order) => {
@@ -63,6 +76,7 @@ function Search() {
             return searchList;
         }
     }
+    /************_END_****************/
 
     return (
         <div className="admin-order-general__header__search">
@@ -77,7 +91,11 @@ function Search() {
                     fill="#939FAC"
                 />
             </svg>
-            <Input placeholder="Filter Orders" />
+            <Input
+                placeholder="Filter Orders"
+                value={searchTerm}
+                onChange={handleSearch}
+            />
         </div>
     );
 }

@@ -11,7 +11,7 @@ function Logo() {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <g clip-path="url(#clip0)">
+                    <g clipPath="url(#clip0)">
                         <path
                             d="M19.9651 2.31213V5.70472L22.5436 3.50834L19.9651 2.31213Z"
                             fill="#FF6D3B"
