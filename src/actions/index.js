@@ -36,6 +36,7 @@ export const getDatabaseUpdate = (collection, data) => {
 /**
  * This is for AdminOrder
  */
+
 export const updateOrderList = (orderList) => {
     return {
         type: "UPDATE_ORDER_LIST",
@@ -47,6 +48,20 @@ export const updateRenderList = (renderList) => {
     return {
         type: "UPDATE_RENDER_LIST",
         renderList,
+    };
+};
+
+export const updateCustomerList = (customerList) => {
+    return {
+        type: "UPDATE_CUSTOMER_LIST",
+        customerList,
+    };
+};
+
+export const updateOrderDetail = (orderDetail) => {
+    return {
+        type: "UPDATE_ORDER_DETAIL",
+        orderDetail,
     };
 };
 

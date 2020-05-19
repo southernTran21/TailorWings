@@ -1,39 +1,74 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import OrderStatus from "../../../../../../components/Admin/AdminOrder/OrderStatus";
+import { Link } from "react-router-dom";
 
-import { Select } from "antd";
+function Title() {
+    const orderDetail = useSelector(
+        (state) => state.adminOrderReducer.orderDetail
+    );
 
-const { Option } = Select;
+    const { orderID, orderDate, status } = orderDetail;
 
-Title.propTypes = {};
-
-function Title(props) {
+    if (!orderID && !orderDate && !status)
+        return (
+            <div className="admin-order-detail__title">
+                <div className="admin-order-detail__title__head d-flex align-items-center">
+                    <Link
+                        to="/admin/order"
+                        style={{ color: "black", textDecoration: "none" }}
+                    >
+                        <svg
+                            width="1.52vw"
+                            viewBox="0 0 22 22"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="admin-order-detail__title__head--icon"
+                        >
+                            <path
+                                d="M12.4116 16.5C11.9778 16.5005 11.5569 16.3516 11.22 16.0783L6.54496 12.2191C6.36163 12.0732 6.21358 11.8878 6.11182 11.6767C6.01006 11.4656 5.95721 11.2343 5.95721 11C5.95721 10.7656 6.01006 10.5343 6.11182 10.3232C6.21358 10.1122 6.36163 9.92675 6.54496 9.78081L11.22 5.92164C11.5014 5.69613 11.8405 5.55423 12.1987 5.51209C12.5569 5.46995 12.9197 5.52928 13.2458 5.68331C13.5292 5.80823 13.7707 6.01209 13.9413 6.27054C14.112 6.52899 14.2047 6.83111 14.2083 7.14081V14.8591C14.2047 15.1688 14.112 15.471 13.9413 15.7294C13.7707 15.9879 13.5292 16.1917 13.2458 16.3166C12.9838 16.4358 12.6995 16.4983 12.4116 16.5Z"
+                                fill="#212B36"
+                            />
+                        </svg>
+                        <span className="admin-order-detail__title__head--content">
+                            Orders
+                        </span>
+                    </Link>
+                </div>
+                <div className="admin-order-detail__title__body d-flex flex-column"></div>
+            </div>
+        );
     return (
         <div className="admin-order-detail__title">
             <div className="admin-order-detail__title__head d-flex align-items-center">
-                <svg
-                    width="1.52vw"
-                    viewBox="0 0 22 22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="admin-order-detail__title__head--icon"
+                <Link
+                    to="/admin/order"
+                    style={{ color: "black", textDecoration: "none" }}
                 >
-                    <path
-                        d="M12.4116 16.5C11.9778 16.5005 11.5569 16.3516 11.22 16.0783L6.54496 12.2191C6.36163 12.0732 6.21358 11.8878 6.11182 11.6767C6.01006 11.4656 5.95721 11.2343 5.95721 11C5.95721 10.7656 6.01006 10.5343 6.11182 10.3232C6.21358 10.1122 6.36163 9.92675 6.54496 9.78081L11.22 5.92164C11.5014 5.69613 11.8405 5.55423 12.1987 5.51209C12.5569 5.46995 12.9197 5.52928 13.2458 5.68331C13.5292 5.80823 13.7707 6.01209 13.9413 6.27054C14.112 6.52899 14.2047 6.83111 14.2083 7.14081V14.8591C14.2047 15.1688 14.112 15.471 13.9413 15.7294C13.7707 15.9879 13.5292 16.1917 13.2458 16.3166C12.9838 16.4358 12.6995 16.4983 12.4116 16.5Z"
-                        fill="#212B36"
-                    />
-                </svg>
-                <span className="admin-order-detail__title__head--content">
-                    Orders
-                </span>
+                    <svg
+                        width="1.52vw"
+                        viewBox="0 0 22 22"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="admin-order-detail__title__head--icon"
+                    >
+                        <path
+                            d="M12.4116 16.5C11.9778 16.5005 11.5569 16.3516 11.22 16.0783L6.54496 12.2191C6.36163 12.0732 6.21358 11.8878 6.11182 11.6767C6.01006 11.4656 5.95721 11.2343 5.95721 11C5.95721 10.7656 6.01006 10.5343 6.11182 10.3232C6.21358 10.1122 6.36163 9.92675 6.54496 9.78081L11.22 5.92164C11.5014 5.69613 11.8405 5.55423 12.1987 5.51209C12.5569 5.46995 12.9197 5.52928 13.2458 5.68331C13.5292 5.80823 13.7707 6.01209 13.9413 6.27054C14.112 6.52899 14.2047 6.83111 14.2083 7.14081V14.8591C14.2047 15.1688 14.112 15.471 13.9413 15.7294C13.7707 15.9879 13.5292 16.1917 13.2458 16.3166C12.9838 16.4358 12.6995 16.4983 12.4116 16.5Z"
+                            fill="#212B36"
+                        />
+                    </svg>
+                    <span className="admin-order-detail__title__head--content">
+                        Orders
+                    </span>
+                </Link>
             </div>
             <div className="admin-order-detail__title__body d-flex flex-column">
                 <div className="admin-order-detail__title__body__top">
                     <span className="admin-order-detail__title__body__top--title1">
-                        #k8pk4lz9
+                        {`#${orderID || ""}`}
                     </span>
                     <span className="admin-order-detail__title__body__top--title2">
-                        Jul 07, 2020 at 2:06 PM
+                        {orderDate || ""}
                     </span>
                 </div>
                 <div className="admin-order-detail__title__body__bot d-flex justify-content-between">
@@ -71,14 +106,11 @@ function Title(props) {
                             </span>
                         </div>
                     </div>
-                    <Select
-                        defaultValue="New"
-                        // onChange={handleChange}
+                    <OrderStatus
+                        orderID={orderID}
+                        status={status}
                         className="admin-order-detail__title__body__bot__select"
-                    >
-                        <Option value="new">New</Option>
-                        <Option value="repaid">Repaid</Option>
-                    </Select>
+                    />
                 </div>
             </div>
         </div>

@@ -1,9 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { modifyPhone } from "../../../../../../services/CommonFunction";
 
-ShippingAddress.propTypes = {};
+ShippingAddress.propTypes = {
+    currentCustomerInfo: PropTypes.object,
+};
+
+ShippingAddress.defaultProps = {
+    currentCustomerInfo: null,
+};
 
 function ShippingAddress(props) {
+    if (!props.currentCustomerInfo)
+        return (
+            <div className="admin-order-detail__customer-info__shipping-address" />
+        );
+    const { cusName, address, phone } = props.currentCustomerInfo;
+    let modifiedPhone = modifyPhone(phone);
     return (
         <div className="admin-order-detail__customer-info__shipping-address">
             <div className="d-flex justify-content-between">
@@ -14,9 +27,9 @@ function ShippingAddress(props) {
                     Edit
                 </span>
             </div>
-            <span className='admin-order-detail__customer-info__shipping-address--text3'>
-                Dương Đinh Đông Khoa <br/> số 6 đường số 4, khu Hà Đô Centrosa, phường
-                12, quận 10,<br/> HCMC Hochiminh 72510 <br/>Vietnam<br/> +84 90 683 06 79
+            <span className="admin-order-detail__customer-info__shipping-address--text3">
+                {cusName} <br /> {address}
+                <br /> {modifiedPhone}
             </span>
         </div>
     );

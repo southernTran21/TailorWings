@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import HeaderAdmin from "./HeaderAdmin";
 import Sidebar from "./Sidebar";
 import ReactGA from "react-ga";
-import AdminSidebar from '../../components/AdminSideBar'
+import AdminSidebar from '../../components/Admin/AdminSideBar'
 import Content from "./Content/index";
 import './Admin.scss';
 

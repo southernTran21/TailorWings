@@ -1,15 +1,107 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import OrderItem from "./OrderItem";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateRenderList } from "../../../../../../actions";
 
 function OrderList() {
     const renderList =
         useSelector((state) => state.adminOrderReducer.renderList) || [];
+    const [dateSortOrder, setDateSortOrder] = useState(false);
+    const [statusSortOrder, setStatusSortOrder] = useState(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        handleDateSort(dateSortOrder);
+    }, []);
+
+    /*********************************
+     *  Description: sort renderList by orderDate
+     *
+     *
+     *  Call by: jsx
+     */
+    function handleDateSort(sortOrder) {
+        if (renderList.length === 0) return;
+
+        let sortedRenderList = [...renderList];
+        if (!sortOrder) {
+            /* ascending */
+            sortedRenderList.sort(function (a, b) {
+                let a_orderDate = modifyDate(a.orderDate);
+                let b_orderDate = modifyDate(b.orderDate);
+
+                return a_orderDate - b_orderDate;
+            });
+        } else {
+            /* descending */
+            sortedRenderList.sort(function (a, b) {
+                let a_orderDate = modifyDate(a.orderDate);
+                let b_orderDate = modifyDate(b.orderDate);
+                return b_orderDate - a_orderDate;
+            });
+        }
+        /* udpate RenderList */
+        const action_updateRenderList = updateRenderList(sortedRenderList);
+        dispatch(action_updateRenderList);
+        /* update dateSortOrder */
+        setDateSortOrder(sortOrder);
+    }
+    /************_END_****************/
+
+    /*********************************
+     *  Description: modify date to be yymmdd as a number
+     *
+     *
+     *  Call by: handleDateSort
+     */
+    function modifyDate(date) {
+        let modifiedDate = date.replace(/\//gi, " ");
+        modifiedDate = modifiedDate.replace(/:/gi, " ");
+        modifiedDate = modifiedDate.split(" ");
+        let temp = modifiedDate[0];
+        modifiedDate[0] = modifiedDate[2];
+        modifiedDate[2] = temp;
+        modifiedDate = Number(modifiedDate.toString().replace(/,/gi, ""));
+        if (modifiedDate) return modifiedDate;
+        return date;
+    }
+    /************_END_****************/
+
+    /*********************************
+     *  Description: sort renderList by orderStatus
+     *
+     *
+     *  Call by: jsx
+     */
+    function handleStatusSort(sortOrder) {
+        let sortedRenderList = [...renderList];
+        if (!sortOrder) {
+            /* ascending */
+            sortedRenderList = sortedRenderList.sort(function (a, b) {
+                return a.status.localeCompare(b.status);
+            });
+        } else {
+            /* descending */
+            sortedRenderList = sortedRenderList.sort(function (a, b) {
+                return b.status.localeCompare(a.status);
+            });
+        }
+        /* udpate RenderList */
+        const action_updateRenderList = updateRenderList(sortedRenderList);
+        dispatch(action_updateRenderList);
+        /* update statusSortOrder */
+        setStatusSortOrder(sortOrder);
+    }
+    /************_END_****************/
+
     return (
         <div className="admin-order-general__order-list">
             <div className="admin-order-general__order-list__title">
                 <div className="admin-order-general__column1">Order</div>
-                <div className="admin-order-general__column2">
+                <div
+                    className="admin-order-general__column2"
+                    onClick={() => handleDateSort(!dateSortOrder)}
+                >
                     Date{" "}
                     <svg
                         width="20"
@@ -25,7 +117,10 @@ function OrderList() {
                     </svg>
                 </div>
                 <div className="admin-order-general__column3">Customer</div>
-                <div className="admin-order-general__column4">
+                <div
+                    className="admin-order-general__column4"
+                    onClick={() => handleStatusSort(!statusSortOrder)}
+                >
                     Status
                     <svg
                         width="20"

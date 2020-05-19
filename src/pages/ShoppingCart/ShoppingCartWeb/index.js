@@ -32,6 +32,7 @@ const PRODUCT_DETAIL_FORM = {
     bodyMetric: [],
     size: "",
     quantity: 0,
+    image: []
 };
 
 class ShoppingCartWeb extends Component {
@@ -58,6 +59,7 @@ class ShoppingCartWeb extends Component {
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
             rememberChecked: false,
+            isCustomerInfoUpdate: false,
             // state for paymentInfo
             paymentMethod: "COD",
             paymentLoading: false,
@@ -122,7 +124,6 @@ class ShoppingCartWeb extends Component {
 
     // API FOR SHOPPPING CART RENDER
     onQuantityChange = (quantityChanged, index) => {
-        console.log("quantityChanged", quantityChanged);
         let { subtotalPrice, productsOnCart } = this.state;
         productsOnCart[index].quantity = Number(quantityChanged);
         subtotalPrice = productsOnCart.reduce((accumulator, current) => {
@@ -172,6 +173,10 @@ class ShoppingCartWeb extends Component {
     onCustomerInfoValidate = () => {
         const { name, phone, address } = this.state.customerInfo;
         const { rememberChecked, customerInfo } = this.state;
+        let previousCustomerInfo = JSON.parse(
+            localStorage.getItem("customerInfo")
+        );
+        let currentCustomerInfo = { ...customerInfo };
         let errorValidate = [];
         let phoneModified = phone.replace(/ /gi, "");
         errorValidate[0] = name === "" ? true : false;
@@ -182,26 +187,27 @@ class ShoppingCartWeb extends Component {
                 ? true
                 : false;
         errorValidate[2] = address === "" ? true : false;
+        let isUpdate =
+            JSON.stringify(previousCustomerInfo) !==
+            JSON.stringify(currentCustomerInfo);
         if (!errorValidate.includes(true)) {
-            this.onStepChange("paymentConfirm");
-            if (rememberChecked) {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify(customerInfo)
-                );
-            } else {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify({
-                        name: "",
-                        phone: "",
-                        address: "",
-                    })
-                );
+            if (!rememberChecked) {
+                currentCustomerInfo = {
+                    name: "",
+                    phone: "",
+                    address: "",
+                };
             }
+
+            localStorage.setItem(
+                "customerInfo",
+                JSON.stringify(currentCustomerInfo)
+            );
+            this.onStepChange("paymentConfirm");
         }
         this.setState({
             errorValidate,
+            isCustomerInfoUpdate: isUpdate,
         });
     };
 
@@ -225,7 +231,11 @@ class ShoppingCartWeb extends Component {
         this.setState({
             paymentLoading: true,
         });
-        const { subtotalPrice, paymentMethod } = this.state;
+        const {
+            subtotalPrice,
+            paymentMethod,
+            isCustomerInfoUpdate,
+        } = this.state;
         let { name, phone, address, note } = this.state.customerInfo;
         let phoneModified = phone.replace(/ /gi, "");
         let productsOnCart =
@@ -243,7 +253,7 @@ class ShoppingCartWeb extends Component {
             orderDetail.orderItems.push(productDetail);
         });
         let customer = {
-            adddress: address || "",
+            address: address || "",
             cusName: name || "",
             id: phoneModified,
             lock: false,
@@ -254,7 +264,7 @@ class ShoppingCartWeb extends Component {
             wishList: [],
         };
         let order = {
-            customerID: customer.customerID,
+            customerID: customer.id,
             cusName: customer.cusName,
             doneDate: "",
             id: "",
@@ -266,7 +276,6 @@ class ShoppingCartWeb extends Component {
             total: totalPrice,
             paymentMethod: paymentMethod,
         };
-        // this.onStepChange("orderConfirm");
         Promise.all([
             setDocument("customers", customer, customer.id),
             addDocument("orders", order),

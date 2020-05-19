@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
                     }
                     sessionStorage.setItem('accountInfo', JSON.stringify(accountInfo));
                     auth.login(() => {
-                        this.props.history.push('/admin/designs');
+                        this.props.history.push('/admin');
                     })
                     setTimeout(() => {
                         this.props.onLoginStatusChanged();

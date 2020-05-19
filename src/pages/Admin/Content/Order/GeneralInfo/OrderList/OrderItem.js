@@ -1,10 +1,8 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { Link, useRouteMatch } from "react-router-dom";
+import OrderStatus from "../../../../../../components/Admin/AdminOrder/OrderStatus";
 import { modifyPrice } from "../../../../../../services/CommonFunction";
-
-import { Select } from "antd";
-
-const { Option } = Select;
 
 OrderItem.propTypes = {
     order: PropTypes.object,
@@ -15,13 +13,36 @@ OrderItem.defaultProps = {
 };
 
 function OrderItem(props) {
-    if (!props.order) return null;
+    const match = useRouteMatch();
+
     const { orderID, orderDate, cusName, status, isPaid, total } = props.order;
-    let modifiedPrice = modifyPrice(total);
+
+    const [modifiedPrice, setModifiedPrice] = useState("");
+    const [paymentStatus, setPaymentStatus] = useState("Unpaid");
+    const [paymentStatusColor, setPaymentStatusColor] = useState("#FC4856");
+
+    useEffect(() => {
+        /* modify price */
+        setModifiedPrice(modifyPrice(total));
+        /* set payment status and color */
+        if (isPaid) {
+            setPaymentStatus("Paid");
+            setPaymentStatusColor("#77C44C");
+        }
+    }, [props.order]);
+
+    if (!props.order) return null;
     return (
         <div className="admin-order-general__order-item">
             <div className="admin-order-general__column1">
-                <a href="#" className='admin-order-general__order-item__id-order' >{`#${orderID}`}</a>
+                <Link
+                    to={{
+                        pathname: `${match.url}/${orderID}`,
+                    }}
+                    className="admin-order-general__order-item__id-order"
+                >
+                    {`#${orderID}`}
+                </Link>
             </div>
             <div className="admin-order-general__column2">
                 <span>{orderDate}</span>
@@ -30,18 +51,20 @@ function OrderItem(props) {
                 <span>{cusName}</span>
             </div>
             <div className="admin-order-general__column4">
-                <Select
-                    defaultValue={`${status}`}
-                    // onChange={handleChange}
-                    className='admin-order-general__order-item__select'
-                >
-                    <Option value="new">New</Option>
-                    <Option value="repaid">Repaid</Option>
-                </Select>
+                <OrderStatus
+                    orderID={orderID}
+                    status={status}
+                    className="admin-order-general__order-item__select"
+                />
                 <span></span>
             </div>
-            <div className="admin-order-general__column5">
-                <span>{isPaid}</span>
+            <div
+                className="admin-order-general__column5"
+                style={{
+                    color: paymentStatusColor,
+                }}
+            >
+                <span>{paymentStatus}</span>
             </div>
             <div className="admin-order-general__column6">
                 <span>{modifiedPrice}</span>

@@ -65,6 +65,7 @@ const priceAfterDiscounted = (purePrice, productDiscount, categoryDiscount) => {
 
 export const timeConverter = (UNIX_timestamp) => {
     var a = new Date(UNIX_timestamp * 1000);
+
     var months = [
         "1",
         "2",
@@ -82,13 +83,36 @@ export const timeConverter = (UNIX_timestamp) => {
     var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
+    var hour = a.getHours();
+    var minute = a.getMinutes();
+    var second = a.getSeconds();
     if (Number(month) < 10) {
         month = "0" + month;
     }
     if (Number(date) < 10) {
         date = "0" + date;
     }
-    var time = date + "/" + month + "/" + year;
+    if (Number(hour) < 10) {
+        hour = "0" + hour;
+    }
+    if (Number(minute) < 10) {
+        minute = "0" + minute;
+    }
+    if (Number(second) < 10) {
+        second = "0" + second;
+    }
+    var time =
+        date +
+        "/" +
+        month +
+        "/" +
+        year +
+        " " +
+        hour +
+        ":" +
+        minute +
+        ":" +
+        second;
     return time;
 };
 
@@ -102,4 +126,22 @@ export const modifyPrice = (price) => {
     if (!price) return "";
     return price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + "đ";
 };
+/************_END_****************/
+
+/*********************************
+ *  Description: modify phone to be +84 XXX XXX XXX
+ *
+ *
+ *  Call by: all
+ */
+export function modifyPhone(phone) {
+    if (phone) {
+        let modifiedPhone = phone.substr(1);
+        modifiedPhone = modifiedPhone.replace(/(.{3})/gi, "$1 ");
+        modifiedPhone = `+84 ${modifiedPhone}`;
+        return modifiedPhone;
+    } else {
+        return phone;
+    }
+}
 /************_END_****************/

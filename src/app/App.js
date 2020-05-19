@@ -20,6 +20,7 @@ import Support from "../pages/Support";
 import TailorwingNewExp from "../pages/LandingPage/TailorwingsNewExp/TailorwingNewExp";
 import TailorwingsCovid from "../pages/LandingPage/TailorwingsCOVID/TailorwingsCovid";
 import TailorwingsWelcome from "../pages/LandingPage/TailorwingsWelcome/index.js";
+import FirebaseAuthExample from "../playground/FirebaseAuthExample";
 
 export const history = createBrowserHistory();
 
@@ -262,6 +263,10 @@ export default class App extends Component {
                             path="/admin"
                             component={(props) => <Admin {...props} />}
                         />
+                        <Route
+                            path="/auth-example"
+                            component={() => <FirebaseAuthExample />}
+                        ></Route>
                         <Route path="*" component={() => "404 NOT FOUND"} />
                     </Switch>
                 </Router>

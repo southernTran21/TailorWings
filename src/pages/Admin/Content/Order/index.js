@@ -2,7 +2,11 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { getAllData } from "../../../../services/Fundamental";
 import { useDispatch } from "react-redux";
-import { updateOrderList, updateRenderList } from "../../../../actions";
+import {
+    updateOrderList,
+    updateRenderList,
+    updateCustomerList,
+} from "../../../../actions";
 import { timeConverter } from "../../../../services/CommonFunction";
 import { message } from "antd";
 
@@ -12,7 +16,6 @@ const DetailInfo = React.lazy(() => import("./DetailInfo"));
 
 function Order() {
     const match = useRouteMatch();
-    const [orderList, setOrderList] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -29,9 +32,12 @@ function Order() {
                             fetchedCustomer
                         );
                         /* Modify order date to be dd/mm/yy */
-                        order.orderDate = handleDateModify(order.orderDate);
+                        if (order.hasOwnProperty("timestamp")) {
+                            order.orderDate = handleDateModify(order.timestamp);
+                        } else {
+                            order.orderDate = "0";
+                        }
                     });
-                    // setOrderList(fetchedOrder);
 
                     /* udpate OrderList */
                     const action_updateOrderList = updateOrderList(
@@ -44,9 +50,12 @@ function Order() {
                         fetchedOrder
                     );
                     dispatch(action_updateRenderList);
+                    const action_updateCustomerList = updateCustomerList(
+                        fetchedCustomer
+                    );
+                    dispatch(action_updateCustomerList);
                 }
             } catch (error) {
-                console.log("Fail to fetch data from firebase :>> ", error);
                 message.error("Lấy dữ liệu thất bại! Lêu Lêu");
             }
         }
@@ -63,7 +72,7 @@ function Order() {
     function getCustomerName(customerID, customerList) {
         /* Find index of related-customer */
         let relatedCustomerIndex = customerList.findIndex(
-            (customer) => customer.customerID === customerID
+            (customer) => customer.id === customerID
         );
         /* Check and update customer name */
         if (relatedCustomerIndex > -1) {

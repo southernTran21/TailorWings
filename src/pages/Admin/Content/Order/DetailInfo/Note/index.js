@@ -1,14 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-Note.propTypes = {};
+function Note() {
+    const orderDetail = useSelector(
+        (state) => state.adminOrderReducer.orderDetail
+    );
 
-function Note(props) {
+    if (!orderDetail)
+        return <div className="admin-order-detail__note d-flex flex-column" />;
+
+    const { notes } = orderDetail;
+
     return (
         <div className="admin-order-detail__note d-flex flex-column">
             <span className="admin-order-detail__note--text1">Note</span>
             <span className="admin-order-detail__note--text2">
-                No notes from customer
+                {notes !== '' ? notes : 'Not any note for this order' }
             </span>
         </div>
     );
