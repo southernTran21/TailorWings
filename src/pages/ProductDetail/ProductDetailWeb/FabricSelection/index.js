@@ -171,7 +171,7 @@ export default class FabricSelectionWeb extends Component {
                         productID={currentSelectedProduct.productID}
                         onImageView={this.props.onImageView}
                     />
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column justify-content-between" style={{height:"69vh"}}>
                         <FabricList
                             fabricList={fabricList}
                             aciveFabricIndex={aciveFabricIndex}

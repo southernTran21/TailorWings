@@ -67,13 +67,13 @@
     }
     #fabricList-wrapper {
         width: 22.5vw;
-        height: 51.88vh;
+        height: 47vh;
         overflow: hidden;
         margin-left: 0.83vw;
         #fabricList-content {
             width: 22.5vw;
             padding-right: 0.5vw;
-            max-height: 51.88vh;
+            max-height: 47vh;
             overflow: auto;
         }
         #fabricList-content::-webkit-scrollbar {
@@ -116,11 +116,11 @@
         height: 18.12vh;
         margin-left: 1.25vw;
         :nth-child(1) {
-            font-size: 24px;
+            font-size: 1.66vw;
             font-weight: bold;
         }
         :nth-child(2) {
-            font-size: 22px;
+            font-size: 1.52vw;
         }
         :nth-child(3) {
             background: #ff6d3b;
@@ -128,7 +128,7 @@
             text-align: center;
             color: white;
             font-weight: bold;
-            padding: 10px 0;
+            padding: 1.24vh 0;
             margin-top: 1.66vh;
             cursor: pointer;
         }
