@@ -11,6 +11,7 @@ import M from "../../assets/imageSizeSelection/size M.svg";
 import L from "../../assets/imageSizeSelection/size L.svg";
 import XL from "../../assets/imageSizeSelection/size XL.svg";
 import XXL from "../../assets/imageSizeSelection/size XXL.svg";
+import { Helmet } from "react-helmet";
 
 const sizeImages = [
     {

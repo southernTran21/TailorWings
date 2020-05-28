@@ -7,6 +7,7 @@ import ImageView from "./ImageView";
 import "./ProductDetailWeb.scss";
 import SizeSelectionWeb from "./SizeSelection";
 import Steps from "./Steps";
+import { Helmet } from "react-helmet";
 
 class ProductDetailWeb extends Component {
     constructor(props) {
@@ -150,6 +151,24 @@ class ProductDetailWeb extends Component {
         const { match, visibilityProducts, fabricsInfo } = this.props;
         return (
             <div className="productDetail-container">
+                <Helmet>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-955903285/MegQCMTcytEBELXa58cD',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 <div className="pageProductDetailWeb-wrapper">
                     <NavBarWeb
                         history={this.props.history}

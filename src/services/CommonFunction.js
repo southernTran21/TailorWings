@@ -1,3 +1,9 @@
+/*********************************
+ *  Description: convert vietnamese to english
+ *  Format: aa-bb-cc
+ *
+ *  Call by: all
+ */
 export const removePunctuation = (str) => {
     // remove accents
     var from =
@@ -16,12 +22,26 @@ export const removePunctuation = (str) => {
 
     return str;
 };
+/************_END_****************/
 
+/*********************************
+ *  Description: validate email with expression
+ *
+ *
+ *  Call by: all
+ */
 export const validateEmail = (email) => {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 };
+/************_END_****************/
 
+/*********************************
+ *  Description: calculate total price of product
+ *
+ *
+ *  Call by: all
+ */
 export const totalPriceCalculation = (
     designPrice,
     designLength,
@@ -62,7 +82,14 @@ const priceAfterDiscounted = (purePrice, productDiscount, categoryDiscount) => {
     discountPrice = Math.ceil(discountPrice) * 1000;
     return discountPrice;
 };
+/************_END_****************/
 
+/*********************************
+ *  Description: convert seconds in time to new format
+ *  Format: dd/mm/yy hh:mm:ss
+ *
+ *  Call by: all
+ */
 export const timeConverter = (UNIX_timestamp) => {
     var a = new Date(UNIX_timestamp * 1000);
 
@@ -115,6 +142,7 @@ export const timeConverter = (UNIX_timestamp) => {
         second;
     return time;
 };
+/************_END_****************/
 
 /*********************************
  *  Description: format price as 000.000đ

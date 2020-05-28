@@ -66,3 +66,16 @@ export const updateOrderDetail = (orderDetail) => {
 };
 
 /* END */
+
+/**
+ * This is for AdminOrder
+ */
+
+export const updateAdminAuth = (isAdmin) => {
+    return {
+        type: "UPDATE_ADMIN_AUTH",
+        isAdmin,
+    };
+};
+
+ /* END */

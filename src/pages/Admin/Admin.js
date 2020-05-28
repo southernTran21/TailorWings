@@ -21,16 +21,16 @@ export class Admin extends Component {
         logPageView();
     }
     render() {
-        // const { match, history } = this.props; keep this
+        const { match, history } = this.props; //keep this
         return (
             <div className="admin">
 
-                <AdminSidebar />
-                <Content />
+                {/* <AdminSidebar />
+                <Content /> */}
 
                 {/* keep this */}
-                {/* <HeaderAdmin history={history} /> */}
-                {/* <Sidebar match={match} history={history} /> */}
+                <HeaderAdmin history={history} />
+                <Sidebar match={match} history={history} />
                 {/* keep this */}
 
             </div>  

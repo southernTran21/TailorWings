@@ -65,7 +65,6 @@ export const getDocument = (collection, doc) => {
                 return doc.data();
             } else {
                 // doc.data() will be undefined in this case
-
                 return null;
             }
         });

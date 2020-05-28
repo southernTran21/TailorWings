@@ -14,6 +14,7 @@ import Summary from "./ShoppingCart/Summary";
 import CustomerInfo from "./CustomerInfo";
 import PaymentConfirm from "./PaymentConfirm";
 import OrderConfirm from "./OrderConfirm";
+import { Helmet } from "react-helmet";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -32,7 +33,7 @@ const PRODUCT_DETAIL_FORM = {
     bodyMetric: [],
     size: "",
     quantity: 0,
-    image: []
+    image: [],
 };
 
 class ShoppingCartWeb extends Component {
@@ -382,6 +383,24 @@ class ShoppingCartWeb extends Component {
     render() {
         return (
             <div className="pageShoppingCartWeb">
+                <Helmet>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-955903285/853FCNnWq9EBELXa58cD',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 <NavBarWeb
                     history={this.props.history}
                     sideBarChange={this.sideBarChange}

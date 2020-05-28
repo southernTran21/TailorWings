@@ -14,7 +14,7 @@ export default class SizeSelection extends Component {
         super(props);
         this.state = {
             currentSelectedProduct: { ...this.props.currentSelectedProduct },
-            sizeImage: this.props.sizeImages[6],
+            sizeImage: this.props.sizeImages[6] || { image: "", id: "" },
             isUpdate: false,
             isConfirmNavigate: false,
             totalProductsOnCart: 0,
@@ -31,11 +31,12 @@ export default class SizeSelection extends Component {
             JSON.parse(localStorage.getItem("bodyMetric")) ||
             new Array(3).fill("");
         /* ------------- */
-        let sizeImage = this.state.sizeImage;
+        let sizeImage = { image: "", id: "" };
         if (currentSelectedProduct.hasOwnProperty("size")) {
-            sizeImage = sizeImages.find(
-                (size) => currentSelectedProduct.size === size.id
-            );
+            sizeImage =
+                sizeImages.find(
+                    (size) => currentSelectedProduct.size === size.id
+                ) || this.state.sizeImage;
         }
         /* ------------- */
         let productsOnCart =
@@ -135,7 +136,8 @@ export default class SizeSelection extends Component {
             currentSelectedProduct,
             totalProductsOnCart,
         } = this.state;
-        console.log('currentSelectedProduct :>> ', currentSelectedProduct);
+        let renderSizeImage = sizeImage || { image: "", id: "" };
+        let test = JSON.stringify(renderSizeImage);
         const { history, isConfirmNavigate } = this.props;
         let urlProductName = history.match.params.hasOwnProperty("productName")
             ? history.match.params.productName
@@ -174,7 +176,10 @@ export default class SizeSelection extends Component {
                             </div>
                         </div>
                         <div className="imgProduct">
-                            <img src={sizeImage.image} alt={sizeImage.id} />
+                            <img
+                                src={renderSizeImage.image}
+                                alt={renderSizeImage.id}
+                            />
                         </div>
                         <Selection
                             size={currentSelectedProduct.size}

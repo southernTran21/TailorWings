@@ -17,6 +17,7 @@ import PaymentConfirm from "./Body/PaymentConfirm";
 import ConfirmInfo from "./Footer/ConfirmInfo";
 import ConfirmPayment from "./Footer/ConfirmPayment";
 import OrderConfirm from "./Body/OrderConfirm";
+import { Helmet } from "react-helmet";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -466,6 +467,24 @@ class ShoppingCartMobile extends Component {
     render() {
         return (
             <div className="pageMyCart-wraper">
+                <Helmet>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-955903285/853FCNnWq9EBELXa58cD',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 {this.onHeaderRenderChange()}
                 {this.onBodyRenderChange()}
                 {this.onFooterRenderChange()}
