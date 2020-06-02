@@ -1,26 +1,27 @@
-import "./App.scss";
-import { Router, Route, Switch } from "react-router-dom";
-import React, { Component } from "react";
+import "antd/dist/antd.css";
 import { createBrowserHistory } from "history";
-import { getAllData, getWithCondition } from "../services/Fundamental";
-import { totalPriceCalculation } from "../services/CommonFunction";
-import ShoppingStore from "../pages/ShoppingStore/index";
+import ImageUpload from "playground/ImageUpload";
+import React, { Component } from "react";
+import ReactPixel from "react-facebook-pixel";
+import ReactGA from "react-ga";
+import { Route, Router, Switch } from "react-router-dom";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Admin from "../pages/Admin/Admin";
+import Home from "../pages/Home/index";
+import TailorwingsWelcome from "../pages/LandingPage/TailorwingsWelcome/index.js";
+import Policy from "../pages/Policy";
 import ProductDetail from "../pages/ProductDetail/index";
 import ShoppingCart from "../pages/ShoppingCart/index";
-import Home from "../pages/Home/index";
-import "antd/dist/antd.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Admin from "../pages/Admin/Admin";
-import { ProtectedRoute } from "./ProtectedRoute";
-import ReactGA from "react-ga";
-import ReactPixel from "react-facebook-pixel";
-import Policy from "../pages/Policy";
+import ShoppingStore from "../pages/ShoppingStore/index";
 import Support from "../pages/Support";
-import TailorwingNewExp from "../pages/LandingPage/TailorwingsNewExp/TailorwingNewExp";
-import TailorwingsCovid from "../pages/LandingPage/TailorwingsCOVID/TailorwingsCovid";
-import TailorwingsWelcome from "../pages/LandingPage/TailorwingsWelcome/index.js";
-import FirebaseAuthExample from "../playground/FirebaseAuthExample";
+import {
+    totalPriceCalculation,
+    getCurrentDate,
+} from "../services/CommonFunction";
+import { getAllData, getWithCondition } from "../services/Fundamental";
+import "./App.scss";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const history = createBrowserHistory();
 
@@ -263,8 +264,8 @@ export default class App extends Component {
                             component={(props) => <Admin {...props} />}
                         />
                         <Route
-                            path="/auth-example"
-                            component={() => <FirebaseAuthExample />}
+                            path="/image-upload-example"
+                            component={() => <ImageUpload />}
                         ></Route>
                         <Route path="*" component={() => "404 NOT FOUND"} />
                     </Switch>

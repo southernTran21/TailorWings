@@ -6,8 +6,23 @@ import iconVectorRight from "../../.../../../../assets/imageHomePage/vectorRight
 import imageCollectionDamCongSo from "../../../../assets/imageHomePageDesktop/collection-dam-cong-so.jpg";
 import imageCollectionDamDaoPho from "../../../../assets/imageHomePageDesktop/collection-dam-dao-pho.jpg";
 import imageCollectionDamDuTiec from "../../../../assets/imageHomePageDesktop/collection-dam-du-tiec.jpg";
+import { getCurrentDate } from "services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class Collections extends Component {
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (collectionID) => {
+        let date = getCurrentDate();
+        if (!collectionID) return;
+        trackingIncrement("tracking", date, "collections", collectionID);
+    };
+    /************_END_****************/
+
     render() {
         return (
             <div className="collection_wrapper d-flex fontMontserrat">
@@ -35,6 +50,7 @@ export default class Collections extends Component {
                             pathname: "/shopping-store",
                             search: "?cat=damcongso&search",
                         }}
+                        onClick={() => this.handleTracking("damcongso")}
                     >
                         <div className="selection d-flex">
                             <div className="image">
@@ -61,6 +77,7 @@ export default class Collections extends Component {
                             pathname: "/shopping-store",
                             search: "?cat=damdaopho&search",
                         }}
+                        onClick={() => this.handleTracking("damdaopho")}
                     >
                         <div
                             className="selection d-flex"
@@ -93,6 +110,7 @@ export default class Collections extends Component {
                             pathname: "/shopping-store",
                             search: "?cat=damdutiec&search",
                         }}
+                        onClick={() => this.handleTracking("damdutiec")}
                     >
                         <div className="selection d-flex">
                             <div className="image">

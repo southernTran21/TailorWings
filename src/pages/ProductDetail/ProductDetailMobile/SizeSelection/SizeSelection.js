@@ -8,6 +8,8 @@ import BodyScale from "./BodyScale";
 import NavBar from "./navbarPage";
 import Selection from "./Selection";
 import "./SizeSelection.scss";
+import { getCurrentDate } from "services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class SizeSelection extends Component {
     constructor(props) {

@@ -52,7 +52,7 @@ let timeOut;
 class SizeSelectionWeb extends Component {
     constructor(props) {
         super(props);
-        console.log("constructure");
+
         this.state = {
             sizeImage: "",
             isSuccess: false,
@@ -186,7 +186,7 @@ class SizeSelectionWeb extends Component {
         productNameModified = currentSelectedProduct.name.toLowerCase();
         productNameModified = removePunctuation(productNameModified);
         productNameModified = productNameModified.replace(/ /gi, "-");
-        console.log("isSuccess :>> ", isSuccess);
+
         return (
             <div>
                 <div className="pageSizeSelectionWeb d-flex align-items-center">

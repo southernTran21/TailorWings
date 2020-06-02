@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default class SuccessNotification extends Component {
     render() {
         const { isSuccess } = this.props;
-        console.log('isSuccess :>> ', isSuccess);
+
         return (
             <div
                 className={classNames("success_wrapper", {

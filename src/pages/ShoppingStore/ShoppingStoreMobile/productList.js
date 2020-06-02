@@ -3,7 +3,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { removePunctuation } from "../../../services/CommonFunction";
+import {
+    removePunctuation,
+    getCurrentDate,
+} from "../../../services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -85,6 +89,22 @@ export default class ProductList extends Component {
         }
     };
 
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (product) => {
+        let date = getCurrentDate();
+        if (!product) return;
+        trackingIncrement("tracking", date, "products", product.id);
+        trackingIncrement("tracking", date, "categories", product.catID);
+        trackingIncrement("tracking", date, "fabrics", product.fabricID);
+        trackingIncrement("tracking", date, "designs", product.designID);
+    };
+    /************_END_****************/
+
     render() {
         const { fetchedProducts, loaderContent } = this.state;
         return (
@@ -110,7 +130,7 @@ export default class ProductList extends Component {
                     {fetchedProducts.map((product, index) => {
                         let modifiedName = product.name.toLowerCase();
                         modifiedName = removePunctuation(modifiedName);
-                        modifiedName = modifiedName.replace(/ /gi, '-');
+                        modifiedName = modifiedName.replace(/ /gi, "-");
                         return (
                             <div key={index} className="col-6">
                                 <Link
@@ -124,6 +144,7 @@ export default class ProductList extends Component {
                                         pathname: `/product-detail/fabric-selection/${modifiedName}`,
                                         search: `?design=${product.designID}&fabric=${product.fabricID}`,
                                     }}
+                                    onClick={() => this.handleTracking(product)}
                                 >
                                     <div className="imageProduct">
                                         <LazyLoadImage

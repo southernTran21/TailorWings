@@ -2,11 +2,15 @@ import classNames from "classnames";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import iconShoppingBadge from "../../../../assets/imageHomePage/shopping-cart.svg";
-import { removePunctuation } from "../../../../services/CommonFunction";
+import {
+    removePunctuation,
+    getCurrentDate,
+} from "../../../../services/CommonFunction";
 import "./FabricSelection.scss";
 import FabricSwiper from "./FabricSwiper";
 import ProductSwiper from "./ProductSwiper";
 import { message, Modal } from "antd";
+import { trackingIncrement } from "services/Fundamental";
 
 class FabricSelection extends Component {
     constructor(props) {
@@ -88,7 +92,7 @@ class FabricSelection extends Component {
 
         Modal.info({
             title: "THÔNG TIN VẢI",
-            className:"modalDescriptionFabricMobile",
+            className: "modalDescriptionFabricMobile",
             content: (
                 <div className="modalInfoFabric_wrapper">
                     <div className="imageFabric_wrapper d-flex justify-content-center">
@@ -109,7 +113,7 @@ class FabricSelection extends Component {
                         </div>
                         <hr></hr>
                         <p className="font-weight-bold">Mô tả:</p>
-                        <div className='d-flex flex-column'>
+                        <div className="d-flex flex-column">
                             {this.handleDescriptionModify(
                                 currentFabric.description
                             )}
@@ -275,6 +279,8 @@ class FabricSelection extends Component {
             ),
         };
         /* ------------- */
+        this.handleTracking(renderProducts[productSliderIndex]);
+        /* ------------- */
         this.setState({
             currentProductIndex: indexOfNextProduct,
             productSliderIndex,
@@ -320,6 +326,8 @@ class FabricSelection extends Component {
             ),
         };
         /* ------------- */
+        this.handleTracking(renderProducts[productSliderIndex]);
+        /* ------------- */
         this.setState({
             currentProductIndex: index,
             productSelectedState,
@@ -343,6 +351,20 @@ class FabricSelection extends Component {
             "fabric-selection"
         );
     };
+
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (product) => {
+        let date = getCurrentDate();
+        if (!product) return;
+        trackingIncrement("tracking", date, "products", product.id);
+        trackingIncrement("tracking", date, "fabrics", product.fabricID);
+    };
+    /************_END_****************/
 
     render() {
         const { currentSelectedProduct, productList, fabricList } = this.props;

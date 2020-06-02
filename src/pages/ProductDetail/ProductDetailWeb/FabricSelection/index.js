@@ -173,6 +173,7 @@ export default class FabricSelectionWeb extends Component {
                     />
                     <div className="d-flex flex-column">
                         <FabricList
+                            designID={currentSelectedProduct.designID}
                             fabricList={fabricList}
                             aciveFabricIndex={aciveFabricIndex}
                             onFabricChanged={this.onFabricChanged}

@@ -1,3 +1,5 @@
+import moment from "moment";
+
 /*********************************
  *  Description: convert vietnamese to english
  *  Format: aa-bb-cc
@@ -171,5 +173,23 @@ export function modifyPhone(phone) {
     } else {
         return phone;
     }
+}
+/************_END_****************/
+
+/*********************************
+ *  Description:
+ *
+ *
+ *  Call by:
+ */
+export function getCurrentDate(separator = "") {
+    let time = moment()._d;
+    let date = time.getDate();
+    let month = time.getMonth() + 1;
+    let year = time.getFullYear();
+
+    return `${year}${separator}${
+        month < 10 ? `0${month}` : `${month}`
+    }${separator}${date < 10 ? `0${date}` : `${date}`}`;
 }
 /************_END_****************/

@@ -4,8 +4,23 @@ import { Link } from "react-router-dom";
 import collectionDamCongSo from "../../../../assets/imageHomePageMobile/imgCollection_DamCongSo.jpg";
 import collectionDamDaoPho from "../../../../assets/imageHomePageMobile/imgCollection_DamDaoPHo.jpg";
 import collectionDamDuTiec from "../../../../assets/imageHomePageMobile/imgCollection_DamDuTiec.jpg";
+import { getCurrentDate } from "services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class CarouselCollection extends Component {
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (collectionID) => {
+        let date = getCurrentDate();
+        if (!collectionID) return;
+        trackingIncrement("tracking", date, "collections", collectionID);
+    };
+    /************_END_****************/
+
     getCollectionImage = (id) => {
         let image = "";
         switch (id) {
@@ -53,6 +68,9 @@ export default class CarouselCollection extends Component {
                                         pathname: "/shopping-store",
                                         search: `?cat=${collection.id}&search=`,
                                     }}
+                                    onClick={() =>
+                                        this.handleTracking(collection.id)
+                                    }
                                 >
                                     <div className="popupImage">{`${collection.products.length} thiết kế`}</div>
                                     <img
@@ -71,6 +89,9 @@ export default class CarouselCollection extends Component {
                                         pathname: "/shopping-store",
                                         search: `?cat=${collection.id}&search=`,
                                     }}
+                                    onClick={() =>
+                                        this.handleTracking(collection.id)
+                                    }
                                 >
                                     <div className="button d-flex align-items-center justify-content-center">
                                         <span className="titleButton">

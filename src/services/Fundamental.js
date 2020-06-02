@@ -2,7 +2,7 @@ import { database } from "../firebase";
 import { storage } from "../firebase";
 import firebase from "firebase/app";
 import { message } from "antd";
-import { connect } from "react-redux";
+import { connect, batch } from "react-redux";
 import * as actions from "../actions/index";
 import { useDispatch } from "react-redux";
 import store from "../stores/myStore";
@@ -137,7 +137,7 @@ export const updateDocument = (collection, updateItem, docName) => {
         .doc(docName)
         .set(updateItem)
         .then(function () {
-            return 'success'
+            return "success";
         })
         .catch(function (error) {
             return error;
@@ -265,3 +265,18 @@ export const deleteImage = (ref) => {
             return false;
         });
 };
+
+/*********************************
+ *  Description:
+ *
+ *
+ *  Call by:
+ */
+export function trackingIncrement(collection, doc, parent, child) {
+    const increment = firebase.firestore.FieldValue.increment(1);
+    const ref = database.collection(collection).doc(doc);
+    const batch = database.batch();
+    batch.set(ref, { [`${parent}`]: { [`${child}`]: increment } }, { merge: true });
+    batch.commit();
+}
+/************_END_****************/
