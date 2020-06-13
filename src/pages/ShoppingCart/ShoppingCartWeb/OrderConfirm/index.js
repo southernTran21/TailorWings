@@ -36,14 +36,21 @@ export default class OrderConfirm extends Component {
                         href="https://www.facebook.com/TailorWings"
                         target="_blank"
                         className="giftButton d-flex justify-content-center align-items-center"
+                        onClick={() =>
+                            window.gtag_report_conversion(
+                                `${window.location.origin}/shopping-store?cat=all&search`
+                            )
+                        }
                     >
                         BẤM VÀO ĐÂY NHẬN QUÀ BẤT NGỜ
                     </a>
-                    <Link
-                        to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=all&search",
-                        }}
+                    <div
+                        onClick={() =>
+                            window.gtag_report_conversion(
+                                `${window.location.origin}/shopping-store?cat=all&search`
+                            )
+                        }
+                        style={{ cursor: "pointer" }}
                     >
                         <span className="titleThird d-flex align-items-center">
                             TIẾP TỤC ĐẶT MAY
@@ -60,7 +67,7 @@ export default class OrderConfirm extends Component {
                                 />
                             </svg>
                         </span>
-                    </Link>
+                    </div>
                 </div>
             </div>
         );

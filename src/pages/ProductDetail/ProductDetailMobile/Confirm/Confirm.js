@@ -162,17 +162,17 @@ class Confirm extends Component {
                     </div>
                 </div>
                 <div className="endPage">
-                    <Link
-                        to={"/shopping-cart"}
+                    <div
                         onClick={() => {
-                            window.gtag_report_conversion("https://tailorwings.com/shopping-cart");
+                            window.gtag_report_conversion(
+                                `${window.location.origin}/shopping-cart`
+                            );
                             this.addToCart();
                         }}
                         className="buttonApcept d-flex flex-row align-items-center justify-content-center"
-                        style={{ textDecoration: "none" }}
                     >
                         <a>MUA HÀNG</a>
-                    </Link>
+                    </div>
                 </div>
             </div>
         );

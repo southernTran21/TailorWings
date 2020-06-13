@@ -1,4 +1,6 @@
 
+import { createBrowserHistory } from "history";
+
 /*********************************
 *  Description: history package
 *  

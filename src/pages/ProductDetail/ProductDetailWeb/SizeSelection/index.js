@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as actions from "../../../../actions/index";
+import { history } from "../../../../services/CommonParameter";
 //
 import Empty from "../../../../assets/imageSizeSelection/Asset 9.svg";
 import L from "../../../../assets/imageSizeSelection/size L.svg";
@@ -232,9 +233,6 @@ class SizeSelectionWeb extends Component {
                         <div
                             className="buttonApcept d-flex justify-content-center align-items-center"
                             onClick={() => {
-                                window.gtag_report_conversion(
-                                    "https://tailorwings.com/shopping-cart"
-                                );
                                 this.onConfirmButtonClicked();
                             }}
                         >

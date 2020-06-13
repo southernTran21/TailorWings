@@ -15,10 +15,13 @@ export default class SuccessNotification extends Component {
                 <span className="left">
                     Đặt may thành công. Vui lòng kiểm tra giỏ hàng.
                 </span>
-                <Link
-                    to={{
-                        pathname: "/shopping-cart",
-                    }}
+                <div
+                    style={{ cursor: 'pointer' }}
+                    onClick={() =>
+                        window.gtag_report_conversion(
+                            `${window.location.origin}/shopping-cart`
+                        )
+                    }
                 >
                     <span className="right">
                         XEM GIỎ HÀNG
@@ -35,7 +38,7 @@ export default class SuccessNotification extends Component {
                             />
                         </svg>
                     </span>
-                </Link>
+                </div>
             </div>
         );
     }

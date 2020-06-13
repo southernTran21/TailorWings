@@ -7,9 +7,6 @@ export default class ConfirmPayment extends Component {
                 <Button
                     loading={this.props.paymentLoading}
                     onClick={() => {
-                        window.gtag_report_conversion(
-                            "https://tailorwings.com/shopping-cart"
-                        );
                         this.props.uploadNewOrder();
                     }}
                 >

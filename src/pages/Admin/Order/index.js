@@ -1,10 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import "./Order.scss";
-import { setDocument } from "../../../services/Fundamental";
+import {
+    setDocument,
+    updateDocWithSpecificTime,
+    updateDocument,
+} from "../../../services/Fundamental";
 import { removePunctuation } from "../../../services/CommonFunction";
 import OrderContent from "./Order";
 import OrderDetail from "./OrderDetail";
+import { message } from "antd";
 
 export class Order extends Component {
     constructor(props) {
@@ -17,6 +22,7 @@ export class Order extends Component {
             renderState: "content",
             currentOrderID: "",
             currentOrderDetail: null,
+            currentCustomerInfo: null,
         };
     }
 
@@ -25,16 +31,22 @@ export class Order extends Component {
         let renderOrders = [...orders];
         if (renderOrders.length > 0) {
             renderOrders.forEach((order) => {
-                if (order.orderDate.hasOwnProperty("seconds")) {
+                if (
+                    order.timestamp != null &&
+                    order.timestamp.hasOwnProperty("seconds")
+                ) {
                     order.orderDate = this.timeConverter(
-                        order.orderDate.seconds
+                        order.timestamp.seconds
                     );
                 }
-                if (order.doneDate.hasOwnProperty("seconds")) {
+                if (
+                    order.doneDate != null &&
+                    order.doneDate.hasOwnProperty("seconds")
+                ) {
                     order.doneDate = this.timeConverter(order.doneDate.seconds);
                 }
                 let currentCustomer = customers.find(
-                    (customer) => customer.customerID === order.customerID
+                    (customer) => customer.id === order.customerID
                 ) || { cusName: "" };
                 order.cusName = currentCustomer.cusName;
             });
@@ -65,7 +77,6 @@ export class Order extends Component {
         if (changedOrder.notes !== "none") {
             setDocument("orders", changedOrder, changedOrder.id);
         } else {
-            console.log("không tìm thấy thông tin đơn hàng được thay đổi");
         }
     };
 
@@ -77,9 +88,21 @@ export class Order extends Component {
         }) || { status: "none" };
         if (changedOrder.status !== "none") {
             changedOrder.status = newStatus;
-            setDocument("orders", changedOrder, changedOrder.id);
-        } else {
-            console.log("không tìm thấy thông tin đơn hàng được thay đổi");
+            if (newStatus === "done") {
+                updateDocWithSpecificTime(
+                    "orders",
+                    changedOrder,
+                    changedOrder.id,
+                    "doneDate"
+                ).then(() => message.success("Cập nhật thành công!"));
+            } else {
+                changedOrder.doneDate = "";
+                updateDocument(
+                    "orders",
+                    changedOrder,
+                    changedOrder.id
+                ).then(() => message.success("Cập nhật thành công!"));
+            }
         }
     };
 
@@ -194,32 +217,35 @@ export class Order extends Component {
         });
     };
 
-    onOrderDetailView = (orderID, customerName, totalPrice) => {
-        console.log("customerName :", customerName);
-        console.log("totalPrice :", totalPrice);
-        const { orderDetail } = this.props;
-        console.log("orderDetail :", orderDetail);
+    onOrderDetailView = (orderID, customerID, totalPrice) => {
+        const { orderDetail, customers } = this.props;
         let currentOrderDetail = {
             ...orderDetail.find((order) => {
                 return order.orderID === orderID;
             }),
         };
-        if (currentOrderDetail != null) {
-            currentOrderDetail.cusName = customerName;
+        let currentCustomerInfo = customers.find(
+            (customer) => customer.id === customerID
+        );
+        if (currentOrderDetail != null && currentCustomerInfo != null) {
+            currentOrderDetail.cusName = currentCustomerInfo
+                ? currentCustomerInfo.cusName
+                : { cusName: "" };
             currentOrderDetail.total = totalPrice;
             this.setState({
                 renderState: "detail",
                 currentOrderDetail,
+                currentCustomerInfo,
             });
         }
     };
 
     render() {
-        const { renderOrders, renderState, currentOrderDetail } = this.state;
+        const { renderOrders, renderState, currentOrderDetail, currentCustomerInfo } = this.state;
         const { customers } = this.props;
         return (
             <div className="order-container">
-                <OrderDetail currentOrderDetail={currentOrderDetail} />
+                <OrderDetail currentOrderDetail={currentOrderDetail} currentCustomerInfo={currentCustomerInfo} />
                 <OrderContent
                     customers={customers}
                     renderOrders={renderOrders}

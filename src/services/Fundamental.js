@@ -131,6 +131,26 @@ export const setDocument = (collection, newItem, docName) => {
         });
 };
 
+export const updateDocWithSpecificTime = (collection, newItem, docName, specificTime) => {
+    return database
+        .collection(collection)
+        .doc(docName)
+        .set({
+            ...newItem,
+            [`${specificTime}`]: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(function () {
+            // message.success('Hoàn thành!');
+            let isSuccess = true;
+            return isSuccess;
+        })
+        .catch(function (error) {
+            // message.error('Lỗi: xin vui lòng thử lại!');
+            let isSuccess = false;
+            return isSuccess;
+        });
+};
+
 export const updateDocument = (collection, updateItem, docName) => {
     return database
         .collection(collection)
