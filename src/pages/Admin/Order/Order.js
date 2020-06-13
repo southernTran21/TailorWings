@@ -45,6 +45,7 @@ const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
 export default class OrderContent extends Component {
     render() {
         const { customers, renderOrders } = this.props;
+        console.log('renderOrders :>> ', renderOrders);
         return (
             <div className="pageOrder">
                 <div className="headerPageOrder d-flex flex-row justify-content-between align-items-center">
@@ -104,7 +105,7 @@ export default class OrderContent extends Component {
                             if (order != null) {
                                 let currentCustomer = customers.find(
                                     (customer) =>
-                                        customer.customerID === order.customerID
+                                        customer.id === order.customerID
                                 ) || { cusName: "" };
                                 return (
                                     <div
@@ -116,7 +117,7 @@ export default class OrderContent extends Component {
                                             onClick={() =>
                                                 this.props.onOrderDetailView(
                                                     order.orderID,
-                                                    currentCustomer.cusName,
+                                                    currentCustomer.id,
                                                     order.total
                                                 )
                                             }

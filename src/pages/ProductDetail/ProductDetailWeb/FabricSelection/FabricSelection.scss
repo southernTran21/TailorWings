@@ -1,7 +1,17 @@
 .pageProductDetailWeb {
     margin-top: 3.33vh;
+    .categoryFabric_wrapper {
+        height: 2.3vw;
+        font-size: 0.97vw;
+        .contentSeeMore {
+            color: #ff6d3b;
+            font-size: 0.83vw;
+            margin-left: 0.5vw;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
     .pageFabricSelection {
-        margin-top: 30px;
         .iconBack {
             color: #ff6d3b;
             font-weight: bold;
@@ -122,5 +132,43 @@
             margin-top: 1.66vh;
             cursor: pointer;
         }
+    }
+}
+// .ant-modal .ant-modal-confirm .ant-modal-confirm-info{
+//     width: 70vw !important;
+// }
+.modalDescriptionFabricDesktop {
+    width: 70vw !important;
+    .ant-modal-confirm-title {
+        font-size: 1.38vw !important;
+    }
+    .ant-modal-content {
+        width: 70vw;
+    }
+    .ant-modal-confirm-btns {
+        button {
+            font-size: 1.38vw !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 8vw;
+            height: 5vh;
+        }
+    }
+    .ant-modal-body {
+        padding: 3vh 4vw !important;
+    }
+    .descriptionFabricDesktop_wrapper {
+        margin-top: 2vh;
+    }
+    .imageFabricDesktop {
+        img {
+            border-radius: 12px;
+        }
+    }
+    .contentInfoFabricDesktop {
+        margin-top: 1vh;
+        margin-left: 1vw;
+        font-size: 1.25vw;
     }
 }

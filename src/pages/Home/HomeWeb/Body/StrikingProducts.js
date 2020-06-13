@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
+import {
+    removePunctuation,
+    getCurrentDate,
+} from "../../../../services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class StrikingProducts extends Component {
     constructor(props) {
@@ -31,6 +36,28 @@ export default class StrikingProducts extends Component {
         }
     };
 
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (product) => {
+        let date = getCurrentDate();
+        if (!product) return;
+        if (product.designID && product.fabricID) {
+            trackingIncrement(
+                "tracking",
+                date,
+                "products",
+                product.designID + product.fabricID
+            );
+            trackingIncrement("tracking", date, "fabrics", product.fabricID);
+            trackingIncrement("tracking", date, "designs", product.designID);
+        }
+    };
+    /************_END_****************/
+
     bestSellerContent = () => {
         let { bestSellerInfo, visibleProductsList } = this.props;
         return bestSellerInfo.map((product, index) => {
@@ -41,12 +68,14 @@ export default class StrikingProducts extends Component {
                     return designID === currentDesignID;
                 }
             ).length;
+            let productName = removePunctuation(product.name.toLowerCase());
+            productName = productName.replace(/ /gi, "");
             return (
                 <div key={index} className="content-carousel">
                     <Link
                         to={{
-                            pathname: "/product-detail",
-                            search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                            pathname: `/product-detail/fabric-selection/${productName}`,
+                            search: `?design=${product.designID}&pattern=${product.fabricID}`,
                         }}
                         style={{
                             width: "100%",
@@ -54,6 +83,7 @@ export default class StrikingProducts extends Component {
                             textDecoration: "none",
                             border: "none",
                         }}
+                        onClick={() => this.handleTracking(product)}
                     >
                         <div className="image">
                             <img src={product.image} atl={product.name} />
@@ -81,7 +111,7 @@ export default class StrikingProducts extends Component {
             loop: true,
         };
         const { bestSellerInfo } = this.props;
-        console.log('bestSellerInfo :>> ', bestSellerInfo);
+
         return (
             <div className="strikingProducts d-flex flex-column align-items-center fontMontserrat">
                 <div className="title">

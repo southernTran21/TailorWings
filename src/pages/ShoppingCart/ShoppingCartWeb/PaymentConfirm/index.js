@@ -25,7 +25,7 @@ export default class PaymentConfirm extends Component {
                         onClick={() => this.props.onStepChange("customerInfo")}
                     />
                     <span>Xác nhận đơn hàng</span>
-                    <div style={{width:'1.66vw'}}></div>
+                    <div style={{ width: "1.66vw" }}></div>
                 </div>
                 <div className="bodyContent d-flex">
                     <div className="col-6" style={{ paddingRight: "2vw" }}>
@@ -154,7 +154,9 @@ export default class PaymentConfirm extends Component {
                         <div className="buttonApcept d-flex align-items-center justify-content-center">
                             <span
                                 loading={this.props.paymentLoading}
-                                onClick={() => this.props.uploadNewOrder()}
+                                onClick={() => {
+                                    this.props.uploadNewOrder();
+                                }}
                             >
                                 HOÀN TẤT ĐẶT HÀNG
                             </span>

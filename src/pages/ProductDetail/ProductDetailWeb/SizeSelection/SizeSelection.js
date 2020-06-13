@@ -1,5 +1,7 @@
-import React, { Component } from "react";
 import classNames from "classnames";
+import React, { Component } from "react";
+import { getCurrentDate } from "services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 const SIZE = ["XS", "S", "M", "L", "XL", "XXL"];
 
@@ -10,6 +12,7 @@ export default class SizeSelection extends Component {
             activeStatus: new Array(6).fill(false),
         };
     }
+
     componentDidMount() {
         const { size } = this.props;
         let { activeStatus } = this.state;
@@ -24,17 +27,33 @@ export default class SizeSelection extends Component {
             }
         }
     }
+
     onSizeSelected = (index, size) => {
         if (index != null && index > -1) {
             let { activeStatus } = this.state;
             activeStatus.fill(false);
             activeStatus[index] = true;
+            this.handleTracking(size);
             this.props.onSizeUpdated(index, size);
             this.setState({
                 activeStatus,
             });
         }
     };
+
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (size) => {
+        let date = getCurrentDate();
+        if (!size) return;
+        trackingIncrement("tracking", date, "sizes", size);
+    };
+    /************_END_****************/
+
     render() {
         let { activeStatus } = this.state;
         const { size } = this.props;

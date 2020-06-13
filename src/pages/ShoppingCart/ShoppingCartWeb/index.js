@@ -14,6 +14,7 @@ import Summary from "./ShoppingCart/Summary";
 import CustomerInfo from "./CustomerInfo";
 import PaymentConfirm from "./PaymentConfirm";
 import OrderConfirm from "./OrderConfirm";
+import { Helmet } from "react-helmet";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -32,6 +33,7 @@ const PRODUCT_DETAIL_FORM = {
     bodyMetric: [],
     size: "",
     quantity: 0,
+    image: [],
 };
 
 class ShoppingCartWeb extends Component {
@@ -58,6 +60,7 @@ class ShoppingCartWeb extends Component {
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
             rememberChecked: false,
+            isCustomerInfoUpdate: false,
             // state for paymentInfo
             paymentMethod: "COD",
             paymentLoading: false,
@@ -122,7 +125,6 @@ class ShoppingCartWeb extends Component {
 
     // API FOR SHOPPPING CART RENDER
     onQuantityChange = (quantityChanged, index) => {
-        console.log("quantityChanged", quantityChanged);
         let { subtotalPrice, productsOnCart } = this.state;
         productsOnCart[index].quantity = Number(quantityChanged);
         subtotalPrice = productsOnCart.reduce((accumulator, current) => {
@@ -172,6 +174,10 @@ class ShoppingCartWeb extends Component {
     onCustomerInfoValidate = () => {
         const { name, phone, address } = this.state.customerInfo;
         const { rememberChecked, customerInfo } = this.state;
+        let previousCustomerInfo = JSON.parse(
+            localStorage.getItem("customerInfo")
+        );
+        let currentCustomerInfo = { ...customerInfo };
         let errorValidate = [];
         let phoneModified = phone.replace(/ /gi, "");
         errorValidate[0] = name === "" ? true : false;
@@ -182,26 +188,27 @@ class ShoppingCartWeb extends Component {
                 ? true
                 : false;
         errorValidate[2] = address === "" ? true : false;
+        let isUpdate =
+            JSON.stringify(previousCustomerInfo) !==
+            JSON.stringify(currentCustomerInfo);
         if (!errorValidate.includes(true)) {
-            this.onStepChange("paymentConfirm");
-            if (rememberChecked) {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify(customerInfo)
-                );
-            } else {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify({
-                        name: "",
-                        phone: "",
-                        address: "",
-                    })
-                );
+            if (!rememberChecked) {
+                currentCustomerInfo = {
+                    name: "",
+                    phone: "",
+                    address: "",
+                };
             }
+
+            localStorage.setItem(
+                "customerInfo",
+                JSON.stringify(currentCustomerInfo)
+            );
+            this.onStepChange("paymentConfirm");
         }
         this.setState({
             errorValidate,
+            isCustomerInfoUpdate: isUpdate,
         });
     };
 
@@ -225,7 +232,11 @@ class ShoppingCartWeb extends Component {
         this.setState({
             paymentLoading: true,
         });
-        const { subtotalPrice, paymentMethod } = this.state;
+        const {
+            subtotalPrice,
+            paymentMethod,
+            isCustomerInfoUpdate,
+        } = this.state;
         let { name, phone, address, note } = this.state.customerInfo;
         let phoneModified = phone.replace(/ /gi, "");
         let productsOnCart =
@@ -243,31 +254,31 @@ class ShoppingCartWeb extends Component {
             orderDetail.orderItems.push(productDetail);
         });
         let customer = {
-            adddress: address || "",
+            address: address || "",
             cusName: name || "",
-            customerID: uniqid.time() || "",
-            id: "",
+            id: phoneModified,
             lock: false,
             note: "",
-            phone: phoneModified || "",
+            phone: phoneModified,
             promo: 0,
             rate: "",
             wishList: [],
         };
         let order = {
-            customerID: customer.customerID,
+            customerID: customer.id,
+            cusName: customer.cusName,
             doneDate: "",
             id: "",
             notes: note,
             orderDate: "",
             orderID: orderDetail.orderID,
             status: "new",
+            isPaid: false,
             total: totalPrice,
             paymentMethod: paymentMethod,
         };
-        // this.onStepChange("orderConfirm");
         Promise.all([
-            setDocument("customers", customer, customer.phone),
+            setDocument("customers", customer, customer.id),
             addDocument("orders", order),
             addDocument("orderDetail", orderDetail),
         ]).then(() => {
@@ -372,6 +383,24 @@ class ShoppingCartWeb extends Component {
     render() {
         return (
             <div className="pageShoppingCartWeb">
+                <Helmet>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-955903285/853FCNnWq9EBELXa58cD',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 <NavBarWeb
                     history={this.props.history}
                     sideBarChange={this.sideBarChange}

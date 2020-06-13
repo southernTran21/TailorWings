@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as actions from "../../../../actions/index";
+import { history } from "../../../../services/CommonParameter";
 //
 import Empty from "../../../../assets/imageSizeSelection/Asset 9.svg";
 import L from "../../../../assets/imageSizeSelection/size L.svg";
@@ -52,7 +53,7 @@ let timeOut;
 class SizeSelectionWeb extends Component {
     constructor(props) {
         super(props);
-        console.log('constructure');
+
         this.state = {
             sizeImage: "",
             isSuccess: false,
@@ -186,7 +187,7 @@ class SizeSelectionWeb extends Component {
         productNameModified = currentSelectedProduct.name.toLowerCase();
         productNameModified = removePunctuation(productNameModified);
         productNameModified = productNameModified.replace(/ /gi, "-");
-        console.log('isSuccess :>> ', isSuccess);
+
         return (
             <div>
                 <div className="pageSizeSelectionWeb d-flex align-items-center">
@@ -231,7 +232,9 @@ class SizeSelectionWeb extends Component {
                         />
                         <div
                             className="buttonApcept d-flex justify-content-center align-items-center"
-                            onClick={this.onConfirmButtonClicked}
+                            onClick={() => {
+                                this.onConfirmButtonClicked();
+                            }}
                         >
                             ĐẶT MAY
                         </div>

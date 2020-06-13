@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./Filter.scss";
 import { Checkbox } from "antd";
+import { getCurrentDate } from "services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class Filter extends Component {
     constructor(props) {
         super(props);
         this.state = {
             checkedState: new Array(3).fill(false),
-            filerList: []
+            filerList: [],
         };
     }
 
@@ -16,18 +18,32 @@ export default class Filter extends Component {
             let { checkedState } = state;
             checkedState.fill(false);
             return {
-                checkedState
+                checkedState,
             };
         } else {
             return null;
         }
     }
 
-    onFilter = e => {
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (collectionID) => {
+        let date = getCurrentDate();
+        if (!collectionID) return;
+        trackingIncrement("tracking", date, "collections", collectionID);
+    };
+    /************_END_****************/
+
+    onFilter = (e) => {
         let { checkedState, filerList } = this.state;
         const { id, name, checked } = e.target;
         if (checked) {
-            filerList.push(name)
+            filerList.push(name);
+            this.handleTracking(name);
         } else {
             filerList.splice(filerList.indexOf(name), 1);
         }
@@ -35,7 +51,7 @@ export default class Filter extends Component {
         checkedState[id] = checked;
         this.setState({
             checkedState,
-            filerList
+            filerList,
         });
     };
 
@@ -44,13 +60,13 @@ export default class Filter extends Component {
         let { checkedState } = this.state;
         let totalProductInCollection = new Array(3).fill(0);
         let damdutiec = collectionsInfo.filter(
-            collection => collection.id === "damdutiec"
+            (collection) => collection.id === "damdutiec"
         )[0];
         let damdaopho = collectionsInfo.filter(
-            collection => collection.id === "damdaopho"
+            (collection) => collection.id === "damdaopho"
         )[0];
         let damcongso = collectionsInfo.filter(
-            collection => collection.id === "damcongso"
+            (collection) => collection.id === "damcongso"
         )[0];
         if (collectionsInfo.length > 0) {
             totalProductInCollection[0] = damdutiec.products.length;

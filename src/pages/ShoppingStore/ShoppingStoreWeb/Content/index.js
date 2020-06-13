@@ -4,8 +4,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
-import { removePunctuation } from '../../../../services/CommonFunction';
+import {
+    removePunctuation,
+    getCurrentDate,
+} from "../../../../services/CommonFunction";
 import "./Content.scss";
+import { trackingIncrement } from "services/Fundamental";
 
 const { Option } = Select;
 
@@ -57,6 +61,22 @@ export default class ProductList extends Component {
         }
     };
 
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (product) => {
+        let date = getCurrentDate();
+        if (!product) return;
+        trackingIncrement("tracking", date, "products", product.id);
+        trackingIncrement("tracking", date, "categories", product.catID);
+        trackingIncrement("tracking", date, "fabrics", product.fabricID);
+        trackingIncrement("tracking", date, "designs", product.designID);
+    };
+    /************_END_****************/
+
     render() {
         const { fetchedProducts, loaderContent } = this.state;
         const { renderProducts } = this.props;
@@ -92,7 +112,7 @@ export default class ProductList extends Component {
                         {fetchedProducts.map((product, index) => {
                             let modifiedName = product.name.toLowerCase();
                             modifiedName = removePunctuation(modifiedName);
-                            modifiedName = modifiedName.replace(/ /gi, '-');
+                            modifiedName = modifiedName.replace(/ /gi, "-");
                             return (
                                 <div
                                     className="contentProduct col-4 d-flex flex-column align-items-center"
@@ -110,6 +130,9 @@ export default class ProductList extends Component {
                                             pathname: `/product-detail/fabric-selection/${modifiedName}`,
                                             search: `?design=${product.designID}&fabric=${product.fabricID}`,
                                         }}
+                                        onClick={() =>
+                                            this.handleTracking(product)
+                                        }
                                     >
                                         <div className="image">
                                             <LazyLoadImage
@@ -118,7 +141,9 @@ export default class ProductList extends Component {
                                                 src={product.image[0]}
                                             />
                                         </div>
-                                        <span className='productName'>{product.name}</span>
+                                        <span className="productName">
+                                            {product.name}
+                                        </span>
                                         <div className="button">{`${product.totalSupportedFabric} MẪU VẢI`}</div>
                                     </Link>
                                 </div>

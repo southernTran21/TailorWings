@@ -3,6 +3,8 @@ import "./SideBar.css";
 import { Link } from "react-router-dom";
 import "./SideBar.scss";
 import LoginForm from "./LoginModal";
+import { getCurrentDate } from "services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class SideBar extends Component {
     constructor(props) {
@@ -15,6 +17,19 @@ export default class SideBar extends Component {
     onClickHandling = () => {
         this.props.changeSideBarState();
     };
+
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (catID) => {
+        let date = getCurrentDate();
+        if (!catID) return;
+        trackingIncrement("tracking", date, "categories", catID);
+    };
+    /************_END_****************/
 
     render() {
         let drawerClasses = "";
@@ -47,7 +62,10 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=damom&search="
                             }}
-                            onClick={this.onClickHandling}
+                            onClick={() => {
+                                this.handleTracking("damom")
+                                this.onClickHandling()
+                            }}
                         >
                             <span>Đầm Ôm</span>
                         </Link>
@@ -56,7 +74,10 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=damsuong&search="
                             }}
-                            onClick={this.onClickHandling}
+                            onClick={() => {
+                                this.handleTracking("damsuong")
+                                this.onClickHandling()
+                            }}
                         >
                             <span>Đầm Suông</span>
                         </Link>
@@ -65,7 +86,10 @@ export default class SideBar extends Component {
                                 pathname: "/shopping-store",
                                 search: "?cat=damxoe&search="
                             }}
-                            onClick={this.onClickHandling}
+                            onClick={() => {
+                                this.handleTracking("damxoe")
+                                this.onClickHandling()
+                            }}
                         >
                             <span>Đầm Xòe</span>
                         </Link>

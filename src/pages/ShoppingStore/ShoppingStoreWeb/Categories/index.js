@@ -1,16 +1,31 @@
 import React, { Component } from "react";
 import "./Categories.scss";
 import { Link } from "react-router-dom";
-import classNames from 'classnames'
+import classNames from "classnames";
 // Import image
-import tatca from '../../../../assets/imageShoppingStore/tat ca.svg'
-import damom from '../../../../assets/imageShoppingStore/dam om.svg'
-import damsuong from '../../../../assets/imageShoppingStore/dam suong.svg'
-import damxoe from '../../../../assets/imageShoppingStore/dam xoe.svg'
+import tatca from "../../../../assets/imageShoppingStore/tat ca.svg";
+import damom from "../../../../assets/imageShoppingStore/dam om.svg";
+import damsuong from "../../../../assets/imageShoppingStore/dam suong.svg";
+import damxoe from "../../../../assets/imageShoppingStore/dam xoe.svg";
+import { getCurrentDate } from "services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 const CAT_ID = ["all", "damom", "damxoe", "damsuong"];
 
 export default class Categories extends Component {
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (catID) => {
+        let date = getCurrentDate();
+        if (!catID) return;
+        trackingIncrement("tracking", date, "categories", catID);
+    };
+    /************_END_****************/
+
     render() {
         let { isRenderProductsEmpty, currentActiveCategory } = this.props;
         if (isRenderProductsEmpty && currentActiveCategory === "all") {
@@ -28,15 +43,21 @@ export default class Categories extends Component {
                         height: "fit-content",
                         width: "fit-content",
                         border: "none",
-                        textDecoration: "none"
+                        textDecoration: "none",
                     }}
                     to={{
                         pathname: "/shopping-store",
-                        search: "?cat=all&search="
+                        search: "?cat=all&search=",
                     }}
                     onClick={() => this.props.categoryActiveHandling("all")}
                 >
-                    <div name="all" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[0] })}>
+                    <div
+                        name="all"
+                        className={classNames(
+                            "image d-flex flex-column align-items-center",
+                            { blur: !activeCategory[0] }
+                        )}
+                    >
                         <img src={tatca} alt="all" />
                         <span>TẤT CẢ</span>
                     </div>
@@ -46,15 +67,24 @@ export default class Categories extends Component {
                         height: "fit-content",
                         width: "fit-content",
                         border: "none",
-                        textDecoration: "none"
+                        textDecoration: "none",
                     }}
                     to={{
                         pathname: "/shopping-store",
-                        search: "?cat=damom&search="
+                        search: "?cat=damom&search=",
                     }}
-                    onClick={() => this.props.categoryActiveHandling("damom")}
+                    onClick={() => {
+                        this.handleTracking("damom");
+                        this.props.categoryActiveHandling("damom");
+                    }}
                 >
-                    <div name="damom" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[1] })}>
+                    <div
+                        name="damom"
+                        className={classNames(
+                            "image d-flex flex-column align-items-center",
+                            { blur: !activeCategory[1] }
+                        )}
+                    >
                         <img src={damom} alt="damom" />
                         <span>ĐẦM ÔM</span>
                     </div>
@@ -64,15 +94,24 @@ export default class Categories extends Component {
                         height: "fit-content",
                         width: "fit-content",
                         border: "none",
-                        textDecoration: "none"
+                        textDecoration: "none",
                     }}
                     to={{
                         pathname: "/shopping-store",
-                        search: "?cat=damxoe&search="
+                        search: "?cat=damxoe&search=",
                     }}
-                    onClick={() => this.props.categoryActiveHandling("damxoe")}
+                    onClick={() => {
+                        this.handleTracking("damxoe");
+                        this.props.categoryActiveHandling("damxoe");
+                    }}
                 >
-                    <div name="damxoe" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[2] })}>
+                    <div
+                        name="damxoe"
+                        className={classNames(
+                            "image d-flex flex-column align-items-center",
+                            { blur: !activeCategory[2] }
+                        )}
+                    >
                         <img src={damxoe} alt="damxoe" />
                         <span>ĐẦM XÒE</span>
                     </div>
@@ -82,15 +121,24 @@ export default class Categories extends Component {
                         height: "fit-content",
                         width: "fit-content",
                         border: "none",
-                        textDecoration: "none"
+                        textDecoration: "none",
                     }}
                     to={{
                         pathname: "/shopping-store",
-                        search: "?cat=damsuong&search="
+                        search: "?cat=damsuong&search=",
                     }}
-                    onClick={() => this.props.categoryActiveHandling("damsuong")}
+                    onClick={() => {
+                        this.handleTracking("damsuong");
+                        this.props.categoryActiveHandling("damsuong");
+                    }}
                 >
-                    <div name="damsuong" className={classNames("image d-flex flex-column align-items-center", { blur:  !activeCategory[3] })}>
+                    <div
+                        name="damsuong"
+                        className={classNames(
+                            "image d-flex flex-column align-items-center",
+                            { blur: !activeCategory[3] }
+                        )}
+                    >
                         <img src={damsuong} alt="damsuong" />
                         <span>ĐẦM SUÔNG</span>
                     </div>

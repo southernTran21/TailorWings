@@ -4,6 +4,7 @@ import Confirm from "./Confirm/Confirm";
 import FabricSelection from "./FabricSelection/FabricSelection";
 import SizeSelection from "./SizeSelection/SizeSelection";
 import ImageView from "./ImageView";
+import { Helmet } from "react-helmet";
 
 class ProductDetailMobile extends Component {
     constructor(props) {
@@ -174,6 +175,24 @@ class ProductDetailMobile extends Component {
                     overflowX: "hidden",
                 }}
             >
+                <Helmet>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-955903285/MegQCMTcytEBELXa58cD',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 <Route
                     path="/product-detail/fabric-selection/:productName"
                     exact

@@ -1,11 +1,40 @@
 import React, { Component } from "react";
 import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
+import {
+    removePunctuation,
+    getCurrentDate,
+} from "../../../../services/CommonFunction";
+import { trackingIncrement } from "services/Fundamental";
 
 export default class CarouselStrikingDesign extends Component {
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    handleTracking = (product) => {
+        let date = getCurrentDate();
+        if (!product) return;
+        if (product.designID && product.fabricID) {
+            trackingIncrement(
+                "tracking",
+                date,
+                "products",
+                product.designID + product.fabricID
+            );
+            trackingIncrement("tracking", date, "fabrics", product.fabricID);
+            trackingIncrement("tracking", date, "designs", product.designID);
+        }
+    };
+    /************_END_****************/
+
     bestSellerContent = () => {
         const { bestSellerInfo } = this.props;
         return bestSellerInfo.map((product, index) => {
+            let productName = removePunctuation(product.name.toLowerCase());
+            productName = productName.replace(/ /gi, "");
             return (
                 <div key={index} className="content-carousel">
                     <div className="image">
@@ -15,9 +44,10 @@ export default class CarouselStrikingDesign extends Component {
                                 height: "100%",
                             }}
                             to={{
-                                pathname: "/product-detail",
-                                search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                                pathname: `/product-detail/fabric-selection/${productName}`,
+                                search: `?design=${product.designID}&pattern=${product.fabricID}`,
                             }}
+                            onClick={() => this.handleTracking(product)}
                         >
                             <img src={product.image} atl={product.name} />
                         </Link>
@@ -37,9 +67,10 @@ export default class CarouselStrikingDesign extends Component {
                                         height: "100%",
                                     }}
                                     to={{
-                                        pathname: "/product-detail",
-                                        search: `?id=${product.designID}&pattern=${product.fabricID}`,
+                                        pathname: `/product-detail/fabric-selection/${productName}`,
+                                        search: `?design=${product.designID}&pattern=${product.fabricID}`,
                                     }}
+                                    onClick={() => this.handleTracking(product)}
                                 >
                                     <div className="putButton d-flex flex-row justify-content-center align-items-center">
                                         <span>CHỌN VẢI</span>

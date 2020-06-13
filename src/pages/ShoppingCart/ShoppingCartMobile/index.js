@@ -17,6 +17,7 @@ import PaymentConfirm from "./Body/PaymentConfirm";
 import ConfirmInfo from "./Footer/ConfirmInfo";
 import ConfirmPayment from "./Footer/ConfirmPayment";
 import OrderConfirm from "./Body/OrderConfirm";
+import { Helmet } from "react-helmet";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-1");
@@ -35,6 +36,7 @@ const PRODUCT_DETAIL_FORM = {
     bodyMetric: [],
     size: "",
     quantity: 0,
+    image: []
 };
 
 class ShoppingCartMobile extends Component {
@@ -59,6 +61,7 @@ class ShoppingCartMobile extends Component {
             },
             // state for customerInfo
             errorValidate: new Array(3).fill(false),
+            isCustomerInfoUpdate: false,
             rememberChecked: false,
             // state for paymentInfo
             paymentMethod: "COD",
@@ -173,6 +176,10 @@ class ShoppingCartMobile extends Component {
     onCustomerInfoValidate = () => {
         const { name, phone, address } = this.state.customerInfo;
         const { rememberChecked, customerInfo } = this.state;
+        let previousCustomerInfo = JSON.parse(
+            localStorage.getItem("customerInfo")
+        );
+        let currentCustomerInfo = { ...customerInfo };
         let errorValidate = [];
         let phoneModified = phone.replace(/ /gi, "");
         errorValidate[0] = name === "" ? true : false;
@@ -183,26 +190,27 @@ class ShoppingCartMobile extends Component {
                 ? true
                 : false;
         errorValidate[2] = address === "" ? true : false;
+        let isUpdate =
+            JSON.stringify(previousCustomerInfo) !==
+            JSON.stringify(currentCustomerInfo);
         if (!errorValidate.includes(true)) {
-            this.onStepChange("paymentConfirm");
-            if (rememberChecked) {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify(customerInfo)
-                );
-            } else {
-                localStorage.setItem(
-                    "customerInfo",
-                    JSON.stringify({
-                        name: "",
-                        phone: "",
-                        address: "",
-                    })
-                );
+            if (!rememberChecked) {
+                currentCustomerInfo = {
+                    name: "",
+                    phone: "",
+                    address: "",
+                };
             }
+
+            localStorage.setItem(
+                "customerInfo",
+                JSON.stringify(currentCustomerInfo)
+            );
+            this.onStepChange("paymentConfirm");
         }
         this.setState({
             errorValidate,
+            isCustomerInfoUpdate: isUpdate,
         });
     };
 
@@ -226,7 +234,11 @@ class ShoppingCartMobile extends Component {
         this.setState({
             paymentLoading: true,
         });
-        const { subtotalPrice, paymentMethod } = this.state;
+        const {
+            subtotalPrice,
+            paymentMethod,
+            isCustomerInfoUpdate,
+        } = this.state;
         let { name, phone, address, note } = this.state.customerInfo;
         let phoneModified = phone.replace(/ /gi, "");
         let productsOnCart =
@@ -244,31 +256,32 @@ class ShoppingCartMobile extends Component {
             orderDetail.orderItems.push(productDetail);
         });
         let customer = {
-            adddress: address || "",
+            address: address || "",
             cusName: name || "",
-            customerID: uniqid.time() || "",
-            id: "",
+            id: phoneModified,
             lock: false,
             note: "",
-            phone: phoneModified || "",
+            phone: phoneModified,
             promo: 0,
             rate: "",
             wishList: [],
         };
         let order = {
-            customerID: customer.customerID,
+            customerID: customer.id,
+            cusName: customer.cusName,
             doneDate: "",
             id: "",
             notes: note,
             orderDate: "",
             orderID: orderDetail.orderID,
             status: "new",
+            isPaid: false,
             total: totalPrice,
             paymentMethod: paymentMethod,
         };
         // this.onStepChange("orderConfirm");
         Promise.all([
-            setDocument("customers", customer, customer.phone),
+            setDocument("customers", customer, customer.id),
             addDocument("orders", order),
             addDocument("orderDetail", orderDetail),
         ]).then(() => {
@@ -411,7 +424,11 @@ class ShoppingCartMobile extends Component {
         let currentStepRender = "";
         switch (paymentStep) {
             case "shoppingCart":
-                currentStepRender = <div className='productList_wrapper'>{this.shoppingCartBodyRender()}</div>;
+                currentStepRender = (
+                    <div className="productList_wrapper">
+                        {this.shoppingCartBodyRender()}
+                    </div>
+                );
                 break;
             case "customerInfo":
                 currentStepRender = this.customerInfoBodyRender();
@@ -450,6 +467,24 @@ class ShoppingCartMobile extends Component {
     render() {
         return (
             <div className="pageMyCart-wraper">
+                <Helmet>
+                    <script>
+                        {`
+                            function gtag_report_conversion(url) {
+                                var callback = function () {
+                                    if (typeof(url) != 'undefined') {
+                                    window.location = url;
+                                    }
+                                };
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-955903285/853FCNnWq9EBELXa58cD',
+                                    'event_callback': callback
+                                });
+                                return false;
+                            }
+                        `}
+                    </script>
+                </Helmet>
                 {this.onHeaderRenderChange()}
                 {this.onBodyRenderChange()}
                 {this.onFooterRenderChange()}

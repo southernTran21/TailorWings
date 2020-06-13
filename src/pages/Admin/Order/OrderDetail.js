@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import CustomerInfo from "./CustomerInfo";
 
 export default class OrderDetail extends Component {
     render() {
-        const { currentOrderDetail } = this.props;
+        const { currentOrderDetail, currentCustomerInfo } = this.props;
         if (currentOrderDetail !== "" && currentOrderDetail != null) {
             let modifiedPrice = currentOrderDetail.total
                 .toString()
@@ -16,10 +17,11 @@ export default class OrderDetail extends Component {
                         >{`OrderDetail - ${currentOrderDetail.orderID}`}</h2>
                     </div>
                     <div className="showOrder">
-                        <div className="headContent d-flex justify-content-between">
+                        {/* <div className="headContent d-flex justify-content-between">
                             <span>{`Customer: ${currentOrderDetail.cusName}`}</span>
                             <span>{`Total Bill: ${modifiedPrice}`}</span>
-                        </div>
+                        </div> */}
+                        <CustomerInfo customerInfo={currentCustomerInfo}/>
                         <div className="tableContent">
                             <div className="titleHeaderTable d-flex">
                                 <div className="column1">productID</div>
@@ -48,7 +50,7 @@ export default class OrderDetail extends Component {
                                             "$1."
                                         );
                                     return (
-                                        <div className="contentTable d-flex">
+                                        <div key={index} className="contentTable d-flex">
                                             <div className="column1">
                                                 {productID}
                                             </div>

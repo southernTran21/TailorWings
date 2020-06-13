@@ -1,23 +1,12 @@
-// Hàm xóa dấu tiếng việt
-// export const removePunctuation = ( str ) => {
-//     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-//     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-//     str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-//     str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-//     str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-//     str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-//     str = str.replace(/đ/g, "d");
-//     str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
-//     str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
-//     str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
-//     str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
-//     str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
-//     str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
-//     str = str.replace(/Đ/g, "D");
-//     return str;
-// }
+import moment from "moment";
 
-export const removePunctuation = str => {
+/*********************************
+ *  Description: convert vietnamese to english
+ *  Format: aa-bb-cc
+ *
+ *  Call by: all
+ */
+export const removePunctuation = (str) => {
     // remove accents
     var from =
             "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñç",
@@ -35,12 +24,26 @@ export const removePunctuation = str => {
 
     return str;
 };
+/************_END_****************/
 
-export const validateEmail = email => {
+/*********************************
+ *  Description: validate email with expression
+ *
+ *
+ *  Call by: all
+ */
+export const validateEmail = (email) => {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 };
+/************_END_****************/
 
+/*********************************
+ *  Description: calculate total price of product
+ *
+ *
+ *  Call by: all
+ */
 export const totalPriceCalculation = (
     designPrice,
     designLength,
@@ -81,3 +84,112 @@ const priceAfterDiscounted = (purePrice, productDiscount, categoryDiscount) => {
     discountPrice = Math.ceil(discountPrice) * 1000;
     return discountPrice;
 };
+/************_END_****************/
+
+/*********************************
+ *  Description: convert seconds in time to new format
+ *  Format: dd/mm/yy hh:mm:ss
+ *
+ *  Call by: all
+ */
+export const timeConverter = (UNIX_timestamp) => {
+    var a = new Date(UNIX_timestamp * 1000);
+
+    var months = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+    ];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var minute = a.getMinutes();
+    var second = a.getSeconds();
+    if (Number(month) < 10) {
+        month = "0" + month;
+    }
+    if (Number(date) < 10) {
+        date = "0" + date;
+    }
+    if (Number(hour) < 10) {
+        hour = "0" + hour;
+    }
+    if (Number(minute) < 10) {
+        minute = "0" + minute;
+    }
+    if (Number(second) < 10) {
+        second = "0" + second;
+    }
+    var time =
+        date +
+        "/" +
+        month +
+        "/" +
+        year +
+        " " +
+        hour +
+        ":" +
+        minute +
+        ":" +
+        second;
+    return time;
+};
+/************_END_****************/
+
+/*********************************
+ *  Description: format price as 000.000đ
+ *
+ *
+ *  Call by: all
+ */
+export const modifyPrice = (price) => {
+    if (!price) return "";
+    return price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + "đ";
+};
+/************_END_****************/
+
+/*********************************
+ *  Description: modify phone to be +84 XXX XXX XXX
+ *
+ *
+ *  Call by: all
+ */
+export function modifyPhone(phone) {
+    if (phone) {
+        let modifiedPhone = phone.substr(1);
+        modifiedPhone = modifiedPhone.replace(/(.{3})/gi, "$1 ");
+        modifiedPhone = `+84 ${modifiedPhone}`;
+        return modifiedPhone;
+    } else {
+        return phone;
+    }
+}
+/************_END_****************/
+
+/*********************************
+ *  Description:
+ *
+ *
+ *  Call by:
+ */
+export function getCurrentDate(separator = "") {
+    let time = moment()._d;
+    let date = time.getDate();
+    let month = time.getMonth() + 1;
+    let year = time.getFullYear();
+
+    return `${year}${separator}${
+        month < 10 ? `0${month}` : `${month}`
+    }${separator}${date < 10 ? `0${date}` : `${date}`}`;
+}
+/************_END_****************/
