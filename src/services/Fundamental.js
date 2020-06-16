@@ -86,6 +86,22 @@ export const getWithCondition = (collection, field, value) => {
         });
 };
 
+export const getMatchedDocuments = (collection, field, matchedArray) => {
+    return database
+        .collection(collection)
+        .where(field, 'in', matchedArray)
+        .get()
+        .then((querySnapshot) => {
+            let result = [];
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                data.id = doc.id;
+                result.push(data);
+            });
+            return result;
+        });
+};
+
 export const getImageURL = (imgPath) => {
     return storage
         .ref()

@@ -5,21 +5,21 @@ import { Link } from "react-router-dom";
 import "./home.scss";
 
 const defaultSuggestion = [
-    "Đầm suông Lucasta",
-    "Đầm xòe Kelsey",
-    "X005",
-    "Đầm xòe Dilys",
-    "Đầm ôm Donna"
+    "Đầm Suông Lucasta",
+    "Đầm Xòe Kelsey",
+    "Đầm Ôm Agatha",
+    "Đầm Xòe Dilys",
+    "Đầm Ôm Donna"
 ];
 
 export default class SearchSuggest extends Component {
     suggestionContent = () => {
-        const { suggestedSearch, bestSellerInfo } = this.props;
+        const { suggestedSearch, bestSellers } = this.props;
         let content = "";
         if (suggestedSearch.length > 0) {
             content = suggestedSearch.map((suggestion, index) => {
-                let name = suggestion;
-                let url = suggestion.toLowerCase();
+                let name = suggestion.name;
+                let url = name.toLowerCase();
                 url = removePunctuation(url);
                 url = url.replace(/ /g, "-");
                 return (
@@ -42,9 +42,9 @@ export default class SearchSuggest extends Component {
                 );
             });
         } else {
-            content = bestSellerInfo.map((suggestion, index) => {
+            content = bestSellers.map((suggestion, index) => {
                 let name = suggestion.name;
-                let url = suggestion.name.toLowerCase();
+                let url = name.toLowerCase();
                 url = removePunctuation(url);
                 url = url.replace(/ /g, "-");
                 return (
@@ -53,8 +53,8 @@ export default class SearchSuggest extends Component {
                         style={{
                             border: "none",
                             textDecoration: "none",
-                            width: "fit-content",
-                            height: "fit-content"
+                            width: "100%",
+                            height: "100%"
                         }}
                         to={{
                             pathname: "/shopping-store",
@@ -87,7 +87,7 @@ export default class SearchSuggest extends Component {
                         <span>Sản Phẩm Ưa Chuộng</span>
                     </div>
                     <div className="bestSellerInfo-wrapper">
-                        {this.props.bestSellerInfo.map((product, index) => {
+                        {this.props.bestSellers.map((product, index) => {
                             return (
                                 <div key={index} className="col-6">
                                     <Link
@@ -113,7 +113,7 @@ export default class SearchSuggest extends Component {
                                         <span>{product.name}</span>
                                     </div>
                                     <div className="button d-flex flex-row justify-content-center">
-                                        <span>{`${product.totalSupportedFabric} mẫu vải`}</span>
+                                        <span>{`${product.totalSupportedFabric || 0} mẫu vải`}</span>
                                     </div>
                                 </div>
                             );

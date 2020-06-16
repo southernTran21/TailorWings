@@ -6,6 +6,7 @@ import {
     getCurrentDate,
 } from "../../../../services/CommonFunction";
 import { trackingIncrement } from "services/Fundamental";
+import { Skeleton } from "antd";
 
 export default class CarouselStrikingDesign extends Component {
     /*********************************
@@ -31,8 +32,8 @@ export default class CarouselStrikingDesign extends Component {
     /************_END_****************/
 
     bestSellerContent = () => {
-        const { bestSellerInfo } = this.props;
-        return bestSellerInfo.map((product, index) => {
+        const { bestSellers } = this.props;
+        return bestSellers.map((product, index) => {
             let productName = removePunctuation(product.name.toLowerCase());
             productName = productName.replace(/ /gi, "");
             return (
@@ -57,7 +58,7 @@ export default class CarouselStrikingDesign extends Component {
                         <div className="button d-flex justify-content-between align-items-center">
                             <div className="col-6 d-flex flex-row justify-content-center align-items-center">
                                 <span className="titleButton">
-                                    {product.totalSupportedFabric + " MẪU VẢI"}
+                                    {product.totalSupportedFabric || 0 + " MẪU VẢI"}
                                 </span>
                             </div>
                             <div className="col-6">
@@ -91,12 +92,13 @@ export default class CarouselStrikingDesign extends Component {
             centeredSlides: true,
             loop: true,
         };
-        return this.props.bestSellerInfo.length > 0 ? (
+        const { bestSellers } = this.props;
+        if (!bestSellers || bestSellers.length < 1) return <Skeleton active />;
+
+        return (
             <div className="carousel-wraper">
                 <Swiper {...params}>{this.bestSellerContent()}</Swiper>
             </div>
-        ) : (
-            false
         );
     }
 }

@@ -73,13 +73,13 @@ export default class FooterPage extends Component {
                         ĐĂNG KÝ
                     </span>
                 </div>
-                <smal
+                <small
                     className={classNames("emailError_unvisible", {
                         emailError: this.state.isEmailError,
                     })}
                 >
                     Lỗi: Email sai vui lòng nhập lại!
-                </smal>
+                </small>
                 <div className="infomation d-flex flex-column">
                     <div className="d-flex justify-content-between">
                         <a

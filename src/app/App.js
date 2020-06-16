@@ -64,25 +64,25 @@ export default class App extends Component {
         logPageViewGA();
         initPixel();
         logPageViewPixel();
-        Promise.all([
-            getWithCondition("categories", "visibility", true),
-            getWithCondition("products", "visibility", true),
-            getAllData("designs"),
-            getAllData("fabrics"),
-            getWithCondition("collections", "visibility", true),
-            getWithCondition("topList", "visibility", true),
-        ]).then((dataList) => {
-            if (dataList.every((data) => data != null || data !== "")) {
-                this.setState({
-                    categoriesInfo: dataList[0],
-                    visibilityProducts: dataList[1],
-                    designsInfo: dataList[2],
-                    fabricsInfo: dataList[3],
-                    collectionsInfo: dataList[4],
-                    topListInfo: dataList[5],
-                });
-            }
-        });
+        // Promise.all([
+        //     getWithCondition("categories", "visibility", true),
+        //     getWithCondition("products", "visibility", true),
+        //     getAllData("designs"),
+        //     getAllData("fabrics"),
+        //     getWithCondition("collections", "visibility", true),
+        //     getWithCondition("topList", "visibility", true),
+        // ]).then((dataList) => {
+        //     if (dataList.every((data) => data != null || data !== "")) {
+        //         this.setState({
+        //             categoriesInfo: dataList[0],
+        //             visibilityProducts: dataList[1],
+        //             designsInfo: dataList[2],
+        //             fabricsInfo: dataList[3],
+        //             collectionsInfo: dataList[4],
+        //             topListInfo: dataList[5],
+        //         });
+        //     }
+        // });
     }
 
     getCategories = () => {
@@ -200,7 +200,7 @@ export default class App extends Component {
                                 />
                             )}
                         />
-                        <Route
+                        {/* <Route
                             path="/shopping-store"
                             exact
                             component={() => (
@@ -213,10 +213,9 @@ export default class App extends Component {
                                     collectionsInfo={collectionsInfo}
                                 />
                             )}
-                        />
-                        <Route
+                        /> */}
+                        {/* <Route
                             path="/product-detail"
-                            // exact
                             component={({ match }) => (
                                 <ProductDetail
                                     history={history}
@@ -226,22 +225,22 @@ export default class App extends Component {
                                     match={match}
                                 />
                             )}
-                        />
-                        <Route
+                        /> */}
+                        {/* <Route
                             path="/shopping-cart"
                             exact
                             component={() => <ShoppingCart history={history} />}
-                        />
-                        <Route
+                        /> */}
+                        {/* <Route
                             path="/policy"
                             exact
                             component={() => <Policy history={history} />}
-                        />
-                        <Route
+                        /> */}
+                        {/* <Route
                             path="/support"
                             exact
                             component={() => <Support history={history} />}
-                        />
+                        /> */}
                         {/* <Route
                             path="/tailorwings-new-experience"
                             exact
@@ -252,21 +251,21 @@ export default class App extends Component {
                             exact
                             component={() => <TailorwingsCovid history={history} />}
                         /> */}
-                        <Route
+                        {/* <Route
                             path="/tailorwings-welcome"
                             exact
                             component={() => (
                                 <TailorwingsWelcome history={history} />
                             )}
-                        />
-                        <ProtectedRoute
+                        /> */}
+                        {/* <ProtectedRoute
                             path="/admin"
                             component={(props) => <Admin {...props} />}
-                        />
-                        <Route
+                        /> */}
+                        {/* <Route
                             path="/image-upload-example"
                             component={() => <ImageUpload />}
-                        ></Route>
+                        ></Route> */}
                         <Route path="*" component={() => "404 NOT FOUND"} />
                     </Switch>
                 </Router>

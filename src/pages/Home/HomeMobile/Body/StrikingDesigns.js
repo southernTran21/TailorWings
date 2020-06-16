@@ -10,7 +10,7 @@ class StrikingDesigns extends Component {
                     <span>Bắt kịp xu hướng ngay hôm nay!</span>
                 </div>
                 <CarouselStrikingDesign
-                    bestSellerInfo={this.props.bestSellerInfo}
+                    bestSellers={this.props.bestSellers}
                 />
             </div>
         );

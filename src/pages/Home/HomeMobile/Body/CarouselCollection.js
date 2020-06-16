@@ -40,18 +40,18 @@ export default class CarouselCollection extends Component {
     };
 
     AutoSlidesPerView = () => {
-        let { collectionsInfo } = this.props;
+        const { collections } = this.props;
         const params = {
             slidesPerView: "auto",
             spaceBetween: 15,
             loop: true,
         };
-        if (collectionsInfo == null) {
-            collectionsInfo = [];
+        if (collections == null) {
+            collections = [];
         }
-        return collectionsInfo.length > 0 ? (
+        return collections.length > 0 ? (
             <Swiper {...params}>
-                {collectionsInfo.map((collection, index) => {
+                {collections.map((collection, index) => {
                     let imageCollection = this.getCollectionImage(
                         collection.id
                     );

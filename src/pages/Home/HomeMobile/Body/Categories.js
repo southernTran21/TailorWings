@@ -5,6 +5,7 @@ import { trackingIncrement } from "services/Fundamental";
 import Categorie3 from "../../../../assets/imageHomePageMobile/imgCategories_DamOm.jpg";
 import Categorie1 from "../../../../assets/imageHomePageMobile/imgCategories_DamSuong.jpg";
 import Categorie2 from "../../../../assets/imageHomePageMobile/imgCategories_DamXoe.jpg";
+import { Skeleton } from "antd";
 
 class Categories extends Component {
     /*********************************
@@ -21,23 +22,9 @@ class Categories extends Component {
     /************_END_****************/
 
     render() {
-        const { visibilityProducts } = this.props;
-        let totalDamSuong = 0;
-        let totalDamOm = 0;
-        let totalDamXoe = 0;
-        if (visibilityProducts) {
-            totalDamSuong = visibilityProducts.filter((product) => {
-                return product.catID === "damsuong";
-            }).length;
-            totalDamOm = visibilityProducts.filter((product) => {
-                return product.catID === "damom";
-            }).length;
-            totalDamXoe = visibilityProducts.filter((product) => {
-                return product.catID === "damxoe";
-            }).length;
-        }
+        const { categories } = this.props;
+        if (categories.length === 0) return <Skeleton active />;
         return (
-            // <LazyLoad height={"fit-content"} offset={0} throttle={250}>
             <div className="listProduct d-flex flex-column justify-content-between">
                 <div className="title__listProduct d-flex flex-row justify-content-center">
                     Danh Mục Sản Phẩm
@@ -60,7 +47,7 @@ class Categories extends Component {
                             <img src={Categorie1} />
                             <div className="contentProduct d-flex flex-column justify-content-center align-items-center">
                                 <span>Đầm Suông</span>
-                                <span>{`+${totalDamSuong} sản phẩm`}</span>
+                                <span>{`+${categories.damsuong || 0} sản phẩm`}</span>
                             </div>
                         </div>
                     </Link>
@@ -81,7 +68,7 @@ class Categories extends Component {
                             <img src={Categorie2} />
                             <div className="contentProduct d-flex flex-column justify-content-center align-items-center">
                                 <span>Đầm Ôm</span>
-                                <span>{`+${totalDamOm} sản phẩm`}</span>
+                                <span>{`+${categories.damom || 0} sản phẩm`}</span>
                             </div>
                         </div>
                     </Link>
@@ -102,14 +89,13 @@ class Categories extends Component {
                             <img src={Categorie3} />
                             <div className="contentProduct d-flex flex-column justify-content-center align-items-center">
                                 <span>Đầm Xoè</span>
-                                <span>{`+${totalDamXoe} sản phẩm`}</span>
+                                <span>{`+${categories.damxoe || 0} sản phẩm`}</span>
                             </div>
                         </div>
                     </Link>
                 </div>
                 <hr />
             </div>
-            // </LazyLoad>
         );
     }
 }

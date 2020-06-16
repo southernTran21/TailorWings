@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import { connect } from "react-redux";
 import ReactGA from "react-ga";
 import FooterPage from "../Home/HomeMobile/Footer/Footer";
-import Footer from "../Home/HomeWeb/Footer/index";
+import Footer from "../Home/HomeDesktop/Footer/index";
 import NavBarWeb from "../../components/NavBar/NavBarWeb";
 import Media from "react-media";
 

@@ -78,4 +78,38 @@ export const updateAdminAuth = (isAdmin) => {
     };
 };
 
- /* END */
+/* END */
+
+/**
+ * This is for Homepage
+ */
+
+export const updateFetchedDesigns = (designs) => {
+    return {
+        type: "UPDATE_FETCHED_DESIGNS",
+        designs
+    }
+}
+
+export const updateFetchedBestSellers = (bestSellers) => {
+    return {
+        type: "UPDATE_FETCHED_BEST_SELLERS",
+        bestSellers
+    }
+}
+
+export const updateFetchedCategories = (categories) => {
+    return {
+        type: "UPDATE_FETCHED_CATEGORIES",
+        categories
+    }
+}
+
+export const updateFetchedCollections = (collections) => {
+    return {
+        type: "UPDATE_FETCHED_COLLECTIONS",
+        collections
+    }
+}
+
+/* END */

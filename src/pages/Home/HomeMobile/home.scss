@@ -4,6 +4,9 @@
 .pageHomeMobile {
     font-family: "Montserrat", sans-serif !important;
     width: 100vw !important;
+    .ant-skeleton {
+        padding: 0px 20px;
+    }
     .anticon {
         vertical-align: 0 !important;
     }

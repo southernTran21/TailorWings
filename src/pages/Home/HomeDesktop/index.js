@@ -4,7 +4,6 @@ import LazyLoad from "react-lazy-load";
 import Categories from "./Body/Categories";
 import Collections from "./Body/Collections";
 import FourSteps from "./Body/FourSteps";
-import Instagram from "./Body/Instagram";
 import Introduction from "./Body/Introduction";
 import Passion from "./Body/Passion";
 import StrikingProducts from "./Body/StrikingProducts";
@@ -15,50 +14,27 @@ import Footer from "./Footer";
 import Header from "./Header/index";
 import "./home.scss";
 
-export default class HomeWeb extends Component {
+export default class HomeDesktop extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bestSellerInfo: [],
             totalProductsOnCart: 0,
-            visibleProductsList: [],
             isSideBarOpen: false,
         };
     }
 
     componentDidMount() {
-        let {
-            totalProductsOnCart,
-            bestSellerInfo,
-            visibleProductsList,
-        } = this.state;
-        const { visibilityProducts, bestSellerList } = this.props;
         let productsOnCart =
             JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-        totalProductsOnCart = productsOnCart.reduce((accumulator, current) => {
-            return accumulator + Number(current.quantity);
-        }, 0);
-        visibilityProducts.forEach((product) => {
-            var result = bestSellerList.includes(product.designID);
-            if (result && product.default) {
-                let info = {
-                    fabricID: product.fabricID,
-                    designID: product.designID,
-                    name: product.name,
-                    image: product.image[0],
-                };
-                bestSellerInfo.push(info);
-            }
-            visibleProductsList.push({
-                name: product.name,
-                productID: product.productID,
-            });
-        });
-
+        let totalProductsOnCart = productsOnCart.reduce(
+            (accumulator, current) => {
+                return accumulator + Number(current.quantity);
+            },
+            0
+        );
+        /*--------------*/
         this.setState({
             totalProductsOnCart,
-            bestSellerInfo,
-            visibleProductsList,
         });
     }
 
@@ -69,40 +45,7 @@ export default class HomeWeb extends Component {
     };
 
     render() {
-        let {
-            bestSellerInfo,
-            totalProductsOnCart,
-            visibleProductsList,
-            isSideBarOpen,
-        } = this.state;
-        const { visibilityProducts, bestSellerList } = this.props;
-        if (bestSellerInfo.length === 0 && visibleProductsList.length === 0) {
-            let productsOnCart =
-                JSON.parse(sessionStorage.getItem("productsOnCart")) || [];
-            totalProductsOnCart = productsOnCart.reduce(
-                (accumulator, current) => {
-                    return accumulator + Number(current.quantity);
-                },
-                0
-            );
-            visibilityProducts.forEach((product) => {
-                var result = bestSellerList.includes(product.designID);
-                if (result && product.default) {
-                    let info = {
-                        fabricID: product.fabricID,
-                        designID: product.designID,
-                        name: product.name,
-                        image: product.image[0],
-                    };
-                    bestSellerInfo.push(info);
-                }
-                visibleProductsList.push({
-                    name: product.name,
-                    productID: product.productID,
-                });
-            });
-        }
-
+        const { totalProductsOnCart, isSideBarOpen } = this.state;
         return (
             <div
                 className={classNames("homePage_wrapper", {
@@ -112,9 +55,7 @@ export default class HomeWeb extends Component {
                 <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                     <Header
                         history={this.props.history}
-                        bestSellerInfo={bestSellerInfo}
                         totalProductsOnCart={totalProductsOnCart}
-                        visibleProductsList={visibleProductsList}
                         sideBarChange={this.sideBarChange}
                     />
                 </LazyLoad>
@@ -134,10 +75,7 @@ export default class HomeWeb extends Component {
                     <Collections />
                 </LazyLoad>
                 <LazyLoad height={"fit-content"} offset={0} throttle={250}>
-                    <StrikingProducts
-                        bestSellerInfo={bestSellerInfo}
-                        visibleProductsList={visibleProductsList}
-                    />
+                    <StrikingProducts />
                 </LazyLoad>
                 <LazyLoad height={"fit-content"} offset={0} throttle={250}>
                     <WeGive />
