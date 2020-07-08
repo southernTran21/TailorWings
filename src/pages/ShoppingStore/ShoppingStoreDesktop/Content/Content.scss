@@ -1,8 +1,11 @@
 .content_wrapper {
     width: 100%;
-    margin-top: 11.33vh;
+    margin: 11.33vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     .headerContent {
-        margin-left: 9vw;
         .titleHeader {
             :nth-child(1) {
                 color: #111e6c;
@@ -36,8 +39,7 @@
         }
     }
     .productList_wrapper {
-        padding-left: 7.62vw;
-        padding-top: 3.66vh;
+        padding: 3.66vh 7.62vw;
         .col-4 {
             float: left;
             padding: 0;
@@ -75,6 +77,13 @@
                 cursor: pointer;
             }
         }
+    }
+    .get-more {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        padding: 5px 5px;
     }
 }
 .ant-select-dropdown-menu-item:hover:not(.ant-select-dropdown-menu-item-disabled) {

@@ -47,8 +47,9 @@ export default class Collections extends Component {
                 <div className="selectionCollection d-flex">
                     <Link
                         to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=damcongso&search",
+                            pathname: "/shopping-store/dam-cong-so",
+                            // search: "?cat=damcongso&search",
+                            search: "?t=col"
                         }}
                         onClick={() => this.handleTracking("damcongso")}
                     >
@@ -74,8 +75,9 @@ export default class Collections extends Component {
                     </Link>
                     <Link
                         to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=damdaopho&search",
+                            pathname: "/shopping-store/dam-dao-pho",
+                            // search: "?cat=damdaopho&search",
+                            search: "?t=col"
                         }}
                         onClick={() => this.handleTracking("damdaopho")}
                     >
@@ -107,8 +109,9 @@ export default class Collections extends Component {
                     </Link>
                     <Link
                         to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=damdutiec&search",
+                            pathname: "/shopping-store/dam-du-tiec",
+                            // search: "?cat=damdutiec&search",
+                            search: "?t=col"
                         }}
                         onClick={() => this.handleTracking("damdutiec")}
                     >

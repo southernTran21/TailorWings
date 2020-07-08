@@ -87,29 +87,57 @@ export const updateAdminAuth = (isAdmin) => {
 export const updateFetchedDesigns = (designs) => {
     return {
         type: "UPDATE_FETCHED_DESIGNS",
-        designs
-    }
-}
+        designs,
+    };
+};
 
 export const updateFetchedBestSellers = (bestSellers) => {
     return {
         type: "UPDATE_FETCHED_BEST_SELLERS",
-        bestSellers
-    }
-}
+        bestSellers,
+    };
+};
 
 export const updateFetchedCategories = (categories) => {
     return {
         type: "UPDATE_FETCHED_CATEGORIES",
-        categories
-    }
-}
+        categories,
+    };
+};
 
 export const updateFetchedCollections = (collections) => {
     return {
         type: "UPDATE_FETCHED_COLLECTIONS",
-        collections
-    }
-}
+        collections,
+    };
+};
+
+/* END */
+
+/**
+ * This is for Shopping Store
+ */
+
+export const updateFetchedProducts = (products, isFull) => {
+    return {
+        type: "UPDATE_FETCHED_PRODUCTS",
+        products,
+        isFull
+    };
+};
+
+export const updateActiveFilter = (filter) => {
+    return {
+        type: "UPDATE_ACTIVE_FILTER",
+        filter,
+    };
+};
+
+export const updateActiveFilterType = (filterType) => {
+    return {
+        type: "UPDATE_ACTIVE_FILTER_TYPE",
+        filterType,
+    };
+};
 
 /* END */

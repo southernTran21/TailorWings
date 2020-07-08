@@ -200,20 +200,12 @@ export default class App extends Component {
                                 />
                             )}
                         />
-                        {/* <Route
-                            path="/shopping-store"
-                            exact
-                            component={() => (
-                                <ShoppingStore
-                                    history={history}
-                                    visibilityProducts={visibilityProducts}
-                                    designsInfo={designsInfo}
-                                    categoriesInfo={categoriesInfo}
-                                    topListInfo={topListInfo}
-                                    collectionsInfo={collectionsInfo}
-                                />
+                        <Route
+                            path="/shopping-store/:id"
+                            component={({ match }) => (
+                                <ShoppingStore match={match} />
                             )}
-                        /> */}
+                        />
                         {/* <Route
                             path="/product-detail"
                             component={({ match }) => (

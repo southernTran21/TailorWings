@@ -27,8 +27,9 @@ export default class Categories extends Component {
             <div className="categories_wrapper d-flex justify-content-between fontMontserrat">
                 <Link
                     to={{
-                        pathname: "/shopping-store",
-                        search: "?cat=damom&search",
+                        pathname: "/shopping-store/dam-om",
+                        // search: "?cat=damom&search",
+                        search: "?t=cat"
                     }}
                     onClick={() => this.handleTracking("damom")}
                 >
@@ -53,8 +54,9 @@ export default class Categories extends Component {
                 </Link>
                 <Link
                     to={{
-                        pathname: "/shopping-store",
-                        search: "?cat=damxoe&search",
+                        pathname: "/shopping-store/dam-xoe",
+                        // search: "?cat=damxoe&search",
+                        search: "?t=cat"
                     }}
                     onClick={() => this.handleTracking("damxoe")}
                 >
@@ -80,8 +82,9 @@ export default class Categories extends Component {
                 </Link>
                 <Link
                     to={{
-                        pathname: "/shopping-store",
-                        search: "?cat=damsuong&search",
+                        pathname: "/shopping-store/dam-suong",
+                        // search: "?cat=damsuong&search",
+                        search: "?t=cat"
                     }}
                     onClick={() => this.handleTracking("damsuong")}
                 >

@@ -79,8 +79,9 @@ export default class FourSteps extends Component {
                     </svg>
                     <Link
                         to={{
-                            pathname: "/shopping-store",
-                            search: "?cat=all&search",
+                            pathname: "/shopping-store/all",
+                            // search: "?cat=all&search",
+                            search: "?t=cat"
                         }}
                     >
                         <div className="buttonContent_wrapper">
