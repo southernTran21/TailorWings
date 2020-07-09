@@ -5,6 +5,7 @@ import { getCurrentDate } from "services/CommonFunction";
 import { trackingIncrement } from "services/Fundamental";
 import NothingToBuyBanner from "components/NothingToBuyBanner";
 import NTB_BANNER from "../../../../assets/imageShoppingStore/nothing-to-buy-banner-desktop.png";
+import classNames from 'classnames'
 
 export default class Filter extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class Filter extends Component {
         this.state = {
             checkedState: new Array(3).fill(false),
             filerList: [],
+            isFixBanner: false,
         };
     }
 
@@ -24,9 +26,18 @@ export default class Filter extends Component {
     }
 
     listenToScroll = () => {
-        if(!window.pageYOffset) return;
-        
-    }
+        if (!window.pageYOffset) return;
+
+        if (window.pageYOffset > 700) {
+            this.setState({
+                isFixBanner: true,
+            });
+        } else {
+            this.setState({
+                isFixBanner: false,
+            });
+        }
+    };
 
     static getDerivedStateFromProps(props, state) {
         if (props.isEmptyFilter) {
@@ -72,7 +83,7 @@ export default class Filter extends Component {
 
     render() {
         const { collectionsInfo } = this.props;
-        let { checkedState } = this.state;
+        let { checkedState, isFixBanner } = this.state;
         let totalProductInCollection = new Array(3).fill(0);
         let damdutiec = collectionsInfo.filter(
             (collection) => collection.id === "damdutiec"
@@ -113,7 +124,14 @@ export default class Filter extends Component {
                         >{`Đầm Công Sở (${totalProductInCollection[2]})`}</Checkbox>
                     </div>
                 </div>
-                <div className="filter_wrapper__nothing-to-buy-banner">
+                <div
+                    className={classNames(
+                        "filter_wrapper__nothing-to-buy-banner",
+                        {
+                            "filter_wrapper__nothing-to-buy-banner--fixed": isFixBanner,
+                        }
+                    )}
+                >
                     <NothingToBuyBanner image={NTB_BANNER} />
                 </div>
                 {/* <div className="viewPriority">
