@@ -27,17 +27,6 @@ var config = {
     measurementId,
 };
 
-// var config = {
-//     apiKey: "AIzaSyDwkJjqZjDPYkisuhH65Uj-OMs5QZjFGpY",
-//     authDomain: "tailorwings-2019-fd8a1.firebaseapp.com",
-//     databaseURL: "https://tailorwings-2019-fd8a1.firebaseio.com",
-//     projectId: "tailorwings-2019-fd8a1",
-//     storageBucket: "tailorwings-2019-fd8a1.appspot.com",
-//     messagingSenderId: "427131276338",
-//     appId: "1:427131276338:web:a530611bc4df11b2c7402b",
-//     measurementId: "G-CRLB32Y2J3",
-// };
-
 firebase.initializeApp(config);
 export const database = firebase.firestore();
 export const storage = firebase.storage();
