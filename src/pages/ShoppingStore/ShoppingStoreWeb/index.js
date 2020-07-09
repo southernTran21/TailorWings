@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import "./ShoppingStore.scss";
-import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
-import Categories from "./Categories";
-import Filter from "./Filter";
-import ProductList from "./Content";
-import { removePunctuation } from "../../../services/CommonFunction";
 import classNames from "classnames";
+import React, { Component } from "react";
+import NavBarWeb from "../../../components/NavBar/NavBarWeb/index";
+import { removePunctuation } from "../../../services/CommonFunction";
+import Categories from "./Categories";
+import ProductList from "./Content";
+import Filter from "./Filter";
+import "./ShoppingStore.scss";
 
 export default class ShoppingStoreWeb extends Component {
     constructor(props) {

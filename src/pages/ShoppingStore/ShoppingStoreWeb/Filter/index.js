@@ -3,6 +3,8 @@ import "./Filter.scss";
 import { Checkbox } from "antd";
 import { getCurrentDate } from "services/CommonFunction";
 import { trackingIncrement } from "services/Fundamental";
+import NothingToBuyBanner from "components/NothingToBuyBanner";
+import NTB_BANNER from "../../../../assets/imageShoppingStore/nothing-to-buy-banner-desktop.png";
 
 export default class Filter extends Component {
     constructor(props) {
@@ -11,6 +13,19 @@ export default class Filter extends Component {
             checkedState: new Array(3).fill(false),
             filerList: [],
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener("scroll", this.listenToScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.listenToScroll);
+    }
+
+    listenToScroll = () => {
+        if(!window.pageYOffset) return;
+        
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -97,6 +112,9 @@ export default class Filter extends Component {
                             checked={checkedState[2]}
                         >{`Đầm Công Sở (${totalProductInCollection[2]})`}</Checkbox>
                     </div>
+                </div>
+                <div className="filter_wrapper__nothing-to-buy-banner">
+                    <NothingToBuyBanner image={NTB_BANNER} />
                 </div>
                 {/* <div className="viewPriority">
                     <span>ƯU TIÊN XEM</span>

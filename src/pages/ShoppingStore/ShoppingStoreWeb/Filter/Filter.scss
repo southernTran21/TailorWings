@@ -1,6 +1,6 @@
 .filter_wrapper {
     margin-top: 11.66vh;
-    width: 210px;
+    width: 20%;
     .collection, .viewPriority {
         span {
             font-weight: bold;
@@ -26,5 +26,19 @@
     }
     .viewPriority{
         margin-top: 4.66vh;
+    }
+    &__nothing-to-buy-banner {
+        width: 100%;
+        height: auto;
+        
+        padding-top: 50px;
+
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+
+        img {
+            border-radius: 10px;
+        }
     }
 }

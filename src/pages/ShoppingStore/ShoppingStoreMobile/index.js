@@ -9,6 +9,8 @@ import Filter from "./Filter";
 import { BackTop } from "antd";
 import { removePunctuation } from "../../../services/CommonFunction";
 import SearchSuggest from "./SearchSuggest";
+import NothingToBuyBanner from "components/NothingToBuyBanner";
+import NTB_BANNER from '../../../assets/imageShoppingStore/nothing-to-buy-banner-mobile.png'
 
 class ShoppingStoreMobile extends Component {
     constructor(props) {
@@ -257,6 +259,9 @@ class ShoppingStoreMobile extends Component {
                         isFirstLoaded={isFirstLoaded}
                         firstLoadedConfirm={this.firstLoadedConfirm}
                     />
+                    <div className="pageShoppingStore__nothing-to-buy-banner">
+                        <NothingToBuyBanner image={NTB_BANNER} />
+                    </div>
                     <BackTop />
                 </React.Fragment>
             );
