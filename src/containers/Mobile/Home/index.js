@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-Home.propTypes = {
+HomeMobile.propTypes = {
     
 };
 
-function Home(props) {
+function HomeMobile(props) {
     return (
         <div className='home-container'>
-            Home
+            HomeMobile
         </div>
     );
 }
 
-export default Home;
+export default HomeMobile;
