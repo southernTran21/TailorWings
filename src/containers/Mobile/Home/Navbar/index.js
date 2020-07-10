@@ -1,15 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import MobileNavbarNormal from "components/Common/Navbar/MobileNavbarNormal";
 
-Navbar.propTypes = {
-    
-};
+Navbar.propTypes = {};
 
 function Navbar(props) {
     return (
-        <div>
-            Navbar
-        </div>
+        <header className="m-home__navbar">
+            <MobileNavbarNormal></MobileNavbarNormal>
+        </header>
     );
 }
 

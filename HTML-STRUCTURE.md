@@ -1,18 +1,20 @@
+<!-- Homepage mobile -->
 /HomePage-Version-Mobile
 |__m-home__navbar
-    |__m-home__menu-wrapper
-        |__m-menu
-    |__m-home__logo-wrapper
-        |__m-text-logo
-    |__m-home__info-wrapper
-        |__m-cart-info
+    |__m-navbar-normal
+        |__m-navbar-normal__menu-wrapper
+            |__m-menu
+        |__m-navbar-normal__logo-wrapper
+            |__m-text-logo
+        |__m-navbar-normal__info-wrapper
+            |__m-cart-info
 |__m-home__banner
     |__m-banner
 |__m-home__intro
     |__m-intro__title
     |__m-intro__desc
     |__m-intro__four-steps
-        |__m-   
+        |__m-step  
             |__m-step__tick-icon
             |__m-step__desc
 |__m-home__categories
@@ -69,7 +71,7 @@
 |__m-home__voucher-registration
     |__m-voucher-registration__title
     |__(button)
-
+<!-- End -->
 
 
 

@@ -1,0 +1,41 @@
+// Function: A simple mixin to give dimensions to a box.
+@mixin box($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+// END
+
+// Function: Use for flexbox
+@mixin flexBox(
+    $justify: flex-start,
+    $align: flex-start,
+    $dir: row,
+    $wrap: nowrap
+) {
+    display: flex;
+    justify-content: $justify;
+    flex-direction: $dir;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+@mixin centerFlexBox() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// END
+
+// Function: Use for font selection
+@mixin font($weight, $size) {
+    @if ($weight == "fontNormal") {
+        font-family: SVN-Gilroy-Medium;
+    } @else if ($weight == "fontHeavy") {
+        font-family: SVN-Gilroy-Heavy;
+    } @else if ($weight == "fontBold") {
+        font-family: SVN-Gilroy-Bold;
+    } @else if ($weight == "fontSemiBold") {
+        font-family: SVN-Gilroy-SemiBold;
+    }
+    font-size: $size;
+}
+// END

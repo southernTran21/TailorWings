@@ -1,9 +1,11 @@
-// abstracts
+// ABSTRACTS
+@import './abstracts/mixins';
 @import './abstracts/variables';
 
-// Style
+// STYLE
 @import './base/reset';
 @import './base/typography';
 
-// page
-@import './pages/home';
+// PAGE
+// --- Mobile --- 
+@import './pages/Mobile/m-home';

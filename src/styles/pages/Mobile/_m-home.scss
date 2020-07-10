@@ -1,0 +1,25 @@
+.m-home {
+    /* Positioning */
+
+    /* Display & Box Model */
+
+    /* Color */
+
+    /* Text */
+
+    /* Others: transition & animations, ... */
+    &__navbar {
+        /* Positioning */
+
+        /* Display & Box Model */
+        @include box(100%, 6rem);
+        @include flexBox(space-between);
+
+        /* Color */
+        background-color: red;
+
+        /* Text */
+
+        /* Others: transition & animations, ... */
+    }
+}

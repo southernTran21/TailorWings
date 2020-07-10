@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import Navbar from "./Navbar/index";
 
-HomeMobile.propTypes = {
-    
-};
+HomeMobile.propTypes = {};
 
 function HomeMobile(props) {
     return (
-        <div className='home-container'>
-            HomeMobile
+        <div className="m-home">
+            <Navbar />
         </div>
     );
 }
