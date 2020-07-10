@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "SVN-Gilroy-Bold";
+    font-style: normal;
+    font-weight: bold;
+    src: url(./Fonts/Font-SVN-Gilroy/SVN-Gilroy-Bold.otf);
+}
+@font-face {
+    font-family: "SVN-Gilroy-Heavy";
+    font-style: normal;
+    font-weight: 800;
+    src: url(./Fonts/Font-SVN-Gilroy/SVN-Gilroy-Heavy.otf);
+}
+@font-face {
+    font-family: "SVN-Gilroy-Medium";
+    font-style: normal;
+    font-weight: 500;
+    src: url(./Fonts/Font-SVN-Gilroy/SVN-Gilroy-Medium.otf);
+}
+@font-face {
+    font-family: "SVN-Gilroy-SemiBold";
+    font-style: normal;
+    font-weight: 600;
+    src: url(./Fonts/Font-SVN-Gilroy/SVN-Gilroy-SemiBold.otf);
+}
+
+html {
+    font-size: 62.5%;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body{
+    font-family: SVN-Gilroy-Medium;
+    font-size: 1.4rem;
+}

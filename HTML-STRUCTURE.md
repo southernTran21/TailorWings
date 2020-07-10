@@ -1,0 +1,16 @@
+/HomePageVersionMobile
+|__m-home__navbar
+    |__m-home__logo-wrapper
+    |__m-home__search-wrapper
+    |__m-home__info-wrapper
+        |__m-home__cart
+|__m-home__banner
+|__m-home__introduce
+    |__m-home__desc
+        |__m-home__desc-title
+        |__m-home__desc-sub
+    |__m-home__four-steps
+|__m-home__categories
+    |__m-home__categories-...
+    |__m-home__categories-image
+|__m-home__collection
