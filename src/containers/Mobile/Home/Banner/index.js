@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-Banner.propTypes = {
+BannerContainer.propTypes = {
     
 };
 
-function Banner(props) {
+function BannerContainer(props) {
     return (
         <div>
-            Banner
+            BannerContainer
         </div>
     );
 }
 
-export default Banner;
+export default BannerContainer;

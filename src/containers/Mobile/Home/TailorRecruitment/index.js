@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-TailorRecruitment.propTypes = {};
+TailorRecruitmentContainer.propTypes = {};
 
-function TailorRecruitment(props) {
-    return <div>TailorRecruitment</div>;
+function TailorRecruitmentContainer(props) {
+    return <div>TailorRecruitmentContainer</div>;
 }
 
-export default TailorRecruitment;
+export default TailorRecruitmentContainer;

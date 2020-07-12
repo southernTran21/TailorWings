@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-Collections.propTypes = {};
+CollectionsContainer.propTypes = {};
 
-function Collections(props) {
-    return <div>Collections</div>;
+function CollectionsContainer(props) {
+    return <div>CollectionsContainer</div>;
 }
 
-export default Collections;
+export default CollectionsContainer;

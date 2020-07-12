@@ -54,11 +54,11 @@
     |__m-tailor-recruitment
         |__m-tailor-recruitment__image
         |__m-tailor-recruitment__title
-        |__m-tailor-recruitment__benifits
-            |__m-tailor-benifits
-                |__m-benifit
-                    |__m-benifit__short-line
-                    |__m-benifit__content
+        |__m-tailor-recruitment__benefits
+            |__m-tailor-benefits
+                |__m-benefit
+                    |__m-benefit__short-line
+                    |__m-benefit__content
         |__(button)
 |__m-home__top-designs
     |__m-top-design

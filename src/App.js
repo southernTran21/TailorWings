@@ -1,11 +1,10 @@
 import HomeDesktop from "containers/Desktop/Home";
 import HomeMobile from "containers/Mobile/Home";
-import React from "react";
+import React, { Fragment } from "react";
 import Media from "react-media";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./styles/styles.scss";
-
-
+import "./styles/main.scss";
+import FooterContainerMobile from "containers/Mobile/Footer";
 
 function App() {
     return (
@@ -15,9 +14,14 @@ function App() {
                     <Media queries={{ desktop: { minWidth: 769 } }}>
                         {(matches) =>
                             matches.desktop ? (
-                                <Route path="/" component={HomeDesktop} />
+                                <Fragment>
+                                    <Route path="/" component={HomeDesktop} />
+                                </Fragment>
                             ) : (
-                                <Route path="/" component={HomeMobile} />
+                                <Fragment>
+                                    <Route path="/" component={HomeMobile} />
+                                    <FooterContainerMobile />
+                                </Fragment>
                             )
                         }
                     </Media>

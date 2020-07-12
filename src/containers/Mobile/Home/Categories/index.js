@@ -1,10 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Categories from "components/Mobile/Home/Categories";
 
-Categories.propTypes = {};
+CategoriesContainer.propTypes = {};
 
-function Categories(props) {
-    return <div>Categories</div>;
+function CategoriesContainer(props) {
+    return (
+        <div className="m-home__categories">
+            <Categories />
+        </div>
+    );
 }
 
-export default Categories;
+export default CategoriesContainer;

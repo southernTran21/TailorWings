@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-TopProducts.propTypes = {};
+TopProductsContainer.propTypes = {};
 
-function TopProducts(props) {
-    return <div>TopProducts</div>;
+function TopProductsContainer(props) {
+    return <div>TopProductsContainer</div>;
 }
 
-export default TopProducts;
+export default TopProductsContainer;

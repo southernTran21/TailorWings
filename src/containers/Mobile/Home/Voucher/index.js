@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-Voucher.propTypes = {};
+VoucherContainer.propTypes = {};
 
-function Voucher(props) {
-    return <div>Voucher</div>;
+function VoucherContainer(props) {
+    return <div>VoucherContainer</div>;
 }
 
-export default Voucher;
+export default VoucherContainer;

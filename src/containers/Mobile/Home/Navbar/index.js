@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MobileNavbarNormal from "components/Common/Navbar/MobileNavbarNormal";
+import ShoppingNavbar from "components/Mobile/Common/ShoppingNavbar";
 
-Navbar.propTypes = {};
+NavbarContainer.propTypes = {};
 
-function Navbar(props) {
+function NavbarContainer(props) {
     return (
         <header className="m-home__navbar">
-            <MobileNavbarNormal></MobileNavbarNormal>
+            <ShoppingNavbar />
         </header>
     );
 }
 
-export default Navbar;
+export default NavbarContainer;
