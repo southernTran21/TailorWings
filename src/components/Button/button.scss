@@ -1,0 +1,38 @@
+.button {
+    &__CTA {
+        /* Display & Box Model */
+        border-radius: 1rem;
+        /* Color */
+        background-color: $--primary-color;
+        /* Text */
+        color: $--text-active;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+
+        &--size18 {
+            /* Display & Box Model */
+            padding: 1.4rem 2rem;
+            /* Color */
+        
+            /* Text */
+            @include font('fontBold', 1.8rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+            
+        }
+        &--size16 {
+            /* Display & Box Model */
+            padding: 1.2rem 2rem;
+            /* Color */
+        
+            /* Text */
+            @include font('fontBold', 1.6rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

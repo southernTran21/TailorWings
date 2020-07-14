@@ -5,3 +5,9 @@
 // BASE
 @import './base/reset';
 @import './base/typography';
+
+// COMPONENT
+@import '../components/Button/button.scss';
+
+// PAGE
+@import '../containers/Home/home.scss';
