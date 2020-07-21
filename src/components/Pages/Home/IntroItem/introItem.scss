@@ -1,0 +1,29 @@
+.introduction-item {
+    /* Display & Box Model */
+    @include box(15.3rem);
+    @include centerFlexBox();
+    flex-direction: column;
+    border-radius: 30px;
+    margin: 1rem;
+    /* Color */
+    background-color: $--bg-passive;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__title {
+        /* Display & Box Model */
+        margin-top: 1rem;
+        padding: 0 3rem;
+        /* Color */
+        color: $--text-passive;
+        @include font(fontBold, 1.6rem);
+        /* Text */
+        text-align: center;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

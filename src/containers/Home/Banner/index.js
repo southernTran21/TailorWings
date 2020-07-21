@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Banner from 'components/Banner';
 
 BannerContainer.propTypes = {
     
@@ -7,9 +8,9 @@ BannerContainer.propTypes = {
 
 function BannerContainer(props) {
     return (
-        <div className='home__banner'>
-            BannerContainer
-        </div>
+        <section className='home-banner'>
+            <Banner/>
+        </section>
     );
 }
 

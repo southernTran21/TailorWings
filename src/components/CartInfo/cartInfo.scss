@@ -1,0 +1,29 @@
+.cart-info {
+    /* Display & Box Model */
+    @include centerFlexBox();
+    @include box(3rem);
+    border-radius: 50%;
+    /* Color */
+    background-color: $--bg-passive;
+    color: $--text-passive;
+    /* Text */
+    text-align: center;
+    @include font(fontBold, 1.6rem );
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &--active {
+        /* Display & Box Model */
+    
+        /* Color */
+        color: $--text-active;
+        background-color: $--bg-active;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

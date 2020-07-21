@@ -1,0 +1,76 @@
+.category-item {
+    /* Display & Box Model */
+    margin: 0 auto;
+    margin-top: 2rem;
+    @include box(33.5rem, 20rem);
+    @include flexBox(space-between); 
+    border-radius: 20px;
+    /* Color */
+    background-color: $--bg-passive;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__info {
+        /* Display & Box Model */
+        padding-left: 3.3rem;
+        padding-top: 2.8rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__title {
+        /* Display & Box Model */
+        margin-bottom: 0.5rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontHeavy, 2.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__design-number {
+        /* Display & Box Model */
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__button {
+        /* Display & Box Model */
+        padding-top: 5.1rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__image {
+        /* Display & Box Model */
+        width: 46.86%;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+}

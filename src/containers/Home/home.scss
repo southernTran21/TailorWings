@@ -1,7 +1,53 @@
 // @media screen and (min-width): Mobile first
 // @media screen and (max-width): Desktop first
-.home{
-    &__navbar{
-        width: 100%;
+.home-introduction {
+    /* Display & Box Model */
+    padding-top: 2rem;
+    /* Color */
+
+    /* Text */
+    color: $--text-passive;
+    text-align: center;
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontHeavy, 2.4rem)
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__sub-title {
+        /* Display & Box Model */
+        padding: 0 5.3rem;
+        margin-top: 1rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontNormal, 1.4rem);
+        line-height: 1.5rem;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__list {
+        /* Display & Box Model */
+        @include flexBox(center, center, row, wrap);
+        margin-top: 0.6rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
     }
 }

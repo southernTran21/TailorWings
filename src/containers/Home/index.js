@@ -9,6 +9,7 @@ import DesignersContainer from './Designers';
 import TailorRecruitmentContainer from './TailorRecruitment';
 import TopProductsContainer from './TopProducts';
 import VoucherContainer from './Voucher';
+import BannerContainer from './Banner';
 
 HomeContainer.propTypes = {
     
@@ -18,6 +19,7 @@ function HomeContainer(props) {
     return (
         <div className='home'>
             <NavbarContainer/>
+            <BannerContainer/>
             <IntroductionContainer/>
             <CategoriesContainer/>
             <CollectionsContainer/>

@@ -1,13 +1,18 @@
 // ABSTRACTS
-@import './abstracts/mixins';
-@import './abstracts/variables';
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
 
 // BASE
-@import './base/reset';
-@import './base/typography';
+@import "./base/reset";
+@import "./base/typography";
 
 // COMPONENT
-@import '../components/Button/button.scss';
+@import "../components/Button/button.scss";
+@import "../components/CartInfo/cartInfo.scss";
+@import "../components/Navbar/NavbarShopping/navbarShopping.scss";
+@import "../components//Banner/banner.scss";
+@import "../components//Pages/Home/IntroItem/introItem.scss";
+@import "../components//Pages/Home/CategoryItem/categoryItem.scss";
 
 // CONTAINER
-@import '../containers/Home/home.scss';
+@import "../containers/Home/home.scss";
