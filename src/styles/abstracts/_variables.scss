@@ -1,6 +1,29 @@
 $--primary-color: #FF8445;
 $--secondary-color: #FFEBD8;
-$--text-default: #333333;
-$--text-active: white;
-$--text-passive: #FF8445;
-$--text-blur: #8E8E8E;
+$--black-color: #333333;
+$--white-color: #FFFFFF;
+$--yellow-color: #FCD681;
+$--gray1-color: #8E8E8E;
+$--gray2-color: #E5E5E5;
+$--gray3-color: #EEF1F4;
+$--info-color: #1884D6;
+
+
+// Text
+$--text-default: $--black-color;
+$--text-active: $--white-color;
+$--text-passive: $--primary-color;
+$--text-blur: $--gray1-color;
+// Background
+$--bg-default: $--white-color;
+$--bg-active: $--primary-color;
+$--bg-passive: $--secondary-color;
+$--bg-info: $--info-color;
+// Border
+$--border-primary: $--primary-color;
+$--border-avatar: $--yellow-color;
+$--border-dash: $--primary-color;
+$--border-blur1: $--gray1-color;
+$--border-blur2: $--gray2-color;
+$--border-blur3: $--gray3-color;
+

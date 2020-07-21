@@ -1,38 +1,175 @@
-.button {
-    &__CTA {
-        /* Display & Box Model */
-        border-radius: 1rem;
-        /* Color */
-        background-color: $--primary-color;
-        /* Text */
-        color: $--text-active;
-        /* Positioning */
-    
-        /* Others: transition & animations, ... */
+.button-CTA {
+    /* Display & Box Model */
+    border-radius: 1rem;
+    padding: 1.2rem 2rem;
+    /* Color */
+    background-color: $--primary-color;
+    /* Text */
+    @include font("fontBold", 1.6rem);
+    color: $--text-active;
+    /* Positioning */
 
-        &--size18 {
-            /* Display & Box Model */
-            padding: 1.4rem 2rem;
-            /* Color */
-        
-            /* Text */
-            @include font('fontBold', 1.8rem);
-            /* Positioning */
-        
-            /* Others: transition & animations, ... */
-            
-        }
-        &--size16 {
-            /* Display & Box Model */
-            padding: 1.2rem 2rem;
-            /* Color */
-        
-            /* Text */
-            @include font('fontBold', 1.6rem);
-            /* Positioning */
-        
-            /* Others: transition & animations, ... */
-        
-        }
+    /* Others: transition & animations, ... */
+
+    &--size18 {
+        /* Display & Box Model */
+        padding: 1.4rem 2rem;
+        /* Color */
+
+        /* Text */
+        @include font("fontBold", 1.8rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+.button-size {
+    /* Display & Box Model */
+    @include box(4.7rem);
+    @include centerFlexBox();
+    border-radius: 50%;
+    /* Color */
+    color: $--text-passive;
+    background-color: $--bg-passive;
+    /* Text */
+    @include font(fontBold, 1.6rem);
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &--active {
+        /* Display & Box Model */
+
+        /* Color */
+        color: $--text-active;
+        background-color: $--bg-active;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+.button-filter {
+    /* Display & Box Model */
+    @include box(8rem);
+    @include centerFlexBox();
+    border-radius: 50%;
+    /* Color */
+    color: $--text-passive;
+    background-color: $--bg-passive;
+    /* Text */
+    @include font(fontBold, 1.6rem);
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &--active {
+        /* Display & Box Model */
+
+        /* Color */
+        color: $--text-active;
+        background-color: $--bg-active;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+.button-load-more {
+    /* Display & Box Model */
+    @include centerFlexBox();
+    padding: 1rem 1.8rem;
+    border: 1px solid $--border-primary;
+    border-radius: 1rem;
+    /* Color */
+    color: $--text-passive;
+    /* Text */
+    @include font(fontBold, 1.6rem);
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &:hover {
+        /* Display & Box Model */
+
+        /* Color */
+        color: $--text-active;
+        background-color: $--bg-active;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+.button-confirm {
+    /* Display & Box Model */
+    @include centerFlexBox();
+    border-radius: 4.5rem;
+    /* Color */
+    color: $--text-active;
+    background-color: $--bg-active;
+    /* Text */
+    @include font(fontBold, 1.6rem);
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__text {
+        /* Display & Box Model */
+        margin-right: 1rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+.button-size-option {
+    /* Display & Box Model */
+    @include centerFlexBox();
+    padding: 1.2rem 2rem;
+    border-radius: 1.5rem;
+    /* Color */
+    color: $--text-passive;
+    background-color: $--bg-passive;
+    /* Text */
+    @include font(fontBold, 1.6rem);
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__active {
+        /* Display & Box Model */
+
+        /* Color */
+        color: $--text-active;
+        background-color: $--bg-active;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__icon {
+        /* Display & Box Model */
+        margin-right: 1.2rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
     }
 }

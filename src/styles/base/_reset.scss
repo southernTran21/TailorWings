@@ -122,8 +122,13 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-button{
+button {
     border: none;
     box-shadow: none;
     outline: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    line-height: 1;
+    cursor: pointer;
 }

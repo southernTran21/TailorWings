@@ -1,8 +1,11 @@
-import HomeContainer from "containers/Home";
+import ButtonSize from "components/Button/Size";
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./styles/main.scss";
-import ButtonCTA from "components/Button/CTA";
+import ButtonFilter from "components/Button/Filter";
+import ButtonLoadMore from "components/Button/LoadMore";
+import ButtonConfirm from "components/Button/Confirm";
+import ButtonSizeOption from "components/Button/SizeOption";
 
 function App() {
     return (
@@ -10,7 +13,10 @@ function App() {
             <BrowserRouter>
                 <Switch>
                     {/* <Route path="/" component={HomeContainer} /> */}
-                    <Route path="/test" component={ButtonCTA} />
+                    <Route
+                        path="/test"
+                        component={() => <ButtonSizeOption isDefault={true} isActive={false}  />}
+                    />
 
                     {/* <Route component={NotFound} /> */}
                 </Switch>
