@@ -6,18 +6,14 @@ import ButtonFilter from "components/Button/Filter";
 import ButtonLoadMore from "components/Button/LoadMore";
 import ButtonConfirm from "components/Button/Confirm";
 import ButtonSizeOption from "components/Button/SizeOption";
+import HomeContainer from "containers/Home";
 
 function App() {
     return (
         <div className="app">
             <BrowserRouter>
                 <Switch>
-                    {/* <Route path="/" component={HomeContainer} /> */}
-                    <Route
-                        path="/test"
-                        component={() => <ButtonSizeOption isDefault={true} isActive={false}  />}
-                    />
-
+                    <Route path="/" component={HomeContainer} />
                     {/* <Route component={NotFound} /> */}
                 </Switch>
             </BrowserRouter>
