@@ -8,7 +8,7 @@ ButtonCTA.propTypes = {
 
 ButtonCTA.defaultProps = {
     text: null,
-    size: null
+    size: 16
 };
 
 function ButtonCTA(props) {

@@ -8,7 +8,7 @@ BannerContainer.propTypes = {
 
 function BannerContainer(props) {
     return (
-        <section className='home-banner'>
+        <section className='l-home__banner'>
             <Banner/>
         </section>
     );

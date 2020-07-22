@@ -6,7 +6,7 @@ import ButtonFilter from "components/Button/Filter";
 import ButtonLoadMore from "components/Button/LoadMore";
 import ButtonConfirm from "components/Button/Confirm";
 import ButtonSizeOption from "components/Button/SizeOption";
-import HomeContainer from "containers/Home";
+import HomeContainer from "layouts/Home";
 
 function App() {
     return (

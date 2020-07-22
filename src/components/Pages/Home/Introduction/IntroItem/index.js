@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CheckCircle from "../../../../assets/Icon/check-circle.svg";
+import CheckCircle from "../../../../../assets/Icon/check-circle.svg";
 
 IntroItem.propTypes = {
     text: PropTypes.string,
@@ -11,11 +11,11 @@ IntroItem.defaultProps = {
 
 function IntroItem(props) {
     return (
-        <li className="introduction-item">
-            <div className="introduction-item__icon">
+        <li className="c-introduction-item">
+            <div className="c-introduction-item__icon">
                 <img src={CheckCircle} alt="" />
             </div>
-            <span className="introduction-item__title">
+            <span className="c-introduction-item__title">
                 {props.text}
             </span>
         </li>

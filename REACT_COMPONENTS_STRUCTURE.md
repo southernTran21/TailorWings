@@ -1,0 +1,38 @@
+<!-- HOMEPAGE -->
+|-HomeContainer
+    |-NavbarContainer
+        |-NavbarShopping
+            |-CartInfo
+    |-BannerContainer
+        |-Banner
+    |-IntroductionContainer
+        |-HomeIntroduction
+            |-IntroItem
+    |-CategoriesContainer
+        |-HomeCategories
+            |-CategoryItem
+                |-ButtonCTA
+    |-CollectionsContainer
+        |-HomeCollections
+            |-CollectionItem
+                |-ButtonCTA
+    |-TopProductsContainer
+        |-HomeTopProducts
+            |-ProductItem
+                |-ButtonLoadMore
+    |-FabricsContainer
+    |-DesignersContainer
+        |-HomeDesigners
+            |-DesingerCard
+                |-Avatar
+                |-Star
+                |-button-profile
+        |-ButtonCTA
+    |-TailorRecruitmentContainer
+        |-HomeTailorRecruitment
+            |-RecruitmentItem
+        |-ButtonCTA
+    |-VoucherContainer
+        |-HomeVoucher
+            |-ButtonCTA
+<!-- END HOMEPAGE -->

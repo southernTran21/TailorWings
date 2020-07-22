@@ -11,14 +11,14 @@ NavbarShopping.propTypes = {
 
 function NavbarShopping(props) {
     return (
-        <div className="navbar-shopping">
-            <div className="navbar-shopping__menu">
+        <div className="c-navbar-shopping">
+            <div className="c-navbar-shopping__menu">
                 <img src={MenuIcon} alt="menu-icon" />
             </div>
-            <div className="navbar-shopping__logo">
+            <div className="c-navbar-shopping__logo">
                 <img src={Logo} alt="tailorwings" />
             </div>
-            <div className="navbar-shopping__info">
+            <div className="c-navbar-shopping__info">
                 <CartInfo active={true} />
             </div>
         </div>

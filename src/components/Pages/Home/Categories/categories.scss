@@ -1,8 +1,6 @@
-.c-navbar-shopping {
+.c-category-list {
     /* Display & Box Model */
-    @include flexBox(space-between, center);
-    height: 6rem;
-    padding: 0 2rem;
+
     /* Color */
 
     /* Text */
@@ -11,4 +9,5 @@
 
     /* Others: transition & animations, ... */
 
+    @import "./CategoryItem/categoryItem.scss";
 }

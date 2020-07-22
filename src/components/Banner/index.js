@@ -7,8 +7,8 @@ Banner.propTypes = {
 
 function Banner(props) {
     return (
-        <div className='banner'>
-            <img src="" alt="" className="banner__image"/>
+        <div className='c-banner'>
+            <img src="" alt="" className="c-banner__image"/>
         </div>
     );
 }

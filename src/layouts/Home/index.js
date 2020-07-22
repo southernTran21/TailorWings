@@ -17,16 +17,16 @@ HomeContainer.propTypes = {
 
 function HomeContainer(props) {
     return (
-        <div className='home'>
+        <div className='l-home'>
             <NavbarContainer/>
             <BannerContainer/>
             <IntroductionContainer/>
             <CategoriesContainer/>
             <CollectionsContainer/>
+            <TopProductsContainer/>
             <FabricsContainer/>
             <DesignersContainer/>
             <TailorRecruitmentContainer/>
-            <TopProductsContainer/>
             <VoucherContainer/>
         </div>
     );

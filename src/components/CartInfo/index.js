@@ -9,10 +9,10 @@ CartInfo.defaultProps = {
 };
 
 function CartInfo(props) {
-    let activeClass = props.active ? "cart-info--active" : "";
+    let activeClass = props.active ? "c-cart-info--active" : "";
     let number = 0;
     return (
-        <div className={`cart-info ${activeClass}`}>
+        <div className={`c-cart-info ${activeClass}`}>
             <span>{number}</span>
         </div>
     );

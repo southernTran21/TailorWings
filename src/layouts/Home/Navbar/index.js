@@ -8,7 +8,7 @@ NavbarContainer.propTypes = {
 
 function NavbarContainer(props) {
     return (
-        <section className='home-navbar'>
+        <section className='l-home__navbar'>
             <NavbarShopping/>
         </section>
     );
