@@ -1,0 +1,62 @@
+.c-collection-item {
+    /* Display & Box Model */
+    @include box(23.8rem, auto);
+    margin-top: 2rem;
+    /* Color */
+
+    /* Text */
+    text-align: center;
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__image {
+        /* Display & Box Model */
+        @include box(23.8rem, 32.319rem);
+        border-radius: 3.1rem;
+        margin-bottom: 0.79rem;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__name {
+        /* Display & Box Model */
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        line-height: 100%;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__desc {
+        /* Display & Box Model */
+        margin-top: 0.3rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontNormal, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__button {
+        /* Display & Box Model */
+        margin-top: 1.2rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

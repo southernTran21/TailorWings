@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import Banner from 'components/Banner';
+import React from 'react';
 
 BannerContainer.propTypes = {
     

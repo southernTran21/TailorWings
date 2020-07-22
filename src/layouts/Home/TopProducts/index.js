@@ -1,15 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import HomeTopProducts from "components/Pages/Home/TopProducts";
 
-TopProductsContainer.propTypes = {
-    
-};
+TopProductsContainer.propTypes = {};
 
 function TopProductsContainer(props) {
     return (
-        <div className='home__top-products'>
-            TopProductsContainer
-        </div>
+        <section className="l-home__top-products">
+            <HomeTopProducts />
+        </section>
     );
 }
 

@@ -52,21 +52,21 @@
         |-c-home-designers
             |-c-home-designers__title
             |-c-home-designers__list
-                |-c-desinger-card
-                    |-c-desinger-card__info-wrapper
-                        |-c-desinger-card__avatar
+                |-c-designer-card
+                    |-c-designer-card__info-wrapper
+                        |-c-designer-card__avatar
                             |-c-avatar
                             |-c-stars
-                        |-c-desinger-card__info
+                        |-c-designer-card__info
                             |-c-designer-card__name
                             |-c-designer-card__address
                             |-c-designer-card__design-number
                             |-c-button-profile
-                    |-c-desinger-card__design-list
-                        |-c-desinger-card__design-image                        
-                        |-c-desinger-card__design-image                        
-                        |-c-desinger-card__design-image
-                        |-c-desinger-card__remain
+                    |-c-designer-card__design-list
+                        |-c-designer-card__design-image                        
+                        |-c-designer-card__design-image                        
+                        |-c-designer-card__design-image
+                        |-c-designer-card__remain
             |-c-home-designers__sub-title
             |-c-button-CTA c-button-CTA--size16      
     |-l-home__tailor-recruitment

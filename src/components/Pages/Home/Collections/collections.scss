@@ -1,0 +1,26 @@
+.c-home-collections {
+    /* Display & Box Model */
+    padding: 0 2rem;
+    margin-top: 4.1rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontHeavy, 2.4rem);
+        line-height: 2.5rem;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    @import "./CollectionItem/collectionItem.scss";
+}

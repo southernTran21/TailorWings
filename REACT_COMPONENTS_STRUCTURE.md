@@ -23,7 +23,7 @@
     |-FabricsContainer
     |-DesignersContainer
         |-HomeDesigners
-            |-DesingerCard
+            |-DesignerCard
                 |-Avatar
                 |-Star
                 |-button-profile
