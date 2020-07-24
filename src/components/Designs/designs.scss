@@ -1,0 +1,47 @@
+.c-designs {
+    /* Display & Box Model */
+    padding: 4rem 2.3rem 5.3rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__title {
+        /* Display & Box Model */
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontHeavy, 2.4rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__list {
+        /* Display & Box Model */
+        padding-top: 2.4rem;
+        @include flexBox(space-between, flex-start, row, wrap);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        @import "./DesignItem/designItem.scss";
+    }
+    &__button {
+        /* Display & Box Model */
+        padding-top: 2rem;
+        @include centerFlexBox();
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
