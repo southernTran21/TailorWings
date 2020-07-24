@@ -1,4 +1,4 @@
-.button-CTA {
+.c-button-CTA {
     /* Display & Box Model */
     border-radius: 1rem;
     padding: 1.2rem 2rem;
@@ -24,7 +24,7 @@
     }
 }
 
-.button-size {
+.c-button-size {
     /* Display & Box Model */
     @include box(4.7rem);
     @include centerFlexBox();
@@ -52,7 +52,7 @@
     }
 }
 
-.button-filter {
+.c-button-filter {
     /* Display & Box Model */
     @include box(8rem);
     @include centerFlexBox();
@@ -80,7 +80,7 @@
     }
 }
 
-.button-load-more {
+.c-button-load-more {
     /* Display & Box Model */
     @include centerFlexBox();
     padding: 1rem 1.8rem;
@@ -108,7 +108,7 @@
     }
 }
 
-.button-confirm {
+.c-button-confirm {
     /* Display & Box Model */
     @include centerFlexBox();
     border-radius: 4.5rem;
@@ -134,7 +134,7 @@
     }
 }
 
-.button-size-option {
+.c-button-size-option {
     /* Display & Box Model */
     @include centerFlexBox();
     padding: 1.2rem 2rem;
@@ -172,4 +172,19 @@
 
         /* Others: transition & animations, ... */
     }
+}
+
+.c-button-profile {
+    /* Display & Box Model */
+    padding: 0.51rem 1.2rem;
+    border-radius: 5.0996px;
+    /* Color */
+    background-color: $--bg-info;
+    color: $--text-active;
+    /* Text */
+    @include font(fontMedium, 1.3rem);
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
 }

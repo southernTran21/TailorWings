@@ -67,7 +67,8 @@
                         |-c-designer-card__design-image
                         |-c-designer-card__remain
             |-c-home-designers__title
-            |-c-button-CTA c-button-CTA--size16      
+            |-c-home-designers__button
+                |-c-button-CTA c-button-CTA--size16      
     |-l-home__tailor-recruitment
         |-c-home-tailor-recruitment__image
         |-c-home-tailor-recruitment__title

@@ -16,8 +16,8 @@ ButtonConfirm.defaultProps = {
 function ButtonConfirm(props) {
     if (!props.text) return <Fragment />;
     return (
-        <button className="button-confirm" style={{ padding: props.padding }}>
-            <span className="button-confirm__text">{props.text}</span>
+        <button className="c-button-confirm" style={{ padding: props.padding }}>
+            <span className="c-button-confirm__text">{props.text}</span>
             <img src={rightArrow} alt={props.text} />
         </button>
     );

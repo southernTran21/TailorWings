@@ -14,9 +14,9 @@ ButtonSize.defaultProps = {
 function ButtonSize(props) {
     if (!props.text) return <Fragment />;
 
-    let activeClass = props.active ? "button-size--active" : "";
+    let activeClass = props.active ? "c-button-size--active" : "";
     return (
-        <button className={`button-size ${activeClass}`}>{props.text}</button>
+        <button className={`c-button-size ${activeClass}`}>{props.text}</button>
     );
 }
 

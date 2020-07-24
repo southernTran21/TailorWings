@@ -14,7 +14,7 @@ ButtonCTA.defaultProps = {
 function ButtonCTA(props) {
     if (!props.text) return <Fragment />;
 
-    return <button className={`button-CTA button-CTA--size${props.size}`}>{props.text}</button>;
+    return <button className={`c-button-CTA c-button-CTA--size${props.size}`}>{props.text}</button>;
 }
 
 export default ButtonCTA;

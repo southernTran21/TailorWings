@@ -1,0 +1,13 @@
+.c-avatar {
+    /* Display & Box Model */
+    @include box(11.015rem);
+    border: 2.03984px solid $--yellow-color;
+    border-radius: 50%;
+    /* Color */
+    background-color: $--yellow-color;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+}

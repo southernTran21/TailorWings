@@ -1,0 +1,162 @@
+.c-designer-card {
+    /* Display & Box Model */
+    padding: 2rem 3rem;
+    box-shadow: 0px 4.07968px 10.1992px rgba(0, 0, 0, 0.15);
+    border-radius: 25.4922px;
+    /* Color */
+    background-color: $--white-color;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__info-content {
+        /* Display & Box Model */
+        @include flexBox(space-between, center) /* Color */ /* Text */
+            /* Positioning */ /* Others: transition & animations, ... */;
+    }
+    &__avatar-wrapper {
+        /* Display & Box Model */
+        width: 40%;
+        @include flexBox(center, center, column) /* Color */ /* Text */
+            /* Positioning */ /* Others: transition & animations, ... */;
+    }
+    &__avatar {
+        /* Display & Box Model */
+        width: fit-content;
+        height: fit-content;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__stars {
+        /* Display & Box Model */
+        padding-top: 1.224rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__info-wrapper {
+        /* Display & Box Model */
+        width: 60%;
+        @include flexBox(center, center, column) /* Color */ /* Text */
+            /* Positioning */ /* Others: transition & animations, ... */;
+    }
+    &__name {
+        /* Display & Box Model */
+        /* Color */
+
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        text-align: center;
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__address {
+        /* Display & Box Model */
+        padding-top: 0.848rem;
+        /* Color */
+        color: $--text-blur;
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__design-number {
+        /* Display & Box Model */
+        @include flexBox(center, center, column);
+        padding-top: 1.864rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        p:first-child {
+            /* Display & Box Model */
+
+            /* Color */
+
+            /* Text */
+            @include font(fontBold, 18.3586px);
+            color: $--yellow-color;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+        p:last-child {
+            /* Display & Box Model */
+
+            /* Color */
+
+            /* Text */
+            @include font(fontMedium, 12.239px);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+    &__button {
+        /* Display & Box Model */
+        padding-top: 0.944rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__design-list {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        @include box(100%, 6.88rem);
+        margin-top: 1.53rem;
+        border-radius: 5.0996px;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__design-image {
+        /* Display & Box Model */
+        @include box(25%, 100%);
+        object-fit: cover;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__remain {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        @include box(25%, 100%);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}

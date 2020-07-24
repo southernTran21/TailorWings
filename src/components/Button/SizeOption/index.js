@@ -22,14 +22,14 @@ function ButtonSizeOption(props) {
     let text = props.isDefault ? DEFAULT_TEXT : MODIFIED_TEXT;
     return (
         <button
-            className={classNames("button-size-option", {
-                "button-size-option__active": props.isActive,
+            className={classNames("c-button-size-option", {
+                "c-button-size-option__active": props.isActive,
             })}
         >
             <img
                 src={icon}
                 alt="size-đo"
-                className="button-size-option__icon"
+                className="c-button-size-option__icon"
             />
             <span>{text}</span>
         </button>

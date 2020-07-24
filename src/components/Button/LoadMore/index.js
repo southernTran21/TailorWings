@@ -4,7 +4,7 @@ const TEXT = 'Xem Thêm';
 
 function ButtonLoadMore() {
     return (
-        <button className="button-load-more">
+        <button className="c-button-load-more">
             {TEXT}
         </button>
     );

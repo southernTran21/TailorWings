@@ -14,9 +14,9 @@ ButtonFilter.defaultProps = {
 function ButtonFilter(props) {
     if (!props.text) return <Fragment />;
 
-    let activeClass = props.active ? "button-filter--active" : "";
+    let activeClass = props.active ? "c-button-filter--active" : "";
     return (
-        <button className={`button-filter ${activeClass}`}>{props.text}</button>
+        <button className={`c-button-filter ${activeClass}`}>{props.text}</button>
     );
 }
 

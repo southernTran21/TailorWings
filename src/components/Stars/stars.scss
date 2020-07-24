@@ -1,0 +1,30 @@
+.c-stars {
+    /* Display & Box Model */
+    @include flexBox(space-between, center);
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__icon:not(:first-child) {
+        margin: 0 0.306rem;
+    }
+    &__icon:not(:last-child) {
+        margin: 0 0.306rem;
+    }
+    &__icon {
+        /* Display & Box Model */
+        @include box(1.53rem); 
+        /* Color */ 
+        
+        /* Text */ 
+        
+        /* Positioning */
+        
+        /* Others: transition & animations, ... */
+
+    }
+}

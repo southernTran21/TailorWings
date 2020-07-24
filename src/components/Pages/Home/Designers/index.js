@@ -18,13 +18,16 @@ function HomeDesigners(props) {
     return (
         <div className="c-home-designers">
             <h2 className="c-home-designers__title">{props.title[0]}</h2>
-            <div className="c-home-designers__list">
+            <ul className="c-home-designers__list">
                 {props.designers.map((designer, index) => {
                     return <DesignerCard designer={designer} key={index} />;
                 })}
-            </div>
+            </ul>
             <h2 className="c-home-designers__title">{props.title[1]}</h2>
-            <ButtonCTA text="THAM GIA NGAY" />
+            <h2 className="c-home-designers__title">{props.title[2]}</h2>
+            <div className="c-home-designers__button">
+                <ButtonCTA text="THAM GIA NGAY" />
+            </div>
         </div>
     );
 }

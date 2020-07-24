@@ -1,6 +1,10 @@
 .c-home-designers {
     /* Display & Box Model */
-    padding: 5rem 6.2rem 2rem;
+    @include flexBox(flex-start, center, column);
+    padding: 5rem 2rem 6.2rem;
+    border-radius: 30px 30px 0px 0px;
+    background: url(../../../../assets/Image/designer-section-background.png)
+        no-repeat top / cover;
     /* Color */
 
     /* Text */
@@ -9,4 +13,48 @@
 
     /* Others: transition & animations, ... */
 
+    &__title {
+        /* Display & Box Model */
+        display: inline-block;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontHeavy, 2.4rem);
+        text-align: center;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__list {
+        /* Display & Box Model */
+        width: 100%;
+        padding: 2.5rem 0;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        .c-designer-card:not(:first-child) {
+            margin: 2.5rem 0;
+        }
+        .c-designer-card:not(:last-child) {
+            margin: 2.5rem 0;
+        }
+
+        @import "./DesignerCard/designerCard.scss";
+    }
+    &__button {
+        /* Display & Box Model */
+        padding-top: 2.5rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
 }
