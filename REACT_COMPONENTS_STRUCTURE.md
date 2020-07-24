@@ -17,8 +17,8 @@
             |-CollectionItem
                 |-ButtonCTA
     |-TopProductsContainer
-        |-HomeTopProducts
-            |-ProductItem
+        |-Designs
+            |-DesignItem
                 |-ButtonLoadMore
     |-FabricsContainer
     |-DesignersContainer

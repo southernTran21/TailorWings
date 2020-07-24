@@ -1,5 +1,4 @@
 <!-- Homepage mobile -->
-<!-- c-page-name => page -->
 /l-home
     |-l-home__navbar
         |-c-navbar-shopping
@@ -37,15 +36,15 @@
                     |-c-collection-item__button
                         |-c-button-CTA c-button-CTA--size16
     |-l-home__top-products
-        |-c-home-top-products
-            |-c-home-top-products__title
-            |-c-home-top-products__list
-                |-c-product-item
-                    |-c-product-item__image
-                    |-c-product-item__designed-by
-                    |-c-product-item__designer-name
-                    |-c-product-item__fabric-number
-            |-c-home-top-products__button
+        |-c-designs
+            |-c-designs__title
+            |-c-designs__list
+                |-c-design-item
+                    |-c-design-item__image
+                    |-c-design-item__designed-by
+                    |-c-design-item__designer-name
+                    |-c-design-item__fabric-number
+            |-c-designs__button
                 |-c-button-load-more
     |-l-home__fabrics
     |-l-home__designers
@@ -67,7 +66,7 @@
                         |-c-designer-card__design-image                        
                         |-c-designer-card__design-image
                         |-c-designer-card__remain
-            |-c-home-designers__sub-title
+            |-c-home-designers__title
             |-c-button-CTA c-button-CTA--size16      
     |-l-home__tailor-recruitment
         |-c-home-tailor-recruitment__image
@@ -84,7 +83,34 @@
         |-c-home-voucher__image
 <!-- End -->
 
-
+<!-- Designs page -->
+/l-designs
+    |-l-designs__navbar
+        |-c-navbar-shopping
+            |-c-navbar-shopping__menu
+            |-c-navbar-shopping__logo
+            |-c-navbar-shopping__info
+                |-c-cart-info c-cart-info--active
+    |-l-designs__banner
+        |-c-banner
+    |-l-designs__options
+        |-c-filters
+                |-c-button-filter
+        |-c-sorts
+            |-c-general-sort
+            |-c-collection-sort
+    |-l-designs__list
+        |-c-designs
+            |-c-designs__title
+            |-c-designs__list
+                |-c-design-item
+                    |-c-design-item__image
+                    |-c-design-item__designed-by
+                    |-c-design-item__designer-name
+                    |-c-design-item__fabric-number
+            |-c-designs__button
+                |-c-button-load-more
+<!-- End -->
 
 
 

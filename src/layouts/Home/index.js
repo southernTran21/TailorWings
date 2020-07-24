@@ -24,10 +24,10 @@ function HomeContainer(props) {
             <CategoriesContainer/>
             <CollectionsContainer/>
             <TopProductsContainer/>
-            <FabricsContainer/>
+            {/* <FabricsContainer/> */}
             <DesignersContainer/>
-            <TailorRecruitmentContainer/>
-            <VoucherContainer/>
+            {/* <TailorRecruitmentContainer/> */}
+            {/* <VoucherContainer/> */}
         </div>
     );
 }

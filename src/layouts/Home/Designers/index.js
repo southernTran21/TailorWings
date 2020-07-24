@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HomeDesigners from 'components/Pages/Home/Designers';
 
 DesignersContainer.propTypes = {
     
@@ -7,9 +8,9 @@ DesignersContainer.propTypes = {
 
 function DesignersContainer(props) {
     return (
-        <div className='home__designers'>
-            DesignersContainer
-        </div>
+        <section className='home__designers'>
+            <HomeDesigners/>
+        </section>
     );
 }
 
