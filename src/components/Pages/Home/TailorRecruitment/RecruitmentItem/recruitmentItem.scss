@@ -1,0 +1,28 @@
+.c-recruitment-item {
+    /* Display & Box Model */
+    display: flex;
+    flex-direction: column;
+    @include box(15.8rem, auto);
+    padding: 3rem 2.5rem;
+    margin: 1rem .9rem;
+    border-radius: 2rem;
+    /* Color */
+    background-color: $--bg-passive;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__desc {
+        /* Display & Box Model */
+        margin-top: 1rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

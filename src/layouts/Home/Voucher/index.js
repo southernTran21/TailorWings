@@ -1,14 +1,13 @@
-import React from 'react';
+import React from "react";
+import HomeVoucher from "../../../components/Pages/Home/Voucher";
 
-VoucherContainer.propTypes = {
-    
-};
+VoucherContainer.propTypes = {};
 
 function VoucherContainer(props) {
     return (
-        <div className='home__voucher'>
-            VoucherContainer
-        </div>
+        <section className="l-home__voucher">
+            <HomeVoucher />
+        </section>
     );
 }
 

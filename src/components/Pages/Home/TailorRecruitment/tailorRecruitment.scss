@@ -1,0 +1,64 @@
+.c-home-tailor-recruitment {
+    /* Display & Box Model */
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__image {
+        /* Display & Box Model */
+        margin: 0 auto;
+        @include box(33.5rem, 25.615rem);
+        border-radius: 2rem;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__title {
+        /* Display & Box Model */
+        margin: 1.8rem 0;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontHeavy, 2.4rem);
+        text-align: center;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__list {
+        /* Display & Box Model */
+        margin-top: -1rem;
+        margin-bottom: 3rem;
+        @include centerFlexBox();
+        flex-wrap: wrap;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        @import "./RecruitmentItem/recruitmentItem.scss";
+    }
+    &__button {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}
