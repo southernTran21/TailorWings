@@ -26,8 +26,8 @@ function HomeContainer(props) {
             <TopProductsContainer/>
             {/* <FabricsContainer/> */}
             <DesignersContainer/>
-            {/* <TailorRecruitmentContainer/> */}
-            {/* <VoucherContainer/> */}
+            <TailorRecruitmentContainer/>
+            <VoucherContainer/>
         </div>
     );
 }

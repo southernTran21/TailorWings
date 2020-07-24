@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeTailorRecruitment from 'components/Pages/Home/TailorRecruitment';
 
 TailorRecruitmentContainer.propTypes = {
     
@@ -6,9 +7,9 @@ TailorRecruitmentContainer.propTypes = {
 
 function TailorRecruitmentContainer(props) {
     return (
-        <div className='home__tailor-recruitment'>
-            TailorRecruitmentContainer
-        </div>
+        <section className='l-home__tailor-recruitment'>
+            <HomeTailorRecruitment/>
+        </section>
     );
 }
 
