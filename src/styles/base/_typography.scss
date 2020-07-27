@@ -101,6 +101,11 @@ body{
         font-size: 128%;
     }
 }
+@media screen and (min-width: 769px){
+    html{
+        font-size: 62.5%;
+    }
+}
 
 @media screen and (max-width: 350px){
     html{

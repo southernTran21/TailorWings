@@ -113,6 +113,39 @@
                 |-c-button-load-more
 <!-- End -->
 
-
-
-
+<!-- DESIGNER PROFILE PAGE -->
+|-l-designer
+    |-l-designer__background
+        |-c-background
+            |-c-background__image
+            |-c-background__button-back
+    |-l-designer__info
+        |-c-avatar
+        |-c-designer
+            |-c-designer__star
+            |-c-designer__name
+            |-c-designer__desc
+            |-c-designer__location
+                |-c-designer__location--icon
+                |-c-designer__location--text
+            |-c-designer__number-design
+                |-c-designer__number-design--icon
+                |-c-designer__number-design--text
+    |-l-designer__filter
+        |-c-filter
+            |-c-filter__list
+                |-c-filter--item__text
+            |-c-filter__button
+                |-c-button-filter
+    |-l-designer__top-products
+        |-c-designs
+            |-c-designs__title
+            |-c-designs__list
+                |-c-design-item
+                    |-c-design-item__image
+                    |-c-design-item__designed-by
+                    |-c-design-item__designer-name
+                    |-c-design-item__fabric-number
+            |-c-designs__button
+                |-c-button-load-more
+<!-- END -->
