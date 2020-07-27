@@ -36,3 +36,9 @@
         |-HomeVoucher
             |-ButtonCTA
 <!-- END HOMEPAGE -->
+
+<!-- DESIGNER PROFILE PAGE -->
+|-DesignerContainer
+    |-Background
+    |-
+<!-- END DESIGNER PROFILE PAGE -->

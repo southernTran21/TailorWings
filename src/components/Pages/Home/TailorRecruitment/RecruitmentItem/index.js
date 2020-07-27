@@ -13,8 +13,8 @@ function RecruitmentItem(props) {
         <li className="c-recruitment-item">
             <div className="c-recruitment-item__line">
                 <svg
-                    width="46"
-                    height="6"
+                    width="4.6rem"
+                    height=".6rem"
                     viewBox="0 0 46 6"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
