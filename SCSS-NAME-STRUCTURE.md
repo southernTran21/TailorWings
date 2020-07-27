@@ -117,28 +117,30 @@
 <!-- DESIGNER PROFILE PAGE -->
 |-l-designer
     |-l-designer__background
-        |-c-background
-            |-c-background__image
-            |-c-background__button-back
+        |-c-designer-background
+            |-c-background (div)
+                |-c-background__button-back
+            |-c-avatar
     |-l-designer__info
-        |-c-avatar
-        |-c-designer
-            |-c-designer__star
-            |-c-designer__name
-            |-c-designer__desc
-            |-c-designer__location
-                |-c-designer__location--icon
-                |-c-designer__location--text
-            |-c-designer__number-design
-                |-c-designer__number-design--icon
-                |-c-designer__number-design--text
-    |-l-designer__filter
+        |-c-designer-info
+            |-c-stars
+            |-c-designer-info__name
+            |-c-designer-info__desc
+            |-c-designer-info__wrapper
+                |-c-designer-info__location
+                    |-c-designer__location-icon
+                    |-c-designer__location-text
+                |-c-designer__design-number
+                    |-c-designer__design-number-icon
+                    |-c-designer__design-number-text
+    |-l-designer__options
         |-c-filter
             |-c-filter__list
-                |-c-filter--item__text
-            |-c-filter__button
                 |-c-button-filter
-    |-l-designer__top-products
+            |-c-filter__sorts
+                |-c-sort (Bộ Lọc & Sắp Xếp)
+                |-c-sort (Bộ Sưu Tập)
+    |-l-designer__design-list
         |-c-designs
             |-c-designs__title
             |-c-designs__list
@@ -150,3 +152,5 @@
             |-c-designs__button
                 |-c-button-load-more
 <!-- END -->
+
+<!-- FABRICS PAGE -->

@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import NavbarContainer from "./Navbar";
 import BannerContainer from "./Bannner";
 import OptionsContainer from "./Options";
+import Avatar from "components/Avatar";
+import image from "../../assets/Image/tailor-recruitment.png";
 
 DesignsContainer.propTypes = {};
 
