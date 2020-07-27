@@ -10,5 +10,28 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
-
+    &__menu {
+        /* Display & Box Model */
+        @include box(2.4rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__logo {
+        /* Display & Box Model */
+        @include box(14rem, 1.5rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
 }
