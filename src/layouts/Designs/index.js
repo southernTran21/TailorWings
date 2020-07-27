@@ -5,6 +5,7 @@ import BannerContainer from "./Bannner";
 import OptionsContainer from "./Options";
 import Avatar from "components/Avatar";
 import image from "../../assets/Image/tailor-recruitment.png";
+import ListContainer from "./List";
 
 DesignsContainer.propTypes = {};
 
@@ -14,6 +15,7 @@ function DesignsContainer(props) {
             <NavbarContainer />
             <BannerContainer />
             <OptionsContainer />
+            <ListContainer />
         </div>
     );
 }

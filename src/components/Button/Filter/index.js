@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 
 ButtonFilter.propTypes = {
     text: PropTypes.string,
-    active: PropTypes.bool,
+    isActive: PropTypes.bool,
 };
 
 ButtonFilter.defaultProps = {
     text: null,
-    active: false,
+    isActive: false,
 };
 
 function ButtonFilter(props) {
     if (!props.text) return <Fragment />;
 
-    let activeClass = props.active ? "c-button-filter--active" : "";
+    let activeClass = props.isActive ? "c-button-filter--active" : "";
     return (
         <button className={`c-button-filter ${activeClass}`}>{props.text}</button>
     );

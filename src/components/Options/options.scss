@@ -1,0 +1,37 @@
+.c-options {
+    /* Display & Box Model */
+    padding: 0 2rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__filters {
+        /* Display & Box Model */
+        @include flexBox(space-between, center);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__sorts {
+        /* Display & Box Model */
+        @include flexBox(space-between, center);
+        margin-top: 2.2rem;
+        padding: 0 1.5rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+    }
+}

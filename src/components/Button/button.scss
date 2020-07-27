@@ -68,7 +68,7 @@
 
     &--active {
         /* Display & Box Model */
-
+        border: 2px solid $--border-secondary;
         /* Color */
         color: $--text-active;
         background-color: $--bg-active;

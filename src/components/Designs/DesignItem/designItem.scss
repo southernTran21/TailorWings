@@ -14,10 +14,10 @@
 
     &__image {
         /* Display & Box Model */
-        width: 100%;
-        height: 19.7rem;
+        @include box(100%, 19.7rem);
         border-top-left-radius: 2rem;
         border-top-right-radius: 2rem;
+        overflow: hidden;
         /* Color */
         background-color: $--secondary-color;
         /* Text */

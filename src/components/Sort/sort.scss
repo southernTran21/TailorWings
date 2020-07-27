@@ -1,0 +1,64 @@
+.c-sort {
+    /* Display & Box Model */
+    display: inline-block;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__selection {
+        /* Display & Box Model */
+        @include flexBox(space-between, center);
+        padding: 2.05rem 1.5rem;
+        border: 1px solid $--border-primary;
+        border-radius: 10px;
+        cursor: pointer;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+        &--disable {
+            /* Display & Box Model */
+            opacity: 0.5;
+            cursor: not-allowed !important;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+    &__text {
+        /* Display & Box Model */
+        margin-right: 1rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__icon {
+        /* Display & Box Model */
+        @include box(1.4rem, 0.7rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}
