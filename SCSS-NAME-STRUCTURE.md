@@ -95,11 +95,12 @@
     |-l-designs__banner
         |-c-banner
     |-l-designs__options
-        |-c-filters
-                |-c-button-filter
-        |-c-sorts
-            |-c-general-sort
-            |-c-collection-sort
+        |-c-options
+            |-c-options__filters
+                    |-c-button-filter
+            |-c-options__sorts
+                |-c-general-sort
+                |-c-collection-sort
     |-l-designs__list
         |-c-designs
             |-c-designs__title
