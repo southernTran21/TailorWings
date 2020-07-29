@@ -1,0 +1,106 @@
+.c-designer-info {
+    /* Display & Box Model */
+    @include flexBox(center, center, column);
+    padding-top: 1rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__name {
+        /* Display & Box Model */
+        padding-top: 1.5rem;
+        /* Color */
+
+        /* Text */
+        @include font(fontHeavy, 2.4rem) /* Positioning */
+            /* Others: transition & animations, ... */;
+    }
+    &__desc {
+        /* Display & Box Model */
+        padding: 1.5rem 2.35rem 0;
+        /* Color */
+
+        /* Text */
+        @include font(fontMedium, 1.4rem);
+        text-align: center;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__wrapper {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        @include box(100%, auto);
+        padding-top: 1.5rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__location {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        margin-right: 4.7rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__location-icon {
+        /* Display & Box Model */
+        @include box(1.6rem, 2rem);
+        margin-right: 0.9rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__design-number {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__tag-icon {
+        /* Display & Box Model */
+        @include box(1.8rem);
+        margin-right: 0.7rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__text {
+        /* Display & Box Model */
+        
+        /* Color */
+        color: $--text-blur;
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

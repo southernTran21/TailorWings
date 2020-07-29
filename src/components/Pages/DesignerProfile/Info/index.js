@@ -26,15 +26,15 @@ function DesignerInfo(props) {
                     <img
                         src={locationIcon}
                         alt="location"
-                        className="c-designer-info__icon"
+                        className="c-designer-info__location-icon"
                     />
                     <span className="c-designer-info__text">{address}</span>
                 </div>
-                <div className="c-designer__design-number">
+                <div className="c-designer-info__design-number">
                     <img
                         src={tagIcon}
                         alt="design-number"
-                        className="c-designer-info__icon"
+                        className="c-designer-info__tag-icon"
                     />
                     <span className="c-designer-info__text">
                         ${designNumber} Thiết Kế

@@ -135,10 +135,10 @@
                     |-c-designer-info__icon
                     |-c-designer-info__text
     |-l-designer__options
-        |-c-filter
-            |-c-filter__list
-                |-c-button-filter
-            |-c-filter__sorts
+        |-c-options
+            |-c-options__filters
+                    |-c-button-filter
+            |-c-options__sorts
                 |-c-sort (Bộ Lọc & Sắp Xếp)
                 |-c-sort (Bộ Sưu Tập)
     |-l-designer__design-list
