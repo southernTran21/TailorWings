@@ -129,11 +129,11 @@
             |-c-designer-info__desc
             |-c-designer-info__wrapper
                 |-c-designer-info__location
-                    |-c-designer__location-icon
-                    |-c-designer__location-text
+                    |-c-designer-info__icon
+                    |-c-designer-info__text
                 |-c-designer__design-number
-                    |-c-designer__design-number-icon
-                    |-c-designer__design-number-text
+                    |-c-designer-info__icon
+                    |-c-designer-info__text
     |-l-designer__options
         |-c-filter
             |-c-filter__list
