@@ -172,12 +172,12 @@
                 |-c-sort (Bộ Lọc & Sắp Xếp)
                 |-c-sort (Bộ Sưu Tập)
     |-l-fabrics__list
-        |-c-fabric
-            |-c-fabric__list
+        |-c-fabrics
+            |-c-fabrics__list
                 |-c-fabric-item
                     |-c-fabric-item__image
                     |-c-fabric-item__name
-                    |-c-fabric-item__button
+                    |-c-fabric-item__tag
             |-c-fabric__button
                 |-c-button-load-more
 <!-- END -->

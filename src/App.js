@@ -23,6 +23,10 @@ function App() {
                             path="/designer-profile"
                             component={DesignerProfileContainer}
                         />
+                        <Route
+                            path="/fabrics"
+                            component={DesignerProfileContainer}
+                        />
                         {/* <Route component={NotFound} /> */}
                     </Switch>
                 </BrowserRouter>

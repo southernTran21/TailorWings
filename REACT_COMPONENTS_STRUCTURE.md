@@ -42,3 +42,18 @@
     |-Background
     |-
 <!-- END DESIGNER PROFILE PAGE -->
+
+<!-- FABRIC PAGE -->
+|-FabricContainer
+    |-NavbarContainer
+        |-NavbarShopping
+            |-CartInfo
+    |-BannerContainer
+        |-Banner
+    |-OptionsContainer
+        |-Options
+    |-ListContainer
+        |-Fabrics
+            |-FabricItem
+        |-ButtonLoadMore
+<!-- END FABRIC PAGE -->
