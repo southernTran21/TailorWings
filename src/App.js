@@ -3,6 +3,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./styles/main.scss";
+import FabricsContainer from "layouts/Fabrics";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -25,7 +26,7 @@ function App() {
                         />
                         <Route
                             path="/fabrics"
-                            component={DesignerProfileContainer}
+                            component={FabricsContainer}
                         />
                         {/* <Route component={NotFound} /> */}
                     </Switch>

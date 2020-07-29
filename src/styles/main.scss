@@ -17,7 +17,7 @@
 @import "../components/Options/options.scss";
 @import "../components/Sort/sort.scss";
 @import "../components/Options/options.scss";
-@import '../components/Background/background.scss';
+@import "../components/Background/background.scss";
 
 @import "../components/Pages/Home/Introduction/introduction.scss";
 @import "../components/Pages/Home/Categories/categories.scss";
@@ -26,8 +26,11 @@
 @import "../components/Pages/Home/TailorRecruitment/tailorRecruitment.scss";
 @import "../components/Pages/Home/Voucher/voucher.scss";
 
-@import '../components/Pages/DesignerProfile/Background/designerProfile.scss';
+@import "../components/Pages/DesignerProfile/Background/designerProfile.scss";
 @import "../components/Pages/DesignerProfile/Info/info.scss";
+
+@import "../layouts/Fabrics/fabrics.scss";
+@import "../components/Pages/Fabrics/fabrics.scss";
 
 // LAYOUTS
 @import "../layouts/Home/home.scss";

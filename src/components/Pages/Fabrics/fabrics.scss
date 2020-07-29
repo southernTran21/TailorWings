@@ -1,0 +1,49 @@
+.c-fabrics {
+    /* Display & Box Model */
+    margin-bottom: 9rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__list {
+        /* Display & Box Model */
+        padding: 0 2.47rem;
+        @include flexBox(space-between, flex-start, row, wrap);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        .c-fabric-item:nth-child(odd) {
+            /* Display & Box Model */
+            margin-bottom: 3rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        @import "./FabricItem/fabricItem.scss";
+    }
+    &__button {
+        /* Display & Box Model */
+        margin-top: 1.5rem;
+        @include centerFlexBox();
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}
