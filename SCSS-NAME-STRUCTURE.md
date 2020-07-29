@@ -155,3 +155,29 @@
 <!-- END -->
 
 <!-- FABRICS PAGE -->
+|-l-fabrics
+    |-l-fabrics__navbar
+        |-c-navbar-shopping
+            |-c-navbar-shopping__menu
+            |-c-navbar-shopping__logo
+            |-c-navbar-shopping__info
+                |-c-cart-info c-cart-info--active
+    |-l-fabrics__banner
+        |-c-banner
+    |-l-fabrics__options
+        |-c-filter
+            |-c-filter__list
+                |-c-button-filter
+            |-c-filter__sorts
+                |-c-sort (Bộ Lọc & Sắp Xếp)
+                |-c-sort (Bộ Sưu Tập)
+    |-l-fabrics__list
+        |-c-fabric
+            |-c-fabric__list
+                |-c-fabric-item
+                    |-c-fabric-item__image
+                    |-c-fabric-item__name
+                    |-c-fabric-item__button
+            |-c-fabric__button
+                |-c-button-load-more
+<!-- END -->
