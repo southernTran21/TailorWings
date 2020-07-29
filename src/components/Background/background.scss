@@ -1,0 +1,28 @@
+.c-background {
+    /* Display & Box Model */
+    @include box(100%, 25rem);
+    /* Color */
+    background-color: $--bg-passive;
+    /* Text */
+
+    /* Positioning */
+    position: relative;
+
+    /* Others: transition & animations, ... */
+
+    &__button-back {
+        /* Display & Box Model */
+        @include box(2.9rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+        position: absolute;
+        top: 2.5rem;
+        left: 4rem;
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

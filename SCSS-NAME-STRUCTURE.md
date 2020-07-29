@@ -120,7 +120,8 @@
         |-c-designer-background
             |-c-background (div)
                 |-c-background__button-back
-            |-c-avatar
+            |-c-designer-background__avatar
+                |-c-avatar
     |-l-designer__info
         |-c-designer-info
             |-c-stars

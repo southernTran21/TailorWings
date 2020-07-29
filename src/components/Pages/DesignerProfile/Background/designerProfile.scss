@@ -1,0 +1,28 @@
+.c-designer-background {
+    /* Display & Box Model */
+    padding-bottom: 6rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+    position: relative;
+
+    /* Others: transition & animations, ... */
+
+    &__avatar {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        /* Others: transition & animations, ... */
+    
+    }
+}

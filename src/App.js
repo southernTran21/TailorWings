@@ -7,6 +7,9 @@ import "./styles/main.scss";
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
 const DesignsContainer = React.lazy(() => import("layouts/Designs"));
+const DesignerProfileContainer = React.lazy(() =>
+    import("layouts/DesignerProfile")
+);
 
 function App() {
     return (
@@ -16,6 +19,10 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={HomeContainer} />
                         <Route path="/designs" component={DesignsContainer} />
+                        <Route
+                            path="/designer-profile"
+                            component={DesignerProfileContainer}
+                        />
                         {/* <Route component={NotFound} /> */}
                     </Switch>
                 </BrowserRouter>
