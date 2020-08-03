@@ -8,6 +8,18 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
+    &__info {
+        /* Display & Box Model */
+        margin-top: 2rem;
+        /* Color */
+    
+        /* Text */
+        text-align: center;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        @import "../../components/Pages/FabricDetail/fabricDetail.scss";
+    }
     &__options {
         /* Display & Box Model */
         margin-top: 5rem;

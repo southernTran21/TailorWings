@@ -1,0 +1,55 @@
+.c-fabric-detail-info {
+    /* Display & Box Model */
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__name {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontHeavy, 2.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__tag {
+        /* Display & Box Model */
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        /* Color */
+        background-color: $--bg-passive;
+        color: $--text-passive;
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__desc {
+        /* Display & Box Model */
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        /* Color */
+    
+        /* Text */
+        @include font(fontNormal, 1.4rem);
+        
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        span{
+            line-height: 2.5rem;
+        }
+    }
+}
