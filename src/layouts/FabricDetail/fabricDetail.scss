@@ -1,26 +1,21 @@
-.c-background {
+.l-fabric-detail {
     /* Display & Box Model */
-    @include box(100%, 25rem);
+
     /* Color */
-    background-color: $--bg-passive;
+
     /* Text */
 
     /* Positioning */
-    position: relative;
 
     /* Others: transition & animations, ... */
-
-    &__button-back {
+    &__options {
         /* Display & Box Model */
-        @include box(2.9rem);
+        margin-top: 5rem;
         /* Color */
     
         /* Text */
     
         /* Positioning */
-        position: absolute;
-        top: 2.1rem;
-        left: 3.6rem;
     
         /* Others: transition & animations, ... */
     

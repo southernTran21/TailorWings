@@ -181,3 +181,32 @@
             |-c-fabric__button
                 |-c-button-load-more
 <!-- END -->
+
+<!-- FABRIC DETAIL PAGE -->
+|-l-fabric-detail
+    |-l-fabric-detail__background
+        |-c-fabric-detail-background
+            |-c-background (div)
+                |-c-background__button-back
+    l-fabric-detail__info
+        c-fabric-detail__info
+            |-
+    |-l-fabric-detail__options
+        |-c-filter
+            |-c-filter__list
+                |-c-button-filter
+            |-c-filter__sorts
+                |-c-sort (Bộ Lọc & Sắp Xếp)
+                |-c-sort (Bộ Sưu Tập)
+    |-l-fabric-detail__list
+        |-c-fabric-detail
+            |-c-fabric-detail__title
+            |-c-fabric-detail__list
+                |-c-fabric-detail-item
+                    |-c-fabric-detail-item__image
+                    |-c-fabric-detail-item__designed-by
+                    |-c-fabric-detail-item__designer-name
+                    |-c-fabric-detail-item__fabric-number
+            |-c-fabric-detail__button
+                |-c-button-load-more
+<!-- END -->
