@@ -189,8 +189,13 @@
             |-c-background (div)
                 |-c-background__button-back
     l-fabric-detail__info
-        c-fabric-detail__info
-            |-
+        |-c-fabric-detail-info
+            |-c-fabric-detail-info__name
+            |-c-fabric-detail-info__tag
+            |-c-fabric-detail-info__id
+            |-c-fabric-detail-info__desc (-......)
+            |-c-fabric-detail-info__desc (-......)
+            |-c-fabric-detail-info__desc (-......)
     |-l-fabric-detail__options
         |-c-filter
             |-c-filter__list
