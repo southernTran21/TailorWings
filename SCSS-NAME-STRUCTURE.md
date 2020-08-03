@@ -215,3 +215,49 @@
             |-c-fabric-detail__button
                 |-c-button-load-more
 <!-- END -->
+
+<!-- FABRIC SELECTION -->
+|-l-selection
+    |-l-selection__navbar
+        |-c-navbar-selection
+            |-c-navbar-selection
+            |-c-navbar-selection__menu
+            |-c-navbar-selection__title
+            |-c-navbar-selection__info
+                |-c-cart-info c-cart-info--passive
+    |-l-selection__fabrics
+        |-c-selection-fabrics__pagination
+            |-c-selection-pagination
+        |-c-selection-fabrics__list
+            |-(this is for carousel)
+    |-l-selection__design-carousel
+        |-c-design-carousel
+            |-(this is for carousel)
+    |-l-selection__info
+        |-c-selection-info
+            |-c-selection-info__price
+                |-c-price
+            |-c-selection-info__name
+            |-c-selection-info__designed-by
+            |-c-selection-info__confirm-button
+                |-c-button-confirm
+    |-l-selection__desc
+        |-c-selection-desc
+            |-c-selection-desc__design
+                |-c-selection-desc__title
+                |-c-selection-desc__text
+            |-c-selection-desc__fabric
+                |-c-selection-desc__title
+                |-c-selection-desc__text
+    |-l-selection__top-product
+        |-c-designs
+            |-c-designs__title
+            |-c-designs__list
+                |-c-design-item
+                    |-c-design-item__image
+                    |-c-design-item__designed-by
+                    |-c-design-item__designer-name
+                    |-c-design-item__fabric-number
+            |-c-designs__button
+                |-c-button-load-more
+<!-- END -->
