@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NavbarShopping from 'components/Navbar/NavbarShopping';
+import NavbarDetail from 'components/Navbar/NavbarDetail';
 
 NavbarContainer.propTypes = {
     
@@ -9,7 +10,8 @@ NavbarContainer.propTypes = {
 function NavbarContainer(props) {
     return (
         <section className='l-home__navbar'>
-            <NavbarShopping/>
+            {/* <NavbarShopping/> */}
+            <NavbarDetail/>
         </section>
     );
 }

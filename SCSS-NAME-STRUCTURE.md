@@ -220,8 +220,7 @@
 |-l-selection
     |-l-selection__navbar
         |-c-navbar-selection
-            |-c-navbar-selection
-            |-c-navbar-selection__menu
+            |-c-navbar-selection__back
             |-c-navbar-selection__title
             |-c-navbar-selection__info
                 |-c-cart-info c-cart-info--passive
