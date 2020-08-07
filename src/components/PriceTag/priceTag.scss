@@ -1,0 +1,16 @@
+.c-price-tag {
+    /* Display & Box Model */
+    display: inline-block;
+    padding: 1rem 3rem;
+    border-radius: 7rem;
+    /* Color */
+    color: $--text-passive;
+    background-color: $--bg-passive;
+    /* Text */
+    @include font(fontBold, 1.6rem);
+    text-transform: capitalize;
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+}

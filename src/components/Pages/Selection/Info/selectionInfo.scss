@@ -1,6 +1,7 @@
-.c-designs {
+.c-selection-info {
     /* Display & Box Model */
-    padding: 4rem 0rem 5.3rem;
+    @include flexBox(center, center, column);
+    margin-top: 2rem;
     /* Color */
 
     /* Text */
@@ -8,40 +9,41 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
-    &__title {
-        /* Display & Box Model */
-        /* Color */
-        color: $--text-passive;
-        /* Text */
-        @include font(fontHeavy, 2.4rem);
-        /* Positioning */
 
+    &__name {
+        /* Display & Box Model */
+        margin-top: 1.9rem;
+        /* Color */
+        color: $--text-blur;
+        /* Text */
+        @include font(fontSemiBold, 1.8rem);
+        /* Positioning */
+    
         /* Others: transition & animations, ... */
+    
     }
-    &__list {
+    &__designed-by {
         /* Display & Box Model */
-        padding-top: 2.4rem;
-        @include flexBox(space-between, flex-start, row, wrap);
+        margin-top: 1rem;
         /* Color */
-
+    
         /* Text */
-
+        @include font(fontBold, 1.8rem);
         /* Positioning */
-
+    
         /* Others: transition & animations, ... */
-
-        @import "./DesignItem/designItem.scss";
+    
     }
-    &__button {
+    &__confirm-button {
         /* Display & Box Model */
-        padding-top: 2rem;
-        @include centerFlexBox();
+        margin-top: 2rem;
         /* Color */
-
+    
         /* Text */
-
+    
         /* Positioning */
-
+    
         /* Others: transition & animations, ... */
+    
     }
 }

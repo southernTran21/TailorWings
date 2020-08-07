@@ -5,7 +5,7 @@ import rightArrow from "../../../assets/Icon/right-arrow-white.svg";
 
 ButtonConfirm.propTypes = {
     text: PropTypes.string,
-    paddingLeft: PropTypes.string,
+    padding: PropTypes.string,
 };
 
 ButtonConfirm.defaultProps = {
@@ -18,7 +18,7 @@ function ButtonConfirm(props) {
     return (
         <button className="c-button-confirm" style={{ padding: props.padding }}>
             <span className="c-button-confirm__text">{props.text}</span>
-            <img src={rightArrow} alt={props.text} />
+            <img className="c-button-confirm__icon" src={rightArrow} alt={props.text} />
         </button>
     );
 }

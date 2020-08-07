@@ -225,27 +225,26 @@
             |-c-navbar-selection__info
                 |-c-cart-info c-cart-info--passive
     |-l-selection__fabrics
-        |-c-selection-fabrics__pagination
-            |-c-selection-pagination
-        |-c-selection-fabrics__list
-            |-(this is for carousel)
+        |-c-selection-fabrics
+            |-c-selection-fabrics__pagination
+            |-c-selection-fabrics__list
+                |-(this is for carousel)
     |-l-selection__design-carousel
         |-c-design-carousel
             |-(this is for carousel)
     |-l-selection__info
         |-c-selection-info
-            |-c-selection-info__price
-                |-c-price
+            |-c-price
             |-c-selection-info__name
             |-c-selection-info__designed-by
             |-c-selection-info__confirm-button
                 |-c-button-confirm
     |-l-selection__desc
         |-c-selection-desc
-            |-c-selection-desc__design
+            |-c-selection-desc__wrapper
                 |-c-selection-desc__title
                 |-c-selection-desc__text
-            |-c-selection-desc__fabric
+            |-c-selection-desc__wrapper
                 |-c-selection-desc__title
                 |-c-selection-desc__text
     |-l-selection__top-product

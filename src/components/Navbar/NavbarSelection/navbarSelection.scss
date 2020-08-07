@@ -1,17 +1,23 @@
-.l-designs {
+.c-navbar-selection {
     /* Display & Box Model */
-    @include box(100%);
+    @include flexBox(space-between, center);
+    height: 6rem;
+    border-radius: 0px 0px 2rem 2rem;
+    padding: 0 2rem;
     /* Color */
-
+    background-color: $--bg-active;
     /* Text */
 
     /* Positioning */
-
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
     /* Others: transition & animations, ... */
-
-    &__options {
+    &__back {
         /* Display & Box Model */
-        padding-top: 2.5rem;
+        @include box(3.5rem);
         /* Color */
     
         /* Text */
@@ -21,13 +27,13 @@
         /* Others: transition & animations, ... */
     
     }
-    &__list {
+    &__title {
         /* Display & Box Model */
-        padding: 0 2rem;
+    
         /* Color */
-    
+        color: $--text-active;
         /* Text */
-    
+        @include font(fontBold,1.6rem);
         /* Positioning */
     
         /* Others: transition & animations, ... */

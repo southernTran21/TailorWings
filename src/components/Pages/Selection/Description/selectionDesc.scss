@@ -1,19 +1,17 @@
-.c-navbar-selection {
+.c-selection-desc {
     /* Display & Box Model */
-    @include flexBox(space-between, center);
-    height: 6rem;
-    border-radius: 0px 0px 2rem 2rem;
-    padding: 0 2rem;
+    margin-top: 5.6rem;
     /* Color */
-    background-color: $--bg-active;
+    color: $--text-passive;
     /* Text */
 
     /* Positioning */
 
     /* Others: transition & animations, ... */
-    &__back {
+
+    &__wrapper:last-child {
         /* Display & Box Model */
-        @include box(3.5rem);
+        margin-top: 1.5rem;
         /* Color */
     
         /* Text */
@@ -25,11 +23,24 @@
     }
     &__title {
         /* Display & Box Model */
-    
+        
         /* Color */
-        color: $--text-active;
+    
         /* Text */
-        @include font(fontBold,1.6rem);
+        @include font(fontBold, 1.6rem);
+        text-transform: capitalize;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__text {
+        /* Display & Box Model */
+        margin-top: 1.5rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontMedium, 1.4rem);
         /* Positioning */
     
         /* Others: transition & animations, ... */

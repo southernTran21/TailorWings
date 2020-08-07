@@ -116,21 +116,33 @@
     color: $--text-active;
     background-color: $--bg-active;
     /* Text */
-    @include font(fontBold, 1.6rem);
     /* Positioning */
-
+    
     /* Others: transition & animations, ... */
-
+    
     &__text {
         /* Display & Box Model */
         margin-right: 1rem;
         /* Color */
-
+        
         /* Text */
-
+        @include font(fontBold, 1.6rem);
+        text-transform: uppercase;
         /* Positioning */
 
         /* Others: transition & animations, ... */
+    }
+    &__icon {
+        /* Display & Box Model */
+        @include box(2rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
     }
 }
 

@@ -1,0 +1,15 @@
+.c-design-carousel {
+    /* Display & Box Model */
+    @include box(32.7rem, 41rem);
+    margin-top: 2rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    /* Color */
+    background-color: $--bg-passive;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+}

@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import CartInfo from "components/CartInfo";
 import ButtonBack from "../../../assets/Icon/back-button.svg";
 
-NavbarDetail.propTypes = {};
+NavbarSelection.propTypes = {};
 
-function NavbarDetail(props) {
+function NavbarSelection(props) {
     return (
         <div className="c-navbar-selection">
             <div className="c-navbar-selection__back">
@@ -21,4 +21,4 @@ function NavbarDetail(props) {
     );
 }
 
-export default NavbarDetail;
+export default NavbarSelection;

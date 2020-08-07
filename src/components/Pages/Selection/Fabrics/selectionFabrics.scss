@@ -1,6 +1,7 @@
-.l-designs {
+.c-selection-fabrics {
     /* Display & Box Model */
-    @include box(100%);
+    @include flexBox(flex-start, flex-start, column);
+    padding-top: 2rem;
     /* Color */
 
     /* Text */
@@ -9,28 +10,29 @@
 
     /* Others: transition & animations, ... */
 
-    &__options {
+    &__pagination {
         /* Display & Box Model */
-        padding-top: 2.5rem;
+        padding: 0.3rem 1.4rem;
+        border-radius: 1rem;
         /* Color */
-    
+        background-color: $--bg-black;
+        color: $--text-active;
         /* Text */
-    
+        @include font(fontSemiBold, 1.3rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__list {
         /* Display & Box Model */
-        padding: 0 2rem;
+        @include box(100%, 7rem);
+        margin-top: 1rem;
         /* Color */
-    
+        background-color: $--bg-passive;
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
 }
