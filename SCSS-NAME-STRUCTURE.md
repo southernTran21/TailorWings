@@ -260,3 +260,43 @@
             |-c-designs__button
                 |-c-button-load-more
 <!-- END -->
+
+<!-- SIZE SELECTION -->
+|-l-size
+    |-l-size__navbar
+        |-c-navbar-selection
+            |-c-navbar-selection__back
+            |-c-navbar-selection__title
+            |-c-navbar-selection__info
+                |-c-cart-info c-cart-info--passive
+    |-l-size__body-image
+        |-c-size-body-image
+    |-l-size__options
+        |-c-size-option-button
+            |-c-button-size-option (true)
+            |-c-button-size-option (false)
+    l-size__option-content
+        |-c-size-default-option
+            |-c-default-option__list
+                |-c-button-size
+        |-c-size-measure-option
+            |-c-size-measure-option__list
+                |-c-measure-option-item
+                    |-c-measure-option__text
+                    |-c-measure-option__input
+    |-l-size__info
+        |-c-size-info
+            |-c-size-info--left
+                |-c-size-info__name
+                |-c-size-info__price
+            |-c-size-info--right    
+                |-c-quantity
+                    |-c-quantity__minus
+                    |-c-quantity__text
+                    |-c-quantity__plus
+    |-l-size__product-images
+        |-c-size-product-images
+            |-c-size-product-image__item
+    |-l-size__button-confirm
+        |-c-button-confirm
+<!-- END -->
