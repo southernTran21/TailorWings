@@ -1,0 +1,48 @@
+.c-quantity {
+    /* Display & Box Model */
+    @include flexBox(space-between, center);
+    @include box(13rem, auto);
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__minus {
+        /* Display & Box Model */
+        @include box(3rem);
+        /* Color */
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__plus {
+        /* Display & Box Model */
+        @include box(3rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__number {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+}
