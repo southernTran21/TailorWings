@@ -1,0 +1,61 @@
+.c-cart-footer {
+    /* Display & Box Model */
+    box-shadow: 0px -7px 20px rgba(0, 0, 0, 0.05);
+    height: 15rem;
+    padding: 3.4rem 3.6rem 2.8rem 3.75rem;
+    margin-top: 6rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__text {
+        /* Display & Box Model */
+        @include flexBox(space-between, flex-end);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    }
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+        color: $--text-blur;
+        /* Text */
+        @include font(fontNormal, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__price {
+        /* Display & Box Model */
+    
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__button {
+        /* Display & Box Model */
+        margin-top: 1.5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

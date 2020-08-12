@@ -1,0 +1,103 @@
+.c-cart-product-item {
+    /* Display & Box Model */
+    @include flexBox();
+    margin-top: 3.5rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &--left {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__image {
+        /* Display & Box Model */
+        @include box(15.6rem, 20rem);
+        border-radius: 2.5rem;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__quantity {
+        /* Display & Box Model */
+        margin-top: 1rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &--right {
+        /* Display & Box Model */
+        @include flexBox(center, center, column);
+        @include box(17.2rem, 12.5rem);
+        border-radius: 0px 2rem 2rem 0px;
+        margin-top: 3.8rem;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__name {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontNormal, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__price {
+        /* Display & Box Model */
+        margin-top: .3rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__size {
+        /* Display & Box Model */
+        border: 1px solid $--border-primary;
+        border-radius: 2rem;
+        padding: 1rem 1.2rem;
+        margin-top: 1.6rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

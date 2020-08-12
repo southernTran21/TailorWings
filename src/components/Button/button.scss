@@ -134,7 +134,7 @@
     }
     &__icon {
         /* Display & Box Model */
-        @include box(2rem);
+        @include box(2.4rem);
         /* Color */
     
         /* Text */
@@ -142,6 +142,7 @@
         /* Positioning */
     
         /* Others: transition & animations, ... */
+        object-fit: none;
     
     }
 }
