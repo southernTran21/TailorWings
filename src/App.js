@@ -6,6 +6,7 @@ import "./styles/main.scss";
 import FabricsContainer from "layouts/Fabrics";
 import FabricDetailContainer from "layouts/FabricDetail";
 import SelectionContainer from "layouts/Selection";
+import SizeContainer from "layouts/Size";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -37,6 +38,10 @@ function App() {
                         <Route
                             path="/selection"
                             component={SelectionContainer}
+                        />
+                        <Route
+                            path="/size"
+                            component={SizeContainer}
                         />
                         {/* <Route component={NotFound} /> */}
                     </Switch>

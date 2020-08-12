@@ -23,13 +23,16 @@ function ButtonSizeOption(props) {
     return (
         <button
             className={classNames("c-button-size-option", {
-                "c-button-size-option__active": props.isActive,
+                "c-button-size-option--active": props.isActive,
             })}
         >
             <img
                 src={icon}
                 alt="size-đo"
-                className="c-button-size-option__icon"
+                className={classNames({
+                    "c-button-size-option--icon-default": props.isDefault,
+                    "c-button-size-option--icon-measured": !props.isDefault,
+                })}
             />
             <span>{text}</span>
         </button>

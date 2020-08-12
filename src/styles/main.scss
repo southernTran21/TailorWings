@@ -20,6 +20,8 @@
 @import "../components/Options/options.scss";
 @import "../components/Background/background.scss";
 @import "../components/PriceTag/priceTag.scss";
+@import "../components/DefaultSizeInput/defaultSizeInput.scss";
+@import "../components/ModifiedSizeInput/modifiedSizeInput.scss";
 
 @import "../components/Pages/Home/Introduction/introduction.scss";
 @import "../components/Pages/Home/Categories/categories.scss";
@@ -38,17 +40,19 @@
 @import "../components/Pages/Selection/Info/selectionInfo.scss";
 @import "../components/Pages/Selection/Description/selectionDesc.scss";
 
+@import "../components/Pages/Size/BodyImage/sizeBodyImage.scss";
+@import "../components/Pages/Size/Options/sizeOptions.scss";
+
+
 // LAYOUTS
 @import "../layouts/Home/home.scss";
 @import "../layouts/Designs/designs.scss";
 @import "../layouts/DesignerProfile/designerProfile.scss";
 @import "../layouts/Fabrics/fabrics.scss";
 @import "../layouts/FabricDetail/fabricDetail.scss";
-<<<<<<< HEAD
 @import "../layouts/Selection/selection.scss";
-=======
+@import "../layouts/Size/size.scss";
 
 //REACT SLICK
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
->>>>>>> 8d3955e207cbc2f8f327639c13c4d84eee6b900a

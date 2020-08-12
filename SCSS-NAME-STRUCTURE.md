@@ -271,18 +271,18 @@
     |-l-size__body-image
         |-c-size-body-image
     |-l-size__options
-        |-c-size-option-button
+        |-c-size-option__buttons
             |-c-button-size-option (true)
             |-c-button-size-option (false)
-    l-size__option-content
+    |-l-size__option-content
         |-c-size-default-option
-            |-c-default-option__list
+            |-c-size-default
                 |-c-button-size
         |-c-size-measure-option
-            |-c-size-measure-option__list
-                |-c-measure-option-item
-                    |-c-measure-option__text
-                    |-c-measure-option__input
+            |-c-size-measure
+                |-c-size-measure__item
+                    |-c-size-measure__text
+                    |-c-size-measure__input
     |-l-size__info
         |-c-size-info
             |-c-size-info--left

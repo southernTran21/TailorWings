@@ -1,0 +1,75 @@
+.c-size-modified {
+    /* Display & Box Model */
+    @include centerFlexBox();
+    padding: 2rem 3.9rem;
+    margin-right: -1.2rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__item {
+        /* Display & Box Model */
+        @include flexBox(space-between, center, column);
+        @include box(9.1rem, 9.7rem);
+        margin-right: 1.2rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__text {
+        /* Display & Box Model */
+
+        /* Color */
+        color: $--text-blur;
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__input-wrapper {
+        /* Display & Box Model */
+        @include flexBox(center, center, column);
+        @include box(100%, auto);
+        padding: 2rem 0;
+        margin-top: 0.65rem;
+        border: 2px solid $--border-primary;
+        border-radius: 15px;
+        /* Color */
+        background-origin: padding-box;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__input {
+        /* Display & Box Model */
+        max-width: 50%;
+        margin-bottom: 0.5rem;
+        border: none;
+        padding: 0;
+        outline: none;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        text-align: center;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        
+        &::placeholder {
+            color: $--text-blur;
+        }
+    }
+}
