@@ -68,6 +68,28 @@
         /* Others: transition & animations, ... */
     
     }
+    &__check-box {
+        /* Display & Box Model */
+        margin-right: .5rem;
+        /* Color */
+        background-color: $--primary-color;
+        /* Text */
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &--wrapper {
+            /* Display & Box Model */
+            @include flexBox(flex-start, center);
+            margin-top: 2rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        }
+    }
     &__button {
         /* Display & Box Model */
         @include centerFlexBox();

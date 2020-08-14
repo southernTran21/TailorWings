@@ -26,6 +26,10 @@ function InformationInput(props) {
                 <input type="text" placeholder='Điền mã Voucher hoặc ghi chú' className='c-information-input__input'/>
                 <p className="c-information-input__desc">* Ưu đãi từ mã Voucher sẽ được trừ trực tiếp khi nhận hàng và thanh toán. Hotline: 0902541398</p>
             </div>
+            <div className="c-information-input__check-box--wrapper">
+                <input type="checkbox" className='c-information-input__check-box'/>
+                <span className='c-information-input__title'>Lưu thông tin cho lần đặt may tới</span>
+            </div>
             <div className="c-information-input__button">
                 <ButtonConfirm text="GIAO ĐẾN ĐỊA CHỈ NÀY" padding="1.5rem 5.7rem"/>
             </div>
