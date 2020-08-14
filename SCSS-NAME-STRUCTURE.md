@@ -338,3 +338,16 @@
             |-c-cart-footer__button
                 |-c-button-confirm
 <!-- END -->
+
+<!-- INFORMATION PAGE -->
+|-l-information
+    |-l-information__navbar
+        |-c-navbar-selection
+    |-l-information__input
+        |-c-information-input
+            |-c-information-input--wrapper
+                |-c-information-input__title
+                |-c-information-input__input
+                |-c-information-input-desc
+            |-c-information-input__button
+<!-- END -->

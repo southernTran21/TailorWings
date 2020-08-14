@@ -1,0 +1,84 @@
+.c-information-input {
+    /* Display & Box Model */
+    padding: 7rem 2.5rem 0;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &--wrapper {
+        /* Display & Box Model */
+        @include flexBox(flex-start, flex-start, column);
+        margin-top: 2.5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        ::placeholder{
+            color: $--gray1-color;
+        }
+    
+    }
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__input {
+        /* Display & Box Model */
+        border: none;
+        box-shadow: none;
+        outline: none;
+        padding: 1rem 1.5rem;
+        border-radius: 1rem;
+        width: 100%;
+        margin-top: 1rem;
+        /* Color */
+        background-color: $--bg-passive;
+        color: $--text-passive;
+        /* Text */
+        @include font(fontSemiBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__desc {
+        /* Display & Box Model */
+        margin-top: .7rem;
+        /* Color */
+    
+        /* Text */
+        font-size: 1.3rem;
+        line-height: 150%;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__button {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        margin-top: 7rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

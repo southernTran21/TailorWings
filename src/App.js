@@ -7,6 +7,7 @@ import FabricsContainer from "layouts/Fabrics";
 import FabricDetailContainer from "layouts/FabricDetail";
 import SelectionContainer from "layouts/Selection";
 import CartContainer from "layouts/Cart";
+import InformationContainer from "layouts/Information";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -42,6 +43,10 @@ function App() {
                         <Route
                             path="/cart"
                             component={CartContainer}
+                        />
+                        <Route
+                            path="/info"
+                            component={InformationContainer}
                         />
                         {/* <Route component={NotFound} /> */}
                     </Switch>
