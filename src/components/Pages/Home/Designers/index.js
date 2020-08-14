@@ -14,7 +14,7 @@ HomeDesigners.defaultProps = {
 };
 
 function HomeDesigners(props) {
-    if (!props.designers) return <Fragment />;
+    if (!props.designers || props.designers.length < 1) return <Fragment />;
     return (
         <div className="c-home-designers">
             <h2 className="c-home-designers__title">{props.title[0]}</h2>

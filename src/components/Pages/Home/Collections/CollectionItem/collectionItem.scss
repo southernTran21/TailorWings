@@ -2,6 +2,7 @@
     /* Display & Box Model */
     @include box(23.8rem, auto);
     margin-top: 2rem;
+    margin-right: 5rem;
     /* Color */
 
     /* Text */
@@ -30,6 +31,7 @@
         /* Text */
         @include font(fontBold, 1.6rem);
         line-height: 100%;
+        text-transform: capitalize;
         /* Positioning */
     
         /* Others: transition & animations, ... */

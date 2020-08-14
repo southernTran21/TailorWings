@@ -132,9 +132,16 @@ button {
     line-height: 1;
     cursor: pointer;
 }
-img{
+img {
     width: 100%;
     height: 100%;
     border: none;
     object-fit: cover;
+}
+a {
+    text-decoration: none;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+    color: $--black-color !important;
 }

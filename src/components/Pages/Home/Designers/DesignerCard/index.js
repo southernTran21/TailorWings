@@ -17,27 +17,27 @@ DesignerCard.defaultProps = {
 function DesignerCard(props) {
     if (!props.designer) return <div className="c-designer-card"></div>;
 
-    const { name, address, designsImage, avatar } = props.designer;
+    const { name, address, designImages, avatar, stars } = props.designer;
     const designListComponent =
-        designsImage.length > 0 ? (
+        designImages.length > 0 ? (
             <div className="c-designer-card__design-list">
                 <img
                     className="c-designer-card__design-image"
-                    src={designsImage[0]}
+                    src={designImages[0]}
                     alt="designs"
                 />
                 <img
                     className="c-designer-card__design-image"
-                    src={designsImage[1]}
+                    src={designImages[1]}
                     alt="designs"
                 />
                 <img
                     className="c-designer-card__design-image"
-                    src={designsImage[2]}
+                    src={designImages[2]}
                     alt="designs"
                 />
                 <div className="c-designer-card__remain">
-                    +{designsImage.length - NUMBER_DESIGN_RENDER || 0}
+                    +{designImages.length - NUMBER_DESIGN_RENDER || 0}
                 </div>
             </div>
         ) : (
@@ -52,7 +52,7 @@ function DesignerCard(props) {
                         <Avatar image={avatar || ""} />
                     </div>
                     <div className="c-designer-card__stars">
-                        <Stars />
+                        <Stars number={stars}/>
                     </div>
                 </div>
                 <div className="c-designer-card__info-wrapper">
@@ -61,7 +61,7 @@ function DesignerCard(props) {
                         {address || ""}
                     </span>
                     <div className="c-designer-card__design-number">
-                        <p>{designsImage.length || 0}</p>
+                        <p>{designImages.length || 0}</p>
                         <p>designs</p>
                     </div>
                     <div className="c-designer-card__button">

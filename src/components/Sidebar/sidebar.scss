@@ -1,0 +1,125 @@
+.c-sidebar {
+    /* Display & Box Model */
+    margin-top: 5.7rem;
+    border-top: 0.3rem solid $--border-primary;
+    /* Color */
+    background-color: $--sidebar-color;
+    /* Text */
+
+    /* Positioning */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    /* Others: transition & animations, ... */
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+
+    &__content {
+        /* Display & Box Model */
+        @include box(100%);
+        @include flexBox(start, center, column);
+        padding: 2rem 2.5rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__top {
+        /* Display & Box Model */
+        @include flexBox(space-between, stretch, column);
+        @include box(100%, auto);
+
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > a {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            padding: 0.1rem 0;
+            /* Color */
+            color: $--text-third;
+            /* Text */
+            @include font(fontBold, 3rem);
+            text-align: left;
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+        a:active {
+            color: $--text-third;
+        }
+        a:hover {
+            color: $--text-passive;
+        }
+    }
+    &__line {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        margin: 2.5rem;
+        border-top: 1px solid $--border-primary;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__bottom {
+        /* Display & Box Model */
+        @include flexBox(space-between, stretch, column);
+        @include box(100%, auto);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > a {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            padding: 0.1rem 0;
+            /* Color */
+            color: $--text-third;
+            /* Text */
+            @include font(fontMedium, 2rem);
+            text-align: left;
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+        a:active {
+            color: $--text-third;
+        }
+        a:hover {
+            color: $--text-passive;
+        }
+    }
+    &--open {
+        /* Display & Box Model */
+
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        transform: translateX(0);
+    }
+}

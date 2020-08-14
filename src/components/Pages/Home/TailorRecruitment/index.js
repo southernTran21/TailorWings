@@ -22,7 +22,12 @@ function HomeTailorRecruitment(props) {
                 })}
             </ul>
             <div className="c-home-tailor-recruitment__button">
-                <ButtonCTA text="ĐĂNG KÝ NHẬN MAY" />
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfuRlkLX1llCN0L9ZAwmhCxLS3NT5efPxNsbRMmxT3Oe7z0qw/viewform"
+                    target="_blank"
+                >
+                    <ButtonCTA text="ĐĂNG KÝ NHẬN MAY" />
+                </a>
             </div>
         </div>
     );

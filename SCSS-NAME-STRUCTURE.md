@@ -291,7 +291,7 @@
             |-c-size-info--right    
                 |-c-quantity
                     |-c-quantity__minus
-                    |-c-quantity__text
+                    |-c-quantity__number
                     |-c-quantity__plus
     |-l-size__product-images
         |-c-size-product-images

@@ -1,0 +1,43 @@
+.c-size-product-images {
+    /* Display & Box Model */
+    @include flexBox(center, center, column);
+    padding: 4.7rem 2.3rem 0;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__list {
+        /* Display & Box Model */
+        margin-right: -1.6rem;
+        margin-bottom: 4rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__item {
+        /* Display & Box Model */
+        @include box(15.6rem);
+        display: inline-block;
+        margin-right: 1.6rem;
+        margin-bottom: 1.6rem;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        object-fit: contain;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}

@@ -1,9 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
-import NavbarContainer from "./Navbar";
 import BodyImageContainer from "./BodyImage";
-import OptionsContainer from "./Options";
+import InfoContainer from "./Info";
+import NavbarContainer from "./Navbar";
 import OptionContentContainer from "./OptionContent";
+import OptionsContainer from "./Options";
+import ProductImagesContainer from "./ProductImages";
 
 SizeContainer.propTypes = {};
 
@@ -14,6 +15,8 @@ function SizeContainer(props) {
             <BodyImageContainer />
             <OptionsContainer />
             <OptionContentContainer />
+            <InfoContainer />
+            <ProductImagesContainer />
         </div>
     );
 }

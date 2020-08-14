@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import CollectionItem from "./CollectionItem";
-import Swiper from "react-id-swiper";
+import React, { Fragment } from "react";
 import Slider from "react-slick";
+import CollectionItem from "./CollectionItem";
+import CollectionDamDaoPho from "../../../../assets/Image/dam-dao-pho-collection.png";
 
 HomeCollections.propTypes = {
     collectionInfo: PropTypes.array,
@@ -12,36 +12,42 @@ HomeCollections.defaultProps = {
 };
 
 function AutoSlidesPerView(props) {
-    // let { collectionsInfo } = props;
     const params = {
         swipeToSlide: true,
         infinite: true,
-        initialSlide: 3,
+        arrows: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         adaptiveHeight: true,
-        speed: 1000,
+        speed: 500,
     };
-    const collectionsInfo = new Array(3).fill("0");
-    // if (collectionsInfo == null) {
-    //     collectionsInfo = [];
-    // }
-    // return collectionsInfo.length > 0 ? (
-    //     <Swiper {...params}>
-    //         {collectionsInfo.map((collection, index) => {
-    //             let imageCollection = this.getCollectionImage(collection.id);
-    //             return <CollectionItem key={index} />;
-    //         })}
-    //     </Swiper>
-    // ) : (
-    //     ""
-    // );
+    const collectionsInfo = [
+        {
+            id: "damdaopho",
+            name: "Đầm Dạo Phố",
+            image: CollectionDamDaoPho,
+            desc: "Thoải mái lựa chọn khi ra đường."
+        },
+        {
+            id: "damdutiec",
+            name: "Đầm Dư Tiệc",
+            image: CollectionDamDaoPho,
+            desc: "Thoải mái lựa chọn khi ra đường."
+        },
+        {
+            id: "damcongso",
+            name: "Đầm Công Sở",
+            image: CollectionDamDaoPho,
+            desc: "Thoải mái lựa chọn khi ra đường."
+        },
+        
+    ];
+
     if (!collectionsInfo) return <Fragment />;
     return (
         <Slider {...params}>
             {collectionsInfo.map((collection, index) => {
-                // let imageCollection = this.getCollectionImage(collection.id);
-                return <CollectionItem key={index} /> || <Fragment />;
+                return <CollectionItem key={index} collectionInfo={collection}/> || <Fragment />;
             })}
         </Slider>
     );

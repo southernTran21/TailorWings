@@ -1,31 +1,40 @@
-.c-size-info {
+.c-quantity {
     /* Display & Box Model */
-    display: flex;
-    padding: 0 2rem;
+    @include flexBox(space-between, center);
+    @include box(13rem, auto);
     /* Color */
 
     /* Text */
-    
+
     /* Positioning */
-    
+
     /* Others: transition & animations, ... */
-    
-    &--left {
+    &__minus {
         /* Display & Box Model */
-        @include flexBox(space-between, center, column);
-        @include box(50%, auto);
+        @include box(3rem);
         /* Color */
-    
         /* Text */
-        
+    
         /* Positioning */
     
         /* Others: transition & animations, ... */
     
     }
-    &__name {
+    &__plus {
         /* Display & Box Model */
-        margin-bottom: 1.3rem;
+        @include box(3rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__number {
+        /* Display & Box Model */
+    
         /* Color */
     
         /* Text */
@@ -35,29 +44,5 @@
         /* Others: transition & animations, ... */
     
     }
-    &--right {
-        /* Display & Box Model */
-        @include flexBox(flex-end, flex-end);
-        @include box(50%, auto);
-        /* Color */
-    
-        /* Text */
-    
-        /* Positioning */
-    
-        /* Others: transition & animations, ... */
-    
-    }
-    &__quantity {
-        /* Display & Box Model */
-        padding: 3.3rem 0 0.5rem;
-        /* Color */
-    
-        /* Text */
-    
-        /* Positioning */
-    
-        /* Others: transition & animations, ... */
-    
-    }
+
 }

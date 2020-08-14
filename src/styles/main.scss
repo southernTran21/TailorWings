@@ -11,6 +11,7 @@
 @import "../components/CartInfo/cartInfo.scss";
 @import "../components/Navbar/NavbarShopping/navbarShopping.scss";
 @import "../components/Navbar/NavbarSelection/navbarSelection.scss";
+@import "../components/Sidebar/sidebar.scss";
 @import "../components/Banner/banner.scss";
 @import "../components/Designs/designs.scss";
 @import "../components/Avatar/avatar.scss";
@@ -22,6 +23,7 @@
 @import "../components/PriceTag/priceTag.scss";
 @import "../components/DefaultSizeInput/defaultSizeInput.scss";
 @import "../components/ModifiedSizeInput/modifiedSizeInput.scss";
+@import "../components/Quantity/quantity.scss";
 
 @import "../components/Pages/Home/Introduction/introduction.scss";
 @import "../components/Pages/Home/Categories/categories.scss";
@@ -42,6 +44,8 @@
 
 @import "../components/Pages/Size/BodyImage/sizeBodyImage.scss";
 @import "../components/Pages/Size/Options/sizeOptions.scss";
+@import "../components/Pages/Size/Info/info.scss";
+@import "../components/Pages/Size/ProductImages/productImages.scss";
 
 
 // LAYOUTS

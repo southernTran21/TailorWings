@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import ProductItem from "./DesignItem";
 import DesignItem from "./DesignItem";
 import ButtonLoadMore from "components/Button/LoadMore";
+import { Link } from "react-router-dom";
 
 Designs.propTypes = {
     title: PropTypes.string,
@@ -24,7 +25,14 @@ function Designs(props) {
                 })}
             </ul>
             <div className="c-designs__button">
-                <ButtonLoadMore />
+                <Link
+                    to={{
+                        pathname: "/designs",
+                        search: "?cat=all",
+                    }}
+                >
+                    <ButtonLoadMore />
+                </Link>
             </div>
         </div>
     );
