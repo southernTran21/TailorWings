@@ -1,0 +1,40 @@
+.c-cart-voucher {
+    /* Display & Box Model */
+    margin-top: 5rem;
+    @include centerFlexBox();
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__button {
+        /* Display & Box Model */
+        padding: 1.2rem 2rem;
+        border-radius: 10px;
+        margin-left: 1.5rem;
+        /* Color */
+        background-color: $--bg-active;
+        color: $--text-active;
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        &--passive {
+            /* Display & Box Model */
+        
+            /* Color */
+            background-color: $--gray2-color;
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+    @import "./VoucherInput/voucherInput.scss";
+    @import "./VoucherTag/voucherTag.scss";
+}

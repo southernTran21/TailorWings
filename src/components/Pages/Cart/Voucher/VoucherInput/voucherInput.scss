@@ -1,0 +1,34 @@
+.c-voucher-input {
+    /* Display & Box Model */
+    @include centerFlexBox();
+    border: 3px solid $--border-blur2;
+    border-radius: 2rem;
+    @include box(21.2rem, 6.4rem);
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    input {
+        /* Display & Box Model */
+        border: none;
+        box-shadow: none;
+        outline: none;
+        width: 15rem;
+        /* Color */
+        color: $--text-passive;
+        background-color: transparent;
+        /* Text */
+        text-align: center;
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        
+    }
+    ::placeholder{
+        color: $--text-blur;
+    }
+}

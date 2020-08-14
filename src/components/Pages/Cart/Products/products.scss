@@ -1,0 +1,37 @@
+.c-cart-products {
+    /* Display & Box Model */
+    margin-top: 6rem;
+    padding: 4rem 2.4rem 0 2.3rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+        color: $--text-blur;
+        /* Text */
+        text-align: center;
+        @include font(fontHeavy, 2.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__list {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        @import "./ProductItem/productItem.scss";
+    }
+}

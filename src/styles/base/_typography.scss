@@ -36,6 +36,12 @@ body{
     font-size: 1.4rem;
 }
 
+
+@media screen and (min-width: 389px){
+    html{
+        font-size: 64.834%;
+    }
+}
 @media screen and (min-width: 400px){
     html{
         font-size: 66.67%;
@@ -107,9 +113,20 @@ body{
     }
 }
 
+
+@media screen and (max-width: 360px){
+    html{
+        font-size: 60%;
+    }
+}
 @media screen and (max-width: 350px){
     html{
         font-size: 58.3%;
+    }
+}
+@media screen and (max-width: 325px){
+    html{
+        font-size: 54.167%;
     }
 }
 @media screen and (max-width: 320px){
@@ -117,4 +134,3 @@ body{
         font-size: 53.3125%;
     }
 }
-

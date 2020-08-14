@@ -299,3 +299,55 @@
     |-l-size__button-confirm
         |-c-button-confirm
 <!-- END -->
+
+<!-- SHOPPING CART PAGE -->
+|-l-cart
+    |l-cart__navbar
+        |-c-navbar-selection
+            |-c-navbar-selection__back
+            |-c-navbar-selection__title
+            |-c-navbar-selection__info
+                |-c-cart-info c-cart-info--passive
+    |-l-cart__products
+        |-c-cart-products
+            |-c-cart-products__title
+            |-c-cart-products__list
+                |-c-cart-product-item
+                    |-c-cart-product-item--left
+                        |-c-cart-product-item__image
+                        |-c-cart-product-item__quantity
+                            |-c-quantity
+                    |-c-cart-product-item--right
+                        |-c-cart-product-item__name
+                        |-c-cart-product-item__price
+                        |-c-cart-product-item__size
+    |-l-cart__voucher
+        |-c-cart-voucher
+            |-c-voucher-input
+            |-c-voucher-tag
+            |-c-cart-voucher__button
+    |-l-summary
+        |-c-summary
+            |-c-summary__amount
+            |-c-summary__discount
+    |-l-cart__footer
+        |-c-cart-footer
+            |-c-cart-footer__text
+                |-c-cart-footer__title
+                |-c-cart-footer__price
+            |-c-cart-footer__button
+                |-c-button-confirm
+<!-- END -->
+
+<!-- INFORMATION PAGE -->
+|-l-information
+    |-l-information__navbar
+        |-c-navbar-selection
+    |-l-information__input
+        |-c-information-input
+            |-c-information-input--wrapper
+                |-c-information-input__title
+                |-c-information-input__input
+                |-c-information-input-desc
+            |-c-information-input__button
+<!-- END -->

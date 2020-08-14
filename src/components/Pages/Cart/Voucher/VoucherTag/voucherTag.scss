@@ -1,0 +1,28 @@
+.c-voucher-tag {
+    /* Display & Box Model */
+    @include centerFlexBox();
+    border: 3px dashed $--border-primary;
+    border-radius: 2rem;
+    @include box(21.2rem, 6.4rem);
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__text {
+        /* Display & Box Model */
+        padding: 1rem 2rem;
+        border-radius: 40px;
+        /* Color */
+        color: $--text-passive;
+        background-color: $--bg-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

@@ -1,0 +1,46 @@
+.c-summary {
+    /* Display & Box Model */
+    @include box(33.2rem, 10.3rem);
+    margin: 4rem 2.1rem 1.5rem 2.2rem;
+    padding: 3rem 2.8rem;
+    @include flexBox(space-between, flex-start, column);
+    border-radius: 30px;
+    /* Color */
+    background-color: $--bg-passive;
+    color: $--gray1-color;
+    /* Text */
+    @include font(fontNormal, 1.4rem);
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__amount {
+        /* Display & Box Model */
+        @include flexBox(space-between, flex-end);
+        width: 100%;
+        /* Color */
+    
+        /* Text */
+        
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &--text2{
+            @include font(fontBold, 1.6rem);
+        }
+    }
+    &__discount {
+        /* Display & Box Model */
+        @include flexBox(space-between, flex-end);
+        width: 100%;
+        /* Color */
+    
+        /* Text */
+        
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &--text2{
+            @include font(fontSemiBold, 1.3rem);
+        }
+    }
+}
