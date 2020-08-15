@@ -11,6 +11,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./styles/main.scss";
 import PaymentContainer from "layouts/Payment";
+import OrderSuccessContainer from "layouts/OrderSuccess";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -44,6 +45,7 @@ function App() {
                         <Route path="/cart" component={CartContainer} />
                         <Route path="/info" component={InformationContainer} />
                         <Route path="/payment" component={PaymentContainer} />
+                        <Route path="/order-success" component={OrderSuccessContainer} />
                         {/* <Route component={NotFound} /> */}
                     </Switch>
                 </BrowserRouter>

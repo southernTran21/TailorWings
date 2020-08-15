@@ -9,7 +9,7 @@ NavbarPaymentContainer.propTypes = {
 function NavbarPaymentContainer(props) {
     return (
         <section className='l-payment__navbar'>
-            <NavbarSelection/>
+            <NavbarSelection text='THANH TOÁN'/>
         </section>
     );
 }

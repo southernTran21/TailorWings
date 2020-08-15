@@ -1,0 +1,68 @@
+.l-order-success {
+    /* Display & Box Model */
+    padding: 8rem 2.5rem 0;
+    /* Color */
+    color: $--text-default;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__check {
+        /* Display & Box Model */
+        @include box(4rem);
+        margin: 1rem auto 0;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__content {
+        /* Display & Box Model */
+        margin-top: 3rem;
+        /* Color */
+    
+        /* Text */
+        text-align: center;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        :nth-child(1){
+            @include font(fontBold, 1.8rem);
+        }
+        :nth-child(2){
+            margin-top: 1rem;
+            @include font(fontSemiBold, 1.6rem);
+        }
+    }
+    &__button {
+        /* Display & Box Model */
+        margin-top: 5rem;
+        @include centerFlexBox();
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__continued {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        margin-top: 3rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.5rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}
