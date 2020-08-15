@@ -1,0 +1,54 @@
+.c-payment-method {
+    /* Display & Box Model */
+    padding: 0 2.5rem;
+    margin-top: 2rem;
+    /* Color */
+    color: $--text-default;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__title {
+        /* Display & Box Model */
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__radio {
+        /* Display & Box Model */
+        width: 100%;
+        margin: .5rem 0;
+        padding: 1rem 1.5em;
+        border-radius: 7px;
+        /* Color */
+        background-color: $--bg-passive;
+        color: $--text-default;
+        /* Text */
+        @include font(fontBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__radio:nth-child(1){
+        margin-top: 1rem;
+    }
+    .ant-radio-checked .ant-radio-inner{
+        border-color: #FF6D3B;
+    }
+    .ant-radio-checked::after{
+        border: 1px solid #FF6D3B;
+    }
+    .ant-radio-inner::after{
+        background-color: #FF6D3B;
+    }
+    .ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner{
+        border-color: #FF6D3B !important;
+    }
+}

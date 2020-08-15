@@ -10,6 +10,7 @@ import SizeContainer from "layouts/Size";
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./styles/main.scss";
+import PaymentContainer from "layouts/Payment";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -42,6 +43,7 @@ function App() {
                         <Route path="/size" component={SizeContainer} />
                         <Route path="/cart" component={CartContainer} />
                         <Route path="/info" component={InformationContainer} />
+                        <Route path="/payment" component={PaymentContainer} />
                         {/* <Route component={NotFound} /> */}
                     </Switch>
                 </BrowserRouter>

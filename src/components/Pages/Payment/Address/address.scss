@@ -1,0 +1,73 @@
+.c-payment-address {
+    /* Display & Box Model */
+    padding: 8rem 2.5rem 0;
+    /* Color */
+    color: $--text-default;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__head {
+        /* Display & Box Model */
+        @include flexBox(space-between, center);
+        /* Color */
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__sub-title {
+        /* Display & Box Model */
+    
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &--wrapper {
+        /* Display & Box Model */
+        @include flexBox(flex-start, flex-start, column);
+        padding: 1.8rem;
+        border-radius: 7px;
+        margin-top: 1rem;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__name {
+        /* Display & Box Model */
+        margin-bottom: 0.5rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

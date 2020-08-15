@@ -1,0 +1,53 @@
+.c-order-item {
+    /* Display & Box Model */
+    @include flexBox();
+    margin: 0.9rem 0;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__image {
+        /* Display & Box Model */
+        @include box(7rem, 8.75rem);
+        border-radius: 5px;
+        /* Color */
+        background-color: $--bg-info;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__content {
+        /* Display & Box Model */
+        @include box(21.92rem, 8.75rem);
+        @include flexBox(space-between, flex-start, column);
+        padding-left: 1rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontSemiBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &--top {
+        /* Display & Box Model */
+        width: 20.92rem;
+        @include flexBox(space-between);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    
+}
