@@ -1,0 +1,118 @@
+.c-footer {
+    /* Display & Box Model */
+    @include box(100%, 57rem);
+    padding: 5rem 0 3.8rem;
+    /* Color */
+    background-color: $--bg-active;
+    color: $--text-active;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__option {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__title {
+        /* Display & Box Model */
+        /* Color */
+
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        text-transform: capitalize;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        &:nth-child(2) {
+            margin-top: 2.3rem;
+        }
+        &:nth-child(3) {
+            margin-top: 2.3rem;
+        }
+    }
+    &__social-icon {
+        /* Display & Box Model */
+        @include box(19rem, auto);
+        @include flexBox(space-between);
+        margin: 0 auto;
+        margin-top: 4.3rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        img{
+            @include box(4rem);
+        }
+    }
+    &__info {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        flex-direction: column;
+        margin-top: 4rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        .c-footer__text:nth-child(2){
+            margin-top: 1.5rem;
+        }
+    
+    }
+    &__text {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontNormal, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__logo {
+        /* Display & Box Model */
+        @include box(6.4rem, auto);
+        margin: 0 auto;
+        margin-top: 2.1rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__section3 {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        flex-direction: column;
+        margin: 0 5.4rem;
+        margin-top: 2rem;
+        /* Color */
+    
+        /* Text */
+        text-align: center;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        .c-footer__text:nth-child(2){
+            margin-top: 1rem;
+        }
+    }
+}

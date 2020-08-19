@@ -391,3 +391,7 @@
             |-c-payment-footer__button
                 |-c-button-confirm
 <!-- END -->
+
+<!-- FOOTER -->
+|-l-footer
+<!-- END -->
