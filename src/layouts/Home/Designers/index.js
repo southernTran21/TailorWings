@@ -15,13 +15,13 @@ const TITLE = ["Nhà Thiết Kế Nổi Bật", "Tham Gia Cộng Đồng", "Nhà
 function DesignersContainer() {
     /*--------------*/
     const designers = useSelector((state) => state.common.designers);
-    const products = useSelector((state) => state.common.products);
+    const defaultProducts = useSelector((state) => state.common.defaultProducts);
     /*--------------*/
     const [designerList, setDesignerList] = useState([]);
 
     useEffect(() => {
         /*--------------*/
-        if (designers.length > 0 && products.length > 0) {
+        if (designers.length > 0 && defaultProducts.length > 0) {
             /*--------------*/
             let desingerInfo = designers.map((designer) => {
                 /*--------------*/
@@ -31,7 +31,7 @@ function DesignersContainer() {
                 designList.forEach((design) => {
                     /*--------------*/
                     let relatedProducts =
-                        products.find((product) => {
+                        defaultProducts.find((product) => {
                             if (
                                 product.designID === design &&
                                 product.default
@@ -51,7 +51,7 @@ function DesignersContainer() {
                 setDesignerList(desingerInfo);
             }
         }
-    }, [designers, products]);
+    }, [designers, defaultProducts]);
 
     if (designerList.length < 1) return <Fragment />;
     return (

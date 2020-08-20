@@ -1,49 +1,41 @@
 import Designs from "components/Designs";
-import React, { useEffect, Fragment, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getWithCondition } from "services/Firebase API/basic";
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-const DESIGN_OBJECT = {
-    name: "Đầm ôm Agatha",
-    image: "",
-    designerName: "Đông Đông",
-    fabricNumber: 17,
-};
-const DESIGNS_ARRAY = new Array(6).fill(DESIGN_OBJECT);
+const CUT_OFF_LIMIT = 6;
 
 function TopProductsContainer() {
     /*--------------*/
     const bestSeller = useSelector((state) => state.common.bestSeller);
     const designers = useSelector((state) => state.common.designers);
     /*--------------*/
-    const [bestSellerList, setBestSellerList] = useState([]);
+    const [bestSellerList, setBestSellerList] = useState({
+        designs: [],
+        isMax: false,
+    });
 
     useEffect(() => {
         /*--------------*/
         if (bestSeller.length > 0 && designers.length > 0) {
             /*--------------*/
-            let bestSellerList = bestSeller.map((item) => {
-                /*--------------*/
-                let owner = designers.find((designer) => {
-                    if (designer.designs.includes(item.designID)) {
-                        return designer;
-                    }
-                }) || { name: "" };
-                /*--------------*/
-                let modifiedItem = { ...item, designerName: owner.name };
-                return modifiedItem;
+            let cutOffList = bestSeller.slice(CUT_OFF_LIMIT);
+            cutOffList = cutOffList.map((item) => {
+                return {
+                    ...item,
+                    linkInfo: {
+                        pathname: "/selection",
+                        search: `?id=${item.productID}`,
+                    },
+                };
             });
             /*--------------*/
-            if (bestSellerList.length > 0) {
-                setBestSellerList(bestSellerList);
-            }
+            setBestSellerList({ designs: cutOffList, isMax: false });
         }
     }, [bestSeller, designers]);
-
-    if (bestSellerList.length < 1) return <Fragment />;
+    if (bestSellerList.designs.length < 1) return <Fragment />;
     return (
         <section className="l-home__top-products">
-            <Designs title="Sản Phẩm Nổi Bật" designs={bestSellerList} />
+            <Designs title="Sản Phẩm Nổi Bật" renderDesigns={bestSellerList} isLoadMore={false} />
         </section>
     );
 }

@@ -8,7 +8,7 @@ import DamXoe from "../../../assets/Image/category-dam-xoe.png";
 
 function CategoriesContainer() {
     /*--------------*/
-    const products = useSelector((state) => state.common.products);
+    const defaultProducts = useSelector((state) => state.common.defaultProducts);
     /*--------------*/
     const dispatch = useDispatch();
 
@@ -34,9 +34,9 @@ function CategoriesContainer() {
                 image: DamOm,
             },
         ];
-        if (products.length > 0) {
+        if (defaultProducts.length > 0) {
             designNumber.forEach((item, index) => {
-                let number = products.filter((product) => {
+                let number = defaultProducts.filter((product) => {
                     if (product.default && product.catID === item.catID)
                         return product;
                 }).length;
@@ -49,7 +49,7 @@ function CategoriesContainer() {
             dispatch(action_updateCategoriesDesignNumber);
             /*--------------*/
         }
-    }, [products]);
+    }, [defaultProducts]);
 
     return (
         <section className="l-home__categories">

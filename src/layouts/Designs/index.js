@@ -1,15 +1,46 @@
-import React from "react";
-import PropTypes from "prop-types";
-import NavbarContainer from "./Navbar";
+import { updateDefaultProducts } from "actions";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import BannerContainer from "./Bannner";
-import OptionsContainer from "./Options";
-import Avatar from "components/Avatar";
-import image from "../../assets/Image/tailor-recruitment.png";
 import ListContainer from "./List";
+import NavbarContainer from "./Navbar";
+import OptionsContainer from "./Options";
+import { fetchDefaultProducts } from "services/Firebase API/basic";
+import { useMemo } from "react";
 
-DesignsContainer.propTypes = {};
+function DesignsContainer() {
+    /*--------------*/
+    const defaultProductsLength = useSelector(
+        (state) => state.common.defaultProducts.length
+    );
+    /*--------------*/
+    const dispatch = useDispatch();
 
-function DesignsContainer(props) {
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        async function _fetchDefaultProducts() {
+            try {
+                const fetchedDefaultProducts = await fetchDefaultProducts();
+                if (fetchedDefaultProducts.length > 0) {
+                    /*--------------*/
+                    const action_updateDefaultProducts = updateDefaultProducts(
+                        fetchedDefaultProducts
+                    );
+                    dispatch(action_updateDefaultProducts);
+                }
+            } catch (error) {
+                console.log("error.message :>> ", error.message);
+            }
+        }
+        /*--------------*/
+        if (defaultProductsLength < 1) {
+            _fetchDefaultProducts();
+        }
+    }, [defaultProductsLength]);
+
     return (
         <div className="l-designs">
             <NavbarContainer />

@@ -5,26 +5,26 @@ import ButtonFilter from "components/Button/Filter";
 import Sort from "components/Sort";
 
 Options.propTypes = {
-    filterName: PropTypes.array,
-    filterActive: PropTypes.array,
+    filter: PropTypes.array,
+    onFilterChange: PropTypes.func,
 };
 
 Options.defaultProps = {
-    filterName: null,
-    filterActive: new Array(4).fill(false),
+    filter: null,
+    onFilterChange: null
 };
 
 function Options(props) {
-    if (!props.filterName) return <Fragment />;
+    if (!props.filter || !props.onFilterChange) return <Fragment />;
     return (
         <div className="c-options">
             <div className="c-options__filters">
-                {props.filterName.map((name, index) => {
+                {props.filter.map((item, index) => {
                     return (
                         <ButtonFilter
                             key={index}
-                            text={name}
-                            isActive={props.filterActive[index]}
+                            info={{...item, index: index}}
+                            handleClick={props.onFilterChange}
                         />
                     );
                 })}

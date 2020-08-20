@@ -1,8 +1,17 @@
-import { updateBestSeller, updateDesigners, updateProducts } from "actions";
+import {
+    updateBestSeller,
+    updateDesigners,
+    updateProducts,
+    updateDefaultProducts,
+} from "actions";
 import { BackTop } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getWithCondition } from "services/Firebase API/basic";
+import {
+    fetchDefaultProducts,
+    fetchWithCondition,
+    countSupportedFabric,
+} from "services/Firebase API/basic";
 import BannerContainer from "./Banner";
 import CategoriesContainer from "./Categories";
 import CollectionsContainer from "./Collections";
@@ -19,64 +28,87 @@ function HomeContainer() {
         behavior: "smooth",
     });
     /*--------------*/
-    const products = useSelector((state) => state.common.products);
-    const designers = useSelector((state) => state.common.designers);
-    const bestSeller = useSelector((state) => state.common.bestSeller);
+    const defaultProductsLength = useSelector(
+        (state) => state.common.defaultProducts.length
+    );
+    const designersLength = useSelector((state) => state.common.designers.length);
+    const bestSellerLength = useSelector((state) => state.common.bestSeller.length);
     /*--------------*/
     const dispatch = useDispatch();
+    /*--------------*/
+    const [fetchError, setFetchError] = useState(false);
 
     useEffect(() => {
+        async function _fetchDefaultProducts() {
+            try {
+                const fetchedDefaultProducts =
+                    (await fetchDefaultProducts());
+                if (fetchedDefaultProducts.length > 0) {
+                    /*--------------*/
+                    const action_updateDefaultProducts = updateDefaultProducts(
+                        fetchedDefaultProducts
+                    );
+                    dispatch(action_updateDefaultProducts);
+                }
+            } catch (error) {
+                setFetchError(true);
+                console.log("error.message :>> ", error.message);
+            }
+        }
         /*--------------*/
-        if (products.length < 1) {
-            getWithCondition("products", "visibility", true).then(
-                (products) => {
-                    if (products.length > 0) {
-                        /*--------------*/
-                        const action_updateProducts = updateProducts(products);
-                        dispatch(action_updateProducts);
-                    }
+        async function _fetchDesigners() {
+            try {
+                const fetchedDesigners = await fetchWithCondition(
+                    "designers",
+                    "isVisible",
+                    true
+                );
+                if (fetchedDesigners.length > 0) {
+                    /*--------------*/
+                    const action_updateDesigners = updateDesigners(
+                        fetchedDesigners
+                    );
+                    dispatch(action_updateDesigners);
                 }
-            );
+            } catch (error) {
+                console.log("error.message :>> ", error.message);
+                setFetchError(true);
+            }
         }
-        if (designers.length < 1) {
-            getWithCondition("designers", "isVisible", true).then(
-                (designers) => {
-                    if (designers.length > 0) {
-                        /*--------------*/
-                        const action_updateDesigners = updateDesigners(
-                            designers
-                        );
-                        dispatch(action_updateDesigners);
-                    }
-                }
-            );
-        }
-        if (bestSeller.length < 1 && products.length > 0) {
-            getWithCondition("topList", "id", "bestseller").then((result) => {
-                if (result[0]) {
-                    let designs = [...result[0].designs];
-                    let bestSeller = [];
-                    designs.forEach((design) => {
-                        let info = products.filter(
-                            (product) => product.designID === design
-                        );
-                        if (info.length > 0) {
-                            let defaultInfo = info.find((item) => item.default);
-                            if (defaultInfo) {
-                                defaultInfo.fabricNumber = info.length;
-                                bestSeller.push(defaultInfo);
-                            }
-                        }
-                    });
+        /*--------------*/
+        async function _fetchBestSeller() {
+            try {
+                const fetchedBestSeller = await fetchWithCondition(
+                    "topList",
+                    "id",
+                    "bestseller"
+                );
+                if (fetchedBestSeller.length > 0) {
+                    let designs = [...fetchedBestSeller[0].designs];
                     /*--------------*/
                     const action_updateBestSeller = updateBestSeller(
-                        bestSeller
+                        designs
                     );
                     dispatch(action_updateBestSeller);
                 }
-            });
+            } catch (error) {
+                console.log("error.message :>> ", error.message);
+                setFetchError(true);
+            }
         }
-    }, [products, bestSeller, designers]);
+        /*--------------*/
+        if (!fetchError) {
+            if (defaultProductsLength < 1) {
+                _fetchDefaultProducts();
+            }
+            if (designersLength < 1) {
+                _fetchDesigners();
+            }
+            if (bestSellerLength < 1 && defaultProductsLength > 0) {
+                _fetchBestSeller();
+            }
+        }
+    }, [defaultProductsLength, bestSellerLength, designersLength]);
 
     return (
         <div className="l-home">

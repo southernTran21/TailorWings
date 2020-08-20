@@ -1,22 +1,36 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 ButtonFilter.propTypes = {
-    text: PropTypes.string,
-    isActive: PropTypes.bool,
+    info: PropTypes.object,
+    handleClick: PropTypes.func,
 };
 
 ButtonFilter.defaultProps = {
-    text: null,
-    isActive: false,
+    info: null,
+    handleClick: null,
 };
 
 function ButtonFilter(props) {
-    if (!props.text) return <Fragment />;
+    if (!props.info || !props.handleClick) return <Fragment />;
 
-    let activeClass = props.isActive ? "c-button-filter--active" : "";
+    const { id, name, isActive, index } = props.info;
+    let activeClass = isActive ? "c-button-filter--active" : "";
     return (
-        <button className={`c-button-filter ${activeClass}`}>{props.text}</button>
+        <Link
+            to={{
+                pathname: "/designs",
+                search: `?cat=${id}`,
+            }}
+        >
+            <button
+                className={`c-button-filter ${activeClass}`}
+                onClick={() => props.handleClick(id, index)}
+            >
+                {name}
+            </button>
+        </Link>
     );
 }
 
