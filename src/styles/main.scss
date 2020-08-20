@@ -22,13 +22,20 @@
 @import "../components/Background/background.scss";
 @import "../components/PriceTag/priceTag.scss";
 @import "../components/DefaultSizeInput/defaultSizeInput.scss";
+
 @import "../components/ModifiedSizeInput/modifiedSizeInput.scss";
+
 @import "../components/Quantity/quantity.scss";
+
 @import "../components/Pages/Cart/Products/products.scss";
 @import "../components/Pages/Cart/Footer/footer.scss";
 @import "../components/Pages/Cart/Voucher/voucher.scss";
 @import "../components/Pages/Cart/Summary/summary.scss";
+
 @import "../components/Pages/Information/Input/input.scss";
+
+@import "../components/Pages/Payment/Address/address.scss";
+@import "../components/Pages/Payment/PaymentMethod/paymentMethod.scss";
 
 @import "../components/Pages/Home/Introduction/introduction.scss";
 @import "../components/Pages/Home/Categories/categories.scss";
@@ -51,7 +58,10 @@
 @import "../components/Pages/Size/Options/sizeOptions.scss";
 @import "../components/Pages/Size/Info/info.scss";
 @import "../components/Pages/Size/ProductImages/productImages.scss";
+@import "../components/Pages/Payment/OrderInfo/orderInfo.scss";
+@import "../components/Pages/Payment/Footer/footer.scss";
 
+@import "../components/Footer/footer.scss";
 
 // LAYOUTS
 @import "../layouts/Home/home.scss";
@@ -61,6 +71,7 @@
 @import "../layouts/FabricDetail/fabricDetail.scss";
 @import "../layouts/Selection/selection.scss";
 @import "../layouts/Size/size.scss";
+@import "../layouts/OrderSuccess/orderSuccess.scss";
 
 //REACT SLICK
 @import "~slick-carousel/slick/slick.css"; 

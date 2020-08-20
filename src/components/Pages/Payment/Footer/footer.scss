@@ -1,0 +1,76 @@
+.c-payment-footer {
+    /* Display & Box Model */
+    padding: 0 2.5rem;
+    margin-top: 2rem;
+    /* Color */
+    color: $--text-default;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__content {
+        /* Display & Box Model */
+        @include flexBox(space-between, flex-end);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__content:nth-child(2){
+        margin-top: 1rem;
+    }
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontSemiBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__free {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontNormal, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__price {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.8rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__button {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        margin-top: 1.5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

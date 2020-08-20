@@ -9,7 +9,7 @@ NavbarContainer.propTypes = {
 function NavbarContainer(props) {
     return (
         <section className='l-information__navbar'>
-            <NavbarSelection/>
+            <NavbarSelection text='THÔNG TIN'/>
         </section>
     );
 }

@@ -351,3 +351,47 @@
                 |-c-information-input-desc
             |-c-information-input__button
 <!-- END -->
+
+<!-- PAYMENT PAGE -->
+|-l-payment
+    |-l-payment__navbar
+        |-c-navbar-selection
+    |-l-payment__address
+        |-c-payment-address
+            |-c-payment-address__head
+                |-c-payment-address__title
+                |-c-payment-address__sub-title
+            |-c-payment-address--wrapper
+                |-c-payment-address__name
+                |-c-payment-address__address
+    |-l-payment__payment-method
+        |-c-payment-method
+            |-c-payment-method__title
+            |-c-payment-method__radio
+    |-l-payment__order-info
+        |-c-order-info
+            |-c-order-info__head
+                |-c-order-info__title
+                |-c-order-info__sub-title
+            |-c-order-info__list
+                |-c-order-item
+                    |-c-order-item__image
+                    |-c-order-item__content
+                        |-c-order-item--top
+                            |-c-order-item__name
+                            |-c-order-item__quantity
+                        |-c-order-item__id
+                        |-c-order-item__price
+    |-l-payment__footer
+        |-c-payment-footer
+            |-c-payment-footer__content
+                |-c-payment-footer__title
+                |-c-payment-footer__free
+                |-c-payment-footer__price
+            |-c-payment-footer__button
+                |-c-button-confirm
+<!-- END -->
+
+<!-- FOOTER -->
+|-l-footer
+<!-- END -->

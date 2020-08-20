@@ -7,7 +7,7 @@ NavbarContainer.propTypes = {};
 function NavbarContainer(props) {
     return (
         <div className="l-size__navbar">
-            <NavbarSelection />
+            <NavbarSelection text='CHỌN SIZE'/>
         </div>
     );
 }

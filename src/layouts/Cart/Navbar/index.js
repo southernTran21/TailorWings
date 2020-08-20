@@ -9,7 +9,7 @@ NavBarContainer.propTypes = {
 function NavBarContainer(props) {
     return (
         <section className='l-cart__navbar'>
-            <NavbarSelection/>
+            <NavbarSelection text='GIỎ HÀNG'/>
         </section>
     );
 }

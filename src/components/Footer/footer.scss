@@ -1,0 +1,265 @@
+.c-footer {
+    /* Display & Box Model */
+    @include box(100%, 57rem);
+    padding: 5rem 0 3.8rem;
+    /* Color */
+    background-color: $--bg-active;
+    color: $--text-active;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__option {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__title {
+        /* Display & Box Model */
+        /* Color */
+
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        text-transform: capitalize;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        &:nth-child(2) {
+            margin-top: 2.3rem;
+        }
+        &:nth-child(3) {
+            margin-top: 2.3rem;
+        }
+    }
+    &__social-icon {
+        /* Display & Box Model */
+        @include box(19rem, auto);
+        @include flexBox(space-between);
+        margin: 0 auto;
+        margin-top: 4.3rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        img {
+            @include box(4rem);
+        }
+    }
+    &__info {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        flex-direction: column;
+        margin-top: 4rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        .c-footer__text:nth-child(2) {
+            margin-top: 1.5rem;
+        }
+    }
+    &__text {
+        /* Display & Box Model */
+
+        /* Color */
+
+        /* Text */
+        @include font(fontNormal, 1.4rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__logo {
+        /* Display & Box Model */
+        @include box(14.6rem, auto);
+        margin: 0 auto;
+        margin-top: 2.1rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__section3 {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        flex-direction: column;
+        margin: 0 5.4rem;
+        margin-top: 2rem;
+        /* Color */
+
+        /* Text */
+        text-align: center;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        .c-footer__text:nth-child(2) {
+            margin-top: 1rem;
+        }
+    }
+}
+@media screen and (min-width: 1280px) {
+    .c-footer {
+        /* Display & Box Model */
+        @include box(128rem, 33rem);
+        margin: 0 auto;
+        padding: 3.6rem 7rem 4.4rem;
+        @include flexBox(space-between);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__section {
+            /* Display & Box Model */
+            @include flexBox( flex-start, flex-start);
+            flex-direction: row-reverse;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__section1 {
+            /* Display & Box Model */
+            @include box(auto, 24.5rem);
+            @include centerFlexBox();
+            flex-direction: column;
+            margin-left: 15rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__option {
+            /* Display & Box Model */
+            @include flexBox(flex-start, flex-start, column);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__title {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+            cursor: pointer;
+        }
+        &__social-icon {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+            img{
+                cursor: pointer;
+            }
+        }
+        &__section2 {
+            /* Display & Box Model */
+            @include flexBox( flex-start, center);
+            flex-direction: column-reverse;
+            @include box(auto, 100%);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__info {
+            /* Display & Box Model */
+            margin-top: 3rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__logo {
+            /* Display & Box Model */
+            @include box(19.6rem, auto);
+            margin-top: 0;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__text {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            @include font(fontNormal, 1.8rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__section3 {
+            /* Display & Box Model */
+            @include box(33.6rem, 100%);
+            margin: 0;
+            @include flexBox(flex-end,  flex-end, column);
+            /* Color */
+        
+            /* Text */
+            text-align: end;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+            .c-footer__text:nth-child(2) {
+                margin-top: 1.5rem;
+                line-height: 130%;
+            }
+        }
+    }
+}
