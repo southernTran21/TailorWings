@@ -5,6 +5,8 @@ import Logo from "../../../assets/Icon/logo.svg";
 import CartInfo from "components/CartInfo";
 import { Link } from "react-router-dom";
 import Sidebar from "components/Sidebar";
+import IconSearch from "../../../assets/Icon/icon-search.svg";
+import IconPerson from "../../../assets/Icon/person-outline.svg";
 
 NavbarShopping.propTypes = {
     cartQuantity: PropTypes.string,
@@ -42,7 +44,14 @@ function NavbarShopping() {
                     <img src={Logo} alt="tailorwings" />
                 </Link>
             </div>
+            <div className="c-navbar-shopping__search">
+                <input type="text" placeholder="Bạn muốn may đầm gì?" />
+                <img src={IconSearch} alt="search-icon" />
+            </div>
             <div className="c-navbar-shopping__info">
+                <div className="c-navbar-shopping__person">
+                    <img src={IconPerson} alt="person-icon"/>
+                </div>
                 <CartInfo active={true} />
             </div>
             <Sidebar isSidebar={isSidebar} onSidebarClosed={onSidebarClosed} />

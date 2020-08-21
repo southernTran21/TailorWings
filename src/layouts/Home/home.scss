@@ -14,3 +14,18 @@
     
     }
 }
+@media screen and (min-width: 1280px) {
+    .l-home {
+        /* Display & Box Model */
+        @include box(128rem, auto);
+        margin: 0 auto;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

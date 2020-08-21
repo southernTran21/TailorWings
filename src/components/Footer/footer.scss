@@ -2,6 +2,7 @@
     /* Display & Box Model */
     @include box(100%, 57rem);
     padding: 5rem 0 3.8rem;
+    margin-top: 5rem;
     /* Color */
     background-color: $--bg-active;
     color: $--text-active;
@@ -118,6 +119,7 @@
         /* Display & Box Model */
         @include box(128rem, 33rem);
         margin: 0 auto;
+        margin-top: 7rem;
         padding: 3.6rem 7rem 4.4rem;
         @include flexBox(space-between);
         /* Color */
