@@ -14,7 +14,6 @@
         @include box(33.5rem, 25.615rem);
         border-radius: 2rem;
         /* Color */
-        background-color: $--bg-passive;
         /* Text */
     
         /* Positioning */
@@ -61,5 +60,55 @@
     
         /* Others: transition & animations, ... */
     
+    }
+}
+@media screen and(min-width: 1280px){
+    .c-home-tailor-recruitment {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__image {
+            /* Display & Box Model */
+            @include box(114rem, 25.5rem);
+            
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__title {
+            /* Display & Box Model */
+            margin: 6rem 0 4rem;
+            /* Color */
+        
+            /* Text */
+            @include font(fontHeavy, 3.6rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__list {
+            /* Display & Box Model */
+            margin-bottom: 5.2rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
     }
 }

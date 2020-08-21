@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TailorRecruitment from "../../../../assets/Image/tailor-recruitment.png";
+import TailorRecruitment from "../../../../assets/Image/tailor-recruitment-mobile.png";
 import ButtonCTA from "components/Button/CTA";
 import RecruitmentItem from "./RecruitmentItem";
 import { TAILOR_RECRUITMENT_ARRAY } from "../../../../constants";
