@@ -4,7 +4,7 @@
     flex-direction: column;
     @include box(15.8rem, auto);
     padding: 3rem 2.5rem;
-    margin: 1rem .9rem;
+    margin: 1rem 0.9rem;
     border-radius: 2rem;
     /* Color */
     background-color: $--bg-passive;
@@ -21,8 +21,23 @@
         /* Text */
         @include font(fontBold, 1.6rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
+    }
+}
+@media screen and(min-width: 1280px) {
+    .c-recruitment-item {
+        /* Display & Box Model */
+        display: flex;
+        flex-direction: column;
+        @include box(15.8rem, 14.4rem);
+        margin: 0 1.5rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
     }
 }

@@ -1,7 +1,6 @@
 .c-home-voucher {
     /* Display & Box Model */
     margin-top: 3.6rem;
-    margin-bottom: 5rem;
     padding: 1rem;
     @include flexBox(space-between,center);
     border-radius: 20px;
@@ -48,5 +47,60 @@
     
         /* Others: transition & animations, ... */
     
+    }
+}
+@media screen and(min-width: 1280px){
+    .c-home-voucher {
+        /* Display & Box Model */
+        padding: 3rem 0;
+        margin: 0 auto;
+        margin-top: 8.9rem;
+        width: 72rem;
+        align-items: flex-start;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__image {
+            /* Display & Box Model */
+            @include box(30.1rem);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__content {
+            /* Display & Box Model */
+            margin-left: 5.1rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__title {
+            /* Display & Box Model */
+            width: 33rem;
+            margin-bottom: 6rem;
+            margin-top: 2.4rem;
+            /* Color */
+        
+            /* Text */
+            @include font(fontBold, 3.6rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
     }
 }

@@ -14,24 +14,126 @@
         /* Display & Box Model */
         @include box(2.4rem);
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__logo {
         /* Display & Box Model */
         @include box(14rem, 1.5rem);
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
+    }
+    &__search {
+        display: none;
+    }
+    &__person {
+        display: none;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .c-navbar-shopping {
+        /* Display & Box Model */
+        @include box(auto, 12rem);
+        padding: 0 7rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        &__menu {
+            /* Display & Box Model */
+            display: none;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+        &__logo {
+            /* Display & Box Model */
+            @include box(19.6rem, 2.1rem);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__search {
+            /* Display & Box Model */
+            display: inline-block;
+            @include centerFlexBox();
+            @include box(59.7rem, 6.1rem);
+            border: 2px solid $--border-blur2;
+            border-radius: 20px;
+            margin-right: 12rem;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+            img {
+                @include box(2.4rem);
+            }
+            input {
+                /* Display & Box Model */
+                border: none;
+                box-shadow: none;
+                outline: none;
+                width: 48.6rem;
+                margin-right: 1.8rem;
+                /* Color */
+                color: $--text-default;
+                /* Text */
+                @include font(fontNormal, 1.6rem);
+                /* Positioning */
+
+                /* Others: transition & animations, ... */
+            }
+            ::placeholder{
+                color: $--border-blur1;
+            }
+        }
+        &__person {
+            /* Display & Box Model */
+            display: inline-block;
+            margin-right: 3rem;
+            /* Color */
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__info {
+            /* Display & Box Model */
+            @include flexBox();
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
     }
 }

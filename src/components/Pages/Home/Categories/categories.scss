@@ -11,3 +11,18 @@
 
     @import "./CategoryItem/categoryItem.scss";
 }
+@media screen and(min-width: 1280px){
+    .c-category-list {
+        /* Display & Box Model */
+        padding: 0 11.7rem;
+        @include flexBox(space-between);
+        margin-top: 3.7rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    }
+}

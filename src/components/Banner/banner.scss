@@ -12,3 +12,19 @@
     /* Others: transition & animations, ... */
 
 }
+@media screen and(min-width: 1280px){
+    .c-banner {
+        /* Display & Box Model */
+        margin: 0 auto;
+        margin-top: 2rem;
+        @include box(114rem, 52.2rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

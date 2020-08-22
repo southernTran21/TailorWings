@@ -46,3 +46,53 @@
         @import "./IntroItem/introItem.scss";
     }
 }
+@media screen and(min-width: 1280px){
+    .c-home-introduction {
+        /* Display & Box Model */
+        padding-top: 5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__title {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 3.6rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__sub-title {
+            /* Display & Box Model */
+            margin-top: 2.5rem;
+            padding: 0 40.5rem;
+            /* Color */
+        
+            /* Text */
+            font-size: 1.8rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__list {
+            /* Display & Box Model */
+            margin-top: 3rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}
