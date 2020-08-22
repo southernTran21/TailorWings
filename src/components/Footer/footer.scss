@@ -117,7 +117,8 @@
 @media screen and (min-width: 1280px) {
     .c-footer {
         /* Display & Box Model */
-        @include box(128rem, 33rem);
+        height: 33rem;
+        max-width: 128rem;
         margin: 0 auto;
         margin-top: 7rem;
         padding: 3.6rem 7rem 4.4rem;

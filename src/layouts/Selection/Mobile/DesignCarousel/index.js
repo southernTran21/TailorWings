@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import SelectionDesignCarousel from "components/Pages/Selection/DesignCarousel";
+import SelectionDesignCarousel from "components/Pages/Selection/Mobile/DesignCarousel";
 import { useSelector } from "react-redux";
 
 function DesignCarouselContainer() {

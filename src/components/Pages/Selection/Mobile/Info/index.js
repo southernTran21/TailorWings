@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PriceTag from "../../../../components/PriceTag/index";
+import PriceTag from "../../../../PriceTag/index";
 import ButtonConfirm from "components/Button/Confirm";
 
 SelectionInfo.propTypes = {
