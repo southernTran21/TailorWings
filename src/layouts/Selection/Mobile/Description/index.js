@@ -1,4 +1,4 @@
-import SelectionDescription from "components/Pages/Selection/Description";
+import SelectionDescription from "components/Pages/Selection/Mobile/Description";
 import React, { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { fetchDesignInfo, fetchFabricInfo } from "services/Firebase API/basic";

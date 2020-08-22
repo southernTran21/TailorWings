@@ -1,4 +1,4 @@
-import SelectionFabrics from "components/Pages/Selection/Fabrics";
+import SelectionFabrics from "components/Pages/Selection/Mobile/Fabrics";
 import React, { useState, Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
