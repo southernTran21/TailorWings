@@ -1,0 +1,49 @@
+.c-selection-item {
+    /* Display & Box Model */
+    @include flexBox(flex-start, center, column);
+    @include box(fit-content);
+    /* Color */
+    color: transparent;
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__type {
+        /* Display & Box Model */
+
+        /* Color */
+        /* Text */
+        @include font(fontSemiBold, 1.2rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__image {
+        /* Display & Box Model */
+        @include box(7rem);
+        margin-top: 0.5rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &--active {
+        /* Display & Box Model */
+
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}

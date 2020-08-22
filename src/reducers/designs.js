@@ -1,5 +1,3 @@
-import commonReducer from "./common";
-
 var initialState = {
     currentFilter: "",
     isListLoading: false

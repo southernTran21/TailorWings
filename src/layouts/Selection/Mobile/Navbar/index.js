@@ -1,12 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import NavbarSelection from 'components/Navbar/NavbarSelection';
+import React from 'react';
 
-NavbarContainer.propTypes = {
-    
-};
-
-function NavbarContainer(props) {
+function NavbarContainer() {
     return (
         <div className="l-selection__navbar">
             <NavbarSelection text="CHỌN VẢI"/>

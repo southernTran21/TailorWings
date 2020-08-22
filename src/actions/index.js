@@ -31,10 +31,10 @@ export const updateDefaultProducts = (defaultProducts) => {
         defaultProducts,
     };
 };
-export const modifyDefaultProducts= (info) => {
+export const modifyDefaultProducts = (info) => {
     return {
         type: "MODIFY_DEFAULT_PRODUCTS",
-        info
+        info,
     };
 };
 export const updateDesigners = (designers) => {
@@ -88,5 +88,38 @@ export const setListLoading = (status) => {
     return {
         type: "SET_LIST_LOADING",
         status,
+    };
+};
+
+/**
+ * This is for Selection page
+ */
+
+export const updateProductList = (products) => {
+    return {
+        type: "UPDATE_PRODUCT_LIST",
+        products,
+    };
+};
+
+export const updateFabricList = (fabrics) => {
+    return {
+        type: "UPDATE_FABRIC_LIST",
+        fabrics,
+    };
+};
+
+export const updateRenderProduct = (productID) => {
+    return {
+        type: "UPDATE_RENDER_PRODUCT",
+        productID,
+    };
+};
+
+export const updateRenderFabrics = (designID=null, fabricID=null) => {
+    return {
+        type: "UPDATE_RENDER_FABRICS",
+        designID,
+        fabricID
     };
 };

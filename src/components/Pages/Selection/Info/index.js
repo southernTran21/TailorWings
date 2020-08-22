@@ -4,7 +4,7 @@ import PriceTag from "../../../../components/PriceTag/index";
 import ButtonConfirm from "components/Button/Confirm";
 
 SelectionInfo.propTypes = {
-    price: PropTypes.string,
+    price: PropTypes.number,
     name: PropTypes.string,
     designedBy: PropTypes.string,
 };
@@ -18,9 +18,11 @@ SelectionInfo.defaultProps = {
 function SelectionInfo(props) {
     return (
         <div className="c-selection-info">
-            <PriceTag price="240,000" />
-            <span className="c-selection-info__name">Đầm Suông Lucasta</span>
-            <span className="c-selection-info__designed-by">thiết kế bởi Phương Châm</span>
+            <PriceTag price={props.price} />
+            <span className="c-selection-info__name">{props.name}</span>
+            <span className="c-selection-info__designed-by">
+                thiết kế bởi {props.designedBy}
+            </span>
             <div className="c-selection-info__confirm-button">
                 <ButtonConfirm text="chọn size" padding="1.7rem 9.2rem" />
             </div>

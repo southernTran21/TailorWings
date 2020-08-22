@@ -32,6 +32,23 @@ export const fetchWithCondition = (collection, field, value) => {
         });
 };
 
+export const fetchVisibilityCondition = (collection, field, value) => {
+    return database
+        .collection(collection)
+        .where('visibility', '==', true)
+        .where(field, "==", value)
+        .get()
+        .then((querySnapshot) => {
+            let result = [];
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                data.id = doc.id;
+                result.push(data);
+            });
+            return result;
+        });
+};
+
 export const fetchDefaultProducts = () => {
     return database
         .collection("products")
@@ -68,6 +85,28 @@ export const fetchDesignOwner = (designID) => {
         .get()
         .then((querySnapshot) => {
             let result = querySnapshot.docs[0].data().name || "";
+            return result;
+        });
+};
+
+export const fetchDesignInfo = (designID) => {
+    return database
+        .collection("designs")
+        .where('id', "==", designID)
+        .get()
+        .then((querySnapshot) => {
+            let result = querySnapshot.docs[0].data().description || "";
+            return result;
+        });
+};
+
+export const fetchFabricInfo = (fabricID) => {
+    return database
+        .collection("fabrics")
+        .where('id', "==", fabricID)
+        .get()
+        .then((querySnapshot) => {
+            let result = querySnapshot.docs[0].data().description || "";
             return result;
         });
 };
