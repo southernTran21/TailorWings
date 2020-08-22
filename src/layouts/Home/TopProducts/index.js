@@ -13,7 +13,7 @@ function TopProductsContainer() {
         designs: [],
         isMax: false,
     });
-
+    /*--------------*/
     useEffect(() => {
         /*--------------*/
         if (bestSeller.length > 0 && designers.length > 0) {
@@ -32,6 +32,7 @@ function TopProductsContainer() {
             setBestSellerList({ designs: cutOffList, isMax: false });
         }
     }, [bestSeller, designers]);
+    /*--------------*/
     if (bestSellerList.designs.length < 1) return <Fragment />;
     return (
         <section className="l-home__top-products">
