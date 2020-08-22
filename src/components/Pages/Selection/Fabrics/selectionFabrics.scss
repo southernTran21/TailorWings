@@ -25,14 +25,32 @@
     }
     &__list {
         /* Display & Box Model */
-        @include box(100%, 7rem);
+        @include box(100%, auto);
+        min-height: 7rem;
+        // max-height: 1.4rem;
         margin-top: 1rem;
+        margin-right: -0.5rem;
         /* Color */
-        background-color: $--bg-passive;
+
         /* Text */
 
         /* Positioning */
 
         /* Others: transition & animations, ... */
     }
+
+    .slick-track {
+        height: 10rem;
+        overflow: hidden;
+    }
+    .slick-slide {
+        margin-right: 1rem;
+    }
+    // .slick-current .c-selection-item {
+    //     &__type {
+    //         color: $--text-passive;
+    //     }
+    // }
+
+    @import "./FabricItem/selectionFabricItem";
 }

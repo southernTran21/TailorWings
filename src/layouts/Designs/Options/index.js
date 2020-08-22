@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { history } from "services/CommonParameter";
 
 function OptionsContainer() {
-    console.log('here');
     /*--------------*/
     const catID = window.location.search.match(/cat=(.*)\b/)[1] || "all";
     const FILTER_INFO = [

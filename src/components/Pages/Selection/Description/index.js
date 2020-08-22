@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 SelectionDescription.propTypes = {
-    designDesc: PropTypes.string,
-    fabricDesc: PropTypes.string,
+    designDesc: PropTypes.array,
+    fabricDesc: PropTypes.array,
 };
 
 SelectionDescription.defaultProps = {
-    designDesc: "",
-    fabricDesc: ""
-}
+    designDesc: [],
+    fabricDesc: [],
+};
 
 function SelectionDescription(props) {
     return (
@@ -18,19 +18,23 @@ function SelectionDescription(props) {
                 <span className="c-selection-desc__title">
                     Thông tin thiết kế
                 </span>
-                <p className="c-selection-desc__text">
-                    Đầm thiết kế ôm giúp tôn dáng. Đặc biệt túi hai hông tiện
-                    rất tiện cho các bạn để điện thoại và tiền an toàn khi ra
-                    ngoài. Số đo người mẫu trong hình: Ngực 84, Eo 66, Mông 89.
-                    Tương đương size S của Tailor Wings.
-                </p>
+                {props.designDesc.map((desc, index) => {
+                    return (
+                        <p key={index} className="c-selection-desc__text">
+                            - {desc}
+                        </p>
+                    );
+                })}
             </div>
             <div className="c-selection-desc__wrapper">
                 <span className="c-selection-desc__title">Thông tin vải</span>
-                <p className="c-selection-desc__text">
-                    Tên: Vải Đỏ Đa Giác Trắng Mã vải: M002 - Chất liệu vải thô
-                    thoáng mát - Không nhăn , không phai màu , độ bền cao
-                </p>
+                {props.fabricDesc.map((desc, index) => {
+                    return (
+                        <p key={index} className="c-selection-desc__text">
+                            - {desc}
+                        </p>
+                    );
+                })}
             </div>
         </div>
     );
