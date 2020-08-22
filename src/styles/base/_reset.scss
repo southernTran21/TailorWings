@@ -145,3 +145,9 @@ a {
     height: fit-content;
     color: $--black-color;
 }
+a:hover{
+    color: $--primary-color !important;
+}
+a:active{
+    color: $--primary-color !important;
+}
