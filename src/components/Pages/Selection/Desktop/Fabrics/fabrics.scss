@@ -1,0 +1,45 @@
+.c-fabric-desktop {
+    /* Display & Box Model */
+    @include box(35rem, 38rem);
+    max-height: 38rem;
+    @include flexBox(flex-start, flex-start, row, wrap);
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    overflow-x: hidden;
+    overflow-y: scroll;
+    &-item {
+        /* Display & Box Model */
+        @include box(10rem);
+        margin: .5rem;
+        border-radius: 20px;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &:nth-child(1){
+            margin-top: 0;
+        }
+        &:nth-child(2){
+            margin-top: 0;
+        }
+        &:nth-child(3){
+            margin-top: 0;
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: $--primary-color;
+    }
+}

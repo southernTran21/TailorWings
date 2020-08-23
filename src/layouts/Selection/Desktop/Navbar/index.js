@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import NavbarSelection from 'components/Navbar/NavbarSelection';
 
 NavbarContainerDesktop.propTypes = {
     
@@ -7,9 +8,9 @@ NavbarContainerDesktop.propTypes = {
 
 function NavbarContainerDesktop(props) {
     return (
-        <div>
-            
-        </div>
+        <section className='l-selection__navbar-desktop'>
+            <NavbarSelection text="CHỌN VẢI"/>
+        </section>
     );
 }
 

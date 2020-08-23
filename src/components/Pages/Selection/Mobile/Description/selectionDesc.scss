@@ -47,3 +47,49 @@
     
     }
 }
+@media screen and (min-width: 1280px){
+    .c-selection-desc {
+        /* Display & Box Model */
+        @include flexBox();
+        padding: 0 7rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__wrapper:nth-child(1){
+            max-width: 45.4rem;
+        }
+        &__wrapper:nth-child(2){
+            max-width: 41.8rem;
+            margin-left: 8rem;
+            margin-top: 0;
+        }
+        &__title {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 2rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__text {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 1.8rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

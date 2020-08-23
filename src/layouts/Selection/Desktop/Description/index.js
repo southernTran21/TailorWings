@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DescriptionContainer from 'layouts/Selection/Mobile/Description';
+import SelectionDescription from 'components/Pages/Selection/Mobile/Description';
 
 DescriptionContainerDesktop.propTypes = {
     
@@ -8,9 +9,9 @@ DescriptionContainerDesktop.propTypes = {
 
 function DescriptionContainerDesktop(props) {
     return (
-        <div>
-            
-        </div>
+        <section className='l-selection__desc-desktop'>
+            <SelectionDescription/>
+        </section>
     );
 }
 

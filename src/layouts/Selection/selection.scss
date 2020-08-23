@@ -12,3 +12,33 @@
     /* Others: transition & animations, ... */
 
 }
+@media screen and (min-width:1280px){
+    .l-selection {
+        /* Display & Box Model */
+        max-width: 128rem;
+        height: auto;
+        margin: 0 auto;
+        padding: 0;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__fabric-selection-wrapper {
+            /* Display & Box Model */
+            @include flexBox(space-between);
+            margin-top: 7rem;
+            padding: 0 7rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

@@ -1,0 +1,52 @@
+.c-design-carousel-desktop {
+    /* Display & Box Model */
+    @include flexBox();
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &--top {
+        /* Display & Box Model */
+        @include box(23.103rem, 28.9rem);
+        border-radius: 23px;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &--bottom {
+        /* Display & Box Model */
+        @include box(23.103rem, 28.9rem);
+        margin-top: 2.2rem;
+        border-radius: 23px;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &--right {
+        /* Display & Box Model */
+        @include box(48.297rem, 60rem);
+        margin-left: 2.2rem;
+        border-radius: 23px;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}
