@@ -3,6 +3,7 @@ var initialState = {
     fabricList: [],
     renderProduct: null,
     renderFabrics: [],
+    selectedProduct: null,
 };
 
 const selectionReducer = (state = initialState, action) => {
@@ -54,6 +55,11 @@ const selectionReducer = (state = initialState, action) => {
                 });
             }
             return { ...state, renderFabrics: updatedRenderFabrics };
+        /****************************************************/
+        case "UPDATE_SELECTED_PRODUCT":
+            if (!action.info) return { ...state };
+            let selectedProduct = {...state.selectedProduct, ...action.info};
+            return { ...state, selectedProduct:  selectedProduct};
         /****************************************************/
         default:
             return { ...state };

@@ -2,24 +2,39 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Fragment } from "react";
 import rightArrow from "../../../assets/Icon/right-arrow-white.svg";
+import { Link } from "react-router-dom";
 
 ButtonConfirm.propTypes = {
     text: PropTypes.string,
     padding: PropTypes.string,
+    onConfirm: PropTypes.func,
+    linkTo: PropTypes.object,
 };
 
 ButtonConfirm.defaultProps = {
     text: null,
     padding: "1.5rem 10rem",
+    onConfirm: null,
+    linkTo: null,
 };
 
 function ButtonConfirm(props) {
-    if (!props.text) return <Fragment />;
+    if (!props.text || !props.onConfirm || !props.linkTo) return <Fragment />;
     return (
-        <button className="c-button-confirm" style={{ padding: props.padding }}>
-            <span className="c-button-confirm__text">{props.text}</span>
-            <img className="c-button-confirm__icon" src={rightArrow} alt={props.text} />
-        </button>
+        <Link to={props.linkTo}>
+            <button
+                className="c-button-confirm"
+                style={{ padding: props.padding }}
+                onClick={() => props.onConfirm()}
+            >
+                <span className="c-button-confirm__text">{props.text}</span>
+                <img
+                    className="c-button-confirm__icon"
+                    src={rightArrow}
+                    alt={props.text}
+                />
+            </button>
+        </Link>
     );
 }
 

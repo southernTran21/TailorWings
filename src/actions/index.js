@@ -123,3 +123,10 @@ export const updateRenderFabrics = (designID=null, fabricID=null) => {
         fabricID
     };
 };
+
+export const updateSelectedProduct = (info) => {
+    return {
+        type: "UPDATE_SELECTED_PRODUCT",
+        info
+    };
+};

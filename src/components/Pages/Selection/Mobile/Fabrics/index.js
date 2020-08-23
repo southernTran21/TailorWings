@@ -19,7 +19,7 @@ function SelectionFabrics(props) {
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        if (props.renderFabrics.length > 0 && props.activeIndex > -1 && ref) {
+        if (props.renderFabrics.length > 0 && props.activeIndex > -1 && props.activeIndex && ref) {
             setTimeout(() => {
                 ref.current.slickGoTo(props.activeIndex);
             }, 500);
