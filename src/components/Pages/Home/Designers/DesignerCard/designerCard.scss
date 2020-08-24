@@ -160,7 +160,7 @@
         /* Others: transition & animations, ... */
     }
 }
-@media screen and(min-width: 1280px){
+@media screen and(min-width: 769px){
     .c-designer-card {
         /* Display & Box Model */
         @include box(33.5rem, 25.6rem);

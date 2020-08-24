@@ -39,7 +39,7 @@
         display: none;
     }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 769px) {
     .c-navbar-shopping {
         /* Display & Box Model */
         @include box(auto, 12rem);

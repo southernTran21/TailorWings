@@ -107,7 +107,23 @@ body{
         font-size: 128%;
     }
 }
+
 @media screen and (min-width: 769px){
+    html{
+        font-size: 37.54882813%;
+    }
+}
+@media screen and (min-width: 896px){
+    html{
+        font-size: 43.75%;
+    }
+}
+@media screen and (min-width: 1024px){
+    html{
+        font-size: 50%;
+    }
+}
+@media screen and (min-width: 1280px){
     html{
         font-size: 62.5%;
     }
