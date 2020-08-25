@@ -14,3 +14,17 @@
         border-radius: 50%;
     }
 }
+@media screen and (min-width: 769px) {
+    .c-avatar {
+        /* Display & Box Model */
+        @include box(18rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

@@ -104,3 +104,91 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .c-designer-info {
+        /* Display & Box Model */
+        padding: 0;
+        margin-top: 2rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__name {
+            /* Display & Box Model */
+            padding: 0;
+            margin-top: 2rem;
+            /* Color */
+            color: #000;
+            /* Text */
+            font-size: 3.6rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__desc {
+            /* Display & Box Model */
+            padding-top: 2rem;
+            @include box(32.8rem, auto);
+            /* Color */
+            color: $--text-default;
+            /* Text */
+            font-size: 1.8rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__wrapper {
+            /* Display & Box Model */
+            padding-top: 2rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__text {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 1.6rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__location-icon, &__tag-icon {
+            /* Display & Box Model */
+            @include box(2.4rem);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__location {
+            /* Display & Box Model */
+            margin-right: 2.5rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

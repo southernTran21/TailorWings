@@ -26,3 +26,30 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .c-background {
+        /* Display & Box Model */
+        @include box(100%, 40rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__button-back {
+            /* Display & Box Model */
+            @include box(5rem);
+            top: 9rem;
+            left: 7rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}
