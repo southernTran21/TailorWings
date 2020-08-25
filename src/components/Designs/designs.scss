@@ -20,7 +20,7 @@
     }
     &__list {
         /* Display & Box Model */
-        padding-top: 2.4rem;
+        margin-top: 2.4rem;
         @include flexBox(space-between, flex-start, row, wrap);
         /* Color */
 
@@ -43,5 +43,43 @@
         /* Positioning */
 
         /* Others: transition & animations, ... */
+    }
+}
+@media screen and (min-width: 769px){
+    .c-designs {
+        /* Display & Box Model */
+        padding: 10rem 0rem 5.3rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__title {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            @include font(fontHeavy, 3.6rem);
+            text-align: center;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__list {
+            /* Display & Box Model */
+            margin-top: 5rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
     }
 }

@@ -62,3 +62,40 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .c-sort {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__text {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            @include font(fontBold, 1.6rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__selection {
+            /* Display & Box Model */
+            padding: 1.8rem 2.4rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

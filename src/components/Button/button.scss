@@ -211,3 +211,18 @@
 
     /* Others: transition & animations, ... */
 }
+@media screen and (min-width: 769px) {
+    .c-button-filter {
+        /* Display & Box Model */
+        @include box(12rem);
+        padding: 0 2.9rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 2rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

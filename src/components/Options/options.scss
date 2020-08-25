@@ -35,3 +35,47 @@
 
     }
 }
+@media screen and (min-width:769px){
+    .c-options {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center);
+        padding: 0 7rem;
+        margin-top: 4.5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__filters {
+            /* Display & Box Model */
+            @include box(52.5rem, auto);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__sorts {
+            /* Display & Box Model */
+            margin-top: 0;
+            padding: 0;
+            margin-left: 5rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        .c-sort:nth-child(2){
+            margin-left: 2rem;
+        }
+    }
+}
