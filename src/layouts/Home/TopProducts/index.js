@@ -18,7 +18,7 @@ function TopProductsContainer() {
         /*--------------*/
         if (bestSeller.length > 0 && designers.length > 0) {
             /*--------------*/
-            let cutOffList = bestSeller.slice(CUT_OFF_LIMIT);
+            let cutOffList = bestSeller.slice(0, CUT_OFF_LIMIT);
             cutOffList = cutOffList.map((item) => {
                 return {
                     ...item,

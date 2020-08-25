@@ -2,21 +2,30 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 ButtonSize.propTypes = {
+    id: PropTypes.string,
     text: PropTypes.string,
-    active: PropTypes.bool,
+    isActive: PropTypes.bool,
+    handleClick: PropTypes.func,
 };
 
 ButtonSize.defaultProps = {
+    id: null,
     text: null,
-    active: false,
+    isActive: false,
+    handleClick: null,
 };
 
 function ButtonSize(props) {
-    if (!props.text) return <Fragment />;
+    if (!props.id || !props.text || !props.handleClick) return <Fragment />;
 
-    let activeClass = props.active ? "c-button-size--active" : "";
+    let activeClass = props.isActive ? "c-button-size--active" : "";
     return (
-        <button className={`c-button-size ${activeClass}`}>{props.text}</button>
+        <button
+            className={`c-button-size ${activeClass}`}
+            onClick={() => props.handleClick(props.id)}
+        >
+            {props.text}
+        </button>
     );
 }
 

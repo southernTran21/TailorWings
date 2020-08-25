@@ -9,7 +9,7 @@ function DesignCarouselContainer() {
     if (!renderProduct) return <Fragment />;
     return (
         <div className="l-selection__design-carousel">
-            <SelectionDesignCarousel renderProduct={renderProduct} />
+            <SelectionDesignCarousel images={renderProduct.image} id={renderProduct.productID}/>
         </div>
     );
 }

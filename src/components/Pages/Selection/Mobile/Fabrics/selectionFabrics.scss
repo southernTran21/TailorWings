@@ -29,7 +29,7 @@
         min-height: 7rem;
         // max-height: 1.4rem;
         margin-top: 1rem;
-        margin-right: -0.5rem;
+        margin-right: -1rem;
         /* Color */
 
         /* Text */
@@ -37,20 +37,24 @@
         /* Positioning */
 
         /* Others: transition & animations, ... */
+        @import "./FabricItem/selectionFabricItem";
     }
 
-    .slick-track {
-        height: 10rem;
-        overflow: hidden;
+    .swiper-slide {
+        width: fit-content !important;
     }
-    .slick-slide {
-        margin-right: 1rem;
-    }
+
+    // .slick-track {
+    //     height: 10rem;
+    //     overflow: hidden;
+    // }
+    // .slick-slide {
+    //     width: fit-content !important;
+    //     margin-right: 1rem;
+    // }
     // .slick-current .c-selection-item {
     //     &__type {
     //         color: $--text-passive;
     //     }
     // }
-
-    @import "./FabricItem/selectionFabricItem";
 }

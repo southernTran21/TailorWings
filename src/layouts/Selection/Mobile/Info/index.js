@@ -44,7 +44,7 @@ function InfoContainer() {
             const { name, image, price, productID } = renderProduct;
             let info = {
                 name,
-                image: image[0],
+                image,
                 price,
                 productID,
             };

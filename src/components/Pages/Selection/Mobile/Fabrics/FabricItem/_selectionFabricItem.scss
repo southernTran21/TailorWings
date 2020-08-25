@@ -2,6 +2,7 @@
     /* Display & Box Model */
     @include flexBox(flex-start, center, column);
     @include box(fit-content);
+    margin-right: 1rem;
     /* Color */
     color: transparent;
 

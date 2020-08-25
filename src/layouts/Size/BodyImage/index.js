@@ -1,13 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
 import SizeBodyImage from "components/Pages/Size/BodyImage";
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 
-BodyImageContainer.propTypes = {};
-
-function BodyImageContainer(props) {
+function BodyImageContainer() {
+    /*--------------*/
+    const size = useSelector((state) => state.size.size);
+    /*--------------*/
+    if (!size) return <Fragment />;
     return (
         <div className="l-size__body-image">
-            <SizeBodyImage />
+            <SizeBodyImage image={size.image} />
         </div>
     );
 }

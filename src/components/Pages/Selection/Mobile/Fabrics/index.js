@@ -1,7 +1,7 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import React, { useRef, Fragment } from "react";
+import Swiper from "react-id-swiper";
 import FabricItem from "./FabricItem";
-import Slider from "react-slick";
 
 SelectionFabrics.propTypes = {
     renderFabrics: PropTypes.array,
@@ -10,32 +10,28 @@ SelectionFabrics.propTypes = {
 
 SelectionFabrics.defaultProps = {
     renderFabrics: null,
-    activeIndex: 0,
+    activeIndex: null,
 };
 
 function SelectionFabrics(props) {
     /*--------------*/
     const ref = useRef(null);
     /*--------------*/
-    useEffect(() => {
-        /*--------------*/
-        if (props.renderFabrics.length > 0 && props.activeIndex > -1 && props.activeIndex && ref) {
-            setTimeout(() => {
-                ref.current.slickGoTo(props.activeIndex);
-            }, 500);
-        }
-    }, [props.activeIndex]);
-    /*--------------*/
-    if (!props.renderFabrics) return <Fragment />;
-    const settings = {
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        infinite: false,
-        dots: false,
-        arrows: false,
-        speed: 500,
-        focusOnSelect: true,
+    if (
+        !props.renderFabrics ||
+        !props.renderFabrics.length > 0 ||
+        props.activeIndex == null
+    )
+        return <Fragment />;
+
+    let modifiedRenderFabrics = [...props.renderFabrics];
+    modifiedRenderFabrics.unshift("");
+    const params = {
+        slidesPerView: "auto",
+        slideToClickedSlide: true,
+        initialSlide: props.activeIndex,
     };
+
     return (
         <div className="c-selection-fabrics">
             <div className="c-selection-fabrics__pagination">
@@ -44,17 +40,18 @@ function SelectionFabrics(props) {
                 </span>
             </div>
             <div className="c-selection-fabrics__list">
-                <Slider ref={ref} {...settings}>
-                    {props.renderFabrics.map((fabric, index) => {
+                <Swiper {...params} ref={ref}>
+                    {modifiedRenderFabrics.map((fabric, index) => {
                         return (
-                            <FabricItem
-                                key={index}
-                                fabricInfo={fabric}
-                                currentIndex={index}
-                            />
+                            <div key={index}>
+                                <FabricItem
+                                    fabricInfo={fabric}
+                                    currentIndex={index}
+                                />
+                            </div>
                         );
                     })}
-                </Slider>
+                </Swiper>
             </div>
         </div>
     );

@@ -116,17 +116,56 @@ export const updateRenderProduct = (productID) => {
     };
 };
 
-export const updateRenderFabrics = (designID=null, fabricID=null) => {
+export const updateRenderFabrics = (designID = null, fabricID = null) => {
     return {
         type: "UPDATE_RENDER_FABRICS",
         designID,
-        fabricID
+        fabricID,
     };
 };
 
 export const updateSelectedProduct = (info) => {
     return {
         type: "UPDATE_SELECTED_PRODUCT",
-        info
+        info,
+    };
+};
+
+/**
+ * This is for Size page
+ */
+
+export const updateInputStatus = (isDefaultInput) => {
+    return {
+        type: "UPDATE_INPUT_STATUS",
+        isDefaultInput,
+    };
+};
+
+export const updateQuantity = (quantity) => {
+    return {
+        type: "UPDATE_QUANTITY",
+        quantity,
+    };
+};
+
+export const updateSize = (size) => {
+    return {
+        type: "UPDATE_SIZE",
+        size,
+    };
+};
+
+export const updateBodyMetric = (bodyMetric) => {
+    return {
+        type: "UPDATE_BODY_METRIC",
+        bodyMetric,
+    };
+};
+
+export const addToCart = (selectedProduct) => {
+    return {
+        type: "ADD_TO_CART",
+        selectedProduct,
     };
 };

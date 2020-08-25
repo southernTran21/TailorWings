@@ -11,4 +11,34 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
+
+    .swiper-slide {
+        height: 41rem !important;
+    }
+    .swiper-button-next {
+        /* Display & Box Model */
+        background: none;
+        /* Color */
+        color: white;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    .swiper-button-prev {
+        /* Display & Box Model */
+        background: none;
+        /* Color */
+        color: white;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    i {
+        font-size: 3.6rem;
+    }
 }

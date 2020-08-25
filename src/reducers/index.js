@@ -3,12 +3,14 @@ import commonReducer from "./common";
 import homeReducer from "./home";
 import designsReducer from "./designs";
 import selectionReducer from "./selection";
+import sizeReducer from "./size";
 
 const rootReducer = combineReducers({
     common: commonReducer,
     home: homeReducer,
     designs: designsReducer,
-    selection: selectionReducer
+    selection: selectionReducer,
+    size: sizeReducer
 });
 
 export default rootReducer;

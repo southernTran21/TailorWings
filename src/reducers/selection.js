@@ -21,7 +21,6 @@ const selectionReducer = (state = initialState, action) => {
         /****************************************************/
         case "UPDATE_RENDER_PRODUCT":
             if (!action.productID) return { ...state };
-            if (state.productList < 0) return { ...state };
             /*--------------*/
             const updatedRenderProduct =
                 state.productList.find(
@@ -35,12 +34,15 @@ const selectionReducer = (state = initialState, action) => {
                 return { ...state };
             /*--------------*/
             let renderFabricIDs = [];
+            let modifiedRenderProduct = { ...state.renderProduct };
+            let updatedRenderFabrics = [];
+            /*--------------*/
             state.productList.forEach((product) => {
                 if (product.designID === action.designID) {
                     renderFabricIDs.push(product.fabricID);
                 }
             });
-            let updatedRenderFabrics = [];
+            /*--------------*/
             if (renderFabricIDs.length > 0) {
                 renderFabricIDs.forEach((fabricID) => {
                     let info = state.fabricList.find((item) => {
@@ -49,17 +51,27 @@ const selectionReducer = (state = initialState, action) => {
                         }
                     });
                     if (info) {
+                        /*--------------*/
                         info.isActive = info.id === action.fabricID;
+                        /*--------------*/
+                        if (info.isActive) {
+                            modifiedRenderProduct.image.push(info.image);
+                        }
+                        /*--------------*/
                         updatedRenderFabrics.push(info);
                     }
                 });
             }
-            return { ...state, renderFabrics: updatedRenderFabrics };
+            return {
+                ...state,
+                renderFabrics: updatedRenderFabrics,
+                renderProduct: modifiedRenderProduct,
+            };
         /****************************************************/
         case "UPDATE_SELECTED_PRODUCT":
             if (!action.info) return { ...state };
-            let selectedProduct = {...state.selectedProduct, ...action.info};
-            return { ...state, selectedProduct:  selectedProduct};
+            let selectedProduct = { ...state.selectedProduct, ...action.info };
+            return { ...state, selectedProduct: selectedProduct };
         /****************************************************/
         default:
             return { ...state };

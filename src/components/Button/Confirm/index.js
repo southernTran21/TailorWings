@@ -19,9 +19,26 @@ ButtonConfirm.defaultProps = {
 };
 
 function ButtonConfirm(props) {
-    if (!props.text || !props.onConfirm || !props.linkTo) return <Fragment />;
-    return (
-        <Link to={props.linkTo}>
+    if (!props.text || !props.onConfirm) return <Fragment />;
+    if (props.linkTo) {
+        return (
+            <Link to={props.linkTo}>
+                <button
+                    className="c-button-confirm"
+                    style={{ padding: props.padding }}
+                    onClick={() => props.onConfirm()}
+                >
+                    <span className="c-button-confirm__text">{props.text}</span>
+                    <img
+                        className="c-button-confirm__icon"
+                        src={rightArrow}
+                        alt={props.text}
+                    />
+                </button>
+            </Link>
+        );
+    } else {
+        return (
             <button
                 className="c-button-confirm"
                 style={{ padding: props.padding }}
@@ -34,8 +51,8 @@ function ButtonConfirm(props) {
                     alt={props.text}
                 />
             </button>
-        </Link>
-    );
+        );
+    }
 }
 
 export default ButtonConfirm;

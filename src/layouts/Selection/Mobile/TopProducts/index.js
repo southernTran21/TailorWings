@@ -8,17 +8,13 @@ function TopProductsContainer() {
     /*--------------*/
     const bestSeller = useSelector((state) => state.common.bestSeller);
     /*--------------*/
-    const [bestSellerList, setBestSellerList] = useState({
-        designs: [],
-        isMax: false,
-    });
+    const [bestSellerList, setBestSellerList] = useState(null);
     /*--------------*/
     useEffect(() => {
-        
         /*--------------*/
-        if (bestSeller.length > 0) {
+        if (bestSeller) {
             /*--------------*/
-            let cutOffList = bestSeller.slice(CUT_OFF_LIMIT);
+            let cutOffList = bestSeller.slice(0, CUT_OFF_LIMIT);
             cutOffList = cutOffList.map((item) => {
                 return {
                     ...item,
@@ -33,10 +29,14 @@ function TopProductsContainer() {
         }
     }, [bestSeller]);
     /*--------------*/
-    if (bestSellerList.designs.length < 1) return <Fragment />;
+    if (!bestSellerList) return <Fragment />;
     return (
         <div className="l-selection__top-product">
-            <Designs title="Sản Phẩm Nổi Bật" renderDesigns={bestSellerList} isLoadMore={false} />
+            <Designs
+                title="Sản Phẩm Nổi Bật"
+                renderDesigns={bestSellerList}
+                isLoadMore={false}
+            />
         </div>
     );
 }

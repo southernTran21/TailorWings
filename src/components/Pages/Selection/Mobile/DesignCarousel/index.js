@@ -1,42 +1,74 @@
-import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import Slider from "react-slick";
+import React, { Fragment } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ReactIdSwiper from "react-id-swiper";
+import { useRef } from "react";
 
 SelectionDesignCarousel.propTypes = {
-    renderProduct: PropTypes.object,
+    images: PropTypes.array,
+    id: PropTypes.func,
 };
 
 SelectionDesignCarousel.defaultProps = {
-    renderProduct: null,
+    images: null,
+    id: "",
 };
 
 function SelectionDesignCarousel(props) {
     /*--------------*/
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0
-    };
+    const swiperRef = useRef(null);
     /*--------------*/
-    if (!props.renderProduct) return <Fragment />;
+    /*********************************
+     *  Description:
+     *
+     *
+     *  Call by:
+     */
+    function onSlide(isNext) {
+        if (swiperRef.current) {
+            if (isNext) {
+                swiperRef.current.swiper.slideNext();
+            } else {
+                swiperRef.current.swiper.slidePrev();
+            }
+        }
+    }
+    /************_END_****************/
+    if (!props.images) return <Fragment />;
     return (
         <div className="c-design-carousel">
-            <Slider {...settings}>
-                {props.renderProduct.image.map((image, index) => {
+            <Swiper
+                ref={swiperRef}
+                spaceBetween={10}
+                slidesPerView={1}
+                loop={true}
+            >
+                {props.images.map((image, index) => {
                     return (
-                        <img
-                            className="c-design-carousel__image"
-                            key={index}
-                            src={image}
-                            alt={props.renderProduct.productID}
-                        />
+                        <SwiperSlide key={index}>
+                            <img
+                                className="c-design-carousel__image"
+                                src={image}
+                                alt={props.id}
+                            />
+                        </SwiperSlide>
                     );
                 })}
-            </Slider>
-            {/* <img src="https://via.placeholder.com/680x800" alt="" /> */}
+                <div
+                    class="swiper-button-next"
+                    name="next"
+                    onClick={() => onSlide(true)}
+                >
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div
+                    class="swiper-button-prev"
+                    name="prev"
+                    onClick={() => onSlide(false)}
+                >
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </Swiper>
         </div>
     );
 }

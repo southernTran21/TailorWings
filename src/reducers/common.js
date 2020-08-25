@@ -104,7 +104,7 @@ const commonReducer = (state = initialState, action) => {
             let updatedRenderDesigns = { ...state.renderDesigns };
             let endIndex = action.isLoadMore
                 ? updatedRenderDesigns.designs.length + LIMIT
-                : LIMIT; 
+                : LIMIT;
             /*--------------*/
             let updatedDesigns = [...state.filteredDesigns.slice(0, endIndex)];
             let isMax =

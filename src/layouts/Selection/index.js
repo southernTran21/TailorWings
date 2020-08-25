@@ -29,6 +29,10 @@ import FabricsContainerDesktop from "./Desktop/Fabrics";
 import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
 
 function SelectionContainer() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
     /*--------------*/
     const page = window.location.pathname;
     const productID = window.location.search.match(/id=(.*)\b/)[1] || "";

@@ -1,4 +1,8 @@
-import { setListLoading, updateCurrentFilter, updateFilteredDesigns } from "actions";
+import {
+    setListLoading,
+    updateCurrentFilter,
+    updateFilteredDesigns,
+} from "actions";
 import Options from "components/Options";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,21 +30,19 @@ function OptionsContainer() {
         /*--------------*/
         if (defaultProductsLength > 0) {
             // if (currentFilter !== catID) {
-                let updatedFilterInfo = filterInfo.map((info) => {
-                    let isActive = info.id === catID;
-                    return { ...info, isActive: isActive };
-                });
-                /*--------------*/
-                setFilterInfo(updatedFilterInfo);
-                /*--------------*/
-                const action_updateFilteredDesigns = updateFilteredDesigns(
-                    catID
-                );
-                dispatch(action_updateFilteredDesigns);
-                /*--------------*/
-                console.log('catID :>> ', catID);
-                const action_updateCurrentFilter = updateCurrentFilter(catID);
-                dispatch(action_updateCurrentFilter);
+            let updatedFilterInfo = filterInfo.map((info) => {
+                let isActive = info.id === catID;
+                return { ...info, isActive: isActive };
+            });
+            /*--------------*/
+            setFilterInfo(updatedFilterInfo);
+            /*--------------*/
+            const action_updateFilteredDesigns = updateFilteredDesigns(catID);
+            dispatch(action_updateFilteredDesigns);
+            /*--------------*/
+
+            const action_updateCurrentFilter = updateCurrentFilter(catID);
+            dispatch(action_updateCurrentFilter);
             // }
         }
     }, [defaultProductsLength, catID]);
