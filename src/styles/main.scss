@@ -54,6 +54,10 @@
 @import "../components/Pages/Selection/Mobile/Info/selectionInfo.scss";
 @import "../components/Pages/Selection/Mobile/Description/selectionDesc.scss";
 
+@import "../components/Pages/Selection/Desktop/DesignCarousel/designCarousel.scss";
+@import "../components/Pages/Selection/Desktop/Fabrics/fabrics.scss";
+@import "../components/Pages/Selection/Desktop/Info/info.scss";
+
 @import "../components/Pages/Size/BodyImage/sizeBodyImage.scss";
 @import "../components/Pages/Size/Options/sizeOptions.scss";
 @import "../components/Pages/Size/Info/info.scss";
@@ -74,5 +78,5 @@
 @import "../layouts/OrderSuccess/orderSuccess.scss";
 
 //REACT SLICK
-@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";

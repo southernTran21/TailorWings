@@ -1,0 +1,64 @@
+.c-info-desktop {
+    /* Display & Box Model */
+    @include box(29rem, auto);
+    @include flexBox(flex-start, center, column);
+    margin: 0 auto;
+    margin-top: 4rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__price {
+        /* Display & Box Model */
+        padding: 1rem 3rem;
+        border-radius: 70px;
+        /* Color */
+        color: $--text-passive;
+        background-color: $--bg-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__name {
+        /* Display & Box Model */
+        margin-top: 1rem;
+        /* Color */
+        color: #000;
+        /* Text */
+        @include font(fontBold, 2rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__desc {
+        /* Display & Box Model */
+        margin-top: 1rem;
+        /* Color */
+        color: $--gray1-color;
+        /* Text */
+        font-size: 1.8rem;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__button {
+        /* Display & Box Model */
+        margin-top: 2.5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

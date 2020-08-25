@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import InfoDesktop from 'components/Pages/Selection/Desktop/Info';
 
 InfoContainerDesktop.propTypes = {
     
@@ -7,9 +8,9 @@ InfoContainerDesktop.propTypes = {
 
 function InfoContainerDesktop(props) {
     return (
-        <div>
-            
-        </div>
+        <section className='l-selection__Info-desktop'>
+            <InfoDesktop/>
+        </section>
     );
 }
 

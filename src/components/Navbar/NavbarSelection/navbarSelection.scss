@@ -40,11 +40,12 @@
     
     }
 }
-@media screen and(min-width: 1280px){
+@media screen and(min-width: 769px){
     .c-navbar-selection {
         /* Display & Box Model */
         height: 10rem;
         padding: 0 9.5rem;
+        position: relative;
         /* Color */
     
         /* Text */

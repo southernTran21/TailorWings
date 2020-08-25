@@ -210,11 +210,15 @@ function SelectionContainer() {
                     ) : (
                         <Fragment>
                             <NavbarContainerDesktop />
-                            <FabricsContainerDesktop />
-                            <DesignCarouselContainerDesktop />
-                            <InfoContainerDesktop />
-                            <DescriptionContainerDesktop />
-                            <TopProductsContainerDesktop />
+                            <div className='l-selection__fabric-selection-wrapper'>
+                                <DesignCarouselContainerDesktop />
+                                <div className='l-selection__info-wrapper'>
+                                    <FabricsContainerDesktop />
+                                    <InfoContainerDesktop />
+                                </div>
+                            </div>
+                            <DescriptionContainer />
+                            <TopProductsContainer />
                         </Fragment>
                     )
                 }
