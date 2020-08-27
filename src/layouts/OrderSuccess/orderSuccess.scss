@@ -66,3 +66,70 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .l-order-success {
+        /* Display & Box Model */
+        padding: 0;
+        max-width: 128rem;
+        margin: 0 auto;
+        position: relative;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__image {
+            /* Display & Box Model */
+            @include box(70rem, auto);
+            margin: 0 auto;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__content {
+            /* Display & Box Model */
+            margin-top: 2rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__continued {
+            /* Display & Box Model */
+            position: absolute;
+            top: 25rem;
+            left: 97rem;
+            /* Color */
+        
+            /* Text */
+            font-size: 1.8rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+            cursor: pointer;
+        }
+        &__button {
+            /* Display & Box Model */
+            margin-top: 3rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}
