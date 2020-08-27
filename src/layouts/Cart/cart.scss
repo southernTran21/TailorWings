@@ -1,21 +1,5 @@
-// @media screen and (min-width): Mobile first
-// @media screen and (max-width): Desktop first
-.l-home {
-    &__top-products {
-        /* Display & Box Model */
-        padding: 0 2rem;
-        /* Color */
-    
-        /* Text */
-    
-        /* Positioning */
-    
-        /* Others: transition & animations, ... */
-    
-    }
-}
 @media screen and (min-width: 769px) {
-    .l-home {
+    .l-cart {
         /* Display & Box Model */
         max-width: 128rem;
         height: auto;
@@ -27,9 +11,9 @@
         /* Positioning */
     
         /* Others: transition & animations, ... */
-        &__top-products {
+        &__section1 {
             /* Display & Box Model */
-            padding: 0 7.9rem;
+            @include flexBox(flex-start, center);
             /* Color */
         
             /* Text */

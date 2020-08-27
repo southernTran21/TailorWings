@@ -11,3 +11,19 @@
     /* Others: transition & animations, ... */
 
 }
+@media screen and (min-width: 769px) {
+    .c-size-body-image {
+        /* Display & Box Model */
+        @include box(34.9rem, 35.6rem);
+        padding: 0;
+        margin: 0 auto;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

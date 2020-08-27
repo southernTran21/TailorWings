@@ -39,11 +39,17 @@ function SizeContainer() {
     return (
         <div className="l-size">
             <NavbarContainer />
-            <BodyImageContainer />
-            <OptionsContainer />
-            <OptionContentContainer />
-            <InfoContainer />
-            <ProductImagesContainer />
+            <div className="l-size__section1">
+                <div className="l-size--left">
+                    <BodyImageContainer />
+                    <OptionsContainer />
+                    <OptionContentContainer />
+                </div>
+                <div className="l-size--right">
+                    <InfoContainer />
+                    <ProductImagesContainer />
+                </div>
+            </div>
         </div>
     );
 }

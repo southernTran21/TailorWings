@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem";
 
 Products.propTypes = {};
 
-const test = new Array(2).fill("a");
+const test = new Array(4).fill("a");
 
 function Products(props) {
     return (

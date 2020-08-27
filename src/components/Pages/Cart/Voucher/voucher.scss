@@ -38,3 +38,19 @@
     @import "./VoucherInput/voucherInput.scss";
     @import "./VoucherTag/voucherTag.scss";
 }
+@media screen and (min-width: 769px) {
+    .c-cart-voucher {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__button{
+            cursor: pointer;
+        }
+    }
+}

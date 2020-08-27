@@ -6,11 +6,13 @@ FabricDetailInfo.propTypes = {};
 function FabricDetailInfo(props) {
     return (
         <div className="c-fabric-detail-info">
-            <h2 className="c-fabric-detail-info__name">
-                Vải Lụa Pháp Vàng Nghệ
-            </h2>
-            <div className="c-fabric-detail-info__tag">
-                <span>Lụa</span>
+            <div className='c-fabric-detail-info__section1'>
+                <h2 className="c-fabric-detail-info__name">
+                    Vải Lụa Pháp Vàng Nghệ
+                </h2>
+                <div className="c-fabric-detail-info__tag">
+                    <span>Lụa</span>
+                </div>
             </div>
             {/* <div className="c-fabric-detail-info__id"></div> */}
             <div className="c-fabric-detail-info__desc">

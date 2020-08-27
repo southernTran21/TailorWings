@@ -14,7 +14,7 @@ function ProductItem(props) {
                     <img src="" alt=""/>
                 </div>
                 <div className="c-cart-product-item__quantity">
-                    <Quantity/>
+                    <Quantity onChange="NaF"/>
                 </div>
             </div>
             <div className="c-cart-product-item--right">

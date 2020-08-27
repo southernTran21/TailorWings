@@ -59,3 +59,40 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .c-cart-footer {
+        /* Display & Box Model */
+        box-shadow: none;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__title {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 1.8rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__price {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 2rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}
