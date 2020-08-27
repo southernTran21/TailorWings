@@ -10,6 +10,18 @@
     position: relative;
     z-index: 0;
     /* Others: transition & animations, ... */
+
+    &__design-carousel {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
 }
 @media screen and (min-width: 769px) {
     .l-selection {

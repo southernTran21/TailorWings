@@ -11,27 +11,26 @@
     /* Others: transition & animations, ... */
     &__title {
         /* Display & Box Model */
-    
+
         /* Color */
         color: $--text-blur;
         /* Text */
         text-align: center;
         @include font(fontHeavy, 2.4rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__list {
         /* Display & Box Model */
-    
+
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-        @import "./ProductItem/productItem.scss";
+        @import "./ProductItem/productItem";
     }
 }

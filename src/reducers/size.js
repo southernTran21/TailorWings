@@ -78,6 +78,8 @@ var initialState = {
         hip: 0,
     },
     addNewFlag: false,
+    cartUpdateFlag: false,
+    cartDeleteFlag: false,
 };
 
 const sizeReducer = (state = initialState, action) => {
@@ -133,6 +135,13 @@ const sizeReducer = (state = initialState, action) => {
                 : new Array(1).fill(addedProduct);
             window.localStorage.setItem("cart", JSON.stringify(newCart));
             return { ...state, addNewFlag: !state.addNewFlag };
+        /****************************************************/
+        case "UPDATE_CART":
+            if (!action.updatedList) return { ...state };
+            /*--------------*/
+            window.localStorage.setItem("cart", JSON.stringify(action.updatedList));
+            /*--------------*/
+            return { ...state, cartUpdateFlag: !state.cartUpdateFlag };
         /****************************************************/
         default:
             return { ...state };

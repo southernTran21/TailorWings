@@ -169,3 +169,28 @@ export const addToCart = (selectedProduct) => {
         selectedProduct,
     };
 };
+
+export const updateCart = (updatedList) => {
+    return {
+        type: "UPDATE_CART",
+        updatedList,
+    };
+};
+
+/**
+ * This is for Cart page
+ */
+
+export const updateOrder = (updatedOrder) => {
+    return {
+        type: "UPDATE_ORDER",
+        updatedOrder,
+    };
+};
+
+export const updateVoucher = (voucher) => {
+    return {
+        type: "UPDATE_VOUCHER",
+        voucher,
+    };
+};

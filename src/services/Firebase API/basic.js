@@ -32,10 +32,33 @@ export const fetchWithCondition = (collection, field, value) => {
         });
 };
 
+export const fetchWithDoubleCondition = (
+    collection,
+    field1,
+    value1,
+    field2,
+    value2
+) => {
+    return database
+        .collection(collection)
+        .where(field1, "==", value1)
+        .where(field2, "==", value2)
+        .get()
+        .then((querySnapshot) => {
+            let result = [];
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                data.id = doc.id;
+                result.push(data);
+            });
+            return result;
+        });
+};
+
 export const fetchVisibilityCondition = (collection, field, value) => {
     return database
         .collection(collection)
-        .where('visibility', '==', true)
+        .where("visibility", "==", true)
         .where(field, "==", value)
         .get()
         .then((querySnapshot) => {
@@ -52,8 +75,8 @@ export const fetchVisibilityCondition = (collection, field, value) => {
 export const fetchDefaultProducts = () => {
     return database
         .collection("products")
-        .where('visibility', "==", true)
-        .where('default', '==', true)
+        .where("visibility", "==", true)
+        .where("default", "==", true)
         .get()
         .then((querySnapshot) => {
             let result = [];
@@ -69,8 +92,8 @@ export const fetchDefaultProducts = () => {
 export const countSupportedFabric = (designID) => {
     return database
         .collection("products")
-        .where('visibility', "==", true)
-        .where('designID', '==', designID)
+        .where("visibility", "==", true)
+        .where("designID", "==", designID)
         .get()
         .then((querySnapshot) => {
             let result = querySnapshot.size || 0;
@@ -81,7 +104,7 @@ export const countSupportedFabric = (designID) => {
 export const fetchDesignOwner = (designID) => {
     return database
         .collection("designers")
-        .where('designs', "array-contains", designID)
+        .where("designs", "array-contains", designID)
         .get()
         .then((querySnapshot) => {
             let result = querySnapshot.docs[0].data().name || "";
@@ -92,7 +115,7 @@ export const fetchDesignOwner = (designID) => {
 export const fetchDesignInfo = (designID) => {
     return database
         .collection("designs")
-        .where('id', "==", designID)
+        .where("id", "==", designID)
         .get()
         .then((querySnapshot) => {
             let result = querySnapshot.docs[0].data().description || "";
@@ -103,7 +126,7 @@ export const fetchDesignInfo = (designID) => {
 export const fetchFabricInfo = (fabricID) => {
     return database
         .collection("fabrics")
-        .where('id', "==", fabricID)
+        .where("id", "==", fabricID)
         .get()
         .then((querySnapshot) => {
             let result = querySnapshot.docs[0].data().description || "";

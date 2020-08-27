@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import IconMinus from "../../assets/Icon/minus.svg";
 import IconPlus from "../../assets/Icon/plus.svg";
@@ -14,16 +14,19 @@ Quantity.defaultProps = {
 };
 
 function Quantity(props) {
+    /*--------------*/
+    const [renderQuantity, setRenderQuantity] = useState(props.quantity);
+    /*--------------*/
     if (!props.onChange) return <Fragment />;
     /*********************************
-     *  Description:
+     *  Description: handle quantity changing
      *
      *
      *  Call by:
      */
     function onQuantityChange(isMinus) {
-        let newQuantity = 1;
-        let currentQuantity = props.quantity;
+        let newQuantity = renderQuantity;
+        let currentQuantity = renderQuantity;
         /*--------------*/
         if (isMinus) {
             newQuantity = currentQuantity - 1 > 0 ? currentQuantity - 1 : 1;
@@ -31,7 +34,8 @@ function Quantity(props) {
             newQuantity = currentQuantity + 1 > 10 ? 10 : currentQuantity + 1;
         }
         /*--------------*/
-        if (newQuantity !== props.quantity) {
+        if (newQuantity !== renderQuantity) {
+            setRenderQuantity(newQuantity);
             props.onChange(Number(newQuantity));
         }
     }
@@ -45,7 +49,7 @@ function Quantity(props) {
                 <img src={IconMinus} alt="icon-minus" />
             </div>
             <div className="c-quantity__number">
-                <span>{props.quantity}</span>
+                <span>{renderQuantity}</span>
             </div>
             <div
                 className="c-quantity__plus"

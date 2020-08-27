@@ -25,6 +25,7 @@
         /* Display & Box Model */
         @include box(15.6rem, 20rem);
         border-radius: 2.5rem;
+        overflow: hidden;
         /* Color */
         background-color: $--bg-passive;
         /* Text */
