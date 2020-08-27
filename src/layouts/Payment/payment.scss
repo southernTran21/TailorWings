@@ -11,6 +11,42 @@
         /* Positioning */
     
         /* Others: transition & animations, ... */
-    
+        &__section1 {
+            /* Display & Box Model */
+            @include flexBox(center);
+            padding: 4rem 7rem 0;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__order-info {
+            /* Display & Box Model */
+            width: 50%;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__section2 {
+            /* Display & Box Model */
+            width: 50%;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
     }
 }

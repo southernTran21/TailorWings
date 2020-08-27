@@ -13,6 +13,8 @@ function OrderInfo(props) {
             </div>
             <ul className="c-order-info__list">
                 <OrderItem />
+                <OrderItem />
+                <OrderItem />
             </ul>
         </div>
     );

@@ -14,10 +14,14 @@ function PaymentContainer(props) {
     return (
         <div className='l-payment'>
             <NavbarPaymentContainer/>
-            <AddressPaymentContainer/>
-            <PaymentMethodContainer/>
-            <OrderInfoContainer/>
-            <FooterPaymentContainer/>
+            <div className='l-payment__section1'>
+                <OrderInfoContainer/>
+                <div className='l-payment__section2'>
+                    <AddressPaymentContainer/>
+                    <PaymentMethodContainer/>
+                    <FooterPaymentContainer/>
+                </div>
+            </div>
         </div>
     );
 }

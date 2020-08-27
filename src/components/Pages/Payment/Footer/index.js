@@ -18,7 +18,7 @@ function FooterPayment(props) {
                 <span className="c-payment-footer__price">675.000 VNĐ</span>
             </div>
             <div className="c-payment-footer__button">
-                <ButtonConfirm text="HOÀN TẤT ĐẶT HÀNG" padding="1rem 6.5rem" />
+                <ButtonConfirm text="HOÀN TẤT ĐẶT HÀNG" padding="1rem 6.5rem" onConfirm="NaF" />
             </div>
         </div>
     );

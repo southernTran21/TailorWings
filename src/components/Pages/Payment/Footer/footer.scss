@@ -74,3 +74,19 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .c-payment-footer {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__button{
+            margin-top: 3rem;
+        }
+    }
+}
