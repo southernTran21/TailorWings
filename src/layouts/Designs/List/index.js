@@ -46,7 +46,7 @@ function ListContainer() {
     return (
         <div className="l-designs__list">
             <Designs
-                title="Sản Phẩm Nổi Bật"
+                title="Tất Cả Sản Phẩm"
                 renderDesigns={modifiedRenderDesigns}
                 isLoadMore={true}
                 loadMore={loadMore}
