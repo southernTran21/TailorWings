@@ -1,6 +1,6 @@
 .c-payment-address {
     /* Display & Box Model */
-    padding: 8rem 2.5rem 0;
+    padding: 2rem 2.5rem 0;
     /* Color */
     color: $--text-default;
     /* Text */
@@ -69,5 +69,40 @@
     
         /* Others: transition & animations, ... */
     
+    }
+    &__address {
+        /* Display & Box Model */
+        margin-bottom: 0.5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}
+@media screen and (min-width: 769px) {
+    .c-payment-address {
+        /* Display & Box Model */
+        padding-top: 0;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__title {
+            font-size: 1.8rem;
+        }
+        &__sub-title{
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+        &--wrapper{
+            margin-top: 1.5rem;
+        }
     }
 }

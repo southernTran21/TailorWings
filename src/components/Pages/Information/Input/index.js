@@ -16,24 +16,7 @@ InformationInput.propTypes = {
 };
 
 InformationInput.defaultProps = {
-    shippingInfo: {
-        name: {
-            value: "",
-            isError: false,
-        },
-        phone: {
-            value: "",
-            isError: false,
-        },
-        address: {
-            value: "",
-            isError: false,
-        },
-        note: {
-            value: "",
-            isError: false,
-        },
-    },
+    shippingInfo: null,
     onInputChange: null,
     onShippingInfoValidate: null,
     isNotValidInfo: true,
@@ -44,9 +27,28 @@ InformationInput.defaultProps = {
 
 function InformationInput(props) {
     if (!props.onInputChange || !props.onRememberChange) return <Fragment />;
-    const { name, phone, address, note } = props.shippingInfo;
-    console.log("props.shippingInfo :>> ", props.shippingInfo);
-    console.log('props.isConfirmClicked :>> ', props.isConfirmClicked);
+    let renderShippingInfo = props.shippingInfo
+        ? { ...props.shippingInfo }
+        : {
+              name: {
+                  value: "",
+                  isError: true,
+              },
+              phone: {
+                  value: "",
+                  isError: true,
+              },
+              address: {
+                  value: "",
+                  isError: true,
+              },
+              note: {
+                  value: "",
+                  isError: false,
+              },
+          };
+
+    const { name, phone, address, note } = renderShippingInfo;
     return (
         <div className="c-information-input">
             <div className="c-information-input--wrapper">

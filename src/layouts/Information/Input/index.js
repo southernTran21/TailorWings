@@ -53,10 +53,29 @@ function InputContainer() {
         setIsConfirmClicked(false);
         if (value !== null && value !== undefined && name) {
             /*--------------*/
-            let updatedShippingInfo = {
-                ...shippingInfo,
-                [name]: { value, isError: false },
-            };
+            let updatedShippingInfo = shippingInfo
+                ? {
+                      ...shippingInfo,
+                      [name]: { value, isError: false },
+                  }
+                : {
+                      name: {
+                          value: "",
+                          isError: true,
+                      },
+                      phone: {
+                          value: "",
+                          isError: true,
+                      },
+                      address: {
+                          value: "",
+                          isError: true,
+                      },
+                      note: {
+                          value: "",
+                          isError: false,
+                      },
+                  };
             /*--------------*/
             setRenderShippingInfo(updatedShippingInfo);
             /*--------------*/
@@ -79,7 +98,26 @@ function InputContainer() {
         setIsConfirmClicked(true);
         if (!isNotValidInfo) {
             /*--------------*/
-            let updatedRememberInfo = { ...shippingInfo };
+            let updatedRememberInfo = shippingInfo
+                ? { ...shippingInfo }
+                : {
+                      name: {
+                          value: "",
+                          isError: true,
+                      },
+                      phone: {
+                          value: "",
+                          isError: true,
+                      },
+                      address: {
+                          value: "",
+                          isError: true,
+                      },
+                      note: {
+                          value: "",
+                          isError: false,
+                      },
+                  };
             if (!isRemember) {
                 updatedRememberInfo = null;
             }

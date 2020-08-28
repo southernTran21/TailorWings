@@ -41,3 +41,59 @@
         /* Others: transition & animations, ... */
     }
 }
+@media screen and (min-width: 769px) {
+    .c-size-product-images {
+        /* Display & Box Model */
+        @include box(41.4rem, auto);
+        padding: 0;
+        margin-top: 3rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__list {
+            /* Display & Box Model */
+            @include box(41.4rem);
+            margin: 0;
+            @include flexBox(space-between, flex-start, row, wrap);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__item {
+            /* Display & Box Model */
+            @include box(19.69rem);
+            margin: 0;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+            &:nth-child(1){
+                margin-bottom: 2rem;
+            }
+        }
+        &__confirm {
+            /* Display & Box Model */
+            margin-top: 3rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

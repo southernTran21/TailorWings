@@ -32,3 +32,30 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .l-fabrics {
+        /* Display & Box Model */
+        max-width:  128rem;
+        height: auto;
+        margin: 0 auto;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__list {
+            /* Display & Box Model */
+            padding: 0 7rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

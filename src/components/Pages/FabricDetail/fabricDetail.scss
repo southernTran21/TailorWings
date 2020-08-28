@@ -53,3 +53,64 @@
         }
     }
 }
+@media screen and (min-width: 769px) {
+    .c-fabric-detail-info {
+        /* Display & Box Model */
+        margin-top: 3rem;
+        /* Color */
+        color: $--text-default;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__name {
+            /* Display & Box Model */
+            /* Color */
+        
+            /* Text */
+            font-size: 3.6rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__section1 {
+            /* Display & Box Model */
+            @include flexBox(center, center);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__tag {
+            /* Display & Box Model */
+            margin: 0;
+            margin-left: 1.5rem;
+            /* Color */
+        
+            /* Text */
+            font-size: 1.6rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__desc {
+            /* Display & Box Model */
+            margin-top: 3.2rem;
+            /* Color */
+        
+            /* Text */
+            font-size: 1.8rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

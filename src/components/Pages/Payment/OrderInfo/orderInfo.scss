@@ -1,7 +1,7 @@
 .c-order-info {
     /* Display & Box Model */
     padding: 0 2.5rem;
-    margin-top: 2rem;
+    margin-top: 8rem;
     /* Color */
     color: $--text-default;
     /* Text */
@@ -59,4 +59,46 @@
     
     }
     @import "./OrderItem/orderItem.scss";
+}
+@media screen and (min-width: 769px) {
+    .c-order-info {
+        /* Display & Box Model */
+        margin-top: 0;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__title {
+            font-size: 1.8rem;
+        }
+        &__sub-title{
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+        &__list {
+            /* Display & Box Model */
+            padding: 2rem 3rem;
+            margin-top: 1.5rem;
+            max-height: 35rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+            overflow-x: hidden;
+            overflow-y: scroll;
+            /* Others: transition & animations, ... */
+            &::-webkit-scrollbar {
+                width: 10px;
+                background-color: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background: $--primary-color;
+            }
+        }
+    }
 }

@@ -1,0 +1,27 @@
+@media screen and (min-width: 769px) {
+    .l-cart {
+        /* Display & Box Model */
+        max-width: 128rem;
+        height: auto;
+        margin: 0 auto;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__section1 {
+            /* Display & Box Model */
+            @include flexBox(flex-start, center);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

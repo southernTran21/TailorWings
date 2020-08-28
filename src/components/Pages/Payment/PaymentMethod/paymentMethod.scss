@@ -52,3 +52,19 @@
         border-color: #FF6D3B !important;
     }
 }
+@media screen and (min-width: 769px) {
+    .c-payment-method {
+        /* Display & Box Model */
+        
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__title {
+            font-size: 1.8rem;
+        }
+    }
+}

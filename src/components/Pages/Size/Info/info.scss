@@ -61,3 +61,68 @@
     
     }
 }
+@media screen and (min-width: 769px) {
+    .c-size-info {
+        /* Display & Box Model */
+        @include flexBox();
+        flex-direction: row-reverse;
+        padding: 0;
+        /* Color */
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &--left {
+            /* Display & Box Model */
+            @include flexBox(flex-start, flex-end, column);
+            width: auto;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__name {
+            /* Display & Box Model */
+            margin-bottom: 1.5rem;
+            /* Color */
+            color: $--text-default;
+            /* Text */
+            font-size: 2rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &--right {
+            /* Display & Box Model */
+            width: auto;
+            height: 7.1rem;
+            margin-right: 12.2rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__quantity {
+            /* Display & Box Model */
+            padding: 0;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

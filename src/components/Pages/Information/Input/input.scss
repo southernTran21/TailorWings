@@ -132,3 +132,55 @@
         border-color: #ff6d3b !important;
     }
 }
+@media screen and (min-width: 769px) {
+    .c-information-input {
+        /* Display & Box Model */
+        padding: 3rem 17rem 0;
+        /* Color */
+        color: $--text-default;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        .c-information-input--wrapper:nth-child(1){
+            margin-top: 0;
+        }
+        &__title {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 2.2rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__input {
+            /* Display & Box Model */
+            margin-top: 1.5rem;
+            /* Color */
+        
+            /* Text */
+            font-size: 1.8rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__desc {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            font-size: 1.6rem;
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

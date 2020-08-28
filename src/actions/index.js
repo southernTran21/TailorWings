@@ -208,3 +208,10 @@ export const updateErrorStatus = (errorStatus) => {
         errorStatus,
     };
 };
+
+export const updatePaymentMethod = (paymentMethod) => {
+    return {
+        type: "UPDATE_PAYMENT_METHOD",
+        paymentMethod,
+    };
+};

@@ -1,68 +1,44 @@
-.l-selection {
-    /* Display & Box Model */
-    padding: 6rem 2.4rem 0;
-
-    /* Color */
-
-    /* Text */
-
-    /* Positioning */
-    position: relative;
-    z-index: 0;
-    /* Others: transition & animations, ... */
-
-    &__design-carousel {
-        /* Display & Box Model */
-        @include centerFlexBox();
-        /* Color */
-
-        /* Text */
-
-        /* Positioning */
-
-        /* Others: transition & animations, ... */
-    }
-}
 @media screen and (min-width: 769px) {
-    .l-selection {
+    .l-payment {
         /* Display & Box Model */
         max-width: 128rem;
         height: auto;
         margin: 0 auto;
-        padding: 0;
         /* Color */
-
+    
         /* Text */
-
+    
         /* Positioning */
-
+    
         /* Others: transition & animations, ... */
-        &__fabric-selection-wrapper {
+        &__section1 {
             /* Display & Box Model */
-            @include flexBox(space-between);
-            margin-top: 7rem;
-            padding: 0 7rem;
+            @include flexBox(center);
+            padding: 4rem 7rem 0;
             /* Color */
-
+        
             /* Text */
-
+        
             /* Positioning */
-        }
-
-        &__design-carousel {
-            /* Display & Box Model */
-            @include centerFlexBox();
-            /* Color */
-
-            /* Text */
-
-            /* Positioning */
-
+        
             /* Others: transition & animations, ... */
+        
         }
-        &__top-product {
+        &__order-info {
             /* Display & Box Model */
-            padding: 0 7.9rem;
+            width: 50%;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__section2 {
+            /* Display & Box Model */
+            width: 50%;
             /* Color */
         
             /* Text */

@@ -1,5 +1,6 @@
 import { database } from "../../firebase";
 import { storage } from "../../firebase";
+import firebase from "firebase/app";
 
 export const fetchAll = (collection) => {
     return database
@@ -131,5 +132,39 @@ export const fetchFabricInfo = (fabricID) => {
         .then((querySnapshot) => {
             let result = querySnapshot.docs[0].data().description || "";
             return result;
+        });
+};
+
+/*--------------*/
+
+export const addDocument = (collection, newItem) => {
+    database
+        .collection(collection)
+        .add(newItem)
+        .then(function () {
+            let isSuccess = true;
+            return isSuccess;
+        })
+        .catch(function (error) {
+            let isSuccess = false;
+            return isSuccess;
+        });
+};
+
+export const setDocument = (collection, newItem, docName) => {
+    return database
+        .collection(collection)
+        .doc(docName)
+        .set({
+            ...newItem,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(function () {
+            let isSuccess = true;
+            return isSuccess;
+        })
+        .catch(function (error) {
+            let isSuccess = false;
+            return isSuccess;
         });
 };

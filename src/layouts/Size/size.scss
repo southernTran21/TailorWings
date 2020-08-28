@@ -10,3 +10,32 @@
     /* Others: transition & animations, ... */
 
 }
+@media screen and (min-width: 769px) {
+    .l-size {
+        /* Display & Box Model */
+        padding: 0;
+        max-width: 128rem;
+        height: auto;
+        margin: 0 auto;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__section1 {
+            /* Display & Box Model */
+            @include flexBox(space-between);
+            padding: 4.2rem 16.9rem 0;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

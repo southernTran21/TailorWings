@@ -53,3 +53,53 @@
     
     }
 }
+
+@media screen and (min-width: 769px) {
+    .c-fabric-item {
+        /* Display & Box Model */
+        @include box(23.7rem, auto);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        &__image {
+            /* Display & Box Model */
+            @include box(23.7rem, 16.6rem);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__name {
+            /* Display & Box Model */
+            padding: 0 4.6rem;
+            /* Color */
+            color: $--text-default;
+            /* Text */
+            @include font(fontSemiBold, 1.8rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__tag {
+            /* Display & Box Model */
+            margin-top: 1rem;
+            /* Color */
+        
+            /* Text */
+            @include font(fontSemiBold, 1.6rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+}

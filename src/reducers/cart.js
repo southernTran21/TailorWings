@@ -13,26 +13,9 @@ var initialState = {
         price: null,
     },
     voucher: null,
-    shippingInfo: {
-        name: {
-            value: "",
-            isError: true,
-        },
-        phone: {
-            value: "",
-            isError: true,
-        },
-        address: {
-            value: "",
-            isError: true,
-        },
-        note: {
-            value: "",
-            isError: false,
-        },
-    },
-    errorStatus: new Array(3).fill(false),
+    shippingInfo: null,
     isNotValidInfo: true,
+    paymentMethod: 1
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -82,6 +65,11 @@ const cartReducer = (state = initialState, action) => {
             if (!action.errorStatus) return { ...state };
             /*--------------*/
             return { ...state, errorStatus: action.errorStatus };
+        /****************************************************/
+        case "UPDATE_PAYMENT_METHOD":
+            if (!action.paymentMethod) return { ...state };
+            /*--------------*/
+            return { ...state, paymentMethod: action.paymentMethod };
         /****************************************************/
         default:
             return { ...state };
