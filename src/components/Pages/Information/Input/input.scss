@@ -13,29 +13,28 @@
         @include flexBox(flex-start, flex-start, column);
         margin-top: 2.5rem;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-        ::placeholder{
+        ::placeholder {
             color: $--gray1-color;
         }
-    
     }
     &__title {
         /* Display & Box Model */
-    
+
         /* Color */
-    
+
         /* Text */
         @include font(fontBold, 1.6rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-        .ant-checkbox{
-            margin-right: .2rem;
+        .ant-checkbox {
+            margin-right: 0.2rem;
         }
     }
     &__input {
@@ -53,68 +52,83 @@
         /* Text */
         @include font(fontSemiBold, 1.4rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__desc {
         /* Display & Box Model */
-        margin-top: .7rem;
+        margin-top: 0.7rem;
         /* Color */
-    
+
         /* Text */
         font-size: 1.3rem;
         line-height: 150%;
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__check-box {
         /* Display & Box Model */
         /* Color */
         /* Text */
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         &--wrapper {
             /* Display & Box Model */
             @include flexBox(flex-start, center);
             margin-top: 2rem;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
         }
-        
     }
     &__button {
         /* Display & Box Model */
         @include centerFlexBox();
         margin-top: 7rem;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
-    .ant-checkbox-checked .ant-checkbox-inner{
-        background-color: #FF6D3B;
-        border-color: #FF6D3B;
+
+    &__error {
+        /* Display & Box Model */
+        display: none;
+        /* Color */
+        color: red;
+        /* Text */
+        @include font(fontMedium, 1.3rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        &--disable {
+            display: block;
+        }
     }
-    .ant-checkbox-checked::after{
-        border: 1px solid #FF6D3B;
+
+    .ant-checkbox-checked .ant-checkbox-inner {
+        background-color: #ff6d3b;
+        border-color: #ff6d3b;
     }
-    .ant-checkbox-inner{
-        border: 1px solid #FF6D3B;
+    .ant-checkbox-checked::after {
+        border: 1px solid #ff6d3b;
     }
-    .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner{
-        border-color: #FF6D3B !important;
+    .ant-checkbox-inner {
+        border: 1px solid #ff6d3b;
+    }
+    .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+    .ant-checkbox:hover .ant-checkbox-inner,
+    .ant-checkbox-input:focus + .ant-checkbox-inner {
+        border-color: #ff6d3b !important;
     }
 }

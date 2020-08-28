@@ -194,3 +194,17 @@ export const updateVoucher = (voucher) => {
         voucher,
     };
 };
+
+export const updateShippingInfo = (shippingInfo) => {
+    return {
+        type: "UPDATE_SHIPPING_INFO",
+        shippingInfo,
+    };
+};
+
+export const updateErrorStatus = (errorStatus) => {
+    return {
+        type: "UPDATE_ERROR_STATUS",
+        errorStatus,
+    };
+};
