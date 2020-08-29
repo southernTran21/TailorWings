@@ -29,6 +29,7 @@
         /* Display & Box Model */
         width: 100%;
         padding: 2.5rem 0;
+        @include flexBox(space-around);
         /* Color */
 
         /* Text */

@@ -1,6 +1,7 @@
 // @media screen and (min-width): Mobile first
 // @media screen and (max-width): Desktop first
 .l-home {
+    background-color: white;
     &__top-products {
         /* Display & Box Model */
         padding: 0 2rem;
@@ -8,6 +9,17 @@
     
         /* Text */
     
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__fabrics {
+        /* Display & Box Model */
+        @include box(100%, 17.5rem);
+        margin-bottom: 2rem;
+        /* Color */
+        /* Text */
         /* Positioning */
     
         /* Others: transition & animations, ... */
@@ -34,6 +46,26 @@
         
             /* Text */
         
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        .ant-back-top{
+            bottom: 5rem;
+            right: 2rem;
+        }
+        .c-designer-card__avatar{
+            .c-avatar{
+                @include box(11.015rem);
+            }
+        }
+        &__fabrics {
+            /* Display & Box Model */
+            @include box(100%, 52rem);
+            margin-bottom: 3rem;
+            /* Color */
+            /* Text */
             /* Positioning */
         
             /* Others: transition & animations, ... */
