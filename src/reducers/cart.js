@@ -1,29 +1,14 @@
 const PHONE_LENGTH = 12;
 
 var initialState = {
-    order: {
-        shippingInfo: null,
-        doneDate: null,
-        note: null,
-        orderDate: null,
-        detail: null,
-        paymentMethod: null,
-        status: "new",
-        voucher: null,
-        price: null,
-    },
     voucher: null,
     shippingInfo: null,
     isNotValidInfo: true,
-    paymentMethod: 1
+    paymentMethod: 1,
 };
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
-        /****************************************************/
-        case "UPDATE_ORDER":
-            if (!action.updatedOrder) return { ...state };
-            return { ...state, order: action.updatedOrder };
         /****************************************************/
         case "UPDATE_VOUCHER":
             if (!action.voucher) return { ...state };
@@ -70,6 +55,10 @@ const cartReducer = (state = initialState, action) => {
             if (!action.paymentMethod) return { ...state };
             /*--------------*/
             return { ...state, paymentMethod: action.paymentMethod };
+        /****************************************************/
+        case "RESET_CART_STATE":
+            /*--------------*/
+            return { ...initialState };
         /****************************************************/
         default:
             return { ...state };

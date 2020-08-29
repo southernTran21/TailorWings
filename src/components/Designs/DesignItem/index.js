@@ -1,32 +1,33 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { modifyDefaultProducts } from "actions";
 import PropTypes from "prop-types";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
     countSupportedFabric,
-    fetchDesignOwner,
+    fetchDesignOwner
 } from "services/Firebase API/basic";
-import { useSelector, useDispatch } from "react-redux";
-import {
-    updateDefaultProducts,
-    updateFabricNumber,
-    modifyDefaultProducts,
-} from "actions";
-import { Link } from "react-router-dom";
 
 DesignItem.propTypes = {
     design: PropTypes.object,
-    linkInfo: PropTypes.object,
 };
 
 DesignItem.defaultProps = {
     design: null,
-    linkInfo: null,
 };
 
 function DesignItem(props) {
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
-    const { image, designOwner, name, designID, fabricNumber, linkInfo } = props.design;
+    const {
+        image,
+        designOwner,
+        name,
+        designID,
+        fabricNumber,
+        productID,
+    } = props.design;
     /*--------------*/
     const [supportedFabricNumber, setSupportedFabricNumber] = useState(
         fabricNumber
@@ -66,13 +67,14 @@ function DesignItem(props) {
         }
     }, []);
 
-    if (!props.design && !props.linkInfo) return <Fragment />;
-    const { pathname, search } = linkInfo;
+    if (!props.design) return <Fragment />;
     return (
-        <Link to={{
-            pathname: pathname,
-            search: search
-        }}>
+        <Link
+            to={{
+                pathname: "/selection",
+                search: `?id=${productID}`,
+            }}
+        >
             <li className="c-design-item">
                 <div className="c-design-item__image">
                     <img src={image} alt={name} />

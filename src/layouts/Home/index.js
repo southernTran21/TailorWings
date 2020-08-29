@@ -21,6 +21,7 @@ import NavbarContainer from "./Navbar";
 import TailorRecruitmentContainer from "./TailorRecruitment";
 import TopProductsContainer from "./TopProducts";
 import VoucherContainer from "./Voucher";
+import FabricsContainer from "./Fabrics";
 
 function HomeContainer() {
     window.scrollTo({
@@ -31,8 +32,12 @@ function HomeContainer() {
     const defaultProductsLength = useSelector(
         (state) => state.common.defaultProducts.length
     );
-    const designersLength = useSelector((state) => state.common.designers.length);
-    const bestSellerLength = useSelector((state) => state.common.bestSeller.length);
+    const designersLength = useSelector(
+        (state) => state.common.designers.length
+    );
+    const bestSellerLength = useSelector(
+        (state) => state.common.bestSeller.length
+    );
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
@@ -41,8 +46,7 @@ function HomeContainer() {
     useEffect(() => {
         async function _fetchDefaultProducts() {
             try {
-                const fetchedDefaultProducts =
-                    (await fetchDefaultProducts());
+                const fetchedDefaultProducts = await fetchDefaultProducts();
                 if (fetchedDefaultProducts.length > 0) {
                     /*--------------*/
                     const action_updateDefaultProducts = updateDefaultProducts(
@@ -86,9 +90,7 @@ function HomeContainer() {
                 if (fetchedBestSeller.length > 0) {
                     let designs = [...fetchedBestSeller[0].designs];
                     /*--------------*/
-                    const action_updateBestSeller = updateBestSeller(
-                        designs
-                    );
+                    const action_updateBestSeller = updateBestSeller(designs);
                     dispatch(action_updateBestSeller);
                 }
             } catch (error) {
@@ -118,7 +120,7 @@ function HomeContainer() {
             <CategoriesContainer />
             <CollectionsContainer />
             <TopProductsContainer />
-            {/* <FabricsContainer/> */}
+            <FabricsContainer />
             <DesignersContainer />
             <TailorRecruitmentContainer />
             <VoucherContainer />

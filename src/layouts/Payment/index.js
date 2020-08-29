@@ -6,7 +6,7 @@ import OrderInfoContainer from "./OrderInfo";
 import PaymentMethodContainer from "./PaymentMethod";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { updatePaymentMethod } from "actions";
+import { updatePaymentMethod, resetCartState } from "actions";
 import { modifyPrice, countTotalPrice } from "services/CommonFunctions";
 import { addNewOrder, setOrderDetail } from "services/Firebase API/paymentPage";
 import uniqid from "uniqid";
@@ -101,7 +101,10 @@ function PaymentContainer() {
         /*--------------*/
         newOrder.shippingInfo = currentShippingInfo
             ? {
-                  ...currentShippingInfo,
+                  name: currentShippingInfo.name.value,
+                  phone: currentShippingInfo.phone.value,
+                  address: currentShippingInfo.address.value,
+                  note: currentShippingInfo.note.value,
               }
             : null;
         newOrder.detailID = orderDetail.id;
@@ -122,6 +125,12 @@ function PaymentContainer() {
             ])
                 .then(() => {
                     message.success("Giao dịch thành công!");
+                    /*--------------*/
+                    window.localStorage.removeItem("cart");
+                    /*--------------*/
+                    const action_resetCartState = resetCartState();
+                    dispatch(action_resetCartState);
+                    /*--------------*/
                     history.push("/order-success");
                 })
                 .catch((error) => {
@@ -132,6 +141,7 @@ function PaymentContainer() {
     }
     /************_END_****************/
     /*--------------*/
+    if (!currentCartList) return <Redirect to="/cart" />;
     if (!currentShippingInfo) return <Redirect to="/info" />;
     return (
         <div className="l-payment">

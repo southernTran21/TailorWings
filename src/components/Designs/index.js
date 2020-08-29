@@ -20,15 +20,19 @@ Designs.defaultProps = {
 
 function Designs(props) {
     /*--------------*/
-    if (!props.renderDesigns)
-        return <Fragment />
+    if (!props.renderDesigns) return <Fragment />;
     const { isMax, designs } = props.renderDesigns;
     return (
         <div className="c-designs">
             <h2 className="c-designs__title">{props.title}</h2>
             <ul className="c-designs__list">
                 {designs.map((design, index) => {
-                    return <DesignItem design={design} key={index} />;
+                    return (
+                        <DesignItem
+                            design={design}
+                            key={index}
+                        />
+                    );
                 })}
             </ul>
             <div className="c-designs__button">

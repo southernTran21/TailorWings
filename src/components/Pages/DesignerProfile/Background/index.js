@@ -3,14 +3,22 @@ import PropTypes from "prop-types";
 import Background from "components/Background";
 import Avatar from "components/Avatar";
 
-DesignerBackground.propTypes = {};
+DesignerBackground.propTypes = {
+    avatar: PropTypes.string,
+    background: PropTypes.string,
+};
+
+DesignerBackground.defaultProps = {
+    avatar: "",
+    background: null,
+};
 
 function DesignerBackground(props) {
     return (
         <div className="c-designer-background">
-            <Background />
+            <Background background={props.background}/>
             <div className="c-designer-background__avatar">
-                <Avatar />
+                <Avatar image={props.avatar} />
             </div>
         </div>
     );

@@ -17,6 +17,20 @@ export const fetchAll = (collection) => {
         });
 };
 
+export const fetchDocument = (collection, doc) => {
+    return database
+        .collection(collection)
+        .doc(doc)
+        .get()
+        .then((doc) => {
+            if (doc.exists) {
+                return doc.data();
+            } else {
+                return null;
+            }
+        });
+};
+
 export const fetchWithCondition = (collection, field, value) => {
     return database
         .collection(collection)
@@ -44,6 +58,39 @@ export const fetchWithDoubleCondition = (
         .collection(collection)
         .where(field1, "==", value1)
         .where(field2, "==", value2)
+        .get()
+        .then((querySnapshot) => {
+            let result = [];
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                data.id = doc.id;
+                result.push(data);
+            });
+            return result;
+        });
+};
+
+export const fetchVisible = (collection) => {
+    return database
+        .collection(collection)
+        .where("isVisible", "==", true)
+        .get()
+        .then((querySnapshot) => {
+            let result = [];
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                data.id = doc.id;
+                result.push(data);
+            });
+            return result;
+        });
+};
+
+export const fetchVisibleCondition = (collection, field, value) => {
+    return database
+        .collection(collection)
+        .where("isVisible", "==", true)
+        .where(field, "==", value)
         .get()
         .then((querySnapshot) => {
             let result = [];

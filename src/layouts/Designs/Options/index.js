@@ -6,11 +6,11 @@ import {
 import Options from "components/Options";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { history } from "services/CommonParameter";
 
 function OptionsContainer() {
     /*--------------*/
-    const catID = window.location.search.match(/cat=(.*)\b/)[1] || "all";
+    const urlSearch = window.location.search.match(/cat=(.*)\b/);
+    const catID = urlSearch ? urlSearch[1] : "all";
     const FILTER_INFO = [
         { id: "all", name: "Tất Cả", isActive: true },
         { id: "damom", name: "Đầm Ôm", isActive: false },
@@ -19,7 +19,6 @@ function OptionsContainer() {
     ];
     const [filterInfo, setFilterInfo] = useState(FILTER_INFO);
     /*--------------*/
-    const currentFilter = useSelector((state) => state.designs.currentFilter);
     const defaultProductsLength = useSelector(
         (state) => state.common.defaultProducts.length
     );
@@ -29,7 +28,6 @@ function OptionsContainer() {
     useEffect(() => {
         /*--------------*/
         if (defaultProductsLength > 0) {
-            // if (currentFilter !== catID) {
             let updatedFilterInfo = filterInfo.map((info) => {
                 let isActive = info.id === catID;
                 return { ...info, isActive: isActive };
@@ -43,7 +41,6 @@ function OptionsContainer() {
 
             const action_updateCurrentFilter = updateCurrentFilter(catID);
             dispatch(action_updateCurrentFilter);
-            // }
         }
     }, [defaultProductsLength, catID]);
     /*********************************
@@ -76,7 +73,11 @@ function OptionsContainer() {
     /************_END_****************/
     return (
         <section className="l-designs__options">
-            <Options filter={filterInfo} onFilterChange={onFilterChange} />
+            <Options
+                filter={filterInfo}
+                onFilterChange={onFilterChange}
+                linkTo={{ pathname: "/designs", search: "?cat=" }}
+            />
         </section>
     );
 }
