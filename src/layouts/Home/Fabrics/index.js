@@ -1,13 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-FabricsContainer.propTypes = {};
-
-function FabricsContainer(props) {
+function FabricsContainer() {
     return (
-        <div className="l-home__fabrics">
-            <img src="https://picsum.photos/1280/520" alt="" />
-        </div>
+        <Link to="/fabrics">
+            <div className="l-home__fabrics">
+                <img src="https://picsum.photos/1280/520" alt="" />
+            </div>
+        </Link>
     );
 }
 
