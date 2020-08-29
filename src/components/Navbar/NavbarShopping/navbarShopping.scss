@@ -91,6 +91,7 @@
             /* Others: transition & animations, ... */
             img {
                 @include box(2.4rem);
+                cursor: pointer;
             }
             input {
                 /* Display & Box Model */
@@ -121,7 +122,7 @@
             /* Positioning */
         
             /* Others: transition & animations, ... */
-        
+            cursor: pointer;
         }
         &__info {
             /* Display & Box Model */

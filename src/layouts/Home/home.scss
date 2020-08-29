@@ -14,6 +14,17 @@
         /* Others: transition & animations, ... */
     
     }
+    &__fabrics {
+        /* Display & Box Model */
+        @include box(100%, 17.5rem);
+        margin-bottom: 2rem;
+        /* Color */
+        /* Text */
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
 }
 @media screen and (min-width: 769px) {
     .l-home {
@@ -43,6 +54,22 @@
         .ant-back-top{
             bottom: 5rem;
             right: 2rem;
+        }
+        .c-designer-card__avatar{
+            .c-avatar{
+                @include box(11.015rem);
+            }
+        }
+        &__fabrics {
+            /* Display & Box Model */
+            @include box(100%, 52rem);
+            margin-bottom: 3rem;
+            /* Color */
+            /* Text */
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
         }
     }
 }
