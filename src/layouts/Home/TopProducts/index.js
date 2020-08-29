@@ -2,7 +2,7 @@ import Designs from "components/Designs";
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const CUT_OFF_LIMIT = 6;
+const CUT_OFF_LIMIT = window.innerWidth > 768 ? 4 : 6;
 
 function TopProductsContainer() {
     /*--------------*/

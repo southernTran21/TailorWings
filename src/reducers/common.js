@@ -1,4 +1,4 @@
-const LIMIT = 14;
+const LIMIT = 12;
 
 var initialState = {
     categories: [],

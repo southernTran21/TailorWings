@@ -1,12 +1,11 @@
 import { updateDefaultProducts } from "actions";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchDefaultProducts } from "services/Firebase API/basic";
 import BannerContainer from "./Bannner";
 import ListContainer from "./List";
 import NavbarContainer from "./Navbar";
 import OptionsContainer from "./Options";
-import { fetchDefaultProducts } from "services/Firebase API/basic";
-import { useMemo } from "react";
 
 function DesignsContainer() {
     /*--------------*/

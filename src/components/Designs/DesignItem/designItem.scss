@@ -80,65 +80,61 @@
         /* Others: transition & animations, ... */
     }
 }
-@media screen and (min-width: 769px){
+@media screen and (min-width: 769px) {
     .c-design-item {
         /* Display & Box Model */
         @include box(23.8rem, 49rem);
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         &__image {
             /* Display & Box Model */
             @include box(100%, 31.3rem);
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__designed-by {
             /* Display & Box Model */
-        
+
             /* Color */
-        
+
             /* Text */
             @include font(fontSemiBold, 1.6rem);
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__designer-name {
             /* Display & Box Model */
             margin-top: 1.5rem;
             /* Color */
-        
+
             /* Text */
             font-size: 2.4rem;
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__fabric-number {
             /* Display & Box Model */
             padding: 1.2rem 3rem;
             margin-top: 1.5rem;
             /* Color */
-        
+
             /* Text */
             @include font(fontNormal, 1.8rem);
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
     }
 }

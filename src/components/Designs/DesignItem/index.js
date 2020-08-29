@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
     countSupportedFabric,
-    fetchDesignOwner
+    fetchDesignOwner,
 } from "services/Firebase API/basic";
 
 DesignItem.propTypes = {
