@@ -19,15 +19,6 @@ function TopProductsContainer() {
         if (bestSeller.length > 0 && designers.length > 0) {
             /*--------------*/
             let cutOffList = bestSeller.slice(0, CUT_OFF_LIMIT);
-            cutOffList = cutOffList.map((item) => {
-                return {
-                    ...item,
-                    linkInfo: {
-                        pathname: "/selection",
-                        search: `?id=${item.productID}`,
-                    },
-                };
-            });
             /*--------------*/
             setBestSellerList({ designs: cutOffList, isMax: false });
         }
@@ -36,7 +27,11 @@ function TopProductsContainer() {
     if (bestSellerList.designs.length < 1) return <Fragment />;
     return (
         <section className="l-home__top-products">
-            <Designs title="Sản Phẩm Nổi Bật" renderDesigns={bestSellerList} isLoadMore={false} />
+            <Designs
+                title="Sản Phẩm Nổi Bật"
+                renderDesigns={bestSellerList}
+                isLoadMore={false}
+            />
         </section>
     );
 }

@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 ButtonFilter.propTypes = {
     info: PropTypes.object,
     handleClick: PropTypes.func,
+    linkTo: PropTypes.object,
 };
 
 ButtonFilter.defaultProps = {
     info: null,
     handleClick: null,
+    linkTo: null,
 };
 
 function ButtonFilter(props) {
@@ -17,21 +19,32 @@ function ButtonFilter(props) {
 
     const { id, name, isActive, index } = props.info;
     let activeClass = isActive ? "c-button-filter--active" : "";
-    return (
-        <Link
-            to={{
-                pathname: "/designs",
-                search: `?cat=${id}`,
-            }}
-        >
+    if (props.linkTo) {
+        return (
+            <Link
+                to={{
+                    pathname: props.linkTo.pathname,
+                    search: `${props.linkTo.search}${id}`,
+                }}
+            >
+                <button
+                    className={`c-button-filter ${activeClass}`}
+                    onClick={() => props.handleClick(id, index)}
+                >
+                    {name}
+                </button>
+            </Link>
+        );
+    } else {
+        return (
             <button
                 className={`c-button-filter ${activeClass}`}
                 onClick={() => props.handleClick(id, index)}
             >
                 {name}
             </button>
-        </Link>
-    );
+        );
+    }
 }
 
 export default ButtonFilter;

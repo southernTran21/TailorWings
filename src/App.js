@@ -26,8 +26,9 @@ function App() {
             <Suspense fallback={<div>Loading ...</div>}>
                 <Switch>
                     <Route exact path="/" component={HomeContainer} />
-                    <Route path="/designs" component={DesignsContainer} />
+                    <Route exact path="/designs" component={DesignsContainer} />
                     <Route
+                        exact
                         path="/designer-profile"
                         component={DesignerProfileContainer}
                     />

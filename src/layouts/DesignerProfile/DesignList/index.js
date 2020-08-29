@@ -1,18 +1,28 @@
 import React from "react";
 import Designs from "components/Designs";
+import PropTypes from "prop-types";
 
-const DESIGN_OBJECT = {
-    name: "Đầm ôm Agatha",
-    image: "",
-    designerName: "Đông Đông",
-    fabricNumber: 17,
+DesignListContainer.propTypes = {
+    renderDesigns: PropTypes.array,
 };
-const DESIGNS_ARRAY = new Array(6).fill(DESIGN_OBJECT);
+DesignListContainer.defaultProps = {
+    renderDesigns: null,
+};
 
 function DesignListContainer(props) {
+    let renderDesigns = props.renderDesigns
+        ? {
+              isMax: true,
+              designs: props.renderDesigns || [],
+          }
+        : null;
     return (
         <div className="l-designer__design-list">
-            <Designs title="Sản Phẩm Nổi Bật" designs={DESIGNS_ARRAY} />
+            <Designs
+                title="Sản Phẩm Nổi Bật"
+                renderDesigns={renderDesigns}
+                isLoadMore={true}
+            />
         </div>
     );
 }

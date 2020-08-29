@@ -37,7 +37,7 @@ function DesignerInfo(props) {
                         className="c-designer-info__tag-icon"
                     />
                     <span className="c-designer-info__text">
-                        ${designNumber} Thiết Kế
+                        {designNumber} Thiết Kế
                     </span>
                 </div>
             </div>

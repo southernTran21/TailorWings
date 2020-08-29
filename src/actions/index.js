@@ -181,13 +181,6 @@ export const updateCart = (updatedList) => {
  * This is for Cart page
  */
 
-export const updateOrder = (updatedOrder) => {
-    return {
-        type: "UPDATE_ORDER",
-        updatedOrder,
-    };
-};
-
 export const updateVoucher = (voucher) => {
     return {
         type: "UPDATE_VOUCHER",
@@ -213,5 +206,11 @@ export const updatePaymentMethod = (paymentMethod) => {
     return {
         type: "UPDATE_PAYMENT_METHOD",
         paymentMethod,
+    };
+};
+
+export const resetCartState = () => {
+    return {
+        type: "RESET_CART_STATE",
     };
 };

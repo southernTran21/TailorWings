@@ -1,13 +1,24 @@
-import React from "react";
 import Options from "components/Options";
-const FILTER_NAME = ["Tất Cả", "Đầm Ôm", "Đầm Xòe", "Đầm Suông"];
+import PropTypes from "prop-types";
+import React from "react";
 
-const FILTER_ACTIVE = [true, false, false, false];
+OptionsContainer.propTypes = {
+    filterInfo: PropTypes.array,
+    onFilterChange: PropTypes.func,
+};
+
+OptionsContainer.propTypes = {
+    filterInfo: null,
+    onFilterChange: null,
+};
 
 function OptionsContainer(props) {
     return (
         <div className="l-designer__options">
-            <Options filterName={FILTER_NAME} filterActive={FILTER_ACTIVE}/>
+            <Options
+                filter={props.filterInfo}
+                onFilterChange={props.onFilterChange}
+            />
         </div>
     );
 }

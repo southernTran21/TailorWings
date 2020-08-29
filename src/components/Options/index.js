@@ -7,11 +7,13 @@ import Sort from "components/Sort";
 Options.propTypes = {
     filter: PropTypes.array,
     onFilterChange: PropTypes.func,
+    linkTo: PropTypes.object,
 };
 
 Options.defaultProps = {
     filter: null,
-    onFilterChange: null
+    onFilterChange: null,
+    linkTo: null,
 };
 
 function Options(props) {
@@ -23,8 +25,9 @@ function Options(props) {
                     return (
                         <ButtonFilter
                             key={index}
-                            info={{...item, index: index}}
+                            info={{ ...item, index: index }}
                             handleClick={props.onFilterChange}
+                            linkTo={props.linkTo}
                         />
                     );
                 })}

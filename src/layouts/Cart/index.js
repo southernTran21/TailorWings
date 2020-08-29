@@ -1,21 +1,18 @@
-import React, { Fragment, useState, useEffect } from "react";
+import { message } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { countTotalPrice, modifyPrice } from "services/CommonFunctions";
 import FooterContainer from "./Footer";
 import NavBarContainer from "./Navbar";
 import ProductsContainer from "./Products";
 import SummaryContainer from "./Summary";
 import VoucherContainer from "./Voucher";
-import { useSelector, useDispatch } from "react-redux";
-import { modifyPrice, countTotalPrice } from "services/CommonFunctions";
-import { message } from "antd";
-import { updateOrder } from "actions";
 
 function CartContainer() {
     /*--------------*/
     const voucher = useSelector((state) => state.cart.voucher);
-    const order = useSelector((state) => state.cart.order);
     const cartUpdateFlag = useSelector((state) => state.size.cartUpdateFlag);
     /*--------------*/
-    const dispatch = useDispatch();
     /*--------------*/
     const [cartList, setCartList] = useState(
         JSON.parse(window.localStorage.getItem("cart")) || []
@@ -57,25 +54,8 @@ function CartContainer() {
      *  Call by:
      */
     function onConfirm() {
-        /*--------------*/
-        if (order) {
-            /*--------------*/
-            let updatedOrder = { ...order };
-            updatedOrder.detail = [...cartList];
-            updatedOrder.price = {
-                totalPrice,
-                discountPrice,
-                finalPrice,
-            };
-            /*--------------*/
-            if (updatedOrder.detail.length > 0) {
-                const action_updateOrder = updateOrder(updatedOrder);
-                dispatch(action_updateOrder);
-            } else {
-                message.error("Hiện không có sản phẩm nào!");
-            }
-        } else {
-            message.error("Lỗi!");
+        if (cartList.length <= 0) {
+            message.error("Hiện không có sản phẩm nào!");
         }
     }
     /************_END_****************/

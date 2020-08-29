@@ -2,14 +2,6 @@ import HomeDesigners from "components/Pages/Home/Designers";
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-// const DESIGNER_OBJECT = {
-//     name: "Vũ Thị Phương Anh",
-//     address: "TP.Hồ Chí Minh",
-//     designsImage: new Array(57).fill(""),
-//     avatar: "",
-// };
-
-// const DESIGNER_ARRAY = new Array(3).fill(DESIGNER_OBJECT);
 const TITLE = ["Nhà Thiết Kế Nổi Bật", "Tham Gia Cộng Đồng", "Nhà Thiết Kế"];
 
 function DesignersContainer() {
