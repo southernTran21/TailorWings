@@ -1,6 +1,7 @@
 // @media screen and (min-width): Mobile first
 // @media screen and (max-width): Desktop first
 .l-home {
+    background-color: white;
     &__top-products {
         /* Display & Box Model */
         padding: 0 2rem;
@@ -38,6 +39,10 @@
         
             /* Others: transition & animations, ... */
         
+        }
+        .ant-back-top{
+            bottom: 5rem;
+            right: 2rem;
         }
     }
 }

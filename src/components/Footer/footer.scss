@@ -120,28 +120,39 @@
         height: 33rem;
         max-width: 128rem;
         margin: 0 auto;
-        margin-top: 7rem;
         padding: 3.6rem 7rem 4.4rem;
         @include flexBox(space-between);
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
+        &--wrapper {
+            /* Display & Box Model */
+            max-width: 128rem;
+            margin: 0 auto;
+            padding-top: 7rem;
+            /* Color */
+            background-color: #fff;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
         &__section {
             /* Display & Box Model */
-            @include flexBox( flex-start, flex-start);
+            @include flexBox(flex-start, flex-start);
             flex-direction: row-reverse;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__section1 {
             /* Display & Box Model */
@@ -150,114 +161,108 @@
             flex-direction: column;
             margin-left: 15rem;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__option {
             /* Display & Box Model */
             @include flexBox(flex-start, flex-start, column);
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__title {
             /* Display & Box Model */
-        
+
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
             cursor: pointer;
         }
         &__social-icon {
             /* Display & Box Model */
-        
+
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-            img{
+            img {
                 cursor: pointer;
             }
         }
         &__section2 {
             /* Display & Box Model */
-            @include flexBox( flex-start, center);
+            @include flexBox(flex-start, center);
             flex-direction: column-reverse;
             @include box(auto, 100%);
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__info {
             /* Display & Box Model */
             margin-top: 3rem;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__logo {
             /* Display & Box Model */
             @include box(19.6rem, auto);
             margin-top: 0;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__text {
             /* Display & Box Model */
-        
+
             /* Color */
-        
+
             /* Text */
             @include font(fontNormal, 1.8rem);
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__section3 {
             /* Display & Box Model */
             @include box(33.6rem, 100%);
             margin: 0;
-            @include flexBox(flex-end,  flex-end, column);
+            @include flexBox(flex-end, flex-end, column);
             /* Color */
-        
+
             /* Text */
             text-align: end;
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
             .c-footer__text:nth-child(2) {
                 margin-top: 1.5rem;
