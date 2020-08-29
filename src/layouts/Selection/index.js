@@ -28,6 +28,7 @@ import NavbarContainerDesktop from "./Desktop/Navbar";
 import FabricsContainerDesktop from "./Desktop/Fabrics";
 import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
 import { Redirect } from "react-router-dom";
+import PageLoader from "components/Loader/Page";
 
 function SelectionContainer() {
     window.scrollTo({
@@ -42,6 +43,9 @@ function SelectionContainer() {
     /*--------------*/
     const productList = useSelector((state) => state.selection.productList);
     const fabricList = useSelector((state) => state.selection.fabricList);
+    const renderProduct = useSelector((state) => state.selection.renderProduct);
+    const renderFabrics = useSelector((state) => state.selection.renderFabrics);
+    const selection = useSelector((state) => state.selection);
     /*--------------*/
     const defaultProductsLength = useSelector(
         (state) => state.common.defaultProducts.length
@@ -53,6 +57,7 @@ function SelectionContainer() {
     const dispatch = useDispatch();
     /*--------------*/
     const [fetchError, setFetchError] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     /*--------------*/
     useEffect(() => {
         if (page === "/selection") {
@@ -64,73 +69,74 @@ function SelectionContainer() {
             /*--------------*/
             async function _fetchProductData() {
                 try {
+                    const newProducts = await fetchVisibilityCondition(
+                        "products",
+                        "designID",
+                        designID
+                    );
                     /*--------------*/
-                    if (
-                        productList.findIndex(
-                            (product) => product.productID === productID
-                        ) < 0
-                    ) {
-                        const newProducts =
-                            (await fetchVisibilityCondition(
-                                "products",
-                                "designID",
-                                designID
-                            )) || [];
+                    if (newProducts.length > 0) {
+                        const relatedFabricID = newProducts.map((product) => {
+                            return product.fabricID || "";
+                        });
                         /*--------------*/
-                        let relatedProducts = [];
-                        if (fabricList.length > 0) {
-                            relatedProducts =
-                                newProducts.filter(
-                                    (product) =>
-                                        fabricList.findIndex(
-                                            (fabric) =>
-                                                product.fabricID === fabric.id
-                                        ) > -1
-                                ) || [];
-                        } else {
-                            relatedProducts = [...newProducts];
-                        }
-                        const fetchFabricsDataFunctions = relatedProducts.map(
-                            (product) => {
-                                return fetchWithCondition(
-                                    "fabrics",
-                                    "id",
-                                    product.fabricID
-                                );
+                        let fetchedFabrics = await Promise.all(
+                            relatedFabricID.map((id) => {
+                                return fetchWithCondition("fabrics", "id", id);
+                            })
+                        );
+                        fetchedFabrics = fetchedFabrics.flat();
+                        /*--------------*/
+
+                        /*-------UPDATE NEW DATA-------*/
+                        const newRenderFabrics = fetchedFabrics.map(
+                            (fabric) => {
+                                return {
+                                    ...fabric,
+                                    isActive: fabric.id === fabricID,
+                                };
                             }
                         );
-                        const newFabrics = (
-                            await Promise.all(fetchFabricsDataFunctions)
-                        ).flat();
                         /*--------------*/
-                        if (newProducts.length > 0) {
-                            /*--------------*/
-                            const action_updateProductList = updateProductList(
-                                newProducts
-                            );
-                            dispatch(action_updateProductList);
-                        }
-                        if (newFabrics.length > 0) {
-                            const action_updateFabricList = updateFabricList(
-                                newFabrics
-                            );
-                            dispatch(action_updateFabricList);
-                        }
+                        const newFabrics = fetchedFabrics.filter((fabric) => {
+                            const isAvailable =
+                                fabricList.findIndex(
+                                    (item) => item.id === fabric.id
+                                ) >= 0;
+                            return !isAvailable;
+                        });
+                        /*--------------*/
+                        const newRenderProduct =
+                            newProducts.find(
+                                (product) => product.productID === productID
+                            ) || null;
+                        /*--------------*/
+                        const action_updateProductList = updateProductList(
+                            newProducts
+                        );
+                        dispatch(action_updateProductList);
+                        /*--------------*/
+                        const action_updateFabricList = updateFabricList(
+                            newFabrics
+                        );
+                        dispatch(action_updateFabricList);
+                        /*--------------*/
+                        const action_resetRenderFabrics = updateRenderFabrics(
+                            []
+                        );
+                        const action_updateRenderFabrics = updateRenderFabrics(
+                            newRenderFabrics
+                        );
+                        dispatch(action_resetRenderFabrics);
+                        dispatch(action_updateRenderFabrics);
+                        /*--------------*/
+                        const action_updateRenderProduct = updateRenderProduct(
+                            newRenderProduct
+                        );
+                        dispatch(action_updateRenderProduct);
+                        /*--------------*/
                     }
-                    /*--------------*/
-                    const action_updateRenderProduct = updateRenderProduct(
-                        productID
-                    );
-                    dispatch(action_updateRenderProduct);
-                    /*--------------*/
-                    const action_updateRenderFabrics = updateRenderFabrics(
-                        designID,
-                        fabricID
-                    );
-                    dispatch(action_updateRenderFabrics);
-                    /*--------------*/
                     setFetchError(false);
-                    /*--------------*/
                 } catch (error) {
                     setFetchError(true);
                     console.log("error.message :>> ", error.message);
@@ -138,11 +144,77 @@ function SelectionContainer() {
             }
             /*--------------*/
             if (!fetchError) {
-                _fetchProductData();
+                const isProductAvailable =
+                    productList.findIndex(
+                        (product) => product.productID === productID
+                    ) >= 0;
+                const isDesignChange = renderProduct
+                    ? renderProduct.designID !== designID
+                    : true;
+                if (isProductAvailable) {
+                    /*--------------*/
+                    let newRenderFabrics = [];
+                    let newRenderProduct = productList.find(
+                        (product) => product.productID === productID
+                    );
+                    /*--------------*/
+                    if (isDesignChange) {
+                        setIsLoading(true);
+                        /*-------Reset-------*/
+                        const action_updateRenderFabrics = updateRenderFabrics(
+                            []
+                        );
+                        dispatch(action_updateRenderFabrics);
+                        /*--------------*/
+                        productList.forEach((product) => {
+                            if (product.designID === designID) {
+                                /*--------------*/
+                                const fabricInfo = fabricList.find(
+                                    (fabric) => fabric.id === product.fabricID
+                                ) || null;
+                                /*--------------*/
+                                if (fabricInfo) {
+                                    let newRenderFabricItem = {
+                                        ...fabricInfo,
+                                        isActive: fabricInfo.id === fabricID,
+                                    };
+                                    /*--------------*/
+                                    newRenderFabrics.push(newRenderFabricItem);
+                                }
+                            }
+                        });
+                    } else {
+                        newRenderFabrics = renderFabrics.map((fabric) => {
+                            return {
+                                ...fabric,
+                                isActive: fabric.id === fabricID,
+                            };
+                        });
+                    }
+                    /*--------------*/
+                    const action_updateRenderFabrics = updateRenderFabrics(
+                        newRenderFabrics
+                    );
+                    dispatch(action_updateRenderFabrics);
+                    /*--------------*/
+                    const action_updateRenderProduct = updateRenderProduct(
+                        newRenderProduct
+                    );
+                    dispatch(action_updateRenderProduct);
+                    /*--------------*/
+                    setFetchError(false);
+                } else {
+                    setIsLoading(true);
+                    _fetchProductData();
+                }
             }
         }
+        /*--------------*/
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
     }, [productID]);
-    /*--------------*/
+    /*------- Handle bestseller list -------*/
     useEffect(() => {
         if (page === "/selection") {
             async function _fetchDefaultProducts() {
@@ -196,37 +268,42 @@ function SelectionContainer() {
     }, [defaultProductsLength, bestSellerLength]);
     /*--------------*/
     if (!designID || !fabricID) return <Redirect to="/" />;
-    return (
-        <div className="l-selection">
-            <Media queries={{ small: { maxWidth: 768 } }}>
-                {(matches) =>
-                    matches.small ? (
-                        <Fragment>
-                            <NavbarContainer />
-                            <FabricsContainer />
-                            <DesignCarouselContainer />
-                            <InfoContainer />
-                            <DescriptionContainer />
-                            <TopProductsContainer />
-                        </Fragment>
-                    ) : (
-                        <Fragment>
-                            <NavbarContainerDesktop />
-                            <div className="l-selection__fabric-selection-wrapper">
-                                <DesignCarouselContainerDesktop />
-                                <div className="l-selection__info-wrapper">
-                                    <FabricsContainerDesktop />
-                                    <InfoContainerDesktop />
+    /*--------------*/
+    if (isLoading) {
+        return <PageLoader />;
+    } else {
+        return (
+            <div className="l-selection">
+                <Media queries={{ small: { maxWidth: 768 } }}>
+                    {(matches) =>
+                        matches.small ? (
+                            <Fragment>
+                                <NavbarContainer />
+                                <FabricsContainer />
+                                <DesignCarouselContainer />
+                                <InfoContainer />
+                                <DescriptionContainer />
+                                <TopProductsContainer />
+                            </Fragment>
+                        ) : (
+                            <Fragment>
+                                <NavbarContainerDesktop />
+                                <div className="l-selection__fabric-selection-wrapper">
+                                    <DesignCarouselContainerDesktop />
+                                    <div className="l-selection__info-wrapper">
+                                        <FabricsContainerDesktop />
+                                        <InfoContainerDesktop />
+                                    </div>
                                 </div>
-                            </div>
-                            <DescriptionContainer />
-                            <TopProductsContainer />
-                        </Fragment>
-                    )
-                }
-            </Media>
-        </div>
-    );
+                                <DescriptionContainer />
+                                <TopProductsContainer />
+                            </Fragment>
+                        )
+                    }
+                </Media>
+            </div>
+        );
+    }
 }
 
 export default SelectionContainer;

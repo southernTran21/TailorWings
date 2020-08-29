@@ -109,18 +109,17 @@ export const updateFabricList = (fabrics) => {
     };
 };
 
-export const updateRenderProduct = (productID) => {
+export const updateRenderProduct = (product) => {
     return {
         type: "UPDATE_RENDER_PRODUCT",
-        productID,
+        product,
     };
 };
 
-export const updateRenderFabrics = (designID = null, fabricID = null) => {
+export const updateRenderFabrics = (fabrics) => {
     return {
         type: "UPDATE_RENDER_FABRICS",
-        designID,
-        fabricID,
+        fabrics,
     };
 };
 

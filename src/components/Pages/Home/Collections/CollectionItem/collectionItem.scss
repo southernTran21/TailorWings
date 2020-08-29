@@ -18,47 +18,58 @@
         /* Color */
         background-color: $--bg-passive;
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__name {
         /* Display & Box Model */
         /* Color */
-    
+
         /* Text */
         @include font(fontBold, 1.6rem);
         line-height: 100%;
         text-transform: capitalize;
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__desc {
         /* Display & Box Model */
         margin-top: 0.3rem;
         /* Color */
-    
+
         /* Text */
         @include font(fontNormal, 1.4rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__button {
         /* Display & Box Model */
         margin-top: 1.2rem;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
+    }
+}
+
+@media screen and(min-width: 769px) {
+    .c-collection-item {
+        /* Display & Box Model */
+        margin: 0;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        
     }
 }

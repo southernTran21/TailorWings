@@ -18,7 +18,7 @@ function CollectionItem(props) {
         <Link
             to={{
                 pathname: "/designs",
-                search: `?col=${id}`,
+                search: "?cat=all",
             }}
         >
             <div className="c-collection-item">

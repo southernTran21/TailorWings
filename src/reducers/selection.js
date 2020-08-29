@@ -1,3 +1,5 @@
+import { updateCurrentFilter } from "actions";
+
 var initialState = {
     productList: [],
     fabricList: [],
@@ -20,52 +22,27 @@ const selectionReducer = (state = initialState, action) => {
             return { ...state, fabricList: updatedFabricList };
         /****************************************************/
         case "UPDATE_RENDER_PRODUCT":
-            if (!action.productID) return { ...state };
+            if (!action.product) return { ...state };
             /*--------------*/
-            const updatedRenderProduct =
-                state.productList.find(
-                    (product) => product.productID === action.productID
-                ) || null;
-            return { ...state, renderProduct: updatedRenderProduct };
-        /****************************************************/
-        case "UPDATE_RENDER_FABRICS":
-            if (!action.designID || !action.fabricID) return { ...state };
-            if (state.productList.length < 1 || state.fabricList < 1)
-                return { ...state };
+            let currentImage = [...action.product.image];
+            let fabricImage = state.renderFabrics.find(
+                (fabric) => fabric.isActive
+            );
+            fabricImage = fabricImage ? fabricImage.image[0] : "";
             /*--------------*/
-            let renderFabricIDs = [];
-            let modifiedRenderProduct = { ...state.renderProduct };
-            let updatedRenderFabrics = [];
+            currentImage.push(fabricImage);
             /*--------------*/
-            state.productList.forEach((product) => {
-                if (product.designID === action.designID) {
-                    renderFabricIDs.push(product.fabricID);
-                }
-            });
-            /*--------------*/
-            if (renderFabricIDs.length > 0) {
-                renderFabricIDs.forEach((fabricID) => {
-                    let info = state.fabricList.find((item) => {
-                        if (item.id === fabricID) {
-                            return item;
-                        }
-                    });
-                    if (info) {
-                        /*--------------*/
-                        info.isActive = info.id === action.fabricID;
-                        /*--------------*/
-                        if (info.isActive) {
-                            modifiedRenderProduct.image.push(info.image);
-                        }
-                        /*--------------*/
-                        updatedRenderFabrics.push(info);
-                    }
-                });
-            }
+            console.log("currentImage :>> ", currentImage);
             return {
                 ...state,
-                renderFabrics: updatedRenderFabrics,
-                renderProduct: modifiedRenderProduct,
+                renderProduct: { ...action.product, image: currentImage },
+            };
+        /****************************************************/
+        case "UPDATE_RENDER_FABRICS":
+            if (!action.fabrics) return { ...state };
+            return {
+                ...state,
+                renderFabrics: action.fabrics,
             };
         /****************************************************/
         case "UPDATE_SELECTED_PRODUCT":

@@ -31,7 +31,6 @@ function SelectionFabrics(props) {
         slideToClickedSlide: true,
         initialSlide: props.activeIndex,
     };
-
     return (
         <div className="c-selection-fabrics">
             <div className="c-selection-fabrics__pagination">
