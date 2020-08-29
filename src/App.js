@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import "swiper/swiper.scss";
 import "./styles/main.scss";
+import PageLoader from "components/Loader/Page";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -23,7 +24,7 @@ const SizeContainer = React.lazy(() => import("layouts/Size"));
 function App() {
     return (
         <div className="app">
-            <Suspense fallback={<div>Loading ...</div>}>
+            <Suspense fallback={<PageLoader/>}>
                 <Switch>
                     <Route exact path="/" component={HomeContainer} />
                     <Route exact path="/designs" component={DesignsContainer} />
