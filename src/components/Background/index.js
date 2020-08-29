@@ -13,20 +13,21 @@ Background.defaultProps = {
 };
 
 function Background(props) {
+    console.log("props.background :>> ", props.background);
     return (
         <div
             className="c-background"
-            style={{
-                backgroundImage: `url(${
-                    props.background ? props.background : defaultBackground
-                })`,
-            }}
         >
             <img
                 src={backButton}
                 alt="back"
                 className="c-background__button-back"
                 onClick={() => history.goBack()}
+            />
+            <img
+                className="c-background__image"
+                src={props.background ? props.background : defaultBackground}
+                alt="background"
             />
         </div>
     );

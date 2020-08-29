@@ -9,6 +9,10 @@ import { updatePaymentMethod } from "actions";
 const LIMIT = 12;
 
 function FabricsContainer() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
     /*--------------*/
     const [fabricList, setFabricList] = useState(null);
     const [renderFabrics, setRenderFabrics] = useState(null);
@@ -22,10 +26,17 @@ function FabricsContainer() {
                 /*--------------*/
                 if (visibleFabrics.length > 0) {
                     setFabricList(visibleFabrics);
-                    setRenderFabrics({
-                        isMax: false,
-                        fabrics: visibleFabrics.slice(0, LIMIT),
-                    });
+                    if (visibleFabrics.length <= LIMIT) {
+                        setRenderFabrics({
+                            isMax: true,
+                            fabrics: [...visibleFabrics],
+                        });
+                    } else {
+                        setRenderFabrics({
+                            isMax: false,
+                            fabrics: [...visibleFabrics.slice(0, LIMIT)],
+                        });
+                    }
                 }
             } catch (error) {
                 console.log("error :>> ", error);

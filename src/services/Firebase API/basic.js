@@ -70,6 +70,24 @@ export const fetchWithDoubleCondition = (
         });
 };
 
+export const fetchWithTrippleCondition = (collection, condition) => {
+    return database
+        .collection(collection)
+        .where(condition[0].field, "==", condition[0].value)
+        .where(condition[1].field, "==", condition[1].value)
+        .where(condition[2].field, "==", condition[2].value)
+        .get()
+        .then((querySnapshot) => {
+            let result = [];
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                data.id = doc.id;
+                result.push(data);
+            });
+            return result;
+        });
+};
+
 export const fetchVisible = (collection) => {
     return database
         .collection(collection)
