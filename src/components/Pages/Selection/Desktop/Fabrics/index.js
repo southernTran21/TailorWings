@@ -1,22 +1,51 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 FabricDesktop.propTypes = {
-    
+    renderFabrics: PropTypes.array,
+    activeIndex: PropTypes.number,
+    designID: PropTypes.string,
+};
+
+FabricDesktop.defaultProps = {
+    renderFabrics: null,
+    activeIndex: null,
+    designID: null,
 };
 
 function FabricDesktop(props) {
-    const array = new Array(20).fill('0');
+    /*--------------*/
+
+    /*--------------*/
+    if (!props.renderFabrics || props.activeIndex < 0)
+        return <div className="c-fabric-desktop"></div>;
     return (
-        <div className='c-fabric-desktop'>
-            {array.map((result, index) => {
+        <div className="c-fabric-desktop">
+            {props.renderFabrics.map((result, index) => {
+                let search = props.designID
+                    ? `?id=${props.designID}${result.id}`
+                    : "";
                 return (
-                    <div className="c-fabric-desktop-item" key={index}>
-                        <img src="" alt=""/>
-                    </div>
-                )
-            }
-            )}
+                    <Link
+                        to={{
+                            pathname: "/selection",
+                            search: search,
+                        }}
+                    >
+                        <div
+                            className={classNames("c-fabric-desktop-item", {
+                                "c-fabric-desktop-item--active":
+                                    props.activeIndex === index,
+                            })}
+                            key={index}
+                        >
+                            <img src={result.image[0]} alt={result.id} />
+                        </div>
+                    </Link>
+                );
+            })}
         </div>
     );
 }

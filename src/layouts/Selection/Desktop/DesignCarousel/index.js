@@ -1,12 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
 import DesignCarouselDesktop from "components/Pages/Selection/Desktop/DesignCarousel";
-DesignCarouselContainerDesktop.propTypes = {};
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 
-function DesignCarouselContainerDesktop(props) {
+function DesignCarouselContainerDesktop() {
+    /*--------------*/
+    const renderProduct = useSelector((state) => state.selection.renderProduct);
+    /*--------------*/
+    if (!renderProduct) return <Fragment />;
     return (
         <section className="l-selection__design-carousel-desktop">
-            <DesignCarouselDesktop />
+            <DesignCarouselDesktop images={renderProduct.image} id={renderProduct.productID} />
         </section>
     );
 }

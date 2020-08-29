@@ -27,6 +27,7 @@ import TopProductsContainerDesktop from "./Desktop/TopProducts";
 import NavbarContainerDesktop from "./Desktop/Navbar";
 import FabricsContainerDesktop from "./Desktop/Fabrics";
 import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
+import { Redirect } from "react-router-dom";
 
 function SelectionContainer() {
     window.scrollTo({
@@ -36,8 +37,8 @@ function SelectionContainer() {
     /*--------------*/
     const page = window.location.pathname;
     const productID = window.location.search.match(/id=(.*)\b/)[1] || "";
-    const designID = productID.substring(0, 4);
-    const fabricID = productID.substring(4, 8);
+    const designID = productID.substring(0, 4) || null;
+    const fabricID = productID.substring(4, 8) || null;
     /*--------------*/
     const productList = useSelector((state) => state.selection.productList);
     const fabricList = useSelector((state) => state.selection.fabricList);
@@ -194,6 +195,7 @@ function SelectionContainer() {
         }
     }, [defaultProductsLength, bestSellerLength]);
     /*--------------*/
+    if (!designID || !fabricID) return <Redirect to="/" />;
     return (
         <div className="l-selection">
             <Media queries={{ small: { maxWidth: 768 } }}>
@@ -210,9 +212,9 @@ function SelectionContainer() {
                     ) : (
                         <Fragment>
                             <NavbarContainerDesktop />
-                            <div className='l-selection__fabric-selection-wrapper'>
+                            <div className="l-selection__fabric-selection-wrapper">
                                 <DesignCarouselContainerDesktop />
-                                <div className='l-selection__info-wrapper'>
+                                <div className="l-selection__info-wrapper">
                                     <FabricsContainerDesktop />
                                     <InfoContainerDesktop />
                                 </div>
