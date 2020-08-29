@@ -62,17 +62,21 @@ function CartContainer() {
     return (
         <div className="l-cart">
             <NavBarContainer />
-            <ProductsContainer cartList={cartList} />
-            <VoucherContainer />
-            <SummaryContainer
-                totalPrice={modifiedTotalPrice}
-                discountPrice={modifiedDiscountPrice}
-                voucher={voucher}
-            />
-            <FooterContainer
-                finalPrice={modifiedFinalPrice}
-                onConfirm={onConfirm}
-            />
+            <div className="l-cart__section1">
+                <ProductsContainer cartList={cartList} />
+                <div className="l-cart__section2">
+                    <VoucherContainer />
+                    <SummaryContainer
+                        totalPrice={modifiedTotalPrice}
+                        discountPrice={modifiedDiscountPrice}
+                        voucher={voucher}
+                    />
+                    <FooterContainer
+                        finalPrice={modifiedFinalPrice}
+                        onConfirm={onConfirm}
+                    />
+                </div>
+            </div>
         </div>
     );
 }
