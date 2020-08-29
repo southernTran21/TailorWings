@@ -2,6 +2,7 @@
 // @media screen and (max-width): Desktop first
 .l-home {
     background-color: white;
+    min-height: 100vh;
     &__top-products {
         /* Display & Box Model */
         padding: 0 2rem;

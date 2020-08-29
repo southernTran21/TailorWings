@@ -2,7 +2,6 @@
     /* Display & Box Model */
     @include box(100%, 57rem);
     padding: 5rem 0 3.8rem;
-    margin-top: 5rem;
     /* Color */
     background-color: $--bg-active;
     color: $--text-active;
@@ -11,6 +10,17 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
+    &--wrapper {
+        /* Display & Box Model */
+        padding-top: 5rem;
+        /* Color */
+        background-color: #fff;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
     &__option {
         /* Display & Box Model */
         @include flexBox(flex-start, center, column);

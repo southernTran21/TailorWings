@@ -1,6 +1,7 @@
 .l-designs {
     /* Display & Box Model */
     @include box(100%);
+    min-height: 100vh;
     /* Color */
     background-color: #fff;
     /* Text */
