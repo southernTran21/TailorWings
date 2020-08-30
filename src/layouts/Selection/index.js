@@ -1,34 +1,28 @@
 import {
-    updateFabricList,
+    updateBestSeller, updateDefaultProducts, updateFabricList,
     updateProductList,
     updateRenderFabrics,
-    updateRenderProduct,
-    updateDefaultProducts,
-    updateBestSeller,
-    updateSelectedProduct,
+    updateRenderProduct
 } from "actions";
-import React, { useEffect, Fragment, useState } from "react";
+import PageLoader from "components/Loader/Page";
+import React, { Fragment, useEffect, useState } from "react";
+import Media from "react-media";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import {
-    fetchVisibilityCondition,
-    fetchWithCondition,
-    fetchDefaultProducts,
+    fetchDefaultProducts, fetchVisibilityCondition,
+    fetchWithCondition
 } from "services/Firebase API/basic";
+import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
+import FabricsContainerDesktop from "./Desktop/Fabrics";
+import InfoContainerDesktop from "./Desktop/Info";
+import NavbarContainerDesktop from "./Desktop/Navbar";
 import DescriptionContainer from "./Mobile/Description";
 import DesignCarouselContainer from "./Mobile/DesignCarousel";
 import FabricsContainer from "./Mobile/Fabrics";
 import InfoContainer from "./Mobile/Info";
 import NavbarContainer from "./Mobile/Navbar";
 import TopProductsContainer from "./Mobile/TopProducts";
-import Media from "react-media";
-import InfoContainerDesktop from "./Desktop/Info";
-import DescriptionContainerDesktop from "./Desktop/Description";
-import TopProductsContainerDesktop from "./Desktop/TopProducts";
-import NavbarContainerDesktop from "./Desktop/Navbar";
-import FabricsContainerDesktop from "./Desktop/Fabrics";
-import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
-import { Redirect } from "react-router-dom";
-import PageLoader from "components/Loader/Page";
 
 function SelectionContainer() {
     window.scrollTo({

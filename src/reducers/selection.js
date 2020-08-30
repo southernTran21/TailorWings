@@ -32,7 +32,7 @@ const selectionReducer = (state = initialState, action) => {
             /*--------------*/
             currentImage.push(fabricImage);
             /*--------------*/
-            console.log("currentImage :>> ", currentImage);
+
             return {
                 ...state,
                 renderProduct: { ...action.product, image: currentImage },
