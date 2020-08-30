@@ -45,3 +45,37 @@ export const countTotalPrice = (list) => {
     }
 };
 /************_END_****************/
+
+
+/*********************************
+ *  Description: calculate total price of product
+ *
+ *
+ *  Call by: all
+ */
+export const productPriceCalculate = (
+    designPrice,
+    designLength,
+    fabricPrice
+    // productDiscount,
+    // categoryDiscount
+) => {
+    if (!isNaN(designPrice) && !isNaN(designLength) && !isNaN(fabricPrice)) {
+        let price = purePriceCalculate(
+            designPrice,
+            designLength,
+            fabricPrice
+        );
+        return Math.ceil(price/ 1000) * 1000;
+    } else {
+        return 0;
+    }
+};
+
+const purePriceCalculate = (
+    designPrice,
+    designLength,
+    fabricPrice
+) => {
+    return designPrice + (fabricPrice * designLength) / 100 + 400000;
+};

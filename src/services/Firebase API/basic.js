@@ -217,6 +217,9 @@ export const addDocument = (collection, newItem) => {
 };
 
 export const setDocument = (collection, newItem, docName) => {
+    console.log('collection :>> ', collection);
+    console.log('newItem :>> ', newItem);
+    console.log('docName :>> ', docName);
     return database
         .collection(collection)
         .doc(docName)
