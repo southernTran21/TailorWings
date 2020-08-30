@@ -5,6 +5,9 @@ import { Route, Switch } from "react-router-dom";
 import "swiper/swiper.scss";
 import "./styles/main.scss";
 import PageLoader from "components/Loader/Page";
+import TestFix from "layouts/TestFix";
+import Policy from "layouts/Policy";
+import Support from "layouts/Support";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -24,7 +27,7 @@ const SizeContainer = React.lazy(() => import("layouts/Size"));
 function App() {
     return (
         <div className="app">
-            <Suspense fallback={<PageLoader/>}>
+            <Suspense fallback={<PageLoader />}>
                 <Switch>
                     <Route exact path="/" component={HomeContainer} />
                     <Route exact path="/designs" component={DesignsContainer} />
@@ -47,6 +50,9 @@ function App() {
                         path="/order-success"
                         component={OrderSuccessContainer}
                     />
+                    <Route path="/policy" component={Policy} />
+                    <Route path="/support" component={Support} />
+                    <Route path="/test-fix" component={TestFix} />
                     {/* <Route component={NotFound} /> */}
                 </Switch>
                 <Footer />

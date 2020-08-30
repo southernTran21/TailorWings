@@ -1,14 +1,12 @@
-import React, { useEffect, Fragment } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import BodyImageContainer from "./BodyImage";
 import InfoContainer from "./Info";
 import NavbarContainer from "./Navbar";
 import OptionContentContainer from "./OptionContent";
 import OptionsContainer from "./Options";
 import ProductImagesContainer from "./ProductImages";
-import { Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchVisibilityCondition } from "services/Firebase API/basic";
-import { updateSelectedProduct } from "actions";
 
 function SizeContainer() {
     /*--------------*/

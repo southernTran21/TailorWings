@@ -13,13 +13,12 @@
         /* Display & Box Model */
         @include flexBox(flex-start, center, column);
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__image {
         /* Display & Box Model */
@@ -29,23 +28,21 @@
         /* Color */
         background-color: $--bg-passive;
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__quantity {
         /* Display & Box Model */
         margin-top: 1rem;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &--right {
         /* Display & Box Model */
@@ -56,35 +53,33 @@
         /* Color */
         background-color: $--bg-passive;
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__name {
         /* Display & Box Model */
-    
+        padding: 0 1rem;
         /* Color */
-    
+
         /* Text */
         @include font(fontNormal, 1.4rem);
+        text-align: center;
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__price {
         /* Display & Box Model */
-        margin-top: .3rem;
+        margin-top: 0.3rem;
         /* Color */
         color: $--text-passive;
         /* Text */
         @include font(fontBold, 1.6rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__size {
         /* Display & Box Model */
@@ -97,8 +92,7 @@
         /* Text */
         @include font(fontSemiBold, 1.3rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
 }

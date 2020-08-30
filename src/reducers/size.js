@@ -15,7 +15,11 @@ const SIZE = [
     {
         id: "XS",
         image: SIZE_XS,
-        value: [79, 62, 84],
+        value: {
+            chest: 79,
+            waist: 62,
+            hip: 84,
+        },
     },
     {
         id: "S",
@@ -139,7 +143,10 @@ const sizeReducer = (state = initialState, action) => {
         case "UPDATE_CART":
             if (!action.updatedList) return { ...state };
             /*--------------*/
-            window.localStorage.setItem("cart", JSON.stringify(action.updatedList));
+            window.localStorage.setItem(
+                "cart",
+                JSON.stringify(action.updatedList)
+            );
             /*--------------*/
             return { ...state, cartUpdateFlag: !state.cartUpdateFlag };
         /****************************************************/

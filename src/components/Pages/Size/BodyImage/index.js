@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import sizeNull from "../../../../assets/Image/size-null.png";
+import sizeModify from "../../../../assets/Image/size-modify.png";
 
 SizeBodyImage.propTypes = {
     image: PropTypes.string,
 };
 
 SizeBodyImage.defaultProps = {
-    image: sizeNull,
+    image: sizeModify,
 };
 
 function SizeBodyImage(props) {
