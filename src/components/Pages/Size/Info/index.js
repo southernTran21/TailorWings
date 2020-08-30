@@ -26,7 +26,7 @@ function SizeInfo(props) {
     return (
         <div className="c-size-info">
             <div className="c-size-info--left">
-                <span className="c-size-info__name">{name}</span>
+                <p className="c-size-info__name">{name}</p>
                 <PriceTag price={modifiedPrice} />
             </div>
             <div className="c-size-info--right">
