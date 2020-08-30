@@ -5,20 +5,23 @@ import ButtonBack from "../../../assets/Icon/back-button.svg";
 import Search from "antd/lib/input/Search";
 import { history } from "services/CommonParameter";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 NavbarSelection.propTypes = {
     text: PropTypes.string,
+    backLink: PropTypes.object,
 };
 
 NavbarSelection.defaultProps = {
     text: null,
+    backLink: null,
 };
 
 function NavbarSelection(props) {
     /*--------------*/
     const addNewFlag = useSelector((state) => state.size.addNewFlag);
     /*--------------*/
-    const [ quantity, setQuantity ] = useState(0);
+    const [quantity, setQuantity] = useState(0);
     /*--------------*/
     useEffect(() => {
         /*--------------*/
@@ -29,19 +32,46 @@ function NavbarSelection(props) {
     }, [addNewFlag]);
     /*--------------*/
     if (!props.text) return <Fragment />;
-    return (
-        <div className="c-navbar-selection">
-            <div className="c-navbar-selection__back" onClick={() => history.goBack()}>
-                <img src={ButtonBack} alt="button-back-icon" />
+    if (props.backLink) {
+        const { pathname, search } = props.backLink;
+        return (
+            <div className="c-navbar-selection">
+                <Link
+                    to={{
+                        pathname: pathname,
+                        search: search,
+                    }}
+                >
+                    <div className="c-navbar-selection__back">
+                        <img src={ButtonBack} alt="button-back-icon" />
+                    </div>
+                </Link>
+                <div className="c-navbar-selection__title">
+                    <span>{props.text}</span>
+                </div>
+                <div className="c-navbar-selection__info">
+                    <CartInfo quantity={quantity} />
+                </div>
             </div>
-            <div className="c-navbar-selection__title">
-                <span>{props.text}</span>
+        );
+    } else {
+        return (
+            <div className="c-navbar-selection">
+                <div
+                    className="c-navbar-selection__back"
+                    onClick={() => history.goBack()}
+                >
+                    <img src={ButtonBack} alt="button-back-icon" />
+                </div>
+                <div className="c-navbar-selection__title">
+                    <span>{props.text}</span>
+                </div>
+                <div className="c-navbar-selection__info">
+                    <CartInfo quantity={quantity} />
+                </div>
             </div>
-            <div className="c-navbar-selection__info">
-                <CartInfo quantity={quantity}/>
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default NavbarSelection;

@@ -31,23 +31,25 @@
         /* Positioning */
 
         /* Others: transition & animations, ... */
+
+        a:nth-child(1) {
+            margin-bottom: 2.3rem;
+        }
+        a:nth-child(2) {
+            margin-bottom: 2.3rem;
+        }
     }
     &__title {
         /* Display & Box Model */
-        /* Color */
 
+        /* Color */
+        color: $--text-active;
         /* Text */
         @include font(fontBold, 1.6rem);
         text-transform: capitalize;
         /* Positioning */
 
         /* Others: transition & animations, ... */
-        &:nth-child(2) {
-            margin-top: 2.3rem;
-        }
-        &:nth-child(3) {
-            margin-top: 2.3rem;
-        }
     }
     &__social-icon {
         /* Display & Box Model */

@@ -1,8 +1,10 @@
 import {
-    updateBestSeller, updateDefaultProducts, updateFabricList,
+    updateBestSeller,
+    updateDefaultProducts,
+    updateFabricList,
     updateProductList,
     updateRenderFabrics,
-    updateRenderProduct
+    updateRenderProduct,
 } from "actions";
 import PageLoader from "components/Loader/Page";
 import React, { Fragment, useEffect, useState } from "react";
@@ -10,8 +12,9 @@ import Media from "react-media";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import {
-    fetchDefaultProducts, fetchVisibilityCondition,
-    fetchWithCondition
+    fetchDefaultProducts,
+    fetchVisibilityCondition,
+    fetchWithCondition,
 } from "services/Firebase API/basic";
 import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
 import FabricsContainerDesktop from "./Desktop/Fabrics";
@@ -39,7 +42,6 @@ function SelectionContainer() {
     const fabricList = useSelector((state) => state.selection.fabricList);
     const renderProduct = useSelector((state) => state.selection.renderProduct);
     const renderFabrics = useSelector((state) => state.selection.renderFabrics);
-    const selection = useSelector((state) => state.selection);
     /*--------------*/
     const defaultProductsLength = useSelector(
         (state) => state.common.defaultProducts.length
@@ -163,9 +165,11 @@ function SelectionContainer() {
                         productList.forEach((product) => {
                             if (product.designID === designID) {
                                 /*--------------*/
-                                const fabricInfo = fabricList.find(
-                                    (fabric) => fabric.id === product.fabricID
-                                ) || null;
+                                const fabricInfo =
+                                    fabricList.find(
+                                        (fabric) =>
+                                            fabric.id === product.fabricID
+                                    ) || null;
                                 /*--------------*/
                                 if (fabricInfo) {
                                     let newRenderFabricItem = {
@@ -206,7 +210,7 @@ function SelectionContainer() {
         /*--------------*/
         setTimeout(() => {
             setIsLoading(false);
-        }, 2000);
+        }, 1000);
     }, [productID]);
     /*------- Handle bestseller list -------*/
     useEffect(() => {
@@ -262,6 +266,7 @@ function SelectionContainer() {
     }, [defaultProductsLength, bestSellerLength]);
     /*--------------*/
     if (!designID || !fabricID) return <Redirect to="/" />;
+    if (!renderProduct) return <Redirect to="/designs?cat=all" />;
     /*--------------*/
     if (isLoading) {
         return <PageLoader />;
