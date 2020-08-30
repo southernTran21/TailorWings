@@ -1,0 +1,104 @@
+.l-support {
+    /* Display & Box Model */
+    /* Color */
+    background-color: #fff;
+    color: $--text-default;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+    &__title-header {
+        /* Display & Box Model */
+        margin-top: 2rem;
+        padding: 0 2rem;
+        /* Color */
+
+        /* Text */
+        @include font(fontBold, 2.4rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__collapse {
+        padding: 0 2rem;
+        margin-top: 3rem;
+    }
+    hr {
+        margin: 0 2rem;
+        margin-top: 3rem;
+        border: none;
+        border-top: 1.5px solid $--primary-color;
+    }
+    .ant-collapse {
+        border: none;
+        color: $--text-default;
+    }
+    .ant-collapse-item {
+        border: none;
+    }
+    .ant-collapse > .ant-collapse-item {
+        border: none;
+    }
+    .ant-collapse-header {
+        background-color: #fff;
+        @include font(fontBold, 1.6rem);
+    }
+    .ant-collapse-icon-position-right
+        > .ant-collapse-item
+        > .ant-collapse-header {
+        padding: 1rem 0;
+        padding-right: 3rem;
+    }
+    .ant-collapse-content > .ant-collapse-content-box {
+        padding: 0.7rem;
+        padding-right: 1.6rem;
+        padding-left: 0;
+    }
+    .ant-collapse-content {
+        border-top: none;
+        color: $--text-default;
+        font-size: 1.4rem;
+    }
+}
+@media screen and (min-width: 769px) {
+    .l-support {
+        /* Display & Box Model */
+        max-width: 128rem;
+        height: auto;
+        margin: 0 auto;
+        min-height: 0;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        &__title-header {
+            padding: 0 7rem;
+        }
+        &__content-header {
+            padding: 0 7rem;
+        }
+        hr {
+            margin: 0 7rem;
+            margin-top: 3rem;
+        }
+        &__collapse {
+            padding: 0 7rem;
+        }
+        &__title-content {
+            font-size: 2rem;
+        }
+        &__desc {
+            font-size: 1.6rem;
+        }
+        .ant-collapse-header {
+            font-size: 1.8rem;
+        }
+        .ant-collapse-content {
+            font-size: 1.6rem;
+        }
+    }
+}
