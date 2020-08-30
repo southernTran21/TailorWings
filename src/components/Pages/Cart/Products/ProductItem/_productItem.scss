@@ -64,11 +64,12 @@
     }
     &__name {
         /* Display & Box Model */
-    
+        width: 15rem;
         /* Color */
     
         /* Text */
         @include font(fontNormal, 1.4rem);
+        text-align: center;
         /* Positioning */
     
         /* Others: transition & animations, ... */

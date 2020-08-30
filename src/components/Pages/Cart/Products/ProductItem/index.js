@@ -57,7 +57,7 @@ function ProductItem(props) {
                 </div>
             </div>
             <div className="c-cart-product-item--right">
-                <span className="c-cart-product-item__name">{name}</span>
+                <p className="c-cart-product-item__name">{name}</p>
                 <span className="c-cart-product-item__price">
                     {modifiedPrice} VNĐ
                 </span>

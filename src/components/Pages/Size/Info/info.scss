@@ -64,9 +64,10 @@
 @media screen and (min-width: 769px) {
     .c-size-info {
         /* Display & Box Model */
-        @include flexBox();
+        @include flexBox(space-between, flex-end);
         flex-direction: row-reverse;
         padding: 0;
+        @include box(41.4rem, auto);
         /* Color */
         /* Text */
     
@@ -76,7 +77,7 @@
         &--left {
             /* Display & Box Model */
             @include flexBox(flex-start, flex-end, column);
-            width: auto;
+            width: 28rem;
             /* Color */
         
             /* Text */
@@ -89,10 +90,12 @@
         &__name {
             /* Display & Box Model */
             margin-bottom: 1.5rem;
+            width: 27rem;
             /* Color */
             color: $--text-default;
             /* Text */
             font-size: 2rem;
+            text-align: right;
             /* Positioning */
         
             /* Others: transition & animations, ... */
@@ -102,7 +105,7 @@
             /* Display & Box Model */
             width: auto;
             height: 7.1rem;
-            margin-right: 12.2rem;
+            // margin-right: 12.2rem;
             /* Color */
         
             /* Text */

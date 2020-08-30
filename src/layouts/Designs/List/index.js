@@ -2,6 +2,7 @@ import { updateRenderDesigns } from "actions";
 import Designs from "components/Designs";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ListLoader from "components/Loader/List";
 
 function ListContainer() {
     /*--------------*/
@@ -32,7 +33,7 @@ function ListContainer() {
     /************_END_****************/
 
     if (!renderDesigns) return <Fragment />;
-    if (isListLoading) return <div className="">loading</div>;
+    if (isListLoading) return <ListLoader/>;
     /*--------------*/
     let updatedLinkInfo = renderDesigns.designs.map((design) => {
         let linkInfo = {
