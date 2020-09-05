@@ -2,21 +2,25 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import Quantity from "components/Quantity";
 import { modifyPrice } from "services/CommonFunctions";
+import { Popconfirm } from "antd";
 
 ProductItem.propTypes = {
     product: PropTypes.object,
     onProductUpdate: PropTypes.func,
     index: PropTypes.number,
+    onDelete: PropTypes.func,
 };
 
 ProductItem.defaultProps = {
     product: null,
     onProductUpdate: null,
     index: null,
+    onDelete: null,
 };
 
 function ProductItem(props) {
-    if (!props.product || !props.onProductUpdate) return <Fragment />;
+    if (!props.product || !props.onProductUpdate || !props.onDelete)
+        return <Fragment />;
     /*********************************
      *  Description: handle quantity changing
      *
@@ -57,16 +61,28 @@ function ProductItem(props) {
                 </div>
             </div>
             <div className="c-cart-product-item--right">
-                <p className="c-cart-product-item__name">{name}</p>
-                <span className="c-cart-product-item__price">
-                    {modifiedPrice} VNĐ
-                </span>
-                <div className="c-cart-product-item__size">
-                    <span>
-                        Size: {modifiedSize} {bodyMetric.chest} /{" "}
-                        {bodyMetric.waist} / {bodyMetric.hip}
+                <div className="c-cart-product-item__info">
+                    <p className="c-cart-product-item__name">{name}</p>
+                    <span className="c-cart-product-item__price">
+                        {modifiedPrice} VNĐ
                     </span>
+                    <div className="c-cart-product-item__size">
+                        <span>
+                            Size: {bodyMetric.chest} / {bodyMetric.waist} /{" "}
+                            {bodyMetric.hip}
+                        </span>
+                    </div>
                 </div>
+                <Popconfirm
+                    title="Bạn có muốn xóa sản phẩm này không?"
+                    onConfirm={() => props.onDelete(props.index)}
+                    okText="Đồng ý"
+                    cancelText="Không"
+                >
+                    <a>
+                        <i class="fas fa-times" />
+                    </a>
+                </Popconfirm>
             </div>
         </div>
     );

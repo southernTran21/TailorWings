@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import ProductItem from "./ProductItem";
 import { countTotalQuantity } from "services/CommonFunctions";
-import { updateCart } from "actions";
+import { updateCart, deleteCartProduct } from "actions";
 import { useDispatch } from "react-redux";
 
 Products.propTypes = {
@@ -43,6 +43,26 @@ function Products(props) {
         }
     }
     /************_END_****************/
+
+    /*********************************
+     *  Description: handle delete item
+     *
+     *
+     *  Call by:
+     */
+    function onDelete(deletedIndex) {
+        /*--------------*/
+        let updatedList = [...props.productList];
+        if (deletedIndex > -1 && deletedIndex <= updatedList.length) {
+            updatedList.splice(deletedIndex, 1);
+            /*--------------*/
+            window.localStorage.setItem("cart", JSON.stringify(updatedList));
+            /*--------------*/
+            const action_deleteCartProduct = deleteCartProduct();
+            dispatch(action_deleteCartProduct);
+        }
+    }
+    /************_END_****************/
     return (
         <div className="c-cart-products">
             <h2 className="c-cart-products__title">{totalQuantity} Sản Phẩm</h2>
@@ -54,6 +74,7 @@ function Products(props) {
                             product={product}
                             index={index}
                             onProductUpdate={onProductUpdate}
+                            onDelete={onDelete}
                         />
                     );
                 })}

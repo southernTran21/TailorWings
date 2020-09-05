@@ -47,9 +47,29 @@
     &--right {
         /* Display & Box Model */
         @include flexBox(center, center, column);
+        // @include box(17.2rem, 12.5rem);
+        // border-radius: 0px 2rem 2rem 0px;
+        padding-top: 3.8rem;
+        /* Color */
+        // background-color: $--bg-passive;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & i {
+            margin-top: 1rem;
+            font-size: 1.8rem;
+            color: $--gray1-color;
+            cursor: pointer;
+        }
+    }
+    &__info {
+        /* Display & Box Model */
+        @include flexBox(center, center, column);
         @include box(17.2rem, 12.5rem);
         border-radius: 0px 2rem 2rem 0px;
-        margin-top: 3.8rem;
         /* Color */
         background-color: $--bg-passive;
         /* Text */

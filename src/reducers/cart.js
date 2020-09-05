@@ -5,6 +5,7 @@ var initialState = {
     shippingInfo: null,
     isNotValidInfo: true,
     paymentMethod: 1,
+    isCartDeleted: false,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -55,6 +56,10 @@ const cartReducer = (state = initialState, action) => {
             if (!action.paymentMethod) return { ...state };
             /*--------------*/
             return { ...state, paymentMethod: action.paymentMethod };
+        /****************************************************/
+        case "DELETE_CART_PRODUCT":
+            /*--------------*/
+            return { ...state, isCartDeleted: !state.isCartDeleted };
         /****************************************************/
         case "RESET_CART_STATE":
             /*--------------*/

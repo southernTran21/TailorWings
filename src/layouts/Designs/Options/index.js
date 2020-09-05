@@ -2,6 +2,7 @@ import {
     setListLoading,
     updateCurrentFilter,
     updateFilteredDesigns,
+    updateSRC,
 } from "actions";
 import Options from "components/Options";
 import React, { useEffect, useState } from "react";
@@ -64,6 +65,12 @@ function OptionsContainer() {
         /*--------------*/
         const action_updateCurrentFilter = updateCurrentFilter(catID);
         dispatch(action_updateCurrentFilter);
+        /*--------------*/
+        const action_updateSrc = updateSRC({
+            pathname: "/designs",
+            search: `?cat=${catID}`,
+        });
+        dispatch(action_updateSrc);
         /*--------------*/
         setTimeout(() => {
             const action_setListLoading = setListLoading(false);

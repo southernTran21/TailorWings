@@ -16,7 +16,7 @@ DesignerBackground.defaultProps = {
 function DesignerBackground(props) {
     return (
         <div className="c-designer-background">
-            <Background background={props.background}/>
+            <Background background={props.background} />
             <div className="c-designer-background__avatar">
                 <Avatar image={props.avatar} />
             </div>

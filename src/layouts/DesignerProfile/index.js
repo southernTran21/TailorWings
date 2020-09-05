@@ -1,11 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchDocument } from "../../services/Firebase API/basic";
 import BackgroundContainer from "./Background";
 import DesignListContainer from "./DesignList";
 import InfoContainer from "./Info";
 import OptionsContainer from "./Options";
+import { updateSRC } from "actions";
 
 const FILTER_INFO = [
     { id: "all", name: "Tất Cả", isActive: true },
@@ -21,11 +22,14 @@ function DesignerProfileContainer() {
     const defaultProducts = useSelector(
         (state) => state.common.defaultProducts
     );
+    const selectionSrc = useSelector((state) => state.selection.src);
     /*--------------*/
     const [designerInfo, setDesignerInfo] = useState(null);
     const [allRelatedDesigns, setAllRelatedDesigns] = useState(null);
     const [renderDesigns, setRenderDesigns] = useState(null);
     const [filterInfo, setFilterInfo] = useState(FILTER_INFO);
+    /*--------------*/
+    const dispatch = useDispatch();
     /*--------------*/
     useEffect(() => {
         window.scrollTo({
@@ -65,6 +69,13 @@ function DesignerProfileContainer() {
         /*--------------*/
         if (designerID && defaultProducts.length > 0) {
             _fetchDesignerInfo();
+        }
+        if (selectionSrc.pathname !== "/designer-profile") {
+            const action_updateSrc = updateSRC({
+                pathname: "/designer-profile",
+                search: `?id=${designerID}`,
+            });
+            dispatch(action_updateSrc);
         }
     }, [designerID]);
     /*--------------*/

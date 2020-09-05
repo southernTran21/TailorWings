@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FabricDetailBackground from "../../../components/Background/index";
+import FabricDetailBackground from "../../../components/Pages/FabricDetail/Background";
 
 BackgroundContainer.propTypes = {
     background: PropTypes.string,

@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import CartInfo from "components/CartInfo";
-import ButtonBack from "../../../assets/Icon/back-button.svg";
-import Search from "antd/lib/input/Search";
-import { history } from "services/CommonParameter";
+import PropTypes from "prop-types";
+import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { history } from "services/CommonParameter";
+import ButtonBack from "../../../assets/Icon/back-button.svg";
 
 NavbarSelection.propTypes = {
     text: PropTypes.string,
@@ -20,6 +19,7 @@ NavbarSelection.defaultProps = {
 function NavbarSelection(props) {
     /*--------------*/
     const addNewFlag = useSelector((state) => state.size.addNewFlag);
+    const isCartDeleted = useSelector((state) => state.cart.isCartDeleted);
     /*--------------*/
     const [quantity, setQuantity] = useState(0);
     /*--------------*/
@@ -29,7 +29,7 @@ function NavbarSelection(props) {
         /*--------------*/
         setQuantity(cartList.length);
         /*--------------*/
-    }, [addNewFlag]);
+    }, [addNewFlag, isCartDeleted]);
     /*--------------*/
     if (!props.text) return <Fragment />;
     if (props.backLink) {

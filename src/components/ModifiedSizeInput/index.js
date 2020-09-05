@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { updateBodyMetric } from "actions";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
+import NumberFormat from "react-number-format";
 
 const INPUT_LIMIT = 3;
 
@@ -12,7 +13,7 @@ ModifiedSizeInput.propTypes = {
 };
 
 ModifiedSizeInput.defaultProps = {
-    bodyMetric: { chest: 0, waist: 0, hip: 0 },
+    bodyMetric: { chest: "", waist: "", hip: "" },
     onBodyMetricChange: null,
 };
 
@@ -54,12 +55,12 @@ function ModifiedSizeInput(props) {
             <label className="c-size-modified__item" for="first">
                 <span className="c-size-modified__text">Ngực</span>
                 <div className="c-size-modified__input-wrapper">
-                    <input
-                        className="c-size-modified__input"
-                        type="number"
+                    <NumberFormat
                         id="chest"
                         name="chest"
                         value={props.bodyMetric.chest}
+                        className="c-size-modified__input"
+                        format="###"
                         onChange={onInputChange}
                     />
                     <span className="c-size-modified__text">cm</span>
@@ -68,12 +69,12 @@ function ModifiedSizeInput(props) {
             <label className="c-size-modified__item" for="second">
                 <span className="c-size-modified__text">Eo</span>
                 <div className="c-size-modified__input-wrapper">
-                    <input
-                        className="c-size-modified__input"
-                        type="number"
+                    <NumberFormat
                         id="waist"
                         name="waist"
                         value={props.bodyMetric.waist}
+                        className="c-size-modified__input"
+                        format="###"
                         onChange={onInputChange}
                     />
                     <span className="c-size-modified__text">cm</span>
@@ -82,12 +83,12 @@ function ModifiedSizeInput(props) {
             <label className="c-size-modified__item" for="third">
                 <span className="c-size-modified__text">Mông</span>
                 <div className="c-size-modified__input-wrapper">
-                    <input
-                        className="c-size-modified__input"
-                        type="number"
+                    <NumberFormat
                         id="hip"
                         name="hip"
                         value={props.bodyMetric.hip}
+                        className="c-size-modified__input"
+                        format="###"
                         onChange={onInputChange}
                     />
                     <span className="c-size-modified__text">cm</span>

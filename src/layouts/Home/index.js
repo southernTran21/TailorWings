@@ -3,6 +3,7 @@ import {
     updateDesigners,
     updateProducts,
     updateDefaultProducts,
+    updateSRC,
 } from "actions";
 import { BackTop } from "antd";
 import React, { useEffect, useState } from "react";
@@ -38,6 +39,7 @@ function HomeContainer() {
     const bestSellerLength = useSelector(
         (state) => state.common.bestSeller.length
     );
+    const selectionSrc = useSelector((state) => state.selection.src);
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
@@ -108,6 +110,13 @@ function HomeContainer() {
             }
             if (bestSellerLength < 1 && defaultProductsLength > 0) {
                 _fetchBestSeller();
+            }
+            if (selectionSrc.pathname !== "/") {
+                const action_updateSrc = updateSRC({
+                    pathname: "/",
+                    search: "",
+                });
+                dispatch(action_updateSrc);
             }
         }
     }, [defaultProductsLength, bestSellerLength, designersLength]);

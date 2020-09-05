@@ -12,6 +12,7 @@ function CartContainer() {
     /*--------------*/
     const voucher = useSelector((state) => state.cart.voucher);
     const cartUpdateFlag = useSelector((state) => state.size.cartUpdateFlag);
+    const isCartDeleted = useSelector((state) => state.cart.isCartDeleted);
     /*--------------*/
     /*--------------*/
     const [cartList, setCartList] = useState(
@@ -31,7 +32,7 @@ function CartContainer() {
         if (newCartList) {
             setCartList(newCartList);
         }
-    }, [cartUpdateFlag]);
+    }, [cartUpdateFlag, isCartDeleted]);
     /*--------------*/
 
     if (!cartList) return <Fragment />;

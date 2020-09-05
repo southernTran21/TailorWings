@@ -2,15 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import NavbarSelection from "components/Navbar/NavbarSelection";
 
-NavbarContainerDesktop.propTypes = {};
+NavbarContainerDesktop.propTypes = {
+    selectionSrc: PropTypes.object,
+};
+
+NavbarContainerDesktop.defaultProps = {
+    selectionSrc: { pathname: "/", search: "" },
+};
 
 function NavbarContainerDesktop(props) {
     return (
         <section className="l-selection__navbar-desktop">
-            <NavbarSelection
-                text="CHỌN VẢI"
-                backLink={{ pathname: "/designs", search: "?cat=all" }}
-            />
+            <NavbarSelection text="CHỌN VẢI" backLink={props.selectionSrc} />
         </section>
     );
 }

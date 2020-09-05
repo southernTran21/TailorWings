@@ -33,7 +33,7 @@ function ListContainer() {
     /************_END_****************/
 
     if (!renderDesigns) return <Fragment />;
-    if (isListLoading) return <ListLoader/>;
+    if (isListLoading) return <ListLoader />;
     /*--------------*/
     let updatedLinkInfo = renderDesigns.designs.map((design) => {
         let linkInfo = {

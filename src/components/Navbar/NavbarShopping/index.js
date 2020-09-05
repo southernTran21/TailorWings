@@ -19,6 +19,7 @@ function NavbarShopping() {
     const [quantity, setQuantity] = useState(0);
     /*--------------*/
     const addNewFlag = useSelector((state) => state.size.addNewFlag);
+    const isCartDeleted = useSelector((state) => state.cart.isCartDeleted);
     /*--------------*/
     useEffect(() => {
         /*--------------*/
@@ -26,7 +27,7 @@ function NavbarShopping() {
         /*--------------*/
         setQuantity(cartList.length);
         /*--------------*/
-    }, [addNewFlag]);
+    }, [addNewFlag, isCartDeleted]);
     /*********************************
      *  Description: handle updating isSidebar state to be false
      *

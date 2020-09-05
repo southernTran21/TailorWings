@@ -6,6 +6,7 @@ var initialState = {
     renderProduct: null,
     renderFabrics: [],
     selectedProduct: null,
+    src: { pathname: "/", search: "" },
 };
 
 const selectionReducer = (state = initialState, action) => {
@@ -49,6 +50,10 @@ const selectionReducer = (state = initialState, action) => {
             if (!action.info) return { ...state };
             let selectedProduct = { ...state.selectedProduct, ...action.info };
             return { ...state, selectedProduct: selectedProduct };
+        /****************************************************/
+        case "UPDATE_SRC":
+            if (!action.src) return { ...state };
+            return { ...state, src: action.src };
         /****************************************************/
         default:
             return { ...state };

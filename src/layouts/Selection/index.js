@@ -34,7 +34,8 @@ function SelectionContainer() {
     });
     /*--------------*/
     const page = window.location.pathname;
-    const productID = window.location.search.match(/id=(.*)\b/)[1] || "";
+    const urlSearch = window.location.search.match(/id=(.*)\b/);
+    const productID = urlSearch ? urlSearch[1] : "";
     const designID = productID.substring(0, 4) || null;
     const fabricID = productID.substring(4, 8) || null;
     /*--------------*/
@@ -49,6 +50,7 @@ function SelectionContainer() {
     const bestSellerLength = useSelector(
         (state) => state.common.bestSeller.length
     );
+    const selectionSrc = useSelector((state) => state.selection.src);
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
@@ -135,7 +137,6 @@ function SelectionContainer() {
                     setFetchError(false);
                 } catch (error) {
                     setFetchError(true);
-                    console.log("error.message :>> ", error.message);
                 }
             }
             /*--------------*/
@@ -228,7 +229,6 @@ function SelectionContainer() {
                     setFetchError(false);
                 } catch (error) {
                     setFetchError(true);
-                    console.log("error.message :>> ", error.message);
                 }
             }
             /*--------------*/
@@ -249,7 +249,6 @@ function SelectionContainer() {
                     }
                     setFetchError(false);
                 } catch (error) {
-                    console.log("error.message :>> ", error.message);
                     setFetchError(true);
                 }
             }
@@ -265,9 +264,9 @@ function SelectionContainer() {
         }
     }, [defaultProductsLength, bestSellerLength]);
     /*--------------*/
-    if (!designID || !fabricID) return <Redirect to="/" />;
-    if (!renderProduct) return <Redirect to="/designs?cat=all" />;
+    if (!productID || !designID || !fabricID) return <Redirect to="/" />;
     /*--------------*/
+
     if (isLoading) {
         return <PageLoader />;
     } else {
@@ -277,7 +276,7 @@ function SelectionContainer() {
                     {(matches) =>
                         matches.small ? (
                             <Fragment>
-                                <NavbarContainer />
+                                <NavbarContainer selectionSrc={selectionSrc} />
                                 <FabricsContainer />
                                 <DesignCarouselContainer />
                                 <InfoContainer />
@@ -286,7 +285,9 @@ function SelectionContainer() {
                             </Fragment>
                         ) : (
                             <Fragment>
-                                <NavbarContainerDesktop />
+                                <NavbarContainerDesktop
+                                    selectionSrc={selectionSrc}
+                                />
                                 <div className="l-selection__fabric-selection-wrapper">
                                     <DesignCarouselContainerDesktop />
                                     <div className="l-selection__info-wrapper">

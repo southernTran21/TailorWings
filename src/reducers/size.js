@@ -77,9 +77,9 @@ var initialState = {
         value: null,
     },
     bodyMetric: {
-        chest: 0,
-        waist: 0,
-        hip: 0,
+        chest: "",
+        waist: "",
+        hip: "",
     },
     addNewFlag: false,
     cartUpdateFlag: false,

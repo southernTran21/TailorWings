@@ -28,8 +28,7 @@ function ProductImagesContainer() {
             Object.values(bodyMetric).indexOf(0) < 0 &&
             Object.values(bodyMetric).indexOf("") < 0;
         const isSizeSelected = size.id !== "modify";
-        console.log('isBodyMetricFullFilled :>> ', isBodyMetricFullFilled);
-        console.log('isSizeSelected :>> ', isSizeSelected);
+
         if (isBodyMetricFullFilled || isSizeSelected) {
             /*--------------*/
             const action_addToCart = addToCart(selectedProduct);

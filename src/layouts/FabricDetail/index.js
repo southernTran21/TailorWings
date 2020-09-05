@@ -9,6 +9,8 @@ import {
     fetchWithDoubleCondition,
 } from "services/Firebase API/basic";
 import { Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { updateSRC } from "actions";
 
 const LIMIT = 12;
 
@@ -20,6 +22,10 @@ function FabricDetailContainer() {
     /*--------------*/
     let urlSearch = window.location.search.match(/id=(.*)\b/);
     const fabricID = urlSearch ? urlSearch[1] : null;
+    /*--------------*/
+    const selectionSrc = useSelector((state) => state.selection.src);
+    /*--------------*/
+    const dispatch = useDispatch();
     /*--------------*/
     const [relatedProducts, setRelatedProducts] = useState(null);
     const [renderProducts, setRenderProducts] = useState(null);
@@ -65,6 +71,13 @@ function FabricDetailContainer() {
         /*--------------*/
         if (fabricID) {
             _fetchFaricDetail();
+        }
+        if (selectionSrc.pathname !== "/fabric-detail") {
+            const action_updateSrc = updateSRC({
+                pathname: "/fabric-detail",
+                search: `?id=${fabricID}`,
+            });
+            dispatch(action_updateSrc);
         }
         /*--------------*/
     }, [fabricID]);

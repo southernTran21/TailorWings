@@ -130,6 +130,12 @@ export const updateSelectedProduct = (info) => {
     };
 };
 
+export const updateSRC = (src) => {
+    return {
+        type: "UPDATE_SRC",
+        src,
+    };
+};
 /**
  * This is for Size page
  */
@@ -211,5 +217,11 @@ export const updatePaymentMethod = (paymentMethod) => {
 export const resetCartState = () => {
     return {
         type: "RESET_CART_STATE",
+    };
+};
+
+export const deleteCartProduct = () => {
+    return {
+        type: "DELETE_CART_PRODUCT",
     };
 };
