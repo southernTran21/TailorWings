@@ -8,6 +8,7 @@ import PageLoader from "components/Loader/Page";
 import TestFix from "layouts/TestFix";
 import Policy from "layouts/Policy";
 import Support from "layouts/Support";
+import ReadExcel from "layouts/TestReadExcel";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -53,6 +54,7 @@ function App() {
                     <Route path="/policy" component={Policy} />
                     <Route path="/support" component={Support} />
                     <Route path="/test-fix" component={TestFix} />
+                    <Route path="/test-excel" component={ReadExcel} />
                     {/* <Route component={NotFound} /> */}
                 </Switch>
                 <Footer />
