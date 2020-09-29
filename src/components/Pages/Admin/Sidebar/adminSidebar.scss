@@ -1,9 +1,9 @@
 .c-admin-sidebar {
     /* Display & Box Model */
-    @include box(22.5rem, 100%);
+    @include box(30rem, 72rem);
     @include flexBox(flex-start, center, column);
+    padding: 0 2.8rem;
     min-height: 100vh;
-    border-radius: 0 1.5rem 1.5rem 0;
     /* Color */
     background-color: $--bg-default;
     /* Text */
@@ -14,23 +14,8 @@
 
     &__icon {
         /* Display & Box Model */
-        @include box(9rem, 5rem);
+        @include box(16.1rem, auto);
         margin-top: 4rem;
-        /* Color */
-
-        /* Text */
-
-        /* Positioning */
-
-        /* Others: transition & animations, ... */
-    }
-
-    & hr {
-        /* Display & Box Model */
-        margin: 3.5rem 0;
-        border: none;
-        border-top: 1px solid $--border-blur2;
-        @include box(100%, auto);
         /* Color */
 
         /* Text */
@@ -43,11 +28,12 @@
     &__list {
         /* Display & Box Model */
         @include flexBox(flex-start, center, column);
-        @include box(100%, auto); 
-        padding: 0 4rem;
-        margin-bottom: -2rem;
+        @include box(100%, auto);
+        margin-top: 3rem;
+        border-radius: 30px;
+        padding: 4rem 2rem;
         /* Color */
-
+        background-color: $--bg-active;
         /* Text */
 
         /* Positioning */
@@ -55,25 +41,32 @@
         /* Others: transition & animations, ... */
     }
 
+    a:hover {
+        background-color: $--bg-default;
+        color: $--text-passive;
+        border-radius: 1rem;
+    }
+
     &__item {
         /* Display & Box Model */
         @include box(100%, auto);
         padding: 1.5rem 0;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 1rem;
         /* Color */
-        color: $--text-blur;
+        color: $--text-active;
         /* Text */
-        @include font(fontBold, 1.3rem);
+        font-size: 1.6rem;
         text-align: center;
         /* Positioning */
 
         /* Others: transition & animations, ... */
-
+        transition: 0.25s ease-in-out;
         &--active {
             /* Display & Box Model */
             border-radius: 1rem;
             /* Color */
-            background-color: $--bg-passive;
+            background-color: $--bg-default;
             color: $--text-passive;
             /* Text */
 
@@ -97,30 +90,56 @@
         /* Others: transition & animations, ... */
     }
 
-    &__avatar {
+    &__name {
         /* Display & Box Model */
-        @include box(4rem);
-        border: none;
-        border-radius: 50%;
-        margin-right: 0.8rem;
+        @include box(24.4rem, auto);
+        margin-top: 12.6rem;
         /* Color */
-
+        color: $--text-passive;
         /* Text */
-
+        font-size: 2.3rem;
+        text-align: center;
         /* Positioning */
 
         /* Others: transition & animations, ... */
     }
-
-    &__name {
+    &__logout {
         /* Display & Box Model */
-
+        @include centerFlexBox();
+        @include box(11.5rem, 4.7rem);
+        margin-top: 1rem;
+        border-radius: 1.3rem;
         /* Color */
-
+        background-color: $--bg-passive;
         /* Text */
-        @include font(fontSemiBold, 1.3rem);
+    
         /* Positioning */
-
+    
         /* Others: transition & animations, ... */
+    
+    }
+    &__power-icon {
+        /* Display & Box Model */
+        @include box(1.5rem);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+    &__text-log {
+        /* Display & Box Model */
+        margin-right: 0.7rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontSemiBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
     }
 }

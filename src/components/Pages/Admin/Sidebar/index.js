@@ -1,7 +1,8 @@
-import adminIcon from "assets/Icon/admin-icon.svg";
+import adminIcon from "assets/Icon/logo-admin.svg";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
+import PowerIcon from "../../../../assets/Icon/power-outline.svg";
 
 AdminSidebar.propTypes = {
     items: PropTypes.array,
@@ -19,7 +20,6 @@ function AdminSidebar(props) {
     return (
         <div className="c-admin-sidebar">
             <img src={adminIcon} alt="icon" className="c-admin-sidebar__icon" />
-            <hr />
             <ul className="c-admin-sidebar__list">
                 {props.items.map((item, index) => {
                     return (
@@ -34,7 +34,7 @@ function AdminSidebar(props) {
                     );
                 })}
             </ul>
-            <Link to="/login">
+            {/* <Link to="/login">
                 <div className="c-admin-sidebar__account">
                     <img
                         src={props.userInfo.photoURL}
@@ -42,10 +42,17 @@ function AdminSidebar(props) {
                         className="c-admin-sidebar__avatar"
                     />
                     <span className="c-admin-sidebar__name">
-                        {props.userInfo.displayName}
+                        Xin chào, {props.userInfo.displayName}!
                     </span>
                 </div>
-            </Link>
+            </Link> */}
+            <p className="c-admin-sidebar__name">
+                Xin chào, {props.userInfo.displayName}!
+            </p>
+            <div className="c-admin-sidebar__logout">
+                <span className="c-admin-sidebar__text-log">Đăng xuất</span>
+                <img src={PowerIcon} alt="" className="c-admin-sidebar__power-icon"/>
+            </div>
         </div>
     );
 }
