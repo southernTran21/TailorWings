@@ -34,7 +34,8 @@
     "redux": "^4.0.5",
     "slick-carousel": "^1.8.1",
     "swiper": "^6.1.2",
-    "uniqid": "^5.2.0"
+    "uniqid": "^5.2.0",
+    "xlsx": "^0.16.7"
   },
   "scripts": {
     "start": "react-scripts start",

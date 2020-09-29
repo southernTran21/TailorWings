@@ -8,6 +8,7 @@ import PageLoader from "components/Loader/Page";
 import TestFix from "layouts/TestFix";
 import Policy from "layouts/Policy";
 import Support from "layouts/Support";
+import ReadExcel from "layouts/TestReadExcel";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -58,6 +59,7 @@ function App() {
                     {/* this is for Admin */}
                     <Route path="/login" component={LoginContainer} />
                     <Route path="/admin" component={AdminContainer} />
+                    <Route path="/test-excel" component={ReadExcel} />
                     {/* <Route component={NotFound} /> */}
                 </Switch>
                 <Footer />
