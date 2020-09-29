@@ -1,17 +1,19 @@
+import loader from "assets/Image/image-loader.gif";
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
+import ReactImageAppear from "react-image-appear";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ReactIdSwiper from "react-id-swiper";
-import { useRef } from "react";
 
 SelectionDesignCarousel.propTypes = {
     images: PropTypes.array,
     id: PropTypes.func,
+    isImageLoading: PropTypes.bool,
 };
 
 SelectionDesignCarousel.defaultProps = {
     images: null,
     id: "",
+    isImageLoading: false,
 };
 
 function SelectionDesignCarousel(props) {
@@ -19,7 +21,7 @@ function SelectionDesignCarousel(props) {
     const swiperRef = useRef(null);
     /*--------------*/
     /*********************************
-     *  Description:
+     *  Description: handle slide move
      *
      *
      *  Call by:
@@ -46,11 +48,22 @@ function SelectionDesignCarousel(props) {
                 {props.images.map((image, index) => {
                     return (
                         <SwiperSlide key={index}>
-                            <img
-                                className="c-design-carousel__image"
-                                src={image}
-                                alt={props.id}
-                            />
+                            {props.isImageLoading ? (
+                                <Fragment />
+                            ) : (
+                                <ReactImageAppear
+                                    src={image}
+                                    animationDuration="1s"
+                                    loader={loader}
+                                    loaderStyle={{
+                                        backgroundColor: "transparent",
+                                    }}
+                                    placeholderStyle={{
+                                        backgroundColor: "transparent",
+                                    }}
+                                    className="c-design-carousel__image"
+                                />
+                            )}
                         </SwiperSlide>
                     );
                 })}

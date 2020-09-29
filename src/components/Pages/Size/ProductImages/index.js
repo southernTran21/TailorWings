@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ButtonConfirm from "components/Button/Confirm";
+import ReactImageAppear from "react-image-appear";
+import loader from "assets/Image/image-loader.gif";
 
 ProductImages.propTypes = {
     images: PropTypes.array,
@@ -17,16 +19,48 @@ function ProductImages(props) {
         <div className="c-size-product-images">
             <div className="c-size-product-images__list">
                 <div className="c-size-product-images__item">
-                    <img src={props.images[0] || ""} alt="image" />
+                    <ReactImageAppear
+                        src={props.images[0] || ""}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
                 <div className="c-size-product-images__item">
-                    <img src={props.images[1] || ""} alt="image" />
+                    <ReactImageAppear
+                        src={props.images[1] || ""}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
                 <div className="c-size-product-images__item">
-                    <img src={props.images[2] || ""} alt="image" />
+                    <ReactImageAppear
+                        src={props.images[2] || ""}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
                 <div className="c-size-product-images__item">
-                    <img src={props.images[3] || ""} alt="image" />
+                    <ReactImageAppear
+                        src={props.images[3] || ""}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
             </div>
             <div className="c-size-product-images__confirm">

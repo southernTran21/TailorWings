@@ -225,3 +225,15 @@ export const deleteCartProduct = () => {
         type: "DELETE_CART_PRODUCT",
     };
 };
+
+
+/**
+ * This is for Admin
+ */
+
+export const updateAdminStatus = (user) => {
+    return {
+        type: "UPDATE_ADMIN_STATUS",
+        user
+    };
+};

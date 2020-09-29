@@ -9,15 +9,15 @@ import { updatePaymentMethod } from "actions";
 const LIMIT = 12;
 
 function FabricsContainer() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
     /*--------------*/
     const [fabricList, setFabricList] = useState(null);
     const [renderFabrics, setRenderFabrics] = useState(null);
     /*--------------*/
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
         /*--------------*/
         async function _fetchAllVisibleFabric() {
             try {

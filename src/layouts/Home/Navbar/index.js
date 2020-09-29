@@ -1,10 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
 import NavbarShopping from "components/Navbar/NavbarShopping";
+import React from "react";
 
-NavbarContainer.propTypes = {};
 
-function NavbarContainer(props) {
+function NavbarContainer() {
     return (
         <section className="l-home__navbar">
             <NavbarShopping />

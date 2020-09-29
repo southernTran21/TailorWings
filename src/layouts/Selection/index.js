@@ -55,7 +55,8 @@ function SelectionContainer() {
     const dispatch = useDispatch();
     /*--------------*/
     const [fetchError, setFetchError] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isPageLoading, setIsPageLoading] = useState(false);
+    const [isImageLoading, setIsImageLoading] = useState(false);
     /*--------------*/
     useEffect(() => {
         if (page === "/selection") {
@@ -64,6 +65,8 @@ function SelectionContainer() {
                 top: 0,
                 behavior: "smooth",
             });
+            /*--------------*/
+            setIsImageLoading(true);
             /*--------------*/
             async function _fetchProductData() {
                 try {
@@ -156,7 +159,7 @@ function SelectionContainer() {
                     );
                     /*--------------*/
                     if (isDesignChange) {
-                        setIsLoading(true);
+                        setIsPageLoading(true);
                         /*-------Reset-------*/
                         const action_updateRenderFabrics = updateRenderFabrics(
                             []
@@ -202,16 +205,23 @@ function SelectionContainer() {
                     dispatch(action_updateRenderProduct);
                     /*--------------*/
                     setFetchError(false);
+                    setTimeout(() => {
+                        setIsPageLoading(false);
+                    }, 1000);
                 } else {
-                    setIsLoading(true);
+                    setIsPageLoading(true);
                     _fetchProductData();
+                    /*--------------*/
+                    setTimeout(() => {
+                        setIsPageLoading(false);
+                    }, 1000);
                 }
             }
         }
         /*--------------*/
         setTimeout(() => {
-            setIsLoading(false);
-        }, 1000);
+            setIsImageLoading(false);
+        }, 500);
     }, [productID]);
     /*------- Handle bestseller list -------*/
     useEffect(() => {
@@ -266,8 +276,7 @@ function SelectionContainer() {
     /*--------------*/
     if (!productID || !designID || !fabricID) return <Redirect to="/" />;
     /*--------------*/
-
-    if (isLoading) {
+    if (isPageLoading) {
         return <PageLoader />;
     } else {
         return (
@@ -278,7 +287,9 @@ function SelectionContainer() {
                             <Fragment>
                                 <NavbarContainer selectionSrc={selectionSrc} />
                                 <FabricsContainer />
-                                <DesignCarouselContainer />
+                                <DesignCarouselContainer
+                                    isImageLoading={isImageLoading}
+                                />
                                 <InfoContainer />
                                 <DescriptionContainer />
                                 <TopProductsContainer />
@@ -289,7 +300,9 @@ function SelectionContainer() {
                                     selectionSrc={selectionSrc}
                                 />
                                 <div className="l-selection__fabric-selection-wrapper">
-                                    <DesignCarouselContainerDesktop />
+                                    <DesignCarouselContainerDesktop
+                                        isImageLoading={isImageLoading}
+                                    />
                                     <div className="l-selection__info-wrapper">
                                         <FabricsContainerDesktop />
                                         <InfoContainerDesktop />

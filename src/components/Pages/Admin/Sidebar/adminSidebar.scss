@@ -1,0 +1,126 @@
+.c-admin-sidebar {
+    /* Display & Box Model */
+    @include box(22.5rem, 100%);
+    @include flexBox(flex-start, center, column);
+    min-height: 100vh;
+    border-radius: 0 1.5rem 1.5rem 0;
+    /* Color */
+    background-color: $--bg-default;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__icon {
+        /* Display & Box Model */
+        @include box(9rem, 5rem);
+        margin-top: 4rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    & hr {
+        /* Display & Box Model */
+        margin: 3.5rem 0;
+        border: none;
+        border-top: 1px solid $--border-blur2;
+        @include box(100%, auto);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__list {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        @include box(100%, auto); 
+        padding: 0 4rem;
+        margin-bottom: -2rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__item {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        padding: 1.5rem 0;
+        margin-bottom: 2rem;
+        /* Color */
+        color: $--text-blur;
+        /* Text */
+        @include font(fontBold, 1.3rem);
+        text-align: center;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        &--active {
+            /* Display & Box Model */
+            border-radius: 1rem;
+            /* Color */
+            background-color: $--bg-passive;
+            color: $--text-passive;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__account {
+        /* Display & Box Model */
+        @include centerFlexBox;
+        margin: 19rem 0 4rem 0;
+
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__avatar {
+        /* Display & Box Model */
+        @include box(4rem);
+        border: none;
+        border-radius: 50%;
+        margin-right: 0.8rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__name {
+        /* Display & Box Model */
+
+        /* Color */
+
+        /* Text */
+        @include font(fontSemiBold, 1.3rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}

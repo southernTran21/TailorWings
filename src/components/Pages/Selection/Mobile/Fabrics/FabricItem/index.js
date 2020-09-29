@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import loader from "assets/Image/image-loader.gif";
+import ReactImageAppear from "react-image-appear";
 
 FabricItem.propTypes = {
     fabricInfo: PropTypes.object,
@@ -32,7 +34,15 @@ function FabricItem(props) {
                 }}
             >
                 <div className="c-selection-item__image">
-                    <img src={image[1] || ""} alt="tailorwings-fabric" />
+                    <ReactImageAppear
+                        src={image[1]}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
             </Link>
         </div>

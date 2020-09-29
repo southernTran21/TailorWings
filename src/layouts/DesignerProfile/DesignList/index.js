@@ -1,12 +1,15 @@
 import React from "react";
 import Designs from "components/Designs";
 import PropTypes from "prop-types";
+import ListLoader from "components/Loader/List";
 
 DesignListContainer.propTypes = {
     renderDesigns: PropTypes.array,
+    isListLoading: PropTypes.bool,
 };
 DesignListContainer.defaultProps = {
     renderDesigns: null,
+    isListLoading: false,
 };
 
 function DesignListContainer(props) {
@@ -16,6 +19,9 @@ function DesignListContainer(props) {
               designs: props.renderDesigns || [],
           }
         : null;
+    if (props.isListLoading) {
+        return <ListLoader />;
+    }
     return (
         <div className="l-designer__design-list">
             <Designs

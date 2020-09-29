@@ -62,13 +62,17 @@
 @import "../components/Pages/Size/Options/sizeOptions.scss";
 @import "../components/Pages/Size/Info/info.scss";
 @import "../components/Pages/Size/ProductImages/productImages.scss";
+
 @import "../components/Pages/Payment/OrderInfo/orderInfo.scss";
 @import "../components/Pages/Payment/Footer/footer.scss";
+
+@import "../components/Pages/Admin/Sidebar/adminSidebar.scss";
 
 @import "../components/Footer/footer.scss";
 
 @import "../components/Loader/Page/page.scss";
 @import "../components/Loader/List/list.scss";
+@import "../components/Loader/ProductImage/imageLoader.scss";
 
 // LAYOUTS
 @import "../layouts/Home/home.scss";
@@ -84,6 +88,7 @@
 @import "../layouts/Payment/payment.scss";
 @import "../layouts/Policy/policy.scss";
 @import "../layouts/Support/support.scss";
+@import "../layouts/Admin/admin.scss";
 
 //REACT SLICK
 @import "~slick-carousel/slick/slick.css";

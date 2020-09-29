@@ -7,6 +7,8 @@ import {
     countSupportedFabric,
     fetchDesignOwner,
 } from "services/Firebase API/basic";
+import ReactImageAppear from "react-image-appear";
+import loader from "assets/Image/image-loader.gif";
 
 DesignItem.propTypes = {
     design: PropTypes.object,
@@ -77,7 +79,15 @@ function DesignItem(props) {
         >
             <li className="c-design-item">
                 <div className="c-design-item__image">
-                    <img src={image} alt={name} />
+                    <ReactImageAppear
+                        src={image}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
                 <span className="c-design-item__designed-by">Thiết kế bởi</span>
                 <span className="c-design-item__designer-name">

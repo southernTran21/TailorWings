@@ -1,0 +1,22 @@
+.l-admin {
+    /* Display & Box Model */
+    display: flex;
+    flex-wrap: nowrap;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+}
+
+@media screen and (min-width: 769px) {
+    .l-admin {
+        max-width: 128rem;
+        margin: 0 auto;
+        min-height: 100vh;
+        background-color: $--gray3-color;
+    }
+}

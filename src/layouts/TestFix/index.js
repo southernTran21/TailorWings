@@ -6,6 +6,10 @@ import {
     setDocument,
 } from "../../services/Firebase API/basic";
 import { productPriceCalculate } from "../../services/CommonFunctions";
+import { storage } from "../../firebase";
+import firebase from "firebase/app";
+
+import test300x300 from '../../assets/Image/test.jpg'
 
 function TestFix() {
     /*--------------*/
@@ -64,7 +68,6 @@ function TestFix() {
         // }
         /*--------------*/
         // fetchNameFault();
-
         /*-------this is for PRICE FIX-------*/
         // async function fetchPriceFault() {
         //     try {
@@ -172,12 +175,53 @@ function TestFix() {
     }, []);
     /*--------------*/
     // console.log("faultList :>> ", faultList);
+
+    // Create a storage reference from our storage service
+    // var storageRef = firebase.storage().ref();
+    // var listRef = storageRef.child("image/test");
+    // var listRefUpdate = storageRef.child("image/test/T051.jpg");
+
+    // let newMetadata = {
+    //     customMetadata: {
+    //         'sizeTW': '300x300'
+    //     },
+    // };
+
+    // listRefUpdate
+    //     .updateMetadata(newMetadata)
+    //     .then(function (metadata) {
+    //         // Updated metadata for 'images/forest.jpg' is returned in the Promise
+    //         console.log("metadata :>> ", metadata);
+    //     })
+    //     .catch(function (error) {
+    //         // Uh-oh, an error occurred!
+    //     });
+
+    // listRef
+    //     .listAll()
+    //     .then(function (res) {
+    //         res.items.forEach(function (itemRef) {
+    //             // All the items under listRef.
+    //             // console.log('itemRef :>> ', itemRef);
+    //             let url = itemRef.getDownloadURL();
+    //             console.log("url :>> ", url);
+    //             let metaData = itemRef.getMetadata();
+    //             console.log("metaData :>> ", metaData);
+    //         });
+    //     })
+    //     .catch(function (error) {
+    //         console.log("error :>> ", error);
+    //     });
+
     return (
-        <ul style={{ minHeight: "100vh" }}>
-            {faultList.map((item, index) => {
-                return <li key={index}>{item.productID}</li>;
-            })}
-        </ul>
+        <div>
+            <img style={{ width: "100px", height: "100px" }} src={test300x300} alt=""/>
+        </div>
+        // <ul style={{ minHeight: "100vh" }}>
+        //     {faultList.map((item, index) => {
+        //         return <li key={index}>{item.productID}</li>;
+        //     })}
+        // </ul>
     );
 }
 

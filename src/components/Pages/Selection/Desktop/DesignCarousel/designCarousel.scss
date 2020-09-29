@@ -8,6 +8,19 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
+    & img {
+        /* Display & Box Model */
+        border-radius: 23px;
+        /* Color */
+        
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
     &--top {
         /* Display & Box Model */
         @include box(23.103rem, 28.9rem);

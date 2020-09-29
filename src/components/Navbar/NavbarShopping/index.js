@@ -61,9 +61,11 @@ function NavbarShopping() {
                 <img src={IconSearch} alt="search-icon" />
             </div>
             <div className="c-navbar-shopping__info">
-                <div className="c-navbar-shopping__person">
-                    <img src={IconPerson} alt="person-icon" />
-                </div>
+                <Link to="/login">
+                    <div className="c-navbar-shopping__person">
+                        <img src={IconPerson} alt="person-icon" />
+                    </div>
+                </Link>
                 <CartInfo active={true} quantity={quantity} />
             </div>
             <Sidebar isSidebar={isSidebar} onSidebarClosed={onSidebarClosed} />

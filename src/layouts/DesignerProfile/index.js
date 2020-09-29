@@ -28,6 +28,7 @@ function DesignerProfileContainer() {
     const [allRelatedDesigns, setAllRelatedDesigns] = useState(null);
     const [renderDesigns, setRenderDesigns] = useState(null);
     const [filterInfo, setFilterInfo] = useState(FILTER_INFO);
+    const [isListLoading, setIsListLoading] = useState(false);
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
@@ -86,6 +87,7 @@ function DesignerProfileContainer() {
      *  Call by:
      */
     function onFilterChange(catID, activeIndex) {
+        setIsListLoading(true);
         /*--------------*/
         let updatedFilterInfo = filterInfo.map((info, index) => {
             let isActive = activeIndex === index;
@@ -105,6 +107,10 @@ function DesignerProfileContainer() {
         if (updatedRenderDesigns) {
             setRenderDesigns(updatedRenderDesigns);
         }
+        /*--------------*/
+        setTimeout(() => {
+            setIsListLoading(false);
+        }, 1000);
     }
     /************_END_****************/
     /*--------------*/
@@ -133,7 +139,10 @@ function DesignerProfileContainer() {
                 filterInfo={filterInfo}
                 onFilterChange={onFilterChange}
             />
-            <DesignListContainer renderDesigns={renderDesigns} />
+            <DesignListContainer
+                renderDesigns={renderDesigns}
+                isListLoading={isListLoading}
+            />
         </div>
     );
 }

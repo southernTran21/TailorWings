@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Quantity from "components/Quantity";
 import { modifyPrice } from "services/CommonFunctions";
 import { Popconfirm } from "antd";
+import ReactImageAppear from "react-image-appear";
+import loader from "assets/Image/image-loader.gif";
 
 ProductItem.propTypes = {
     product: PropTypes.object,
@@ -54,7 +56,15 @@ function ProductItem(props) {
         <div className="c-cart-product-item">
             <div className="c-cart-product-item--left">
                 <div className="c-cart-product-item__image">
-                    <img src={image[0]} alt={productID} />
+                    <ReactImageAppear
+                        src={image[0]}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
                 <div className="c-cart-product-item__quantity">
                     <Quantity quantity={quantity} onChange={onQuantityChange} />
