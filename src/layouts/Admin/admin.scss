@@ -14,9 +14,22 @@
 
 @media screen and (min-width: 769px) {
     .l-admin {
+        width: 100%;
         max-width: 128rem;
         margin: 0 auto;
         min-height: 100vh;
         background-color: $--gray3-color;
+        &__content {
+            /* Display & Box Model */
+            @include box(100%);
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
     }
 }
