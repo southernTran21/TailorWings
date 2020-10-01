@@ -1,12 +1,152 @@
 .c-admin-data-upload {
     /* Display & Box Model */
-    
+    @include box(100%);
+    min-height: 100vh;
+    padding-left: 2rem;
     /* Color */
-
+    background: #fff;
     /* Text */
 
     /* Positioning */
 
     /* Others: transition & animations, ... */
+    &__header {
+        /* Display & Box Model */
+        @include box(90.5rem, 12rem);
+        @include flexBox(space-between, center);
+        /* Color */
 
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__search-box {
+        /* Display & Box Model */
+        @include box(33.3rem, 5.5rem);
+        @include flexBox(flex-start, center);
+        border-radius: 15px;
+        /* Color */
+        background: #f2f2f2;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__icon-search {
+        /* Display & Box Model */
+        @include box(2.4rem);
+        margin-left: 2rem;
+        margin-right: 0.8rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__input-search {
+        /* Display & Box Model */
+        border: none;
+        box-shadow: none;
+        outline: none;
+        width: 25rem;
+        /* Color */
+        background: transparent;
+        color: #828282;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__button-upload {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        @include box(13.3rem, 5.6rem);
+        border-radius: 13px;
+        margin-left: 2rem;
+        /* Color */
+        background: $--bg-active;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        cursor: pointer;
+        img{
+            @include box(2.4rem);
+            margin-left: 0.6rem;
+        }
+        span{
+            @include font(fontBold, 1.4rem);
+            color: white;
+        }
+    }
+    &--left {
+        @include centerFlexBox();    
+    }
+    &__button-confirm {
+        /* Display & Box Model */
+        @include box(7.6rem, 5.6rem);
+        @include centerFlexBox();
+        border-radius: 13px;
+        /* Color */
+        color: white;
+        background-color: #E0E0E0;
+        /* Text */
+        @include font(fontBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        cursor: pointer;
+    }
+    &__head-table {
+        /* Display & Box Model */
+        width: calc((12*9.5rem) + (12*5.5rem));
+        height: 8.4rem;
+        @include flexBox(flex-start, center);
+        border-radius: 20px;
+        padding: 0 3rem;
+        /* Color */
+        background: $--bg-passive;
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__col {
+        width: 9.5rem;
+        margin-right: 5.5rem;
+    }
+    &__col:nth-last-child(1) {
+        margin-right: 0;
+    }
+    &__table-wrapper {
+        /* Display & Box Model */
+        max-width: 90.5rem;
+        min-height: 80vh;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        overflow-y: hidden;
+        overflow-x: scroll;
+        &::-webkit-scrollbar {
+            width: 10px;
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: $--primary-color;
+        }
+    }
 }
