@@ -13,6 +13,7 @@ var initialState = {
         isMax: false,
         designs: [],
     },
+    isPageFixedTop: false
 };
 
 const commonReducer = (state = initialState, action) => {
@@ -116,6 +117,10 @@ const commonReducer = (state = initialState, action) => {
                 designs: updatedDesigns,
             };
             return { ...state, renderDesigns: updatedRenderDesigns };
+        /****************************************************/
+        case "UPDATE_PAGE_FIXED_TOP_STATUS":
+            console.log('here');
+            return { ...state, isPageFixedTop: !state.isPageFixedTop };
         /****************************************************/
         default:
             return { ...state };

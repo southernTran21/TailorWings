@@ -1,5 +1,5 @@
 /**
- * This is for Homepage
+ * This is for Common
  */
 export const updateCategories = (categories) => {
     return {
@@ -61,6 +61,11 @@ export const updateRenderDesigns = (isLoadMore) => {
         isLoadMore,
     };
 };
+export const updatePageFixedTopStatus = () => {
+    return {
+        type: "UPDATE_PAGE_FIXED_TOP_STATUS",
+    };
+};
 
 /**
  * This is for Homepage
@@ -70,6 +75,12 @@ export const updateCategoriesDesignNumber = (designNumber) => {
     return {
         type: "UPDATE_CATEGORIES_DESIGN_NUMBER",
         designNumber,
+    };
+};
+
+export const updateLoginDisplayStatus = () => {
+    return {
+        type: "UPDATE_LOGIN_DISPLAY_STATUS",
     };
 };
 

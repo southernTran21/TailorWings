@@ -23,6 +23,8 @@ import TailorRecruitmentContainer from "./TailorRecruitment";
 import TopProductsContainer from "./TopProducts";
 import VoucherContainer from "./Voucher";
 import FabricsContainer from "./Fabrics";
+import Login from "components/Login";
+import classNames from "classnames";
 
 function HomeContainer() {
     window.scrollTo({
@@ -40,6 +42,7 @@ function HomeContainer() {
         (state) => state.common.bestSeller.length
     );
     const selectionSrc = useSelector((state) => state.selection.src);
+    const isLoginOpen = useSelector((state) => state.home.isLoginOpen);
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
@@ -134,6 +137,7 @@ function HomeContainer() {
             <TailorRecruitmentContainer />
             <VoucherContainer />
             <BackTop />
+            <Login />
         </div>
     );
 }

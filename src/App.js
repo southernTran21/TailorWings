@@ -4,11 +4,14 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import "swiper/swiper.scss";
 import "./styles/main.scss";
+import "./app.scss";
 import PageLoader from "components/Loader/Page";
 import TestFix from "layouts/TestFix";
 import Policy from "layouts/Policy";
 import Support from "layouts/Support";
 import ReadExcel from "layouts/TestReadExcel";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -28,8 +31,13 @@ const AdminContainer = React.lazy(() => import("layouts/Admin"));
 const LoginContainer = React.lazy(() => import("layouts/Login"));
 
 function App() {
+    /*--------------*/
+    const isPageFixedTop = useSelector((state) => state.common.isPageFixedTop);
+    /*--------------*/
     return (
-        <div className="app">
+        <div
+            className={classNames("app", { "app--fixed-top": isPageFixedTop })}
+        >
             <Suspense fallback={<PageLoader />}>
                 <Switch>
                     <Route exact path="/" component={HomeContainer} />
@@ -59,7 +67,7 @@ function App() {
                     {/* this is for Admin */}
                     <Route path="/login" component={LoginContainer} />
                     <Route path="/admin" component={AdminContainer} />
-                    <Route path="/test-excel" component={ReadExcel} />
+                    {/* <Route path="/test-excel" component={ReadExcel} /> */}
                     {/* <Route component={NotFound} /> */}
                 </Switch>
                 <Footer />
