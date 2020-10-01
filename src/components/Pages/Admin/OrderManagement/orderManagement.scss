@@ -1,12 +1,162 @@
 .c-admin-order-management {
     /* Display & Box Model */
-
+    @include box(100%);
+    min-height: 100vh;
+    padding-left: 2rem;
     /* Color */
-
+    background: #fff;
     /* Text */
 
     /* Positioning */
 
     /* Others: transition & animations, ... */
+    &__header {
+        /* Display & Box Model */
+        @include box(90.5rem, 12rem);
+        @include flexBox(space-between, center);
+        /* Color */
 
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__title {
+        /* Display & Box Model */
+
+        /* Color */
+        color: #4f4f4f;
+        /* Text */
+        @include font(fontHeavy, 2.4rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__search-box {
+        /* Display & Box Model */
+        @include box(33.3rem, 5.5rem);
+        @include flexBox(flex-start, center);
+        border-radius: 15px;
+        /* Color */
+        background: #f2f2f2;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__icon-search {
+        /* Display & Box Model */
+        @include box(2.4rem);
+        margin-left: 2rem;
+        margin-right: 0.8rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__input-search {
+        /* Display & Box Model */
+        border: none;
+        box-shadow: none;
+        outline: none;
+        width: 25rem;
+        /* Color */
+        background: transparent;
+        color: #828282;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__head-table {
+        /* Display & Box Model */
+        @include box(90.5rem, 8.4rem);
+        @include flexBox(flex-start, center);
+        border-radius: 20px;
+        padding: 0 3rem;
+        /* Color */
+        background: $--bg-passive;
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+    &__col {
+        width: 9.5rem;
+        margin-right: 5.5rem;
+    }
+    &__col:nth-last-child(1) {
+        margin-right: 0;
+        text-align: end;
+    }
+    &__body-table--wrapper {
+        /* Display & Box Model */
+        @include box(92rem, auto);
+        margin-top: 2rem;
+        max-height: 65vh;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+        overflow-y: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+            width: 10px;
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: $--primary-color;
+        }
+    }
+    
+    &__body-table {
+        /* Display & Box Model */
+        @include box(90.5rem, 6rem);
+        padding: 0 3rem;
+        @include flexBox(flex-start, center);
+        border-radius: 10px;
+        /* Color */
+        color: #212b36;
+        /* Text */
+        font-size: 1.4rem;
+        /* Positioning */
+        /* Others: transition & animations, ... */
+        transition: .25s ease-in-out all;
+        .c-admin-order-management__col-1 {
+            text-decoration-line: underline;
+        }
+        .c-admin-order-management__col-2 {
+            @include box(9.1rem, 3.1rem);
+            @include centerFlexBox();
+            border: 2px solid $--primary-color;
+            border-radius: 10px;
+            color: $--primary-color;
+            @include font(fontSemiBold, 1.4rem);
+        }
+        .c-admin-order-management__col-3 {
+            text-align: center;
+            @include font(fontSemiBold, 1.4rem);
+            color: #27ae60;
+        }
+        .c-admin-order-management__col-4 {
+            @include font(fontSemiBold, 1.4rem);
+        }
+        
+    }
+    &__body-table:hover {
+        background: #f2f2f2;
+        border-radius: 10px;
+    }
 }

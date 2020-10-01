@@ -56,7 +56,7 @@
         /* Color */
         color: $--text-active;
         /* Text */
-        font-size: 1.6rem;
+        @include font(fontBold, 1.6rem);
         text-align: center;
         /* Positioning */
 
@@ -97,7 +97,7 @@
         /* Color */
         color: $--text-passive;
         /* Text */
-        font-size: 2.3rem;
+        @include font(fontSemiBold, 2.3rem);
         text-align: center;
         /* Positioning */
 
@@ -107,7 +107,7 @@
         /* Display & Box Model */
         @include centerFlexBox();
         @include box(11.5rem, 4.7rem);
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         border-radius: 1.3rem;
         /* Color */
         background-color: $--bg-passive;
