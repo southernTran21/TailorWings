@@ -1,5 +1,6 @@
 import AdminDataUpload from "components/Pages/Admin/DataUpload";
 import AdminImageUpload from "components/Pages/Admin/ImageUpload";
+import AdminOrderDetail from "components/Pages/Admin/OrderDetail";
 import AdminOrderManagement from "components/Pages/Admin/OrderManagement";
 import AdminSidebar from "components/Pages/Admin/Sidebar";
 import * as firebase from "firebase/app";
@@ -44,13 +45,14 @@ function AdminContainer() {
             <div className="l-admin">
                 <AdminSidebar items={ITEMS} userInfo={userInfo} />
                 <div className="l-admin__content">
-                    <Redirect from="/admin" to="/admin/order" />
+                    <Redirect exact from="/admin" to="/admin/order" />
                     <Route path="/admin/data" component={AdminDataUpload} />
                     <Route path="/admin/image" component={AdminImageUpload} />
                     <Route
                         path="/admin/order"
                         component={AdminOrderManagement}
                     />
+                    <Route path="/admin/order-detail/:orderID" component={AdminOrderDetail}/>
                 </div>
             </div>
         </Switch>

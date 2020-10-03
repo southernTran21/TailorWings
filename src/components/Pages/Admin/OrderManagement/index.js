@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconSearch from "../../../../assets/Icon/icon-search.svg";
+import { Link } from "react-router-dom";
 
 AdminOrderManagement.propTypes = {};
 
@@ -43,27 +44,33 @@ function AdminOrderManagement(props) {
             </div>
             <div className="c-admin-order-management__body-table--wrapper">
                 {test.map((result, index) => {
+                    const link = `/admin/order-detail/abc`
                     return (
-                        <div className="c-admin-order-management__body-table" key={index}>
-                            <span className="c-admin-order-management__col c-admin-order-management__col-1">
-                                #k8pk4lz9
-                            </span>
-                            <span className="c-admin-order-management__col">
-                                07/05/2020
-                            </span>
-                            <span className="c-admin-order-management__col">
-                                Dương Đinh Đông Khoa
-                            </span>
-                            <span className="c-admin-order-management__col c-admin-order-management__col-2">
-                                Mới
-                            </span>
-                            <span className="c-admin-order-management__col c-admin-order-management__col-3">
-                                PAID
-                            </span>
-                            <span className="c-admin-order-management__col c-admin-order-management__col-4">
-                                1.653.000đ
-                            </span>
-                        </div>
+                        <Link to={link}>
+                            <div
+                                className="c-admin-order-management__body-table"
+                                key={index}
+                            >
+                                <span className="c-admin-order-management__col c-admin-order-management__col-1">
+                                    #k8pk4lz9
+                                </span>
+                                <span className="c-admin-order-management__col">
+                                    07/05/2020
+                                </span>
+                                <span className="c-admin-order-management__col">
+                                    Dương Đinh Đông Khoa
+                                </span>
+                                <span className="c-admin-order-management__col c-admin-order-management__col-2">
+                                    Mới
+                                </span>
+                                <span className="c-admin-order-management__col c-admin-order-management__col-3">
+                                    PAID
+                                </span>
+                                <span className="c-admin-order-management__col c-admin-order-management__col-4">
+                                    1.653.000đ
+                                </span>
+                            </div>
+                        </Link>
                     );
                 })}
             </div>

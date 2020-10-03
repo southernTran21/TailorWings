@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/storage";
+import "firebase/firebase-functions"
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -28,6 +29,9 @@ var config = {
 };
 
 firebase.initializeApp(config);
+// export const database = firebase.firestore();
+// export const storage = firebase.storage();
 export const database = firebase.firestore();
 export const storage = firebase.storage();
-export default { database, storage };
+export const functions = firebase.functions();
+// export default { database, storage, functions };

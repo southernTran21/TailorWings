@@ -7,15 +7,39 @@ import {
 } from "../../services/Firebase API/basic";
 import { productPriceCalculate } from "../../services/CommonFunctions";
 import { storage } from "../../firebase";
-import firebase from "firebase/app";
+// import firebase, { functions } from "firebase/app";
+import firebase from 'firebase/app'
+import 'firebase/functions'
 
-import test300x300 from '../../assets/Image/test.jpg'
+import test300x300 from "../../assets/Image/test.jpg";
 
 function TestFix() {
     /*--------------*/
     const [faultList, setFaultList] = useState([]);
     /*--------------*/
+    /*********************************
+     *  Description:
+     *
+     *
+     *  Call by:
+     */
+    function onClick() {
+        const sayHello = firebase.app().functions('asia-south1').httpsCallable('sayHello');
+        sayHello()
+            .then((result) => {
+                console.log(result.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+    /************_END_****************/
+    /*--------------*/
     useEffect(() => {
+        // var helloWorld = firebase.functions().httpsCallable("helloWorld");
+        // helloWorld("hello").then((result) => {
+        //     console.log("result :>> ", result);
+        // });
         /*-------This is for fix PRODUCT NAME UNDEFINED-------*/
         // /*--------------*/
         // async function fetchNameFault() {
@@ -215,7 +239,12 @@ function TestFix() {
 
     return (
         <div>
-            <img style={{ width: "100px", height: "100px" }} src={test300x300} alt=""/>
+            <img
+                style={{ width: "100px", height: "100px" }}
+                src={test300x300}
+                alt=""
+            />
+            <button onClick={onClick}>Click</button>
         </div>
         // <ul style={{ minHeight: "100vh" }}>
         //     {faultList.map((item, index) => {
