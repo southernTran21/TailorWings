@@ -110,7 +110,7 @@ function Login() {
                     </span>
                     <div className="c-login__button">
                         {isLoggin ? (
-                            <Link to="/admin/order">
+                            <Link to="/admin/order" onClick={onLoginDisplayStatusChange}>
                                 <button className="c-login__go-to-admin">
                                     <img src={IconPerson} alt="icon-person" />
                                     <span>Quản lý</span>
