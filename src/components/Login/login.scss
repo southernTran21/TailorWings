@@ -1,7 +1,3 @@
-:root {
-    --modal-duration: 1s;
-}
-
 .c-login {
     /* Display & Box Model */
     display: none;
@@ -9,7 +5,7 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
     /* Color */
-
+    
     /* Text */
 
     /* Positioning */
@@ -35,7 +31,7 @@
         /* Others: transition & animations, ... */
         position: relative;
         animation-name: open;
-        animation-duration: var(--modal-duration);
+        animation-duration: 1s;
     }
 
     &__close {

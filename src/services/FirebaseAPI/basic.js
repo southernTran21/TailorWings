@@ -2,6 +2,18 @@ import { database } from "../../firebase";
 import { storage } from "../../firebase";
 import firebase from "firebase/app";
 
+export const fetchAllRealTime = (collection, callback) => {
+    database.collection(collection).onSnapshot((querySnapshot) => {
+        let result = [];
+        querySnapshot.forEach((doc) => {
+            let data = doc.data();
+            data.id = doc.id;
+            result.push(data);
+        });
+        callback(result);
+    });
+};
+
 export const fetchAll = (collection) => {
     return database
         .collection(collection)
@@ -217,9 +229,6 @@ export const addDocument = (collection, newItem) => {
 };
 
 export const setDocument = (collection, newItem, docName) => {
-    console.log('collection :>> ', collection);
-    console.log('newItem :>> ', newItem);
-    console.log('docName :>> ', docName);
     return database
         .collection(collection)
         .doc(docName)
@@ -234,5 +243,21 @@ export const setDocument = (collection, newItem, docName) => {
         .catch(function (error) {
             let isSuccess = false;
             return isSuccess;
+        });
+};
+
+export const updateDocument = (collection, docName, field, value) => {
+    return database
+        .collection(collection)
+        .doc(docName)
+        .update({
+            [field]: value,
+        })
+        .then(function () {
+            console.log("Document successfully updated!");
+        })
+        .catch(function (error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
         });
 };

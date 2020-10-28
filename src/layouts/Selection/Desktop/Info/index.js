@@ -1,7 +1,7 @@
 import InfoDesktop from "components/Pages/Selection/Desktop/Info";
 import React, { useState, useEffect, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchDesignOwner } from "services/Firebase API/basic";
+import { fetchDesignOwner } from "services/FirebaseAPI/basic";
 import { updateSelectedProduct } from "actions";
 import { modifyPrice } from "services/CommonFunctions";
 

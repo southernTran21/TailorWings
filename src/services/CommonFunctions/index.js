@@ -79,3 +79,64 @@ const purePriceCalculate = (
 ) => {
     return designPrice + (fabricPrice * designLength) / 100 + 400000;
 };
+
+/*********************************
+ *  Description: convert seconds in time to new format
+ *  Format: dd/mm/yy hh:mm:ss
+ *
+ *  Call by: all
+ */
+export const timeConverter = (UNIX_timestamp) => {
+    var a = new Date(UNIX_timestamp.seconds * 1000);
+
+    var months = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+    ];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var minute = a.getMinutes();
+    var second = a.getSeconds();
+    if (Number(month) < 10) {
+        month = "0" + month;
+    }
+    if (Number(date) < 10) {
+        date = "0" + date;
+    }
+    if (Number(hour) < 10) {
+        hour = "0" + hour;
+    }
+    if (Number(minute) < 10) {
+        minute = "0" + minute;
+    }
+    if (Number(second) < 10) {
+        second = "0" + second;
+    }
+    var time =
+        date +
+        "/" +
+        month +
+        "/" +
+        year
+        // +
+        // " " +
+        // hour +
+        // ":" +
+        // minute +
+        // ":" +
+        // second;
+    return time;
+};
+/************_END_****************/

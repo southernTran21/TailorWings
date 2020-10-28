@@ -15,7 +15,7 @@ import {
     fetchDefaultProducts,
     fetchVisibilityCondition,
     fetchWithCondition,
-} from "services/Firebase API/basic";
+} from "services/FirebaseAPI/basic";
 import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
 import FabricsContainerDesktop from "./Desktop/Fabrics";
 import InfoContainerDesktop from "./Desktop/Info";

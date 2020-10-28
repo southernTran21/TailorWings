@@ -1,0 +1,88 @@
+.c-order-detail-payment {
+    /* Display & Box Model */
+    @include box(100%, auto);
+    @include flexBox(flex-start, flex-start, column);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    margin-bottom: 1.3rem;
+    /* Color */
+    background-color: $--gray2-color;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__header {
+        /* Display & Box Model */
+        @include box(100%,auto);
+        @include flexBox(space-between, center);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__title {
+        /* Display & Box Model */
+    
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    @import "../PaymentStatus/paymentStatus";
+
+    &__content {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        margin-top: 1.5rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__sub-info {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        @include flexBox(space-between, center);
+        margin-top: 1.5rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontMedium, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__info {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        @include flexBox(space-between, center);
+        margin-top: 1.5rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontBold, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

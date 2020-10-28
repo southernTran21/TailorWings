@@ -8,9 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { updatePaymentMethod, resetCartState } from "actions";
 import { modifyPrice, countTotalPrice } from "services/CommonFunctions";
-import { addNewOrder, setOrderDetail } from "services/Firebase API/paymentPage";
+import { addNewOrder, setOrderDetail } from "services/FirebaseAPI/paymentPage";
 import uniqid from "uniqid";
-import { setDocument } from "services/Firebase API/basic";
+import { setDocument } from "services/FirebaseAPI/basic";
 import { history } from "services/CommonParameter";
 import { message } from "antd";
 
@@ -88,6 +88,7 @@ function PaymentContainer() {
             voucher: null,
             discount: 0,
             price: null,
+            paymentStatus: false,
         };
         let orderDetail = {
             id: null,

@@ -1,0 +1,101 @@
+.c-product-card {
+    /* Display & Box Model */
+    @include box(32.3rem, 12rem);
+    display: flex;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__image {
+        /* Display & Box Model */
+        @include box(10rem);
+        border-radius: 15px;
+        overflow: hidden;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__info {
+        /* Display & Box Model */
+        @include flexBox(center, center, column);
+        margin-left: 3rem;
+        padding-left: 1.5rem;
+        min-width: 15rem;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__name {
+        /* Display & Box Model */
+        margin-bottom: 5px;
+        /* Color */
+    
+        /* Text */
+        @include font(fontSemiBold, 1.4rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__price {
+        /* Display & Box Model */
+        margin-bottom: 8px;
+        /* Color */
+        color: $--error-color;
+        /* Text */
+        @include font(fontBold, 1.2rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__size {
+        /* Display & Box Model */
+        margin-bottom: 2px;
+        /* Color */
+        
+        /* Text */
+        @include font(fontBold, 0.8rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__metric {
+        /* Display & Box Model */
+        padding: 1rem 1.2rem;
+        border: 1px solid $--primary-color;
+        border-radius: 10px;
+        /* Color */
+        color: $--primary-color;
+        /* Text */
+        @include font(fontBold, 1.2rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

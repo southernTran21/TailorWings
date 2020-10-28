@@ -1,0 +1,124 @@
+.c-admin-image-upload-status {
+    /* Display & Box Model */
+    @include flexBox(flex-start, center, column);
+    @include box(16rem, auto);
+    margin-right: 2rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__image {
+        /* Display & Box Model */
+        @include box(16rem, 20rem);
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+        overflow: hidden;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > img {
+            /* Display & Box Model */
+            object-fit: cover;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__uploaded {
+        /* Display & Box Model */
+        @include flexBox(center, center);
+        min-width: 11rem;
+        padding: 0.6rem 0.8rem;
+        margin: 0.5rem 0;
+        border-radius: 30px;
+        cursor: pointer;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > span {
+            /* Display & Box Model */
+            @include box(7rem, 1.4rem);
+            /* Color */
+            color: $--text-passive;
+            /* Text */
+            @include font(fontSemiBold, 1.3rem);
+            text-align: center;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        & > img {
+            /* Display & Box Model */
+            @include box(2rem);
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__unuploaded {
+        /* Display & Box Model */
+        @include flexBox(center, center);
+        min-width: 11rem;
+        padding: 0.6rem 0.8rem;
+        margin: 0.5rem 0;
+        border-radius: 30px;
+        cursor: pointer;
+        /* Color */
+        background-color: $--gray5-color;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > span {
+            /* Display & Box Model */
+            @include box(7rem, 1.4rem);
+            /* Color */
+            color: #828282;
+            /* Text */
+            @include font(fontSemiBold, 1.3rem);
+            text-align: center;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        & > img {
+            /* Display & Box Model */
+            @include box(2.4rem);
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+}

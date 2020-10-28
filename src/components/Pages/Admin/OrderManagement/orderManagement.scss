@@ -91,6 +91,7 @@
     }
     &__col {
         width: 9.5rem;
+        max-width: 9.5rem;
         margin-right: 5.5rem;
     }
     &__col:nth-last-child(1) {
@@ -103,11 +104,11 @@
         margin-top: 2rem;
         max-height: 65vh;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         overflow-y: scroll;
         overflow-x: hidden;
@@ -122,7 +123,8 @@
     }
     &__body-table {
         /* Display & Box Model */
-        @include box(90.5rem, 6rem);
+        width: 90.5rem;
+        min-height: 6rem;
         padding: 0 3rem;
         @include flexBox(flex-start, center);
         border-radius: 10px;
@@ -132,7 +134,7 @@
         font-size: 1.4rem;
         /* Positioning */
         /* Others: transition & animations, ... */
-        transition: .25s ease-in-out all;
+        transition: 0.25s ease-in-out all;
         .c-admin-order-management__col-1 {
             text-decoration-line: underline;
         }
@@ -147,13 +149,78 @@
         .c-admin-order-management__col-3 {
             text-align: center;
             @include font(fontSemiBold, 1.4rem);
-            color: #27ae60;
+            color: $--success-color;
+
+            &--unpaid {
+                color: $--error-color;
+            }
         }
         .c-admin-order-management__col-4 {
             @include font(fontSemiBold, 1.4rem);
         }
-        
     }
+
+    &__status {
+        /* Display & Box Model */
+        @include box(20rem, auto);
+        @include flexBox(space-between, center);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        &--new {
+            /* Display & Box Model */
+            @include box(9.1rem, 3.1rem);
+            @include centerFlexBox();
+            border-radius: 10px;
+            border: 2px solid $--error-color;
+            cursor: pointer;
+            /* Color */
+            color: $--error-color;
+            /* Text */
+            @include font(fontSemiBold, 1.4rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &--pending {
+            /* Display & Box Model */
+            @include box(9.1rem, 3.1rem);
+            @include centerFlexBox();
+            border-radius: 10px;
+            border: 2px solid $--primary-color;
+            cursor: pointer;
+            /* Color */
+            color: $--primary-color;
+            /* Text */
+            @include font(fontSemiBold, 1.4rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &--done {
+            /* Display & Box Model */
+            @include box(9.1rem, 3.1rem);
+            @include centerFlexBox();
+            border-radius: 10px;
+            border: 2px solid $--success-color;
+            cursor: pointer;
+            /* Color */
+            color: $--success-color;
+            /* Text */
+            @include font(fontSemiBold, 1.4rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
     &__body-table:hover {
         background: #f2f2f2;
         border-radius: 10px;

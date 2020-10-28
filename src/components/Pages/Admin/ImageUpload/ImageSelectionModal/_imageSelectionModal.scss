@@ -1,0 +1,198 @@
+.c-admin-image-selection-modal {
+    /* Display & Box Model */
+    display: none;
+    @include box(100vw, 100vh);
+    overflow: auto;
+    padding: 5vh 20vw;
+    /* Color */
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /* Text */
+
+    /* Positioning */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /* Others: transition & animations, ... */
+    animation-name: open;
+    animation-duration: 0.5s;
+
+    &__content {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        width: 60vw;
+        height: 90vh;
+        padding: 3rem 5rem;
+        box-shadow: 0px 4px 14px rgba(255, 255, 255, 0.15);
+        border-radius: 30px;
+        overflow: hidden;
+        /* Color */
+        background-color: $--bg-admin;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__header {
+        /* Display & Box Model */
+        @include flexBox(space-between, center);
+        @include box(100%, auto);
+        /* Color */
+        color: #828282;
+        /* Text */
+        @include font(fontSemiBold, 2rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > i {
+            /* Display & Box Model */
+            cursor: pointer;
+            /* Color */
+            color: $--primary-color;
+            /* Text */
+            font-size: 2.8rem;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__list {
+        /* Display & Box Model */
+        @include box(100%, 45rem);
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1.4rem;
+        margin-bottom: 3rem;
+        padding: 0.5rem 0;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        overflow-y: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+            width: 10px;
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: $--primary-color;
+        }
+    }
+
+    &__item {
+        /* Display & Box Model */
+        width: calc(16.6666% - 1rem);
+        height: 16.25rem;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+
+        /* Positioning */
+        position: relative;
+        /* Others: transition & animations, ... */
+
+        &:hover > img:last-child {
+            /* Display & Box Model */
+            opacity: 1;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__check-mark {
+        /* Display & Box Model */
+        @include box(4rem);
+        opacity: 0;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+        /* Others: transition & animations, ... */
+        transition: all 0.5s ease-in-out;
+
+        &--active {
+            /* Display & Box Model */
+            opacity: 1;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__confirm {
+        /* Display & Box Model */
+        display: block;
+        margin: auto;
+        padding: 1.2rem 2rem;
+        border-radius: 10px;
+        /* Color */
+        color: $--text-active;
+        background-color: $--gray5-color;
+        /* Text */
+        @include font(fontSemiBold, 1.8rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            /* Display & Box Model */
+
+            /* Color */
+            background-color: $--bg-active;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &--open {
+        /* Display & Box Model */
+        display: block;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+@keyframes open {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

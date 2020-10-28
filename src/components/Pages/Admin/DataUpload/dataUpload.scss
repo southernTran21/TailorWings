@@ -1,7 +1,7 @@
 .c-admin-data-upload {
     /* Display & Box Model */
-    @include box(100%);
-    min-height: 100vh;
+    @include box(100%, 100%);
+    min-height: 100%;
     padding-left: 2rem;
     /* Color */
     background: #fff;
@@ -72,22 +72,22 @@
         /* Color */
         background: $--bg-active;
         /* Text */
-    
+        @include font(fontBold, 1.4rem);
+        color: white;
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         cursor: pointer;
-        img{
+        img {
             @include box(2.4rem);
             margin-left: 0.6rem;
         }
-        span{
-            @include font(fontBold, 1.4rem);
-            color: white;
+        input[type="file"] {
+            display: none;
         }
     }
     &--left {
-        @include centerFlexBox();    
+        @include centerFlexBox();
     }
     &__button-confirm {
         /* Display & Box Model */
@@ -96,57 +96,54 @@
         border-radius: 13px;
         /* Color */
         color: white;
-        background-color: #E0E0E0;
+        background-color: #e0e0e0;
         /* Text */
         @include font(fontBold, 1.4rem);
         /* Positioning */
-    
-        /* Others: transition & animations, ... */
-        cursor: pointer;
-    }
-    &__head-table {
-        /* Display & Box Model */
-        width: calc((12*9.5rem) + (12*5.5rem));
-        height: 8.4rem;
-        @include flexBox(flex-start, center);
-        border-radius: 20px;
-        padding: 0 3rem;
-        /* Color */
-        background: $--bg-passive;
-        color: $--text-passive;
-        /* Text */
-        @include font(fontBold, 1.6rem);
-        /* Positioning */
 
         /* Others: transition & animations, ... */
-    }
-    &__col {
-        width: 9.5rem;
-        margin-right: 5.5rem;
-    }
-    &__col:nth-last-child(1) {
-        margin-right: 0;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            /* Display & Box Model */
+
+            /* Color */
+            color: white;
+            background-color: $--primary-color;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
     }
     &__table-wrapper {
         /* Display & Box Model */
-        max-width: 90.5rem;
-        min-height: 80vh;
+        min-width: 100%;
+        height: calc(70%);
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-        overflow-y: hidden;
+        overflow-y: scroll;
         overflow-x: scroll;
         &::-webkit-scrollbar {
+            height: 10px;
             width: 10px;
+            padding-left: 10px;
             background-color: transparent;
         }
         &::-webkit-scrollbar-thumb {
             border-radius: 10px;
             background: $--primary-color;
+            height: 10px;
+            width: 10px;
+            padding-left: 10px;
         }
     }
+    @import "./UploadTable/uploadTable";
 }

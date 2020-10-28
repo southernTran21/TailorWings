@@ -1,0 +1,85 @@
+.c-admin-data-upload-table {
+    /* Display & Box Model */
+    @include box(auto, auto);
+    min-height: 100%;
+    @include flexBox(flex-start, flex-start , column);
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__header {
+        /* Display & Box Model */
+        @include box(auto, 8.4rem);
+        @include flexBox(flex-start, center);
+        min-width: 100%;
+        border-radius: 20px;
+        padding: 0 3rem;
+        /* Color */
+        background: $--bg-passive;
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.6rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > span {
+            /* Display & Box Model */
+        
+            /* Color */
+        
+            /* Text */
+            @include font(fontMedium, 1.6rem);
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+    }
+
+    &__col {
+        display: inline-block;
+        width: 10rem;
+        margin-right: 5.5rem;
+        text-align: center;
+        @include font(fontMedium, 1.4rem);
+    }
+    &__col:nth-last-child(1) {
+        margin-right: 0;
+    }
+
+    &__data {
+        /* Display & Box Model */
+        @include box(auto);
+        min-height: calc(100% - 2rem - 8.4rem);
+        min-width: 100%;
+        margin-top: 2rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__row {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center);
+        @include box(auto, 6rem);
+        padding: 0 3rem;
+        min-width: 100%;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

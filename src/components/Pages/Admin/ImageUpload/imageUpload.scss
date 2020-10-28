@@ -1,12 +1,17 @@
 .c-admin-image-upload {
     /* Display & Box Model */
-
+    display: flex;
+    padding-left: 5rem;
+    min-height: 100%;
     /* Color */
-
+    background-color: $--bg-default;
     /* Text */
 
     /* Positioning */
 
     /* Others: transition & animations, ... */
 
+    @import "./ContentSection/_contentSelection.scss";
+    @import "./SelectionSection/_selectionSection.scss";
+    @import "./ImageSelectionModal/imageSelectionModal";
 }

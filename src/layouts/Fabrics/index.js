@@ -3,7 +3,7 @@ import BannerContainer from "./Banner";
 import ListContainer from "./List";
 import NavbarContainer from "./Navbar";
 import OptionsContainer from "./Options";
-import { fetchVisible } from "../../services/Firebase API/basic";
+import { fetchVisible } from "../../services/FirebaseAPI/basic";
 import { updatePaymentMethod } from "actions";
 
 const LIMIT = 12;

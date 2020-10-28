@@ -2,34 +2,38 @@
     /* Display & Box Model */
     display: flex;
     flex-wrap: nowrap;
+    width: 100%;
+    max-width: 128rem;
+    margin: 0 auto;
     /* Color */
-
+    background-color: $--gray3-color;
     /* Text */
 
     /* Positioning */
 
     /* Others: transition & animations, ... */
 
-}
+    &__content {
+        /* Display & Box Model */
+        width: calc(100% - 30rem);
+        height: 75rem;
+        overflow: hidden;
+        /* Color */
 
-@media screen and (min-width: 769px) {
-    .l-admin {
-        width: 100%;
-        max-width: 128rem;
-        margin: 0 auto;
-        min-height: 100vh;
-        background-color: $--gray3-color;
-        &__content {
-            /* Display & Box Model */
-            @include box(100%);
-            /* Color */
-        
-            /* Text */
-        
-            /* Positioning */
-        
-            /* Others: transition & animations, ... */
-        
-        }
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
     }
 }
+
+// @media screen and (min-width: 769px) {
+//     .l-admin {
+//         width: 100%;
+//         max-width: 128rem;
+//         margin: 0 auto;
+//         min-height: 100vh;
+//         background-color: $--gray3-color;
+//     }
+// }

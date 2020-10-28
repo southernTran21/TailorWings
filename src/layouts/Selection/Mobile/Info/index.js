@@ -1,7 +1,7 @@
 import SelectionInfo from "components/Pages/Selection/Mobile/Info";
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchDesignOwner } from "services/Firebase API/basic";
+import { fetchDesignOwner } from "services/FirebaseAPI/basic";
 import { modifyPrice } from "services/CommonFunctions";
 import { updateSelectedProduct } from "actions";
 

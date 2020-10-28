@@ -1,30 +1,27 @@
 import {
     updateBestSeller,
-    updateDesigners,
-    updateProducts,
     updateDefaultProducts,
+    updateDesigners,
     updateSRC,
 } from "actions";
 import { BackTop } from "antd";
+import Login from "components/Login";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     fetchDefaultProducts,
     fetchWithCondition,
-    countSupportedFabric,
-} from "services/Firebase API/basic";
+} from "services/FirebaseAPI/basic";
 import BannerContainer from "./Banner";
 import CategoriesContainer from "./Categories";
 import CollectionsContainer from "./Collections";
 import DesignersContainer from "./Designers";
+import FabricsContainer from "./Fabrics";
 import IntroductionContainer from "./Introduction";
 import NavbarContainer from "./Navbar";
 import TailorRecruitmentContainer from "./TailorRecruitment";
 import TopProductsContainer from "./TopProducts";
 import VoucherContainer from "./Voucher";
-import FabricsContainer from "./Fabrics";
-import Login from "components/Login";
-import classNames from "classnames";
 
 function HomeContainer() {
     window.scrollTo({

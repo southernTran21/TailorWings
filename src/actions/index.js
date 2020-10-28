@@ -248,3 +248,66 @@ export const updateAdminStatus = (user) => {
         user
     };
 };
+
+export const updateOrders = (orders) => {
+    return {
+        type: "UPDATE_ORDERS",
+        orders
+    };
+};
+
+export const updateOrderDetail = (orderDetail) => {
+    return {
+        type: "UPDATE_ORDER_DETAIL",
+        orderDetail
+    };
+};
+
+export const updateInitialImageUploadData = (patterns, products) => {
+    return {
+        type: "UPDATE_INITIAL_IMAGE_UPLOAD_DATA",
+        patterns,
+        products
+    };
+};
+
+export const updateSelectedPatternImageUpload = (newPattern) => {
+    return {
+        type: "UPDATE_SELECTED_PATTERN_IMAGE_UPLOAD",
+        newPattern,
+    };
+};
+
+export const updateSelectedProductImageUpload = (newProduct) => {
+    return {
+        type: "UPDATE_SELECTED_PRODUCT_IMAGE_UPLOAD",
+        newProduct,
+    };
+};
+
+export const updateImageSelectionOption = (option) => {
+    return {
+        type: "UPDATE_IMAGE_SELECTION_OPTION",
+        option
+    };
+};
+
+export const updateImageSelectionModalStatus = () => {
+    return {
+        type: "UPDATE_IMAGE_SELECTION_MODAL_STATUS",
+    };
+};
+
+export const updateImageRef = (imageRef) => {
+    return {
+        type: "UPDATE_IMAGE_REF",
+        imageRef
+    };
+};
+
+export const updateAdminImageList = (newImage) => {
+    return {
+        type: "UPDATE_ADMIN_IMAGE_LIST",
+        newImage
+    };
+};

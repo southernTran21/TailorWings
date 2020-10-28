@@ -33,10 +33,11 @@ const LoginContainer = React.lazy(() => import("layouts/Login"));
 function App() {
     /*--------------*/
     const isPageFixedTop = useSelector((state) => state.common.isPageFixedTop);
+    const isImageSelectionModalOpen = useSelector((state) => state.admin.isImageSelectionModalOpen);
     /*--------------*/
     return (
         <div
-            className={classNames("app", { "app--fixed-top": isPageFixedTop })}
+            className={classNames("app", { "app--fixed-top": isPageFixedTop || isImageSelectionModalOpen })}
         >
             <Suspense fallback={<PageLoader />}>
                 <Switch>
@@ -67,7 +68,7 @@ function App() {
                     {/* this is for Admin */}
                     <Route path="/login" component={LoginContainer} />
                     <Route path="/admin" component={AdminContainer} />
-                    {/* <Route path="/test-excel" component={ReadExcel} /> */}
+                    <Route path="/test-excel" component={ReadExcel} />
                     {/* <Route component={NotFound} /> */}
                 </Switch>
                 <Footer />

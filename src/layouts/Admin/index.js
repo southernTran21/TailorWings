@@ -39,7 +39,6 @@ function AdminContainer() {
         };
     });
     /*--------------*/
-    console.log('isAdmin :>> ', isAdmin);
     return (
         <Switch>
             <div className="l-admin">
@@ -52,7 +51,7 @@ function AdminContainer() {
                         path="/admin/order"
                         component={AdminOrderManagement}
                     />
-                    <Route path="/admin/order-detail/:orderID" component={AdminOrderDetail}/>
+                    <Route path="/admin/order-detail/:orderID" component={AdminOrderDetail} />
                 </div>
             </div>
         </Switch>

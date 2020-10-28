@@ -1,0 +1,43 @@
+.c-admin-image-upload-content {
+    /* Display & Box Model */
+    width: calc(100% - 350px);
+    max-height: 100%;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__title {
+        /* Display & Box Model */
+        padding: 4.2rem 0;
+        min-height: 12.6rem;
+        /* Color */
+        
+        /* Text */
+        @include font(fontSemiBold, 3.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__image-update {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        margin-top: 1.6rem;
+        display: flex;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    @import "./UploadStatus/uploadStatus";
+}

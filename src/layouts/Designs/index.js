@@ -1,7 +1,7 @@
 import { updateDefaultProducts, updateSRC } from "actions";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDefaultProducts } from "services/Firebase API/basic";
+import { fetchDefaultProducts } from "services/FirebaseAPI/basic";
 import BannerContainer from "./Bannner";
 import ListContainer from "./List";
 import NavbarContainer from "./Navbar";

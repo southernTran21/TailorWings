@@ -1,9 +1,8 @@
 .c-admin-sidebar {
     /* Display & Box Model */
-    @include box(30rem, 72rem);
+    @include box(30rem, 75rem);
     @include flexBox(flex-start, center, column);
     padding: 0 2.8rem;
-    min-height: 100vh;
     /* Color */
     background-color: $--bg-default;
     /* Text */

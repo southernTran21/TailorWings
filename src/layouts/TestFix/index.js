@@ -4,12 +4,12 @@ import {
     fetchAll,
     fetchDocument,
     setDocument,
-} from "../../services/Firebase API/basic";
+} from "../../services/FirebaseAPI/basic";
 import { productPriceCalculate } from "../../services/CommonFunctions";
 import { storage } from "../../firebase";
 // import firebase, { functions } from "firebase/app";
-import firebase from 'firebase/app'
-import 'firebase/functions'
+import firebase from "firebase/app";
+import "firebase/functions";
 
 import test300x300 from "../../assets/Image/test.jpg";
 
@@ -24,7 +24,10 @@ function TestFix() {
      *  Call by:
      */
     function onClick() {
-        const sayHello = firebase.app().functions('asia-south1').httpsCallable('sayHello');
+        const sayHello = firebase
+            .app()
+            .functions("asia-south1")
+            .httpsCallable("sayHello");
         sayHello()
             .then((result) => {
                 console.log(result.data);
@@ -196,14 +199,49 @@ function TestFix() {
         // }
         // /*--------------*/
         // fetchPriceFault();
+        /*--------------*/
+        /*-------this is for BACKUP 0 PHASE DATA-------*/
+        // async function fetchDataToBackUp() {
+        //     try {
+        //         let categories = await fetchAll("categories");
+        //         let collections = await fetchAll("collections");
+        //         let customers = await fetchAll("customers");
+        //         let designers = await fetchAll("designers");
+        //         let designs = await fetchAll("designs");
+        //         let fabrics = await fetchAll("fabrics");
+        //         let orderDetail = await fetchAll("orderDetail");
+        //         let orders = await fetchAll("orders");
+        //         let products = await fetchAll("products");
+        //         let welcomeLandingPage = await fetchAll("welcomeLandingPage");
+        //         /*--------------*/
+        //         const backup = {
+        //             categories,
+        //             collections,
+        //             customers,
+        //             designers,
+        //             designs,
+        //             fabrics,
+        //             orderDetail,
+        //             orders,
+        //             products,
+        //             welcomeLandingPage,
+        //         };
+        //         /*--------------*/
+        //         console.log('backup :>> ', JSON.stringify(backup));
+        //     } catch (error) {
+        //         console.log('error :>> ', error);
+        //     }
+        // }
+        /*--------------*/
+        // fetchDataToBackUp();
     }, []);
     /*--------------*/
     // console.log("faultList :>> ", faultList);
 
     // Create a storage reference from our storage service
-    // var storageRef = firebase.storage().ref();
-    // var listRef = storageRef.child("image/test");
-    // var listRefUpdate = storageRef.child("image/test/T051.jpg");
+    var storageRef = firebase.storage().ref();
+    var listRef = storageRef.child("image/test");
+    var listRefUpdate = storageRef.child("image/test/T051.jpg");
 
     // let newMetadata = {
     //     customMetadata: {
@@ -221,21 +259,21 @@ function TestFix() {
     //         // Uh-oh, an error occurred!
     //     });
 
-    // listRef
-    //     .listAll()
-    //     .then(function (res) {
-    //         res.items.forEach(function (itemRef) {
-    //             // All the items under listRef.
-    //             // console.log('itemRef :>> ', itemRef);
-    //             let url = itemRef.getDownloadURL();
-    //             console.log("url :>> ", url);
-    //             let metaData = itemRef.getMetadata();
-    //             console.log("metaData :>> ", metaData);
-    //         });
-    //     })
-    //     .catch(function (error) {
-    //         console.log("error :>> ", error);
-    //     });
+    listRef
+        .listAll()
+        .then(function (res) {
+            res.items.forEach(function (itemRef) {
+                // All the items under listRef.
+                // console.log('itemRef :>> ', itemRef);
+                let url = itemRef.getDownloadURL();
+                console.log("url :>> ", url);
+                let metaData = itemRef.getMetadata();
+                console.log("metaData :>> ", metaData);
+            });
+        })
+        .catch(function (error) {
+            console.log("error :>> ", error);
+        });
 
     return (
         <div>

@@ -1,12 +1,109 @@
 .c-order-detail {
     /* Display & Box Model */
-    background-color: $--bg-active;
+    @include box(100%);
+    overflow: hidden;
     /* Color */
-
+    background-color: white;
     /* Text */
 
     /* Positioning */
 
     /* Others: transition & animations, ... */
 
+    &__header {
+        /* Display & Box Model */
+        display: inline-block;
+        padding-top: 4.7rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > i::before {
+            /* Display & Box Model */
+            cursor: pointer;
+            /* Color */
+            color: $--primary-color;
+            /* Text */
+            font-size: 2.6rem;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__title {
+        /* Display & Box Model */
+        padding-left: 1rem;
+        /* Color */
+
+        /* Text */
+        @include font(fontXBold, 2.4rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__content {
+        /* Display & Box Model */
+        width: 100%;
+        height: 60rem;
+        margin-top: 5rem;
+        display: flex;
+        flex-wrap: nowrap;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__list {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        width: 400px;
+        max-height: 72rem;
+        padding-top: 1.5rem;
+        /* Others: transition & animations, ... */
+        overflow-y: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+            width: 10px;
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: transparent;
+        }
+        /* Color */
+        background-color: white;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__info {
+        /* Display & Box Model */
+        width: 460px;
+        height: 100%;
+        margin-left: 6rem;
+        padding-top: 1.5rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        @import "./GeneralInfo/generalInfo";
+        @import "./PaymentInfo/_paymentInfo";
+    }
 }

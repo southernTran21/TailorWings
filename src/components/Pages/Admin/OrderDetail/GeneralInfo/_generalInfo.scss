@@ -1,0 +1,82 @@
+.c-order-detail-general-info {
+    /* Display & Box Model */
+    @include box(100%, auto);
+    @include flexBox(flex-start, flex-start, column);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    margin-bottom: 1.3rem;
+    /* Color */
+    background-color: $--gray2-color;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__header {
+        /* Display & Box Model */
+        @include box(100%,auto);
+        @include flexBox(space-between, center);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > span {
+            /* Display & Box Model */
+            
+            /* Color */
+            @include font(fontBold, 1.6rem);
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+
+        & > img {
+            /* Display & Box Model */
+            @include box(1.35rem);
+            cursor: pointer;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__info {
+        /* Display & Box Model */
+        padding-top: 1.5rem;
+        max-width: 30rem;
+        line-height: 1.6rem;
+        /* Color */
+    
+        /* Text */
+        @include font(fontMedium, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__info-gmail {
+        /* Display & Box Model */
+        padding-top: 1rem;
+        /* Color */
+        color: #2f80ed;
+        /* Text */
+        @include font(fontMedium, 1.3rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}

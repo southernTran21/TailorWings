@@ -7,7 +7,7 @@ import {
     fetchWithTrippleCondition,
     fetchDocument,
     fetchWithDoubleCondition,
-} from "services/Firebase API/basic";
+} from "services/FirebaseAPI/basic";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateSRC } from "actions";

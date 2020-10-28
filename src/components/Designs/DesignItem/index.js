@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import {
     countSupportedFabric,
     fetchDesignOwner,
-} from "services/Firebase API/basic";
+} from "services/FirebaseAPI/basic";
 import ReactImageAppear from "react-image-appear";
 import loader from "assets/Image/image-loader.gif";
 

@@ -2,7 +2,7 @@ import { updateVoucher } from "actions";
 import Voucher from "components/Pages/Cart/Voucher";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWithDoubleCondition } from "../../../services/Firebase API/basic";
+import { fetchWithDoubleCondition } from "../../../services/FirebaseAPI/basic";
 import { message } from "antd";
 
 function VoucherContainer() {

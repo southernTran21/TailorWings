@@ -18,3 +18,21 @@ export const TAILOR_RECRUITMENT_ARRAY = [
     "Tăng Thêm Thu Nhập"
 ]
 // ---------- END ----------
+
+// ---------- FIREBASE COLLECTION ID NAME ----------
+export const BODY_SHAPE = "bodyShape";
+export const CATEGORIES = "categories";
+export const COLLECTIONS = "collections";
+export const CUSTOMERS = "customers";
+export const DESIGNERS = "designers";
+export const DESIGN = "design";
+export const FABRICS = "fabrics";
+export const ORDER_DETAIL = "orderDetail";
+export const ORDERS = "orders";
+export const PATTERN_COLLECTIONS = "patternCollections";
+export const PRODUCTS = "products";
+export const SUGGEST_CHACRACTERS = "suggestCharacters";
+export const SUGGEST_PROJECT = "suggestProject";
+export const TRACKING = "tracking";
+export const VOUCHER = "voucher";
+

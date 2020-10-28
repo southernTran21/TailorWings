@@ -1,6 +1,6 @@
 .app {
     /* Display & Box Model */
-    min-width: 100vw;
+    max-width: 100vw;
     min-height: 100vh;
     /* Color */
 
@@ -12,15 +12,17 @@
 
     &--fixed-top {
         /* Display & Box Model */
-    
+
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         position: fixed;
         top: 0;
+        left: 0;
+        right: 0;
     }
 }

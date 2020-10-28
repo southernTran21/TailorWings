@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { fetchDocument } from "../../services/Firebase API/basic";
+import { fetchDocument } from "../../services/FirebaseAPI/basic";
 import BackgroundContainer from "./Background";
 import DesignListContainer from "./DesignList";
 import InfoContainer from "./Info";

@@ -1,0 +1,65 @@
+.c-order-detail-payment-status {
+    /* Display & Box Model */
+    @include flexBox(space-between, center);
+    padding: 0.6rem 1.4rem;
+    border-radius: 10px;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    & > span {
+        /* Display & Box Model */
+        
+        /* Color */
+    
+        /* Text */
+        @include font(fontSemiBold, 1.6rem);
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    & > i {
+        /* Display & Box Model */
+        padding-left: 0.7rem;
+        /* Color */
+    
+        /* Text */
+        font-size: 1.5rem;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &--paid {
+        /* Display & Box Model */
+        border: 2px solid $--success-color;
+        /* Color */
+        color: $--success-color;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &--unpaid {
+        /* Display & Box Model */
+        border: 2px solid $--error-color;
+        /* Color */
+        color: $--error-color;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+}
