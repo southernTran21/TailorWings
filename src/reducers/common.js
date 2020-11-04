@@ -1,19 +1,12 @@
-const LIMIT = 12;
-
 var initialState = {
     categories: [],
     collections: [],
-    designs: [],
-    fabrics: [],
     defaultProducts: [],
-    designers: [],
-    bestSeller: [],
-    filteredDesigns: [],
-    renderDesigns: {
-        isMax: false,
-        designs: [],
-    },
-    isPageFixedTop: false
+    patterns: [],
+    patternCollections: [],
+    fabricTypeList: [],
+    topProducts: [],
+    isPageFixedTop: false,
 };
 
 const commonReducer = (state = initialState, action) => {
@@ -31,18 +24,6 @@ const commonReducer = (state = initialState, action) => {
             fetchedCollections = [...action.collections];
             return { ...state, collections: fetchedCollections };
         /****************************************************/
-        case "UPDATE_DESIGNS":
-            if (!action.designs) return { ...state };
-            let fetchedDesigns = [...state.designs];
-            fetchedDesigns = [...action.designs];
-            return { ...state, designs: fetchedDesigns };
-        /****************************************************/
-        case "UPDATE_FABRICS":
-            if (!action.fabrics) return { ...state };
-            let fetchedFabrics = [...state.fabrics];
-            fetchedFabrics = [...action.fabrics];
-            return { ...state, fabrics: fetchedFabrics };
-        /****************************************************/
         case "UPDATE_DEFAULT_PRODUCTS":
             if (!action.defaultProducts) return { ...state };
             let fetchedDefaultProducts = [...state.defaultProducts];
@@ -50,76 +31,23 @@ const commonReducer = (state = initialState, action) => {
 
             return { ...state, defaultProducts: fetchedDefaultProducts };
         /****************************************************/
-        case "MODIFY_DEFAULT_PRODUCTS":
-            if (!action.info) return { ...state };
-            const { designID, fabricNumber, designOwner } = action.info;
-            let newDefaultProducts = [...state.defaultProducts];
-            let index = newDefaultProducts.findIndex(
-                (product) => product.designID === designID
-            );
-            if (index > -1) {
-                newDefaultProducts[index].fabricNumber = fabricNumber;
-                newDefaultProducts[index].designOwner = designOwner;
-            }
-            return { ...state, defaultProducts: newDefaultProducts };
+        case "UPDATE_PATTERNS":
+            if (!action.patterns) return { ...state };
+            return { ...state, patterns: action.patterns };
         /****************************************************/
-        case "UPDATE_DESIGNERS":
-            if (!action.designers) return { ...state };
-            let fetchedDesigners = [...state.designers];
-            fetchedDesigners = [...action.designers];
-            return { ...state, designers: fetchedDesigners };
+        case "UPDATE_PATTERN_COLLECTIONS":
+            if (!action.patternCollections) return { ...state };
+            return { ...state, patternCollections: action.patternCollections };
         /****************************************************/
-        case "UPDATE_BESTSELLER":
-            if (!action.designs) return { ...state };
-            let updatedBestSeller = [...state.bestSeller];
-            action.designs.forEach((design) => {
-                let info = state.defaultProducts.find(
-                    (product) => product.designID === design
-                );
-                if (info) {
-                    updatedBestSeller.push(info);
-                }
-            });
-            return { ...state, bestSeller: updatedBestSeller };
+        case "UPDATE_FABRIC_TYPE_LIST":
+            if (!action.fabricTypeList) return { ...state };
+            return { ...state, fabricTypeList: action.fabricTypeList };
         /****************************************************/
-        case "UPDATE_FILTERED_DESIGNS":
-            if (!action.filter) return { ...state };
-            let updatedFilteredDesigns = [...state.filteredDesigns];
-            /*--------------*/
-            if (action.filter === "all") {
-                updatedFilteredDesigns = [...state.defaultProducts];
-            } else {
-                updatedFilteredDesigns = [
-                    ...(state.defaultProducts.filter((product) => {
-                        return product.catID === action.filter;
-                    }) || []),
-                ];
-            }
-            return {
-                ...state,
-                filteredDesigns: updatedFilteredDesigns,
-                renderDesigns: { isMax: false, designs: [] },
-            };
-        /****************************************************/
-        case "UPDATE_RENDER_DESIGNS":
-            let updatedRenderDesigns = { ...state.renderDesigns };
-            let endIndex = action.isLoadMore
-                ? updatedRenderDesigns.designs.length + LIMIT
-                : LIMIT;
-            /*--------------*/
-            let updatedDesigns = [...state.filteredDesigns.slice(0, endIndex)];
-            let isMax =
-                updatedDesigns.length >= state.filteredDesigns.length &&
-                state.filteredDesigns.length > 0;
-            /*--------------*/
-            updatedRenderDesigns = {
-                isMax: isMax,
-                designs: updatedDesigns,
-            };
-            return { ...state, renderDesigns: updatedRenderDesigns };
+        case "UPDATE_TOP_PRODUCTS":
+            if (!action.topProducts) return { ...state };
+            return { ...state, topProducts: [...action.topProducts] };
         /****************************************************/
         case "UPDATE_PAGE_FIXED_TOP_STATUS":
-            console.log('here');
             return { ...state, isPageFixedTop: !state.isPageFixedTop };
         /****************************************************/
         default:

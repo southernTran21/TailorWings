@@ -1,37 +1,84 @@
+import {
+    updateSelectedProduct
+} from "actions/selection";
+import { message } from "antd";
 import InfoDesktop from "components/Pages/Selection/Desktop/Info";
-import React, { useState, useEffect, Fragment } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchDesignOwner } from "services/FirebaseAPI/basic";
-import { updateSelectedProduct } from "actions";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { modifyPrice } from "services/CommonFunctions";
 
 function InfoContainerDesktop() {
     /*--------------*/
     const renderProduct = useSelector((state) => state.selection.renderProduct);
-    const selectedProduct = useSelector(
-        (state) => state.selection.selectedProduct
+    const renderPatterns = useSelector(
+        (state) => state.selection.renderPatterns
+    );
+    const selectedDesign = useSelector(
+        (state) => state.selection.selectedDesign
+    );
+    const selectedFabricType = useSelector(
+        (state) => state.selection.selectedFabricType
     );
     /*--------------*/
-    const [designedBy, setDesignedBy] = useState("");
+    const [price, setPrice] = useState(0);
+    const [renderPrice, setRenderPrice] = useState(0);
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        async function _fetchDesignOwner() {
-            try {
-                const designedBy = await fetchDesignOwner(
-                    renderProduct.designID
-                );
+        if (
+            renderProduct &&
+            renderPatterns.length > 0 &&
+            selectedDesign &&
+            selectedFabricType
+        ) {
+            /*--------------*/
+            let selectedPattern =
+                renderPatterns.find(
+                    (pattern) => pattern.id === renderProduct.idPattern
+                ) || null;
+            /*--------------*/
+            if (selectedPattern) {
                 /*--------------*/
-                setDesignedBy(designedBy);
-            } catch (error) {}
+                let fabricPrice =
+                    (selectedDesign.usedFabric / 100) *
+                    (selectedPattern.price + selectedFabricType.price);
+                /*--------------*/
+                let finalPrice =
+                    1.3 *
+                    (fabricPrice +
+                        selectedDesign.processPrice +
+                        selectedDesign.designPrice);
+                finalPrice = Math.ceil(finalPrice / 1000) * 1000;
+                /*--------------*/
+                let modifiedPrice = 0;
+                /*--------------*/
+                if (isNaN(finalPrice)) {
+                    /*--------------*/
+                    modifiedPrice = 0;
+                    /*--------------*/
+                } else {
+                    /*--------------*/
+                    modifiedPrice = modifyPrice(finalPrice);
+                    /*--------------*/
+                }
+                /*--------------*/
+                setPrice(finalPrice);
+                /*--------------*/
+                setRenderPrice(modifiedPrice);
+                /*--------------*/
+
+            }
         }
         /*--------------*/
-        if (renderProduct) {
-            _fetchDesignOwner();
-        }
-    }, [renderProduct]);
+    }, [
+        renderProduct,
+        renderPatterns.toString(),
+        selectedDesign,
+        selectedFabricType,
+    ]);
+    /*--------------*/
     /*********************************
      *  Description: update Selected Product to store
      *
@@ -39,31 +86,48 @@ function InfoContainerDesktop() {
      *  Call by:
      */
     function onConfirmClick() {
-        if (renderProduct) {
+        if (typeof selectedFabricType === "object") {
             /*--------------*/
-            const { name, image, price, productID } = renderProduct;
-            let info = {
-                name,
-                image,
-                price,
-                productID,
-            };
-            const action_updateSelectedProduct = updateSelectedProduct(info);
-            dispatch(action_updateSelectedProduct);
+            if (renderProduct) {
+                /*--------------*/
+                const { name, image, idProduct } = renderProduct;
+                /*--------------*/
+                let info = {
+                    name,
+                    image,
+                    price,
+                    idProduct,
+                    fabricType: {
+                        id: selectedFabricType.id,
+                        name: selectedFabricType.name
+                    }
+                };
+                /*--------------*/
+                const action_updateSelectedProduct = updateSelectedProduct(
+                    info
+                );
+                dispatch(action_updateSelectedProduct);
+                /*--------------*/
+            }
+            /*--------------*/
+        } else {
+            /*--------------*/
+            message.error("Vui lòng chọn chất liệu vải mong muốn!");
+            /*--------------*/
         }
     }
     /************_END_****************/
     /*--------------*/
     if (!renderProduct) return <Fragment />;
-    const { name, price, productID } = renderProduct;
-    let modifiedPrice = modifyPrice(price);
+    const { name, id } = renderProduct;
     return (
         <section className="l-selection__Info-desktop">
             <InfoDesktop
-                productID={productID}
+                productID={id}
                 name={name}
-                price={modifiedPrice}
-                designedBy={designedBy}
+                price={renderPrice}
+                designedBy={"Tailor Wings"}
+                
                 onConfirmClick={onConfirmClick}
             />
         </section>

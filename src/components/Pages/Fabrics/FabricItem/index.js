@@ -5,16 +5,16 @@ import ReactImageAppear from "react-image-appear";
 import loader from "assets/Image/image-loader.gif";
 
 FabricItem.propTypes = {
-    fabric: PropTypes.object,
+    pattern: PropTypes.object,
 };
 
 FabricItem.defaultProps = {
-    fabric: null,
+    pattern: null,
 };
 
 function FabricItem(props) {
-    if (!props.fabric) return <Fragment />;
-    const { image, name, typeName, id } = props.fabric;
+    if (!props.pattern) return <Fragment />;
+    const { image, name, id } = props.pattern;
     return (
         <Link
             to={{
@@ -25,7 +25,7 @@ function FabricItem(props) {
             <div className="c-fabric-item">
                 <div className="c-fabric-item__image">
                     <ReactImageAppear
-                        src={image[0]}
+                        src={image}
                         animationDuration="1s"
                         loader={loader}
                         loaderStyle={{ backgroundColor: "transparent" }}
@@ -37,9 +37,9 @@ function FabricItem(props) {
                 <div className="c-fabric-item__name">
                     <p>{name}</p>
                 </div>
-                <div className="c-fabric-item__tag">
+                {/* <div className="c-fabric-item__tag">
                     <span>{typeName}</span>
-                </div>
+                </div> */}
             </div>
         </Link>
     );

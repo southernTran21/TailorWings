@@ -65,6 +65,7 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
+    transition: all 0.2s ease-in-out;
 
     &--active {
         /* Display & Box Model */
@@ -72,6 +73,19 @@
         /* Color */
         color: $--text-active;
         background-color: $--bg-active;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &:hover {
+        /* Display & Box Model */
+
+        /* Color */
+        background-color: $--bg-active;
+        color: $--text-active;
         /* Text */
 
         /* Positioning */
@@ -215,14 +229,14 @@
     .c-button-filter {
         /* Display & Box Model */
         @include box(12rem);
-        padding: 0 2.9rem;
+        padding: 0 2.5rem;
+        margin: 1rem 0;
         /* Color */
-    
+
         /* Text */
         @include font(fontBold, 2rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
 }

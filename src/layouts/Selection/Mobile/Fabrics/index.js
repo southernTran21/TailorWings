@@ -1,26 +1,23 @@
 import SelectionFabrics from "components/Pages/Selection/Mobile/Fabrics";
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 function FabricsContainer() {
     /*--------------*/
-    const renderFabrics = useSelector((state) => state.selection.renderFabrics);
+    const renderPatterns = useSelector(
+        (state) => state.selection.renderPatterns
+    );
+    const renderProduct = useSelector((state) => state.selection.renderProduct);
     /*--------------*/
-    const [activeIndex, setActiveIndex] = useState(null);
+    let patternID = renderProduct ? renderProduct.idPattern : null;
+    let designID = renderProduct ? renderProduct.idDesign : null;
     /*--------------*/
-    useEffect(() => {
-        let activeIndex = renderFabrics.findIndex((fabric) => fabric.isActive);
-        if (activeIndex > -1) {
-            setActiveIndex(activeIndex);
-        }
-    }, [renderFabrics]);
-    /*--------------*/
-    if (!renderFabrics) return <Fragment />;
     return (
         <div className="l-selection__fabrics">
             <SelectionFabrics
-                renderFabrics={renderFabrics}
-                activeIndex={activeIndex}
+                renderPatterns={renderPatterns}
+                patternID={patternID}
+                designID={designID}
             />
         </div>
     );

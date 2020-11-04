@@ -6,7 +6,7 @@ import BackgroundContainer from "./Background";
 import DesignListContainer from "./DesignList";
 import InfoContainer from "./Info";
 import OptionsContainer from "./Options";
-import { updateSRC } from "actions";
+import { updateSRC } from "actions/selection";
 
 const FILTER_INFO = [
     { id: "all", name: "Tất Cả", isActive: true },

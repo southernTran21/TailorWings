@@ -1,21 +1,27 @@
-import {
-    updateBestSeller,
-    updateDefaultProducts,
-    updateFabricList,
-    updateProductList,
-    updateRenderFabrics,
-    updateRenderProduct,
-} from "actions";
+// import {
+//     updateBestSeller,
+//     updateDefaultProducts,
+//     updateFabricList,
+//     updateProductList,
+//     updateRenderFabrics,
+//     updateRenderProduct,
+// } from "actions";
 import PageLoader from "components/Loader/Page";
+import { DESIGNS, FABRIC_TYPE, PATTERNS, PRODUCTS } from "../../constants";
 import React, { Fragment, useEffect, useState } from "react";
 import Media from "react-media";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import {
-    fetchDefaultProducts,
-    fetchVisibilityCondition,
-    fetchWithCondition,
+    fetchVisible,
+    fetchVisibleCondition,
 } from "services/FirebaseAPI/basic";
+// import {
+//     fetchDefaultProducts,
+//     fetchVisibilityCondition,
+//     fetchVisibleCondition,
+//     fetchWithCondition,
+// } from "services/FirebaseAPI/basic";
 import DesignCarouselContainerDesktop from "./Desktop/DesignCarousel";
 import FabricsContainerDesktop from "./Desktop/Fabrics";
 import InfoContainerDesktop from "./Desktop/Info";
@@ -26,6 +32,21 @@ import FabricsContainer from "./Mobile/Fabrics";
 import InfoContainer from "./Mobile/Info";
 import NavbarContainer from "./Mobile/Navbar";
 import TopProductsContainer from "./Mobile/TopProducts";
+import {
+    updateFabricTypeList,
+    updatePatterns,
+    updateTopProducts,
+} from "actions";
+import {
+    updateSelectedDesign,
+    updateRelatedProducts,
+    updateRenderPatterns,
+    updateRenderProduct,
+    updateRenderFabricTypes,
+    updateSelectedFabricType,
+    updateImageLoading,
+    updatePageLoading,
+} from "actions/selection";
 
 function SelectionContainer() {
     window.scrollTo({
@@ -33,248 +54,240 @@ function SelectionContainer() {
         behavior: "smooth",
     });
     /*--------------*/
-    const page = window.location.pathname;
     const urlSearch = window.location.search.match(/id=(.*)\b/);
     const productID = urlSearch ? urlSearch[1] : "";
     const designID = productID.substring(0, 4) || null;
-    const fabricID = productID.substring(4, 8) || null;
-    /*--------------*/
-    const productList = useSelector((state) => state.selection.productList);
-    const fabricList = useSelector((state) => state.selection.fabricList);
-    const renderProduct = useSelector((state) => state.selection.renderProduct);
-    const renderFabrics = useSelector((state) => state.selection.renderFabrics);
-    /*--------------*/
-    const defaultProductsLength = useSelector(
-        (state) => state.common.defaultProducts.length
-    );
-    const bestSellerLength = useSelector(
-        (state) => state.common.bestSeller.length
-    );
-    const selectionSrc = useSelector((state) => state.selection.src);
+    const patternID = productID.substring(4, 8) || null;
+
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
-    const [fetchError, setFetchError] = useState(false);
-    const [isPageLoading, setIsPageLoading] = useState(false);
-    const [isImageLoading, setIsImageLoading] = useState(false);
+    const patterns = useSelector((state) => state.common.patterns);
+    const topProducts = useSelector((state) => state.common.topProducts);
+    const fabricTypeList = useSelector((state) => state.common.fabricTypeList);
+    const relatedProducts = useSelector(
+        (state) => state.selection.relatedProducts
+    );
+    const isPageLoading = useSelector((state) => state.selection.isPageLoading);
     /*--------------*/
     useEffect(() => {
-        if (page === "/selection") {
+        /*--------------*/
+        async function _fetchPatterns() {
             /*--------------*/
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-            /*--------------*/
-            setIsImageLoading(true);
-            /*--------------*/
-            async function _fetchProductData() {
-                try {
-                    const newProducts = await fetchVisibilityCondition(
-                        "products",
-                        "designID",
-                        designID
-                    );
+            try {
+                /*--------------*/
+                let fetchedPattern = await fetchVisible(PATTERNS);
+                /*--------------*/
+                if (fetchedPattern) {
                     /*--------------*/
-                    if (newProducts.length > 0) {
-                        const relatedFabricID = newProducts.map((product) => {
-                            return product.fabricID || "";
-                        });
-                        /*--------------*/
-                        let fetchedFabrics = await Promise.all(
-                            relatedFabricID.map((id) => {
-                                return fetchWithCondition("fabrics", "id", id);
-                            })
-                        );
-                        fetchedFabrics = fetchedFabrics.flat();
-                        /*--------------*/
-
-                        /*-------UPDATE NEW DATA-------*/
-                        const newRenderFabrics = fetchedFabrics.map(
-                            (fabric) => {
-                                return {
-                                    ...fabric,
-                                    isActive: fabric.id === fabricID,
-                                };
-                            }
-                        );
-                        /*--------------*/
-                        const newFabrics = fetchedFabrics.filter((fabric) => {
-                            const isAvailable =
-                                fabricList.findIndex(
-                                    (item) => item.id === fabric.id
-                                ) >= 0;
-                            return !isAvailable;
-                        });
-                        /*--------------*/
-                        const newRenderProduct =
-                            newProducts.find(
-                                (product) => product.productID === productID
-                            ) || null;
-                        /*--------------*/
-                        const action_updateProductList = updateProductList(
-                            newProducts
-                        );
-                        dispatch(action_updateProductList);
-                        /*--------------*/
-                        const action_updateFabricList = updateFabricList(
-                            newFabrics
-                        );
-                        dispatch(action_updateFabricList);
-                        /*--------------*/
-                        const action_resetRenderFabrics = updateRenderFabrics(
-                            []
-                        );
-                        const action_updateRenderFabrics = updateRenderFabrics(
-                            newRenderFabrics
-                        );
-                        dispatch(action_resetRenderFabrics);
-                        dispatch(action_updateRenderFabrics);
-                        /*--------------*/
-                        const action_updateRenderProduct = updateRenderProduct(
-                            newRenderProduct
-                        );
-                        dispatch(action_updateRenderProduct);
-                        /*--------------*/
-                    }
-                    setFetchError(false);
-                } catch (error) {
-                    setFetchError(true);
+                    const action_updatePatterns = updatePatterns(
+                        fetchedPattern
+                    );
+                    dispatch(action_updatePatterns);
+                    /*--------------*/
                 }
+                /*--------------*/
+            } catch (error) {
+                console.log("error :>> ", error);
             }
             /*--------------*/
-            if (!fetchError) {
-                const isProductAvailable =
-                    productList.findIndex(
-                        (product) => product.productID === productID
-                    ) >= 0;
-                const isDesignChange = renderProduct
-                    ? renderProduct.designID !== designID
-                    : true;
-                if (isProductAvailable) {
-                    /*--------------*/
-                    let newRenderFabrics = [];
-                    let newRenderProduct = productList.find(
-                        (product) => product.productID === productID
-                    );
-                    /*--------------*/
-                    if (isDesignChange) {
-                        setIsPageLoading(true);
-                        /*-------Reset-------*/
-                        const action_updateRenderFabrics = updateRenderFabrics(
-                            []
-                        );
-                        dispatch(action_updateRenderFabrics);
-                        /*--------------*/
-                        productList.forEach((product) => {
-                            if (product.designID === designID) {
-                                /*--------------*/
-                                const fabricInfo =
-                                    fabricList.find(
-                                        (fabric) =>
-                                            fabric.id === product.fabricID
-                                    ) || null;
-                                /*--------------*/
-                                if (fabricInfo) {
-                                    let newRenderFabricItem = {
-                                        ...fabricInfo,
-                                        isActive: fabricInfo.id === fabricID,
-                                    };
-                                    /*--------------*/
-                                    newRenderFabrics.push(newRenderFabricItem);
-                                }
-                            }
-                        });
-                    } else {
-                        newRenderFabrics = renderFabrics.map((fabric) => {
-                            return {
-                                ...fabric,
-                                isActive: fabric.id === fabricID,
-                            };
-                        });
-                    }
-                    /*--------------*/
-                    const action_updateRenderFabrics = updateRenderFabrics(
-                        newRenderFabrics
-                    );
-                    dispatch(action_updateRenderFabrics);
-                    /*--------------*/
-                    const action_updateRenderProduct = updateRenderProduct(
-                        newRenderProduct
-                    );
-                    dispatch(action_updateRenderProduct);
-                    /*--------------*/
-                    setFetchError(false);
-                    setTimeout(() => {
-                        setIsPageLoading(false);
-                    }, 1000);
-                } else {
-                    setIsPageLoading(true);
-                    _fetchProductData();
-                    /*--------------*/
-                    setTimeout(() => {
-                        setIsPageLoading(false);
-                    }, 1000);
-                }
-            }
         }
         /*--------------*/
-        setTimeout(() => {
-            setIsImageLoading(false);
-        }, 500);
-    }, [productID]);
-    /*------- Handle bestseller list -------*/
-    useEffect(() => {
-        if (page === "/selection") {
-            async function _fetchDefaultProducts() {
-                try {
-                    const fetchedDefaultProducts = await fetchDefaultProducts();
-                    if (fetchedDefaultProducts.length > 0) {
-                        /*--------------*/
-                        const action_updateDefaultProducts = updateDefaultProducts(
-                            fetchedDefaultProducts
-                        );
-                        dispatch(action_updateDefaultProducts);
-                    }
-                    setFetchError(false);
-                } catch (error) {
-                    setFetchError(true);
-                }
-            }
+        if (!patterns.length > 0) {
             /*--------------*/
-            async function _fetchBestSeller() {
-                try {
-                    const fetchedBestSeller = await fetchWithCondition(
-                        "topList",
-                        "id",
-                        "bestseller"
-                    );
-                    if (fetchedBestSeller.length > 0) {
-                        let designs = [...fetchedBestSeller[0].designs];
-                        /*--------------*/
-                        const action_updateBestSeller = updateBestSeller(
-                            designs
-                        );
-                        dispatch(action_updateBestSeller);
-                    }
-                    setFetchError(false);
-                } catch (error) {
-                    setFetchError(true);
-                }
-            }
+            _fetchPatterns();
             /*--------------*/
-            if (!fetchError) {
-                if (defaultProductsLength < 1) {
-                    _fetchDefaultProducts();
-                }
-                if (bestSellerLength < 1 && defaultProductsLength > 0) {
-                    _fetchBestSeller();
-                }
-            }
         }
-    }, [defaultProductsLength, bestSellerLength]);
+        /*--------------*/
+    }, [patterns.length]);
     /*--------------*/
-    if (!productID || !designID || !fabricID) return <Redirect to="/" />;
+    useEffect(() => {
+        /*--------------*/
+        async function _fetchSelectedDesign() {
+            /*--------------*/
+            try {
+                /*--------------*/
+                let fetchedSelectedDesign = await fetchVisibleCondition(
+                    DESIGNS,
+                    "id",
+                    designID
+                );
+                /*--------------*/
+                if (fetchedSelectedDesign) {
+                    /*--------------*/
+                    const action_updateSelectedDesign = updateSelectedDesign(
+                        fetchedSelectedDesign[0]
+                    );
+                    dispatch(action_updateSelectedDesign);
+                    /*--------------*/
+                }
+                /*--------------*/
+            } catch (error) {
+                console.log("error :>> ", error);
+            }
+            /*--------------*/
+        }
+        /*--------------*/
+        _fetchSelectedDesign();
+        /*--------------*/
+    }, [designID]);
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        async function _fetchRelatedProducts() {
+            /*--------------*/
+            try {
+                /*--------------*/
+                let fetchedRelatedProducts = await fetchVisibleCondition(
+                    PRODUCTS,
+                    "idDesign",
+                    designID
+                );
+                /*--------------*/
+                if (fetchedRelatedProducts) {
+                    /*--------------*/
+                    let renderPatterns = fetchedRelatedProducts.map(
+                        (product) => {
+                            /*--------------*/
+                            let patternInfo =
+                                patterns.find(
+                                    (pattern) =>
+                                        pattern.id === product.idPattern
+                                ) || null;
+                            /*--------------*/
+                            if (patternInfo) {
+                                return {
+                                    ...patternInfo,
+                                    isActive: patternInfo.id === patternID,
+                                };
+                            } else {
+                                return patternInfo;
+                            }
+                        }
+                    );
+                    /*--------------*/
+                    const action_updateRelatedProducts = updateRelatedProducts(
+                        fetchedRelatedProducts
+                    );
+                    dispatch(action_updateRelatedProducts);
+                    /*--------------*/
+                    const action_updateRenderPatterns = updateRenderPatterns(
+                        renderPatterns
+                    );
+                    dispatch(action_updateRenderPatterns);
+                    /*--------------*/
+                }
+                /*--------------*/
+            } catch (error) {
+                console.log("error :>> ", error);
+            }
+            /*--------------*/
+        }
+        /*--------------*/
+        if (patterns.length > 0) {
+            /*--------------*/
+            _fetchRelatedProducts();
+            /*--------------*/
+        }
+        /*--------------*/
+    }, [designID, patterns.toString()]);
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        const action_updatePageLoading = updatePageLoading(true);
+        dispatch(action_updatePageLoading);
+        /*--------------*/
+        if (relatedProducts.length > 0 && productID) {
+            /*--------------*/
+            let renderProduct =
+                relatedProducts.find((product) => product.id === productID) ||
+                null;
+            /*--------------*/
+            const action_updateRenderProduct = updateRenderProduct(
+                renderProduct
+            );
+            dispatch(action_updateRenderProduct);
+            /*--------------*/
+        }
+        /*--------------*/
+        const timer = setTimeout(() => {
+            /*--------------*/
+            const action_updatePageLoading = updatePageLoading(false);
+            dispatch(action_updatePageLoading);
+            /*--------------*/
+        }, 500);
+        /*--------------*/
+        return () => clearTimeout(timer);
+        /*--------------*/
+    }, [relatedProducts.length, productID]);
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        async function _fetchFabricTypeList() {
+            /*--------------*/
+            try {
+                /*--------------*/
+                let fetchedTypeList = await fetchVisible(FABRIC_TYPE);
+                /*--------------*/
+                if (fetchedTypeList) {
+                    /*--------------*/
+                    const action_updateFabricTypeList = updateFabricTypeList(
+                        fetchedTypeList
+                    );
+                    dispatch(action_updateFabricTypeList);
+                    /*--------------*/
+                }
+                /*--------------*/
+            } catch (error) {
+                console.log("error :>> ", error);
+            }
+            /*--------------*/
+        }
+        /*--------------*/
+        if (!fabricTypeList.length > 0) {
+            /*--------------*/
+            _fetchFabricTypeList();
+            /*--------------*/
+        }
+        /*--------------*/
+    }, [fabricTypeList.length]);
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        async function _fetchTopProducts() {
+            /*--------------*/
+            try {
+                /*--------------*/
+                let fetchedTopProducts = await fetchVisibleCondition(
+                    PRODUCTS,
+                    "topStatus",
+                    true
+                );
+                /*--------------*/
+                if (fetchedTopProducts) {
+                    /*--------------*/
+                    const action_updateTopProducts = updateTopProducts(
+                        fetchedTopProducts
+                    );
+                    dispatch(action_updateTopProducts);
+                    /*--------------*/
+                }
+                /*--------------*/
+            } catch (error) {
+                console.log("error :>> ", error);
+            }
+            /*--------------*/
+        }
+        /*--------------*/
+        if (!topProducts.length > 0) {
+            /*--------------*/
+            _fetchTopProducts();
+            /*--------------*/
+        }
+        /*--------------*/
+    }, [topProducts.length]);
+    /*--------------*/
+    if (!productID || !designID || !patternID) return <Redirect to="/" />;
     /*--------------*/
     if (isPageLoading) {
         return <PageLoader />;
@@ -285,24 +298,18 @@ function SelectionContainer() {
                     {(matches) =>
                         matches.small ? (
                             <Fragment>
-                                <NavbarContainer selectionSrc={selectionSrc} />
+                                <NavbarContainer />
                                 <FabricsContainer />
-                                <DesignCarouselContainer
-                                    isImageLoading={isImageLoading}
-                                />
+                                <DesignCarouselContainer />
                                 <InfoContainer />
                                 <DescriptionContainer />
                                 <TopProductsContainer />
                             </Fragment>
                         ) : (
                             <Fragment>
-                                <NavbarContainerDesktop
-                                    selectionSrc={selectionSrc}
-                                />
+                                <NavbarContainerDesktop />
                                 <div className="l-selection__fabric-selection-wrapper">
-                                    <DesignCarouselContainerDesktop
-                                        isImageLoading={isImageLoading}
-                                    />
+                                    <DesignCarouselContainerDesktop />
                                     <div className="l-selection__info-wrapper">
                                         <FabricsContainerDesktop />
                                         <InfoContainerDesktop />

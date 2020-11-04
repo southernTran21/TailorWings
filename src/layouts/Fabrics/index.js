@@ -4,14 +4,16 @@ import ListContainer from "./List";
 import NavbarContainer from "./Navbar";
 import OptionsContainer from "./Options";
 import { fetchVisible } from "../../services/FirebaseAPI/basic";
-import { updatePaymentMethod } from "actions";
-
-const LIMIT = 12;
+import { PATTERNS, PATTERN_COLLECTIONS } from "../../constants";
+import { updatePatternCollections, updatePatterns } from "actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFilterStatus, updateRenderPatterns } from "actions/fabrics";
 
 function FabricsContainer() {
     /*--------------*/
-    const [fabricList, setFabricList] = useState(null);
-    const [renderFabrics, setRenderFabrics] = useState(null);
+    const patterns = useSelector((state) => state.common.patterns);
+    /*--------------*/
+    const dispatch = useDispatch();
     /*--------------*/
     useEffect(() => {
         window.scrollTo({
@@ -19,66 +21,59 @@ function FabricsContainer() {
             behavior: "smooth",
         });
         /*--------------*/
-        async function _fetchAllVisibleFabric() {
+        async function _fetchPatterns() {
             try {
                 /*--------------*/
-                const visibleFabrics = await fetchVisible("fabrics");
-                /*--------------*/
-                if (visibleFabrics.length > 0) {
-                    setFabricList(visibleFabrics);
-                    if (visibleFabrics.length <= LIMIT) {
-                        setRenderFabrics({
-                            isMax: true,
-                            fabrics: [...visibleFabrics],
-                        });
-                    } else {
-                        setRenderFabrics({
-                            isMax: false,
-                            fabrics: [...visibleFabrics.slice(0, LIMIT)],
-                        });
-                    }
+                if (patterns.length < 1) {
+                    const fetchedPatterns = await fetchVisible(PATTERNS);
+                    /*--------------*/
+                    const action_updatePatterns = updatePatterns(
+                        fetchedPatterns
+                    );
+                    dispatch(action_updatePatterns);
+                    /*--------------*/
                 }
+                /*--------------*/
             } catch (error) {
                 console.log("error :>> ", error);
             }
         }
         /*--------------*/
-        _fetchAllVisibleFabric();
+        _fetchPatterns();
     }, []);
     /*--------------*/
-    /*********************************
-     *  Description: handle load more
-     *
-     *
-     *  Call by:
-     */
-    function onLoadMore() {
+    useEffect(() => {
         /*--------------*/
-        if (renderFabrics && fabricList) {
+        async function _fetchPatternCollections() {
             /*--------------*/
-            let udpatedRenderFabrics = [...renderFabrics.fabrics];
+            try {
+                /*--------------*/
+                const patternCollections = await fetchVisible(
+                    PATTERN_COLLECTIONS
+                );
+                /*--------------*/
+                if (patternCollections.length > 0) {
+                    /*--------------*/
+                    const action_updatePatternCollections = updatePatternCollections(
+                        patternCollections
+                    );
+                    dispatch(action_updatePatternCollections);
+                    /*--------------*/
+                }
+            } catch (error) {}
             /*--------------*/
-            udpatedRenderFabrics = fabricList.slice(
-                0,
-                LIMIT + udpatedRenderFabrics.length
-            );
-            /*--------------*/
-            let isMax = udpatedRenderFabrics.length >= fabricList.length;
-            /*--------------*/
-            setRenderFabrics({ isMax: isMax, fabrics: udpatedRenderFabrics });
         }
-    }
-    /************_END_****************/
+        /*--------------*/
+        _fetchPatternCollections();
+        /*--------------*/
+    }, []);
     /*--------------*/
     return (
         <div className="l-fabrics">
             <NavbarContainer />
             <BannerContainer />
             <OptionsContainer />
-            <ListContainer
-                renderFabrics={renderFabrics}
-                onLoadMore={onLoadMore}
-            />
+            <ListContainer />
         </div>
     );
 }

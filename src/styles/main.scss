@@ -26,6 +26,7 @@
 @import "../components/Quantity/quantity.scss";
 @import "../components/Login/login.scss";
 @import "../components/ProductCard/productCard.scss";
+@import "../components/ProductList/productList.scss";
 
 @import "../components/Pages/Cart/Products/products.scss";
 @import "../components/Pages/Cart/Footer/footer.scss";
@@ -48,6 +49,9 @@
 @import "../components/Pages/DesignerProfile/Info/info.scss";
 
 @import "../components/Pages/Fabrics/fabrics.scss";
+
+@import "../components/Pages/FabricDetail/Info/info.scss";
+@import "../components/Pages/FabricDetail/PatternOrderBanner/patternOrderBanner.scss";
 
 @import "../components/Pages/Selection/Mobile/Fabrics/selectionFabrics.scss";
 @import "../components/Pages/Selection/Mobile/DesignCarousel/selectionDesignCarousel.scss";

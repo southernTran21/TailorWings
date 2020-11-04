@@ -2,30 +2,34 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import FabricItem from "./FabricItem";
 import ButtonLoadMore from "components/Button/LoadMore";
-
-const test = new Array(4).fill("0");
+import { object } from "firebase-functions/lib/providers/storage";
 
 Fabrics.propTypes = {
-    renderFabrics: PropTypes.array,
+    renderPatterns: PropTypes.object,
     onLoadMore: PropTypes.func,
+    isLoadMore: PropTypes.bool,
+    title: PropTypes.string,
 };
 
 Fabrics.defaultProps = {
-    renderFabrics: null,
+    renderPatterns: null,
     onLoadMore: null,
+    isLoadMore: false,
+    title: "",
 };
 
 function Fabrics(props) {
-    if (!props.renderFabrics || !props.onLoadMore) return <Fragment />;
+    if (!props.renderPatterns || !props.onLoadMore) return <Fragment />;
     return (
         <div className="c-fabrics">
+            <h2 className="c-fabrics__title">{props.title}</h2>
             <ul className="c-fabrics__list">
-                {props.renderFabrics.fabrics.map((fabric, index) => {
-                    return <FabricItem key={index} fabric={fabric} />;
+                {props.renderPatterns.patterns.map((pattern, index) => {
+                    return <FabricItem key={index} pattern={pattern} />;
                 })}
             </ul>
             <div className="c-fabrics__button">
-                {props.renderFabrics.isMax ? (
+                {props.renderPatterns.isMax ? (
                     ""
                 ) : (
                     <ButtonLoadMore loadMore={props.onLoadMore} />

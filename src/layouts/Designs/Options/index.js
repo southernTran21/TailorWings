@@ -1,49 +1,84 @@
 import {
     setListLoading,
     updateCurrentFilter,
-    updateFilteredDesigns,
-    updateSRC,
+    updateFilteredProducts,
+    updateFilterStatus,
 } from "actions";
+import { updateSRC } from "actions/selection";
 import Options from "components/Options";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function OptionsContainer() {
     /*--------------*/
-    const urlSearch = window.location.search.match(/cat=(.*)\b/);
-    const catID = urlSearch ? urlSearch[1] : "all";
-    const FILTER_INFO = [
-        { id: "all", name: "Tất Cả", isActive: true },
-        { id: "damom", name: "Đầm Ôm", isActive: false },
-        { id: "damxoe", name: "Đầm Xòe", isActive: false },
-        { id: "damsuong", name: "Đầm Suông", isActive: false },
-    ];
-    const [filterInfo, setFilterInfo] = useState(FILTER_INFO);
-    /*--------------*/
-    const defaultProductsLength = useSelector(
-        (state) => state.common.defaultProducts.length
+    const defaultProducts = useSelector(
+        (state) => state.common.defaultProducts
     );
+    const categories = useSelector((state) => state.common.categories);
+    const filterStatus = useSelector((state) => state.designs.filterStatus);
+    /*--------------*/
+    const urlSearch = window.location.search.match(/cat=(.*)\b/);
+    const catIDFromURL = urlSearch ? urlSearch[1] : "all";
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        if (defaultProductsLength > 0) {
-            let updatedFilterInfo = filterInfo.map((info) => {
-                let isActive = info.id === catID;
-                return { ...info, isActive: isActive };
+        let newFilterStatus = [
+            { id: "all", name: "Tất cả", isActive: true },
+        ];
+        /*--------------*/
+        if (categories.length > 0) {
+            /*--------------*/
+            categories.forEach((category) => {
+                newFilterStatus.push({
+                    id: category.id,
+                    name: category.name,
+                    isActive: false,
+                });
             });
             /*--------------*/
-            setFilterInfo(updatedFilterInfo);
+            const action_updateFilterStatus = updateFilterStatus(
+                newFilterStatus
+            );
+            dispatch(action_updateFilterStatus);
             /*--------------*/
-            const action_updateFilteredDesigns = updateFilteredDesigns(catID);
-            dispatch(action_updateFilteredDesigns);
+        }
+        /*--------------*/
+        if (defaultProducts.length > 0) {
+            let updatedFilterStatus = newFilterStatus.map((status) => {
+                let isActive = status.id === catIDFromURL;
+                return { ...status, isActive: isActive };
+            });
+            /*--------------*/
+            let filteredProducts = [];
+            if (catIDFromURL === "all") {
+                filteredProducts = [...defaultProducts];
+            } else {
+                filteredProducts =
+                    defaultProducts.filter((product) => {
+                        return product.idCategory === catIDFromURL;
+                    }) || [];
+            }
+            /*--------------*/
+            const action_updateFilterStatus = updateFilterStatus(
+                updatedFilterStatus
+            );
+            dispatch(action_updateFilterStatus);
+            /*--------------*/
+            const action_updateFilteredProducts = updateFilteredProducts(
+                filteredProducts
+            );
+            dispatch(action_updateFilteredProducts);
             /*--------------*/
 
-            const action_updateCurrentFilter = updateCurrentFilter(catID);
+            const action_updateCurrentFilter = updateCurrentFilter(
+                catIDFromURL
+            );
             dispatch(action_updateCurrentFilter);
         }
-    }, [defaultProductsLength, catID]);
+        /*--------------*/
+    }, [defaultProducts.length, catIDFromURL, categories.length]);
     /*********************************
      *  Description: handle filter change and dispatch to store
      *
@@ -51,17 +86,33 @@ function OptionsContainer() {
      *  Call by:
      */
     function onFilterChange(catID, changedIndex) {
-        let updatedFilter = filterInfo.map((info, index) => {
+        let updatedFilterStatus = filterStatus.map((status, index) => {
             let isActive = changedIndex === index;
-            return { ...info, isActive: isActive };
+            return { ...status, isActive: isActive };
         });
-        setFilterInfo(updatedFilter);
+        /*--------------*/
+        let filteredProducts = [];
+        if (catIDFromURL === "all") {
+            filteredProducts = [...defaultProducts];
+        } else {
+            filteredProducts =
+                defaultProducts.filter((product) => {
+                    return product.idCategory === catIDFromURL;
+                }) || [];
+        }
+        /*--------------*/
+        const action_updateFilterStatus = updateFilterStatus(
+            updatedFilterStatus
+        );
+        dispatch(action_updateFilterStatus);
         /*--------------*/
         const action_setListLoading = setListLoading(true);
         dispatch(action_setListLoading);
         /*--------------*/
-        const action_updateFilteredDesigns = updateFilteredDesigns(catID);
-        dispatch(action_updateFilteredDesigns);
+        const action_updateFilteredProducts = updateFilteredProducts(
+            filteredProducts
+        );
+        dispatch(action_updateFilteredProducts);
         /*--------------*/
         const action_updateCurrentFilter = updateCurrentFilter(catID);
         dispatch(action_updateCurrentFilter);
@@ -81,7 +132,7 @@ function OptionsContainer() {
     return (
         <section className="l-designs__options">
             <Options
-                filter={filterInfo}
+                filter={filterStatus}
                 onFilterChange={onFilterChange}
                 linkTo={{ pathname: "/designs", search: "?cat=" }}
             />

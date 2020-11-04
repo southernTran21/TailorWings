@@ -10,12 +10,65 @@
     /* Others: transition & animations, ... */
 
     @import "./CategoryItem/categoryItem.scss";
+
+    .slick-next {
+        /* Display & Box Model */
+        right: -20px;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    .slick-prev {
+        /* Display & Box Model */
+        left: -30px;
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    .slick-prev:before, .slick-next:before {
+        /* Display & Box Model */
+    
+        /* Color */
+        color: $--primary-color;
+        /* Text */
+        font-size: 30px;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
 }
+
+@media screen and(max-width: 768px){
+    .c-category-list {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        /* Color */
+    
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    }
+}
+
 @media screen and(min-width: 769px){
     .c-category-list {
         /* Display & Box Model */
         padding: 0 11.7rem;
-        @include flexBox(space-between);
         margin-top: 3.7rem;
         /* Color */
     

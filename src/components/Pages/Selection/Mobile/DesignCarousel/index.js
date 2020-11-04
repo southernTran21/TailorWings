@@ -6,14 +6,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 SelectionDesignCarousel.propTypes = {
     images: PropTypes.array,
-    id: PropTypes.func,
+    id: PropTypes.string,
     isImageLoading: PropTypes.bool,
+    renderFabricTypes: PropTypes.array,
+    onFabricTypeChange: PropTypes.func,
+    selectedFabricType: PropTypes.object,
 };
 
 SelectionDesignCarousel.defaultProps = {
     images: null,
     id: "",
     isImageLoading: false,
+    renderFabricTypes: [],
+    onFabricTypeChange: null,
+    selectedFabricType: null,
 };
 
 function SelectionDesignCarousel(props) {
@@ -36,7 +42,18 @@ function SelectionDesignCarousel(props) {
         }
     }
     /************_END_****************/
-    if (!props.images) return <Fragment />;
+    /*--------------*/
+    if (
+        typeof props.images !== "object" ||
+        !props.renderFabricTypes.length > 0 ||
+        !props.selectedFabricType ||
+        !props.onFabricTypeChange
+    )
+        return <div className="c-design-carousel"></div>;
+    /*--------------*/
+    const { T, C, S } = props.images;
+    let renderImages = [T, C, S];
+    /*--------------*/
     return (
         <div className="c-design-carousel">
             <Swiper
@@ -45,14 +62,14 @@ function SelectionDesignCarousel(props) {
                 slidesPerView={1}
                 loop={true}
             >
-                {props.images.map((image, index) => {
+                {renderImages.map((image, index) => {
                     return (
                         <SwiperSlide key={index}>
                             {props.isImageLoading ? (
                                 <Fragment />
                             ) : (
                                 <ReactImageAppear
-                                    src={image}
+                                    src={image || ""}
                                     animationDuration="1s"
                                     loader={loader}
                                     loaderStyle={{

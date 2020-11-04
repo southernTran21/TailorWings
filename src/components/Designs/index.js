@@ -6,33 +6,33 @@ import DesignItem from "./DesignItem";
 
 Designs.propTypes = {
     title: PropTypes.string,
-    renderDesigns: PropTypes.object,
+    renderProducts: PropTypes.object,
     isLoadMore: PropTypes.bool,
     loadMore: PropTypes.func,
 };
 
 Designs.defaultProps = {
     title: "",
-    renderDesigns: null,
+    renderProducts: { products: [], isMax: false },
     isLoadMore: false,
-    loadMore: null,
+    loadMore: () => console.log('Load more function does not exist'),
 };
 
 function Designs(props) {
     /*--------------*/
-    if (!props.renderDesigns) return <Fragment />;
-    const { isMax, designs } = props.renderDesigns;
+    if (!props.renderProducts.products.length > 0)
+        return (
+            <div className="c-designs">
+                <h2 className="c-designs__title">Không có sản phẩm phù hợp!</h2>
+            </div>
+        );
+    const { isMax, products } = props.renderProducts;
     return (
         <div className="c-designs">
             <h2 className="c-designs__title">{props.title}</h2>
             <ul className="c-designs__list">
-                {designs.map((design, index) => {
-                    return (
-                        <DesignItem
-                            design={design}
-                            key={index}
-                        />
-                    );
+                {products.map((product, index) => {
+                    return <DesignItem product={product} key={index} />;
                 })}
             </ul>
             <div className="c-designs__button">

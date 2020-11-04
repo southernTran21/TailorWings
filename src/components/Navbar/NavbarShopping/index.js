@@ -68,14 +68,12 @@ function NavbarShopping(props) {
                 <img src={IconSearch} alt="search-icon" />
             </div>
             <div className="c-navbar-shopping__info">
-                {/* <Link to="/login"> */}
                 <div
                     className="c-navbar-shopping__person"
                     onClick={props.onLoginDisplayStatusChange}
                 >
                     <img src={IconPerson} alt="person-icon" />
                 </div>
-                {/* </Link> */}
                 <CartInfo active={true} quantity={quantity} />
             </div>
             <Sidebar isSidebar={isSidebar} onSidebarClosed={onSidebarClosed} />

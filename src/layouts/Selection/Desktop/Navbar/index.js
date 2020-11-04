@@ -1,19 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 import NavbarSelection from "components/Navbar/NavbarSelection";
+import { useSelector } from "react-redux";
 
-NavbarContainerDesktop.propTypes = {
-    selectionSrc: PropTypes.object,
-};
-
-NavbarContainerDesktop.defaultProps = {
-    selectionSrc: { pathname: "/", search: "" },
-};
-
-function NavbarContainerDesktop(props) {
+function NavbarContainerDesktop() {
+    /*--------------*/
+    const src = useSelector((state) => state.selection.src);
+    /*--------------*/
     return (
         <section className="l-selection__navbar-desktop">
-            <NavbarSelection text="CHỌN VẢI" backLink={props.selectionSrc} />
+            <NavbarSelection text="CHỌN VẢI" backLink={src} />
         </section>
     );
 }

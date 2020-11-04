@@ -4,13 +4,15 @@ import Swiper from "react-id-swiper";
 import FabricItem from "./FabricItem";
 
 SelectionFabrics.propTypes = {
-    renderFabrics: PropTypes.array,
-    activeIndex: PropTypes.number,
+    renderPatterns: PropTypes.array,
+    patternID: PropTypes.string,
+    designID: PropTypes.string,
 };
 
 SelectionFabrics.defaultProps = {
-    renderFabrics: null,
-    activeIndex: null,
+    renderPatterns: null,
+    patternID: null,
+    designID: null,
 };
 
 function SelectionFabrics(props) {
@@ -18,34 +20,43 @@ function SelectionFabrics(props) {
     const ref = useRef(null);
     /*--------------*/
     if (
-        !props.renderFabrics ||
-        !props.renderFabrics.length > 0 ||
-        props.activeIndex == null
+        !props.renderPatterns ||
+        !props.renderPatterns.length > 0 ||
+        !props.patternID ||
+        !props.designID
     )
         return <Fragment />;
-
-    let modifiedRenderFabrics = [...props.renderFabrics];
-    modifiedRenderFabrics.unshift("");
+    /*--------------*/
+    let modifiedRenderPatterns = [...props.renderPatterns];
+    modifiedRenderPatterns.unshift("");
+    /*--------------*/
+    let activeIndex =
+        props.renderPatterns.findIndex(
+            (pattern) => pattern.id === props.patternID
+        ) || 0;
+    /*--------------*/
     const params = {
         slidesPerView: "auto",
         slideToClickedSlide: true,
-        initialSlide: props.activeIndex,
+        initialSlide: activeIndex,
     };
+    /*--------------*/
     return (
         <div className="c-selection-fabrics">
             <div className="c-selection-fabrics__pagination">
                 <span>
-                    {props.activeIndex + 1 + "/" + props.renderFabrics.length}
+                    {activeIndex + 1 + "/" + props.renderPatterns.length}
                 </span>
             </div>
             <div className="c-selection-fabrics__list">
                 <Swiper {...params} ref={ref}>
-                    {modifiedRenderFabrics.map((fabric, index) => {
+                    {modifiedRenderPatterns.map((pattern, index) => {
                         return (
                             <div key={index}>
                                 <FabricItem
-                                    fabricInfo={fabric}
-                                    currentIndex={index}
+                                    patternInfo={pattern}
+                                    designID={props.designID}
+                                    patternID={props.patternID}
                                 />
                             </div>
                         );

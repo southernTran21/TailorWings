@@ -1,6 +1,7 @@
 import { database } from "../../firebase";
 import { storage } from "../../firebase";
 import firebase from "firebase/app";
+import { PRODUCTS } from "../../constants";
 
 export const fetchAllRealTime = (collection, callback) => {
     database.collection(collection).onSnapshot((querySnapshot) => {
@@ -103,7 +104,7 @@ export const fetchWithTrippleCondition = (collection, condition) => {
 export const fetchVisible = (collection) => {
     return database
         .collection(collection)
-        .where("isVisible", "==", true)
+        .where("visibleStatus", "==", true)
         .get()
         .then((querySnapshot) => {
             let result = [];
@@ -119,7 +120,7 @@ export const fetchVisible = (collection) => {
 export const fetchVisibleCondition = (collection, field, value) => {
     return database
         .collection(collection)
-        .where("isVisible", "==", true)
+        .where("visibleStatus", "==", true)
         .where(field, "==", value)
         .get()
         .then((querySnapshot) => {
@@ -133,28 +134,28 @@ export const fetchVisibleCondition = (collection, field, value) => {
         });
 };
 
-export const fetchVisibilityCondition = (collection, field, value) => {
-    return database
-        .collection(collection)
-        .where("visibility", "==", true)
-        .where(field, "==", value)
-        .get()
-        .then((querySnapshot) => {
-            let result = [];
-            querySnapshot.forEach((doc) => {
-                let data = doc.data();
-                data.id = doc.id;
-                result.push(data);
-            });
-            return result;
-        });
-};
+// export const fetchVisibilityCondition = (collection, field, value) => {
+//     return database
+//         .collection(collection)
+//         .where("visibility", "==", true)
+//         .where(field, "==", value)
+//         .get()
+//         .then((querySnapshot) => {
+//             let result = [];
+//             querySnapshot.forEach((doc) => {
+//                 let data = doc.data();
+//                 data.id = doc.id;
+//                 result.push(data);
+//             });
+//             return result;
+//         });
+// };
 
 export const fetchDefaultProducts = () => {
     return database
-        .collection("products")
-        .where("visibility", "==", true)
-        .where("default", "==", true)
+        .collection(PRODUCTS)
+        .where("visibleStatus", "==", true)
+        .where("defaultStatus", "==", true)
         .get()
         .then((querySnapshot) => {
             let result = [];

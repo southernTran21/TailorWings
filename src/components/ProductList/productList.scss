@@ -1,0 +1,125 @@
+.c-product-list {
+    /* Display & Box Model */
+    padding: 4rem 10.4rem;
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__title {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        margin: 4rem 0 3rem;
+        /* Color */
+
+        /* Text */
+        text-align: left;
+        @include font(fontBold, 2.4rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__list {
+        /* Display & Box Model */
+        margin-right: -5.2rem;
+        margin-bottom: -8.4rem;
+        min-height: 35rem;
+        @include flexBox(flex-start, flex-start, row, wrap);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        a {
+            width: calc(33.3333% - 5.2rem);
+            margin-right: 5.2rem;
+            margin-bottom: 8.4rem;
+        }
+
+        @import "./ProductItem/productItem.scss";
+    }
+
+    &__button {
+        /* Display & Box Model */
+        @include centerFlexBox();
+        margin: 7rem auto 0;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .c-product-list {
+        /* Display & Box Model */
+        padding: 2rem 1rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        &__title {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            margin: 0 0 3rem;
+            /* Color */
+
+            /* Text */
+            text-align: left;
+            @include font(fontBold, 2rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &__list {
+            /* Display & Box Model */
+            margin-right: -1.5rem;
+            margin-bottom: -2rem;
+            min-height: 28rem;
+            @include flexBox(flex-start, flex-start, row, wrap);
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+
+            a {
+                width: calc(50% - 1.5rem);
+                margin-right: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            @import "./ProductItem/productItem.scss";
+        }
+
+        &__button {
+            /* Display & Box Model */
+            @include centerFlexBox();
+            margin: 3rem auto 0;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+}

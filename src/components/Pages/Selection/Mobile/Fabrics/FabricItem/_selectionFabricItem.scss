@@ -3,9 +3,10 @@
     @include flexBox(flex-start, center, column);
     @include box(fit-content);
     margin-right: 1rem;
+    border-radius: 1rem;
     /* Color */
     color: transparent;
-
+    background-color: $--bg-passive;
     /* Text */
 
     /* Positioning */
@@ -35,10 +36,22 @@
         /* Positioning */
 
         /* Others: transition & animations, ... */
+
+        & > div > img {
+            /* Display & Box Model */
+            border-radius: 1rem;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
     }
     &--active {
         /* Display & Box Model */
-
+        border: 2px solid $--primary-color;
         /* Color */
         color: $--text-passive;
         /* Text */

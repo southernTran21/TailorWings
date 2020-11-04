@@ -5,23 +5,23 @@ import ButtonFilter from "components/Button/Filter";
 import Sort from "components/Sort";
 
 Options.propTypes = {
-    filter: PropTypes.array,
+    filters: PropTypes.array,
     onFilterChange: PropTypes.func,
     linkTo: PropTypes.object,
 };
 
 Options.defaultProps = {
-    filter: null,
+    filters: null,
     onFilterChange: null,
     linkTo: null,
 };
 
 function Options(props) {
-    if (!props.filter || !props.onFilterChange) return <Fragment />;
+    if (!props.filters || !props.onFilterChange) return <Fragment />;
     return (
         <div className="c-options">
             <div className="c-options__filters">
-                {props.filter.map((item, index) => {
+                {props.filters.map((item, index) => {
                     return (
                         <ButtonFilter
                             key={index}
@@ -32,10 +32,10 @@ function Options(props) {
                     );
                 })}
             </div>
-            <div className="c-options__sorts">
+            {/* <div className="c-options__sorts">
                 <Sort text="Bộ Lọc & Sắp Xếp" isDisable={true} />
                 <Sort text="Bộ Sưu Tập" isDisable={true} />
-            </div>
+            </div> */}
         </div>
     );
 }

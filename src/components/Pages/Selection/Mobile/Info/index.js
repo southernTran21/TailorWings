@@ -1,7 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import PriceTag from "../../../../PriceTag/index";
 import ButtonConfirm from "components/Button/Confirm";
+import PropTypes from "prop-types";
+import React from "react";
 
 SelectionInfo.propTypes = {
     productID: PropTypes.string,
@@ -22,11 +21,11 @@ SelectionInfo.defaultProps = {
 function SelectionInfo(props) {
     return (
         <div className="c-selection-info">
-            <PriceTag price={props.price} />
             <span className="c-selection-info__name">{props.name}</span>
             <span className="c-selection-info__designed-by">
                 thiết kế bởi {props.designedBy}
             </span>
+            <span className="c-selection-info__price">{props.price} VNĐ</span>
             <div className="c-selection-info__confirm-button">
                 <ButtonConfirm
                     text="chọn size"

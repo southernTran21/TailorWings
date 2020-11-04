@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import ButtonLoadMore from "components/Button/LoadMore";
 import ButtonConfirm from "components/Button/Confirm";
@@ -22,11 +22,11 @@ InfoDesktop.defaultProps = {
 function InfoDesktop(props) {
     return (
         <div className="c-info-desktop">
-            <span className="c-info-desktop__price">{props.price} VNĐ</span>
             <span className="c-info-desktop__name">{props.name}</span>
             <span className="c-info-desktop__desc">
                 thiết kế bởi {props.designedBy}
             </span>
+            <span className="c-info-desktop__price">{props.price} VNĐ</span>
             <div className="c-info-desktop__button">
                 <ButtonConfirm
                     text="CHỌN SIZE"

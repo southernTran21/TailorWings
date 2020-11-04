@@ -13,6 +13,22 @@ import "firebase/functions";
 
 import test300x300 from "../../assets/Image/test.jpg";
 
+import D001000001_C from "assets/Test/D001000001-vai-chim-hac-fp-2-C.jpg";
+import D001000001_T from "assets/Test/D001000001-vai-chim-hac-fp-2-T.jpg";
+import D001000001_N from "assets/Test/D001000001-vai-chim-hac-fp-2-N.jpg";
+import D001000135_C from "assets/Test/D001000135-vai-hoa-den-la-trang-fp-380-C.jpg";
+import D001000135_T from "assets/Test/D001000135-vai-hoa-den-la-trang-fp-380-T.jpg";
+import D001000135_N from "assets/Test/D001000135-vai-hoa-den-la-trang-fp-380-N.jpg";
+import D001000145_C from "assets/Test/D001000145-vai-tem-thu-fp-599-C.jpg";
+import D001000145_T from "assets/Test/D001000145-vai-tem-thu-fp-599-T.jpg";
+import D001000145_N from "assets/Test/D001000145-vai-tem-thu-fp-599-N.jpg";
+import D001000156_C from "assets/Test/D001000156-vai-hoa-tiet-tao-cach-dieu-fp-761-C.jpg";
+import D001000156_T from "assets/Test/D001000156-vai-hoa-tiet-tao-cach-dieu-fp-761-T.jpg";
+import D001000156_N from "assets/Test/D001000156-vai-hoa-tiet-tao-cach-dieu-fp-761-N.jpg";
+import D001000198_C from "assets/Test/D001000198-vai-mau-ngau-hung-fp-1505-C.jpg";
+import D001000198_T from "assets/Test/D001000198-vai-mau-ngau-hung-fp-1505-T.jpg";
+import D001000198_N from "assets/Test/D001000198-vai-mau-ngau-hung-fp-1505-N.jpg";
+
 function TestFix() {
     /*--------------*/
     const [faultList, setFaultList] = useState([]);
@@ -239,9 +255,9 @@ function TestFix() {
     // console.log("faultList :>> ", faultList);
 
     // Create a storage reference from our storage service
-    var storageRef = firebase.storage().ref();
-    var listRef = storageRef.child("image/test");
-    var listRefUpdate = storageRef.child("image/test/T051.jpg");
+    // var storageRef = firebase.storage().ref();
+    // var listRef = storageRef.child("image/test");
+    // var listRefUpdate = storageRef.child("image/test/T051.jpg");
 
     // let newMetadata = {
     //     customMetadata: {
@@ -259,36 +275,124 @@ function TestFix() {
     //         // Uh-oh, an error occurred!
     //     });
 
-    listRef
-        .listAll()
-        .then(function (res) {
-            res.items.forEach(function (itemRef) {
-                // All the items under listRef.
-                // console.log('itemRef :>> ', itemRef);
-                let url = itemRef.getDownloadURL();
-                console.log("url :>> ", url);
-                let metaData = itemRef.getMetadata();
-                console.log("metaData :>> ", metaData);
-            });
-        })
-        .catch(function (error) {
-            console.log("error :>> ", error);
-        });
+    // listRef
+    //     .listAll()
+    //     .then(function (res) {
+    //         res.items.forEach(function (itemRef) {
+    //             // All the items under listRef.
+    //             // console.log('itemRef :>> ', itemRef);
+    //             let url = itemRef.getDownloadURL();
+    //             console.log("url :>> ", url);
+    //             let metaData = itemRef.getMetadata();
+    //             console.log("metaData :>> ", metaData);
+    //         });
+    //     })
+    //     .catch(function (error) {
+    //         console.log("error :>> ", error);
+    //     });
+
+    const CAN = [
+        D001000001_C,
+        D001000135_C,
+        D001000145_C,
+        D001000156_C,
+        D001000198_C,
+    ];
+    const TRUOC = [
+        D001000001_T,
+        D001000135_T,
+        D001000145_T,
+        D001000156_T,
+        D001000198_T,
+    ];
+    const NGHIENG = [
+        D001000001_N,
+        D001000135_N,
+        D001000145_N,
+        D001000156_N,
+        D001000198_N,
+    ];
 
     return (
         <div>
-            <img
-                style={{ width: "100px", height: "100px" }}
-                src={test300x300}
-                alt=""
-            />
-            <button onClick={onClick}>Click</button>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                    margin: "2rem 0",
+                }}
+            >
+                {CAN.map((item, index) => {
+                    return (
+                        <img
+                            key={index}
+                            src={item}
+                            alt=""
+                            style={{ width: "48rem", height: "60rem" }}
+                        />
+                    );
+                })}
+            </div>
+            {/* <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    margin: "2rem 0",
+                }}
+            >
+                {CAN.map((item, index) => {
+                    return (
+                        <img
+                            key={index}
+                            src={item}
+                            alt=""
+                            style={{ width: "26rem", height: "40rem" }}
+                        />
+                    );
+                })}
+            </div>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    margin: "2rem 0",
+                }}
+            >
+                {CAN.map((item, index) => {
+                    return (
+                        <img
+                            key={index}
+                            src={item}
+                            alt=""
+                            style={{ width: "17rem", height: "21rem" }}
+                        />
+                    );
+                })}
+            </div>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    margin: "2rem 0",
+                }}
+            >
+                {CAN.map((item, index) => {
+                    return (
+                        <img
+                            key={index}
+                            src={item}
+                            alt=""
+                            style={{ width: "10rem", height: "10rem" }}
+                        />
+                    );
+                })}
+            </div> */}
         </div>
-        // <ul style={{ minHeight: "100vh" }}>
-        //     {faultList.map((item, index) => {
-        //         return <li key={index}>{item.productID}</li>;
-        //     })}
-        // </ul>
     );
 }
 

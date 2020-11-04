@@ -2,39 +2,39 @@ import Designs from "components/Designs";
 import React, { useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
 
-const CUT_OFF_LIMIT = 6;
+const CUT_OFF_LIMIT = 4;
 
 function TopProductsContainer() {
     /*--------------*/
-    const bestSeller = useSelector((state) => state.common.bestSeller);
+    const topProducts = useSelector((state) => state.common.topProducts);
     /*--------------*/
-    const [bestSellerList, setBestSellerList] = useState(null);
+    const [renderTopProducts, setRenderTopProducts] = useState({ products: [], isMax: false });
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        if (bestSeller) {
+        if (topProducts) {
             /*--------------*/
-            let cutOffList = bestSeller.slice(0, CUT_OFF_LIMIT);
+            let cutOffList = topProducts.slice(0, CUT_OFF_LIMIT);
             cutOffList = cutOffList.map((item) => {
                 return {
                     ...item,
                     linkInfo: {
                         pathname: "/selection",
-                        search: `?id=${item.productID}`,
+                        search: `?id=${item.id}`,
                     },
                 };
             });
             /*--------------*/
-            setBestSellerList({ designs: cutOffList, isMax: false });
+            setRenderTopProducts({ products: cutOffList, isMax: false });
         }
-    }, [bestSeller]);
+    }, [topProducts.toString()]);
     /*--------------*/
-    if (!bestSellerList) return <Fragment />;
+    if (!renderTopProducts.products.length > 0) return <Fragment />;
     return (
         <div className="l-selection__top-product">
             <Designs
                 title="Sản Phẩm Nổi Bật"
-                renderDesigns={bestSellerList}
+                renderProducts={renderTopProducts}
                 isLoadMore={false}
             />
         </div>

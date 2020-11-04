@@ -1,19 +1,24 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import FabricDetailBackground from "../../../components/Pages/FabricDetail/Background";
 
-BackgroundContainer.propTypes = {
-    background: PropTypes.string,
-};
-
-BackgroundContainer.defaultProps = {
-    background: null,
-};
-
-function BackgroundContainer(props) {
+function BackgroundContainer() {
+    /*--------------*/
+    const selectedPattern = useSelector(
+        (state) => state.fabricDetail.selectedPattern
+    );
+    /*--------------*/
+    if (!selectedPattern)
+        return <section className="l-fabric-detail__background"></section>;
     return (
         <section className="l-fabric-detail__background">
-            <FabricDetailBackground background={props.background} />
+            <FabricDetailBackground
+                background={
+                    typeof selectedPattern.image === "object"
+                        ? selectedPattern.image.mockup
+                        : null
+                }
+            />
         </section>
     );
 }

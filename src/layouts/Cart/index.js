@@ -34,7 +34,7 @@ function CartContainer() {
         }
     }, [cartUpdateFlag, isCartDeleted]);
     /*--------------*/
-
+    console.log('cartList :>> ', cartList);
     if (!cartList) return <Fragment />;
     /*--------------*/
     let totalPrice = countTotalPrice(cartList);

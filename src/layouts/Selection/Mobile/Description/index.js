@@ -5,49 +5,19 @@ import { fetchDesignInfo, fetchFabricInfo } from "services/FirebaseAPI/basic";
 
 function DescriptionContainer() {
     /*--------------*/
-    const renderProduct = useSelector((state) => state.selection.renderProduct);
+    const selectedDesign = useSelector((state) => state.selection.selectedDesign);
+    const selectedFabricType = useSelector((state) => state.selection.selectedFabricType);
     /*--------------*/
-    const [designInfo, setDesignInfo] = useState([]);
-    const [fabricInfo, setFabricInfo] = useState([]);
+    if (!selectedDesign || !selectedFabricType) return <Fragment />;
     /*--------------*/
-    useEffect(() => {
-        /*--------------*/
-        async function _fetchInfo() {
-            try {
-                const designInfo = await fetchDesignInfo(
-                    renderProduct.designID
-                );
-                const fabricInfo = await fetchFabricInfo(
-                    renderProduct.fabricID
-                );
-                /*--------------*/
-                if (designInfo !== "") {
-                    let designInfoModified = designInfo.split(".");
-                    designInfoModified = designInfoModified.filter(info => info !== '');
-                    setDesignInfo(designInfoModified);
-                }
-                if (fabricInfo !== "") {
-                    let fabricInfoModified = fabricInfo.split("-");
-                    fabricInfoModified = fabricInfoModified.filter(info => info !== '');
-                    setFabricInfo(fabricInfoModified);
-                }
-                /*--------------*/
-            } catch (error) {
-                console.log("error.message :>> ", error.message);
-            }
-        }
-        /*--------------*/
-        if (renderProduct) {
-            _fetchInfo();
-        }
-    }, [renderProduct]);
+    let designDesc = selectedDesign.description.split("-");
+    let fabricDesc = selectedFabricType.description.split("-");
     /*--------------*/
-    if (!renderProduct) return <Fragment />;
     return (
         <div className="l-selection__desc">
             <SelectionDescription
-                designDesc={designInfo}
-                fabricDesc={fabricInfo}
+                designDesc={designDesc}
+                fabricDesc={fabricDesc}
             />
         </div>
     );

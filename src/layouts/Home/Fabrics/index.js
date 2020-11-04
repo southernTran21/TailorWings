@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function FabricsContainer() {
     return (
-        <Link to="/fabrics">
+        <Link to="/fabrics?col=all">
             <div className="l-home__fabrics">
                 <img src="https://picsum.photos/1280/520" alt="" />
             </div>

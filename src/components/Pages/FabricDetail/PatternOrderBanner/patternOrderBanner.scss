@@ -1,0 +1,406 @@
+.c-fabric-detial-pattern-order-bannner {
+    /* Display & Box Model */
+    @include flexBox(space-between, center);
+    @include box(100%, 30.6rem);
+    padding: 4rem 20.65rem;
+    /* Color */
+    background-color: $--red1-color;
+    /* Text */
+
+    /* Positioning */
+
+    /* Others: transition & animations, ... */
+
+    &__text-wrapper {
+        /* Display & Box Model */
+        @include box(50%, 100%);
+        padding: 4.6rem 0rem 4.6rem 2.25rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__text {
+        /* Display & Box Model */
+        @include box(33rem, 100%);
+        @include flexBox(center, center, column);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__title {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        margin-bottom: 1rem;
+        /* Color */
+        color: white;
+        /* Text */
+        @include font(fontBold, 3.6rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__content {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        padding: 0 1.5rem;
+        /* Color */
+        color: white;
+        /* Text */
+        @include font(fontMedium, 1.8rem);
+        text-align: center;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__info-wrapper {
+        /* Display & Box Model */
+        display: flex;
+        @include box(50%, 100%);
+        border-radius: 2.5rem;
+        padding: 2.5rem;
+        /* Color */
+        background-color: white;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__image {
+        /* Display & Box Model */
+        width: calc(50% - 1.3rem);
+        height: 100%;
+        margin-right: 1.3rem;
+        border-radius: 2.5rem;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__info {
+        /* Display & Box Model */
+        @include box(50%, 100%);
+        @include flexBox(center, center, column);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__fabric-type {
+        /* Display & Box Model */
+        padding: 1.26rem;
+        border-radius: 1.26rem;
+        border: 1.26px solid $--red1-color;
+        margin-bottom: 1.9rem;
+        /* Color */
+        color: $--red1-color;
+        /* Text */
+        @include font(fontBold, 1.5rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__price {
+        /* Display & Box Model */
+        margin-bottom: 1.9rem;
+        /* Color */
+        color: $--red1-color;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & span:first-child {
+            /* Display & Box Model */
+
+            /* Color */
+
+            /* Text */
+            @include font(fontBold, 2.4rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        & span:last-child {
+            /* Display & Box Model */
+
+            /* Color */
+
+            /* Text */
+            @include font(fontBold, 1.6rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &__button {
+        /* Display & Box Model */
+        display: flex;
+        padding: 1.5rem 1.26rem;
+        border-radius: 1.5rem;
+        /* Color */
+        color: white;
+        background-color: $--red1-color;
+        /* Text */
+        @include font(fontBold, 1.75rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__icon {
+        /* Display & Box Model */
+        @include box(2.5rem);
+        margin-left: 0.6rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        & > img {
+            /* Display & Box Model */
+            display: inline-block;
+            @include box(2.2rem);
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .c-fabric-detial-pattern-order-bannner {
+        /* Display & Box Model */
+        @include flexBox(flex-start, center, column);
+        @include box(100%, auto);
+        padding: 0;
+        /* Color */
+        background-color: white;
+        /* Text */
+    
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+        &__text-wrapper {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            padding: 1rem 3.75rem;
+            /* Color */
+    
+            /* Text */
+    
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__text {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            @include flexBox(center, center, column);
+            /* Color */
+    
+            /* Text */
+    
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__title {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            margin-bottom: 1rem;
+            /* Color */
+            color: $--red1-color;
+            /* Text */
+            @include font(fontBold, 2.4rem);
+            text-align: center;
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__content {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            padding: 0;
+            /* Color */
+            color: $--red1-color;
+            /* Text */
+            @include font(fontMedium, 1.6rem);
+            text-align: center;
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__info-wrapper {
+            /* Display & Box Model */
+            display: flex;
+            @include box(100%, 18rem);
+            border-radius: 2rem;
+            padding: 1rem 2rem;
+            /* Color */
+            background-color: $--red1-color;
+            /* Text */
+    
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__image {
+            /* Display & Box Model */
+            width: calc(50% - 1.3rem);
+            height: 100%;
+            margin-right: 1.5rem;
+            border-radius: 2rem;
+            /* Color */
+            background-color: $--bg-passive;
+            /* Text */
+    
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__info {
+            /* Display & Box Model */
+            @include box(50%, 100%);
+            @include flexBox(center, center, column);
+            /* Color */
+    
+            /* Text */
+    
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__fabric-type {
+            /* Display & Box Model */
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 1px solid #FFFFFF;
+            margin-bottom: 1.5rem;
+            /* Color */
+            color: white;
+            /* Text */
+            @include font(fontBold, 1.2rem);
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__price {
+            /* Display & Box Model */
+            margin-bottom: 1.5rem;
+            /* Color */
+            color: white;
+            /* Text */
+    
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+    
+            & span:first-child {
+                /* Display & Box Model */
+    
+                /* Color */
+    
+                /* Text */
+                @include font(fontBold, 1.8rem);
+                /* Positioning */
+    
+                /* Others: transition & animations, ... */
+            }
+    
+            & span:last-child {
+                /* Display & Box Model */
+    
+                /* Color */
+    
+                /* Text */
+                @include font(fontBold, 1.2rem);
+                /* Positioning */
+    
+                /* Others: transition & animations, ... */
+            }
+        }
+    
+        &__button {
+            /* Display & Box Model */
+            display: flex;
+            padding: 1.5rem 1rem;
+            border-radius: 1rem;
+            /* Color */
+            color: $--red1-color;
+            background-color: white;
+            /* Text */
+            @include font(fontBold, 1.4rem);
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+        }
+    
+        &__icon {
+            /* Display & Box Model */
+            @include box(1.8rem);
+            margin-left: 0.5rem;
+            /* Color */
+    
+            /* Text */
+    
+            /* Positioning */
+    
+            /* Others: transition & animations, ... */
+    
+            & > img {
+                /* Display & Box Model */
+                display: inline-block;
+                @include box(1.8rem);
+                /* Color */
+    
+                /* Text */
+    
+                /* Positioning */
+    
+                /* Others: transition & animations, ... */
+            }
+        }
+    }
+}

@@ -2,6 +2,8 @@ import ButtonCTA from "components/Button/CTA";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import loader from "assets/Image/image-loader.gif";
+import ReactImageAppear from "react-image-appear";
 
 CollectionItem.propTypes = {
     collectionInfo: PropTypes.object,
@@ -13,7 +15,7 @@ CollectionItem.defaultProps = {
 
 function CollectionItem(props) {
     if (!props.collectionInfo) return <Fragment />;
-    const { id, name, image, desc } = props.collectionInfo;
+    const { name, image, desc } = props.collectionInfo;
     return (
         <Link
             to={{
@@ -23,7 +25,15 @@ function CollectionItem(props) {
         >
             <div className="c-collection-item">
                 <div className="c-collection-item__image">
-                    <img src={image} alt={id} />
+                    <ReactImageAppear
+                        src={image || ""}
+                        animationDuration="1s"
+                        loader={loader}
+                        loaderStyle={{ backgroundColor: "transparent" }}
+                        placeholderStyle={{
+                            backgroundColor: "transparent",
+                        }}
+                    />
                 </div>
                 <span className="c-collection-item__name">{name}</span>
                 <p className="c-collection-item__desc">{desc}</p>

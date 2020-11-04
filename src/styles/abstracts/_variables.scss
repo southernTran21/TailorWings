@@ -1,18 +1,20 @@
-$--primary-color: #FF8445;
-$--secondary-color: #FFEBD8;
+$--primary-color: #ff8445;
+$--secondary-color: #ffebd8;
 $--third-color: #111e6c;
 $--sidebar-color: #fff4e3;
 $--black-color: #333333;
-$--white-color: #FFFFFF;
-$--yellow-color: #FCD681;
-$--gray1-color: #8E8E8E;
-$--gray2-color: #E5E5E5;
-$--gray3-color: #EEF1F4;
-$--gray4-color: #F2F2F2;
-$--gray5-color: #E0E0E0;
-$--info-color: #1884D6;
-$--success-color: #27AE60;
-$--error-color: #EB5757;
+$--white-color: #ffffff;
+$--yellow-color: #fcd681;
+$--gray1-color: #8e8e8e;
+$--gray2-color: #e5e5e5;
+$--gray3-color: #eef1f4;
+$--gray4-color: #f2f2f2;
+$--gray5-color: #e0e0e0;
+$--gray6-color: #bdbdbd;
+$--info-color: #1884d6;
+$--success-color: #27ae60;
+$--error-color: #eb5757;
+$--red1-color: #cb4b14;
 
 // Text
 $--text-default: $--black-color;
@@ -26,7 +28,7 @@ $--bg-active: $--primary-color;
 $--bg-passive: $--secondary-color;
 $--bg-info: $--info-color;
 $--bg-black: $--black-color;
-$--bg-admin: #F8F9FB;
+$--bg-admin: #f8f9fb;
 // Border
 $--border-primary: $--primary-color;
 $--border-secondary: $--secondary-color;
@@ -35,4 +37,3 @@ $--border-dash: $--primary-color;
 $--border-blur1: $--gray1-color;
 $--border-blur2: $--gray2-color;
 $--border-blur3: $--gray3-color;
-

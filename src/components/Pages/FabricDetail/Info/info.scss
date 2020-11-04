@@ -9,31 +9,72 @@
     /* Others: transition & animations, ... */
     &__name {
         /* Display & Box Model */
-    
+
         /* Color */
-    
+
         /* Text */
         @include font(fontHeavy, 2.4rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__tag {
         /* Display & Box Model */
-        display: inline-block;
+        @include flexBox(center, center, row, wrap);
         margin-top: 1.5rem;
-        padding: 1rem 2rem;
-        border-radius: 1rem;
         /* Color */
-        background-color: $--bg-passive;
-        color: $--text-passive;
+
         /* Text */
-        @include font(fontSemiBold, 1.3rem);
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
+
+        & > span {
+            /* Display & Box Model */
+            display: inline-block;
+            margin: 0.5rem 0.5rem;
+            padding: 1.8rem 2rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            /* Color */
+            background-color: $--bg-passive;
+            color: $--text-passive;
+            /* Text */
+            @include font(fontBold, 1.4rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                /* Display & Box Model */
+            
+                /* Color */
+                background-color: $--bg-active;
+                color: $--text-active;
+                /* Text */
+            
+                /* Positioning */
+            
+                /* Others: transition & animations, ... */
+            
+            }
+        }
+
+        &--active {
+            /* Display & Box Model */
+
+            /* Color */
+            background-color: $--bg-active !important;
+            color: $--text-active !important;
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
     }
     &__desc {
         /* Display & Box Model */
@@ -41,14 +82,14 @@
         display: flex;
         flex-direction: column;
         /* Color */
-    
+
         /* Text */
         @include font(fontNormal, 1.4rem);
-        
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-        span{
+        span {
             line-height: 2.5rem;
         }
     }
@@ -60,57 +101,53 @@
         /* Color */
         color: $--text-default;
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         &__name {
             /* Display & Box Model */
             /* Color */
-        
+
             /* Text */
             font-size: 3.6rem;
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__section1 {
             /* Display & Box Model */
             @include flexBox(center, center);
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__tag {
             /* Display & Box Model */
-            margin: 0;
-            margin-left: 1.5rem;
+            @include box(100%, auto);
+            margin-top: 3rem;
             /* Color */
-        
+
             /* Text */
             font-size: 1.6rem;
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__desc {
             /* Display & Box Model */
             margin-top: 3.2rem;
             /* Color */
-        
+
             /* Text */
             font-size: 1.8rem;
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
     }
 }

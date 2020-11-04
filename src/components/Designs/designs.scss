@@ -10,6 +10,7 @@
     /* Others: transition & animations, ... */
     &__title {
         /* Display & Box Model */
+        
         /* Color */
         color: $--text-passive;
         /* Text */
@@ -20,6 +21,7 @@
     }
     &__list {
         /* Display & Box Model */
+        min-height:40rem;
         margin-top: 2.4rem;
         margin-right: -1.5rem;
         @include flexBox(flex-start, flex-start, row, wrap);

@@ -1,6 +1,6 @@
 .c-design-carousel-desktop {
     /* Display & Box Model */
-    @include flexBox();
+    @include flexBox(flex-start, flex-start, row, wrap);
     /* Color */
 
     /* Text */
@@ -8,17 +8,17 @@
     /* Positioning */
 
     /* Others: transition & animations, ... */
+
     & img {
         /* Display & Box Model */
         border-radius: 23px;
         /* Color */
-        
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
 
     &--top {
@@ -61,5 +61,63 @@
         /* Positioning */
 
         /* Others: transition & animations, ... */
+    }
+
+    &__fabric-type-wrapper {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        @include flexBox(center, center, row, wrap);
+        margin: 1.5rem;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+    }
+
+    &__fabric-type {
+        /* Display & Box Model */
+        display: inline-block;
+        padding: 1.8rem 2rem;
+        margin: 0.5rem;
+        border-radius: 1.5rem;
+        cursor: pointer;
+        /* Color */
+        color: $--text-passive;
+        background-color: $--bg-passive;
+        /* Text */
+        @include font(fontBold, 1.3rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        &--active {
+            /* Display & Box Model */
+
+            /* Color */
+            color: $--text-active;
+            background-color: $--bg-active;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &:hover {
+            /* Display & Box Model */
+
+            /* Color */
+            color: $--text-active;
+            background-color: $--bg-active;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
     }
 }

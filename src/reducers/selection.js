@@ -1,49 +1,38 @@
-import { updateCurrentFilter } from "actions";
-
 var initialState = {
-    productList: [],
-    fabricList: [],
     renderProduct: null,
-    renderFabrics: [],
+    renderPatterns: [],
+    renderFabricTypes: [],
+    relatedProducts: [],
     selectedProduct: null,
+    selectedDesign: null,
+    selectedFabricType: null,
     src: { pathname: "/", search: "" },
+    isPageLoading: false,
+    isImageLoading: false,
 };
 
 const selectionReducer = (state = initialState, action) => {
     switch (action.type) {
         /****************************************************/
-        case "UPDATE_PRODUCT_LIST":
-            if (!action.products) return { ...state };
-            let updatedProductList = [...state.productList, ...action.products];
-            return { ...state, productList: updatedProductList };
-        /****************************************************/
-        case "UPDATE_FABRIC_LIST":
-            if (!action.fabrics) return { ...state };
-            let updatedFabricList = [...state.fabricList, ...action.fabrics];
-            return { ...state, fabricList: updatedFabricList };
-        /****************************************************/
         case "UPDATE_RENDER_PRODUCT":
-            if (!action.product) return { ...state };
-            /*--------------*/
-            let currentImage = [...action.product.image];
-            let fabricImage = state.renderFabrics.find(
-                (fabric) => fabric.isActive
-            );
-            fabricImage = fabricImage ? fabricImage.image[0] : "";
-            /*--------------*/
-            currentImage.push(fabricImage);
-            /*--------------*/
-
+            if (!action.renderProduct) return { ...state };
             return {
                 ...state,
-                renderProduct: { ...action.product, image: currentImage },
+                renderProduct: { ...action.renderProduct },
             };
         /****************************************************/
-        case "UPDATE_RENDER_FABRICS":
-            if (!action.fabrics) return { ...state };
+        case "UPDATE_RENDER_PATTERNS":
+            if (!action.renderPatterns) return { ...state };
             return {
                 ...state,
-                renderFabrics: action.fabrics,
+                renderPatterns: action.renderPatterns,
+            };
+        /****************************************************/
+        case "UPDATE_RENDER_FABRIC_TYPES":
+            if (!action.renderFabricTypes) return { ...state };
+            return {
+                ...state,
+                renderFabricTypes: action.renderFabricTypes,
             };
         /****************************************************/
         case "UPDATE_SELECTED_PRODUCT":
@@ -51,9 +40,28 @@ const selectionReducer = (state = initialState, action) => {
             let selectedProduct = { ...state.selectedProduct, ...action.info };
             return { ...state, selectedProduct: selectedProduct };
         /****************************************************/
+        case "UPDATE_SELECTED_DESIGN":
+            if (!action.selectedDesign) return { ...state };
+            return { ...state, selectedDesign: action.selectedDesign };
+        /****************************************************/
+        case "UPDATE_RELATED_PRODUCTS":
+            if (!action.relatedProducts) return { ...state };
+            return { ...state, relatedProducts: action.relatedProducts };
+        /****************************************************/
+        case "UPDATE_SELECTED_FABRIC_TYPE":
+            if (!action.selectedFabricType) return { ...state };
+            return { ...state, selectedFabricType: action.selectedFabricType };
+        /****************************************************/
         case "UPDATE_SRC":
             if (!action.src) return { ...state };
             return { ...state, src: action.src };
+        /****************************************************/
+        case "UPDATE_PAGE_LOADING":
+            if (typeof action.isPageLoading !== "boolean") return {...state};
+            return { ...state, isPageLoading: action.isPageLoading };
+        /****************************************************/
+        case "UPDATE_IAMGE_LOADING":
+            return { ...state, isImageLoading: action.isImageLoading };
         /****************************************************/
         default:
             return { ...state };

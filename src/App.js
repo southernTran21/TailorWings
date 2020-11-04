@@ -28,7 +28,6 @@ const PaymentContainer = React.lazy(() => import("layouts/Payment"));
 const SelectionContainer = React.lazy(() => import("layouts/Selection"));
 const SizeContainer = React.lazy(() => import("layouts/Size"));
 const AdminContainer = React.lazy(() => import("layouts/Admin"));
-const LoginContainer = React.lazy(() => import("layouts/Login"));
 
 function App() {
     /*--------------*/
@@ -66,7 +65,6 @@ function App() {
                     <Route path="/support" component={Support} />
                     <Route path="/test-fix" component={TestFix} />
                     {/* this is for Admin */}
-                    <Route path="/login" component={LoginContainer} />
                     <Route path="/admin" component={AdminContainer} />
                     <Route path="/test-excel" component={ReadExcel} />
                     {/* <Route component={NotFound} /> */}

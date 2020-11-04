@@ -6,6 +6,8 @@ import selectionReducer from "./selection";
 import sizeReducer from "./size";
 import cartReducer from "./cart";
 import adminReducer from "./admin";
+import fabricsReducer from "./fabrics";
+import fabricDetailReducer from "./fabricDetail";
 
 const rootReducer = combineReducers({
     common: commonReducer,
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
     selection: selectionReducer,
     size: sizeReducer,
     cart: cartReducer,
-    admin: adminReducer
+    admin: adminReducer,
+    fabrics: fabricsReducer,
+    fabricDetail: fabricDetailReducer,
 });
 
 export default rootReducer;

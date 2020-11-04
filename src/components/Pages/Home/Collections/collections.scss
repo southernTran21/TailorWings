@@ -21,7 +21,9 @@
         /* Others: transition & animations, ... */
     }
     @import "./CollectionItem/collectionItem.scss";
+}
 
+@media screen and(max-width: 768px) {
     .slick-current {
         width: 65vw !important;
     }
@@ -29,6 +31,7 @@
         transition: width 0.5s linear !important;
     }
 }
+
 @media screen and(min-width: 769px) {
     .c-home-collections {
         /* Display & Box Model */
@@ -54,8 +57,8 @@
         }
         &__list {
             /* Display & Box Model */
-            @include centerFlexBox();
             margin-top: 5rem;
+            padding: 0 18rem;
             /* Color */
 
             /* Text */
@@ -63,10 +66,55 @@
             /* Positioning */
 
             /* Others: transition & animations, ... */
+        }
 
-            a:nth-child(2) {
-                margin: 0 3rem;
-            }
+        .slick-slide {
+            /* Display & Box Model */
+            @include centerFlexBox();
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        .slick-next {
+            /* Display & Box Model */
+            right: -20px;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        .slick-prev {
+            /* Display & Box Model */
+            left: -30px;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        .slick-prev:before,
+        .slick-next:before {
+            /* Display & Box Model */
+
+            /* Color */
+            color: $--primary-color;
+            /* Text */
+            font-size: 30px;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
         }
     }
 }

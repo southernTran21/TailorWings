@@ -12,7 +12,7 @@
 
     &__name {
         /* Display & Box Model */
-        margin-top: 1.9rem;
+        margin-bottom: 1.9rem;
         /* Color */
         color: $--text-blur;
         /* Text */
@@ -24,7 +24,7 @@
     }
     &__designed-by {
         /* Display & Box Model */
-        margin-top: 1rem;
+        margin-bottom: 1rem;
         /* Color */
     
         /* Text */
@@ -34,6 +34,20 @@
         /* Others: transition & animations, ... */
     
     }
+
+    &__price {
+        /* Display & Box Model */
+
+        /* Color */
+        color: $--red1-color;
+        // background-color: $--bg-passive;
+        /* Text */
+        @include font(fontBold, 2rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
     &__confirm-button {
         /* Display & Box Model */
         margin-top: 2rem;

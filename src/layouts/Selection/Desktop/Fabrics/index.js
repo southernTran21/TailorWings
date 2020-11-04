@@ -1,28 +1,28 @@
 import FabricDesktop from "components/Pages/Selection/Desktop/Fabrics";
-import React, { useState, useEffect, Fragment } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 function FabricsContainerDesktop() {
     /*--------------*/
-    const renderFabrics = useSelector((state) => state.selection.renderFabrics);
+    const renderPatterns = useSelector(
+        (state) => state.selection.renderPatterns
+    );
     const renderProduct = useSelector((state) => state.selection.renderProduct);
     /*--------------*/
-    const [activeIndex, setActiveIndex] = useState(null);
+    let patternID = renderProduct ? renderProduct.idPattern : null;
+    let designID = renderProduct ? renderProduct.idDesign : null;
     /*--------------*/
-    useEffect(() => {
-        let activeIndex = renderFabrics.findIndex((fabric) => fabric.isActive);
-        if (activeIndex > -1) {
-            setActiveIndex(activeIndex);
-        }
-    }, [renderFabrics]);
-    /*--------------*/
-    if (!renderFabrics) return <Fragment />;
-    let designID = renderProduct ? renderProduct.designID : null;
     return (
         <section className="l-selection__fabric-desktop">
             <FabricDesktop
-                renderFabrics={renderFabrics}
-                activeIndex={activeIndex}
+                renderPatterns={renderPatterns.concat([
+                    ...renderPatterns,
+                    ...renderPatterns,
+                    ...renderPatterns,
+                    ...renderPatterns,
+                    ...renderPatterns,
+                ])}
+                patternID={patternID}
                 designID={designID}
             />
         </section>

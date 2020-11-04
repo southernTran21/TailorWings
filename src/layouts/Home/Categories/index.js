@@ -1,55 +1,44 @@
 import HomeCategories from "components/Pages/Home/Categories";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCategoriesDesignNumber } from "../../../actions/index";
-import DamOm from "../../../assets/Image/category-dam-om.png";
-import DamSuong from "../../../assets/Image/category-dam-suong.png";
-import DamXoe from "../../../assets/Image/category-dam-xoe.png";
+import {
+    updateCategories
+} from "../../../actions/index";
 
 function CategoriesContainer() {
     /*--------------*/
-    const defaultProducts = useSelector((state) => state.common.defaultProducts);
+    const defaultProducts = useSelector(
+        (state) => state.common.defaultProducts
+    );
+    const categories = useSelector((state) => state.common.categories);
     /*--------------*/
     const dispatch = useDispatch();
 
     useEffect(() => {
         /*--------------*/
-        let designNumber = [
-            {
-                name: "Đầm Xoè",
-                catID: "damxoe",
-                number: 0,
-                image: DamXoe,
-            },
-            {
-                name: "Đầm Suông",
-                catID: "damsuong",
-                number: 0,
-                image: DamSuong,
-            },
-            {
-                name: "Đầm Ôm",
-                catID: "damom",
-                number: 0,
-                image: DamOm,
-            },
-        ];
-        if (defaultProducts.length > 0) {
-            designNumber.forEach((item, index) => {
-                let number = defaultProducts.filter((product) => {
-                    if (product.default && product.catID === item.catID)
-                        return product;
-                }).length;
-                designNumber[index].number = number;
+        if (categories.length > 0 && defaultProducts.length > 0) {
+            let updatedCategories = categories.map((category) => {
+                let designNumber = defaultProducts.filter(
+                    (product) => product.idCategory === category.id
+                ).length;
+                if (designNumber > -1) {
+                    return { ...category, designNumber };
+                } else {
+                    return { ...category, designNumber: 0 };
+                }
             });
             /*--------------*/
-            const action_updateCategoriesDesignNumber = updateCategoriesDesignNumber(
-                designNumber
-            );
-            dispatch(action_updateCategoriesDesignNumber);
-            /*--------------*/
+            if (updatedCategories) {
+                /*--------------*/
+                const action_updateCategories = updateCategories(
+                    updatedCategories
+                );
+                dispatch(action_updateCategories);
+                /*--------------*/
+            }
         }
-    }, [defaultProducts]);
+        /*--------------*/
+    }, [categories.length, defaultProducts.length]);
 
     return (
         <section className="l-home__categories">

@@ -19,7 +19,13 @@ function AdminSidebar(props) {
     if (!props.items || !props.userInfo) return <Fragment />;
     return (
         <div className="c-admin-sidebar">
-            <img src={adminIcon} alt="icon" className="c-admin-sidebar__icon" />
+            <Link to="/">
+                <img
+                    src={adminIcon}
+                    alt="icon"
+                    className="c-admin-sidebar__icon"
+                />
+            </Link>
             <ul className="c-admin-sidebar__list">
                 {props.items.map((item, index) => {
                     return (
@@ -51,7 +57,11 @@ function AdminSidebar(props) {
             </p>
             <div className="c-admin-sidebar__logout">
                 <span className="c-admin-sidebar__text-log">Đăng xuất</span>
-                <img src={PowerIcon} alt="" className="c-admin-sidebar__power-icon"/>
+                <img
+                    src={PowerIcon}
+                    alt=""
+                    className="c-admin-sidebar__power-icon"
+                />
             </div>
         </div>
     );

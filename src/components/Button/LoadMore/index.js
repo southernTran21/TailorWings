@@ -5,10 +5,12 @@ const TEXT = 'Xem Thêm';
 
 ButtonLoadMore.propTypes = {
     loadMore: PropTypes.func,
+    buttonName: PropTypes.string,
 };
 
 ButtonLoadMore.defaultProps = {
     loadMore: null,
+    buttonName: null
 };
 
 function ButtonLoadMore(props) {
@@ -28,7 +30,7 @@ function ButtonLoadMore(props) {
 
     return (
         <button className="c-button-load-more" onClick={handleClick}>
-            {TEXT}
+            {props.buttonName || TEXT}
         </button>
     );
 }

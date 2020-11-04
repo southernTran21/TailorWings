@@ -6,30 +6,30 @@ const CUT_OFF_LIMIT = window.innerWidth > 768 ? 4 : 6;
 
 function TopProductsContainer() {
     /*--------------*/
-    const bestSeller = useSelector((state) => state.common.bestSeller);
-    const designers = useSelector((state) => state.common.designers);
+    const topProducts = useSelector((state) => state.common.topProducts);
+    // const designers = useSelector((state) => state.common.designers);
     /*--------------*/
     const [bestSellerList, setBestSellerList] = useState({
-        designs: [],
+        products: [],
         isMax: false,
     });
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        if (bestSeller.length > 0 && designers.length > 0) {
+        if (topProducts.length > 0) {
             /*--------------*/
-            let cutOffList = bestSeller.slice(0, CUT_OFF_LIMIT);
+            let cutOffList = topProducts.slice(0, CUT_OFF_LIMIT);
             /*--------------*/
-            setBestSellerList({ designs: cutOffList, isMax: false });
+            setBestSellerList({ products: cutOffList, isMax: false });
         }
-    }, [bestSeller, designers]);
+    }, [topProducts]);
     /*--------------*/
-    if (bestSellerList.designs.length < 1) return <Fragment />;
+    if (bestSellerList.products.length < 1) return <Fragment />;
     return (
         <section className="l-home__top-products">
             <Designs
                 title="Sản Phẩm Nổi Bật"
-                renderDesigns={bestSellerList}
+                renderProducts={bestSellerList}
                 isLoadMore={false}
             />
         </section>

@@ -1,8 +1,8 @@
 .c-fabric-desktop {
     /* Display & Box Model */
-    @include box(35rem, 38rem);
+    @include box(35rem, 41rem);
     @include flexBox(flex-start, flex-start, row, wrap);
-    max-height: 38rem;
+    max-height: 41rem;
     /* Color */
 
     /* Text */
@@ -47,8 +47,13 @@
             /* Others: transition & animations, ... */
         }
 
-        &--active > img {
+        &--active {
+            /*--------------*/
             border: 2px solid $--border-primary;
+            /*--------------*/
+            & > img {
+                border-radius: 20px;
+            }
         }
     }
     &::-webkit-scrollbar {

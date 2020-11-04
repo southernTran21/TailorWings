@@ -13,52 +13,34 @@ export const updateCollections = (collections) => {
         collections,
     };
 };
-export const updateDesigns = (designs) => {
-    return {
-        type: "UPDATE_DESIGNS",
-        designs,
-    };
-};
-export const updateFabrics = (fabrics) => {
-    return {
-        type: "UPDATE_FABRICS",
-        fabrics,
-    };
-};
 export const updateDefaultProducts = (defaultProducts) => {
     return {
         type: "UPDATE_DEFAULT_PRODUCTS",
         defaultProducts,
     };
 };
-export const modifyDefaultProducts = (info) => {
+export const updatePatterns = (patterns) => {
     return {
-        type: "MODIFY_DEFAULT_PRODUCTS",
-        info,
+        type: "UPDATE_PATTERNS",
+        patterns,
     };
 };
-export const updateDesigners = (designers) => {
+export const updatePatternCollections = (patternCollections) => {
     return {
-        type: "UPDATE_DESIGNERS",
-        designers,
+        type: "UPDATE_PATTERN_COLLECTIONS",
+        patternCollections,
     };
 };
-export const updateBestSeller = (designs) => {
+export const updateFabricTypeList = (fabricTypeList) => {
     return {
-        type: "UPDATE_BESTSELLER",
-        designs,
+        type: "UPDATE_FABRIC_TYPE_LIST",
+        fabricTypeList,
     };
 };
-export const updateFilteredDesigns = (filter) => {
+export const updateTopProducts = (topProducts) => {
     return {
-        type: "UPDATE_FILTERED_DESIGNS",
-        filter,
-    };
-};
-export const updateRenderDesigns = (isLoadMore) => {
-    return {
-        type: "UPDATE_RENDER_DESIGNS",
-        isLoadMore,
+        type: "UPDATE_TOP_PRODUCTS",
+        topProducts,
     };
 };
 export const updatePageFixedTopStatus = () => {
@@ -95,6 +77,13 @@ export const updateCurrentFilter = (filter) => {
     };
 };
 
+export const updateFilterStatus = (filterStatus) => {
+    return {
+        type: "UPDATE_FILTER_STATUS",
+        filterStatus,
+    };
+};
+
 export const setListLoading = (status) => {
     return {
         type: "SET_LIST_LOADING",
@@ -102,49 +91,17 @@ export const setListLoading = (status) => {
     };
 };
 
-/**
- * This is for Selection page
- */
-
-export const updateProductList = (products) => {
+export const updateFilteredProducts = (filteredProducts) => {
     return {
-        type: "UPDATE_PRODUCT_LIST",
-        products,
+        type: "UPDATE_FILTERED_PRODUCTS",
+        filteredProducts,
     };
 };
 
-export const updateFabricList = (fabrics) => {
+export const updateCurrentRenderProducts = (currentRenderProducts) => {
     return {
-        type: "UPDATE_FABRIC_LIST",
-        fabrics,
-    };
-};
-
-export const updateRenderProduct = (product) => {
-    return {
-        type: "UPDATE_RENDER_PRODUCT",
-        product,
-    };
-};
-
-export const updateRenderFabrics = (fabrics) => {
-    return {
-        type: "UPDATE_RENDER_FABRICS",
-        fabrics,
-    };
-};
-
-export const updateSelectedProduct = (info) => {
-    return {
-        type: "UPDATE_SELECTED_PRODUCT",
-        info,
-    };
-};
-
-export const updateSRC = (src) => {
-    return {
-        type: "UPDATE_SRC",
-        src,
+        type: "UPDATE_CURRENT_RENDER_PRODUCTS",
+        currentRenderProducts,
     };
 };
 /**

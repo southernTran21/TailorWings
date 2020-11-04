@@ -112,7 +112,9 @@ function AdminDataUpload() {
      *
      *  Call by:
      */
-    function updateUploadData(data) {
+    function updateUploadData(fetchedData) {
+        /*--------------*/
+        let data = fetchedData.filter(item => item.excelType !== "example");
         /*--------------*/
         switch (data[0].excelType) {
             case "pattern":
@@ -129,7 +131,10 @@ function AdminDataUpload() {
                         return {
                             id: id ? id.split(" ").join("") : "",
                             name: name || "",
-                            image: "",
+                            image: {
+                                normal: "",
+                                mockup: ""
+                            },
                             price: price || "",
                             idPatternCollection: idPatternCollection || "",
                             discount: discount || "",
@@ -203,7 +208,11 @@ function AdminDataUpload() {
                     /*--------------*/
                     return {
                         id: id ? id.split(" ").join("") : "",
-                        image: "",
+                        image: {
+                            T: "",
+                            C: "",
+                            S: ""
+                        },
                         name: name || "",
                         description: description || "",
                         designPrice: designPrice || "",
@@ -231,6 +240,8 @@ function AdminDataUpload() {
                         idBodyShape,
                         idCharacter,
                         patternList,
+                        name,
+                        defaultPattern
                     } = param;
                     const patterns = patternList.split(",") || [];
                     patterns.forEach((pattern) => {
@@ -239,18 +250,39 @@ function AdminDataUpload() {
                                 id + pattern
                                     ? (id + pattern).split(" ").join("")
                                     : "",
-                            image: "",
-                            defaultStatus: false,
+                            image: {
+                                T: "",
+                                C: "",
+                                S: ""
+                            },
+                            defaultStatus: pattern.id === defaultPattern,
                             discount: discount || "",
                             visibleStatus: true,
-                            idPattern: pattern || "",
+                            topStatus: false,
+                            idPattern: pattern
+                                ? pattern.split(" ").join("")
+                                : "",
                             idDesign: id ? id.split(" ").join("") : "",
-                            idCategory: idCategory || "",
-                            idCollection: idCollection || "",
-                            idDesigner: idDesigner || "",
-                            idFabricType: fabricTypeList || "",
-                            idBodyShape: idBodyShape || "",
-                            idCharacter: idCharacter || "",
+                            idCategory: idCategory
+                                ? idCategory.split(" ").join("")
+                                : "",
+                            idCollection: idCollection
+                                ? idCollection.split(",")
+                                : [],
+                            idDesigner: idDesigner
+                                ? idDesigner.split(" ").join("")
+                                : "",
+                            idFabricType: fabricTypeList
+                                ? fabricTypeList.split(",")
+                                : [],
+                            idBodyShape: idBodyShape
+                                ? idBodyShape.split(",")
+                                : [],
+                            idCharacter: idCharacter
+                                ? idCharacter.split(",")
+                                : [],
+                            relatedProducts: patterns.length || 0,
+                            name: name || "",
                         });
                     });
                 });
@@ -473,18 +505,25 @@ function AdminDataUpload() {
                     }
                 }
                 /*--------------*/
-                if ( uploadProductFunctions.length > 0 ||  uploadDesignFunctions.length > 0) {
+                if (
+                    uploadProductFunctions.length > 0 ||
+                    uploadDesignFunctions.length > 0
+                ) {
                     /*--------------*/
-                    Promise.all(uploadDesignFunctions.concat(uploadDesignFunctions)).then(() => {
-                        setIsLoading(false);
-                        /*--------------*/
-                        message.success("Hoàn thành");
-                    }).catch((error) => {
-                        setIsLoading(false);
-                        /*--------------*/
-                        message.error("Lỗi cập nhật cơ sổ dữ liệu");
-                        console.log('error :>> ', error);
-                    })
+                    Promise.all(
+                        uploadDesignFunctions.concat(uploadDesignFunctions)
+                    )
+                        .then(() => {
+                            setIsLoading(false);
+                            /*--------------*/
+                            message.success("Hoàn thành");
+                        })
+                        .catch((error) => {
+                            setIsLoading(false);
+                            /*--------------*/
+                            message.error("Lỗi cập nhật cơ sổ dữ liệu");
+                            console.log("error :>> ", error);
+                        });
                 } else {
                     setIsLoading(false);
                     /*--------------*/

@@ -1,18 +1,28 @@
 import React, { useState, useEffect, Fragment } from "react";
 import BackgroundContainer from "./Background";
 import OptionsContainer from "./Options";
-import DesignListContainer from "./DesignList";
+import DesignListContainer from "./AvailableProductList";
 import FabricDetailInfoContainer from "./Info";
 import {
     fetchWithTrippleCondition,
     fetchDocument,
     fetchWithDoubleCondition,
+    fetchVisible,
+    fetchDefaultProducts,
 } from "services/FirebaseAPI/basic";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateSRC } from "actions";
-
-const LIMIT = 12;
+import {
+    updatePatterns,
+    updateFabricTypeList,
+    updateDefaultProducts,
+} from "actions";
+import { updateSRC } from "actions/selection";
+import { updateSelectedPattern } from "actions/fabricDetail";
+import { FABRIC_TYPE, PATTERNS } from "../../constants";
+import AvailableProductListContainer from "./AvailableProductList";
+import SuitableProductListContainer from "./SuitableProductList";
+import PatternOrderBannerContainer from "./PatternOrderBanner";
 
 function FabricDetailContainer() {
     window.scrollTo({
@@ -21,46 +31,65 @@ function FabricDetailContainer() {
     });
     /*--------------*/
     let urlSearch = window.location.search.match(/id=(.*)\b/);
-    const fabricID = urlSearch ? urlSearch[1] : null;
+    const patternID = urlSearch ? urlSearch[1] : null;
     /*--------------*/
-    const selectionSrc = useSelector((state) => state.selection.src);
+    const patterns = useSelector((state) => state.common.patterns);
+    const fabricTypeList = useSelector((state) => state.common.fabricTypeList);
+    const defaultProducts = useSelector(
+        (state) => state.common.defaultProducts
+    );
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
-    const [relatedProducts, setRelatedProducts] = useState(null);
-    const [renderProducts, setRenderProducts] = useState(null);
-    const [fabricInfo, setFabricInfo] = useState(null);
+    useEffect(() => {
+        /*--------------*/
+        const action_updateSRC = updateSRC({
+            pathname: "/fabric-detail",
+            search: `?id=${patternID}`,
+        });
+        dispatch(action_updateSRC);
+        /*--------------*/
+    }, [patternID]);
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        async function _fetchFaricDetail() {
+        async function _fetchPatterns() {
             /*--------------*/
             try {
                 /*--------------*/
-                const fabricInfo = await fetchDocument("fabrics", fabricID);
-                const relatedProducts = await fetchWithDoubleCondition(
-                    "products",
-                    "visibility",
-                    true,
-                    "fabricID",
-                    fabricID
-                );
-                /*--------------*/
-                if (fabricInfo) {
-                    setFabricInfo(fabricInfo);
-                    setRelatedProducts(relatedProducts);
-                }
-                /*--------------*/
-                if (relatedProducts.length <= LIMIT) {
-                    setRenderProducts({
-                        isMax: true,
-                        designs: [...relatedProducts],
-                    });
+                if (patterns.length > 0) {
+                    /*--------------*/
+                    let selectedPattern =
+                        patterns.find((pattern) => pattern.id === patternID) ||
+                        null;
+                    /*--------------*/
+                    const action_updateSelectedPattern = updateSelectedPattern(
+                        selectedPattern
+                    );
+                    dispatch(action_updateSelectedPattern);
+                    /*--------------*/
                 } else {
-                    setRenderProducts({
-                        isMax: false,
-                        designs: [...relatedProducts.slice(0, LIMIT)],
-                    });
+                    /*--------------*/
+                    let fetchedPatterns = await fetchVisible(PATTERNS);
+                    /*--------------*/
+                    if (fetchedPatterns.length > 0) {
+                        /*--------------*/
+                        let selectedPattern =
+                            fetchedPatterns.find(
+                                (pattern) => pattern.id === patternID
+                            ) || null;
+                        /*--------------*/
+                        const action_updateSelectedPattern = updateSelectedPattern(
+                            selectedPattern
+                        );
+                        dispatch(action_updateSelectedPattern);
+                        /*--------------*/
+                        const action_updatePatterns = updatePatterns(
+                            fetchedPatterns
+                        );
+                        dispatch(action_updatePatterns);
+                        /*--------------*/
+                    }
                 }
                 /*--------------*/
             } catch (error) {
@@ -69,54 +98,74 @@ function FabricDetailContainer() {
             /*--------------*/
         }
         /*--------------*/
-        if (fabricID) {
-            _fetchFaricDetail();
-        }
-        if (selectionSrc.pathname !== "/fabric-detail") {
-            const action_updateSrc = updateSRC({
-                pathname: "/fabric-detail",
-                search: `?id=${fabricID}`,
-            });
-            dispatch(action_updateSrc);
+        _fetchPatterns();
+        /*--------------*/
+    }, []);
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        async function _fetchFabricTypeList() {
+            /*--------------*/
+            try {
+                /*--------------*/
+                let fetchedFabricTypeList = await fetchVisible(FABRIC_TYPE);
+                /*--------------*/
+                if (fetchedFabricTypeList.length > 0) {
+                    /*--------------*/
+                    const action_updateFabricTypeList = updateFabricTypeList(
+                        fetchedFabricTypeList
+                    );
+                    dispatch(action_updateFabricTypeList);
+                    /*--------------*/
+                }
+            } catch (error) {
+                console.log("error :>> ", error);
+            }
+            /*--------------*/
         }
         /*--------------*/
-    }, [fabricID]);
-    /*--------------*/
-    /*********************************
-     *  Description: handle load more
-     *
-     *
-     *  Call by:
-     */
-    function onLoadMore() {
-        /*--------------*/
-        if (renderProducts && relatedProducts) {
-            /*--------------*/
-            let udpatedRenderProducts = [...renderProducts.designs];
-            /*--------------*/
-            udpatedRenderProducts = relatedProducts.slice(
-                0,
-                LIMIT + udpatedRenderProducts.length
-            );
-            /*--------------*/
-            let isMax = udpatedRenderProducts.length >= relatedProducts.length;
-            /*--------------*/
-            setRenderProducts({ isMax: isMax, designs: udpatedRenderProducts });
+        if (fabricTypeList.length < 1) {
+            _fetchFabricTypeList();
         }
-    }
-    /************_END_****************/
+        /*--------------*/
+    }, []);
     /*--------------*/
-    if (!fabricID) return <Redirect to="/" />;
-    if (!fabricInfo) return <Fragment />;
+    useEffect(() => {
+        /*--------------*/
+        async function _fetchDefaultProducts() {
+            /*--------------*/
+            try {
+                /*--------------*/
+                let fetchedDefaultProducts = await fetchDefaultProducts();
+                /*--------------*/
+                if (fetchedDefaultProducts.length > 0) {
+                    /*--------------*/
+                    const action_updateDefaultProducts = updateDefaultProducts(
+                        fetchedDefaultProducts
+                    );
+                    dispatch(action_updateDefaultProducts);
+                    /*--------------*/
+                }
+            } catch (error) {
+                console.log("error :>> ", error);
+            }
+            /*--------------*/
+        }
+        /*--------------*/
+        if (defaultProducts.length < 1) {
+            _fetchDefaultProducts();
+        }
+        /*--------------*/
+    }, []);
+    /*--------------*/
+    if (!patternID) return <Redirect to="/" />;
     return (
         <div className="l-fabric-detail">
-            <BackgroundContainer background={fabricInfo.image[0]} />
-            <FabricDetailInfoContainer fabricInfo={fabricInfo} />
-            <OptionsContainer />
-            <DesignListContainer
-                renderProducts={renderProducts}
-                onLoadMore={onLoadMore}
-            />
+            <BackgroundContainer />
+            <FabricDetailInfoContainer />
+            <AvailableProductListContainer />
+            <SuitableProductListContainer />
+            <PatternOrderBannerContainer />
         </div>
     );
 }

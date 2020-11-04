@@ -1,21 +1,24 @@
 import {
-    updateBestSeller,
+    updateCategories,
+    updateCollections,
     updateDefaultProducts,
-    updateDesigners,
-    updateSRC,
+
+
+    updateTopProducts
 } from "actions";
 import { BackTop } from "antd";
 import Login from "components/Login";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    fetchDefaultProducts,
-    fetchWithCondition,
+    fetchDefaultProducts, fetchVisible,
+
+    fetchVisibleCondition
 } from "services/FirebaseAPI/basic";
+import { PRODUCTS } from "../../constants";
 import BannerContainer from "./Banner";
 import CategoriesContainer from "./Categories";
 import CollectionsContainer from "./Collections";
-import DesignersContainer from "./Designers";
 import FabricsContainer from "./Fabrics";
 import IntroductionContainer from "./Introduction";
 import NavbarContainer from "./Navbar";
@@ -32,94 +35,114 @@ function HomeContainer() {
     const defaultProductsLength = useSelector(
         (state) => state.common.defaultProducts.length
     );
-    const designersLength = useSelector(
-        (state) => state.common.designers.length
+    const categoriesLength = useSelector(
+        (state) => state.common.categories.length
     );
-    const bestSellerLength = useSelector(
-        (state) => state.common.bestSeller.length
+    const collectionsLength = useSelector(
+        (state) => state.common.collections.length
     );
-    const selectionSrc = useSelector((state) => state.selection.src);
-    const isLoginOpen = useSelector((state) => state.home.isLoginOpen);
-    /*--------------*/
+    const topProductsLength = useSelector(
+        (state) => state.common.topProducts.length
+    );
+    // /*--------------*/
     const dispatch = useDispatch();
-    /*--------------*/
+    // /*--------------*/
     const [fetchError, setFetchError] = useState(false);
 
     useEffect(() => {
+        /*--------------*/
+        async function _fetchCategories() {
+            try {
+                const fetchedCategories = await fetchVisible("categories");
+                /*--------------*/
+                if (fetchedCategories.length > 0) {
+                    const action_updateCategories = updateCategories(
+                        fetchedCategories
+                    );
+                    dispatch(action_updateCategories);
+                }
+                /*--------------*/
+            } catch (error) {
+                setFetchError(true);
+                console.log("error.message :>> ", error.message);
+            }
+        }
+        /*--------------*/
+        async function _fetchCollections() {
+            try {
+                const fetchedCollections = await fetchVisible("collections");
+                /*--------------*/
+                if (fetchedCollections.length > 0) {
+                    const action_updateCollections = updateCollections(
+                        fetchedCollections
+                    );
+                    dispatch(action_updateCollections);
+                }
+                /*--------------*/
+            } catch (error) {
+                setFetchError(true);
+                console.log("error.message :>> ", error.message);
+            }
+        }
+        /*--------------*/
         async function _fetchDefaultProducts() {
             try {
                 const fetchedDefaultProducts = await fetchDefaultProducts();
+                /*--------------*/
                 if (fetchedDefaultProducts.length > 0) {
-                    /*--------------*/
                     const action_updateDefaultProducts = updateDefaultProducts(
                         fetchedDefaultProducts
                     );
                     dispatch(action_updateDefaultProducts);
                 }
+                /*--------------*/
             } catch (error) {
                 setFetchError(true);
                 console.log("error.message :>> ", error.message);
             }
         }
         /*--------------*/
-        async function _fetchDesigners() {
+        async function _fetchTopProducts() {
             try {
-                const fetchedDesigners = await fetchWithCondition(
-                    "designers",
-                    "isVisible",
+                const fetchedTopProducts = await fetchVisibleCondition(
+                    PRODUCTS,
+                    "topStatus",
                     true
                 );
-                if (fetchedDesigners.length > 0) {
-                    /*--------------*/
-                    const action_updateDesigners = updateDesigners(
-                        fetchedDesigners
+                /*--------------*/
+                if (fetchedTopProducts.length > 0) {
+                    const action_updateTopProducts = updateTopProducts(
+                        fetchedTopProducts
                     );
-                    dispatch(action_updateDesigners);
+                    dispatch(action_updateTopProducts);
                 }
+                /*--------------*/
             } catch (error) {
-                console.log("error.message :>> ", error.message);
                 setFetchError(true);
-            }
-        }
-        /*--------------*/
-        async function _fetchBestSeller() {
-            try {
-                const fetchedBestSeller = await fetchWithCondition(
-                    "topList",
-                    "id",
-                    "bestseller"
-                );
-                if (fetchedBestSeller.length > 0) {
-                    let designs = [...fetchedBestSeller[0].designs];
-                    /*--------------*/
-                    const action_updateBestSeller = updateBestSeller(designs);
-                    dispatch(action_updateBestSeller);
-                }
-            } catch (error) {
                 console.log("error.message :>> ", error.message);
-                setFetchError(true);
             }
         }
         /*--------------*/
         if (!fetchError) {
+            /*--------------*/
+            if (categoriesLength < 1) {
+                _fetchCategories();
+            }
+            /*--------------*/
+            if (collectionsLength < 1) {
+                _fetchCollections();
+            }
+            /*--------------*/
+            if (topProductsLength < 1) {
+                _fetchTopProducts();
+            }
+            /*--------------*/
             if (defaultProductsLength < 1) {
                 _fetchDefaultProducts();
             }
-            if (designersLength < 1) {
-                _fetchDesigners();
-            }
-            if (bestSellerLength < 1 && defaultProductsLength > 0) {
-                _fetchBestSeller();
-            }
-            if (selectionSrc.pathname !== "/") {
-                const action_updateSrc = updateSRC({
-                    pathname: "/",
-                    search: "",
-                });
-                dispatch(action_updateSrc);
-            }
         }
-    }, [defaultProductsLength, bestSellerLength, designersLength]);
+        /*--------------*/
+    }, []);
 
     return (
         <div className="l-home">
@@ -130,7 +153,7 @@ function HomeContainer() {
             <CollectionsContainer />
             <TopProductsContainer />
             <FabricsContainer />
-            <DesignersContainer />
+            {/* <DesignersContainer /> */}
             <TailorRecruitmentContainer />
             <VoucherContainer />
             <BackTop />

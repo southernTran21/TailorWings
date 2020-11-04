@@ -1,40 +1,9 @@
-import PropTypes from "prop-types";
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import CollectionItem from "./CollectionItem";
-import CollectionDamDuTiec from "../../../../assets/Image/collection-dam-du-tiec.jpg";
-import CollectionDamCongSo from "../../../../assets/Image/collection-dam-cong-so.jpg";
-import CollectionDamDaoPho from "../../../../assets/Image/collection-dam-dao-pho.jpg";
 
-HomeCollections.propTypes = {
-    collectionInfo: PropTypes.array,
-};
-HomeCollections.defaultProps = {
-    collectionInfo: [],
-};
-
-const COLLECTION_INFO = [
-    {
-        id: "damdaopho",
-        name: "Đầm Dạo Phố",
-        image: CollectionDamDaoPho,
-        desc: "Thoải mái lựa chọn khi ra đường.",
-    },
-    {
-        id: "damdutiec",
-        name: "Đầm Dư Tiệc",
-        image: CollectionDamDuTiec,
-        desc: "Thoải mái lựa chọn khi ra đường.",
-    },
-    {
-        id: "damcongso",
-        name: "Đầm Công Sở",
-        image: CollectionDamCongSo,
-        desc: "Thoải mái lựa chọn khi ra đường.",
-    },
-];
-
-function AutoSlidesPerView(props) {
+function AutoSlidesPerViewMobile(collections) {
     /*--------------*/
     const params = {
         swipeToSlide: true,
@@ -45,18 +14,39 @@ function AutoSlidesPerView(props) {
         adaptiveHeight: true,
         speed: 500,
     };
+    /*--------------*/
 
-    if (!COLLECTION_INFO) return <Fragment />;
+    if (!collections) return <Fragment />;
     return (
         <Slider {...params}>
-            {COLLECTION_INFO.map((collection, index) => {
+            {collections.map((collection, index) => {
                 return (
-                    (
-                        <CollectionItem
-                            key={index}
-                            collectionInfo={collection}
-                        />
-                    ) || <Fragment />
+                    <CollectionItem key={index} collectionInfo={collection} />
+                );
+            })}
+        </Slider>
+    );
+}
+/*--------------*/
+function AutoSlidesPerViewDesktop(collections) {
+    /*--------------*/
+    const params = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+    };
+    /*--------------*/
+
+    if (!collections) return <Fragment />;
+    return (
+        <Slider {...params}>
+            {collections.map((collection, index) => {
+                return (
+                    <div key={index}>
+                        <CollectionItem collectionInfo={collection} />
+                    </div>
                 );
             })}
         </Slider>
@@ -64,16 +54,18 @@ function AutoSlidesPerView(props) {
 }
 /*--------------*/
 
-function HomeCollections(props) {
+function HomeCollections() {
     const isDesktop = window.innerWidth > 768;
+    /*--------------*/
+    const collections = useSelector((state) => state.common.collections);
+    /*--------------*/
+    if (!collections) return <Fragment />;
     if (isDesktop) {
         return (
             <div className="c-home-collections">
                 <h2 className="c-home-collections__title">Bộ Sưu Tập</h2>
                 <div className="c-home-collections__list">
-                    <CollectionItem collectionInfo={COLLECTION_INFO[0]} />
-                    <CollectionItem collectionInfo={COLLECTION_INFO[1]} />
-                    <CollectionItem collectionInfo={COLLECTION_INFO[2]} />
+                    {AutoSlidesPerViewDesktop(collections)}
                 </div>
             </div>
         );
@@ -82,7 +74,7 @@ function HomeCollections(props) {
             <div className="c-home-collections">
                 <h2 className="c-home-collections__title">Bộ Sưu Tập</h2>
                 <div className="c-home-collections__list">
-                    {AutoSlidesPerView(props)}
+                    {AutoSlidesPerViewMobile(collections)}
                 </div>
             </div>
         );

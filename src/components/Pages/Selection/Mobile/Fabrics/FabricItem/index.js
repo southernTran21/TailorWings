@@ -4,38 +4,48 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import loader from "assets/Image/image-loader.gif";
 import ReactImageAppear from "react-image-appear";
+import { validateYupSchema } from "formik";
 
 FabricItem.propTypes = {
-    fabricInfo: PropTypes.object,
-    currentIndex: PropTypes.number,
+    patternInfo: PropTypes.object,
+    isActive: PropTypes.bool,
+    designID: PropTypes.string,
+    patternID: PropTypes.string,
 };
 
 FabricItem.propTypes = {
-    fabricInfo: null,
-    currentIndex: null,
+    patternInfo: null,
+    isActive: false,
+    designID: null,
+    patternID: null
 };
 
 function FabricItem(props) {
-    if (!props.fabricInfo || !props.currentIndex) return <Fragment />;
-    const { typeName, image, id, isActive } = props.fabricInfo;
-    const designID =
-        window.location.search.match(/id=(.*)\b/)[1].substring(0, 4) || "";
+    /*--------------*/
+    if (!props.patternInfo || !props.patternID || !props.designID)
+        return <Fragment />;
+    /*--------------*/
+    const { image, id } = props.patternInfo;
+    /*--------------*/
+    let renderImage =
+        typeof image === "object" ? (image.normal ? image.normal : "") : "";
+    /*--------------*/    
     return (
         <div
             className={classNames("c-selection-item", {
-                "c-selection-item--active": isActive,
+                "c-selection-item--active": props.patternID === id,
             })}
         >
-            <span className="c-selection-item__type">{typeName || "_"}</span>
+            {/* <span className="c-selection-item__type">{id || "_"}</span> */}
             <Link
                 to={{
                     pathname: "/selection",
-                    search: `?id=${designID}${id}`,
+                    search: `?id=${props.designID}${id}`,
                 }}
             >
                 <div className="c-selection-item__image">
                     <ReactImageAppear
-                        src={image[1]}
+                        src={renderImage}
                         animationDuration="1s"
                         loader={loader}
                         loaderStyle={{ backgroundColor: "transparent" }}
