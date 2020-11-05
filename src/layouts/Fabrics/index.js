@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { updatePatternCollections, updatePatterns } from "actions/index";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { PATTERNS, PATTERN_COLLECTIONS } from "../../constants";
+import { fetchVisible } from "../../services/FirebaseAPI/basic";
 import BannerContainer from "./Banner";
 import ListContainer from "./List";
 import NavbarContainer from "./Navbar";
 import OptionsContainer from "./Options";
-import { fetchVisible } from "../../services/FirebaseAPI/basic";
-import { PATTERNS, PATTERN_COLLECTIONS } from "../../constants";
-import { updatePatternCollections, updatePatterns } from "actions/index";
-import { useDispatch, useSelector } from "react-redux";
-import { updateFilterStatus, updateRenderPatterns } from "actions/fabrics";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function FabricsContainer() {
     /*--------------*/
@@ -20,6 +29,9 @@ function FabricsContainer() {
             top: 0,
             behavior: "smooth",
         });
+        /*--------------*/
+        initGA();
+        logPageViewGA();
         /*--------------*/
         async function _fetchPatterns() {
             try {

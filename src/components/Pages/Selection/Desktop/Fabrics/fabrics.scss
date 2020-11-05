@@ -1,6 +1,7 @@
 .c-fabric-desktop {
     /* Display & Box Model */
-    @include box(35rem, 41rem);
+    @include box(35rem, auto);
+    max-height: 41rem;
     @include flexBox(flex-start, flex-start, row, wrap);
     max-height: 41rem;
     /* Color */

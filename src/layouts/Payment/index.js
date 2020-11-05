@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AddressPaymentContainer from "./Address";
 import FooterPaymentContainer from "./Footer";
 import NavbarPaymentContainer from "./Navbar";
@@ -13,8 +13,25 @@ import uniqid from "uniqid";
 import { setDocument } from "services/FirebaseAPI/basic";
 import { history } from "services/CommonParameter";
 import { message } from "antd";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function PaymentContainer() {
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
     /*--------------*/
     const currentCartList =
         JSON.parse(window.localStorage.getItem("cart")) || null;

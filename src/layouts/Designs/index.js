@@ -18,6 +18,16 @@ import NavbarContainer from "./Navbar";
 import OptionsContainer from "./Options";
 import ListContainer from "./List";
 import Login from "components/Login";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function DesignsContainer() {
     const location = window.location;
@@ -39,7 +49,14 @@ function DesignsContainer() {
     const dispatch = useDispatch();
     /*--------------*/
     const [fetchError, setFetchError] = useState(false);
-
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
+    /*--------------*/
     useEffect(() => {
         window.scrollTo({
             top: 0,

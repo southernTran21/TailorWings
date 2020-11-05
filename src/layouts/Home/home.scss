@@ -19,8 +19,22 @@
         /* Display & Box Model */
         @include box(100%, 17.5rem);
         margin-bottom: 2rem;
+        margin-top: 2rem;
         /* Color */
         /* Text */
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__about-us {
+        /* Display & Box Model */
+        margin-top: 3rem;
+        /* Color */
+    
+        /* Text */
+    
         /* Positioning */
     
         /* Others: transition & animations, ... */
@@ -65,8 +79,21 @@
             /* Display & Box Model */
             @include box(100%, 52rem);
             margin-bottom: 3rem;
+            margin-top: 5rem;
             /* Color */
             /* Text */
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
+        &__about-us {
+            /* Display & Box Model */
+            margin-top: 7rem;
+            /* Color */
+        
+            /* Text */
+        
             /* Positioning */
         
             /* Others: transition & animations, ... */

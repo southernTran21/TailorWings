@@ -10,28 +10,31 @@ SelectionDescription.defaultProps = {
     designDesc: [],
     fabricDesc: [],
 };
-
 function SelectionDescription(props) {
+    /*--------------*/
+    let modifiedDesignDesc = props.designDesc.filter(desc => desc !== "");
+    let modifiedFabricDesc = props.fabricDesc.filter(desc => desc !== "");
+    /*--------------*/
     return (
         <div className="c-selection-desc">
             <div className="c-selection-desc__wrapper">
                 <span className="c-selection-desc__title">
                     Thông tin thiết kế
                 </span>
-                {props.designDesc.map((desc, index) => {
+                {modifiedDesignDesc.map((desc, index) => {
                     return (
                         <p key={index} className="c-selection-desc__text">
-                            - {desc}
+                            {desc}
                         </p>
                     );
                 })}
             </div>
             <div className="c-selection-desc__wrapper">
                 <span className="c-selection-desc__title">Thông tin vải</span>
-                {props.fabricDesc.map((desc, index) => {
+                {modifiedFabricDesc.map((desc, index) => {
                     return (
                         <p key={index} className="c-selection-desc__text">
-                            - {desc}
+                            {desc}
                         </p>
                     );
                 })}

@@ -1,28 +1,30 @@
-import React, { useState, useEffect, Fragment } from "react";
-import BackgroundContainer from "./Background";
-import OptionsContainer from "./Options";
-import DesignListContainer from "./AvailableProductList";
-import FabricDetailInfoContainer from "./Info";
 import {
-    fetchWithTrippleCondition,
-    fetchDocument,
-    fetchWithDoubleCondition,
-    fetchVisible,
-    fetchDefaultProducts,
-} from "services/FirebaseAPI/basic";
-import { Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import {
-    updatePatterns,
-    updateFabricTypeList,
-    updateDefaultProducts,
+    updateDefaultProducts, updateFabricTypeList, updatePatterns
 } from "actions";
-import { updateSRC } from "actions/selection";
 import { updateSelectedPattern } from "actions/fabricDetail";
+import { updateSRC } from "actions/selection";
+import React, { useEffect } from "react";
+import ReactGA from "react-ga";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import {
+    fetchDefaultProducts, fetchVisible
+} from "services/FirebaseAPI/basic";
 import { FABRIC_TYPE, PATTERNS } from "../../constants";
 import AvailableProductListContainer from "./AvailableProductList";
-import SuitableProductListContainer from "./SuitableProductList";
+import BackgroundContainer from "./Background";
+import FabricDetailInfoContainer from "./Info";
 import PatternOrderBannerContainer from "./PatternOrderBanner";
+import SuitableProductListContainer from "./SuitableProductList";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function FabricDetailContainer() {
     window.scrollTo({
@@ -40,6 +42,13 @@ function FabricDetailContainer() {
     );
     /*--------------*/
     const dispatch = useDispatch();
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
     /*--------------*/
     useEffect(() => {
         /*--------------*/

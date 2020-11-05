@@ -82,12 +82,7 @@ function DesignCarouselContainer() {
                 images={renderProduct.image}
                 id={renderProduct.id}
                 isImageLoading={isImageLoading}
-                renderFabricTypes={renderFabricTypes.concat([
-                    ...renderFabricTypes,
-                    ...renderFabricTypes,
-                    ...renderFabricTypes,
-                    ...renderFabricTypes,
-                ])}
+                renderFabricTypes={renderFabricTypes}
                 selectedFabricType={selectedFabricType}
                 onFabricTypeChange={onFabricTypeChange}
             />

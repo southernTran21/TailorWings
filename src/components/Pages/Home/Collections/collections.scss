@@ -24,11 +24,13 @@
 }
 
 @media screen and(max-width: 768px) {
-    .slick-current {
-        width: 65vw !important;
-    }
-    .slick-slide {
-        transition: width 0.5s linear !important;
+    .c-home-collections {
+        .slick-current {
+            width: 65vw !important;
+        }
+        .slick-slide {
+            transition: width 0.5s linear !important;
+        }
     }
 }
 

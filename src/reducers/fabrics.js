@@ -2,7 +2,7 @@ var initialState = {
     currentFilter: "",
     isListLoading: false,
     filteredPatterns: [],
-    renderPatterns: {
+    renderFilteredPatterns: {
         isMax: false,
         patterns: [],
     },
@@ -29,20 +29,15 @@ const fabricsReducer = (state = initialState, action) => {
                 ...state,
                 filteredPatterns: [
                     ...action.filteredPatterns,
-                    ...action.filteredPatterns,
-                    ...action.filteredPatterns,
-                    ...action.filteredPatterns,
-                    ...action.filteredPatterns,
-                    ...action.filteredPatterns,
-                    ...action.filteredPatterns,
                 ],
             };
         /****************************************************/
-        case "UPDATE_RENDER_PATTERNS":
-            if (!action.renderPatterns) return { ...state };
+        case "UPDATE_RENDER_FILTERED_PATTERNS":
+            if (!action.renderFilteredPatterns) return { ...state };
+            console.log('action.renderFilteredPatterns :>> ', action.renderFilteredPatterns);
             return {
                 ...state,
-                renderPatterns: action.renderPatterns,
+                renderFilteredPatterns: action.renderFilteredPatterns,
             };
         /****************************************************/
         default:

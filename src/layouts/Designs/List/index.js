@@ -35,7 +35,7 @@ function ListContainer() {
             updatedRenderProducts
         );
         dispatch(action_updateCurrentRenderProducts);
-    }, [filteredProducts]);
+    }, [filteredProducts.toString()]);
     /*********************************
      *  Description: handle loading more data for render designs
      *

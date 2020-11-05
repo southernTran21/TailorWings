@@ -44,6 +44,8 @@
     &__col {
         display: inline-block;
         width: 10rem;
+        max-height: 6rem;
+        overflow: hidden;
         margin-right: 5.5rem;
         text-align: center;
         @include font(fontMedium, 1.4rem);

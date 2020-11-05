@@ -114,7 +114,9 @@ function AdminDataUpload() {
      */
     function updateUploadData(fetchedData) {
         /*--------------*/
-        let data = fetchedData.filter(item => item.excelType !== "example");
+        let data = fetchedData.filter(
+            (item) => item.excelType !== "Not Upload"
+        );
         /*--------------*/
         switch (data[0].excelType) {
             case "pattern":
@@ -128,15 +130,24 @@ function AdminDataUpload() {
                             discount,
                         } = param;
                         /*--------------*/
+                        let modifedId = id ? id.split(" ").join("") : "";
+                        /*--------------*/
+                        let modifiedIdPatternCollection = idPatternCollection
+                            ? idPatternCollection.split(" ").join("")
+                            : "";
+                        modifiedIdPatternCollection = modifiedIdPatternCollection.split(
+                            ","
+                        );
+                        /*--------------*/
                         return {
-                            id: id ? id.split(" ").join("") : "",
+                            id: modifedId,
                             name: name || "",
                             image: {
                                 normal: "",
-                                mockup: ""
+                                mockup: "",
                             },
                             price: price || "",
-                            idPatternCollection: idPatternCollection || "",
+                            idPatternCollection: modifiedIdPatternCollection,
                             discount: discount || "",
                             visibleStatus: true,
                         };
@@ -165,10 +176,19 @@ function AdminDataUpload() {
                         discount,
                     } = param;
                     /*--------------*/
+                    let modifiedId = id ? id.split(" ").join("") : "";
+                    /*--------------*/
+                    let modifiedIdSuggestProduct = idSuggestProject
+                        ? idSuggestProject.split(" ").join("")
+                        : "";
+                    modifiedIdSuggestProduct = modifiedIdSuggestProduct.split(
+                        ","
+                    );
+                    /*--------------*/
                     return {
-                        id: id ? id.split(" ").join("") : "",
+                        id: modifiedId,
                         name: name || "",
-                        idSuggestProject: idSuggestProject || "",
+                        idSuggestProject: modifiedIdSuggestProduct,
                         description: description || "",
                         feature: feature || "",
                         breadth: breadth || "",
@@ -206,18 +226,25 @@ function AdminDataUpload() {
                         discount,
                     } = param;
                     /*--------------*/
+                    let modifiedId = id ? id.split(" ").join("") : "";
+                    /*--------------*/
+                    let modifiedPatternList = patternList
+                        ? patternList.split(" ").join("")
+                        : "";
+                    modifiedPatternList = modifiedPatternList.split(",");
+                    /*--------------*/
                     return {
-                        id: id ? id.split(" ").join("") : "",
+                        id: modifiedId,
                         image: {
                             T: "",
                             C: "",
-                            S: ""
+                            S: "",
                         },
                         name: name || "",
                         description: description || "",
                         designPrice: designPrice || "",
                         processPrice: processPrice || "",
-                        patternList: patternList || "",
+                        patternList: modifiedPatternList,
                         usedFabric: usedFabric || "",
                         complexity: complexity || "",
                         metaTitle: metaTitle || "",
@@ -241,9 +268,42 @@ function AdminDataUpload() {
                         idCharacter,
                         patternList,
                         name,
-                        defaultPattern
+                        defaultPattern,
+                        topList,
                     } = param;
-                    const patterns = patternList.split(",") || [];
+                    /*--------------*/
+                    let modifiedTopList = topList
+                        ? topList.split(" ").join("")
+                        : "";
+                    modifiedTopList = modifiedTopList.split(",") || [];
+                    /*--------------*/
+                    let patterns = patternList
+                        ? patternList.split(" ").join("")
+                        : "";
+                    patterns = patterns.split(",") || [];
+                    /*--------------*/
+                    let modifiedIdCollection = idCollection
+                        ? idCollection.split(" ").join("")
+                        : "";
+                    modifiedIdCollection =
+                        modifiedIdCollection.split(",") || [];
+                    /*--------------*/
+                    let modifiedIdFabricType = fabricTypeList
+                        ? fabricTypeList.split(" ").join("")
+                        : "";
+                    modifiedIdFabricType =
+                        modifiedIdFabricType.split(",") || [];
+                    /*--------------*/
+                    let modifiedIdBodyShape = idBodyShape
+                        ? idBodyShape.split(" ").join("")
+                        : "";
+                    modifiedIdBodyShape = modifiedIdBodyShape.split(",") || [];
+                    /*--------------*/
+                    let modifiedIdCharacter = idCharacter
+                        ? idCharacter.split(" ").join("")
+                        : "";
+                    modifiedIdCharacter = modifiedIdCharacter.split(",") || [];
+                    /*--------------*/
                     patterns.forEach((pattern) => {
                         uploadProduct.push({
                             id:
@@ -253,12 +313,12 @@ function AdminDataUpload() {
                             image: {
                                 T: "",
                                 C: "",
-                                S: ""
+                                S: "",
                             },
-                            defaultStatus: pattern.id === defaultPattern,
+                            defaultStatus: pattern === defaultPattern,
                             discount: discount || "",
                             visibleStatus: true,
-                            topStatus: false,
+                            topStatus: modifiedTopList.includes(pattern),
                             idPattern: pattern
                                 ? pattern.split(" ").join("")
                                 : "",
@@ -266,21 +326,13 @@ function AdminDataUpload() {
                             idCategory: idCategory
                                 ? idCategory.split(" ").join("")
                                 : "",
-                            idCollection: idCollection
-                                ? idCollection.split(",")
-                                : [],
+                            idCollection: modifiedIdCollection,
                             idDesigner: idDesigner
                                 ? idDesigner.split(" ").join("")
                                 : "",
-                            idFabricType: fabricTypeList
-                                ? fabricTypeList.split(",")
-                                : [],
-                            idBodyShape: idBodyShape
-                                ? idBodyShape.split(",")
-                                : [],
-                            idCharacter: idCharacter
-                                ? idCharacter.split(",")
-                                : [],
+                            idFabricType: modifiedIdFabricType,
+                            idBodyShape: modifiedIdBodyShape,
+                            idCharacter: modifiedIdCharacter,
                             relatedProducts: patterns.length || 0,
                             name: name || "",
                         });
@@ -476,11 +528,12 @@ function AdminDataUpload() {
                             id === "" ||
                             idPattern === "" ||
                             idCategory === "" ||
-                            idCollection === "" ||
-                            idDesigner === "" ||
-                            idFabricType === "" ||
-                            idBodyShape === "" ||
-                            idCharacter === ""
+                            // idCollection === "" ||
+                            // idDesigner === "" ||
+                            idFabricType === ""
+                            // ||
+                            // idBodyShape === "" ||
+                            // idCharacter === ""
                         ) {
                             emptyIdError.push(product.idDesign);
                         }
@@ -540,13 +593,17 @@ function AdminDataUpload() {
     /************_END_****************/
     /*--------------*/
     let inputHeaders = [];
-    if (data) {
+    /*--------------*/
+    let uploadData = data ? data.filter(item => item.excelType !== "Not Upload") : null;
+    /*--------------*/
+    if (uploadData) {
+        /*--------------*/
         inputHeaders = TABLE_HEADERS.find(
-            (header) => header.id === data[0].excelType
+            (header) => header.id === uploadData[0].excelType
         );
     }
     /*--------------*/
-    const inputData = data ? data : null;
+    const inputData = uploadData ? uploadData : null;
     if (isLoading) return <ListLoader />;
     return (
         <div className="c-admin-data-upload">

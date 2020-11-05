@@ -1,11 +1,29 @@
 import ButtonCTA from "components/Button/CTA";
-import React from "react";
+import React, { useEffect } from "react";
 import IconCheck from "../../assets/Icon/check-circle.svg";
 import ImageOrderSuccess from "../../assets/Image/order-success.svg";
 import NavBarOrderSuccessContainer from "./Navbar";
 import { Link } from "react-router-dom";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function OrderSuccessContainer() {
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
+    /*--------------*/
     return (
         <div className="l-order-success">
             <NavBarOrderSuccessContainer />

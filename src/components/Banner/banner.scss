@@ -11,13 +11,13 @@
 
     /* Others: transition & animations, ... */
 
-}
-@media screen and(min-width: 769px){
-    .c-banner {
+    .slick-dots {
+        bottom: 0;
+    }
+
+    &__banner-item {
         /* Display & Box Model */
-        margin: 0 auto;
-        margin-top: 2rem;
-        @include box(114rem, 52.2rem);
+        height: 24rem;
         /* Color */
     
         /* Text */
@@ -26,5 +26,37 @@
     
         /* Others: transition & animations, ... */
     
+    }
+}
+@media screen and(min-width: 769px) {
+    .c-banner {
+        /* Display & Box Model */
+        margin: 0 auto;
+        margin-top: 2rem;
+        @include box(114rem, 52.2rem);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        .slick-dots {
+            bottom: 0;
+        }
+
+        &__banner-item {
+            /* Display & Box Model */
+            height: 52.2rem;
+            /* Color */
+        
+            /* Text */
+        
+            /* Positioning */
+        
+            /* Others: transition & animations, ... */
+        
+        }
     }
 }

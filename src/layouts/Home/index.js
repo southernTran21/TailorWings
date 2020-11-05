@@ -2,18 +2,16 @@ import {
     updateCategories,
     updateCollections,
     updateDefaultProducts,
-
-
-    updateTopProducts
+    updateTopProducts,
 } from "actions";
 import { BackTop } from "antd";
 import Login from "components/Login";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    fetchDefaultProducts, fetchVisible,
-
-    fetchVisibleCondition
+    fetchDefaultProducts,
+    fetchVisible,
+    fetchVisibleCondition,
 } from "services/FirebaseAPI/basic";
 import { PRODUCTS } from "../../constants";
 import BannerContainer from "./Banner";
@@ -24,7 +22,17 @@ import IntroductionContainer from "./Introduction";
 import NavbarContainer from "./Navbar";
 import TailorRecruitmentContainer from "./TailorRecruitment";
 import TopProductsContainer from "./TopProducts";
-import VoucherContainer from "./Voucher";
+import VoucherContainer from "./AboutUs";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function HomeContainer() {
     window.scrollTo({
@@ -48,7 +56,14 @@ function HomeContainer() {
     const dispatch = useDispatch();
     // /*--------------*/
     const [fetchError, setFetchError] = useState(false);
-
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
+    /*--------------*/
     useEffect(() => {
         /*--------------*/
         async function _fetchCategories() {
@@ -149,10 +164,10 @@ function HomeContainer() {
             <NavbarContainer />
             <BannerContainer />
             <IntroductionContainer />
-            <CategoriesContainer />
+            {/* <CategoriesContainer /> */}
             <CollectionsContainer />
-            <TopProductsContainer />
             <FabricsContainer />
+            <TopProductsContainer />
             {/* <DesignersContainer /> */}
             <TailorRecruitmentContainer />
             <VoucherContainer />

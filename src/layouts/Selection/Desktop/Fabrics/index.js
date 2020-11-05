@@ -15,13 +15,7 @@ function FabricsContainerDesktop() {
     return (
         <section className="l-selection__fabric-desktop">
             <FabricDesktop
-                renderPatterns={renderPatterns.concat([
-                    ...renderPatterns,
-                    ...renderPatterns,
-                    ...renderPatterns,
-                    ...renderPatterns,
-                    ...renderPatterns,
-                ])}
+                renderPatterns={renderPatterns}
                 patternID={patternID}
                 designID={designID}
             />

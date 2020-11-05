@@ -85,13 +85,18 @@ function InfoContainer() {
     function onConfirmClick() {
         if (typeof selectedFabricType === "object") {
             /*--------------*/
-            if (renderProduct) {
+            if (renderProduct && renderPatterns) {
                 /*--------------*/
-                const { name, image, idProduct } = renderProduct;
+                const { name, image, idProduct, idPattern } = renderProduct;
+                /*--------------*/
+                let patternImage = renderPatterns.find(
+                    (pattern) => pattern.id === idPattern
+                );
+                patternImage = patternImage ? patternImage.image.normal : "";
                 /*--------------*/
                 let info = {
                     name,
-                    image,
+                    image: { ...image, pattern: patternImage },
                     price,
                     idProduct,
                     fabricType: {

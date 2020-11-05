@@ -1,12 +1,11 @@
+import bannerImage from "assets/Image/dep-la-mot-lua-chon-chon-dam-tailorwings-de-la-chinh-minh.png";
 import Banner from "components/Banner";
 import React from "react";
 
-BannerContainer.propTypes = {};
-
-function BannerContainer(props) {
+function BannerContainer() {
     return (
         <section className="l-designs__banner">
-            <Banner />
+            <Banner banners={[bannerImage]} />
         </section>
     );
 }

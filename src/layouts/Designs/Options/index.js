@@ -132,7 +132,7 @@ function OptionsContainer() {
     return (
         <section className="l-designs__options">
             <Options
-                filter={filterStatus}
+                filters={filterStatus}
                 onFilterChange={onFilterChange}
                 linkTo={{ pathname: "/designs", search: "?cat=" }}
             />

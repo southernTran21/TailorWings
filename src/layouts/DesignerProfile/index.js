@@ -7,6 +7,16 @@ import DesignListContainer from "./DesignList";
 import InfoContainer from "./Info";
 import OptionsContainer from "./Options";
 import { updateSRC } from "actions/selection";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 const FILTER_INFO = [
     { id: "all", name: "Tất Cả", isActive: true },
@@ -31,6 +41,13 @@ function DesignerProfileContainer() {
     const [isListLoading, setIsListLoading] = useState(false);
     /*--------------*/
     const dispatch = useDispatch();
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
     /*--------------*/
     useEffect(() => {
         window.scrollTo({

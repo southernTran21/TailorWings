@@ -2,7 +2,6 @@ import CategoryItem from "components/Pages/Home/Categories/CategoryItem";
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
-import Swiper from "swiper";
 
 function HomeCategories() {
     const isDesktop = window.innerWidth > 768;

@@ -1,15 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Banner from 'components/Banner';
+import React from "react";
+import Banner from "components/Banner";
+import bannerImage from "assets/Image/what-is-your-color.png";
 
-BannerContainer.propTypes = {
-    
-};
-
-function BannerContainer(props) {
+function BannerContainer() {
     return (
-        <section className='l-fabrics__banner'>
-            <Banner/>
+        <section className="l-fabrics__banner">
+            <Banner isSlide={false} banners={[bannerImage]} />
         </section>
     );
 }

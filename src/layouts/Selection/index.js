@@ -6,9 +6,20 @@
 //     updateRenderFabrics,
 //     updateRenderProduct,
 // } from "actions";
+import {
+    updateFabricTypeList,
+    updatePatterns,
+    updateTopProducts,
+} from "actions";
+import {
+    updatePageLoading,
+    updateRelatedProducts,
+    updateRenderPatterns,
+    updateRenderProduct,
+    updateSelectedDesign,
+} from "actions/selection";
 import PageLoader from "components/Loader/Page";
-import { DESIGNS, FABRIC_TYPE, PATTERNS, PRODUCTS } from "../../constants";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import Media from "react-media";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -16,6 +27,7 @@ import {
     fetchVisible,
     fetchVisibleCondition,
 } from "services/FirebaseAPI/basic";
+import { DESIGNS, FABRIC_TYPE, PATTERNS, PRODUCTS } from "../../constants";
 // import {
 //     fetchDefaultProducts,
 //     fetchVisibilityCondition,
@@ -32,21 +44,16 @@ import FabricsContainer from "./Mobile/Fabrics";
 import InfoContainer from "./Mobile/Info";
 import NavbarContainer from "./Mobile/Navbar";
 import TopProductsContainer from "./Mobile/TopProducts";
-import {
-    updateFabricTypeList,
-    updatePatterns,
-    updateTopProducts,
-} from "actions";
-import {
-    updateSelectedDesign,
-    updateRelatedProducts,
-    updateRenderPatterns,
-    updateRenderProduct,
-    updateRenderFabricTypes,
-    updateSelectedFabricType,
-    updateImageLoading,
-    updatePageLoading,
-} from "actions/selection";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function SelectionContainer() {
     window.scrollTo({
@@ -69,6 +76,13 @@ function SelectionContainer() {
         (state) => state.selection.relatedProducts
     );
     const isPageLoading = useSelector((state) => state.selection.isPageLoading);
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
     /*--------------*/
     useEffect(() => {
         /*--------------*/

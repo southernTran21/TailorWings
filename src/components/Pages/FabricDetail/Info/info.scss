@@ -141,6 +141,7 @@
         &__desc {
             /* Display & Box Model */
             margin-top: 3.2rem;
+            padding: 0 25%;
             /* Color */
 
             /* Text */
@@ -148,6 +149,21 @@
             /* Positioning */
 
             /* Others: transition & animations, ... */
+
+            & > span:not(:first-child) {
+                /* Display & Box Model */
+                margin: 1rem 0;
+                /* Color */
+            
+                /* Text */
+                text-indent: 5rem;
+                text-align: justify;
+                letter-spacing: 0.1rem;
+                /* Positioning */
+            
+                /* Others: transition & animations, ... */
+            
+            }
         }
     }
 }

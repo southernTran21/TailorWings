@@ -62,7 +62,9 @@ function OptionsContainer() {
             } else {
                 filteredPatterns =
                     patterns.filter((pattern) => {
-                        return pattern.idPatternCollection === colIDFromURL;
+                        return pattern.idPatternCollection.includes(
+                            colIDFromURL
+                        );
                     }) || [];
             }
             /*--------------*/

@@ -30,7 +30,16 @@ function Sidebar(props) {
                         }}
                         onClick={props.onSidebarClosed}
                     >
-                        Hàng Mới
+                        Tất cả
+                    </Link>
+                    <Link
+                        to={{
+                            pathname: "/designs",
+                            search: "?cat=aodai",
+                        }}
+                        onClick={props.onSidebarClosed}
+                    >
+                        <span>Áo Dài</span>
                     </Link>
                     <Link
                         to={{
@@ -44,15 +53,6 @@ function Sidebar(props) {
                     <Link
                         to={{
                             pathname: "/designs",
-                            search: "?cat=damsuong",
-                        }}
-                        onClick={props.onSidebarClosed}
-                    >
-                        <span>Đầm Suông</span>
-                    </Link>
-                    <Link
-                        to={{
-                            pathname: "/designs",
                             search: "?cat=damxoe",
                         }}
                         onClick={props.onSidebarClosed}
@@ -62,11 +62,20 @@ function Sidebar(props) {
                     <Link
                         to={{
                             pathname: "/designs",
-                            search: "?cat=all",
+                            search: "?cat=damsuong",
                         }}
                         onClick={props.onSidebarClosed}
                     >
-                        <span>Bộ Sưu Tập</span>
+                        <span>Đầm Suông</span>
+                    </Link>
+                    <Link
+                        to={{
+                            pathname: "/designs",
+                            search: "?cat=plussize",
+                        }}
+                        onClick={props.onSidebarClosed}
+                    >
+                        <span>Đầm Plus Size</span>
                     </Link>
                 </div>
                 <hr className="c-sidebar__line" />

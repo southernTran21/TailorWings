@@ -1,6 +1,6 @@
 import "antd/dist/antd.css";
 import Footer from "components/Footer";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "swiper/swiper.scss";
 import "./styles/main.scss";
@@ -12,6 +12,8 @@ import Support from "layouts/Support";
 import ReadExcel from "layouts/TestReadExcel";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
+import ReactPixel from "react-facebook-pixel";
+import ReactGA from "react-ga";
 
 // Lazy load - Code splitting
 const HomeContainer = React.lazy(() => import("layouts/Home"));
@@ -28,15 +30,49 @@ const PaymentContainer = React.lazy(() => import("layouts/Payment"));
 const SelectionContainer = React.lazy(() => import("layouts/Selection"));
 const SizeContainer = React.lazy(() => import("layouts/Size"));
 const AdminContainer = React.lazy(() => import("layouts/Admin"));
+/*--------------*/
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-1");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
+
+const initPixel = () => {
+    const options = {
+        autoConfig: true, // set pixel's autoConfig
+        debug: false, // enable logs
+    };
+    ReactPixel.init("218331376051723", null, options);
+};
+
+const logPageViewPixel = () => {
+    ReactPixel.pageView(window.location.pathname + window.location.search);
+};
 
 function App() {
     /*--------------*/
     const isPageFixedTop = useSelector((state) => state.common.isPageFixedTop);
-    const isImageSelectionModalOpen = useSelector((state) => state.admin.isImageSelectionModalOpen);
+    const isImageSelectionModalOpen = useSelector(
+        (state) => state.admin.isImageSelectionModalOpen
+    );
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        initPixel();
+        logPageViewPixel();
+        /*--------------*/
+    }, []);
     /*--------------*/
     return (
         <div
-            className={classNames("app", { "app--fixed-top": isPageFixedTop || isImageSelectionModalOpen })}
+            className={classNames("app", {
+                "app--fixed-top": isPageFixedTop || isImageSelectionModalOpen,
+            })}
         >
             <Suspense fallback={<PageLoader />}>
                 <Switch>

@@ -41,18 +41,6 @@ function SuitableProductListContainer() {
             /*--------------*/
         });
         /*--------------*/
-        productList = [
-            ...productList,
-            ...productList,
-            ...productList,
-            ...productList,
-            ...productList,
-            ...productList,
-            ...productList,
-            ...productList,
-            ...productList,
-        ];
-        /*--------------*/
         setRenderProducts(productList.slice(0, LIMIT));
         /*--------------*/
         setSuitableProductList(productList);

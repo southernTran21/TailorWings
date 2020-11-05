@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import BodyImageContainer from "./BodyImage";
@@ -7,6 +7,16 @@ import NavbarContainer from "./Navbar";
 import OptionContentContainer from "./OptionContent";
 import OptionsContainer from "./Options";
 import ProductImagesContainer from "./ProductImages";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function SizeContainer() {
     /*--------------*/
@@ -23,6 +33,13 @@ function SizeContainer() {
     const selectedProduct = useSelector(
         (state) => state.selection.selectedProduct
     );
+    /*--------------*/
+    useEffect(() => {
+        /*--------------*/
+        initGA();
+        logPageViewGA();
+        /*--------------*/
+    }, []);
     /*--------------*/
     if (!productID) {
         return <Redirect to="/" />;

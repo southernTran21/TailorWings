@@ -7,13 +7,22 @@ import NavBarContainer from "./Navbar";
 import ProductsContainer from "./Products";
 import SummaryContainer from "./Summary";
 import VoucherContainer from "./Voucher";
+import ReactGA from "react-ga";
+
+const initGA = () => {
+    ReactGA.initialize("UA-159143322-2");
+};
+
+const logPageViewGA = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+};
 
 function CartContainer() {
     /*--------------*/
     const voucher = useSelector((state) => state.cart.voucher);
     const cartUpdateFlag = useSelector((state) => state.size.cartUpdateFlag);
     const isCartDeleted = useSelector((state) => state.cart.isCartDeleted);
-    /*--------------*/
     /*--------------*/
     const [cartList, setCartList] = useState(
         JSON.parse(window.localStorage.getItem("cart")) || []
@@ -24,6 +33,8 @@ function CartContainer() {
             top: 0,
             behavior: "smooth",
         });
+        initGA();
+        logPageViewGA();
     }, []);
     /*--------------*/
     useEffect(() => {
@@ -34,7 +45,6 @@ function CartContainer() {
         }
     }, [cartUpdateFlag, isCartDeleted]);
     /*--------------*/
-    console.log('cartList :>> ', cartList);
     if (!cartList) return <Fragment />;
     /*--------------*/
     let totalPrice = countTotalPrice(cartList);

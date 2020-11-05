@@ -81,7 +81,7 @@ function FabricDetailInfo() {
             <div className="c-fabric-detail-info__desc">
                 <span>Mã vải: {id}</span>
                 {modifiedDescription.map((desc, index) => {
-                    return <span key={index}>- {desc}</span>;
+                    return <span key={index}>{" "}{desc}</span>;
                 })}
             </div>
         </div>

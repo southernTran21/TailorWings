@@ -15,12 +15,19 @@ CollectionItem.defaultProps = {
 
 function CollectionItem(props) {
     if (!props.collectionInfo) return <Fragment />;
-    const { name, image, desc } = props.collectionInfo;
+    // const { name, image, desc } = props.collectionInfo;
+    const { name, image, designNumber, id } = props.collectionInfo;
     return (
+        // <Link
+        //     to={{
+        //         pathname: "/designs",
+        //         search: "?cat=all",
+        //     }}
+        // >
         <Link
             to={{
                 pathname: "/designs",
-                search: "?cat=all",
+                search: `?cat=${id}`,
             }}
         >
             <div className="c-collection-item">
@@ -36,7 +43,8 @@ function CollectionItem(props) {
                     />
                 </div>
                 <span className="c-collection-item__name">{name}</span>
-                <p className="c-collection-item__desc">{desc}</p>
+                {/* <p className="c-collection-item__desc">{desc}</p> */}
+                <p className="c-collection-item__desc">{designNumber} thiết kế</p>
                 <div className="c-collection-item__button">
                     <ButtonCTA text="XEM THÊM" />
                 </div>

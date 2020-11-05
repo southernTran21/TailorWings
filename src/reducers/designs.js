@@ -29,12 +29,6 @@ const designsReducer = (state = initialState, action) => {
                 ...state,
                 filteredProducts: [
                     ...action.filteredProducts,
-                    ...action.filteredProducts,
-                    ...action.filteredProducts,
-                    ...action.filteredProducts,
-                    ...action.filteredProducts,
-                    ...action.filteredProducts,
-                    ...action.filteredProducts
                 ],
             };
         /****************************************************/

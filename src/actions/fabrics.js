@@ -26,9 +26,9 @@ export const updateFilteredPatterns = (filteredPatterns) => {
     };
 };
 
-export const updateRenderPatterns = (renderPatterns) => {
+export const updateRenderFilteredPatterns = (renderFilteredPatterns) => {
     return {
-        type: "UPDATE_RENDER_PATTERNS",
-        renderPatterns,
+        type: "UPDATE_RENDER_FILTERED_PATTERNS",
+        renderFilteredPatterns,
     };
 };

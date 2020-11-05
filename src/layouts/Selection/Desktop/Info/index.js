@@ -1,6 +1,4 @@
-import {
-    updateSelectedProduct
-} from "actions/selection";
+import { updateSelectedProduct } from "actions/selection";
 import { message } from "antd";
 import InfoDesktop from "components/Pages/Selection/Desktop/Info";
 import React, { Fragment, useEffect, useState } from "react";
@@ -68,7 +66,6 @@ function InfoContainerDesktop() {
                 /*--------------*/
                 setRenderPrice(modifiedPrice);
                 /*--------------*/
-
             }
         }
         /*--------------*/
@@ -88,19 +85,24 @@ function InfoContainerDesktop() {
     function onConfirmClick() {
         if (typeof selectedFabricType === "object") {
             /*--------------*/
-            if (renderProduct) {
+            if (renderProduct && renderPatterns) {
                 /*--------------*/
-                const { name, image, idProduct } = renderProduct;
+                const { name, image, idProduct, idPattern } = renderProduct;
+                /*--------------*/
+                let patternImage = renderPatterns.find(
+                    (pattern) => pattern.id === idPattern
+                );
+                patternImage = patternImage ? patternImage.image.normal : "";
                 /*--------------*/
                 let info = {
                     name,
-                    image,
+                    image: { ...image, pattern: patternImage },
                     price,
                     idProduct,
                     fabricType: {
                         id: selectedFabricType.id,
-                        name: selectedFabricType.name
-                    }
+                        name: selectedFabricType.name,
+                    },
                 };
                 /*--------------*/
                 const action_updateSelectedProduct = updateSelectedProduct(
@@ -127,7 +129,6 @@ function InfoContainerDesktop() {
                 name={name}
                 price={renderPrice}
                 designedBy={"Tailor Wings"}
-                
                 onConfirmClick={onConfirmClick}
             />
         </section>
