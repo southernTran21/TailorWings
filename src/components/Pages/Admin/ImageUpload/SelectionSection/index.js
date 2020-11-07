@@ -1,7 +1,8 @@
 import {
     updateImageSelectionOption,
     updateSelectedPatternImageUpload,
-    updateSelectedProductImageUpload
+    updateSelectedProductImageUpload,
+    updateSelectedDesignImageUpload,
 } from "actions";
 import IconSearch from "assets/Icon/icon-search.svg";
 import classNames from "classnames";
@@ -14,8 +15,10 @@ function AdminSelectionSection() {
     /*--------------*/
     const patterns = useSelector((state) => state.admin.patterns);
     const products = useSelector((state) => state.admin.products);
+    const designs = useSelector((state) => state.admin.designs);
     const selectedPattern = useSelector((state) => state.admin.selectedPattern);
     const selectedProduct = useSelector((state) => state.admin.selectedProduct);
+    const selectedDesign = useSelector((state) => state.admin.selectedDesign);
     const option = useSelector((state) => state.admin.option);
     /*--------------*/
     /*********************************
@@ -26,7 +29,9 @@ function AdminSelectionSection() {
      */
     function onOptionChange(newOption) {
         /*--------------*/
-        const action_updateImageSelectionOption = updateImageSelectionOption(newOption);
+        const action_updateImageSelectionOption = updateImageSelectionOption(
+            newOption
+        );
         dispatch(action_updateImageSelectionOption);
         /*--------------*/
     }
@@ -62,6 +67,21 @@ function AdminSelectionSection() {
     }
     /************_END_****************/
     /*********************************
+     *  Description: handle select a product
+     *
+     *
+     *  Call by:
+     */
+    function onSelectedDesignChange(selectedDesign) {
+        /*--------------*/
+        const action_updateSelectedDesignImageUpload = updateSelectedDesignImageUpload(
+            selectedDesign
+        );
+        dispatch(action_updateSelectedDesignImageUpload);
+        /*--------------*/
+    }
+    /************_END_****************/
+    /*********************************
      *  Description: handle render for pattern option
      *
      *
@@ -73,7 +93,10 @@ function AdminSelectionSection() {
                 {patterns.map((pattern, index) => {
                     let statusClass = "";
                     /*--------------*/
-                    if (pattern.image !== "") {
+                    if (
+                        pattern.image.normal !== "" &&
+                        pattern.image.mockup !== ""
+                    ) {
                         statusClass =
                             "c-admin-image-upload-selection__item--fullfilled";
                     }
@@ -110,7 +133,11 @@ function AdminSelectionSection() {
                 {products.map((product, index) => {
                     let statusClass = "";
                     /*--------------*/
-                    if (product.image !== "") {
+                    if (
+                        product.image.T !== "" &&
+                        product.image.C !== "" &&
+                        product.image.S !== ""
+                    ) {
                         statusClass =
                             "c-admin-image-upload-selection__item--fullfilled";
                     }
@@ -135,8 +162,78 @@ function AdminSelectionSection() {
         );
     }
     /************_END_****************/
+    /*********************************
+     *  Description: handle render for design option
+     *
+     *
+     *  Call by:
+     */
+    function designListRender() {
+        return (
+            <div className="c-admin-image-upload-selection__list">
+                {designs.map((design, index) => {
+                    let statusClass = "";
+                    /*--------------*/
+                    if (
+                        design.image.T !== "" &&
+                        design.image.C !== "" &&
+                        design.image.S !== ""
+                    ) {
+                        statusClass =
+                            "c-admin-image-upload-selection__item--fullfilled";
+                    }
+                    /*--------------*/
+                    if (selectedDesign) {
+                        if (selectedDesign.id === design.id) {
+                            statusClass =
+                                "c-admin-image-upload-selection__item--selected";
+                        }
+                    }
+                    return (
+                        <div
+                            key={index}
+                            className={`c-admin-image-upload-selection__item ${statusClass}`}
+                            onClick={() => onSelectedDesignChange(design)}
+                        >
+                            <span>{design.id}</span>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
+    /************_END_****************/
+    /*********************************
+     *  Description:
+     *
+     *
+     *  Call by:
+     */
+    function renderHandling() {
+        /*--------------*/
+        let render = <Fragment />;
+        /*--------------*/
+        switch (option) {
+            case "pattern":
+                render = patternListRender();
+                break;
+            case "product":
+                render = productListRender();
+                break;
+            case "design":
+                render = designListRender();
+                break;
+
+            default:
+                render = <Fragment />;
+                break;
+        }
+        /*--------------*/
+        return render;
+    }
+    /************_END_****************/
     /*--------------*/
-    if (!patterns || !products) return <ListLoader />;
+    if (!patterns || !products || !designs) return <ListLoader />;
     return (
         <div className="c-admin-image-upload-selection">
             <div className="c-admin-image-upload-selection__option">
@@ -164,18 +261,24 @@ function AdminSelectionSection() {
                 >
                     Pattern
                 </button>
+                <button
+                    className={classNames(
+                        "c-admin-image-upload-selection__button",
+                        {
+                            "c-admin-image-upload-selection__button--active":
+                                option === "design",
+                        }
+                    )}
+                    onClick={() => onOptionChange("design")}
+                >
+                    Design
+                </button>
             </div>
             <div className="c-admin-image-upload-selection__search">
                 <img src={IconSearch} alt="search-icon" />
                 <input type="text" placeholder="Nhập vào mã sản phẩm..." />
             </div>
-            {option === "pattern" ? (
-                patternListRender()
-            ) : option === "product" ? (
-                productListRender()
-            ) : (
-                <Fragment />
-            )}
+            {renderHandling()}
         </div>
     );
 }

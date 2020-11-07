@@ -8,8 +8,10 @@ export const fetchAllRealTime = (collection, callback) => {
         let result = [];
         querySnapshot.forEach((doc) => {
             let data = doc.data();
-            data.id = doc.id;
-            result.push(data);
+            if (data.visibleStatus) {
+                data.id = doc.id;
+                result.push(data);
+            }
         });
         callback(result);
     });

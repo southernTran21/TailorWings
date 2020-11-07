@@ -16,10 +16,10 @@ var initialState = {
     // this for Image Upload Page
     designs: [],
     products: [],
-    renderDesigns: [],
-    renderPattern: [],
+    patterns: [],
     selectedPattern: null,
     selectedProduct: null,
+    selectedDesign: null,
     option: "pattern",
     isImageSelectionModalOpen: false,
     imageRef: null,
@@ -53,7 +53,7 @@ const adminReducer = (state = initialState, action) => {
             return { ...state, orderDetail: [...updatedOrderDetail] };
         /**************************IMAGE PAGE**************************/
         case "UPDATE_INITIAL_IMAGE_UPLOAD_DATA":
-            if (!action.patterns || !action.products)
+            if (!action.patterns || !action.products || !action.designs)
                 return { ...initialState };
             return {
                 ...state,
@@ -61,6 +61,8 @@ const adminReducer = (state = initialState, action) => {
                 selectedPattern: {...action.patterns[0]},
                 products: [...action.products],
                 selectedProduct: {...action.products[0]},
+                designs: [...action.designs],
+                selectedDesign: {...action.designs[0]}
             };
         /****************************************************/
         case "UPDATE_SELECTED_PATTERN_IMAGE_UPLOAD":
@@ -70,6 +72,10 @@ const adminReducer = (state = initialState, action) => {
         case "UPDATE_SELECTED_PRODUCT_IMAGE_UPLOAD":
             if (!action.newProduct) return { ...initialState };
             return { ...state, selectedProduct: { ...action.newProduct } };
+        /****************************************************/
+        case "UPDATE_SELECTED_DESIGN_IMAGE_UPLOAD":
+            if (!action.newDesign) return { ...initialState };
+            return { ...state, selectedDesign: { ...action.newDesign } };
         /****************************************************/
         case "UPDATE_IMAGE_SELECTION_OPTION":
             return {

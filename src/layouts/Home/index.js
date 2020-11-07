@@ -24,6 +24,7 @@ import TailorRecruitmentContainer from "./TailorRecruitment";
 import TopProductsContainer from "./TopProducts";
 import VoucherContainer from "./AboutUs";
 import ReactGA from "react-ga";
+import WhatWeBelieveContainer from "./WhatWeBelieve";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -170,6 +171,7 @@ function HomeContainer() {
             <TopProductsContainer />
             {/* <DesignersContainer /> */}
             <TailorRecruitmentContainer />
+            <WhatWeBelieveContainer />
             <VoucherContainer />
             <BackTop />
             <Login />

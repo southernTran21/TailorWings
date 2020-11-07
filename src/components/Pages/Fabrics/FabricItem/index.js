@@ -25,7 +25,7 @@ function FabricItem(props) {
             <div className="c-fabric-item">
                 <div className="c-fabric-item__image">
                     <ReactImageAppear
-                        src={image}
+                        src={typeof image === "object" ? image.normal : ""}
                         animationDuration="1s"
                         loader={loader}
                         loaderStyle={{ backgroundColor: "transparent" }}

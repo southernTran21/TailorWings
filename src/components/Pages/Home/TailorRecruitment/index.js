@@ -11,10 +11,19 @@ function HomeTailorRecruitment(props) {
     return (
         <div className="c-home-tailor-recruitment">
             <div className="c-home-tailor-recruitment__image">
-                <img src={TailorRecruitment} alt="" />
+                <img
+                    src={TailorRecruitment}
+                    alt="tailor-recruitment-ban-la-tho-may"
+                />
             </div>
             <div className="c-home-tailor-recruitment__title">
-                <span>We Give Tailor The Wings</span>
+                <span>We give tailor the wings</span>
+                <span className="c-home-tailor-recruitment__sub-title">
+                    Bạn là thợ may?
+                </span>
+                <span className="c-home-tailor-recruitment__sub-title">
+                    Hãy trở thành đối tác của Tailor Wings
+                </span>
             </div>
             <ul className="c-home-tailor-recruitment__list">
                 {TAILOR_RECRUITMENT_ARRAY.map((desc, index) => {

@@ -66,14 +66,41 @@ function AutoSlidesPerViewMobile(categories) {
         speed: 500,
     };
     /*--------------*/
+    let arrangedCategories = [];
+    if (categories) {
+        categories.forEach((category) => {
+            switch (category.id) {
+                case "aodai":
+                    arrangedCategories[0] = { ...category };
+                    break;
 
+                case "plussize":
+                    arrangedCategories[1] = { ...category };
+                    break;
+
+                case "damxoe":
+                    arrangedCategories[2] = { ...category };
+                    break;
+
+                case "damom":
+                    arrangedCategories[3] = { ...category };
+                    break;
+
+                case "damsuong":
+                    arrangedCategories[5] = { ...category };
+                    break;
+
+                default:
+                    break;
+            }
+        });
+    }
+    /*--------------*/
     if (!categories) return <Fragment />;
     return (
         <Slider {...params}>
-            {categories.map((category, index) => {
-                return (
-                    <CollectionItem key={index} collectionInfo={category} />
-                );
+            {arrangedCategories.map((category, index) => {
+                return <CollectionItem key={index} collectionInfo={category} />;
             })}
         </Slider>
     );
@@ -89,11 +116,40 @@ function AutoSlidesPerViewDesktop(categories) {
         slidesToScroll: 1,
     };
     /*--------------*/
+    let arrangedCategories = [];
+    if (categories) {
+        categories.forEach((category) => {
+            switch (category.id) {
+                case "aodai":
+                    arrangedCategories[0] = { ...category };
+                    break;
 
-    if (!categories) return <Fragment />;
+                case "plussize":
+                    arrangedCategories[1] = { ...category };
+                    break;
+
+                case "damom":
+                    arrangedCategories[2] = { ...category };
+                    break;
+
+                case "damxoe":
+                    arrangedCategories[3] = { ...category };
+                    break;
+
+                case "damsuong":
+                    arrangedCategories[5] = { ...category };
+                    break;
+
+                default:
+                    break;
+            }
+        });
+    }
+    /*--------------*/
+    if (!arrangedCategories) return <Fragment />;
     return (
         <Slider {...params}>
-            {categories.map((category, index) => {
+            {arrangedCategories.map((category, index) => {
                 return (
                     <div key={index}>
                         <CollectionItem collectionInfo={category} />

@@ -189,7 +189,6 @@ function AdminImageSelectionModal() {
             </div>
         );
     }
-    console.log("imageSelectedStatus :>> ", imageSelectedStatus);
     return (
         <div
             className={classNames("c-admin-image-selection-modal", {

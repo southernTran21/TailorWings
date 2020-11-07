@@ -1,0 +1,402 @@
+.c-white-product-modal {
+    /* Display & Box Model */
+    display: none;
+    @include box(100vw, 100vh);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Color */
+
+    /* Text */
+
+    /* Positioning */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /* Others: transition & animations, ... */
+
+    &__content {
+        /* Display & Box Model */
+        margin: 8vh auto;
+        @include box(100rem, 60rem);
+        max-width: 100rem;
+        min-height: 60rem;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
+            0 7px 20px 0 rgba(0, 0, 0, 0.17);
+        border-radius: 35px;
+        overflow: hidden;
+        /* Color */
+        background-color: white;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        position: relative;
+        animation-name: open;
+        animation-duration: 1s;
+    }
+
+    &__close {
+        /* Display & Box Model */
+        @include box(3.8rem);
+        cursor: pointer;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        z-index: 2;
+        /* Others: transition & animations, ... */
+    }
+
+    &__detail {
+        /* Display & Box Model */
+        @include box(100%);
+        @include flexBox();
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__image {
+        /* Display & Box Model */
+        @include box(50%, 100%);
+        border-top-left-radius: 35px;
+        border-bottom-left-radius: 35px;
+        /* Color */
+        background-color: $--bg-passive;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        .swiper-slide {
+            div {
+                @include box(50rem, 60rem);
+                min-width: 50rem;
+                min-height: 60rem;
+            }
+        }
+
+        .swiper-button-next {
+            /* Display & Box Model */
+            background: none;
+            /* Color */
+            color: white;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+        .swiper-button-prev {
+            /* Display & Box Model */
+            background: none;
+            /* Color */
+            color: white;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        i {
+            font-size: 3.6rem;
+        }
+    }
+
+    &__text {
+        /* Display & Box Model */
+        @include box(50%, 100%);
+        @include flexBox(center, center, column);
+        border-top-right-radius: 35px;
+        border-bottom-right-radius: 35px;
+        padding: 0 2%;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__title {
+        /* Display & Box Model */
+        max-width: 85%;
+        margin-bottom: 3rem;
+        /* Color */
+
+        /* Text */
+        @include font(fontBold, 2.4rem);
+        text-align: center;
+        line-height: 2.6rem;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__desc {
+        /* Display & Box Model */
+        margin-bottom: 3rem;
+        /* Color */
+
+        /* Text */
+        @include font(fontSemiBold, 1.4rem);
+        line-height: 1.8rem;
+        text-align: center;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+
+    &__button {
+        /* Display & Box Model */
+        padding: 1rem;
+        border: 2px solid $--border-primary;
+        border-radius: 2rem;
+        margin-bottom: 2rem;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontBold, 1.3rem);
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            /* Display & Box Model */
+
+            /* Color */
+            background-color: $--bg-active;
+            color: $--text-active;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+    }
+
+    &--open {
+        /* Display & Box Model */
+        display: block;
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+    }
+}
+
+@keyframes open {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .c-white-product-modal {
+        /* Display & Box Model */
+        @include box(100vw, auto);
+        /* Color */
+
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        &__content {
+            /* Display & Box Model */
+            margin: 4vh auto;
+            @include box(35rem, auto);
+            max-width: 35rem;
+            min-height: 80vh;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
+                0 7px 20px 0 rgba(0, 0, 0, 0.17);
+            border-radius: 35px;
+            overflow: hidden;
+            /* Color */
+            background-color: white;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+            position: relative;
+            animation-name: open;
+            animation-duration: 1s;
+        }
+
+        &__close {
+            /* Display & Box Model */
+            @include box(2.8rem);
+            cursor: pointer;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 2;
+            /* Others: transition & animations, ... */
+        }
+
+        &__detail {
+            /* Display & Box Model */
+            @include box(100%);
+            // @include flexBox();
+            @include flexBox(flex-start, center, row, wrap);
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &__image {
+            /* Display & Box Model */
+            @include box(100%, 40rem);
+            border-top-left-radius: 35px;
+            border-top-right-radius: 35px;
+            border-bottom-left-radius: 0px;
+            /* Color */
+            background-color: $--bg-passive;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+
+            .swiper-slide {
+                div {
+                    @include box(35rem, 40rem);
+                    min-width: 35rem;
+                    min-height: 40rem;
+                }
+            }
+
+            .swiper-button-next {
+                /* Display & Box Model */
+                background: none;
+                /* Color */
+                color: white;
+                /* Text */
+
+                /* Positioning */
+
+                /* Others: transition & animations, ... */
+            }
+            .swiper-button-prev {
+                /* Display & Box Model */
+                background: none;
+                /* Color */
+                color: white;
+                /* Text */
+
+                /* Positioning */
+
+                /* Others: transition & animations, ... */
+            }
+
+            i {
+                font-size: 3.6rem;
+            }
+        }
+
+        &__text {
+            /* Display & Box Model */
+            @include box(100%, auto);
+            @include flexBox(center, center, column);
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 35px;
+            border-bottom-left-radius: 35px;
+            padding: 0 2%;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &__title {
+            /* Display & Box Model */
+            max-width: 85%;
+            margin-bottom: 1.5rem;
+            /* Color */
+
+            /* Text */
+            @include font(fontBold, 1.8rem);
+            text-align: center;
+            line-height: 2.5rem;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &__desc {
+            /* Display & Box Model */
+            margin-bottom: 2rem;
+            /* Color */
+
+            /* Text */
+            @include font(fontSemiBold, 1.4rem);
+            line-height: 1.8rem;
+            text-align: center;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        &__button {
+            /* Display & Box Model */
+            padding: 1rem;
+            border: 2px solid $--border-primary;
+            border-radius: 2rem;
+            /* Color */
+            color: $--text-passive;
+            /* Text */
+            @include font(fontBold, 1.4rem);
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                /* Display & Box Model */
+
+                /* Color */
+                background-color: $--bg-active;
+                color: $--text-active;
+                /* Text */
+
+                /* Positioning */
+
+                /* Others: transition & animations, ... */
+            }
+        }
+    }
+}

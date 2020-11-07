@@ -7,13 +7,12 @@
         /* Display & Box Model */
         padding: 0 2rem;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__fabrics {
         /* Display & Box Model */
@@ -23,22 +22,86 @@
         /* Color */
         /* Text */
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
 
     &__about-us {
         /* Display & Box Model */
         margin-top: 3rem;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
+    }
+
+    &__what-we-believe {
+        /* Display & Box Model */
+        @include box(100%, auto);
+        @include flexBox(flex-start, center, column);
+        padding: 5rem 3rem;
+        margin-top: 5rem;
+        /* Color */
+        background-color: $--bg-active;
+        /* Text */
+
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+
+        &--title {
+            /* Display & Box Model */
+            margin-bottom: 4rem;
+            /* Color */
+            color: white;
+            /* Text */
+            @include font(fontBold, 3.6rem);
+            text-align: center;
+            line-height: 160%;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
+
+        & > p:nth-child(3) {
+            padding: 0;
+        }
+
+        & > p:nth-child(4) {
+            padding: 0 2rem;
+        }
+
+        & > p:nth-child(5) {
+            padding: 0 1rem;
+        }
+
+        & > p:nth-child(6) {
+            padding: 0 1rem;
+        }
+
+        & > p:nth-child(9) {
+            padding: 0;
+        }
+        & > p:nth-child(10) {
+            padding: 0 1rem;
+        }
+
+        & > p {
+            /* Display & Box Model */
+            margin: 2rem 0;
+            /* Color */
+            color: white;
+            /* Text */
+            @include font(fontLight, 2rem);
+            text-align: center;
+            line-height: 160%;
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
     }
 }
 @media screen and (min-width: 769px) {
@@ -48,30 +111,29 @@
         height: auto;
         margin: 0 auto;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         &__top-products {
             /* Display & Box Model */
             padding: 0 7.9rem;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
-        .ant-back-top{
+        .ant-back-top {
             bottom: 5rem;
             right: 2rem;
         }
-        .c-designer-card__avatar{
-            .c-avatar{
+        .c-designer-card__avatar {
+            .c-avatar {
                 @include box(11.015rem);
             }
         }
@@ -83,21 +145,81 @@
             /* Color */
             /* Text */
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__about-us {
             /* Display & Box Model */
             margin-top: 7rem;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
+        }
+        &__what-we-believe {
+            /* Display & Box Model */
+            @include flexBox(flex-start, center, column);
+            padding: 10rem 30rem;
+            margin-top: 5rem;
+            /* Color */
+            background-color: $--bg-active;
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+
+            &--title {
+                /* Display & Box Model */
+                margin-bottom: 4rem;
+                /* Color */
+                color: white;
+                /* Text */
+                @include font(fontBold, 4.4rem);
+                /* Positioning */
+
+                /* Others: transition & animations, ... */
+            }
+
+            & > p:nth-child(3) {
+                padding: 0;
+            }
+
+            & > p:nth-child(4) {
+                padding: 0 2.5rem;
+            }
+
+            & > p:nth-child(5) {
+                padding: 0 4rem;
+            }
+
+            & > p:nth-child(6) {
+                padding: 0 3.5rem;
+            }
+
+            & > p:nth-child(9) {
+                padding: 0 0.8rem;
+            }
+            & > p:nth-child(10) {
+                padding: 0 10rem;
+            }
+
+            & > p {
+                /* Display & Box Model */
+                margin: 2rem 0;
+                /* Color */
+                color: white;
+                /* Text */
+                @include font(fontLight, 2rem);
+                text-align: center;
+                line-height: 160%;
+                /* Positioning */
+
+                /* Others: transition & animations, ... */
+            }
         }
     }
 }

@@ -50,6 +50,8 @@
 
         &--active {
             /*--------------*/
+            -webkit-box-shadow: inset 0px 0px 2px 2px #ff8445;
+            box-shadow: inset 0px 0px 2px 2px #ff8445;
             border: 2px solid $--border-primary;
             /*--------------*/
             & > img {

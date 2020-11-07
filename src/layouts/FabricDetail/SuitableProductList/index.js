@@ -1,6 +1,9 @@
 import ProductList from "components/ProductList";
+import { DESIGNS } from "../../../constants";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchVisible } from "services/FirebaseAPI/basic";
+import { updatePageFixedTopStatus, updateSelectedWhiteProduct } from "actions";
 
 const LIMIT = 6;
 const LOAD_MORE_NAME = "Xem thêm";
@@ -14,38 +17,93 @@ function SuitableProductListContainer() {
     const selectedFabricType = useSelector(
         (state) => state.fabricDetail.selectedFabricType
     );
+    const selectedPattern = useSelector(
+        (state) => state.fabricDetail.selectedPattern
+    );
     /*--------------*/
     const [suitableProductList, setSuitableProductList] = useState([]);
     const [renderProducts, setRenderProducts] = useState([]);
     const [buttonName, setButtonName] = useState(LOAD_MORE_NAME);
     /*--------------*/
+    const dispatch = useDispatch();
+    /*--------------*/
     useEffect(() => {
         /*--------------*/
-        let productList = [];
-        /*--------------*/
-        defaultProducts.forEach((product) => {
+        async function _updateDesingInfo(suitableProducts) {
             /*--------------*/
-            if (selectedFabricType.id === "all") {
+            try {
                 /*--------------*/
-                productList.push({ ...product });
+                const fetchedDesigns = await fetchVisible(DESIGNS);
                 /*--------------*/
-            } else {
-                /*--------------*/
-                if (product.idFabricType.includes(selectedFabricType.id)) {
+                if (fetchedDesigns) {
                     /*--------------*/
-                    productList.push({ ...product });
+                    let modifiedProductList = suitableProducts.map(
+                        (product) => {
+                            /*--------------*/
+                            let designInfo =
+                                fetchedDesigns.find(
+                                    (design) => design.id === product.idDesign
+                                ) || null;
+                            /*--------------*/
+                            if (selectedPattern) {
+                                return {
+                                    ...designInfo,
+                                    image: {
+                                        ...designInfo.image,
+                                        pattern: selectedPattern.image.mockup,
+                                    },
+                                };
+                            } else {
+                                return {
+                                    ...designInfo,
+                                    image: {
+                                        ...designInfo.image,
+                                    },
+                                };
+                            }
+                        }
+                    );
+                    // NOTE: Use designInfo instead of productInfo because WHITE IMAGES is contained in DESIGNS collection
+                    /*--------------*/
+                    setRenderProducts(modifiedProductList.slice(0, LIMIT));
+                    /*--------------*/
+                    setSuitableProductList(modifiedProductList);
                     /*--------------*/
                 }
                 /*--------------*/
+            } catch (error) {
+                console.log("error :>> ", error);
             }
             /*--------------*/
-        });
+        }
         /*--------------*/
-        setRenderProducts(productList.slice(0, LIMIT));
+        if (defaultProducts.length > 0) {
+            /*--------------*/
+            let productList = [];
+            /*--------------*/
+            defaultProducts.forEach((product) => {
+                /*--------------*/
+                if (selectedFabricType.id === "all") {
+                    /*--------------*/
+                    productList.push({ ...product });
+                    /*--------------*/
+                } else {
+                    /*--------------*/
+                    if (product.idFabricType.includes(selectedFabricType.id)) {
+                        /*--------------*/
+                        productList.push({ ...product });
+                        /*--------------*/
+                    }
+                    /*--------------*/
+                }
+                /*--------------*/
+            });
+            /*--------------*/
+            _updateDesingInfo(productList);
+            /*--------------*/
+        }
         /*--------------*/
-        setSuitableProductList(productList);
-        /*--------------*/
-    }, [defaultProducts.length, selectedFabricType]);
+    }, [defaultProducts.toString(), selectedFabricType, selectedPattern]);
     /*--------------*/
     /*********************************
      *  Description:
@@ -82,6 +140,27 @@ function SuitableProductListContainer() {
     }
     /************_END_****************/
     /*--------------*/
+    /*********************************
+     *  Description: Handle item click
+     *
+     *
+     *  Call by:
+     */
+    function onItemClick(image, id, name) {
+        /*--------------*/
+        const action_updateSelectedWhiteProduct = updateSelectedWhiteProduct({
+            image,
+            id,
+            name,
+        });
+        dispatch(action_updateSelectedWhiteProduct);
+        /*--------------*/
+        const action_updatePageFixedTopStatus = updatePageFixedTopStatus();
+        dispatch(action_updatePageFixedTopStatus);
+        /*--------------*/
+    }
+    /************_END_****************/
+    /*--------------*/
     return (
         <div className="l-fabric-detail__suitable-product-list">
             <ProductList
@@ -89,6 +168,8 @@ function SuitableProductListContainer() {
                 onMoreClick={onMoreClick}
                 productList={renderProducts}
                 buttonName={buttonName}
+                isLink={false}
+                onItemClick={onItemClick}
             />
         </div>
     );

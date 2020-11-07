@@ -1,21 +1,23 @@
 import {
-    updateDefaultProducts, updateFabricTypeList, updatePatterns
+    updateDefaultProducts,
+    updateFabricTypeList,
+    updatePatterns,
 } from "actions";
 import { updateSelectedPattern } from "actions/fabricDetail";
 import { updateSRC } from "actions/selection";
+import WhiteProductModal from "components/Modal/WhiteProductModal";
 import React, { useEffect } from "react";
 import ReactGA from "react-ga";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import {
-    fetchDefaultProducts, fetchVisible
-} from "services/FirebaseAPI/basic";
+import { fetchDefaultProducts, fetchVisible } from "services/FirebaseAPI/basic";
 import { FABRIC_TYPE, PATTERNS } from "../../constants";
 import AvailableProductListContainer from "./AvailableProductList";
 import BackgroundContainer from "./Background";
 import FabricDetailInfoContainer from "./Info";
 import PatternOrderBannerContainer from "./PatternOrderBanner";
 import SuitableProductListContainer from "./SuitableProductList";
+import WhiteProductModalContainer from "./WhiteProductModal";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -175,6 +177,7 @@ function FabricDetailContainer() {
             <AvailableProductListContainer />
             <SuitableProductListContainer />
             <PatternOrderBannerContainer />
+            <WhiteProductModalContainer />
         </div>
     );
 }

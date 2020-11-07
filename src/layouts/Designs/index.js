@@ -19,6 +19,8 @@ import OptionsContainer from "./Options";
 import ListContainer from "./List";
 import Login from "components/Login";
 import ReactGA from "react-ga";
+import WhiteroductModalContainer from "layouts/FabricDetail/WhiteProductModal";
+import WhiteProductModal from "components/Modal/WhiteProductModal";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -170,6 +172,7 @@ function DesignsContainer() {
             <OptionsContainer />
             <ListContainer />
             <Login />
+            <WhiteProductModal />
         </div>
     );
 }

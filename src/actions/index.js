@@ -49,6 +49,13 @@ export const updatePageFixedTopStatus = () => {
     };
 };
 
+export const updateSelectedWhiteProduct = (selectedWhiteProduct) => {
+    return {
+        type: "UPDATE_SELECTED_WHITE_PRODUCT",
+        selectedWhiteProduct
+    };
+};
+
 /**
  * This is for Homepage
  */
@@ -220,11 +227,12 @@ export const updateOrderDetail = (orderDetail) => {
     };
 };
 
-export const updateInitialImageUploadData = (patterns, products) => {
+export const updateInitialImageUploadData = (patterns, products, designs) => {
     return {
         type: "UPDATE_INITIAL_IMAGE_UPLOAD_DATA",
         patterns,
-        products
+        products,
+        designs
     };
 };
 
@@ -239,6 +247,13 @@ export const updateSelectedProductImageUpload = (newProduct) => {
     return {
         type: "UPDATE_SELECTED_PRODUCT_IMAGE_UPLOAD",
         newProduct,
+    };
+};
+
+export const updateSelectedDesignImageUpload = (newDesign) => {
+    return {
+        type: "UPDATE_SELECTED_DESIGN_IMAGE_UPLOAD",
+        newDesign,
     };
 };
 

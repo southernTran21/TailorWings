@@ -28,7 +28,7 @@ function FabricDetailInfoContainer() {
             fabricTypeStatus.unshift({
                 id: "all",
                 name: "Tất cả",
-                description: "Guidline should be here!",
+                description:"Hãy chọn chất liệu vải cho họa tiết bạn thích để tạo nên chiếc đầm hợp với bạn!",
                 isActive: true,
             });
             /*--------------*/

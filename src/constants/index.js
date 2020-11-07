@@ -1,9 +1,9 @@
 // ---------- INTRODUCTION ----------
 export const INTRODUCTION_ARRAY = [
-    "Tùy Chọn Thiết Kế Kết Hợp Vải",
-    "Tùy Chọn Thiết Kế Kết Hợp Vải",
-    "Tùy Chọn Thiết Kế Kết Hợp Vải",
-    "Tùy Chọn Thiết Kế Kết Hợp Vải",
+    "Bạn tự do chọn kiểu dáng kết hợp vải",
+    "tôn trọng bản thân bằng dùng số đo của chính bạn",
+    "tailor wings tạo ra chiếc đầm với bạn là trung tâm",
+    "nhận đầm và trải nghiệm sau 3-5 ngày đặt hàng",
 ];
 export const INTRODUCTION_TITLE = "We Tailor Your Wings";
 export const INTRODUCTION_SUB_TITLE =

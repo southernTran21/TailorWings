@@ -8,13 +8,16 @@ ProductList.propTypes = {
     productList: PropTypes.array,
     onMoreClick: PropTypes.func,
     buttonName: PropTypes.string,
+    isLink: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
     title: "",
     productList: [],
     onMoreClick: null,
-    buttonName: ""
+    buttonName: "",
+    isLink: false,
+    onItemClick: () => console.log("Handle item click"),
 };
 
 function ProductList(props) {
@@ -35,13 +38,18 @@ function ProductList(props) {
                             name={name}
                             image={image}
                             id={id}
+                            isLink={props.isLink}
+                            onItemClick={props.onItemClick}
                         />
                     );
                 })}
             </ul>
             <div className="c-product-list__button">
                 {props.productList.length > 0 ? (
-                    <ButtonLoadMore loadMore={props.onMoreClick} buttonName={props.buttonName} />
+                    <ButtonLoadMore
+                        loadMore={props.onMoreClick}
+                        buttonName={props.buttonName}
+                    />
                 ) : (
                     ""
                 )}

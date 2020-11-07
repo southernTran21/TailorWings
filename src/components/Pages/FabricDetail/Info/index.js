@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import classNames from "classnames";
 import {
     updateFabricTypeStatus,
-    updateSelectedFabricType,
+    updateSelectedFabricType
 } from "actions/fabricDetail";
+import classNames from "classnames";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function FabricDetailInfo() {
     /*--------------*/
@@ -57,6 +57,7 @@ function FabricDetailInfo() {
     /*--------------*/
     let modifiedDescription = description.split("-");
     modifiedDescription = modifiedDescription.filter((info) => info !== "");
+    /*--------------*/
     return (
         <div className="c-fabric-detail-info">
             <div className="c-fabric-detail-info__section1">
@@ -80,9 +81,13 @@ function FabricDetailInfo() {
             </div>
             <div className="c-fabric-detail-info__desc">
                 <span>Mã vải: {id}</span>
-                {modifiedDescription.map((desc, index) => {
-                    return <span key={index}>{" "}{desc}</span>;
-                })}
+                {selectedFabricType.id !== "all" ? (
+                    modifiedDescription.map((desc, index) => {
+                        return <span key={index}> {desc}</span>;
+                    })
+                ) : (
+                    <span style={{textAlign: "center", textIndent: "0", padding: "0 10rem"}}>{selectedFabricType.description}</span>
+                )}
             </div>
         </div>
     );

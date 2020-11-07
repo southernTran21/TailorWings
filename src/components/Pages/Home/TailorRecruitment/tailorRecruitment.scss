@@ -13,6 +13,7 @@
         margin: 0 auto;
         @include box(33.5rem, 25.615rem);
         border-radius: 2rem;
+        overflow: hidden;
         /* Color */
         /* Text */
     
@@ -24,10 +25,25 @@
     &__title {
         /* Display & Box Model */
         margin: 1.8rem 0;
+        @include flexBox(flex-start, center, column);
         /* Color */
         color: $--text-passive;
         /* Text */
         @include font(fontHeavy, 2.4rem);
+        text-align: center;
+        /* Positioning */
+    
+        /* Others: transition & animations, ... */
+    
+    }
+
+    &__sub-title {
+        /* Display & Box Model */
+        margin: 0.5rem 0;
+        /* Color */
+        color: $--text-passive;
+        /* Text */
+        @include font(fontSemiBold, 1.8rem);
         text-align: center;
         /* Positioning */
     

@@ -70,7 +70,6 @@ function ListContainer() {
     if (!renderFilteredPatterns) return <Fragment />;
     if (isListLoading) return <ListLoader />;
     /*--------------*/
-    console.log("renderFilteredPatterns :>> ", renderFilteredPatterns);
     return (
         <section className="l-fabrics__list">
             <Fabrics

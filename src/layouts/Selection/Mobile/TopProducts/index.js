@@ -36,6 +36,7 @@ function TopProductsContainer() {
                 title="Sản Phẩm Nổi Bật"
                 renderProducts={renderTopProducts}
                 isLoadMore={false}
+                isLink={true}
             />
         </div>
     );

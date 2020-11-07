@@ -1,12 +1,11 @@
 .c-selection-item {
     /* Display & Box Model */
-    @include flexBox(flex-start, center, column);
-    @include box(fit-content);
+    @include box(7rem);
     margin-right: 1rem;
     border-radius: 1rem;
     /* Color */
     color: transparent;
-    background-color: $--bg-passive;
+    // background-color: $--bg-passive;
     /* Text */
 
     /* Positioning */
@@ -37,9 +36,10 @@
 
         /* Others: transition & animations, ... */
 
-        & > div > img {
+        & > img {
             /* Display & Box Model */
             border-radius: 1rem;
+            @include box(7rem);
             /* Color */
 
             /* Text */
@@ -51,13 +51,28 @@
     }
     &--active {
         /* Display & Box Model */
-        border: 2px solid $--primary-color;
+        // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: inset 0px 0px 2px 2px #ff8445;
+        box-shadow: inset 0px 0px 2px 2px #ff8445;
         /* Color */
-        color: $--text-passive;
+
         /* Text */
 
         /* Positioning */
 
         /* Others: transition & animations, ... */
+
+        .c-selection-item__image {
+            /* Display & Box Model */
+            border: 2px solid $--primary-color;
+
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
     }
 }

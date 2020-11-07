@@ -1,39 +1,40 @@
+import { updateInitialImageUploadData } from "actions";
+import { PATTERNS, PRODUCTS, DESIGNS } from "../../../../constants";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchAllRealTime } from "services/FirebaseAPI/basic";
 import AdminContentSection from "./ContentSection";
 import AdminImageSelectionModal from "./ImageSelectionModal";
 import AdminSelectionSection from "./SelectionSection";
-import classNames from "classnames";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAll, fetchAllRealTime } from "services/FirebaseAPI/basic";
-import { updateInitialImageUploadData } from "actions";
 
-AdminImageUpload.propTypes = {};
-
-function AdminImageUpload(props) {
+function AdminImageUpload() {
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
     const [patterns, setPatterns] = useState(null);
     const [products, setProducts] = useState(null);
+    const [designs, setDesigns] = useState(null);
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        fetchAllRealTime("testPatterns", (result) => setPatterns(result));
-        fetchAllRealTime("testProducts", (result) => setProducts(result));
+        fetchAllRealTime(PATTERNS, (result) => setPatterns(result));
+        fetchAllRealTime(PRODUCTS, (result) => setProducts(result));
+        fetchAllRealTime(DESIGNS, (result) => setDesigns(result));
         /*--------------*/
     }, []);
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        if (patterns && products) {
+        if (patterns && products && designs) {
             const action_updateInitialImageUploadData = updateInitialImageUploadData(
                 patterns,
-                products
+                products,
+                designs
             );
             dispatch(action_updateInitialImageUploadData);
         }
         /*--------------*/
-    }, [patterns, products]);
+    }, [patterns, products, designs]);
     /*--------------*/
     return (
         <div className="c-admin-image-upload">

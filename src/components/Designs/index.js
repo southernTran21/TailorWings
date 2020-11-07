@@ -9,13 +9,17 @@ Designs.propTypes = {
     renderProducts: PropTypes.object,
     isLoadMore: PropTypes.bool,
     loadMore: PropTypes.func,
+    isLink: PropTypes.bool,
+    onItemClick: PropTypes.func,
 };
 
 Designs.defaultProps = {
     title: "",
     renderProducts: { products: [], isMax: false },
     isLoadMore: false,
-    loadMore: () => console.log('Load more function does not exist'),
+    loadMore: () => console.log("Load more function does not exist"),
+    isLink: false,
+    onItemClick: () => console.log("function null"),
 };
 
 function Designs(props) {
@@ -32,7 +36,14 @@ function Designs(props) {
             <h2 className="c-designs__title">{props.title}</h2>
             <ul className="c-designs__list">
                 {products.map((product, index) => {
-                    return <DesignItem product={product} key={index} />;
+                    return (
+                        <DesignItem
+                            product={product}
+                            key={index}
+                            isLink={props.isLink}
+                            onItemClick={props.onItemClick}
+                        />
+                    );
                 })}
             </ul>
             <div className="c-designs__button">

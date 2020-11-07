@@ -1,4 +1,4 @@
-import { updateCurrentRenderProducts } from "actions";
+import { updateCurrentRenderProducts, updatePageFixedTopStatus, updateSelectedWhiteProduct } from "actions";
 import Designs from "components/Designs";
 import ListLoader from "components/Loader/List";
 import React, { Fragment, useEffect } from "react";
@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 const LIMIT = 12;
 
 function ListContainer() {
+    /*--------------*/
+    const urlSearch = window.location.search.match(/cat=(.*)\b/);
+    const catIDFromURL = urlSearch ? urlSearch[1] : "all";
     /*--------------*/
     const isListLoading = useSelector((state) => state.designs.isListLoading);
     const currentRenderProducts = useSelector(
@@ -62,6 +65,26 @@ function ListContainer() {
         dispatch(action_updateCurrentRenderProducts);
     }
     /************_END_****************/
+    /*********************************
+     *  Description: Handle item click
+     *
+     *
+     *  Call by:
+     */
+    function onItemClick(image, id, name) {
+        /*--------------*/
+        const action_updateSelectedWhiteProduct = updateSelectedWhiteProduct({
+            image,
+            id,
+            name,
+        });
+        dispatch(action_updateSelectedWhiteProduct);
+        /*--------------*/
+        const action_updatePageFixedTopStatus = updatePageFixedTopStatus();
+        dispatch(action_updatePageFixedTopStatus);
+        /*--------------*/
+    }
+    /************_END_****************/
     if (!currentRenderProducts) return <Fragment />;
     if (isListLoading) return <ListLoader />;
     /*--------------*/
@@ -85,6 +108,8 @@ function ListContainer() {
                 renderProducts={modifiedRenderProducts}
                 isLoadMore={!modifiedRenderProducts.products.length <= LIMIT}
                 loadMore={loadMore}
+                isLink={catIDFromURL !== "plussize"}
+                onItemClick={onItemClick}
             />
         </div>
     );

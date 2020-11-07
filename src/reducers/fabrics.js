@@ -27,14 +27,11 @@ const fabricsReducer = (state = initialState, action) => {
             if (!action.filteredPatterns) return { ...state };
             return {
                 ...state,
-                filteredPatterns: [
-                    ...action.filteredPatterns,
-                ],
+                filteredPatterns: [...action.filteredPatterns],
             };
         /****************************************************/
         case "UPDATE_RENDER_FILTERED_PATTERNS":
             if (!action.renderFilteredPatterns) return { ...state };
-            console.log('action.renderFilteredPatterns :>> ', action.renderFilteredPatterns);
             return {
                 ...state,
                 renderFilteredPatterns: action.renderFilteredPatterns,

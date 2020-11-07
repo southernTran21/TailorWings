@@ -8,6 +8,7 @@ import ListContainer from "./List";
 import NavbarContainer from "./Navbar";
 import OptionsContainer from "./Options";
 import ReactGA from "react-ga";
+import Login from "components/Login";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -86,6 +87,7 @@ function FabricsContainer() {
             <BannerContainer />
             <OptionsContainer />
             <ListContainer />
+            <Login />
         </div>
     );
 }

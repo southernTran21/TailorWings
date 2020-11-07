@@ -146,9 +146,12 @@ a {
     color: $--black-color;
     cursor: pointer;
 }
-a:hover{
+a:hover {
     color: $--primary-color !important;
 }
-a:active{
+a:active {
     color: $--primary-color !important;
+}
+strong {
+    font-family: "SVN-Gilroy-Bold" !important;
 }

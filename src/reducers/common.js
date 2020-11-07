@@ -7,6 +7,7 @@ var initialState = {
     fabricTypeList: [],
     topProducts: [],
     isPageFixedTop: false,
+    selectedWhiteProduct: null
 };
 
 const commonReducer = (state = initialState, action) => {
@@ -49,6 +50,10 @@ const commonReducer = (state = initialState, action) => {
         /****************************************************/
         case "UPDATE_PAGE_FIXED_TOP_STATUS":
             return { ...state, isPageFixedTop: !state.isPageFixedTop };
+        /****************************************************/
+        case "UPDATE_SELECTED_WHITE_PRODUCT":
+            if (!action.selectedWhiteProduct) return {...state}; 
+            return { ...state, selectedWhiteProduct: action.selectedWhiteProduct };
         /****************************************************/
         default:
             return { ...state };

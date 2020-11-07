@@ -96,6 +96,7 @@ function AvailableProductListContainer() {
                 onMoreClick={onMoreClick}
                 productList={renderProducts}
                 buttonName={buttonName}
+                isLink={true}
             />
         </div>
     );
