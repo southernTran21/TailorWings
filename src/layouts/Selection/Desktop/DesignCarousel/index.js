@@ -3,7 +3,7 @@ import {
     updateSelectedFabricType,
 } from "actions/selection";
 import DesignCarouselDesktop from "components/Pages/Selection/Desktop/DesignCarousel";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function DesignCarouselContainerDesktop() {

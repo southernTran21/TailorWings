@@ -1,4 +1,8 @@
-import { updateCurrentRenderProducts, updatePageFixedTopStatus, updateSelectedWhiteProduct } from "actions";
+import {
+    updateCurrentRenderProducts,
+    updatePageFixedTopStatus,
+    updateSelectedWhiteProduct,
+} from "actions";
 import Designs from "components/Designs";
 import ListLoader from "components/Loader/List";
 import React, { Fragment, useEffect } from "react";
@@ -27,7 +31,8 @@ function ListContainer() {
         let newRenderProducts = [...filteredProducts.slice(0, endIndex)];
         let isMax =
             (currentRenderProducts.length >= filteredProducts.length &&
-            filteredProducts.length > 0) || newRenderProducts.length < LIMIT;
+                filteredProducts.length > 0) ||
+            newRenderProducts.length < LIMIT;
         /*--------------*/
         let updatedRenderProducts = {
             isMax: isMax,

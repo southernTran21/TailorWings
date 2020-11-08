@@ -37,3 +37,82 @@ export const SUGGEST_PROJECT = "suggestProject";
 export const TRACKING = "tracking";
 export const VOUCHER = "voucher";
 
+// ---------- WHITE PRODUCT SRC LINK ----------
+export const WHITE_PRODUCT_SOURCE_LINK = [
+    {
+        id: "TE001",
+        link: "https://www.fashionnova.com/products/midnight-in-moscow-dress-white"
+    },
+    {
+        id: "TE002",
+        link: "https://www.showpo.com/us/slow-me-down-dress-in-white.html"
+    },
+    {
+        id: "TE003",
+        link: "https://curvysense.com/products/plus-size-aria-m-slit-maxi-dress-ivory"
+    },
+    {
+        id: "TE004",
+        link: "https://www.macys.com/shop/womens-clothing/dresses/Dress_style,The%20it%20list/Little%20White%20Dress,The%20Cape?id=5449"
+    },
+    {
+        id: "TE005",
+        link: "https://www.gitionline.com/products/copy-of-ruffled-scuba-skirt-set-1"
+    },
+    {
+        id: "TE006",
+        link: "https://excelsiorplussize.com/products/long-sleeve-winter-plus-size-formal-dress"
+    },
+    {
+        id: "TE007",
+        link: "https://www.boohoo.com/"
+    },
+    {
+        id: "TE008",
+        link: "https://www.boohoo.com/"
+    },
+    {
+        id: "TE009",
+        link: "https://www.hm.com/vn/"
+    },
+    {
+        id: "TE010",
+        link: "https://www.fashionnova.com/products/please-hold-midi-dress-ivory"
+    },
+    {
+        id: "TE011",
+        link: "https://girlwithcurves.com/"
+    },
+    {
+        id: "TE012",
+        link: "https://www.nordstrom.com/browse/women/clothing/plus-size/dresses"
+    },
+    {
+        id: "TE013",
+        link: "https://www.nordstrom.com/browse/women/clothing/plus-size/dresses"
+    },
+    {
+        id: "TE014",
+        link: "https://www.eloquiiunlimited.com/products/ruffle-cape-dress-in-true-white"
+    },
+    {
+        id: "TE015",
+        link: "https://www.asos.com/asos-curve/asos-design-curve-midi-dress-with-cape-back-and-dip-hem/prd/10975850"
+    },
+    {
+        id: "TE016",
+        link: "https://girlwithcurves.com/"
+    },
+    {
+        id: "TE017",
+        link: "https://girlwithcurves.com/"
+    },
+    {
+        id: "TE018",
+        link: "https://girlwithcurves.com/"
+    },
+    {
+        id: "TE019",
+        link: "https://girlwithcurves.com/"
+    },
+]

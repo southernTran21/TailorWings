@@ -19,7 +19,7 @@ Background.defaultProps = {
 function Background(props) {
     return (
         <div className="c-background">
-            <Link to={props.backLink} className="c-background__button-back">
+            <Link to={props.backLink || "/"} className="c-background__button-back">
                 <img
                     src={backButton}
                     alt="back"

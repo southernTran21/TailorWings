@@ -2,7 +2,6 @@
     /* Display & Box Model */
     display: none;
     @include box(100vw, 100vh);
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
     /* Color */
 
@@ -80,10 +79,8 @@
         /* Others: transition & animations, ... */
 
         .swiper-slide {
-            div {
+            .c-white-product-modal__image-item {
                 @include box(50rem, 60rem);
-                min-width: 50rem;
-                min-height: 60rem;
             }
         }
 
@@ -148,7 +145,7 @@
 
     &__desc {
         /* Display & Box Model */
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
         /* Color */
 
         /* Text */
@@ -214,7 +211,7 @@
 @media screen and (max-width: 768px) {
     .c-white-product-modal {
         /* Display & Box Model */
-        @include box(100vw, auto);
+        @include box(100vw, 100vh);
         /* Color */
 
         /* Text */
@@ -226,13 +223,12 @@
         &__content {
             /* Display & Box Model */
             margin: 4vh auto;
-            @include box(35rem, auto);
+            @include box(35rem, 90vh);
             max-width: 35rem;
-            min-height: 80vh;
             box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),
                 0 7px 20px 0 rgba(0, 0, 0, 0.17);
             border-radius: 35px;
-            overflow: hidden;
+            overflow: scroll;
             /* Color */
             background-color: white;
             /* Text */
@@ -290,10 +286,8 @@
             /* Others: transition & animations, ... */
 
             .swiper-slide {
-                div {
+                .c-white-product-modal__image-item {
                     @include box(35rem, 40rem);
-                    min-width: 35rem;
-                    min-height: 40rem;
                 }
             }
 

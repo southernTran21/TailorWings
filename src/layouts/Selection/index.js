@@ -56,10 +56,10 @@ const logPageViewGA = () => {
 };
 
 function SelectionContainer() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
+    // window.scrollTo({
+    //     top: 0,
+    //     behavior: "smooth",
+    // });
     /*--------------*/
     const urlSearch = window.location.search.match(/id=(.*)\b/);
     const productID = urlSearch ? urlSearch[1] : "";
@@ -148,6 +148,9 @@ function SelectionContainer() {
     /*--------------*/
     useEffect(() => {
         /*--------------*/
+        const action_updatePageLoading = updatePageLoading(true);
+        dispatch(action_updatePageLoading);
+        /*--------------*/
         async function _fetchRelatedProducts() {
             /*--------------*/
             try {
@@ -180,6 +183,11 @@ function SelectionContainer() {
                         }
                     );
                     /*--------------*/
+                    let renderProduct =
+                        fetchedRelatedProducts.find(
+                            (product) => product.id === productID
+                        ) || null;
+                    /*--------------*/
                     const action_updateRelatedProducts = updateRelatedProducts(
                         fetchedRelatedProducts
                     );
@@ -190,8 +198,12 @@ function SelectionContainer() {
                     );
                     dispatch(action_updateRenderPatterns);
                     /*--------------*/
+                    const action_updateRenderProduct = updateRenderProduct(
+                        renderProduct
+                    );
+                    dispatch(action_updateRenderProduct);
+                    /*--------------*/
                 }
-                /*--------------*/
             } catch (error) {
                 console.log("error :>> ", error);
             }
@@ -204,36 +216,21 @@ function SelectionContainer() {
             /*--------------*/
         }
         /*--------------*/
-    }, [designID, patterns.toString()]);
-    /*--------------*/
-    useEffect(() => {
-        /*--------------*/
-        const action_updatePageLoading = updatePageLoading(true);
-        dispatch(action_updatePageLoading);
-        /*--------------*/
-        if (relatedProducts.length > 0 && productID) {
-            /*--------------*/
-            let renderProduct =
-                relatedProducts.find((product) => product.id === productID) ||
-                null;
-            /*--------------*/
-            const action_updateRenderProduct = updateRenderProduct(
-                renderProduct
-            );
-            dispatch(action_updateRenderProduct);
-            /*--------------*/
-        }
-        /*--------------*/
         const timer = setTimeout(() => {
             /*--------------*/
             const action_updatePageLoading = updatePageLoading(false);
             dispatch(action_updatePageLoading);
             /*--------------*/
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+            /*--------------*/
         }, 500);
         /*--------------*/
         return () => clearTimeout(timer);
         /*--------------*/
-    }, [relatedProducts.length, productID]);
+    }, [designID, patterns.toString(), productID]);
     /*--------------*/
     useEffect(() => {
         /*--------------*/

@@ -60,10 +60,10 @@ function PatternOrderBanner(props) {
                             {fabricTypeName}
                         </span>
                     )}
-                    <div className="c-fabric-detial-pattern-order-bannner__price">
+                    {/* <div className="c-fabric-detial-pattern-order-bannner__price">
                         <span>{modifiedPrice}đ / </span>
                         <span>1 mét</span>
-                    </div>
+                    </div> */}
                     <a
                         href="https://www.messenger.com/t/TailorWings"
                         target="_blank"

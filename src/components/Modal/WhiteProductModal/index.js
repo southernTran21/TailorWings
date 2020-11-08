@@ -6,6 +6,7 @@ import loader from "assets/Image/image-loader.gif";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ReactImageAppear from "react-image-appear";
 import { updatePageFixedTopStatus } from "actions";
+import { WHITE_PRODUCT_SOURCE_LINK } from "../../../constants";
 
 function WhiteProductModal() {
     /*--------------*/
@@ -71,6 +72,10 @@ function WhiteProductModal() {
             ? [...imageList, image.pattern]
             : imageList;
     /*--------------*/
+    let srcLink =
+        WHITE_PRODUCT_SOURCE_LINK.find((src) => src.id === id) || null;
+    srcLink = srcLink ? srcLink.link : "tailorwings.com";
+    /*--------------*/
     return (
         <div
             className={classNames("c-white-product-modal", {
@@ -93,22 +98,34 @@ function WhiteProductModal() {
                             slidesPerView={1}
                             loop={true}
                         >
-                            {imageList.map((image, index) => {
+                            {imageList.map((item, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <ReactImageAppear
-                                            className="c-white-product-modal__image--wrapper"
-                                            src={image || ""}
-                                            animationDuration="1s"
-                                            loader={loader}
-                                            loaderStyle={{
-                                                backgroundColor: "transparent",
-                                            }}
-                                            placeholderStyle={{
-                                                backgroundColor: "transparent",
-                                            }}
-                                        />
+                                        {item !== "" && item ? (
+                                            <img
+                                                className="c-white-product-modal__image-item"
+                                                key={index}
+                                                src={item}
+                                                alt="white-product"
+                                            />
+                                        ) : (
+                                            <div className="c-white-product-modal__image-item"></div>
+                                        )}
                                     </SwiperSlide>
+                                    // <SwiperSlide key={index}>
+                                    //     <ReactImageAppear
+                                    //         className="c-white-product-modal__image--wrapper"
+                                    //         src={item || ""}
+                                    //         animationDuration="1s"
+                                    //         loader={loader}
+                                    //         loaderStyle={{
+                                    //             backgroundColor: "transparent",
+                                    //         }}
+                                    //         placeholderStyle={{
+                                    //             backgroundColor: "transparent",
+                                    //         }}
+                                    //     />
+                                    // </SwiperSlide>
                                 );
                             })}
                             <div
@@ -129,17 +146,34 @@ function WhiteProductModal() {
                     </div>
                     <div className="c-white-product-modal__text">
                         <span className="c-white-product-modal__title">
-                            Bạn muốn chọn {name} để ghép vải?
+                            Bạn muốn chọn mua {name} ?
                         </span>
                         <span className="c-white-product-modal__desc">
-                            Hãy liên hệ ngay với Tailor Wings để được tư vấn tận
-                            tình!
+                            Bạn sẽ được THỎA THÍCH LỰA CHỌN: VẢI(chất liệu + họa
+                            tiết) với bất kỳ SỐ ĐO nào cho thiết kế này.
                         </span>
-                        <a href="https://www.messenger.com/t/TailorWings" target="_blank">
+                        <a
+                            href="https://www.messenger.com/t/TailorWings"
+                            target="_blank"
+                        >
                             <button className="c-white-product-modal__button">
-                                Liên hệ ngay
+                                BẤM VÀO ĐÂY
                             </button>
                         </a>
+                        <span className="c-white-product-modal__desc">
+                            Thời trang đơn giản là sự vừa vặn và được may riêng
+                            cho chính bạn.
+                        </span>
+                        <span className="c-white-product-modal__desc">
+                            Giá chỉ từ 499k. Nhận đầm trong 3-5 ngày làm việc.
+                        </span>
+                        <span className="c-white-product-modal__desc">
+                            Thông tin sản phẩm gốc:{" "}
+                            <a href={srcLink} target="_blank">{srcLink}</a>
+                        </span>
+                        <span className="c-white-product-modal__desc">
+                            HÃY ĐỂ TAILOR WINGS GIÚP BẠN
+                        </span>
                     </div>
                 </div>
             </div>
