@@ -1,14 +1,27 @@
-import React, { Fragment, useRef } from "react";
-import closeButton from "../../../assets/Icon/login-close.svg";
-import classNames from "classnames";
-import { useDispatch, useSelector } from "react-redux";
-import loader from "assets/Image/image-loader.gif";
-import { Swiper, SwiperSlide } from "swiper/react";
-import ReactImageAppear from "react-image-appear";
 import { updatePageFixedTopStatus } from "actions";
+import classNames from "classnames";
+import React, { Fragment, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentDate } from "services/CommonFunctions";
+import { trackingIncrement } from "services/FirebaseAPI/basic";
+import { Swiper, SwiperSlide } from "swiper/react";
+import closeButton from "../../../assets/Icon/login-close.svg";
 import { WHITE_PRODUCT_SOURCE_LINK } from "../../../constants";
 
 function WhiteProductModal() {
+    /*********************************
+     *  Description: to update tracking counter
+     *
+     *
+     *  Call by:
+     */
+    function handleTracking() {
+        let pathName = window.location.pathname;
+        let date = getCurrentDate();
+        if (!pathName) return;
+        trackingIncrement("tracking", date, "whiteProduct", pathName);
+    };
+    /************_END_****************/
     /*--------------*/
     const isPageFixedTop = useSelector((state) => state.common.isPageFixedTop);
     const selectedWhiteProduct = useSelector(
@@ -68,13 +81,17 @@ function WhiteProductModal() {
     /*--------------*/
     let imageList = [image.T, image.C, image.S];
     imageList =
-        image.pattern !== undefined && image.pattern !== null
+        image.pattern !== undefined &&
+        image.pattern !== null &&
+        image.pattern !== ""
             ? [...imageList, image.pattern]
-            : imageList;
+            : [...imageList, ""];
     /*--------------*/
-    let srcLink =
-        WHITE_PRODUCT_SOURCE_LINK.find((src) => src.id === id) || null;
-    srcLink = srcLink ? srcLink.link : "tailorwings.com";
+    let designedBy =
+        WHITE_PRODUCT_SOURCE_LINK.find(
+            (src) => src.id === id || src.id === id.substring(0, 5)
+        ) || null;
+    designedBy = designedBy ? designedBy.from : "tailorwings";
     /*--------------*/
     return (
         <div
@@ -102,30 +119,22 @@ function WhiteProductModal() {
                                 return (
                                     <SwiperSlide key={index}>
                                         {item !== "" && item ? (
-                                            <img
-                                                className="c-white-product-modal__image-item"
+                                            <div
                                                 key={index}
-                                                src={item}
-                                                alt="white-product"
-                                            />
+                                                className="c-white-product-modal__image-item"
+                                            >
+                                                <img
+                                                    src={item}
+                                                    alt="white-product"
+                                                />
+                                            </div>
                                         ) : (
-                                            <div className="c-white-product-modal__image-item"></div>
+                                            <div
+                                                key={index}
+                                                className="c-white-product-modal__image-item"
+                                            ></div>
                                         )}
                                     </SwiperSlide>
-                                    // <SwiperSlide key={index}>
-                                    //     <ReactImageAppear
-                                    //         className="c-white-product-modal__image--wrapper"
-                                    //         src={item || ""}
-                                    //         animationDuration="1s"
-                                    //         loader={loader}
-                                    //         loaderStyle={{
-                                    //             backgroundColor: "transparent",
-                                    //         }}
-                                    //         placeholderStyle={{
-                                    //             backgroundColor: "transparent",
-                                    //         }}
-                                    //     />
-                                    // </SwiperSlide>
                                 );
                             })}
                             <div
@@ -152,9 +161,13 @@ function WhiteProductModal() {
                             Bạn sẽ được THỎA THÍCH LỰA CHỌN: VẢI(chất liệu + họa
                             tiết) với bất kỳ SỐ ĐO nào cho thiết kế này.
                         </span>
+                        <span className="c-white-product-modal__desc">
+                            HÃY ĐỂ TAILOR WINGS GIÚP BẠN
+                        </span>
                         <a
                             href="https://www.messenger.com/t/TailorWings"
                             target="_blank"
+                            onClick={handleTracking}
                         >
                             <button className="c-white-product-modal__button">
                                 BẤM VÀO ĐÂY
@@ -168,11 +181,7 @@ function WhiteProductModal() {
                             Giá chỉ từ 499k. Nhận đầm trong 3-5 ngày làm việc.
                         </span>
                         <span className="c-white-product-modal__desc">
-                            Thông tin sản phẩm gốc:{" "}
-                            <a href={srcLink} target="_blank">{srcLink}</a>
-                        </span>
-                        <span className="c-white-product-modal__desc">
-                            HÃY ĐỂ TAILOR WINGS GIÚP BẠN
+                            Thiết kế bởi: <strong>{designedBy}</strong>
                         </span>
                     </div>
                 </div>

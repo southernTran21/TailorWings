@@ -45,6 +45,7 @@ import InfoContainer from "./Mobile/Info";
 import NavbarContainer from "./Mobile/Navbar";
 import TopProductsContainer from "./Mobile/TopProducts";
 import ReactGA from "react-ga";
+import { history } from "services/CommonParameter";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -188,6 +189,11 @@ function SelectionContainer() {
                             (product) => product.id === productID
                         ) || null;
                     /*--------------*/
+                    const action_resetRenderProduct = updateRenderProduct(
+                        null
+                    );
+                    dispatch(action_resetRenderProduct);
+                    /*--------------*/
                     const action_updateRelatedProducts = updateRelatedProducts(
                         fetchedRelatedProducts
                     );
@@ -298,7 +304,9 @@ function SelectionContainer() {
         /*--------------*/
     }, [topProducts.length]);
     /*--------------*/
-    if (!productID || !designID || !patternID) return <Redirect to="/" />;
+    if (!productID || !designID || !patternID || productID.length > 10) return <Redirect to="/" />;
+    /*--------------*/
+
     /*--------------*/
     if (isPageLoading) {
         return <PageLoader />;

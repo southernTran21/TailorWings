@@ -56,8 +56,9 @@ function ListContainer() {
         /*--------------*/
         let newRenderProducts = [...filteredProducts.slice(0, endIndex)];
         let isMax =
-            currentRenderProducts.length >= filteredProducts.length &&
+            currentRenderProducts.products.length >= filteredProducts.length &&
             filteredProducts.length > 0;
+            console.log('isMax :>> ', isMax);
         /*--------------*/
         let updatedRenderProducts = {
             isMax: isMax,
@@ -77,6 +78,18 @@ function ListContainer() {
      *  Call by:
      */
     function onItemClick(image, id, name) {
+        /*--------------*/
+        const action_resetSelectedWhiteProduct = updateSelectedWhiteProduct({
+            image: {
+                T: "",
+                C: "",
+                S: "",
+                pattern: "",
+            },
+            id: "",
+            name: "",
+        });
+        dispatch(action_resetSelectedWhiteProduct);
         /*--------------*/
         const action_updateSelectedWhiteProduct = updateSelectedWhiteProduct({
             image,

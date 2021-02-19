@@ -1,7 +1,8 @@
 .c-design-item {
     /* Display & Box Model */
     @include flexBox(flex-start, center, column);
-    @include box(15.6rem, 31.6rem);
+    @include box(15.6rem, auto);
+    max-height: 31.6rem;
     margin-bottom: 2.5rem;
     border-radius: 2rem;
     /* Color */
@@ -30,6 +31,8 @@
             /* Display & Box Model */
             width: 100%;
             height: 100%;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
             object-fit: cover;
             /* Color */
 
@@ -46,7 +49,7 @@
         /* Color */
         color: $--text-blur;
         /* Text */
-        @include font(fontSemiBold, 1.3rem);
+        @include font(fontSemiBold, 1.4rem);
         /* Positioning */
 
         /* Others: transition & animations, ... */
@@ -67,7 +70,7 @@
         /* Display & Box Model */
         @include centerFlexBox();
         @include font(fontNormal, 1.4rem);
-        margin-top: 1rem;
+        margin: 1rem;
         padding: 0.8rem 2rem;
         border-radius: 3rem;
         /* Color */
@@ -83,7 +86,8 @@
 @media screen and (min-width: 769px) {
     .c-design-item {
         /* Display & Box Model */
-        @include box(23.8rem, 49rem);
+        @include box(23.8rem, auto);
+        max-height: 49rem;
         /* Color */
 
         /* Text */
@@ -108,7 +112,7 @@
             /* Color */
 
             /* Text */
-            @include font(fontSemiBold, 1.6rem);
+            @include font(fontSemiBold, 1.8rem);
             /* Positioning */
 
             /* Others: transition & animations, ... */
@@ -127,7 +131,7 @@
         &__fabric-number {
             /* Display & Box Model */
             padding: 1.2rem 3rem;
-            margin-top: 1.5rem;
+            margin: 1.5rem;
             /* Color */
 
             /* Text */

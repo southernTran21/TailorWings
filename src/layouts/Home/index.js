@@ -2,6 +2,7 @@ import {
     updateCategories,
     updateCollections,
     updateDefaultProducts,
+    updatePageFixedTopStatus,
     updateTopProducts,
 } from "actions";
 import { BackTop } from "antd";

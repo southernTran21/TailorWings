@@ -7,17 +7,19 @@ import { useDispatch } from "react-redux";
 
 Products.propTypes = {
     productList: PropTypes.array,
+    onReload: PropTypes.func,
 };
 
 Products.defaultProps = {
     productList: null,
+    onReload: null,
 };
 
 function Products(props) {
     /*--------------*/
     const dispatch = useDispatch();
     /*--------------*/
-    if (!props.productList) return <Fragment />;
+    if (!props.productList || !props.onReload) return <Fragment />;
     /*--------------*/
     let totalQuantity = countTotalQuantity(props.productList);
     /*********************************
@@ -58,8 +60,11 @@ function Products(props) {
             /*--------------*/
             window.localStorage.setItem("cart", JSON.stringify(updatedList));
             /*--------------*/
+            props.onReload();
+            /*--------------*/
             const action_deleteCartProduct = deleteCartProduct();
             dispatch(action_deleteCartProduct);
+            /*--------------*/
         }
     }
     /************_END_****************/

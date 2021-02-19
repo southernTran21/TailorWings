@@ -6,7 +6,13 @@ import banner2 from "assets/Image/dep-la-mot-lua-chon-chon-dam-tailorwings-de-la
 function BannerContainer() {
     return (
         <section className="l-home__banner">
-            <Banner isSlide={true} banners={[banner1, banner2]} />
+            <Banner
+                isSlide={true}
+                banners={[
+                    { banner: banner1, id: "aodai" },
+                    { banner: banner2, id: "plussize" },
+                ]}
+            />
         </section>
     );
 }

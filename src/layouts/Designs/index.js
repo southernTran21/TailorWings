@@ -21,6 +21,7 @@ import Login from "components/Login";
 import ReactGA from "react-ga";
 import WhiteroductModalContainer from "layouts/FabricDetail/WhiteProductModal";
 import WhiteProductModal from "components/Modal/WhiteProductModal";
+import { Redirect } from "react-router-dom";
 
 const initGA = () => {
     ReactGA.initialize("UA-159143322-2");
@@ -32,6 +33,10 @@ const logPageViewGA = () => {
 };
 
 function DesignsContainer() {
+    /*--------------*/
+    const urlSearch = window.location.search.match(/cat=(.*)\b/);
+    const catIDFromURL = urlSearch ? urlSearch[1] : "all";
+    /*--------------*/
     const location = window.location;
     /*--------------*/
     const defaultProductsLength = useSelector(
@@ -164,6 +169,8 @@ function DesignsContainer() {
             dispatch(action_updateSrc);
         }
     }, [defaultProductsLength]);
+
+    if (catIDFromURL.length > 8) return <Redirect to="/" />;
 
     return (
         <div className="l-designs">

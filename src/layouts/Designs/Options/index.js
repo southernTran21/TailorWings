@@ -24,9 +24,7 @@ function OptionsContainer() {
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        let newFilterStatus = [
-            { id: "all", name: "Tất cả", isActive: true },
-        ];
+        let newFilterStatus = [{ id: "all", name: "Tất cả", isActive: true }];
         /*--------------*/
         if (categories.length > 0) {
             /*--------------*/
@@ -61,13 +59,30 @@ function OptionsContainer() {
                     }) || [];
             }
             /*--------------*/
+            let arrangedProducts = [];
+            let plusSize =
+                filteredProducts.filter(
+                    (product) => product.idCategory === "plussize"
+                ) || [];
+            let aoDai =
+                filteredProducts.filter(
+                    (product) => product.idCategory === "aodai"
+                ) || [];
+            let normalDress =
+                filteredProducts.filter(
+                    (product) =>
+                        product.idCategory !== "plussize" &&
+                        product.idCategory !== "aodai"
+                ) || [];
+            arrangedProducts = [...aoDai, ...plusSize, ...normalDress];
+            /*--------------*/
             const action_updateFilterStatus = updateFilterStatus(
                 updatedFilterStatus
             );
             dispatch(action_updateFilterStatus);
             /*--------------*/
             const action_updateFilteredProducts = updateFilteredProducts(
-                filteredProducts
+                arrangedProducts
             );
             dispatch(action_updateFilteredProducts);
             /*--------------*/
@@ -101,6 +116,23 @@ function OptionsContainer() {
                 }) || [];
         }
         /*--------------*/
+        let arrangedProducts = [];
+        let plusSize =
+            filteredProducts.filter(
+                (product) => product.idCategory === "plussize"
+            ) || [];
+        let aoDai =
+            filteredProducts.filter(
+                (product) => product.idCategory === "aodai"
+            ) || [];
+        let normalDress =
+            filteredProducts.filter(
+                (product) =>
+                    product.idCategory !== "plussize" &&
+                    product.idCategory !== "aodai"
+            ) || [];
+        arrangedProducts = [...aoDai, ...plusSize, ...normalDress];
+        /*--------------*/
         const action_updateFilterStatus = updateFilterStatus(
             updatedFilterStatus
         );
@@ -110,7 +142,7 @@ function OptionsContainer() {
         dispatch(action_setListLoading);
         /*--------------*/
         const action_updateFilteredProducts = updateFilteredProducts(
-            filteredProducts
+            arrangedProducts
         );
         dispatch(action_updateFilteredProducts);
         /*--------------*/

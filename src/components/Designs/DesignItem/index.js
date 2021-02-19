@@ -18,49 +18,94 @@ DesignItem.defaultProps = {
 
 function DesignItem(props) {
     /*--------------*/
-    const { image, relatedProducts, id, name } = props.product;
+    const { image, relatedProducts, id, name, idCategory } = props.product;
     /*--------------*/
     if (!props.product) return <Fragment />;
     /*--------------*/
     if (props.isLink) {
-        return (
-            <Link
-                to={{
-                    pathname: "/selection",
-                    search: `?id=${id}`,
-                }}
-            >
-                <li className="c-design-item">
-                    <div className="c-design-item__image">
-                        <ReactImageAppear
-                            src={image.T || ""}
-                            animationDuration="1s"
-                            loader={loader}
-                            loaderStyle={{ backgroundColor: "transparent" }}
-                            placeholderStyle={{
-                                backgroundColor: "transparent",
-                            }}
-                        />
-                    </div>
-                    <span className="c-design-item__designed-by">
+        if (idCategory === "plussize") {
+            return (
+                <a onClick={() => props.onItemClick(image, id, name)}>
+                    <li className="c-design-item">
+                        <div className="c-design-item__image">
+                            <ReactImageAppear
+                                src={image.T || "   "}
+                                animationDuration="1s"
+                                loader={loader}
+                                loaderStyle={{ backgroundColor: "transparent" }}
+                                placeholderStyle={{
+                                    backgroundColor: "transparent",
+                                }}
+                            />
+                        </div>
+                        <span className="c-design-item__designed-by">
+                            Hỗ trợ mọi loại size
+                        </span>
+                        {/* <span className="c-design-item__designed-by">
                         Thiết kế bởi
-                    </span>
-                    <span className="c-design-item__designer-name">
+                    </span> */}
+                        {/* <span className="c-design-item__designer-name">
                         TailorWings
-                    </span>
-                    <div className="c-design-item__fabric-number">
-                        <span>{relatedProducts} Mẫu Vải</span>
-                    </div>
-                </li>
-            </Link>
-        );
+                    </span> */}
+                        <div className="c-design-item__fabric-number">
+                            <span>
+                                {idCategory === "plussize"
+                                    ? "98"
+                                    : relatedProducts}{" "}
+                                Mẫu Vải
+                            </span>
+                        </div>
+                    </li>
+                </a>
+            );
+        } else {
+            return (
+                <Link
+                    to={{
+                        pathname: "/selection",
+                        search: `?id=${id}`,
+                    }}
+                >
+                    <li className="c-design-item">
+                        <div className="c-design-item__image">
+                            <ReactImageAppear
+                                src={image.T || ""}
+                                animationDuration="1s"
+                                loader={loader}
+                                loaderStyle={{ backgroundColor: "transparent" }}
+                                placeholderStyle={{
+                                    backgroundColor: "transparent",
+                                }}
+                            />
+                        </div>
+                        <span className="c-design-item__designed-by">
+                            Hỗ trợ mọi loại size
+                        </span>
+                        {/* <span className="c-design-item__designed-by">
+                            Thiết kế bởi
+                        </span>
+                        <span className="c-design-item__designer-name">
+                            TailorWings
+                        </span> */}
+                        <div className="c-design-item__fabric-number">
+                            <span>
+                                {idCategory === "plussize"
+                                    ? "98"
+                                    : relatedProducts}{" "}
+                                Mẫu Vải
+                            </span>
+                        </div>
+                    </li>
+                </Link>
+            );
+        }
     } else {
         return (
             <a onClick={() => props.onItemClick(image, id, name)}>
                 <li className="c-design-item">
                     <div className="c-design-item__image">
                         <ReactImageAppear
-                            src={image.T || ""}
+                            src={image.T || "   "}
                             animationDuration="1s"
                             loader={loader}
                             loaderStyle={{ backgroundColor: "transparent" }}
@@ -70,13 +115,19 @@ function DesignItem(props) {
                         />
                     </div>
                     <span className="c-design-item__designed-by">
+                        Hỗ trợ mọi loại size
+                    </span>
+                    {/* <span className="c-design-item__designed-by">
                         Thiết kế bởi
-                    </span>
-                    <span className="c-design-item__designer-name">
+                    </span> */}
+                    {/* <span className="c-design-item__designer-name">
                         TailorWings
-                    </span>
+                    </span> */}
                     <div className="c-design-item__fabric-number">
-                        <span>{relatedProducts} Mẫu Vải</span>
+                        <span>
+                            {idCategory === "plussize" ? "98" : relatedProducts}{" "}
+                            Mẫu Vải
+                        </span>
                     </div>
                 </li>
             </a>

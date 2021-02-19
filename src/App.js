@@ -75,7 +75,8 @@ function App() {
             })}
         >
             <Suspense fallback={<PageLoader />}>
-                <Switch>
+                <OrderSuccessContainer />
+                {/* <Switch>
                     <Route exact path="/" component={HomeContainer} />
                     <Route exact path="/designs" component={DesignsContainer} />
                     <Route
@@ -100,12 +101,12 @@ function App() {
                     <Route path="/policy" component={Policy} />
                     <Route path="/support" component={Support} />
                     <Route path="/test-fix" component={TestFix} />
-                    {/* this is for Admin */}
+
                     <Route path="/admin" component={AdminContainer} />
                     <Route path="/test-excel" component={ReadExcel} />
-                    {/* <Route component={NotFound} /> */}
-                </Switch>
-                <Footer />
+                    <Route component={HomeContainer} />
+                </Switch> */}
+                {/* <Footer /> */}
             </Suspense>
         </div>
     );

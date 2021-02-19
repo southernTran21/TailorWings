@@ -1,6 +1,10 @@
 import ProductList from "components/ProductList";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import {
+    fetchVisibleCondition
+} from "services/FirebaseAPI/basic";
+import { PRODUCTS } from "../../../constants";
 
 const LIMIT = 6;
 const LOAD_MORE_NAME = "Xem thêm";
@@ -11,9 +15,6 @@ function AvailableProductListContainer() {
     let urlSearch = window.location.search.match(/id=(.*)\b/);
     const patternID = urlSearch ? urlSearch[1] : null;
     /*--------------*/
-    const defaultProducts = useSelector(
-        (state) => state.common.defaultProducts
-    );
     const selectedFabricType = useSelector(
         (state) => state.fabricDetail.selectedFabricType
     );
@@ -24,36 +25,62 @@ function AvailableProductListContainer() {
     /*--------------*/
     useEffect(() => {
         /*--------------*/
-        let productList = [];
-        /*--------------*/
-        defaultProducts.forEach((product) => {
+        async function _fetchAvailableProductData() {
             /*--------------*/
-            if (product.idPattern === patternID) {
+            try {
                 /*--------------*/
-                if (selectedFabricType.id === "all") {
+                let fetchedProducts = await fetchVisibleCondition(
+                    PRODUCTS,
+                    "idPattern",
+                    patternID
+                );
+                /*--------------*/
+                if (fetchedProducts) {
+                    let productList = [];
                     /*--------------*/
-                    productList.push({ ...product });
-                    /*--------------*/
-                } else {
-                    /*--------------*/
-                    if (product.idFabricType.includes(selectedFabricType.id)) {
+                    fetchedProducts.forEach((product) => {
                         /*--------------*/
-                        productList.push({ ...product });
+                        if (selectedFabricType.id === "all") {
+                            /*--------------*/
+                            productList.push({ ...product });
+                            /*--------------*/
+                        } else {
+                            /*--------------*/
+                            if (
+                                product.idFabricType.includes(
+                                    selectedFabricType.id
+                                )
+                            ) {
+                                /*--------------*/
+                                productList.push({ ...product });
+                                /*--------------*/
+                            }
+                            /*--------------*/
+                        }
                         /*--------------*/
-                    }
+                    });
+                    /*--------------*/
+                    setRenderProducts(productList.slice(0, LIMIT));
+                    /*--------------*/
+                    setAvailableProductList(productList);
                     /*--------------*/
                 }
                 /*--------------*/
+            } catch (error) {
+                /*--------------*/
+                console.log("error :>> ", error);
+                /*--------------*/
             }
             /*--------------*/
-        });
+        }
         /*--------------*/
-        setRenderProducts(productList.slice(0, LIMIT));
+        if (patternID && selectedFabricType) {
+            /*--------------*/
+            _fetchAvailableProductData();
+            /*--------------*/
+        }
         /*--------------*/
-        setAvailableProductList(productList);
-        /*--------------*/
-    }, [defaultProducts.length, selectedFabricType]);
-    /*--------------*/
+    }, [patternID, selectedFabricType]);
     /*********************************
      *  Description: handle load more
      *

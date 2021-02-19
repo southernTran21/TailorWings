@@ -21,7 +21,6 @@ SizeInfo.defaultProps = {
 function SizeInfo(props) {
     if (!props.onQuantityChange) return <Fragment />;
     const { name, price, quantity } = props;
-    console.log('price :>> ', price);
     let modifiedPrice = price * quantity;
     modifiedPrice = modifyPrice(modifiedPrice);
     return (

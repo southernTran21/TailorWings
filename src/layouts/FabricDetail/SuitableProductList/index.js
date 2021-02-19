@@ -148,6 +148,9 @@ function SuitableProductListContainer() {
      */
     function onItemClick(image, id, name) {
         /*--------------*/
+        const action_resetSelectedWhiteProduct = updateSelectedWhiteProduct(null);
+        dispatch(action_resetSelectedWhiteProduct);
+        /*--------------*/
         const action_updateSelectedWhiteProduct = updateSelectedWhiteProduct({
             image,
             id,
@@ -164,7 +167,7 @@ function SuitableProductListContainer() {
     return (
         <div className="l-fabric-detail__suitable-product-list">
             <ProductList
-                title={`${suitableProductList.length} sản phẩm phù hợp`}
+                title={`${suitableProductList.length} thiết kế phù hợp`}
                 onMoreClick={onMoreClick}
                 productList={renderProducts}
                 buttonName={buttonName}

@@ -24,7 +24,7 @@ DesignCarouselDesktop.defaultProps = {
 
 function DesignCarouselDesktop(props) {
     if (
-        !props.images ||
+        typeof props.images !== "object" ||
         !props.renderFabricTypes.length > 0 ||
         !props.selectedFabricType ||
         !props.onFabricTypeChange

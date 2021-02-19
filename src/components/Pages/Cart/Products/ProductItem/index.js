@@ -44,7 +44,7 @@ function ProductItem(props) {
         price,
         size,
         bodyMetric,
-        productID,
+        id,
     } = props.product;
     /*--------------*/
     let modifiedPrice = quantity * price;
@@ -57,7 +57,7 @@ function ProductItem(props) {
             <div className="c-cart-product-item--left">
                 <div className="c-cart-product-item__image">
                     <ReactImageAppear
-                        src={image[0]}
+                        src={typeof image === "object" ? image.T : ""}
                         animationDuration="1s"
                         loader={loader}
                         loaderStyle={{ backgroundColor: "transparent" }}

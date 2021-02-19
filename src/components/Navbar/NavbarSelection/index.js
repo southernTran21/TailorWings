@@ -46,9 +46,11 @@ function NavbarSelection(props) {
                         <img src={ButtonBack} alt="button-back-icon" />
                     </div>
                 </Link>
-                <div className="c-navbar-selection__title">
-                    <span>{props.text}</span>
-                </div>
+                <Link to="/">
+                    <div className="c-navbar-selection__title">
+                        <span>{props.text}</span>
+                    </div>
+                </Link>
                 <div className="c-navbar-selection__info">
                     <CartInfo quantity={quantity} />
                 </div>
@@ -63,9 +65,11 @@ function NavbarSelection(props) {
                 >
                     <img src={ButtonBack} alt="button-back-icon" />
                 </div>
-                <div className="c-navbar-selection__title">
-                    <span>{props.text}</span>
-                </div>
+                <Link to="/">
+                    <div className="c-navbar-selection__title">
+                        <span>{props.text}</span>
+                    </div>
+                </Link>
                 <div className="c-navbar-selection__info">
                     <CartInfo quantity={quantity} />
                 </div>

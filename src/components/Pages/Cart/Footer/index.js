@@ -8,11 +8,12 @@ Footer.propTypes = {
 };
 
 Footer.defaultProps = {
-    finalPrice: "0",
+    finalPrice: null,
     onConfirm: null,
 };
 
 function Footer(props) {
+    console.log('props.finalPrice :>> ', props.finalPrice);
     if (!props.onConfirm)
         return (
             <div className="c-cart-footer">
@@ -38,11 +39,13 @@ function Footer(props) {
                     padding="1.5rem 8.4rem"
                     onConfirm={props.onConfirm}
                     linkTo={
-                        props.finalPrice !== "0"
+                        props.finalPrice
                             ? {
                                   pathname: "/info",
                               }
-                            : null
+                            : {
+                                pathname: "/cart"
+                            }
                     }
                 />
             </div>

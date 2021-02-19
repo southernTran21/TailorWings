@@ -26,7 +26,7 @@ function OrderSuccessContainer() {
     /*--------------*/
     return (
         <div className="l-order-success">
-            <NavBarOrderSuccessContainer />
+            {/* <NavBarOrderSuccessContainer /> */}
             <section className="l-order-success__image">
                 <img src={ImageOrderSuccess} alt="" />
             </section>
@@ -34,13 +34,31 @@ function OrderSuccessContainer() {
                 <img src={IconCheck} alt="" />
             </section>
             <section className="l-order-success__content">
-                <span>Cảm Ơn Bạn Đã Đặt May!</span>
-                <p>
+                {/* <span>Cảm Ơn Bạn Đã Đặt May!</span> */}
+                <span style={{ fontSize: "2.4rem" }}>
+                    Hệ thống đang bảo trì!
+                </span>
+                {/* <p>
                     Đơn hàng của bạn đang được xử lý & giao tới bạn trong 3-5
                     ngày làm việc.
+                </p> */}
+                <p style={{ fontSize: "2rem" }}>
+                    Tailor Wings hiện vẫn đang hoạt động trên Fanpage.
                 </p>
             </section>
-            <section className="l-order-success__button">
+            <section className="l-order-success__content--delete-later">
+                {/* <span>Cảm Ơn Bạn Đã Đặt May!</span> */}
+                <span>The website is being maintained!</span>
+                {/* <p>
+                    Đơn hàng của bạn đang được xử lý & giao tới bạn trong 3-5
+                    ngày làm việc.
+                </p> */}
+                <p>Tailor Wings is still working on the Fanpage</p>
+                <a href="https://www.facebook.com/TailorWings">
+                    <ButtonCTA text="FANPAGE: TAILOR WINGS" />
+                </a>
+            </section>
+            {/* <section className="l-order-success__button">
                 <ButtonCTA text="BẤM VÀO ĐÂY NHẬN QUÀ BẤT NGỜ" />
             </section>
             <Link
@@ -64,7 +82,7 @@ function OrderSuccessContainer() {
                         />
                     </svg>
                 </section>
-            </Link>
+            </Link> */}
         </div>
     );
 }

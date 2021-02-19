@@ -15,30 +15,48 @@
         @include box(4rem);
         margin: 1rem auto 0;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__content {
         /* Display & Box Model */
         margin-top: 3rem;
         /* Color */
-    
+
         /* Text */
         text-align: center;
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-        :nth-child(1){
+        :nth-child(1) {
             @include font(fontBold, 1.8rem);
         }
-        :nth-child(2){
+        :nth-child(2) {
             margin-top: 1rem;
             @include font(fontSemiBold, 1.6rem);
+        }
+    }
+    &__content--delete-later {
+        /* Display & Box Model */
+        margin-top: 1rem;
+        /* Color */
+        color: #8e8e8e;
+        /* Text */
+        text-align: center;
+        /* Positioning */
+
+        /* Others: transition & animations, ... */
+        :nth-child(1) {
+            @include font(fontSemiBold, 1.8rem);
+        }
+        :nth-child(2) {
+            margin-top: 1rem;
+            @include font(fontSemiBold, 1.6rem);
+            margin-bottom: 2rem;
         }
     }
     &__button {
@@ -46,13 +64,12 @@
         margin-top: 5rem;
         @include centerFlexBox();
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
     &__continued {
         /* Display & Box Model */
@@ -63,9 +80,8 @@
         /* Text */
         @include font(fontBold, 1.5rem);
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
-    
     }
 }
 @media screen and (min-width: 769px) {
@@ -76,36 +92,34 @@
         margin: 0 auto;
         position: relative;
         /* Color */
-    
+
         /* Text */
-    
+
         /* Positioning */
-    
+
         /* Others: transition & animations, ... */
         &__image {
             /* Display & Box Model */
             @include box(70rem, auto);
             margin: 0 auto;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__content {
             /* Display & Box Model */
             margin-top: 2rem;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
         &__continued {
             /* Display & Box Model */
@@ -113,11 +127,11 @@
             top: 25rem;
             left: 97rem;
             /* Color */
-        
+
             /* Text */
             font-size: 1.8rem;
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
             cursor: pointer;
         }
@@ -125,13 +139,12 @@
             /* Display & Box Model */
             margin-top: 3rem;
             /* Color */
-        
+
             /* Text */
-        
+
             /* Positioning */
-        
+
             /* Others: transition & animations, ... */
-        
         }
     }
 }

@@ -1,18 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import TailorRecruitment from "../../../../assets/Image/tailor-recruitment-mobile.png";
 import ButtonCTA from "components/Button/CTA";
-import RecruitmentItem from "./RecruitmentItem";
+import React from "react";
+import TailorRecruitmentDesktop from "assets/Image/tailor-recruitment-desktop.png";
+import TailorRecruitmentMobile from "assets/Image/tailor-recruitment-mobile.jpg";
 import { TAILOR_RECRUITMENT_ARRAY } from "../../../../constants";
+import RecruitmentItem from "./RecruitmentItem";
 
-HomeTailorRecruitment.propTypes = {};
+const innerWidth = window.innerWidth;
+const image = innerWidth > 768 ? TailorRecruitmentDesktop : TailorRecruitmentMobile;
 
-function HomeTailorRecruitment(props) {
+function HomeTailorRecruitment() {
     return (
         <div className="c-home-tailor-recruitment">
             <div className="c-home-tailor-recruitment__image">
                 <img
-                    src={TailorRecruitment}
+                    src={image}
                     alt="tailor-recruitment-ban-la-tho-may"
                 />
             </div>

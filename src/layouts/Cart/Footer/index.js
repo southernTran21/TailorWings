@@ -9,7 +9,7 @@ FooterContainer.propTypes = {
 
 FooterContainer.defaultProps = {
     finalPrice: 0,
-    onConfirm: null
+    onConfirm: null,
 };
 
 function FooterContainer(props) {

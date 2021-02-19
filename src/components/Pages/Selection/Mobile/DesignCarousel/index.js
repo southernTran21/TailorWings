@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React, { Fragment, useRef } from "react";
 import ReactImageAppear from "react-image-appear";
 import { Swiper, SwiperSlide } from "swiper/react";
+import classNames from "classnames";
 
 SelectionDesignCarousel.propTypes = {
     images: PropTypes.array,
@@ -99,6 +100,38 @@ function SelectionDesignCarousel(props) {
                     <i class="fas fa-chevron-left"></i>
                 </div>
             </Swiper>
+            <ul className="c-design-carousel__fabric-type-wrapper">
+                {props.renderFabricTypes.length > 0 ? (
+                    props.renderFabricTypes.map((type, index) => {
+                        if (typeof type === "object") {
+                            /*--------------*/
+                            return (
+                                <li
+                                    className={classNames(
+                                        "c-design-carousel__fabric-type",
+                                        {
+                                            "c-design-carousel__fabric-type--active":
+                                                props.selectedFabricType.id ===
+                                                type.id,
+                                        }
+                                    )}
+                                    key={index}
+                                    onClick={() =>
+                                        props.onFabricTypeChange(type)
+                                    }
+                                >
+                                    {type.name}
+                                </li>
+                            );
+                            /*--------------*/
+                        } else {
+                            return <Fragment />;
+                        }
+                    })
+                ) : (
+                    <Fragment />
+                )}
+            </ul>
         </div>
     );
 }

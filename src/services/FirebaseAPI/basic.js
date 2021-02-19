@@ -264,3 +264,18 @@ export const updateDocument = (collection, docName, field, value) => {
             console.error("Error updating document: ", error);
         });
 };
+
+/*********************************
+ *  Description:
+ *
+ *
+ *  Call by:
+ */
+export function trackingIncrement(collection, doc, parent, child) {
+    const increment = firebase.firestore.FieldValue.increment(1);
+    const ref = database.collection(collection).doc(doc);
+    const batch = database.batch();
+    batch.set(ref, { [`${parent}`]: { [`${child}`]: increment } }, { merge: true });
+    batch.commit();
+}
+/************_END_****************/

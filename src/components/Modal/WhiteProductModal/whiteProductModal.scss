@@ -81,6 +81,8 @@
         .swiper-slide {
             .c-white-product-modal__image-item {
                 @include box(50rem, 60rem);
+                border-top-left-radius: 35px;
+                border-bottom-left-radius: 35px;
             }
         }
 
@@ -155,6 +157,18 @@
         /* Positioning */
 
         /* Others: transition & animations, ... */
+
+        &:last-child {
+            /* Display & Box Model */
+            margin-bottom: 5rem;
+            /* Color */
+
+            /* Text */
+
+            /* Positioning */
+
+            /* Others: transition & animations, ... */
+        }
     }
 
     &__button {
@@ -250,9 +264,9 @@
             /* Text */
 
             /* Positioning */
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
+            position: fixed;
+            top: 3.5rem;
+            right: 3.5rem;
             z-index: 2;
             /* Others: transition & animations, ... */
         }
@@ -288,6 +302,9 @@
             .swiper-slide {
                 .c-white-product-modal__image-item {
                     @include box(35rem, 40rem);
+                    border-top-left-radius: 35px;
+                    border-top-right-radius: 35px;
+                    border-bottom-left-radius: 0px;
                 }
             }
 

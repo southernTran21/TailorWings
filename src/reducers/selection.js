@@ -15,7 +15,7 @@ const selectionReducer = (state = initialState, action) => {
     switch (action.type) {
         /****************************************************/
         case "UPDATE_RENDER_PRODUCT":
-            if (!action.renderProduct) return { ...state };
+            if (!action.renderProduct) return { ...state, renderProduct: null };
             return {
                 ...state,
                 renderProduct: { ...action.renderProduct },

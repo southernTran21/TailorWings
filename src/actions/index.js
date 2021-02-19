@@ -43,16 +43,17 @@ export const updateTopProducts = (topProducts) => {
         topProducts,
     };
 };
-export const updatePageFixedTopStatus = () => {
+export const updatePageFixedTopStatus = (isPageFixedTop = null) => {
     return {
         type: "UPDATE_PAGE_FIXED_TOP_STATUS",
+        isPageFixedTop,
     };
 };
 
 export const updateSelectedWhiteProduct = (selectedWhiteProduct) => {
     return {
         type: "UPDATE_SELECTED_WHITE_PRODUCT",
-        selectedWhiteProduct
+        selectedWhiteProduct,
     };
 };
 
@@ -201,7 +202,6 @@ export const deleteCartProduct = () => {
     };
 };
 
-
 /**
  * This is for Admin
  */
@@ -209,21 +209,21 @@ export const deleteCartProduct = () => {
 export const updateAdminStatus = (user) => {
     return {
         type: "UPDATE_ADMIN_STATUS",
-        user
+        user,
     };
 };
 
 export const updateOrders = (orders) => {
     return {
         type: "UPDATE_ORDERS",
-        orders
+        orders,
     };
 };
 
 export const updateOrderDetail = (orderDetail) => {
     return {
         type: "UPDATE_ORDER_DETAIL",
-        orderDetail
+        orderDetail,
     };
 };
 
@@ -232,7 +232,7 @@ export const updateInitialImageUploadData = (patterns, products, designs) => {
         type: "UPDATE_INITIAL_IMAGE_UPLOAD_DATA",
         patterns,
         products,
-        designs
+        designs,
     };
 };
 
@@ -260,7 +260,7 @@ export const updateSelectedDesignImageUpload = (newDesign) => {
 export const updateImageSelectionOption = (option) => {
     return {
         type: "UPDATE_IMAGE_SELECTION_OPTION",
-        option
+        option,
     };
 };
 
@@ -273,13 +273,13 @@ export const updateImageSelectionModalStatus = () => {
 export const updateImageRef = (imageRef) => {
     return {
         type: "UPDATE_IMAGE_REF",
-        imageRef
+        imageRef,
     };
 };
 
 export const updateAdminImageList = (newImage) => {
     return {
         type: "UPDATE_ADMIN_IMAGE_LIST",
-        newImage
+        newImage,
     };
 };

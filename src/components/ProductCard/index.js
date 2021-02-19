@@ -18,7 +18,7 @@ function ProductCard(props) {
         <div className="c-product-card">
             <div className="c-product-card__image">
                 <ReactImageAppear
-                    src={image[0]}
+                    src={typeof image === "object" ? image.T : ""}
                     animationDuration="1s"
                     loader={loader}
                     loaderStyle={{ backgroundColor: "transparent" }}

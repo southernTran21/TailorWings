@@ -25,7 +25,7 @@ function OrderItem(props) {
     return (
         <div className="c-order-item">
             <div className="c-order-item__image">
-                <img src={image[0]} alt={productID} />
+                <img src={typeof image === "object" ? image.T : ""} alt={productID} />
             </div>
             <div className="c-order-item__content">
                 <div>
@@ -37,7 +37,7 @@ function OrderItem(props) {
                     </div>
                     <p className="c-order-item__id">{productID}</p>
                     <p className="c-order-item__id">
-                        {size === "modify" ? "" : size} - {bodyMetric.chest} |{" "}
+                        Size: {size === "modify" ? "" : `${size} | `} {bodyMetric.chest} |{" "}
                         {bodyMetric.waist} | {bodyMetric.hip}
                     </p>
                 </div>

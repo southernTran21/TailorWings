@@ -1,3 +1,16 @@
+import bannerAoDai from "assets/Image/banner-ao-dai.png";
+import bannerPlussize from "assets/Image/banner-dam-plussize.png";
+import bannerDamOm from "assets/Image/banner-dam-om.png";
+import bannerDamXoe from "assets/Image/banner-dam-xoe.png";
+import bannerDamSuong from "assets/Image/banner-dam-suong.png";
+import bannerTatCa from "assets/Image/banner-tat-ca.png";
+import bannerAoDaiMobile from "assets/Image/banner-ao-dai-mobile.png";
+import bannerPlussizeMobile from "assets/Image/banner-dam-plussize-mobile.png";
+import bannerDamOmMobile from "assets/Image/banner-dam-om-mobile.png";
+import bannerDamXoeMobile from "assets/Image/banner-dam-xoe-mobile.png";
+import bannerDamSuongMobile from "assets/Image/banner-dam-suong-mobile.png";
+import bannerTatCaMobile from "assets/Image/banner-tat-ca-mobile.png";
+
 // ---------- INTRODUCTION ----------
 export const INTRODUCTION_ARRAY = [
     "Bạn tự do chọn kiểu dáng kết hợp vải",
@@ -15,8 +28,8 @@ export const TAILOR_RECRUITMENT_ARRAY = [
     "Tiếp Cận Lượng Lớn Khách Hàng",
     "Thương Hiệu Tay Nghề Riêng",
     "Chủ Động Về Thời Gian",
-    "Tăng Thêm Thu Nhập"
-]
+    "Tăng Thêm Thu Nhập",
+];
 // ---------- END ----------
 
 // ---------- FIREBASE COLLECTION ID NAME ----------
@@ -41,78 +54,142 @@ export const VOUCHER = "voucher";
 export const WHITE_PRODUCT_SOURCE_LINK = [
     {
         id: "TE001",
-        link: "https://www.fashionnova.com/products/midnight-in-moscow-dress-white"
+        link:
+            "https://www.fashionnova.com/products/midnight-in-moscow-dress-white",
+        from: "fashionnova",
     },
     {
         id: "TE002",
-        link: "https://www.showpo.com/us/slow-me-down-dress-in-white.html"
+        link: "https://www.showpo.com/us/slow-me-down-dress-in-white.html",
+        from: "showpo",
     },
     {
         id: "TE003",
-        link: "https://curvysense.com/products/plus-size-aria-m-slit-maxi-dress-ivory"
+        link:
+            "https://curvysense.com/products/plus-size-aria-m-slit-maxi-dress-ivory",
+        from: "curvysense",
     },
     {
         id: "TE004",
-        link: "https://www.macys.com/shop/womens-clothing/dresses/Dress_style,The%20it%20list/Little%20White%20Dress,The%20Cape?id=5449"
+        link:
+            "https://www.macys.com/shop/womens-clothing/dresses/Dress_style,The%20it%20list/Little%20White%20Dress,The%20Cape?id=5449",
+        from: "macys",
     },
     {
         id: "TE005",
-        link: "https://www.gitionline.com/products/copy-of-ruffled-scuba-skirt-set-1"
+        link:
+            "https://www.gitionline.com/products/copy-of-ruffled-scuba-skirt-set-1",
+        from: "gitionline",
     },
     {
         id: "TE006",
-        link: "https://excelsiorplussize.com/products/long-sleeve-winter-plus-size-formal-dress"
+        link:
+            "https://excelsiorplussize.com/products/long-sleeve-winter-plus-size-formal-dress",
+        from: "excelsiorplussize",
     },
     {
         id: "TE007",
-        link: "https://www.boohoo.com/"
+        link: "https://www.boohoo.com/",
+        from: "boohoo",
     },
     {
         id: "TE008",
-        link: "https://www.boohoo.com/"
+        link: "https://www.boohoo.com/",
+        from: "boohoo",
     },
     {
         id: "TE009",
-        link: "https://www.hm.com/vn/"
+        link: "https://www.hm.com/vn/",
+        from: "hm",
     },
     {
         id: "TE010",
-        link: "https://www.fashionnova.com/products/please-hold-midi-dress-ivory"
+        link:
+            "https://www.fashionnova.com/products/please-hold-midi-dress-ivory",
+        from: "fashionnova",
     },
     {
         id: "TE011",
-        link: "https://girlwithcurves.com/"
+        link: "https://girlwithcurves.com/",
+        from: "girlwithcurves",
     },
     {
         id: "TE012",
-        link: "https://www.nordstrom.com/browse/women/clothing/plus-size/dresses"
+        link:
+            "https://www.nordstrom.com/browse/women/clothing/plus-size/dresses",
+        from: "nordstrom",
     },
     {
         id: "TE013",
-        link: "https://www.nordstrom.com/browse/women/clothing/plus-size/dresses"
+        link:
+            "https://www.nordstrom.com/browse/women/clothing/plus-size/dresses",
+        from: "nordstrom",
     },
     {
         id: "TE014",
-        link: "https://www.eloquiiunlimited.com/products/ruffle-cape-dress-in-true-white"
+        link:
+            "https://www.eloquiiunlimited.com/products/ruffle-cape-dress-in-true-white",
+        from: "eloquiiunlimited",
     },
     {
         id: "TE015",
-        link: "https://www.asos.com/asos-curve/asos-design-curve-midi-dress-with-cape-back-and-dip-hem/prd/10975850"
+        link:
+            "https://www.asos.com/asos-curve/asos-design-curve-midi-dress-with-cape-back-and-dip-hem/prd/10975850",
+        from: "asos",
     },
     {
         id: "TE016",
-        link: "https://girlwithcurves.com/"
+        link: "https://girlwithcurves.com/",
+        from: "girlwithcurves",
     },
     {
         id: "TE017",
-        link: "https://girlwithcurves.com/"
+        link: "https://girlwithcurves.com/",
+        from: "girlwithcurves",
     },
     {
         id: "TE018",
-        link: "https://girlwithcurves.com/"
+        link: "https://girlwithcurves.com/",
+        from: "girlwithcurves",
     },
     {
         id: "TE019",
-        link: "https://girlwithcurves.com/"
+        link: "https://girlwithcurves.com/",
+        from: "girlwithcurves",
+    },
+];
+
+
+// ---------- CATEGORIES BANNER ----------
+export const BANNER_CATEGORIES = [
+    {
+        id: "all",
+        desktop: bannerTatCa,
+        mobile: bannerTatCaMobile
+    },
+    {
+        id: "aodai",
+        desktop: bannerAoDai,
+        mobile: bannerAoDaiMobile
+    },
+    {
+        id: "plussize",
+        desktop: bannerPlussize,
+        mobile: bannerPlussizeMobile
+    },
+    {
+        id: "damom",
+        desktop: bannerDamOm,
+        mobile: bannerDamOmMobile
+    },
+    {
+        id: "damxoe",
+        desktop: bannerDamXoe,
+        mobile: bannerDamXoeMobile
+    },
+    {
+        id: "damsuong",
+        desktop: bannerDamSuong,
+        mobile: bannerDamSuongMobile
     },
 ]
